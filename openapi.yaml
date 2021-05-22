@@ -235,6 +235,7 @@ paths:
             - no scope required
       x-private: true
       x-codegen-request-body-name: body
+      x-internal: true
   '/c/{companyId}/company/info':
     get:
       tags:
