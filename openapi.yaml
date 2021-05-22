@@ -6697,6 +6697,7 @@ paths:
       security:
         - OAuth2Authentication:
             - no scope required
+      x-internal: false
   '/c/{companyId}/info/payment_accounts':
     get:
       tags:
@@ -7302,6 +7303,7 @@ paths:
         - OAuth2Authentication:
             - no scope required
       x-private: true
+      x-internal: true
     put:
       tags:
         - Settings
@@ -7350,6 +7352,7 @@ paths:
             - 'settings:a'
       x-private: true
       x-codegen-request-body-name: body
+      x-internal: true
   '/c/{companyId}/settings/company_profile':
     get:
       tags:
