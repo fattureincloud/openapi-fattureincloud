@@ -46,7 +46,7 @@ paths:
       tags:
         - User
       summary: Get user info
-      description: "\U0001F464 Person context\n\nGet user email, name and id."
+      description: "Makes possible to retrieve the current user's info.\n\n\U0001F464 Person context\n\nGet user email, name and id."
       operationId: userInfo
       parameters:
         - name: Authorization
@@ -95,6 +95,15 @@ paths:
                     "email": "mario.rossi@example.it"
                   }
                 }
+              examples:
+                example-1:
+                  value:
+                    data:
+                      id: 12345
+                      name: Mario Rossi
+                      first_name: Mario
+                      last_name: Rossi
+                      email: mario@rossi-example.it
         '401':
           description: Unauthorized.
           content: {}
@@ -5061,16 +5070,16 @@ components:
           type: integer
           description: Company unique identifier.
           example: 12345
+        name:
+          type: string
+          description: Company name.
+          example: Rossi S.r.l.
         type:
           type: string
           description: Company type.
           enum:
             - company
             - accountant
-        name:
-          type: string
-          description: Company name.
-          example: Rossi S.r.l.
         access_token:
           maxLength: 160
           minLength: 160
@@ -5081,9 +5090,6 @@ components:
           example: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
         permissions:
           type: object
-          description: |-
-            Permissions on this company.
-            [Only if type=company]
           properties:
             fic_situation:
               $ref: '#/components/schemas/PermissionLevel'
@@ -5111,6 +5117,9 @@ components:
               $ref: '#/components/schemas/PermissionLevel'
             fic_settings:
               $ref: '#/components/schemas/PermissionLevel'
+          description: |-
+            Permissions on this company.
+            [Only if type=company]
         controlled_companies:
           type: array
           description: |-
@@ -6753,3 +6762,4 @@ components:
             'issued_documents.[documentType]:r': ''
             'issued_documents.[documentType]:a': ''
             no scope required: ''
+  responses: {}
