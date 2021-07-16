@@ -1,3 +1,4 @@
+title: ModifyClientRequest
 type: object
 properties:
   data:
@@ -55,3 +56,4 @@ examples:
       shipping_address: string
       e_invoice: false
       ei_code: string
+description: The values of the client to modify. At first level it works in delta mode.

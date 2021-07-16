@@ -1,7 +1,5 @@
+title: GetClientResponse
 type: object
-properties:
-  data:
-    $ref: ../schemas/Client.yaml
 examples:
   - data:
       id: 0
@@ -55,3 +53,6 @@ examples:
       shipping_address: string
       e_invoice: false
       ei_code: string
+properties:
+  data:
+    $ref: ../schemas/Client.yaml
