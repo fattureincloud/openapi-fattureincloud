@@ -102,7 +102,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ./models/requests/CreateClientsRequest.yaml
+              $ref: ./models/requests/CreateClientRequest.yaml
             examples:
               example-1:
                 value:
@@ -347,7 +347,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: ./models/responses/CreateClientsResponse.yaml
+            $ref: ./models/responses/CreateClientResponse.yaml
           examples:
             example-1:
               value:
