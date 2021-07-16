@@ -1,0 +1,45 @@
+description: The UserCompany response.
+examples:
+  - data:
+      id: 12345
+      name: Rossi S.r.l.
+      type: company
+      access_token: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
+      permissions:
+        fic_situation: write
+        fic_clients: write
+        fic_suppliers: write
+        fic_products: write
+        fic_issued_documents: write
+        fic_received_documents: write
+        fic_receipts: write
+        fic_calendar: write
+        fic_archive: write
+        fic_taxes: write
+        fic_stock: write
+        fic_cashbook: write
+        fic_settings: write
+      controlled_companies:
+        - id: 12345
+          name: Rossi S.r.l.
+          type: company
+          access_token: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
+          permissions:
+            fic_situation: write
+            fic_clients: write
+            fic_suppliers: write
+            fic_products: write
+            fic_issued_documents: write
+            fic_received_documents: write
+            fic_receipts: write
+            fic_calendar: write
+            fic_archive: write
+            fic_taxes: write
+            fic_stock: write
+            fic_cashbook: write
+            fic_settings: write
+          controlled_companies: []
+type: object
+properties:
+  data:
+    $ref: ../schemas/Company.yaml

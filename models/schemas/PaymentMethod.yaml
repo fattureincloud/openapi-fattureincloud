@@ -1,0 +1,44 @@
+type: object
+properties:
+  id:
+    type: integer
+    description: Unique identifier
+  name:
+    type: string
+    description: Name of the payment method
+  type:
+    type: string
+    description: Method type
+    default: standard
+    enum:
+      - standard
+      - riba
+  default_payment_account:
+    $ref: ./PaymentAccount.yaml
+  details:
+    maxItems: 5
+    type: array
+    description: Method details rows
+    items:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+required:
+  - name
+examples:
+  - id: 0
+    name: string
+    type: standard
+    default_payment_account:
+      id: 0
+      name: Conto Banca di Paperopoli
+      type: standard
+      iban: string
+      sia: string
+      cuc: string
+    details:
+      - title: string
+        description: string

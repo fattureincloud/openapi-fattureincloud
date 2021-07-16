@@ -1,0 +1,30 @@
+required:
+  - name
+type: object
+properties:
+  id:
+    type: integer
+    description: Unique identifier
+  name:
+    type: string
+    description: Name of the payment account
+    example: Conto Banca Intesa
+  type:
+    type: string
+    default: standard
+    enum:
+      - standard
+      - bank
+  iban:
+    type: string
+  sia:
+    type: string
+  cuc:
+    type: string
+examples:
+  - id: 0
+    name: Conto Banca di Paperopoli
+    type: standard
+    iban: string
+    sia: string
+    cuc: string

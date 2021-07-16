@@ -1,0 +1,43 @@
+type: object
+description: Set of permissions.
+properties:
+  fic_situation:
+    $ref: ./PermissionLevel.yaml
+  fic_clients:
+    $ref: ./PermissionLevel.yaml
+  fic_suppliers:
+    $ref: ./PermissionLevel.yaml
+  fic_products:
+    $ref: ./PermissionLevel.yaml
+  fic_issued_documents:
+    $ref: ./PermissionLevel.yaml
+  fic_received_documents:
+    $ref: ./PermissionLevel.yaml
+  fic_receipts:
+    $ref: ./PermissionLevel.yaml
+  fic_calendar:
+    $ref: ./PermissionLevel.yaml
+  fic_archive:
+    $ref: ./PermissionLevel.yaml
+  fic_taxes:
+    $ref: ./PermissionLevel.yaml
+  fic_stock:
+    $ref: ./PermissionLevel.yaml
+  fic_cashbook:
+    $ref: ./PermissionLevel.yaml
+  fic_settings:
+    $ref: ./PermissionLevel.yaml
+examples:
+  - fic_situation: write
+    fic_clients: write
+    fic_suppliers: write
+    fic_products: write
+    fic_issued_documents: write
+    fic_received_documents: write
+    fic_receipts: write
+    fic_calendar: write
+    fic_archive: write
+    fic_taxes: write
+    fic_stock: write
+    fic_cashbook: write
+    fic_settings: write
