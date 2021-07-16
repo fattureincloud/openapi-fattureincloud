@@ -9,10 +9,14 @@ info:
   license:
     name: ''
     url: 'https://www.fattureincloud.it'
-  version: v1.0
+  version: v2.0
 servers:
   - url: 'https://api-v2.fattureincloud.it'
-tags: []
+tags:
+  - name: Clients
+  - name: Products
+  - name: Suppliers
+  - name: User
 paths:
   /user/info:
     get:
@@ -440,6 +444,44 @@ paths:
             - 'entity.suppliers:a'
       tags:
         - Suppliers
+  '/c/{companyId}/products':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+    get:
+      summary: List Products
+      tags:
+        - Products
+      responses:
+        '200':
+          $ref: '#/components/responses/ListProductsResponse'
+        '401':
+          description: Unauthorized
+      operationId: listProducts
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: products:r\n\U0001F50D Filtering: id, name, code, net_price, gross_price, net_cost, description, category, notes, in_stock, created_at, updated_at\n↕️ Sorting: name, code, net_price, gross_price, net_cost, description, category, notes, in_stock, created_at, updated_at\n\U0001F4C4 Paginated results\n\U0001F3A9 Customized responses supported\n\nGet a list of products that match the filters."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'products:r'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/FieldSet'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/ById'
+    post:
+      summary: ''
+      operationId: createProduct
+      responses:
+        '200':
+          $ref: '#/components/responses/CreateProductResponse'
+      tags:
+        - Products
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: products:a\n\nCreate a new product."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'products:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
 components:
   schemas: {}
   securitySchemes:
@@ -454,6 +496,8 @@ components:
             'entity.clients:a': ''
             'entity.suppliers:r': ''
             'entity.suppliers:a': ''
+            'products:r': ''
+            'products:a': ''
           authorizationUrl: 'https://api-v2.fattureincloud.it/oauth/authorize'
   parameters:
     Authorization:
@@ -964,5 +1008,82 @@ components:
         application/json:
           schema:
             $ref: ./models/responses/ModifySupplierResponse.yaml
+    ListProductsResponse:
+      description: Products List.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ListProductsResponse.yaml
+          examples:
+            example-1:
+              value:
+                current_page: 1
+                first_page_url: 'http://api-v2.fattureincloud.it/c/11111/path?fieldset=basic&page=1'
+                from: 1
+                last_page: 1
+                last_page_url: 'http://api-v2.fattureincloud.it/c/11111/path?fieldset=basic&page=1'
+                next_page_url: null
+                path: 'http://api-v2.fattureincloud.it/c/11111/path'
+                per_page: 50
+                prev_page_url: null
+                to: 1
+                total: 1
+                data:
+                  - id: 0
+                    name: string
+                    code: string
+                    net_price: 0
+                    gross_price: 0
+                    use_gross_price: true
+                    default_vat:
+                      id: 0
+                      value: 22
+                      description: Non imponibile art. 123
+                      notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+                      e_invoice: string
+                      ei_type: 2
+                      ei_description: string
+                      editable: true
+                    net_cost: 0
+                    measure: string
+                    description: string
+                    category: string
+                    notes: string
+                    in_stock: true
+                    stock_initial: 0
+                    stock_current: 0
+    CreateProductResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/CreateProductResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 0
+                  name: string
+                  code: string
+                  net_price: 0
+                  gross_price: 0
+                  use_gross_price: true
+                  default_vat:
+                    id: 0
+                    value: 22
+                    description: Non imponibile art. 123
+                    notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+                    e_invoice: string
+                    ei_type: 2
+                    ei_description: string
+                    editable: true
+                  net_cost: 0
+                  measure: string
+                  description: string
+                  category: string
+                  notes: string
+                  in_stock: true
+                  stock_initial: 0
+                  stock_current: 0
 security:
   - OAuth2AuthenticationCodeFlow: []
