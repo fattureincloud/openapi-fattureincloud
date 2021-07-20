@@ -1,0 +1,5 @@
+title: ModifyProductRequest
+type: object
+properties:
+  data:
+    $ref: ../schemas/Product.yaml

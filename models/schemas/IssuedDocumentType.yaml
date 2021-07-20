@@ -1,0 +1,12 @@
+type: string
+default: invoice
+enum:
+  - invoice
+  - quote
+  - proforma
+  - receipt
+  - delivery_note
+  - credit_note
+  - order
+  - work_report
+  - supplier_order

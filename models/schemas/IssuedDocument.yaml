@@ -1,0 +1,371 @@
+title: IssuedDocument
+type: object
+properties:
+  id:
+    type: integer
+    description: Unique identifier of the document.
+  entity:
+    oneOf:
+      - $ref: ./Client.yaml
+      - $ref: ./Supplier.yaml
+  type:
+    $ref: ./IssuedDocumentType.yaml
+  number:
+    type: integer
+    description: |-
+      Number of the document
+      [If not specified, next number is used]
+    example: 1
+  numeration:
+    type: string
+    description: |-
+      Numeration of the document
+      [Not available if type=delivery_note]
+    example: /A
+  date:
+    type: string
+    description: |-
+      Date of the document
+      [If not specified, today date is used]
+    format: date
+  currency:
+    $ref: ./Currency.yaml
+  language:
+    $ref: ./Language.yaml
+  subject:
+    type: string
+  visible_subject:
+    type: string
+  rc_center:
+    type: string
+    description: 'Revenue center [or cost center if type=supplier_order].'
+  notes:
+    type: string
+  rivalsa:
+    maximum: 100
+    minimum: 0
+    type: number
+    description: '"Rivalsa INPS" percentual value'
+  cassa:
+    maximum: 100
+    minimum: 0
+    type: number
+    description: '"Cassa previdenziale" percentual value'
+  withholding_tax:
+    maximum: 100
+    minimum: 0
+    type: number
+    description: Withholding tax (ritenuta d'acconto) percentual value
+  withholding_tax_taxable:
+    maximum: 100
+    minimum: 0
+    type: number
+    description: Withholding tax taxable (imponibile) percentual value
+  other_withholding_tax:
+    maximum: 100
+    minimum: 0
+    type: number
+    description: Other withholding tax (altra ritenuta) percentual value
+  stamp_duty:
+    type: number
+    description: |-
+      Stamp duty value
+      [0 if not present]
+  payment_method:
+    $ref: ./PaymentMethod.yaml
+  use_split_payment:
+    type: boolean
+    default: false
+  use_gross_prices:
+    type: boolean
+    default: false
+  e_invoice:
+    type: boolean
+    description: Indicates if this is an e-invoice.
+    default: false
+  ei_data:
+    type: object
+    description: |-
+      E-invoice data.
+      [Only if e_invoice=true]
+    properties:
+      vat_kind:
+        type: string
+        description: Vat kind (esigibilità IVA).
+        default: null
+        enum:
+          - null
+          - I
+          - D
+          - S
+      original_document_type:
+        type: string
+        description: Type of document followed by the the current invoice.
+        default: ordine
+        enum:
+          - ordine
+          - contratto
+          - convenzione
+      od_number:
+        type: string
+        description: Original document number.
+      od_date:
+        type: string
+        description: Original document date.
+        format: date
+      cig:
+        type: string
+        description: CIG.
+      cup:
+        type: string
+        description: CUP.
+      payment_method:
+        type: string
+        description: 'Payment method (see https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.1/Rappresentazione-tabellare-fattura-ordinaria.pdf for the accepted values of ModalitaPagamento).'
+      bank_name:
+        type: string
+        description: Bank name.
+      bank_iban:
+        type: string
+        description: IBAN.
+      bank_beneficiary:
+        type: string
+        description: Bank beneficiary.
+  items_list:
+    type: array
+    items:
+      type: object
+      properties:
+        product_id:
+          type: integer
+          description: Unique identifier of the product.
+          example: 1234
+        code:
+          type: string
+          description: Product code.
+          example: '239874892374982'
+        name:
+          type: string
+          description: Product name.
+          example: Water bottle
+        description:
+          type: string
+          description: Product description.
+        qty:
+          type: number
+        measure:
+          type: string
+        net_price:
+          type: number
+          description: Net price.
+          example: 1.23
+        gross_price:
+          type: number
+          description: Gross price.
+          example: 1.45
+        vat:
+          $ref: ./VatType.yaml
+        not_taxable:
+          type: boolean
+          default: false
+        apply_withholding_taxes:
+          type: boolean
+          description: 'Apply withholding taxes, rivalsa and cassa.'
+          default: true
+        discount:
+          maximum: 100
+          minimum: 0
+          type: number
+          description: Discount percentual value.
+        discount_highlight:
+          type: boolean
+          default: false
+        in_ddt:
+          type: boolean
+          default: true
+        stock:
+          type: boolean
+        ei_raw:
+          type: object
+          description: Advanced raw attributes for e-invoices.
+  payments_list:
+    type: array
+    items:
+      type: object
+      properties:
+        due_date:
+          type: string
+          description: Due date.
+          format: date
+          example: '2018-04-03'
+        amount:
+          type: number
+          description: Payment amount.
+          example: 1.45
+        status:
+          type: string
+          description: Payment status.
+          default: not_paid
+          enum:
+            - not_paid
+            - paid
+            - reversed
+        payment_account:
+          $ref: ./PaymentAccount.yaml
+        paid_date:
+          type: string
+          description: |-
+            Payment date.
+            [Only if status is paid]
+          format: date
+          example: '2018-04-03'
+        ei_raw:
+          type: object
+          description: Advanced raw attributes for e-invoices.
+  template:
+    $ref: ./DocumentTemplate.yaml
+  delivery_note_template:
+    $ref: ./DocumentTemplate.yaml
+  acc_inv_template:
+    $ref: ./DocumentTemplate.yaml
+  h_margins:
+    type: integer
+    description: Horizontal margins.
+  show_payments:
+    type: boolean
+    description: Shows the expiration dates of the payments on the document.
+  show_payment_method:
+    type: boolean
+    description: Show the payment method details on the document.
+  show_totals:
+    type: string
+    description: Totals mode.
+    default: all
+    enum:
+      - none
+      - nets
+      - all
+  v_margins:
+    type: integer
+    description: Vertical margins.
+  show_paypal_button:
+    type: boolean
+    default: false
+  show_notification_button:
+    type: boolean
+    default: false
+  delivery_note:
+    type: boolean
+    description: Attach a delivery note.
+    default: false
+  accompanying_invoice:
+    type: boolean
+    description: Attach an accompanying invoice.
+    default: false
+  dn_number:
+    type: integer
+    description: Number (for the attached delivery note).
+  dn_date:
+    type: string
+    description: Date (for the attached delivery note).
+    format: date
+  dn_ai_packages_number:
+    type: string
+    description: Number of packages (for the attached delivery note).
+  dn_ai_weight:
+    type: string
+    description: Weight (for the attached delivery note).
+  dn_ai_causal:
+    type: string
+    description: Causal (for the attached delivery note).
+  dn_ai_destination:
+    type: string
+    description: Destination (for the attached delivery note).
+  dn_ai_transporter:
+    type: string
+    description: Transporter (for the attached delivery note).
+  dn_ai_notes:
+    type: string
+    description: Notes (for the attached delivery note).
+  refers_to:
+    type: object
+    description: Link to another document (e.g. the original proforma or the quote from which this has been created).
+    properties:
+      id:
+        type: integer
+        description: Unique identifier of the linked document (can be null if the document has been deleted or other reasons).
+      date:
+        type: string
+        description: Date of the linked document.
+        format: date
+      number:
+        type: integer
+        description: Number of the linked document.
+      numeration:
+        type: string
+        description: Numeration of the linked document.
+      description:
+        type: string
+        description: Description to show.
+  is_marked:
+    type: boolean
+    description: This is true if the document is marked.
+  amount_net:
+    type: number
+    description: '[Read-only] Total net amount (competenze).'
+  amount_vat:
+    type: number
+    description: '[Read-only] Total vat amount (IVA).'
+  amount_gross:
+    type: number
+    description: '[Read-only] Total gross amount (totale documento).'
+  amount_rivalsa:
+    type: number
+    description: '[Read-only] Rivalsa amount.'
+  amount_cassa:
+    type: number
+    description: '[Read-only] Cassa amount.'
+  amount_withholding_tax:
+    type: number
+    description: '[Read-only] Withholding tax amount (ritenuta d''acconto).'
+  amount_other_withholding_tax:
+    type: number
+    description: '[Read-only] Other withholding tax amount (altra ritenuta).'
+  extra_data:
+    type: object
+    description: |-
+      Extra data.
+      TS fields follow the technical specifications provided by "Sistema Tessera Sanitaria".
+    properties:
+      ts_communication:
+        type: boolean
+      ts_flag_tipo_spesa:
+        type: number
+        description: 1 => TK (Ticket di pronto soccorso); 2 => SR (Visita in intramoenia)
+      ts_pagamento_tracciato:
+        type: boolean
+      ts_tipo_spesa:
+        type: string
+        description: 'Can be [ ''TK'', ''FC'', ''FV'', ''SV'', ''SP'', ''AD'', ''AS'', ''SR'', ''CT'', ''PI'', ''IC'', ''AA'' ]. Refer to the technical specifications to learn more.'
+  seen_date:
+    type: string
+    description: Date when the client/supplier has seen the document.
+    format: date
+  next_due_date:
+    type: string
+    description: Date of the next not paid payment.
+    format: date
+  url:
+    type: string
+    description: Public url of the document PDF file.
+  attachment_url:
+    type: string
+    description: '[Read only] Public url of the attached file. Authomatically set if a valid attachment token is passed via POST /issued_documents or PUT /issued_documents/{documentId}.'
+  attachment_token:
+    type: string
+    description: '[Write only] Attachment token returned by POST /issued_documents/attachment. Used to attach the file already uploaded.'
+  ei_raw:
+    type: object
+    description: Advanced raw attributes for e-invoices.
+required:
+  - items_list

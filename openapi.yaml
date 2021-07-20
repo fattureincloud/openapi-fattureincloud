@@ -14,6 +14,7 @@ servers:
   - url: 'https://api-v2.fattureincloud.it'
 tags:
   - name: Clients
+  - name: Issued Documents
   - name: Products
   - name: Suppliers
   - name: User
@@ -482,6 +483,130 @@ paths:
             - 'products:a'
       parameters:
         - $ref: '#/components/parameters/Authorization'
+  '/c/{companyId}/products/{productId}':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/ProductId'
+    get:
+      summary: Get Product
+      tags:
+        - Products
+      responses:
+        '200':
+          $ref: '#/components/responses/GetProductResponse'
+      operationId: getProduct
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: products:r\n\U0001F3A9 Customized responses supported\n\nGet product details"
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'products:r'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/FieldSet'
+    put:
+      summary: Modify Product
+      operationId: modifyProduct
+      responses:
+        '200':
+          $ref: '#/components/responses/ModifyProductResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: products:a\n\nEdit an existing product by its unique id."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'products:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/ModifyProductRequest.yaml
+        description: Modified product details.
+      tags:
+        - Products
+    delete:
+      summary: ''
+      operationId: deleteProduct
+      responses:
+        '200':
+          description: Product removed.
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      description: Delete Product
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'products:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      tags:
+        - Products
+  '/c/{companyId}/issued_documents':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+    get:
+      summary: List Issued Documents
+      tags:
+        - Issued Documents
+      responses:
+        '200':
+          $ref: '#/components/responses/ListIssuedDocumentsResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: listIssuedDocuments
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: issued_documents.[documentType]:r\n\U0001F50D Filtering: type, entity.id, entity.name, entity.vat_number, entity.tax_code, entity.city, entity.province, entity.country, date, number, numeration, any_subject, amount_net, amount_vat, amount_gross, next_due_date, created_at, updated_at\n↕️ Sorting: entity.id, entity.name, entity.vat_number, entity.tax_code, entity.city, entity.province, entity.country, date, number, numeration, amount_net, amount_vat, amount_gross, next_due_date, created_at, updated_at\n\U0001F4C4 Paginated results\n\U0001F3A9 Customized responses supported\n\nGet a list of documents that match the filters."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'issued_documents.invoice:r'
+            - 'issued_documents.credit_note:r'
+            - 'issued_documents.receipt:r'
+            - 'issued_documents.order:r'
+            - 'issued_documents.quote:r'
+            - 'issued_documents.proforma:r'
+            - 'issued_documents.delivery_note:r'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/DocumentType'
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/FieldSet'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/ById'
+        - $ref: '#/components/parameters/PerPage'
+    post:
+      summary: Create Issued Document
+      operationId: createIssuedDocument
+      responses:
+        '200':
+          $ref: '#/components/responses/CreateIssuedDocumentResponse'
+        '401':
+          description: Unauthorized
+      tags:
+        - Issued Documents
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: issued_documents.[documentType]:a\n\nCreate a new document."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'issued_documents.invoice:a'
+            - 'issued_documents.credit_note:a'
+            - 'issued_documents.receipt:a'
+            - 'issued_documents.order:a'
+            - 'issued_documents.quote:a'
+            - 'issued_documents.proforma:a'
+            - 'issued_documents.delivery_note:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/CreateIssuedDocumentRequest.yaml
+        description: The Issued Document
 components:
   schemas: {}
   securitySchemes:
@@ -498,6 +623,20 @@ components:
             'entity.suppliers:a': ''
             'products:r': ''
             'products:a': ''
+            'issued_documents.invoice:r': ''
+            'issued_documents.credit_note:r': ''
+            'issued_documents.receipt:r': ''
+            'issued_documents.order:r': ''
+            'issued_documents.quote:r': ''
+            'issued_documents.proforma:r': ''
+            'issued_documents.delivery_note:r': ''
+            'issued_documents.invoice:a': ''
+            'issued_documents.credit_note:a': ''
+            'issued_documents.receipt:a': ''
+            'issued_documents.order:a': ''
+            'issued_documents.quote:a': ''
+            'issued_documents.proforma:a': ''
+            'issued_documents.delivery_note:a': ''
           authorizationUrl: 'https://api-v2.fattureincloud.it/oauth/authorize'
   parameters:
     Authorization:
@@ -566,6 +705,35 @@ components:
       required: true
       schema:
         type: string
+    ProductId:
+      name: ProductId
+      in: path
+      required: true
+      schema:
+        type: string
+    DocumentType:
+      name: type
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - invoice
+          - credit_note
+          - receipt
+          - order
+          - quote
+          - proforma
+          - delivery_note
+      description: Type of the document
+    PerPage:
+      name: per_page
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 5
+      description: Items to be shown per page
   responses:
     UserInfoResponse:
       description: User info.
@@ -1085,5 +1253,56 @@ components:
                   in_stock: true
                   stock_initial: 0
                   stock_current: 0
+    GetProductResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetProductResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 0
+                  name: string
+                  code: string
+                  net_price: 0
+                  gross_price: 0
+                  use_gross_price: true
+                  default_vat:
+                    id: 0
+                    value: 22
+                    description: Non imponibile art. 123
+                    notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+                    e_invoice: string
+                    ei_type: 2
+                    ei_description: string
+                    editable: true
+                  net_cost: 0
+                  measure: string
+                  description: string
+                  category: string
+                  notes: string
+                  in_stock: true
+                  stock_initial: 0
+                  stock_current: 0
+    ModifyProductResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ModifyProductResponse.yaml
+    ListIssuedDocumentsResponse:
+      description: Results list.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ListIssuedDocumentsResponse.yaml
+    CreateIssuedDocumentResponse:
+      description: Document created.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/CreateIssuedDocumentResponse.yaml
 security:
   - OAuth2AuthenticationCodeFlow: []
