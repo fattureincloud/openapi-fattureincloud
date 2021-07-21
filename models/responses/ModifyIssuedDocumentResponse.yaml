@@ -1,0 +1,204 @@
+title: ModifyIssuedDocumentResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/IssuedDocument.yaml
+examples:
+  - data:
+      id: 0
+      entity:
+        id: 0
+        code: '123'
+        name: Rossi S.r.l.
+        type: null
+        first_name: string
+        last_name: string
+        contact_person: string
+        vat_number: IT01234567890
+        tax_code: RSSMRA44A12E890Q
+        address_street: 'Via dei tigli, 12'
+        address_postal_code: '24010'
+        address_city: Bergamo
+        address_province: BG
+        address_extra: string
+        country: Italia
+        email: mario.rossi@example.it
+        certified_email: mario.rossi@pec.example.it
+        phone: string
+        fax: string
+        notes: string
+        default_vat:
+          id: 0
+          value: 22
+          description: Non imponibile art. 123
+          notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+          e_invoice: string
+          ei_type: 2
+          ei_description: string
+          editable: true
+        default_payment_terms: 30
+        default_payment_terms_type: standard
+        default_payment_method:
+          id: 0
+          name: string
+          type: standard
+          default_payment_account:
+            id: 0
+            name: Conto Banca di Paperopoli
+            type: standard
+            iban: string
+            sia: string
+            cuc: string
+          details:
+            - title: string
+              description: string
+        bank_name: string
+        bank_iban: string
+        bank_swift_code: string
+        shipping_address: string
+        e_invoice: false
+        ei_code: string
+      type: invoice
+      number: 1
+      numeration: /A
+      date: '2019-08-24'
+      currency:
+        id: EUR
+        symbol: €
+        exchange_rate: 1
+      language:
+        code: string
+        name: string
+      subject: string
+      visible_subject: string
+      rc_center: string
+      notes: string
+      rivalsa: 0
+      cassa: 0
+      withholding_tax: 0
+      withholding_tax_taxable: 0
+      other_withholding_tax: 0
+      stamp_duty: 0
+      payment_method:
+        id: 0
+        name: string
+        type: standard
+        default_payment_account:
+          id: 0
+          name: Conto Banca di Paperopoli
+          type: standard
+          iban: string
+          sia: string
+          cuc: string
+        details:
+          - title: string
+            description: string
+      use_split_payment: false
+      use_gross_prices: false
+      e_invoice: false
+      ei_data:
+        vat_kind: null
+        original_document_type: ordine
+        od_number: string
+        od_date: '2019-08-24'
+        cig: string
+        cup: string
+        payment_method: string
+        bank_name: string
+        bank_iban: string
+        bank_beneficiary: string
+      items_list:
+        - product_id: 1234
+          code: '239874892374982'
+          name: Water bottle
+          description: string
+          qty: 0
+          measure: string
+          net_price: 1.23
+          gross_price: 1.45
+          vat:
+            id: 0
+            value: 22
+            description: Non imponibile art. 123
+            notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+            e_invoice: string
+            ei_type: 2
+            ei_description: string
+            editable: true
+          not_taxable: false
+          apply_withholding_taxes: true
+          discount: 0
+          discount_highlight: false
+          in_ddt: true
+          stock: true
+          ei_raw: {}
+      payments_list:
+        - due_date: '2018-04-03'
+          amount: 1.45
+          status: not_paid
+          payment_account:
+            id: 0
+            name: Conto Banca di Paperopoli
+            type: standard
+            iban: string
+            sia: string
+            cuc: string
+          paid_date: '2018-04-03'
+          ei_raw: {}
+      template: |-
+        {
+            "code": "it",
+            "name": "Italiano"
+        }
+      delivery_note_template: |-
+        {
+            "code": "it",
+            "name": "Italiano"
+        }
+      acc_inv_template: |-
+        {
+            "code": "it",
+            "name": "Italiano"
+        }
+      h_margins: 0
+      show_payments: true
+      show_payment_method: true
+      show_totals: all
+      v_margins: 0
+      show_paypal_button: false
+      show_notification_button: false
+      delivery_note: false
+      accompanying_invoice: false
+      dn_number: 0
+      dn_date: '2019-08-24'
+      dn_ai_packages_number: string
+      dn_ai_weight: string
+      dn_ai_causal: string
+      dn_ai_destination: string
+      dn_ai_transporter: string
+      dn_ai_notes: string
+      refers_to:
+        id: 0
+        date: '2019-08-24'
+        number: 0
+        numeration: string
+        description: string
+      is_marked: true
+      amount_net: 0
+      amount_vat: 0
+      amount_gross: 0
+      amount_rivalsa: 0
+      amount_cassa: 0
+      amount_withholding_tax: 0
+      amount_other_withholding_tax: 0
+      extra_data:
+        ts_communication: true
+        ts_flag_tipo_spesa: 0
+        ts_pagamento_tracciato: true
+        ts_tipo_spesa: string
+      seen_date: '2019-08-24'
+      next_due_date: '2019-08-24'
+      url: string
+      attachment_url: string
+      attachment_token: string
+      ei_raw: {}

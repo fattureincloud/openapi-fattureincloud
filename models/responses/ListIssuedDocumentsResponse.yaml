@@ -1,7 +1,8 @@
-title: ListIssuedDocumentsResponse
-type: object
-properties:
-  data:
-    type: array
-    items:
-      $ref: ../schemas/IssuedDocument.yaml
+allOf:
+  - $ref: ../schemas/Pagination.yaml
+  - type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: ../schemas/IssuedDocument.yaml

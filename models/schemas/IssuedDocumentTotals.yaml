@@ -1,0 +1,85 @@
+required:
+  - amount_due
+  - amount_gross
+  - amount_net
+  - amount_vat
+  - is_enasarco_maximal_exceeded
+  - payments_sum
+  - vat_list
+type: object
+properties:
+  amount_net:
+    type: number
+  amount_rivalsa:
+    type: number
+  amount_net_with_rivalsa:
+    type: number
+  amount_cassa:
+    type: number
+  taxable_amount:
+    type: number
+  not_taxable_amount:
+    type: number
+  vat_list:
+    required:
+      - vat_item
+    type: object
+    properties:
+      vat_item:
+        required:
+          - net
+          - vat
+        type: object
+        properties:
+          net:
+            type: number
+          vat:
+            type: number
+  amount_vat:
+    type: number
+  amount_gross:
+    type: number
+  taxable_amount_withholding_tax:
+    type: number
+  amount_withholding_tax:
+    type: number
+  taxable_amount_other_withholding_tax:
+    type: number
+  amount_other_withholding_tax:
+    type: number
+  stamp_duty:
+    type: number
+  amount_due:
+    type: number
+  is_enasarco_maximal_exceeded:
+    type: boolean
+  payments_sum:
+    type: number
+example: |-
+  {
+      "amount_net": 30,
+      "amount_rivalsa": 1.5,
+      "amount_net_with_rivalsa": 31.5,
+      "amount_cassa": 1.58,
+      "taxable_amount": 33.08,
+      "not_taxable_amount": 0.00,
+      "vat_list": {
+        "10": {
+          "net": 10,
+          "vat": 1
+        },
+        "20": {
+          "net": 23.08,
+          "vat": 4.62
+        }
+      },
+      "amount_vat": 5.62,
+      "amount_gross": 36.41,
+      "taxable_amount_withholding_tax": 15.75,
+      "amount_withholding_tax": 0.79,
+      "taxable_amount_other_withholding_tax": 30,
+      "amount_other_withholding_tax": 1.5,
+      "amount_due": 36.41,
+      "is_enasarco_maximal_exceeded": false,
+      "payments_sum": 36.41
+    }

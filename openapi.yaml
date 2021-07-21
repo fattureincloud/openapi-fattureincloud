@@ -607,6 +607,137 @@ paths:
             schema:
               $ref: ./models/requests/CreateIssuedDocumentRequest.yaml
         description: The Issued Document
+  '/c/{companyId}/issued_documents/{documentId}':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/DocumentId'
+    get:
+      summary: Get Issued Document
+      tags:
+        - Issued Documents
+      responses:
+        '200':
+          $ref: '#/components/responses/GetIssuedDocumentResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: getIssuedDocument
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: issued_documents.[documentType]:r\n\U0001F3A9 Customized responses supported\n\nGet details of an existing document by its unique id.\n\n"
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'issued_documents.invoice:r'
+            - 'issued_documents.credit_note:r'
+            - 'issued_documents.receipt:r'
+            - 'issued_documents.order:r'
+            - 'issued_documents.quote:r'
+            - 'issued_documents.proforma:r'
+            - 'issued_documents.delivery_note:r'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/FieldSet'
+    put:
+      summary: Modify Issued Document
+      operationId: modifyIssuedDocument
+      responses:
+        '200':
+          $ref: '#/components/responses/ModifyIssuedDocumentResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: issued_documents.[documentType]:a\n\nEdit an existing document by its unique id."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'issued_documents.invoice:a'
+            - 'issued_documents.credit_note:a'
+            - 'issued_documents.receipt:a'
+            - 'issued_documents.order:a'
+            - 'issued_documents.quote:a'
+            - 'issued_documents.proforma:a'
+            - 'issued_documents.delivery_note:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/ModifyIssuedDocumentRequest.yaml
+        description: The modified document
+      tags:
+        - Issued Documents
+    delete:
+      summary: Delete Issued Document
+      operationId: deleteIssuedDocument
+      responses:
+        '200':
+          description: Document removed
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: issued_documents.[documentType]:a\n\nDelete an existing document by its unique id."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'issued_documents.invoice:a'
+            - 'issued_documents.credit_note:a'
+            - 'issued_documents.receipt:a'
+            - 'issued_documents.order:a'
+            - 'issued_documents.quote:a'
+            - 'issued_documents.proforma:a'
+            - 'issued_documents.delivery_note:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      tags:
+        - Issued Documents
+  '/c/{companyId}/issued_documents/totals':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+    post:
+      summary: Get New Issued Document Totals
+      operationId: getNewIssuedDocumentTotals
+      responses:
+        '200':
+          $ref: '#/components/responses/GetNewIssuedDocumentTotalsResponse'
+      description: "\U0001F465 Company context\n\nGet the totals of a document"
+      tags:
+        - Issued Documents
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/GetNewIssuedDocumentTotalsRequest.yaml
+  '/c/{companyId}/issued_documents/{documentId}/totals':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/DocumentId'
+    post:
+      summary: Get Existing Issued Document Totals
+      operationId: getExistingIssuedDocumentTotals
+      responses:
+        '200':
+          $ref: '#/components/responses/GetExistingIssuedDocumentTotalsResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      tags:
+        - Issued Documents
+      description: "\U0001F465 Company context\n\nGet existing document totals"
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/GetExistingIssuedDocumentTotalsRequest.yaml
 components:
   schemas: {}
   securitySchemes:
@@ -734,6 +865,13 @@ components:
         type: integer
         default: 5
       description: Items to be shown per page
+    DocumentId:
+      name: DocumentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique Id of the document
   responses:
     UserInfoResponse:
       description: User info.
@@ -1304,5 +1442,292 @@ components:
         application/json:
           schema:
             $ref: ./models/responses/CreateIssuedDocumentResponse.yaml
+    GetIssuedDocumentResponse:
+      description: Document Details.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetIssuedDocumentResponse.yaml
+    ModifyIssuedDocumentResponse:
+      description: Document edited
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ModifyIssuedDocumentResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 0
+                  entity:
+                    id: 0
+                    code: '123'
+                    name: Rossi S.r.l.
+                    type: null
+                    first_name: string
+                    last_name: string
+                    contact_person: string
+                    vat_number: IT01234567890
+                    tax_code: RSSMRA44A12E890Q
+                    address_street: 'Via dei tigli, 12'
+                    address_postal_code: '24010'
+                    address_city: Bergamo
+                    address_province: BG
+                    address_extra: string
+                    country: Italia
+                    email: mario.rossi@example.it
+                    certified_email: mario.rossi@pec.example.it
+                    phone: string
+                    fax: string
+                    notes: string
+                    default_vat:
+                      id: 0
+                      value: 22
+                      description: Non imponibile art. 123
+                      notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+                      e_invoice: string
+                      ei_type: 2
+                      ei_description: string
+                      editable: true
+                    default_payment_terms: 30
+                    default_payment_terms_type: standard
+                    default_payment_method:
+                      id: 0
+                      name: string
+                      type: standard
+                      default_payment_account:
+                        id: 0
+                        name: Conto Banca di Paperopoli
+                        type: standard
+                        iban: string
+                        sia: string
+                        cuc: string
+                      details:
+                        - title: string
+                          description: string
+                    bank_name: string
+                    bank_iban: string
+                    bank_swift_code: string
+                    shipping_address: string
+                    e_invoice: false
+                    ei_code: string
+                  type: invoice
+                  number: 1
+                  numeration: /A
+                  date: '2019-08-24'
+                  currency:
+                    id: EUR
+                    symbol: €
+                    exchange_rate: 1
+                  language:
+                    code: string
+                    name: string
+                  subject: string
+                  visible_subject: string
+                  rc_center: string
+                  notes: string
+                  rivalsa: 0
+                  cassa: 0
+                  withholding_tax: 0
+                  withholding_tax_taxable: 0
+                  other_withholding_tax: 0
+                  stamp_duty: 0
+                  payment_method:
+                    id: 0
+                    name: string
+                    type: standard
+                    default_payment_account:
+                      id: 0
+                      name: Conto Banca di Paperopoli
+                      type: standard
+                      iban: string
+                      sia: string
+                      cuc: string
+                    details:
+                      - title: string
+                        description: string
+                  use_split_payment: false
+                  use_gross_prices: false
+                  e_invoice: false
+                  ei_data:
+                    vat_kind: null
+                    original_document_type: ordine
+                    od_number: string
+                    od_date: '2019-08-24'
+                    cig: string
+                    cup: string
+                    payment_method: string
+                    bank_name: string
+                    bank_iban: string
+                    bank_beneficiary: string
+                  items_list:
+                    - product_id: 1234
+                      code: '239874892374982'
+                      name: Water bottle
+                      description: string
+                      qty: 0
+                      measure: string
+                      net_price: 1.23
+                      gross_price: 1.45
+                      vat:
+                        id: 0
+                        value: 22
+                        description: Non imponibile art. 123
+                        notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+                        e_invoice: string
+                        ei_type: 2
+                        ei_description: string
+                        editable: true
+                      not_taxable: false
+                      apply_withholding_taxes: true
+                      discount: 0
+                      discount_highlight: false
+                      in_ddt: true
+                      stock: true
+                      ei_raw: {}
+                  payments_list:
+                    - due_date: '2018-04-03'
+                      amount: 1.45
+                      status: not_paid
+                      payment_account:
+                        id: 0
+                        name: Conto Banca di Paperopoli
+                        type: standard
+                        iban: string
+                        sia: string
+                        cuc: string
+                      paid_date: '2018-04-03'
+                      ei_raw: {}
+                  template: |-
+                    {
+                        "code": "it",
+                        "name": "Italiano"
+                    }
+                  delivery_note_template: |-
+                    {
+                        "code": "it",
+                        "name": "Italiano"
+                    }
+                  acc_inv_template: |-
+                    {
+                        "code": "it",
+                        "name": "Italiano"
+                    }
+                  h_margins: 0
+                  show_payments: true
+                  show_payment_method: true
+                  show_totals: all
+                  v_margins: 0
+                  show_paypal_button: false
+                  show_notification_button: false
+                  delivery_note: false
+                  accompanying_invoice: false
+                  dn_number: 0
+                  dn_date: '2019-08-24'
+                  dn_ai_packages_number: string
+                  dn_ai_weight: string
+                  dn_ai_causal: string
+                  dn_ai_destination: string
+                  dn_ai_transporter: string
+                  dn_ai_notes: string
+                  refers_to:
+                    id: 0
+                    date: '2019-08-24'
+                    number: 0
+                    numeration: string
+                    description: string
+                  is_marked: true
+                  amount_net: 0
+                  amount_vat: 0
+                  amount_gross: 0
+                  amount_rivalsa: 0
+                  amount_cassa: 0
+                  amount_withholding_tax: 0
+                  amount_other_withholding_tax: 0
+                  extra_data:
+                    ts_communication: true
+                    ts_flag_tipo_spesa: 0
+                    ts_pagamento_tracciato: true
+                    ts_tipo_spesa: string
+                  seen_date: '2019-08-24'
+                  next_due_date: '2019-08-24'
+                  url: string
+                  attachment_url: string
+                  attachment_token: string
+                  ei_raw: {}
+    GetNewIssuedDocumentTotalsResponse:
+      description: Totals.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetNewIssuedDocumentTotalsResponse.yaml
+          examples:
+            example-1:
+              value:
+                data: |-
+                  {
+                      "amount_net": 30,
+                      "amount_rivalsa": 1.5,
+                      "amount_net_with_rivalsa": 31.5,
+                      "amount_cassa": 1.58,
+                      "taxable_amount": 33.08,
+                      "not_taxable_amount": 0.00,
+                      "vat_list": {
+                        "10": {
+                          "net": 10,
+                          "vat": 1
+                        },
+                        "20": {
+                          "net": 23.08,
+                          "vat": 4.62
+                        }
+                      },
+                      "amount_vat": 5.62,
+                      "amount_gross": 36.41,
+                      "taxable_amount_withholding_tax": 15.75,
+                      "amount_withholding_tax": 0.79,
+                      "taxable_amount_other_withholding_tax": 30,
+                      "amount_other_withholding_tax": 1.5,
+                      "amount_due": 36.41,
+                      "is_enasarco_maximal_exceeded": false,
+                      "payments_sum": 36.41
+                    }
+    GetExistingIssuedDocumentTotalsResponse:
+      description: Totals.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetExistingIssuedDocumentTotalsResponse.yaml
+          examples:
+            example-1:
+              value:
+                data: |-
+                  {
+                      "amount_net": 30,
+                      "amount_rivalsa": 1.5,
+                      "amount_net_with_rivalsa": 31.5,
+                      "amount_cassa": 1.58,
+                      "taxable_amount": 33.08,
+                      "not_taxable_amount": 0.00,
+                      "vat_list": {
+                        "10": {
+                          "net": 10,
+                          "vat": 1
+                        },
+                        "20": {
+                          "net": 23.08,
+                          "vat": 4.62
+                        }
+                      },
+                      "amount_vat": 5.62,
+                      "amount_gross": 36.41,
+                      "taxable_amount_withholding_tax": 15.75,
+                      "amount_withholding_tax": 0.79,
+                      "taxable_amount_other_withholding_tax": 30,
+                      "amount_other_withholding_tax": 1.5,
+                      "amount_due": 36.41,
+                      "is_enasarco_maximal_exceeded": false,
+                      "payments_sum": 36.41
+                    }
 security:
   - OAuth2AuthenticationCodeFlow: []
