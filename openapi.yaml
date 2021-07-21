@@ -738,6 +738,51 @@ paths:
           application/json:
             schema:
               $ref: ./models/requests/GetExistingIssuedDocumentTotalsRequest.yaml
+  '/c/{companyId}/issued_documents/attachment':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+    post:
+      summary: Upload Attachment
+      operationId: uploadAttachment
+      responses:
+        '200':
+          $ref: '#/components/responses/UploadAttachmentResponse'
+        '401':
+          description: Unauthorized
+      tags:
+        - Issued Documents
+      description: "\U0001F465 Company context\n\nUpload an attachment to an issued document"
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: ./models/requests/UploadAttachmentRequest.yaml
+        description: Attachment.
+  '/c/{companyId}/issued_documents/{documentId}/attachment':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/DocumentId'
+    delete:
+      summary: Remove Attachment
+      operationId: removeAttachment
+      responses:
+        '200':
+          description: File removed.
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      description: "\U0001F465 Company context\n\nRemove the attachment (but not the document)"
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      tags:
+        - Issued Documents
 components:
   schemas: {}
   securitySchemes:
@@ -1729,5 +1774,11 @@ components:
                       "is_enasarco_maximal_exceeded": false,
                       "payments_sum": 36.41
                     }
+    UploadAttachmentResponse:
+      description: Attachment uploaded.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/UploadAttachmentResponse.yaml
 security:
   - OAuth2AuthenticationCodeFlow: []

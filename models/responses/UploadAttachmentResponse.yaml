@@ -1,0 +1,8 @@
+title: UploadAttachmentResponse
+type: object
+properties:
+  data:
+    type: object
+    properties:
+      attachment_token:
+        type: string

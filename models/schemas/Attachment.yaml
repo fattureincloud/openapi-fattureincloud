@@ -1,0 +1,15 @@
+title: Attachment
+type: object
+description: Attachment
+properties:
+  filename:
+    type: string
+    description: Name of the file.
+    example: attachment.pdf
+  attachment:
+    type: string
+    description: 'Valid format: .png, .jpg, .gif, .pdf, .zip, .xls, .xlsx, .doc, .docx'
+    format: binary
+required:
+  - filename
+  - attachment
