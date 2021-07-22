@@ -1,0 +1,62 @@
+type: object
+examples:
+  - series: {}
+    series_list:
+      - string
+    rc_centers_list:
+      - string
+    payment_accounts_list:
+      - id: 0
+        name: Conto Banca Intesa
+        type: standard
+        iban: string
+        sia: string
+        cuc: string
+    categories_list:
+      - string
+    vat_types_list:
+      - id: 0
+        value: 22
+        description: Non imponibile art. 123
+        notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+        e_invoice: string
+        ei_type: 2
+        ei_description: string
+        editable: true
+description: Pre-create info.
+properties:
+  series:
+    type: object
+    description: 'Next number by year, receipt type and numeration name.'
+  series_list:
+    type: array
+    description: List of series used in the past.
+    items:
+      type: string
+  rc_centers_list:
+    type: array
+    description: List of revenue centers used in the past.
+    items:
+      type: string
+  payment_accounts_list:
+    type: array
+    description: User payment accounts list.
+    items:
+      $ref: ./PaymentAccount.yaml
+  categories_list:
+    type: array
+    description: List of categories used in the past.
+    items:
+      type: string
+  vat_types_list:
+    type: array
+    description: 'List of user vat types with the default 22%, 10%, 4% and 0% vats.'
+    items:
+      $ref: ./VatType.yaml
+required:
+  - series
+  - series_list
+  - rc_centers_list
+  - payment_accounts_list
+  - categories_list
+  - vat_types_list

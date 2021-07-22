@@ -1,4 +1,0 @@
-type: object
-properties:
-  data:
-    $ref: ../schemas/PreCreateInfo.yaml

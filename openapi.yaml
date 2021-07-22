@@ -790,13 +790,13 @@ paths:
     parameters:
       - $ref: '#/components/parameters/CompanyId'
     get:
-      summary: Pre-create info
+      summary: Get Issued Document Pre-create info
       tags:
         - Issued Documents
       responses:
         '200':
-          $ref: '#/components/responses/PreCreateInfoResponse'
-      operationId: getPreCreateInfo
+          $ref: '#/components/responses/GetIssuedDocumentPreCreateInfoResponse'
+      operationId: getIssuedDocumentPreCreateInfo
       description: "\U0001F465 Company context\n\nGet the info needed for the document creation flow."
       security:
         - OAuth2AuthenticationCodeFlow: []
@@ -1385,6 +1385,24 @@ paths:
             - 'stock:a'
       parameters:
         - $ref: '#/components/parameters/Authorization'
+  '/c/{companyId}/received_documents/info':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+    get:
+      summary: Get Received Document Pre-Create Info
+      tags:
+        - Received Documents
+      responses:
+        '200':
+          $ref: '#/components/responses/GetReceivedDocumentPreCreateInfoResponse'
+      operationId: getReceivedDocumentPreCreateInfo
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: received_documents:r\n\nGet the info needed for the document creation flow."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'received_documents:r'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/ReceivedDocumentType'
 components:
   schemas: {}
   securitySchemes:
@@ -2397,12 +2415,119 @@ components:
         application/json:
           schema:
             $ref: ./models/responses/UploadIssuedDocumentAttachmentResponse.yaml
-    PreCreateInfoResponse:
+    GetIssuedDocumentPreCreateInfoResponse:
       description: Pre-create info.
       content:
         application/json:
           schema:
-            $ref: ./models/responses/PreCreateInfoResponse.yaml
+            $ref: ./models/responses/GetIssuedDocumentPreCreateInfoResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  numerations: {}
+                  dn_numerations: {}
+                  default_values:
+                    default_template: |-
+                      {
+                          "code": "it",
+                          "name": "Italiano"
+                      }
+                    dn_template: |-
+                      {
+                          "code": "it",
+                          "name": "Italiano"
+                      }
+                    ai_template: |-
+                      {
+                          "code": "it",
+                          "name": "Italiano"
+                      }
+                    default_notes: string
+                    default_rivalsa: 0
+                    cassa: 0
+                    withholding_tax: 0
+                    withholding_tax_taxable: 0
+                    other_withholding_tax: 0
+                    use_gross_prices: true
+                    payment_method:
+                      id: 0
+                      name: string
+                      type: standard
+                      default_payment_account:
+                        id: 0
+                        name: Conto Banca di Paperopoli
+                        type: standard
+                        iban: string
+                        sia: string
+                        cuc: string
+                      details:
+                        - title: string
+                          description: string
+                  items_default_values:
+                    vat:
+                      id: 0
+                      value: 22
+                      description: Non imponibile art. 123
+                      notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+                      e_invoice: string
+                      ei_type: 2
+                      ei_description: string
+                      editable: true
+                  countries_list:
+                    - string
+                  currencies_list:
+                    - id: EUR
+                      symbol: €
+                      exchange_rate: 1
+                  templates_list:
+                    - |-
+                      {
+                          "code": "it",
+                          "name": "Italiano"
+                      }
+                  dn_templates_list:
+                    - |-
+                      {
+                          "code": "it",
+                          "name": "Italiano"
+                      }
+                  ai_templates_list:
+                    - |-
+                      {
+                          "code": "it",
+                          "name": "Italiano"
+                      }
+                  payment_methods_list:
+                    - id: 0
+                      name: string
+                      type: standard
+                      default_payment_account:
+                        id: 0
+                        name: Conto Banca di Paperopoli
+                        type: standard
+                        iban: string
+                        sia: string
+                        cuc: string
+                      details:
+                        - title: string
+                          description: string
+                  payment_accounts_list:
+                    - id: 0
+                      name: Conto Banca di Paperopoli
+                      type: standard
+                      iban: string
+                      sia: string
+                      cuc: string
+                  vat_types_list:
+                    - id: 0
+                      value: 22
+                      description: Non imponibile art. 123
+                      notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+                      e_invoice: string
+                      ei_type: 2
+                      ei_description: string
+                      editable: true
     GetEmailDataResponse:
       description: EmailData
       content:
@@ -2708,5 +2833,38 @@ components:
               value:
                 data:
                   attachment_token: YmMyNWYxYzIwMTU3N2Y4ZGE3ZjZiMzg5OWY0ODNkZDQveXl5LmRvYw
+    GetReceivedDocumentPreCreateInfoResponse:
+      description: Pre-create info
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetReceivedDocumentPreCreateInfoResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  series: {}
+                  series_list:
+                    - string
+                  rc_centers_list:
+                    - string
+                  payment_accounts_list:
+                    - id: 0
+                      name: Conto Banca Intesa
+                      type: standard
+                      iban: string
+                      sia: string
+                      cuc: string
+                  categories_list:
+                    - string
+                  vat_types_list:
+                    - id: 0
+                      value: 22
+                      description: Non imponibile art. 123
+                      notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+                      e_invoice: string
+                      ei_type: 2
+                      ei_description: string
+                      editable: true
 security:
   - OAuth2AuthenticationCodeFlow: []
