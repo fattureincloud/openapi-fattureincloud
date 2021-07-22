@@ -1,0 +1,7 @@
+title: GetExistingReceivedDocumentTotals
+type: object
+properties:
+  data:
+    $ref: ../schemas/ReceivedDocument.yaml
+description: |
+  Received Document.

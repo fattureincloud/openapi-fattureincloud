@@ -1,0 +1,7 @@
+title: ReceivedDocumentType
+type: string
+default: expense
+enum:
+  - expense
+  - passive_credit_note
+  - passive_delivery_note

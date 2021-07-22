@@ -17,6 +17,7 @@ tags:
   - name: Issued Documents
   - name: Issued e-invoices
   - name: Products
+  - name: Received Documents
   - name: Suppliers
   - name: User
 paths:
@@ -573,7 +574,7 @@ paths:
             - 'issued_documents.delivery_note:r'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/DocumentType'
+        - $ref: '#/components/parameters/IssuedDocumentType'
         - $ref: '#/components/parameters/Fields'
         - $ref: '#/components/parameters/FieldSet'
         - $ref: '#/components/parameters/Sort'
@@ -743,11 +744,11 @@ paths:
     parameters:
       - $ref: '#/components/parameters/CompanyId'
     post:
-      summary: Upload Attachment
+      summary: Upload Issued Document Attachment
       operationId: uploadAttachment
       responses:
         '200':
-          $ref: '#/components/responses/UploadAttachmentResponse'
+          $ref: '#/components/responses/UploadIssuedDocumentAttachmentResponse'
         '401':
           description: Unauthorized
       tags:
@@ -761,15 +762,16 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: ./models/requests/UploadAttachmentRequest.yaml
+              $ref: ./models/requests/UploadIssuedDocumentAttachmentRequest.yaml
+            examples: {}
         description: Attachment.
   '/c/{companyId}/issued_documents/{documentId}/attachment':
     parameters:
       - $ref: '#/components/parameters/CompanyId'
       - $ref: '#/components/parameters/DocumentId'
     delete:
-      summary: Remove Attachment
-      operationId: removeAttachment
+      summary: Remove Issued Document Attachment
+      operationId: removeReceivedDocumentAttachment
       responses:
         '200':
           description: File removed.
@@ -800,7 +802,7 @@ paths:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
         - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/DocumentType'
+        - $ref: '#/components/parameters/IssuedDocumentType'
   '/c/{companyId}/issued_documents/{documentId}/email':
     parameters:
       - $ref: '#/components/parameters/CompanyId'
@@ -905,6 +907,484 @@ paths:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
         - $ref: '#/components/parameters/Authorization'
+  '/c/{companyId}/received_documents':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+    get:
+      summary: List Received Documents
+      tags:
+        - Received Documents
+      responses:
+        '200':
+          $ref: '#/components/responses/ListReceivedDocumentsResponse'
+        '401':
+          description: Unauthorized
+      operationId: listReceivedDocuments
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: received_documents:r (but if the document is a passive_delivery_note you’ll need stock:r scope)\n\U0001F50D Filtering: id, type, category, description, entity.id, entity.name, date, next_due_date, amount_gross, amount_net, amount_vat, invoice_number, created_at, updated_at\n↕️ Sorting: id, category, entity.id, entity.name, date, next_due_date, amount_gross, amount_net, amount_vat, created_at, updated_at\n\U0001F4C4 Paginated results\n\U0001F3A9 Customized responses supported (available fieldsets: basic, detailed, fic_list, fic_view) \\\n\nGet a list of documents that match the filters."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'received_documents:r'
+            - 'stock:r'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/ReceivedDocumentType'
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/FieldSet'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/ById'
+    post:
+      summary: Create Received Document
+      operationId: createReceivedDocument
+      responses:
+        '200':
+          $ref: '#/components/responses/CreateReceivedDocumentResponse'
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: received_documents:a (but if the document is a passive_delivery_note you’ll need stock:a scope)\n\nCreate a new received document."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'received_documents:a'
+            - 'stock:a'
+      tags:
+        - Received Documents
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/CreateReceivedDocumentRequest.yaml
+            examples:
+              example-1:
+                value:
+                  pending_id: 0
+                  data:
+                    id: 0
+                    type: expense
+                    entity:
+                      id: 0
+                      name: string
+                    date: string
+                    category: string
+                    description: string
+                    amount_net: 0
+                    amount_vat: 0
+                    amount_withholding_tax: 0
+                    amount_other_withholding_tax: 0
+                    amount_gross: 0
+                    amortization: 0
+                    rc_center: string
+                    invoice_number: string
+                    is_marked: true
+                    is_detailed: true
+                    e_invoice: true
+                    next_due_date: '2019-08-24'
+                    currency:
+                      id: EUR
+                      symbol: €
+                      exchange_rate: 1
+                    tax_deductibility: 0
+                    vat_deductibility: 0
+                    items_list:
+                      - id: 0
+                        product_id: 0
+                        code: string
+                        name: string
+                        measure: string
+                        net_price: 0
+                        category: string
+                        qty: 0
+                        vat:
+                          id: 0
+                          value: 22
+                          description: Non imponibile art. 123
+                          notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+                          e_invoice: string
+                          ei_type: 2
+                          ei_description: string
+                          editable: true
+                        stock: 0
+                    payments_list:
+                      - id: 0
+                        amount: 0
+                        due_date: string
+                        paid_date: string
+                        payment_terms:
+                          days: 0
+                          type: string
+                        status: string
+                        payment_account:
+                          id: 0
+                          name: Conto Banca di Paperopoli
+                          type: standard
+                          iban: string
+                          sia: string
+                          cuc: string
+                    attachment_url: string
+                    attachment_preview_url: string
+        description: Document to create
+  '/c/{companyId}/received_documents/{documentId}':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/DocumentId'
+    get:
+      summary: Get Received Document
+      tags:
+        - Received Documents
+      responses:
+        '200':
+          $ref: '#/components/responses/GetReceivedDocumentResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: getReceivedDocument
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: received_documents:r (but if the document is a passive_delivery_note you’ll need stock:r scope)\n\U0001F3A9 Customized responses supported\n\nGet details of an existing document by its unique id."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'received_documents:r'
+            - 'stock:r'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/FieldSet'
+    put:
+      summary: Modify Received Document
+      operationId: modifyReceivedDocument
+      responses:
+        '200':
+          $ref: '#/components/responses/ModifyReceivedDocumentResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      tags:
+        - Received Documents
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: received_documents:a (but if the document is a passive_delivery_note you’ll need stock:a scope)\n\nEdit an existing document by its unique id."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'received_documents:a'
+            - 'stock:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/ModifyReceivedDocumentRequest.yaml
+            examples:
+              example-1:
+                value:
+                  data:
+                    id: 135297
+                    type: expense
+                    category: Cibo
+                    description: Biscotti da mangiare in ufficio
+                    amount_net: 40
+                    amount_vat: 8.8
+                    amount_withholding_tax: 0
+                    amount_other_withholding_tax: 0
+                    amortization: 2
+                    rc_center: Ufficio
+                    invoice_number: '123'
+                    is_marked: false
+                    is_detailed: true
+                    e_invoice: false
+                    entity:
+                      id: 54
+                      name: Google Commerce Ltd
+                    date: '2018-10-08'
+                    next_due_date: null
+                    currency:
+                      id: EUR
+                      exchange_rate: '1.00000'
+                      symbol: \u20ac
+                    amount_gross: 48.8
+                    tax_deductibility: 100
+                    vat_deductibility: 100
+                    items_list:
+                      - product_id: 3
+                        code: BIS001
+                        name: Biscotti al cioccolato
+                        measure: kg
+                        net_price: 40
+                        category: Alimentari
+                        id: 306
+                        qty: 1
+                        vat:
+                          id: 0
+                          value: 22
+                          description: ''
+                        stock: 1
+                    payments_list:
+                      - amount: 48.8
+                        due_date: '2018-10-22'
+                        paid_date: '2018-10-10'
+                        id: 211536
+                        payment_terms:
+                          days: 14
+                          type: standard
+                        status: paid
+                        payment_account:
+                          id: 287
+                          name: Bonifico_Bancario
+                    attachment_url: 'https:\/\/s3.eu-west-1.amazonaws.com\/fattureincloud\/development\/userdata\/expenses\/2\/8b3fa0b871d54acd5cef62d80e6d228c.pdf'
+                    attachment_preview_url: 'https:\/\/s3.eu-west-1.amazonaws.com\/fattureincloud\/development\/userdata\/expenses\/2\/8b3fa0b871d54acd5cef62d80e6d228c_thumb.jpg'
+        description: Modified document.
+    delete:
+      summary: ''
+      operationId: deleteReceivedDocument
+      responses:
+        '200':
+          description: Document removed.
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      tags:
+        - Received Documents
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: received_documents:a (but if the document is a passive_delivery_note you’ll need stock:a scope)\n\nDelete an existing document by its unique id."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'received_documents:a'
+            - 'stock:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+  '/c/{companyId}/received_documents/totals':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+    post:
+      summary: Get New Received Document Totals
+      operationId: getNewReceivedDocumentTotals
+      responses:
+        '200':
+          $ref: '#/components/responses/GetNewReceivedDocumentTotalsResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: received_documents:a (but if the document is a passive_delivery_note you’ll need stock:a scope)\n\nCalculate totals of the received document passed in the body."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'received_documents:a'
+            - 'stock:a'
+      tags:
+        - Received Documents
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/GetNewReceivedDocumentTotalsRequest.yaml
+            examples:
+              example-1:
+                value:
+                  data:
+                    id: 0
+                    type: expense
+                    entity:
+                      id: 0
+                      name: string
+                    date: string
+                    category: string
+                    description: string
+                    amount_net: 0
+                    amount_vat: 0
+                    amount_withholding_tax: 0
+                    amount_other_withholding_tax: 0
+                    amount_gross: 0
+                    amortization: 0
+                    rc_center: string
+                    invoice_number: string
+                    is_marked: true
+                    is_detailed: true
+                    e_invoice: true
+                    next_due_date: '2019-08-24'
+                    currency:
+                      id: EUR
+                      symbol: €
+                      exchange_rate: 1
+                    tax_deductibility: 0
+                    vat_deductibility: 0
+                    items_list:
+                      - id: 0
+                        product_id: 0
+                        code: string
+                        name: string
+                        measure: string
+                        net_price: 0
+                        category: string
+                        qty: 0
+                        vat:
+                          id: 0
+                          value: 22
+                          description: Non imponibile art. 123
+                          notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+                          e_invoice: string
+                          ei_type: 2
+                          ei_description: string
+                          editable: true
+                        stock: 0
+                    payments_list:
+                      - id: 0
+                        amount: 0
+                        due_date: string
+                        paid_date: string
+                        payment_terms:
+                          days: 0
+                          type: string
+                        status: string
+                        payment_account:
+                          id: 0
+                          name: Conto Banca di Paperopoli
+                          type: standard
+                          iban: string
+                          sia: string
+                          cuc: string
+                    attachment_url: string
+                    attachment_preview_url: string
+        description: Received document.
+  '/c/{companyId}/received_documents/{documentId}/totals':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/DocumentId'
+    post:
+      summary: Get Existing Received Document Totals
+      operationId: getExistingReceivedDocumentTotals
+      responses:
+        '200':
+          $ref: '#/components/responses/GetExistingReceivedDocumentTotalsResponse'
+      tags:
+        - Received Documents
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: received_documents:a (but if the document is a passive_delivery_note you’ll need stock:a scope)\n\nCalculate totals of the received document indicated by the id with the changes passed in the body."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'received_documents:a'
+            - 'stock:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/GetExistingReceivedDocumentTotalsRequest.yaml
+            examples:
+              example-1:
+                value:
+                  data:
+                    id: 0
+                    type: expense
+                    entity:
+                      id: 0
+                      name: string
+                    date: string
+                    category: string
+                    description: string
+                    amount_net: 0
+                    amount_vat: 0
+                    amount_withholding_tax: 0
+                    amount_other_withholding_tax: 0
+                    amount_gross: 0
+                    amortization: 0
+                    rc_center: string
+                    invoice_number: string
+                    is_marked: true
+                    is_detailed: true
+                    e_invoice: true
+                    next_due_date: '2019-08-24'
+                    currency:
+                      id: EUR
+                      symbol: €
+                      exchange_rate: 1
+                    tax_deductibility: 0
+                    vat_deductibility: 0
+                    items_list:
+                      - id: 0
+                        product_id: 0
+                        code: string
+                        name: string
+                        measure: string
+                        net_price: 0
+                        category: string
+                        qty: 0
+                        vat:
+                          id: 0
+                          value: 22
+                          description: Non imponibile art. 123
+                          notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+                          e_invoice: string
+                          ei_type: 2
+                          ei_description: string
+                          editable: true
+                        stock: 0
+                    payments_list:
+                      - id: 0
+                        amount: 0
+                        due_date: string
+                        paid_date: string
+                        payment_terms:
+                          days: 0
+                          type: string
+                        status: string
+                        payment_account:
+                          id: 0
+                          name: Conto Banca di Paperopoli
+                          type: standard
+                          iban: string
+                          sia: string
+                          cuc: string
+                    attachment_url: string
+                    attachment_preview_url: string
+        description: Received document.
+  '/c/{companyId}/received_documents/attachment':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+    post:
+      summary: Upload Received Document Attachment
+      operationId: uploadReceivedDocumentAttachment
+      responses:
+        '200':
+          $ref: '#/components/responses/UploadReceivedDocumentAttachmentResponse'
+        '401':
+          description: Unauthorized
+      tags:
+        - Received Documents
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: received_documents:a (but if the document is a passive_delivery_note you’ll need stock:a scope)\n\nUpload an attachment and return the relative token."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'received_documents:a'
+            - 'stock:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: ./models/requests/UploadReceivedDocumentAttachmentRequest.yaml
+        description: Attachment.
+  '/c/{companyId}/received_documents/{documentId}/attachment':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/DocumentId'
+    delete:
+      summary: Delete Received Document Attachment
+      operationId: deleteReceivedDocumentAttachment
+      responses:
+        '200':
+          description: File removed
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      tags:
+        - Received Documents
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: received_documents:a (but if the document is a passive_delivery_note you’ll need stock:a scope)\n\nRemove the attachment (but not the document)"
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'received_documents:a'
+            - 'stock:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
 components:
   schemas: {}
   securitySchemes:
@@ -935,6 +1415,10 @@ components:
             'issued_documents.quote:a': ''
             'issued_documents.proforma:a': ''
             'issued_documents.delivery_note:a': ''
+            'received_documents:r': ''
+            'received_documents:a': ''
+            'stock:r': ''
+            'stock:a': ''
           authorizationUrl: 'https://api-v2.fattureincloud.it/oauth/authorize'
   parameters:
     Authorization:
@@ -1009,7 +1493,7 @@ components:
       required: true
       schema:
         type: string
-    DocumentType:
+    IssuedDocumentType:
       name: type
       in: query
       required: true
@@ -1023,7 +1507,7 @@ components:
           - quote
           - proforma
           - delivery_note
-      description: Type of the document
+      description: Issued Document Type
     PerPage:
       name: per_page
       in: query
@@ -1037,8 +1521,19 @@ components:
       in: path
       required: true
       schema:
-        type: string
+        type: integer
       description: Unique Id of the document
+    ReceivedDocumentType:
+      name: type
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - expense
+          - passive_credit_note
+          - passive_delivery_note
+      description: Received Document Type
   responses:
     UserInfoResponse:
       description: User info.
@@ -1896,12 +2391,12 @@ components:
                       "is_enasarco_maximal_exceeded": false,
                       "payments_sum": 36.41
                     }
-    UploadAttachmentResponse:
+    UploadIssuedDocumentAttachmentResponse:
       description: Attachment uploaded.
       content:
         application/json:
           schema:
-            $ref: ./models/responses/UploadAttachmentResponse.yaml
+            $ref: ./models/responses/UploadIssuedDocumentAttachmentResponse.yaml
     PreCreateInfoResponse:
       description: Pre-create info.
       content:
@@ -1954,5 +2449,264 @@ components:
         application/json:
           schema:
             $ref: ./models/responses/VerifyEInvoiceXmlErrorResponse.yaml
+    ListReceivedDocumentsResponse:
+      description: Results list.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ListReceivedDocumentsResponse.yaml
+    CreateReceivedDocumentResponse:
+      description: Document created.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/CreateReceivedDocumentResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 0
+                  type: expense
+                  entity:
+                    id: 0
+                    name: string
+                  date: string
+                  category: string
+                  description: string
+                  amount_net: 0
+                  amount_vat: 0
+                  amount_withholding_tax: 0
+                  amount_other_withholding_tax: 0
+                  amount_gross: 0
+                  amortization: 0
+                  rc_center: string
+                  invoice_number: string
+                  is_marked: true
+                  is_detailed: true
+                  e_invoice: true
+                  next_due_date: '2019-08-24'
+                  currency:
+                    id: EUR
+                    symbol: €
+                    exchange_rate: 1
+                  tax_deductibility: 0
+                  vat_deductibility: 0
+                  items_list:
+                    - id: 0
+                      product_id: 0
+                      code: string
+                      name: string
+                      measure: string
+                      net_price: 0
+                      category: string
+                      qty: 0
+                      vat:
+                        id: 0
+                        value: 22
+                        description: Non imponibile art. 123
+                        notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+                        e_invoice: string
+                        ei_type: 2
+                        ei_description: string
+                        editable: true
+                      stock: 0
+                  payments_list:
+                    - id: 0
+                      amount: 0
+                      due_date: string
+                      paid_date: string
+                      payment_terms:
+                        days: 0
+                        type: string
+                      status: string
+                      payment_account:
+                        id: 0
+                        name: Conto Banca di Paperopoli
+                        type: standard
+                        iban: string
+                        sia: string
+                        cuc: string
+                  attachment_url: string
+                  attachment_preview_url: string
+    GetReceivedDocumentResponse:
+      description: Document details.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetReceivedDocumentResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 0
+                  type: expense
+                  entity:
+                    id: 0
+                    name: string
+                  date: string
+                  category: string
+                  description: string
+                  amount_net: 0
+                  amount_vat: 0
+                  amount_withholding_tax: 0
+                  amount_other_withholding_tax: 0
+                  amount_gross: 0
+                  amortization: 0
+                  rc_center: string
+                  invoice_number: string
+                  is_marked: true
+                  is_detailed: true
+                  e_invoice: true
+                  next_due_date: '2019-08-24'
+                  currency:
+                    id: EUR
+                    symbol: €
+                    exchange_rate: 1
+                  tax_deductibility: 0
+                  vat_deductibility: 0
+                  items_list:
+                    - id: 0
+                      product_id: 0
+                      code: string
+                      name: string
+                      measure: string
+                      net_price: 0
+                      category: string
+                      qty: 0
+                      vat:
+                        id: 0
+                        value: 22
+                        description: Non imponibile art. 123
+                        notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+                        e_invoice: string
+                        ei_type: 2
+                        ei_description: string
+                        editable: true
+                      stock: 0
+                  payments_list:
+                    - id: 0
+                      amount: 0
+                      due_date: string
+                      paid_date: string
+                      payment_terms:
+                        days: 0
+                        type: string
+                      status: string
+                      payment_account:
+                        id: 0
+                        name: Conto Banca di Paperopoli
+                        type: standard
+                        iban: string
+                        sia: string
+                        cuc: string
+                  attachment_url: string
+                  attachment_preview_url: string
+    ModifyReceivedDocumentResponse:
+      description: Modified document.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ModifyReceivedDocumentResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 0
+                  type: expense
+                  entity:
+                    id: 0
+                    name: string
+                  date: string
+                  category: string
+                  description: string
+                  amount_net: 0
+                  amount_vat: 0
+                  amount_withholding_tax: 0
+                  amount_other_withholding_tax: 0
+                  amount_gross: 0
+                  amortization: 0
+                  rc_center: string
+                  invoice_number: string
+                  is_marked: true
+                  is_detailed: true
+                  e_invoice: true
+                  next_due_date: '2019-08-24'
+                  currency:
+                    id: EUR
+                    symbol: €
+                    exchange_rate: 1
+                  tax_deductibility: 0
+                  vat_deductibility: 0
+                  items_list:
+                    - id: 0
+                      product_id: 0
+                      code: string
+                      name: string
+                      measure: string
+                      net_price: 0
+                      category: string
+                      qty: 0
+                      vat:
+                        id: 0
+                        value: 22
+                        description: Non imponibile art. 123
+                        notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+                        e_invoice: string
+                        ei_type: 2
+                        ei_description: string
+                        editable: true
+                      stock: 0
+                  payments_list:
+                    - id: 0
+                      amount: 0
+                      due_date: string
+                      paid_date: string
+                      payment_terms:
+                        days: 0
+                        type: string
+                      status: string
+                      payment_account:
+                        id: 0
+                        name: Conto Banca di Paperopoli
+                        type: standard
+                        iban: string
+                        sia: string
+                        cuc: string
+                  attachment_url: string
+                  attachment_preview_url: string
+    GetNewReceivedDocumentTotalsResponse:
+      description: Document Totals.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetNewReceivedDocumentTotalsResponse.yaml
+    GetExistingReceivedDocumentTotalsResponse:
+      description: Document Totals.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetExistingReceivedDocumentTotalsResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  amount_net: 542
+                  amount_vat: 24.5
+                  amount_gross: 531.5
+                  amount_withholding_tax: 31
+                  amount_other_withholding_tax: 4
+                  amount_due: 531.5
+                  payments_sum: 535.5
+    UploadReceivedDocumentAttachmentResponse:
+      description: Attachment Token.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/UploadReceivedDocumentAttachmentResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  attachment_token: YmMyNWYxYzIwMTU3N2Y4ZGE3ZjZiMzg5OWY0ODNkZDQveXl5LmRvYw
 security:
   - OAuth2AuthenticationCodeFlow: []

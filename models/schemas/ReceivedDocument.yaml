@@ -1,0 +1,114 @@
+type: object
+properties:
+  id:
+    type: integer
+  type:
+    $ref: ./ReceivedDocumentType.yaml
+  entity:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+  date:
+    type: string
+  category:
+    type: string
+  description:
+    type: string
+  amount_net:
+    type: number
+  amount_vat:
+    type: number
+  amount_withholding_tax:
+    type: number
+  amount_other_withholding_tax:
+    type: number
+  amount_gross:
+    type: number
+    description: '[Read-only]'
+  amortization:
+    type: number
+  rc_center:
+    type: string
+  invoice_number:
+    type: string
+  is_marked:
+    type: boolean
+  is_detailed:
+    type: boolean
+  e_invoice:
+    type: boolean
+    description: '[Read-only]'
+  next_due_date:
+    type: string
+    description: '[Read-only]'
+    format: date
+  currency:
+    $ref: ./Currency.yaml
+  tax_deductibility:
+    maximum: 100
+    minimum: 0
+    type: number
+  vat_deductibility:
+    maximum: 100
+    minimum: 0
+    type: number
+  items_list:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        product_id:
+          type: integer
+        code:
+          type: string
+        name:
+          type: string
+        measure:
+          type: string
+        net_price:
+          type: number
+        category:
+          type: string
+        qty:
+          type: number
+        vat:
+          $ref: ./VatType.yaml
+        stock:
+          type: number
+  payments_list:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        amount:
+          type: number
+        due_date:
+          type: string
+        paid_date:
+          type: string
+        payment_terms:
+          type: object
+          properties:
+            days:
+              type: number
+            type:
+              type: string
+        status:
+          type: string
+        payment_account:
+          $ref: ./PaymentAccount.yaml
+  attachment_url:
+    type: string
+    description: '[Read-only]'
+  attachment_preview_url:
+    type: string
+    description: '[Read-only]'
+required:
+  - entity
