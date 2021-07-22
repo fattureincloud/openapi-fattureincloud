@@ -1,0 +1,50 @@
+required:
+  - attach_pdf
+  - body
+  - include
+  - recipient_email
+  - send_copy
+  - subject
+type: object
+properties:
+  sender_id:
+    type: number
+    description: Sender id. Required if `sender_email` is not specified
+  sender_email:
+    type: string
+    description: Sender email. Required if `sender_id` is not specified
+  recipient_email:
+    type: string
+    description: One or more comma separated recipient emails
+  subject:
+    type: string
+    description: Email subject
+  body:
+    type: string
+    description: Email body
+  include:
+    required:
+      - accompanying_invoice
+      - attachment
+      - delivery_note
+      - document
+    type: object
+    properties:
+      document:
+        type: boolean
+        description: 'If set to true, the email will have a button to view the document'
+      delivery_note:
+        type: boolean
+        description: 'If set to true, the email will have a button to view the delivery note'
+      attachment:
+        type: boolean
+        description: 'If set to true, the email will have a button to view the attachment'
+      accompanying_invoice:
+        type: boolean
+        description: 'If set to true, the email will have a button to view the accompanying invoice'
+  attach_pdf:
+    type: boolean
+    description: 'If set to true, documents will be sent as PDF attachments too'
+  send_copy:
+    type: boolean
+    description: 'If set to true, a copy of the email will be sent to the `cc_email` specified by `Get email data`'

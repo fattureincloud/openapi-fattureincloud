@@ -15,6 +15,7 @@ servers:
 tags:
   - name: Clients
   - name: Issued Documents
+  - name: Issued e-invoices
   - name: Products
   - name: Suppliers
   - name: User
@@ -783,6 +784,104 @@ paths:
         - $ref: '#/components/parameters/Authorization'
       tags:
         - Issued Documents
+  '/c/{companyId}/issued_documents/info':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+    get:
+      summary: Pre-create info
+      tags:
+        - Issued Documents
+      responses:
+        '200':
+          $ref: '#/components/responses/PreCreateInfoResponse'
+      operationId: getPreCreateInfo
+      description: "\U0001F465 Company context\n\nGet the info needed for the document creation flow."
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/DocumentType'
+  '/c/{companyId}/issued_documents/{documentId}/email':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/DocumentId'
+    get:
+      summary: Get Email Data
+      tags:
+        - Issued Documents
+      responses:
+        '200':
+          $ref: '#/components/responses/GetEmailDataResponse'
+      operationId: getEmailData
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: issued_documents.[documentType]:r\n\nGet pre-compiled email data like subject, body, attachments, SMTP credentials, CC, recipients list."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'issued_documents.invoice:r'
+            - 'issued_documents.credit_note:r'
+            - 'issued_documents.receipt:r'
+            - 'issued_documents.order:r'
+            - 'issued_documents.quote:r'
+            - 'issued_documents.proforma:r'
+            - 'issued_documents.delivery_note:r'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+    post:
+      summary: Schedule Email
+      operationId: scheduleEmail
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: issued_documents.[documentType]:r\n\nSchedule email sending of a document."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'issued_documents.invoice:r'
+            - 'issued_documents.credit_note:r'
+            - 'issued_documents.receipt:r'
+            - 'issued_documents.order:r'
+            - 'issued_documents.quote:r'
+            - 'issued_documents.proforma:r'
+            - 'issued_documents.delivery_note:r'
+      tags:
+        - Issued Documents
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/ScheduleEmailRequest.yaml
+        description: Email Schedule
+  '/c/{companyId}/issued_documents/{documentId}/e_invoice/send':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/DocumentId'
+    post:
+      summary: Send the e-invoice
+      operationId: sendEInvoice
+      responses:
+        '200':
+          $ref: '#/components/responses/SendEInvoiceResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      description: "\U0001F465 Company context\n\nSend the e-invoice to SDI"
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/SendEInvoiceRequest.yaml
+        description: ''
+      tags:
+        - Issued e-invoices
 components:
   schemas: {}
   securitySchemes:
@@ -1780,5 +1879,45 @@ components:
         application/json:
           schema:
             $ref: ./models/responses/UploadAttachmentResponse.yaml
+    PreCreateInfoResponse:
+      description: Pre-create info.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/PreCreateInfoResponse.yaml
+    GetEmailDataResponse:
+      description: EmailData
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetEmailDataResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  supplier_email: string
+                  default_sender_email:
+                    id: 0
+                    email: no-reply@fattureincloud.it
+                  sender_emails_list:
+                    - id: 0
+                      email: no-reply@fattureincloud.it
+                    - id: 20856
+                      email: info@prova.it
+                    - id: 20857
+                      email: mariorossi@fattureincloud.it
+                  cc_email: m.rossi@gmail.com
+                  subject: Nostra pro forma nr. 1
+                  body: 'Gentile Mario Rossi,<br>per vedere la nostra pro forma di  o per scaricarne una copia in versione PDF prema sul bottone sottoastante.<br><br>{{allegati}}<br><br>Cordiali saluti,<br><b>Mario Rossi</b>'
+                  document_exists: true
+                  delivery_note_exists: string
+                  attachment_exists: string
+                  accompanying_invoice_exists: string
+    SendEInvoiceResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/SendEInvoiceResponse.yaml
 security:
   - OAuth2AuthenticationCodeFlow: []

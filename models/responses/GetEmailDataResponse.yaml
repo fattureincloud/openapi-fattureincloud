@@ -1,0 +1,5 @@
+title: GetEmailDataResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/EmailData.yaml

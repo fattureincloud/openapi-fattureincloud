@@ -1,0 +1,87 @@
+type: object
+properties:
+  numerations:
+    type: object
+    description: Next numbers by year and numeration name (for the given document type).
+  dn_numerations:
+    type: object
+    description: Next numbers by year and numeration name (for delivery_notes).
+  default_values:
+    type: object
+    description: Default values for the document.
+    properties:
+      default_template:
+        $ref: ./DocumentTemplate.yaml
+      dn_template:
+        $ref: ./DocumentTemplate.yaml
+      ai_template:
+        $ref: ./DocumentTemplate.yaml
+      default_notes:
+        type: string
+        description: Default notes.
+      default_rivalsa:
+        type: number
+        description: Default rivalsa percentage.
+      cassa:
+        type: number
+        description: Default cassa percentage.
+      withholding_tax:
+        type: number
+        description: Default withholding tax percentage.
+      withholding_tax_taxable:
+        type: number
+        description: Default withholding tax taxable percentage.
+      other_withholding_tax:
+        type: number
+        description: Default other withholding tax percentage.
+      use_gross_prices:
+        type: boolean
+        description: Use gross price by default.
+      payment_method:
+        $ref: ./PaymentMethod.yaml
+  items_default_values:
+    type: object
+    description: Default values for the document items.
+    properties:
+      vat:
+        $ref: ./VatType.yaml
+  countries_list:
+    type: array
+    description: Countries list.
+    items:
+      type: string
+  currencies_list:
+    type: array
+    description: Currencies list.
+    items:
+      $ref: ./Currency.yaml
+  templates_list:
+    type: array
+    description: Document templates list.
+    items:
+      $ref: ./DocumentTemplate.yaml
+  dn_templates_list:
+    type: array
+    description: Delivery note templates list.
+    items:
+      $ref: ./DocumentTemplate.yaml
+  ai_templates_list:
+    type: array
+    description: Accompanying invoice templates list.
+    items:
+      $ref: ./DocumentTemplate.yaml
+  payment_methods_list:
+    type: array
+    description: Payment methods list.
+    items:
+      $ref: ./PaymentMethod.yaml
+  payment_accounts_list:
+    type: array
+    description: Payment accounts list.
+    items:
+      $ref: ./PaymentAccount.yaml
+  vat_types_list:
+    type: array
+    description: Vat types list.
+    items:
+      $ref: ./VatType.yaml
