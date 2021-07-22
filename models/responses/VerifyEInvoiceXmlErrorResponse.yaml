@@ -1,0 +1,17 @@
+title: VerifyEInvoiceXmlErrorResponse
+type: object
+properties:
+  error:
+    type: object
+    properties:
+      message:
+        type: string
+      validation_result:
+        type: object
+  extra:
+    type: object
+    properties:
+      errors:
+        type: array
+        items:
+          type: string

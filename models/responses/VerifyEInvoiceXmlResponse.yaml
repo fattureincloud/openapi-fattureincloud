@@ -1,0 +1,11 @@
+title: VerifyEInvoiceXmlResponse
+type: object
+properties:
+  data:
+    type: object
+    properties:
+      success:
+        type: boolean
+examples:
+  - data:
+      success: true
