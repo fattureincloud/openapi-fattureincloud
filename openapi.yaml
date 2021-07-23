@@ -17,6 +17,7 @@ tags:
   - name: Issued Documents
   - name: Issued e-invoices
   - name: Products
+  - name: Receipts
   - name: Received Documents
   - name: Suppliers
   - name: User
@@ -1403,6 +1404,185 @@ paths:
       parameters:
         - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/ReceivedDocumentType'
+  /e_invoices/preview:
+    get:
+      summary: Preview an e-invoice
+      tags: []
+      responses: {}
+      operationId: previewEInvoice
+      description: 'Get styled xml of an electronic invoice if html parameter has been set to true, otherwise return xml file.'
+  '/c/{companyId}/receipts':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+    get:
+      summary: List Receipts
+      tags:
+        - Receipts
+      responses:
+        '200':
+          $ref: '#/components/responses/ListReceiptsResponse'
+        '401':
+          description: Unauthorized
+      operationId: listReceipts
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: receipts:r\n\U0001F50D Filtering: date, type, description, rc_center, created_at, updated_at\n↕️ Sorting: date, rc_center, created_at, updated_at\n\U0001F4C4 Paginated results\n\U0001F3A9 Customized responses supported\n\nGet a list of receipt documents that match the filters."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'receipts:r'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/FieldSet'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Create Receipt
+      operationId: createReceipt
+      responses:
+        '200':
+          $ref: '#/components/responses/CreateReceiptResponse'
+        '401':
+          description: Unauthorized
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: receipts:a\n\nCreate a new receipt."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'receipts:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/CreateReceiptRequest.yaml
+            examples:
+              example-1:
+                value:
+                  data:
+                    date: string
+                    number: 0
+                    numeration: string
+                    use_gross_prices: false
+                    type: till_receipt
+                    description: string
+                    rc_center: string
+                    payment_account:
+                      id: 0
+                    items_list:
+                      - amount_net: 0
+                        amount_gross: 0
+                        category: string
+                        vat:
+                          id: 0
+                  autocomplete_number: true
+        description: The Receipt to create.
+      tags:
+        - Receipts
+  '/c/{companyId}/receipts/{documentId}':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/DocumentId'
+    get:
+      summary: Get Receipt
+      tags:
+        - Receipts
+      responses:
+        '200':
+          $ref: '#/components/responses/GetReceiptResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: getReceipt
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: receipts:r\n\U0001F3A9 Customized responses supported\n\nGet details of an existing document by its unique id."
+      parameters:
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/FieldSet'
+        - $ref: '#/components/parameters/Authorization'
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'receipts:r'
+    put:
+      summary: Modify Receipt
+      operationId: modifyReceipt
+      responses:
+        '200':
+          $ref: '#/components/responses/ModifyReceiptResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      tags:
+        - Receipts
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: receipts:a\n\nEdit an existing document by its unique id."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'receipts:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/ModifyReceiptRequest.yaml
+            examples:
+              example-1:
+                value:
+                  data:
+                    date: string
+                    number: 0
+                    numeration: string
+                    use_gross_prices: false
+                    type: till_receipt
+                    description: string
+                    rc_center: string
+                    payment_account:
+                      id: 0
+                    items_list:
+                      - amount_net: 0
+                        amount_gross: 0
+                        category: string
+                        vat:
+                          id: 0
+        description: Modified receipt.
+    delete:
+      summary: Delete Receipt
+      operationId: deleteReceipt
+      responses:
+        '200':
+          description: Document removed.
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: receipts:a\n\nDelete an existing document by its unique id."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'receipts:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      tags:
+        - Receipts
+  '/c/{companyId}/receipts/info':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+    get:
+      summary: Get Receipt Pre-Create Info
+      tags:
+        - Receipts
+      responses:
+        '200':
+          $ref: '#/components/responses/GetReceivedDocumentPreCreateInfoResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: getReceiptPreCreateInfo
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: receipts:r\n\nGet the info needed for the document creation flow."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'receipts:r'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
 components:
   schemas: {}
   securitySchemes:
@@ -1437,6 +1617,8 @@ components:
             'received_documents:a': ''
             'stock:r': ''
             'stock:a': ''
+            'receipts:r': ''
+            'receipts:a': ''
           authorizationUrl: 'https://api-v2.fattureincloud.it/oauth/authorize'
   parameters:
     Authorization:
@@ -2851,6 +3033,131 @@ components:
                   payment_accounts_list:
                     - id: 0
                       name: Conto Banca Intesa
+                      type: standard
+                      iban: string
+                      sia: string
+                      cuc: string
+                  categories_list:
+                    - string
+                  vat_types_list:
+                    - id: 0
+                      value: 22
+                      description: Non imponibile art. 123
+                      notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+                      e_invoice: string
+                      ei_type: 2
+                      ei_description: string
+                      editable: true
+    ListReceiptsResponse:
+      description: Receipts list.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ListReceiptsResponse.yaml
+          examples:
+            example-1:
+              value:
+                current_page: 1
+                first_page_url: 'http://api-v2.fattureincloud.it/c/11111/path?fieldset=basic&page=1'
+                from: 1
+                last_page: 1
+                last_page_url: 'http://api-v2.fattureincloud.it/c/11111/path?fieldset=basic&page=1'
+                next_page_url: null
+                path: 'http://api-v2.fattureincloud.it/c/11111/path'
+                per_page: 50
+                prev_page_url: null
+                to: 1
+                total: 1
+                data:
+                  - date: string
+                    number: 0
+                    numeration: string
+                    use_gross_prices: false
+                    type: till_receipt
+                    description: string
+                    rc_center: string
+                    payment_account:
+                      id: 0
+                    items_list:
+                      - amount_net: 0
+                        amount_gross: 0
+                        category: string
+                        vat:
+                          id: 0
+    CreateReceiptResponse:
+      description: Created Receipt.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/CreateReceiptResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  date: string
+                  number: 0
+                  numeration: string
+                  use_gross_prices: false
+                  type: till_receipt
+                  description: string
+                  rc_center: string
+                  payment_account:
+                    id: 0
+                  items_list:
+                    - amount_net: 0
+                      amount_gross: 0
+                      category: string
+                      vat:
+                        id: 0
+    GetReceiptResponse:
+      description: Receipt Details.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetReceiptResponse.yaml
+    ModifyReceiptResponse:
+      description: Modified receipt.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ModifyReceiptResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  date: string
+                  number: 0
+                  numeration: string
+                  use_gross_prices: false
+                  type: till_receipt
+                  description: string
+                  rc_center: string
+                  payment_account:
+                    id: 0
+                  items_list:
+                    - amount_net: 0
+                      amount_gross: 0
+                      category: string
+                      vat:
+                        id: 0
+    GetReceiptPreCreateInfoResponse:
+      description: Pre-create info.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetReceiptPreCreateInfoResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  series: {}
+                  series_list:
+                    - string
+                  rc_centers_list:
+                    - string
+                  payment_accounts_list:
+                    - id: 0
+                      name: Conto Banca di Paperopoli
                       type: standard
                       iban: string
                       sia: string
