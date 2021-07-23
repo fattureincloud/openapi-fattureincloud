@@ -1583,6 +1583,27 @@ paths:
             - 'receipts:r'
       parameters:
         - $ref: '#/components/parameters/Authorization'
+  '/c/{companyId}/receipts/monthly_totals':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+    get:
+      summary: Get Receipts Monthly Totals
+      tags:
+        - Receipts
+      responses:
+        '200':
+          $ref: '#/components/responses/GetReceiptsMonthlyTotalsResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: getReceiptsMonthlyTotals
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: receipts:r\n\nGet the monthly totals by year and receipt type."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'receipts:r'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
 components:
   schemas: {}
   securitySchemes:
@@ -3173,5 +3194,18 @@ components:
                       ei_type: 2
                       ei_description: string
                       editable: true
+    GetReceiptsMonthlyTotalsResponse:
+      description: Monthly Totals.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetReceiptsMonthlyTotalsResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  - net: 1430.86
+                    gross: 1744
+                    count: 66
 security:
   - OAuth2AuthenticationCodeFlow: []
