@@ -1,0 +1,14 @@
+title: ModifyArchiveDocumentResponse
+type: object
+description: The modified Archive Document
+properties:
+  data:
+    $ref: ../schemas/ArchiveDocument.yaml
+examples:
+  - data:
+      id: string
+      date: '2019-08-24'
+      type: string
+      attachment_url: string
+      attachment_token: string
+      description: string

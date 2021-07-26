@@ -1,0 +1,22 @@
+title: ArchiveDocument
+type: object
+properties:
+  id:
+    type: string
+  date:
+    type: string
+    format: date
+  type:
+    type: string
+  attachment_url:
+    type: string
+    description: '[Read-only] Absolute url of the attached file. Authomatically set if a valid attachment token is passed via POST /archive or PUT /archive/{documentId}.'
+  attachment_token:
+    type: string
+    description: '[Write-only] Attachment token returned by POST /archive/attachment. Used to attach the file already uploaded.'
+  description:
+    type: string
+required:
+  - id
+  - type
+  - attachment_url

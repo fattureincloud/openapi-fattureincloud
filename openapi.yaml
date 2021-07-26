@@ -13,6 +13,7 @@ info:
 servers:
   - url: 'https://api-v2.fattureincloud.it'
 tags:
+  - name: Archive
   - name: Clients
   - name: Issued Documents
   - name: Issued e-invoices
@@ -1729,7 +1730,7 @@ paths:
         - $ref: '#/components/parameters/Authorization'
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
               $ref: ./models/requests/UploadF24AttachmentRequest.yaml
             examples:
@@ -1758,6 +1759,159 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'taxes:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+  '/c/{companyId}/archive':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+    get:
+      summary: List Archive Documents
+      tags:
+        - Archive
+      responses:
+        '200':
+          $ref: '#/components/responses/ListArchiveDocumentsResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: listArchiveDocuments
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: archive:r\n\U0001F50D Filtering: date, category, description\n↕️ Sorting: date, category, description\n\U0001F4C4 Paginated results\n\U0001F3A9 Customized responses supported\n\nGet a list of documents in the archive that match the filters."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'archive:r'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/FieldSet'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/ById'
+    post:
+      summary: Create Archive Document
+      operationId: createArchiveDocument
+      responses:
+        '200':
+          $ref: '#/components/responses/CreateArchiveDocumentResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      tags:
+        - Archive
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: archive:a\n\nAdd a new document into archive"
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'archive:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/CreateArchiveDocumentRequest.yaml
+        description: The Archive Document.
+  '/c/{companyId}/archive/{documentId}':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/DocumentId'
+    get:
+      summary: Get Archive Document
+      tags:
+        - Archive
+      responses:
+        '200':
+          $ref: '#/components/responses/GetArchiveDocumentResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: getArchiveDocument
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: archive:r\n\U0001F3A9 Customized responses supported\n\nGet details of an existing document by its unique id."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'archive:r'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/FieldSet'
+    put:
+      summary: Modify Archive Document
+      operationId: modifyArchiveDocument
+      responses:
+        '200':
+          $ref: '#/components/responses/ModifyArchiveDocumentResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      tags:
+        - Archive
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: archive:a\n\nEdit an existing document"
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'archive:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/ModifyArchiveDocumentRequest.yaml
+            examples:
+              example-1:
+                value:
+                  data:
+                    id: string
+                    date: '2019-08-24'
+                    type: string
+                    attachment_url: string
+                    attachment_token: string
+                    description: string
+        description: Modified Archive Document
+    delete:
+      summary: Delete Archive Document
+      operationId: deleteArchiveDocument
+      responses:
+        '200':
+          description: Document removed.
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      tags:
+        - Archive
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: archive:a\n\nDelete an existing document by its unique id.\n\n"
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'archive:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+  '/c/{companyId}/archive/attachment':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+    post:
+      summary: Upload Archive Document Attachment
+      tags:
+        - Archive
+      responses:
+        '200':
+          description: Attachment Uploaded
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: uploadArchiveDocumentAttachment
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: archive:a\n\nUpload an attachment to a document into archive section"
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'archive:a'
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: ./models/requests/UploadArchiveDocumentAttachmentRequest.yaml
+        description: Attachment.
       parameters:
         - $ref: '#/components/parameters/Authorization'
 components:
@@ -1798,6 +1952,8 @@ components:
             'receipts:a': ''
             'taxes:r': ''
             'taxes:a': ''
+            'archive:r': ''
+            'archive:a': ''
           authorizationUrl: 'https://api-v2.fattureincloud.it/oauth/authorize'
   parameters:
     Authorization:
@@ -3470,5 +3626,33 @@ components:
               value:
                 data:
                   attachment_token: YmMyNWYxYzIwMTU3N2Y4ZGE3ZjZiMzg5OWY0ODNkZDQveXl5LmRvYw
+    ListArchiveDocumentsResponse:
+      description: Results list.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ListArchiveDocumentsResponse.yaml
+    CreateArchiveDocumentResponse:
+      description: The Archive Document.
+      content:
+        application/json:
+          schema:
+            properties:
+              id:
+                type: string
+    GetArchiveDocumentResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            properties:
+              id:
+                type: string
+    ModifyArchiveDocumentResponse:
+      description: The modified Archived Document
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ModifyArchiveDocumentResponse.yaml
 security:
   - OAuth2AuthenticationCodeFlow: []
