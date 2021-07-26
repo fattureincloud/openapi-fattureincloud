@@ -1,4 +1,4 @@
-title: UploadIssuedDocumentAttachmentResponse
+title: UploadF24AttachmentResponse
 type: object
 properties:
   data:

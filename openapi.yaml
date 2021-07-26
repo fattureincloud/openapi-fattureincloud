@@ -20,6 +20,7 @@ tags:
   - name: Receipts
   - name: Received Documents
   - name: Suppliers
+  - name: Taxes
   - name: User
 paths:
   /user/info:
@@ -1404,13 +1405,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/ReceivedDocumentType'
-  /e_invoices/preview:
-    get:
-      summary: Preview an e-invoice
-      tags: []
-      responses: {}
-      operationId: previewEInvoice
-      description: 'Get styled xml of an electronic invoice if html parameter has been set to true, otherwise return xml file.'
   '/c/{companyId}/receipts':
     parameters:
       - $ref: '#/components/parameters/CompanyId'
@@ -1604,6 +1598,168 @@ paths:
             - 'receipts:r'
       parameters:
         - $ref: '#/components/parameters/Authorization'
+  '/c/{companyId}/taxes':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+    get:
+      summary: List F24
+      tags:
+        - Taxes
+      responses:
+        '200':
+          $ref: '#/components/responses/ListF24Response'
+        '401':
+          description: Unauthorized
+      operationId: listF24
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: taxes:r\n\U0001F50D Filtering: due_date, status, amount, description\n↕️ Sorting: due_date, status, amount, description\n\U0001F4C4 Paginated results\n\U0001F3A9 Customized responses supported\n\nGet a list of F24 that match the filters."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'taxes:r'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/FieldSet'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/ById'
+    post:
+      summary: Create F24
+      operationId: createF24
+      responses:
+        '200':
+          $ref: '#/components/responses/CreateF24Response'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      tags:
+        - Taxes
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: taxes:a\n\nAdd new F24"
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'taxes:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/CreateF24Request.yaml
+        description: The F24 to create
+  '/c/{companyId}/taxes/{documentId}':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/DocumentId'
+    get:
+      summary: Get F24
+      tags:
+        - Taxes
+      responses:
+        '200':
+          $ref: '#/components/responses/GetF24Response'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: getF24
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: taxes:r\n\U0001F3A9 Customized responses supported\n\nGet details of an existing F24 document by its unique id."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'taxes:r'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/FieldSet'
+    put:
+      summary: Modify F24
+      operationId: modifyF24
+      responses:
+        '200':
+          $ref: '#/components/responses/ModifyF24Response'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: taxes:a\n\nEdit an existing F24 by its unique id."
+      tags:
+        - Taxes
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'taxes:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/ModifyF24Request.yaml
+        description: The F24
+    delete:
+      summary: Delete F24
+      operationId: deleteF24
+      responses:
+        '200':
+          description: Document removed.
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      tags:
+        - Taxes
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: taxes:a\n\nDelete an existing document by its unique id."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'taxes:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+  '/c/{companyId}/taxes/attachment':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+    post:
+      summary: Upload F24 Attachment
+      tags:
+        - Taxes
+      responses: {}
+      operationId: uploadF24Attachment
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: taxes:a\n\nUpload an attachment an return its relative token."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'taxes:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/UploadF24AttachmentRequest.yaml
+            examples:
+              example-1:
+                value:
+                  filename: attachment.pdf
+                  attachment: string
+        description: Attachment.
+  '/c/{companyId}/taxes/{documentId}/attachment':
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/DocumentId'
+    delete:
+      summary: Delete F24 Attachment
+      tags:
+        - Taxes
+      responses:
+        '200':
+          description: File Removed.
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: deleteF24Attachment
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: taxes:a\n\nRemove an attachment (but not the F24)"
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'taxes:a'
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
 components:
   schemas: {}
   securitySchemes:
@@ -1640,6 +1796,8 @@ components:
             'stock:a': ''
             'receipts:r': ''
             'receipts:a': ''
+            'taxes:r': ''
+            'taxes:a': ''
           authorizationUrl: 'https://api-v2.fattureincloud.it/oauth/authorize'
   parameters:
     Authorization:
@@ -2613,11 +2771,16 @@ components:
                       "payments_sum": 36.41
                     }
     UploadIssuedDocumentAttachmentResponse:
-      description: Attachment uploaded.
+      description: Attachment Token.
       content:
         application/json:
           schema:
             $ref: ./models/responses/UploadIssuedDocumentAttachmentResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  attachment_token: YmMyNWYxYzIwMTU3N2Y4ZGE3ZjZiMzg5OWY0ODNkZDQveXl5LmRvYw
     GetIssuedDocumentPreCreateInfoResponse:
       description: Pre-create info.
       content:
@@ -3207,5 +3370,105 @@ components:
                   - net: 1430.86
                     gross: 1744
                     count: 66
+    ListF24Response:
+      description: Results list.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ListF24Response.yaml
+          examples:
+            example-1:
+              value:
+                current_page: 1
+                first_page_url: 'http://api-v2.fattureincloud.it/c/11111/path?fieldset=basic&page=1'
+                from: 1
+                last_page: 1
+                last_page_url: 'http://api-v2.fattureincloud.it/c/11111/path?fieldset=basic&page=1'
+                next_page_url: null
+                path: 'http://api-v2.fattureincloud.it/c/11111/path'
+                per_page: 50
+                prev_page_url: null
+                to: 1
+                total: 1
+                data:
+                  - id: string
+                    due_date: '2018-02-12'
+                    status: paid
+                    payment_account:
+                      id: 0
+                      name: Conto Banca di Paperopoli
+                      type: standard
+                      iban: string
+                      sia: string
+                      cuc: string
+                    amount: 300
+                    attachment_url: string
+                    attachment_token: string
+                    description: string
+    CreateF24Response:
+      description: The created F24
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/CreateF24Response.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: string
+                  due_date: '2018-02-12'
+                  status: paid
+                  payment_account:
+                    id: 0
+                    name: Conto Banca di Paperopoli
+                    type: standard
+                    iban: string
+                    sia: string
+                    cuc: string
+                  amount: 300
+                  attachment_url: string
+                  attachment_token: string
+                  description: string
+    GetF24Response:
+      description: The F24
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetF24Response.yaml
+    ModifyF24Response:
+      description: The modified F24
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ModifyF24Response.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: string
+                  due_date: '2018-02-12'
+                  status: paid
+                  payment_account:
+                    id: 0
+                    name: Conto Banca di Paperopoli
+                    type: standard
+                    iban: string
+                    sia: string
+                    cuc: string
+                  amount: 300
+                  attachment_url: string
+                  attachment_token: string
+                  description: string
+    UploadF24AttachmentResponse:
+      description: Attachment Token.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/UploadF24AttachmentResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  attachment_token: YmMyNWYxYzIwMTU3N2Y4ZGE3ZjZiMzg5OWY0ODNkZDQveXl5LmRvYw
 security:
   - OAuth2AuthenticationCodeFlow: []
