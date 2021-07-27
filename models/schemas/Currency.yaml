@@ -13,3 +13,7 @@ properties:
     description: Currency exchange rate (EUR to this)
     example: 1
 description: ''
+examples:
+  - id: EUR
+    symbol: €
+    exchange_rate: 1

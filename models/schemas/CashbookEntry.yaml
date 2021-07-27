@@ -1,0 +1,65 @@
+title: CashbookEntry
+type: object
+properties:
+  id:
+    type: string
+    description: id of the entry
+  date:
+    type: string
+    format: date
+  amount_in:
+    type: number
+    description: Incoming amount
+  account_in:
+    $ref: ./PaymentAccount.yaml
+  amount_out:
+    type: number
+    description: Outgoing amount
+  account_out:
+    $ref: ./PaymentAccount.yaml
+  description:
+    type: string
+  kind:
+    type: string
+    enum:
+      - cashbook
+      - invoice
+      - expense
+      - tax
+      - receipt
+  type:
+    type: string
+    enum:
+      - in
+      - out
+required:
+  - id
+  - date
+  - amount_in
+  - account_in
+  - amount_out
+  - account_out
+  - description
+  - kind
+examples:
+  - id: string
+    date: '2019-08-24'
+    amount_in: 0
+    account_in:
+      id: 0
+      name: Conto Banca di Paperopoli
+      type: standard
+      iban: string
+      sia: string
+      cuc: string
+    amount_out: 0
+    account_out:
+      id: 0
+      name: Conto Banca di Paperopoli
+      type: standard
+      iban: string
+      sia: string
+      cuc: string
+    description: string
+    kind: cashbook
+    type: in

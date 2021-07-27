@@ -1,0 +1,14 @@
+title: ListTemplatesResponse
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: ../schemas/DocumentTemplate.yaml
+description: Templates list.
+examples:
+  - data:
+      - id: 10
+        name: New Standard S1
+      - id: 106
+        name: Minimalist

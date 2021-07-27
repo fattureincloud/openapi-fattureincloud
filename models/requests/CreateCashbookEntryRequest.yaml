@@ -1,0 +1,29 @@
+title: CreateCashbookEntryRequest
+type: object
+description: Cashbook Entry.
+properties:
+  data:
+    $ref: ../schemas/CashbookEntry.yaml
+examples:
+  - data:
+      id: string
+      date: '2019-08-24'
+      amount_in: 0
+      account_in:
+        id: 0
+        name: Conto Banca di Paperopoli
+        type: standard
+        iban: string
+        sia: string
+        cuc: string
+      amount_out: 0
+      account_out:
+        id: 0
+        name: Conto Banca di Paperopoli
+        type: standard
+        iban: string
+        sia: string
+        cuc: string
+      description: string
+      kind: cashbook
+      type: in

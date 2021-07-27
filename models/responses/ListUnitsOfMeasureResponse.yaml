@@ -1,0 +1,9 @@
+title: ListUnitsOfMeasureResponse
+type: object
+properties:
+  data:
+    type: array
+    items:
+      type: string
+description: Units of measure.
+examples: []

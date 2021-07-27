@@ -1,0 +1,8 @@
+title: ListReceivedDocumentCategoriesResponse
+type: object
+description: Received Document Categories List
+properties:
+  data:
+    type: array
+    items:
+      type: string

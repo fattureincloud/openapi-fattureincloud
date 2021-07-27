@@ -1,0 +1,9 @@
+title: ListProductCategoriesResponse
+type: object
+properties:
+  data:
+    type: array
+    items:
+      type: string
+description: Product Categories List.
+examples: []
