@@ -1,0 +1,38 @@
+title: ListReceiptsResponse
+allOf:
+  - $ref: ../schemas/Pagination.yaml
+  - type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: ../schemas/Receipt.yaml
+examples:
+  - current_page: 1
+    first_page_url: 'http://api-v2.fattureincloud.it/c/11111/path?fieldset=basic&page=1'
+    from: 1
+    last_page: 1
+    last_page_url: 'http://api-v2.fattureincloud.it/c/11111/path?fieldset=basic&page=1'
+    next_page_url: null
+    path: 'http://api-v2.fattureincloud.it/c/11111/path'
+    per_page: 50
+    prev_page_url: null
+    to: 1
+    total: 1
+    data:
+      - date: string
+        number: 0
+        numeration: string
+        use_gross_prices: false
+        type: till_receipt
+        description: string
+        rc_center: string
+        payment_account:
+          id: 0
+        items_list:
+          - amount_net: 0
+            amount_gross: 0
+            category: string
+            vat:
+              id: 0
+description: Receipts list.

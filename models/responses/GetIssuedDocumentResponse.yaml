@@ -1,0 +1,5 @@
+title: GetIssuedDocumentResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/IssuedDocument.yaml

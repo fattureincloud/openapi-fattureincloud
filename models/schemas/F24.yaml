@@ -1,0 +1,36 @@
+title: F24
+type: object
+properties:
+  id:
+    type: string
+    description: Unique F24 identifier.
+  due_date:
+    type: string
+    format: date
+    example: '2018-02-12'
+  status:
+    type: string
+    enum:
+      - paid
+      - not_paid
+      - reversed
+  payment_account:
+    $ref: ./PaymentAccount.yaml
+  amount:
+    type: number
+    description: Taxes amount.
+    example: 300
+  attachment_url:
+    type: string
+    description: '[Read-only] Absolute url of the attached file. Authomatically set if a valid attachment token is passed via POST /taxes or PUT /taxes/{documentId}.'
+  attachment_token:
+    type: string
+    description: '[Write-only] Attachment token returned by POST /taxes/attachment. Used to attach the file already uploaded.'
+  description:
+    type: string
+    description: Name or brief description.
+required:
+  - id
+  - due_date
+  - amount
+  - description

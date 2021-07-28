@@ -1,0 +1,6 @@
+title: GetReceiptResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/Receipt.yaml
+description: Receipt details.

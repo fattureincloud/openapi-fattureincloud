@@ -1,0 +1,13 @@
+title: SendEInvoiceRequest
+type: object
+properties:
+  data:
+    type: object
+    properties:
+      cassa_type:
+        type: string
+        description: 'Value of TipoCassa used (optional, override the company default value).'
+      withholding_tax_causal:
+        type: string
+        description: 'Value of CausalePagamento used (optional, override the company default value).'
+examples: []

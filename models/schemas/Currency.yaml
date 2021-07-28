@@ -1,0 +1,19 @@
+type: object
+properties:
+  id:
+    type: string
+    description: Currency code
+    example: EUR
+  symbol:
+    type: string
+    description: Currency symbol
+    example: €
+  exchange_rate:
+    type: number
+    description: Currency exchange rate (EUR to this)
+    example: 1
+description: ''
+examples:
+  - id: EUR
+    symbol: €
+    exchange_rate: 1

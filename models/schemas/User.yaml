@@ -1,0 +1,22 @@
+type: object
+properties:
+  id:
+    type: integer
+    example: 12345
+    description: User unique identifier
+  name:
+    type: string
+    description: Full name of the user.
+  first_name:
+    type: string
+  last_name:
+    type: string
+  email:
+    type: string
+examples:
+  - id: 12345
+    name: Mario Rossi
+    first_name: Mario
+    last_name: Rossi
+    email: mario.rossi@example.it
+description: User infos.

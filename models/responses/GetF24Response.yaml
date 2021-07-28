@@ -1,0 +1,21 @@
+title: GetF24Response
+type: object
+properties:
+  data:
+    $ref: ../schemas/F24.yaml
+examples:
+  - data:
+      id: string
+      due_date: '2018-02-12'
+      status: paid
+      payment_account:
+        id: 0
+        name: Conto Banca di Paperopoli
+        type: standard
+        iban: string
+        sia: string
+        cuc: string
+      amount: 300
+      attachment_url: string
+      attachment_token: string
+      description: string

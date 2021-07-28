@@ -1,0 +1,8 @@
+title: ListPaymentMethodsResponse
+type: object
+properties:
+  id:
+    type: array
+    items:
+      $ref: ../schemas/PaymentMethod.yaml
+description: List of Payment Methods.

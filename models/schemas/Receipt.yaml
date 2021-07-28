@@ -1,0 +1,50 @@
+title: Receipt
+type: object
+properties:
+  date:
+    type: string
+  number:
+    type: number
+  numeration:
+    type: string
+    description: If it's null or empty string use the default numeration.
+  use_gross_prices:
+    type: boolean
+    default: false
+  type:
+    type: string
+    enum:
+      - till_receipt
+      - sales_receipt
+  description:
+    type: string
+  rc_center:
+    type: string
+  payment_account:
+    type: object
+    required:
+      - id
+    properties:
+      id:
+        type: number
+  items_list:
+    type: array
+    items:
+      type: object
+      properties:
+        amount_net:
+          type: number
+        amount_gross:
+          type: number
+        category:
+          type: string
+        vat:
+          type: object
+          properties:
+            id:
+              type: number
+required:
+  - date
+  - type
+  - payment_account
+description: Receipt

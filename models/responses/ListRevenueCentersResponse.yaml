@@ -1,0 +1,8 @@
+title: ListRevenueCentersResponse
+type: object
+description: Revenue Centers List
+properties:
+  data:
+    type: array
+    items:
+      type: string

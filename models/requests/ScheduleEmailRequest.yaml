@@ -1,0 +1,20 @@
+title: ScheduleEmailRequest
+type: object
+properties:
+  data:
+    $ref: ../schemas/EmailSchedule.yaml
+examples:
+  - data:
+      sender_id: 0
+      sender_email: string
+      recipient_email: string
+      subject: string
+      body: string
+      include:
+        document: true
+        delivery_note: true
+        attachment: true
+        accompanying_invoice: true
+      attach_pdf: true
+      send_copy: true
+description: Email Schedule

@@ -1,0 +1,5 @@
+title: ModifyProductResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/Product.yaml

@@ -1,0 +1,18 @@
+type: object
+example: |-
+  {
+      "code": "it",
+      "name": "Italiano"
+  }
+examples:
+  - id: 10
+    name: New Standard S1
+properties:
+  id:
+    type: integer
+    description: Unique identifier.
+    example: 123
+  name:
+    type: string
+    description: Template name.
+    example: Light Smoke

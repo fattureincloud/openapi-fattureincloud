@@ -1,0 +1,72 @@
+type: object
+properties:
+  id:
+    type: integer
+    description: Unique identifier.
+  name:
+    type: string
+    description: Product name.
+  code:
+    type: string
+    description: Product code.
+  net_price:
+    type: number
+    description: 'Net sale price (used if use_gross_price is false, otherwise it''s competed automatically).'
+  gross_price:
+    type: number
+    description: 'Gross sale price (used if use_gross_price is false, otherwise it''s competed automatically).'
+  use_gross_price:
+    type: boolean
+    description: Determine which price to use for calculations.
+  default_vat:
+    $ref: ./VatType.yaml
+  net_cost:
+    type: number
+    description: Net cost of the product (used for received documents).
+  measure:
+    type: string
+    description: Unit of measure.
+  description:
+    type: string
+    description: Product description.
+  category:
+    type: string
+    description: Product category.
+  notes:
+    type: string
+    description: Extra notes.
+  in_stock:
+    type: boolean
+    description: Determine if the product is in stock.
+  stock_initial:
+    type: number
+    description: Product initial stock.
+  stock_current:
+    type: number
+    description: '[READ_ONLY] Product current stock.'
+required:
+  - name
+examples:
+  - id: 0
+    name: string
+    code: string
+    net_price: 0
+    gross_price: 0
+    use_gross_price: true
+    default_vat:
+      id: 0
+      value: 22
+      description: Non imponibile art. 123
+      notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+      e_invoice: string
+      ei_type: 2
+      ei_description: string
+      editable: true
+    net_cost: 0
+    measure: string
+    description: string
+    category: string
+    notes: string
+    in_stock: true
+    stock_initial: 0
+    stock_current: 0

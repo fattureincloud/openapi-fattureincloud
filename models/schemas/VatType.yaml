@@ -1,0 +1,44 @@
+required:
+  - value
+type: object
+properties:
+  id:
+    type: integer
+    description: Unique identifier
+  value:
+    maximum: 100
+    minimum: 0
+    type: number
+    description: Percentual value.
+    example: 22
+  description:
+    type: string
+    description: Short description.
+    example: Non imponibile art. 123
+  notes:
+    type: string
+    description: Long description and notes shown in documents.
+    example: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+  e_invoice:
+    type: string
+    description: Usable for e-invoices.
+  ei_type:
+    type: integer
+    description: E-invoice type (natura).
+    example: 2
+  ei_description:
+    type: string
+    description: E-invoice description.
+  editable:
+    type: boolean
+    description: '[Read-only]'
+    default: true
+examples:
+  - id: 0
+    value: 22
+    description: Non imponibile art. 123
+    notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+    e_invoice: string
+    ei_type: 2
+    ei_description: string
+    editable: true

@@ -1,0 +1,13 @@
+title: GetReceiptsMonthlyTotalsResponse
+type: object
+description: Monthly totals.
+properties:
+  data:
+    type: array
+    items:
+      $ref: ../schemas/MonthlyTotal.yaml
+examples:
+  - data:
+      - net: 1430.86
+        gross: 1744
+        count: 66

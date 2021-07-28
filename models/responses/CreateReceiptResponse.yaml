@@ -1,0 +1,6 @@
+title: CreateReceiptResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/Receipt.yaml
+description: Created Receipt.

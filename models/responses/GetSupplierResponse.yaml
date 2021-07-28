@@ -1,0 +1,27 @@
+title: GetSupplierResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/Supplier.yaml
+examples:
+  - data:
+      id: 0
+      code: '123'
+      name: Rossi S.r.l.
+      type: null
+      first_name: string
+      last_name: string
+      contact_person: string
+      vat_number: IT01234567890
+      tax_code: RSSMRA44A12E890Q
+      address_street: 'Via dei tigli, 12'
+      address_postal_code: '24010'
+      address_city: Bergamo
+      address_province: BG
+      address_extra: string
+      country: Italia
+      email: mario.rossi@example.it
+      certified_email: mario.rossi@pec.example.it
+      phone: string
+      fax: string
+      notes: string

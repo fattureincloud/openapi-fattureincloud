@@ -1,0 +1,86 @@
+type: object
+description: Supplier.
+examples:
+  - id: 0
+    code: '123'
+    name: Rossi S.r.l.
+    type: null
+    first_name: string
+    last_name: string
+    contact_person: string
+    vat_number: IT01234567890
+    tax_code: RSSMRA44A12E890Q
+    address_street: 'Via dei tigli, 12'
+    address_postal_code: '24010'
+    address_city: Bergamo
+    address_province: BG
+    address_extra: string
+    country: Italia
+    email: mario.rossi@example.it
+    certified_email: mario.rossi@pec.example.it
+    phone: string
+    fax: string
+    notes: string
+properties:
+  id:
+    type: integer
+    description: Unique identifier
+  code:
+    type: string
+    example: '123'
+  name:
+    type: string
+    example: Rossi S.r.l.
+  type:
+    type: string
+    default: null
+    enum:
+      - null
+      - company
+      - person
+      - pa
+      - condo
+  first_name:
+    type: string
+  last_name:
+    type: string
+  contact_person:
+    type: string
+  vat_number:
+    type: string
+    example: IT01234567890
+  tax_code:
+    type: string
+    example: RSSMRA44A12E890Q
+  address_street:
+    type: string
+    example: 'Via dei tigli, 12'
+  address_postal_code:
+    type: string
+    example: '24010'
+  address_city:
+    type: string
+    example: Bergamo
+  address_province:
+    type: string
+    example: BG
+  address_extra:
+    type: string
+  country:
+    type: string
+    example: Italia
+    default: Italia
+  email:
+    type: string
+    example: mario.rossi@example.it
+  certified_email:
+    type: string
+    example: mario.rossi@pec.example.it
+  phone:
+    type: string
+  fax:
+    type: string
+  notes:
+    type: string
+required:
+  - name

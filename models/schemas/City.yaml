@@ -1,0 +1,17 @@
+title: City
+type: object
+properties:
+  postal_code:
+    type: string
+  city:
+    type: string
+  province:
+    type: string
+required:
+  - postal_code
+  - city
+  - province
+examples:
+  - postal_code: '24100'
+    city: Bergamo
+    province: BG

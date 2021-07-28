@@ -1,0 +1,20 @@
+description: |
+  MonthlyTotal
+type: object
+properties:
+  net:
+    type: number
+  gross:
+    type: number
+  count:
+    type: number
+required:
+  - net
+  - gross
+  - count
+x-examples:
+  example-1:
+    net: 1430.86
+    gross: 1744
+    count: 66
+title: ''

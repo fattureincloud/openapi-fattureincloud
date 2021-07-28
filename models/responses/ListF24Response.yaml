@@ -1,0 +1,10 @@
+title: ListF24Response
+description: Results list.
+allOf:
+  - $ref: ../schemas/Pagination.yaml
+  - type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: ../schemas/F24.yaml

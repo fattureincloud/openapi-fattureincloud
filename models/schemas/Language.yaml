@@ -1,0 +1,11 @@
+required:
+  - code
+  - name
+type: object
+properties:
+  code:
+    type: string
+    description: Language code.
+  name:
+    type: string
+    description: Language extended name.

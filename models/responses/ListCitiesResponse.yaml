@@ -1,0 +1,19 @@
+title: ListCitiesResponse
+type: object
+description: Cities list.
+properties:
+  data:
+    type: array
+    items:
+      $ref: ../schemas/City.yaml
+examples:
+  - data:
+      - postal_code: '89867'
+        city: Zungri
+        province: VV
+      - postal_code: '83020'
+        city: Aiello del Sabato
+        province: AV
+      - postal_code: '83011'
+        city: Altavilla Irpina
+        province: AV

@@ -1,0 +1,14 @@
+title: UploadReceivedDocumentAttachmentResponse
+type: object
+properties:
+  data:
+    type: object
+    required:
+      - attachment_token
+    properties:
+      attachment_token:
+        type: string
+        example: YmMyNWYxYzIwMTU3N2Y4ZGE3ZjZiMzg5OWY0ODNkZDQveXl5LmRvYw
+required:
+  - data
+description: Attachment Token.

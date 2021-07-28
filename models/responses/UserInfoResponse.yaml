@@ -1,0 +1,12 @@
+description: The UserInfo response.
+examples:
+  - data:
+      id: 12345
+      name: Mario Rossi
+      first_name: Mario
+      last_name: Rossi
+      email: mario.rossi@example.it
+type: object
+properties:
+  data:
+    $ref: ../schemas/User.yaml

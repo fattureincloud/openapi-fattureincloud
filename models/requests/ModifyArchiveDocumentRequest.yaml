@@ -1,0 +1,6 @@
+title: ModifyArchiveDocumentRequest
+type: object
+properties:
+  data:
+    $ref: ../schemas/ArchiveDocument.yaml
+description: Archive Document.

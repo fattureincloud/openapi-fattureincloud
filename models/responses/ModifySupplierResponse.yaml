@@ -1,0 +1,5 @@
+title: ModifySupplierResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/Supplier.yaml

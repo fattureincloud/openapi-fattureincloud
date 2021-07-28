@@ -1,0 +1,5 @@
+$ref: ../schemas/Attachment.yaml
+description: Attachment.
+examples:
+  - filename: attachment.pdf
+    attachment: string
