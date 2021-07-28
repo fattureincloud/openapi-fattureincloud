@@ -1937,11 +1937,38 @@ paths:
             - 'cashbook:r'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/DateFrom'
-        - $ref: '#/components/parameters/DateTo'
-        - $ref: '#/components/parameters/Year'
-        - $ref: '#/components/parameters/Type'
-        - $ref: '#/components/parameters/PaymentAccountId'
+        - schema:
+            type: string
+            format: date
+          in: query
+          name: date_from
+          description: Start date.
+          required: true
+        - schema:
+            type: string
+            format: date
+          in: query
+          name: date_to
+          description: End date.
+          required: true
+        - schema:
+            type: integer
+          in: query
+          name: year
+        - schema:
+            type: string
+            enum:
+              - all
+              - in
+              - out
+          in: query
+          name: type
+          description: Filter cashbook by type.
+        - schema:
+            type: integer
+          in: query
+          name: payment_account_id
+          description: Filter by payment account.
     post:
       summary: Create Cashbook Entry
       operationId: createCashbookEntry
@@ -2549,45 +2576,6 @@ components:
           - passive_credit_note
           - passive_delivery_note
       description: Received Document Type
-    DateFrom:
-      name: date_from
-      in: query
-      required: true
-      schema:
-        type: string
-        format: date
-      description: Start date.
-    DateTo:
-      name: DateTo
-      in: query
-      required: true
-      schema:
-        type: string
-        format: date
-      description: End date.
-    Year:
-      name: year
-      in: query
-      required: false
-      schema:
-        type: integer
-    Type:
-      name: type
-      in: query
-      required: false
-      schema:
-        type: string
-        enum:
-          - all
-          - in
-          - out
-      description: Filter cashbook entry by type.
-    PaymentAccountId:
-      name: PaymentAccountId
-      in: query
-      schema:
-        type: integer
-      description: Filter by payment account.
   responses:
     UserInfoResponse:
       description: User info.
