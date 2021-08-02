@@ -1,5 +1,18 @@
 title: Pagination
 type: object
+description: Pagination fields.
+examples:
+  - current_page: 1
+    first_page_url: 'http://api-v2.fattureincloud.it/c/11111/path?fieldset=basic&page=1'
+    from: 1
+    last_page: 1
+    last_page_url: 'http://api-v2.fattureincloud.it/c/11111/path?fieldset=basic&page=1'
+    next_page_url: null
+    path: 'http://api-v2.fattureincloud.it/c/11111/path'
+    per_page: 50
+    prev_page_url: null
+    to: 1
+    total: 1
 properties:
   current_page:
     type: integer
@@ -16,6 +29,7 @@ properties:
   next_page_url:
     type: string
     format: uri
+    nullable: true
   path:
     type: string
     format: uri
@@ -24,20 +38,8 @@ properties:
   prev_page_url:
     type: string
     format: uri
+    nullable: true
   to:
     type: integer
   total:
     type: integer
-description: Pagination fields.
-examples:
-  - current_page: 1
-    first_page_url: 'http://api-v2.fattureincloud.it/c/11111/path?fieldset=basic&page=1'
-    from: 1
-    last_page: 1
-    last_page_url: 'http://api-v2.fattureincloud.it/c/11111/path?fieldset=basic&page=1'
-    next_page_url: null
-    path: 'http://api-v2.fattureincloud.it/c/11111/path'
-    per_page: 50
-    prev_page_url: null
-    to: 1
-    total: 1

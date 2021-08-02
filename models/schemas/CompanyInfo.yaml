@@ -1,95 +1,4 @@
 type: object
-properties:
-  id:
-    type: integer
-    description: Company unique identifier.
-    example: 12345
-  name:
-    type: string
-    description: Company name.
-    example: Mario Rossi S.r.l.
-  email:
-    type: string
-    description: Company email.
-    example: mario@rossi-example.it
-  type:
-    type: string
-    description: Company type.
-    enum:
-      - company
-      - accountant
-  fic:
-    type: boolean
-    description: Determine if the company has a FIC account.
-  fic_plan:
-    type: string
-    description: Company FIC account plan.
-    enum:
-      - trial
-      - standard
-      - premium
-      - premium_plus
-  fic_license_expire:
-    type: string
-    description: Company FIC license expire date.
-    format: date
-  use_fic:
-    type: boolean
-    description: 'Determine if the FIC account is actually used. If type="company" this is always true; if type="accountant" it can be true or false. If false, it means that the accountant uses FIC only to control other companies and not to control itself.'
-  fic_need_setup:
-    type: boolean
-    description: Indicate that the initial setup for FIC is required.
-  dic:
-    type: boolean
-    description: Determine if the company has a DIC account.
-  dic_plan:
-    type: string
-    description: Company DIC account plan.
-    enum:
-      - trial
-  dic_license_expire:
-    type: string
-    description: Company FIC license expire date.
-    format: date
-  use_dic:
-    type: boolean
-    description: 'Determine if the DIC account is actually used. If type=“company” this is always true; if type=“accountant” it can be true or false. If false, it means that the accountant uses DIC only to control other companies and not to control itself.'
-  dic_need_setup:
-    type: boolean
-    description: Indicate that the initial setup for DIC is required.
-  access_info:
-    type: object
-    properties:
-      role:
-        type: string
-        description: Role of the user in this company.
-        enum:
-          - master
-          - subaccount
-          - employee
-      permissions:
-        $ref: ./Permissions.yaml
-  plan_info:
-    type: object
-    properties:
-      limits:
-        type: object
-        description: Limits for this company.
-        properties:
-          clients:
-            type: integer
-          suppliers:
-            type: integer
-          products:
-            type: integer
-          documents:
-            type: integer
-      functions:
-        type: object
-        description: Access to functions for this company.
-        properties:
-          example_function:
-            type: boolean
 description: Detailed information for the company.
 examples:
   - id: 12345
@@ -97,8 +6,11 @@ examples:
     email: mario@rossi-example.it
     type: company
     fic: true
-    fic_plan: trial
+    fic_plan_name: trial
     fic_license_expire: '2019-08-24'
+    fic_license_type: string
+    fic_payment_subject: string
+    fic_signup_date: string
     use_fic: true
     fic_need_setup: true
     dic: true
@@ -122,6 +34,7 @@ examples:
         fic_stock: write
         fic_cashbook: write
         fic_settings: write
+      through_accountant: true
     plan_info:
       limits:
         clients: 0
@@ -129,4 +42,267 @@ examples:
         products: 0
         documents: 0
       functions:
-        example_function: true
+        archive: true
+        cerved: true
+        document_attachments: true
+        e_invoice: true
+        genius: true
+        mail_tracking: true
+        payment_notifications: true
+        paypal: true
+        receipts: true
+        recurring: true
+        smtp: true
+        sofort: true
+        stock: true
+        subaccounts: true
+        tessera_sanitaria: true
+        ts_digital: true
+        ts_invoice_trading: true
+        ts_pay: true
+    can_use_coupon: true
+    accountant_id: string
+    dic_license_type: string
+    dic_payment_subject: string
+    dic_plan_name: string
+    dic_signup_date: string
+    is_accountant: true
+    registration_service: string
+    functions_status:
+      ts_digital:
+        active: true
+      ts_pay:
+        active: true
+  - id: 12345
+    name: Mario Rossi S.r.l.
+    email: mario@rossi-example.it
+    type: company
+    fic: true
+    fic_plan_name: trial
+    fic_license_expire: '2019-08-24'
+    fic_license_type: string
+    fic_payment_subject: string
+    fic_signup_date: string
+    use_fic: true
+    fic_need_setup: true
+    dic: true
+    dic_plan: trial
+    dic_license_expire: '2019-08-24'
+    use_dic: true
+    dic_need_setup: true
+    access_info:
+      role: master
+      permissions:
+        fic_situation: write
+        fic_clients: write
+        fic_suppliers: write
+        fic_products: write
+        fic_issued_documents: write
+        fic_received_documents: write
+        fic_receipts: write
+        fic_calendar: write
+        fic_archive: write
+        fic_taxes: write
+        fic_stock: write
+        fic_cashbook: write
+        fic_settings: write
+      through_accountant: true
+    plan_info:
+      limits:
+        clients: 0
+        suppliers: 0
+        products: 0
+        documents: 0
+      functions:
+        archive: true
+        cerved: true
+        document_attachments: true
+        e_invoice: true
+        genius: true
+        mail_tracking: true
+        payment_notifications: true
+        paypal: true
+        receipts: true
+        recurring: true
+        smtp: true
+        sofort: true
+        stock: true
+        subaccounts: true
+        tessera_sanitaria: true
+        ts_digital: true
+        ts_invoice_trading: true
+        ts_pay: true
+    can_use_coupon: true
+    accountant_id: string
+    dic_license_type: string
+    dic_payment_subject: string
+    dic_plan_name: string
+    dic_signup_date: string
+    is_accountant: true
+    registration_service: string
+    functions_status:
+      ts_digital:
+        active: true
+      ts_pay:
+        active: true
+properties:
+  id:
+    type: integer
+    description: Company unique identifier.
+    example: 12345
+  name:
+    type: string
+    description: Company name.
+    example: Mario Rossi S.r.l.
+  email:
+    type: string
+    description: Company email.
+    example: mario@rossi-example.it
+  type:
+    type: string
+    description: Company type.
+    enum:
+      - company
+      - accountant
+  fic:
+    type: boolean
+    description: Determine if the company has a FIC account.
+  fic_plan_name:
+    type: string
+    description: Company FIC account plan.
+    enum:
+      - trial
+      - standard
+      - premium
+      - premium_plus
+  fic_license_expire:
+    type: string
+    description: Company FIC license expire date.
+    format: date
+    nullable: true
+  fic_license_type:
+    type: string
+  fic_payment_subject:
+    type: string
+  fic_signup_date:
+    type: string
+  use_fic:
+    type: boolean
+    description: 'Determine if the FIC account is actually used. If type="company" this is always true; if type="accountant" it can be true or false. If false, it means that the accountant uses FIC only to control other companies and not to control itself.'
+  fic_need_setup:
+    type: boolean
+    description: Indicate that the initial setup for FIC is required.
+  dic:
+    type: boolean
+    description: Determine if the company has a DIC account.
+  dic_plan:
+    type: string
+    description: Company DIC account plan.
+    enum:
+      - trial
+  dic_license_expire:
+    type: string
+    description: Company FIC license expire date.
+    format: date
+    nullable: true
+  use_dic:
+    type: boolean
+    description: 'Determine if the DIC account is actually used. If type=“company” this is always true; if type=“accountant” it can be true or false. If false, it means that the accountant uses DIC only to control other companies and not to control itself.'
+  dic_need_setup:
+    type: boolean
+    description: Indicate that the initial setup for DIC is required.
+  access_info:
+    type: object
+    properties:
+      role:
+        type: string
+        description: Role of the user in this company.
+        enum:
+          - master
+          - subaccount
+          - employee
+      permissions:
+        $ref: ./Permissions.yaml
+      through_accountant:
+        type: boolean
+  plan_info:
+    type: object
+    properties:
+      limits:
+        type: object
+        description: Limits for this company.
+        properties:
+          clients:
+            type: integer
+          suppliers:
+            type: integer
+          products:
+            type: integer
+          documents:
+            type: integer
+      functions:
+        type: object
+        description: Access to functions for this company.
+        properties:
+          archive:
+            type: boolean
+          cerved:
+            type: boolean
+          document_attachments:
+            type: boolean
+          e_invoice:
+            type: boolean
+          genius:
+            type: boolean
+          mail_tracking:
+            type: boolean
+          payment_notifications:
+            type: boolean
+          paypal:
+            type: boolean
+          receipts:
+            type: boolean
+          recurring:
+            type: boolean
+          smtp:
+            type: boolean
+          sofort:
+            type: boolean
+          stock:
+            type: boolean
+          subaccounts:
+            type: boolean
+          tessera_sanitaria:
+            type: boolean
+          ts_digital:
+            type: boolean
+          ts_invoice_trading:
+            type: boolean
+            nullable: true
+          ts_pay:
+            type: boolean
+      functions_status:
+        type: object
+        properties:
+          ts_digital:
+            $ref: ./FunctionStatus.yaml
+          ts_pay:
+            $ref: ./FunctionStatus.yaml
+  can_use_coupon:
+    type: boolean
+  accountant_id:
+    type: string
+    nullable: true
+  dic_license_type:
+    type: string
+  dic_payment_subject:
+    type: string
+  dic_plan_name:
+    type: string
+  dic_signup_date:
+    type: string
+    nullable: true
+  is_accountant:
+    type: boolean
+  registration_service:
+    type: string

@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Fatture in Cloud API v2 - API Reference
-  description: "## Request informations\nIn every request description you will be able to find some additional informations about context, permissions and supported functionality:\n\n| Parameter | Description |\n|-----------|-------------|\n| \U0001F465 Context | Indicate the subject of the request. Can be `company`, `user` or `accountant`.  |\n| \U0001F512 Required scope | If present, indicates the required scope to fulfill the request. |\n| \U0001F50D Filtering | If present, indicates which fields support the filtering feature. |\n| ↕️ Sorting | If present, indicates which fields support the sorting feature. |\n| \U0001F4C4 Paginated results | If present, indicate that the results are paginated. |\n| \U0001F3A9 Customized responses supported | If present, indicate that you can use `field` or `fieldset` to customize the response body. |\n\nFor example the request `GET /entities/{entityRole}` have tis informations: \\\n\U0001F465 Company context \\\n\U0001F512 Required scope: `entity.clients:r` or `entity.suppliers:r` (depending on `entityRole`) \\\n\U0001F50D Filtering: `id`, `name` \\\n↕️ Sorting: `id`, `name` \\\n\U0001F4C4 Paginated results \\\n\U0001F3A9 Customized responses supported\n\nKeep in mind that if you are making **company realted requests**, you will need to specify the company id in the requests:\n```\nGET /c/{companyId}/issued_documents\n```"
+  description: "## Request informations\nIn every request description you will be able to find some additional informations about context, permissions and supported functionality:\n\n| Parameter | Description |\n|-----------|-------------|\n| \U0001F465 Context | Indicate the subject of the request. Can be `company`, `user` or `accountant`.  |\n| \U0001F512 Required scope | If present, indicates the required scope to fulfill the request. |\n| \U0001F50D Filtering | If present, indicates which fields support the filtering feature. |\n| ↕️ Sorting | If present, indicates which fields support the sorting feature. |\n| \U0001F4C4 Paginated results | If present, indicate that the results are paginated. |\n| \U0001F3A9 Customized responses supported | If present, indicate that you can use `field` or `fieldset` to customize the response body. |\n\nFor example the request `GET /entities/{entityRole}` have tis informations: \\\n\U0001F465 Company context \\\n\U0001F512 Required scope: `entity.clients:r` or `entity.suppliers:r` (depending on `entityRole`) \\\n\U0001F50D Filtering: `id`, `name` \\\n↕️ Sorting: `id`, `name` \\\n\U0001F4C4 Paginated results \\\n\U0001F3A9 Customized responses supported\n\nKeep in mind that if you are making **company realted requests**, you will need to specify the company id in the requests:\n```\nGET /c/{company_id}/issued_documents\n```"
   contact:
     name: Fatture in Cloud
     url: 'https://www.fattureincloud.it'
@@ -16,6 +16,7 @@ tags:
   - name: Archive
   - name: Cashbook
   - name: Clients
+  - name: Companies
   - name: Info
   - name: Issued Documents
   - name: Issued e-invoices
@@ -56,25 +57,25 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters: []
-  '/c/{companyId}/company/info':
+  '/c/{company_id}/company/info':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     get:
-      summary: Your GET endpoint
-      tags:
-        - Company
+      summary: Get Company Info
       responses:
         '200':
           $ref: '#/components/responses/CompanyInfoResponse'
         '401':
           description: Unauthorized.
-      operationId: companyInfo
+      operationId: getCompanyInfo
       description: 'Get company info like email, license expire date and access info for each document and section'
       security:
         - OAuth2AuthenticationCodeFlow: []
-  '/c/{companyId}/entities/clients':
+      tags:
+        - Companies
+  '/c/{company_id}/entities/clients':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: List Clients
       tags:
@@ -90,12 +91,11 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'entity.clients:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/Fields'
-        - $ref: '#/components/parameters/FieldSet'
-        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
+        - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/Page'
-        - $ref: '#/components/parameters/ById'
+        - $ref: '#/components/parameters/by_id'
     post:
       summary: Create Client
       operationId: createClient
@@ -106,8 +106,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'entity.clients:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -171,9 +170,9 @@ paths:
         description: The client to create
       tags:
         - Clients
-  '/c/{companyId}/entities/suppliers':
+  '/c/{company_id}/entities/suppliers':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: List Suppliers
       responses:
@@ -188,11 +187,11 @@ paths:
             - 'entity.suppliers:r'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/Fields'
-        - $ref: '#/components/parameters/FieldSet'
-        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
+        - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/Page'
-        - $ref: '#/components/parameters/ById'
+        - $ref: '#/components/parameters/by_id'
       tags:
         - Suppliers
     post:
@@ -239,10 +238,10 @@ paths:
         description: The supplier to create
       tags:
         - Suppliers
-  '/c/{companyId}/entities/clients/{clientId}':
+  '/c/{company_id}/entities/clients/{client_id}':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
-      - $ref: '#/components/parameters/ClientId'
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/client_id'
     get:
       summary: Get Client
       tags:
@@ -260,9 +259,8 @@ paths:
             - 'entity.clients:r'
       description: "\U0001F465 Company context\n\U0001F512 Required scope: entity.clients:r\n\U0001F3A9 Customized responses supported\n\nGet details of an existing client by its unique id."
       parameters:
-        - $ref: '#/components/parameters/Fields'
-        - $ref: '#/components/parameters/FieldSet'
-        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
     put:
       summary: Modify Client
       operationId: modifyClient
@@ -277,8 +275,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'entity.clients:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -353,17 +350,16 @@ paths:
         '404':
           description: Not Found
       description: "\U0001F465 Company context\n\U0001F512 Required scope: entity.clients:a\n\nDelete an existing client by its unique id."
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'entity.clients:a'
       tags:
         - Clients
-  '/c/{companyId}/entities/suppliers/{supplierId}':
+  '/c/{company_id}/entities/suppliers/{supplier_id}':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
-      - $ref: '#/components/parameters/SupplierId'
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/supplier_id'
     get:
       summary: Get Supplier
       responses:
@@ -379,8 +375,8 @@ paths:
             - 'entity.suppliers:r'
       description: "\U0001F465 Company context\n\U0001F512 Required scope: entity.suppliers:r\n\U0001F3A9 Customized responses supported\n\nGet details of an existing supplier by its unique id."
       parameters:
-        - $ref: '#/components/parameters/Fields'
-        - $ref: '#/components/parameters/FieldSet'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/Authorization'
       tags:
         - Suppliers
@@ -450,9 +446,9 @@ paths:
             - 'entity.suppliers:a'
       tags:
         - Suppliers
-  '/c/{companyId}/products':
+  '/c/{company_id}/products':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: List Products
       tags:
@@ -469,11 +465,11 @@ paths:
             - 'products:r'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/Fields'
-        - $ref: '#/components/parameters/FieldSet'
-        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
+        - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/Page'
-        - $ref: '#/components/parameters/ById'
+        - $ref: '#/components/parameters/by_id'
     post:
       summary: ''
       operationId: createProduct
@@ -488,10 +484,10 @@ paths:
             - 'products:a'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-  '/c/{companyId}/products/{productId}':
+  '/c/{company_id}/products/{product_id}':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
-      - $ref: '#/components/parameters/ProductId'
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/product_id'
     get:
       summary: Get Product
       tags:
@@ -506,8 +502,8 @@ paths:
             - 'products:r'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/Fields'
-        - $ref: '#/components/parameters/FieldSet'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
     put:
       summary: Modify Product
       operationId: modifyProduct
@@ -550,9 +546,9 @@ paths:
         - $ref: '#/components/parameters/Authorization'
       tags:
         - Products
-  '/c/{companyId}/issued_documents':
+  '/c/{company_id}/issued_documents':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: List Issued Documents
       tags:
@@ -577,12 +573,12 @@ paths:
             - 'issued_documents.delivery_note:r'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/IssuedDocumentType'
-        - $ref: '#/components/parameters/Fields'
-        - $ref: '#/components/parameters/FieldSet'
-        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/issued_document_type'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
+        - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/Page'
-        - $ref: '#/components/parameters/ById'
+        - $ref: '#/components/parameters/by_id'
         - $ref: '#/components/parameters/PerPage'
     post:
       summary: Create Issued Document
@@ -612,10 +608,10 @@ paths:
             schema:
               $ref: ./models/requests/CreateIssuedDocumentRequest.yaml
         description: The Issued Document
-  '/c/{companyId}/issued_documents/{documentId}':
+  '/c/{company_id}/issued_documents/{document_id}':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
-      - $ref: '#/components/parameters/DocumentId'
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
     get:
       summary: Get Issued Document
       tags:
@@ -640,8 +636,8 @@ paths:
             - 'issued_documents.delivery_note:r'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/Fields'
-        - $ref: '#/components/parameters/FieldSet'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
     put:
       summary: Modify Issued Document
       operationId: modifyIssuedDocument
@@ -696,9 +692,9 @@ paths:
         - $ref: '#/components/parameters/Authorization'
       tags:
         - Issued Documents
-  '/c/{companyId}/issued_documents/totals':
+  '/c/{company_id}/issued_documents/totals':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     post:
       summary: Get New Issued Document Totals
       operationId: getNewIssuedDocumentTotals
@@ -717,10 +713,10 @@ paths:
           application/json:
             schema:
               $ref: ./models/requests/GetNewIssuedDocumentTotalsRequest.yaml
-  '/c/{companyId}/issued_documents/{documentId}/totals':
+  '/c/{company_id}/issued_documents/{document_id}/totals':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
-      - $ref: '#/components/parameters/DocumentId'
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
     post:
       summary: Get Existing Issued Document Totals
       operationId: getExistingIssuedDocumentTotals
@@ -743,9 +739,9 @@ paths:
           application/json:
             schema:
               $ref: ./models/requests/GetExistingIssuedDocumentTotalsRequest.yaml
-  '/c/{companyId}/issued_documents/attachment':
+  '/c/{company_id}/issued_documents/attachment':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     post:
       summary: Upload Issued Document Attachment
       operationId: uploadAttachment
@@ -768,10 +764,10 @@ paths:
               $ref: ./models/requests/UploadIssuedDocumentAttachmentRequest.yaml
             examples: {}
         description: Attachment.
-  '/c/{companyId}/issued_documents/{documentId}/attachment':
+  '/c/{company_id}/issued_documents/{document_id}/attachment':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
-      - $ref: '#/components/parameters/DocumentId'
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
     delete:
       summary: Remove Issued Document Attachment
       operationId: removeReceivedDocumentAttachment
@@ -789,9 +785,9 @@ paths:
         - $ref: '#/components/parameters/Authorization'
       tags:
         - Issued Documents
-  '/c/{companyId}/issued_documents/info':
+  '/c/{company_id}/issued_documents/info':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: Get Issued Document Pre-create info
       tags:
@@ -805,11 +801,11 @@ paths:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
         - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/IssuedDocumentType'
-  '/c/{companyId}/issued_documents/{documentId}/email':
+        - $ref: '#/components/parameters/issued_document_type'
+  '/c/{company_id}/issued_documents/{document_id}/email':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
-      - $ref: '#/components/parameters/DocumentId'
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
     get:
       summary: Get Email Data
       tags:
@@ -860,10 +856,10 @@ paths:
             schema:
               $ref: ./models/requests/ScheduleEmailRequest.yaml
         description: Email Schedule
-  '/c/{companyId}/issued_documents/{documentId}/e_invoice/send':
+  '/c/{company_id}/issued_documents/{document_id}/e_invoice/send':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
-      - $ref: '#/components/parameters/DocumentId'
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
     post:
       summary: Send the e-invoice
       operationId: sendEInvoice
@@ -887,10 +883,10 @@ paths:
         description: ''
       tags:
         - Issued e-invoices
-  '/c/{companyId}/issued_documents/{document_id}/e_invoice/xml_verify':
+  '/c/{company_id}/issued_documents/{document_id}/e_invoice/xml_verify':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
-      - $ref: '#/components/parameters/DocumentId'
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
     get:
       summary: Verify e-invoice xml
       tags:
@@ -910,9 +906,9 @@ paths:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
         - $ref: '#/components/parameters/Authorization'
-  '/c/{companyId}/received_documents':
+  '/c/{company_id}/received_documents':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: List Received Documents
       tags:
@@ -930,12 +926,12 @@ paths:
             - 'stock:r'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/ReceivedDocumentType'
-        - $ref: '#/components/parameters/Fields'
-        - $ref: '#/components/parameters/FieldSet'
-        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/received_document_type'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
+        - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/Page'
-        - $ref: '#/components/parameters/ById'
+        - $ref: '#/components/parameters/by_id'
     post:
       summary: Create Received Document
       operationId: createReceivedDocument
@@ -1025,10 +1021,10 @@ paths:
                     attachment_url: string
                     attachment_preview_url: string
         description: Document to create
-  '/c/{companyId}/received_documents/{documentId}':
+  '/c/{company_id}/received_documents/{document_id}':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
-      - $ref: '#/components/parameters/DocumentId'
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
     get:
       summary: Get Received Document
       tags:
@@ -1048,8 +1044,8 @@ paths:
             - 'stock:r'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/Fields'
-        - $ref: '#/components/parameters/FieldSet'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
     put:
       summary: Modify Received Document
       operationId: modifyReceivedDocument
@@ -1152,9 +1148,9 @@ paths:
             - 'stock:a'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-  '/c/{companyId}/received_documents/totals':
+  '/c/{company_id}/received_documents/totals':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     post:
       summary: Get New Received Document Totals
       operationId: getNewReceivedDocumentTotals
@@ -1247,10 +1243,10 @@ paths:
                     attachment_url: string
                     attachment_preview_url: string
         description: Received document.
-  '/c/{companyId}/received_documents/{documentId}/totals':
+  '/c/{company_id}/received_documents/{document_id}/totals':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
-      - $ref: '#/components/parameters/DocumentId'
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
     post:
       summary: Get Existing Received Document Totals
       operationId: getExistingReceivedDocumentTotals
@@ -1339,9 +1335,9 @@ paths:
                     attachment_url: string
                     attachment_preview_url: string
         description: Received document.
-  '/c/{companyId}/received_documents/attachment':
+  '/c/{company_id}/received_documents/attachment':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     post:
       summary: Upload Received Document Attachment
       operationId: uploadReceivedDocumentAttachment
@@ -1365,10 +1361,10 @@ paths:
             schema:
               $ref: ./models/requests/UploadReceivedDocumentAttachmentRequest.yaml
         description: Attachment.
-  '/c/{companyId}/received_documents/{documentId}/attachment':
+  '/c/{company_id}/received_documents/{document_id}/attachment':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
-      - $ref: '#/components/parameters/DocumentId'
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
     delete:
       summary: Delete Received Document Attachment
       operationId: deleteReceivedDocumentAttachment
@@ -1388,9 +1384,9 @@ paths:
             - 'stock:a'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-  '/c/{companyId}/received_documents/info':
+  '/c/{company_id}/received_documents/info':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: Get Received Document Pre-Create Info
       tags:
@@ -1405,10 +1401,10 @@ paths:
             - 'received_documents:r'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/ReceivedDocumentType'
-  '/c/{companyId}/receipts':
+        - $ref: '#/components/parameters/received_document_type'
+  '/c/{company_id}/receipts':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: List Receipts
       tags:
@@ -1425,11 +1421,11 @@ paths:
             - 'receipts:r'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/Fields'
-        - $ref: '#/components/parameters/FieldSet'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/Page'
         - $ref: '#/components/parameters/PerPage'
-        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/sort'
     post:
       summary: Create Receipt
       operationId: createReceipt
@@ -1472,10 +1468,10 @@ paths:
         description: The Receipt to create.
       tags:
         - Receipts
-  '/c/{companyId}/receipts/{documentId}':
+  '/c/{company_id}/receipts/{document_id}':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
-      - $ref: '#/components/parameters/DocumentId'
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
     get:
       summary: Get Receipt
       tags:
@@ -1490,8 +1486,8 @@ paths:
       operationId: getReceipt
       description: "\U0001F465 Company context\n\U0001F512 Required scope: receipts:r\n\U0001F3A9 Customized responses supported\n\nGet details of an existing document by its unique id."
       parameters:
-        - $ref: '#/components/parameters/Fields'
-        - $ref: '#/components/parameters/FieldSet'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/Authorization'
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -1557,9 +1553,9 @@ paths:
         - $ref: '#/components/parameters/Authorization'
       tags:
         - Receipts
-  '/c/{companyId}/receipts/info':
+  '/c/{company_id}/receipts/info':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: Get Receipt Pre-Create Info
       tags:
@@ -1578,9 +1574,9 @@ paths:
             - 'receipts:r'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-  '/c/{companyId}/receipts/monthly_totals':
+  '/c/{company_id}/receipts/monthly_totals':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: Get Receipts Monthly Totals
       tags:
@@ -1599,9 +1595,9 @@ paths:
             - 'receipts:r'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-  '/c/{companyId}/taxes':
+  '/c/{company_id}/taxes':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: List F24
       tags:
@@ -1618,11 +1614,11 @@ paths:
             - 'taxes:r'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/Fields'
-        - $ref: '#/components/parameters/FieldSet'
-        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
+        - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/Page'
-        - $ref: '#/components/parameters/ById'
+        - $ref: '#/components/parameters/by_id'
     post:
       summary: Create F24
       operationId: createF24
@@ -1647,10 +1643,10 @@ paths:
             schema:
               $ref: ./models/requests/CreateF24Request.yaml
         description: The F24 to create
-  '/c/{companyId}/taxes/{documentId}':
+  '/c/{company_id}/taxes/{document_id}':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
-      - $ref: '#/components/parameters/DocumentId'
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
     get:
       summary: Get F24
       tags:
@@ -1669,8 +1665,8 @@ paths:
             - 'taxes:r'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/Fields'
-        - $ref: '#/components/parameters/FieldSet'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
     put:
       summary: Modify F24
       operationId: modifyF24
@@ -1713,9 +1709,9 @@ paths:
             - 'taxes:a'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-  '/c/{companyId}/taxes/attachment':
+  '/c/{company_id}/taxes/attachment':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     post:
       summary: Upload F24 Attachment
       tags:
@@ -1739,10 +1735,10 @@ paths:
                   filename: attachment.pdf
                   attachment: string
         description: Attachment.
-  '/c/{companyId}/taxes/{documentId}/attachment':
+  '/c/{company_id}/taxes/{document_id}/attachment':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
-      - $ref: '#/components/parameters/DocumentId'
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
     delete:
       summary: Delete F24 Attachment
       tags:
@@ -1761,9 +1757,9 @@ paths:
             - 'taxes:a'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-  '/c/{companyId}/archive':
+  '/c/{company_id}/archive':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: List Archive Documents
       tags:
@@ -1782,11 +1778,11 @@ paths:
             - 'archive:r'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/Fields'
-        - $ref: '#/components/parameters/FieldSet'
-        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
+        - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/Page'
-        - $ref: '#/components/parameters/ById'
+        - $ref: '#/components/parameters/by_id'
     post:
       summary: Create Archive Document
       operationId: createArchiveDocument
@@ -1811,10 +1807,10 @@ paths:
             schema:
               $ref: ./models/requests/CreateArchiveDocumentRequest.yaml
         description: The Archive Document.
-  '/c/{companyId}/archive/{documentId}':
+  '/c/{company_id}/archive/{document_id}':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
-      - $ref: '#/components/parameters/DocumentId'
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
     get:
       summary: Get Archive Document
       tags:
@@ -1833,8 +1829,8 @@ paths:
             - 'archive:r'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/Fields'
-        - $ref: '#/components/parameters/FieldSet'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
     put:
       summary: Modify Archive Document
       operationId: modifyArchiveDocument
@@ -1887,9 +1883,9 @@ paths:
             - 'archive:a'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-  '/c/{companyId}/archive/attachment':
+  '/c/{company_id}/archive/attachment':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     post:
       summary: Upload Archive Document Attachment
       tags:
@@ -1914,9 +1910,9 @@ paths:
         description: Attachment.
       parameters:
         - $ref: '#/components/parameters/Authorization'
-  '/c/{companyId}/cashbook':
+  '/c/{company_id}/cashbook':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: List Cashbook Entries
       tags:
@@ -2017,10 +2013,10 @@ paths:
                     type: in
         description: |
           Cashbook entry.
-  '/c/{companyId}/cashbook/{documentId}':
+  '/c/{company_id}/cashbook/{document_id}':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
-      - $ref: '#/components/parameters/DocumentId'
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
     get:
       summary: Get Cashbook Entry
       tags:
@@ -2039,8 +2035,8 @@ paths:
             - 'cashbook:r'
       parameters:
         - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/Fields'
-        - $ref: '#/components/parameters/FieldSet'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
     put:
       summary: Modify Cashbook Entry
       operationId: modifyCashbookEntry
@@ -2245,9 +2241,9 @@ paths:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
         - $ref: '#/components/parameters/Authorization'
-  '/c/{companyId}/info/vat_types':
+  '/c/{company_id}/info/vat_types':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: List Vat Types
       tags:
@@ -2266,9 +2262,9 @@ paths:
       parameters:
         - $ref: '#/components/parameters/Authorization'
       description: "\U0001F465 Company context \U0001F512 Required scope: settings:r\n\U0001F3A9 Customized responses supported\n\nGet the list of the available vat types."
-  '/c/{companyId}/info/payment_methods':
+  '/c/{company_id}/info/payment_methods':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: List Payment Methods
       tags:
@@ -2286,9 +2282,9 @@ paths:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
         - $ref: '#/components/parameters/Authorization'
-  '/c/{companyId}/info/payment_accounts':
+  '/c/{company_id}/info/payment_accounts':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: List Payment Accounts
       tags:
@@ -2306,9 +2302,9 @@ paths:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
         - $ref: '#/components/parameters/Authorization'
-  '/c/{companyId}/info/revenue_centers':
+  '/c/{company_id}/info/revenue_centers':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: List Revenue Centers
       tags:
@@ -2326,9 +2322,9 @@ paths:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
         - $ref: '#/components/parameters/Authorization'
-  '/c/{companyId}/info/cost_centers':
+  '/c/{company_id}/info/cost_centers':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: List Cost Centers
       tags:
@@ -2346,9 +2342,9 @@ paths:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
         - $ref: '#/components/parameters/Authorization'
-  '/c/{companyId}/info/product_categories':
+  '/c/{company_id}/info/product_categories':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: List Product Categories
       tags:
@@ -2375,9 +2371,9 @@ paths:
           in: query
           name: context
           required: true
-  '/c/{companyId}/info/received_document_categories':
+  '/c/{company_id}/info/received_document_categories':
     parameters:
-      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: List Received Document Categories List
       tags:
@@ -2391,11 +2387,11 @@ paths:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
         - $ref: '#/components/parameters/Authorization'
-  '/c/{companyId}/info/archive_categories':
+  '/c/{company_id}/info/archive_categories':
     parameters:
       - schema:
           type: string
-        name: companyId
+        name: company_id
         in: path
         required: true
     get:
@@ -2468,29 +2464,29 @@ components:
       required: true
       schema:
         type: string
-    CompanyId:
-      name: CompanyId
+    company_id:
+      name: company_id
       in: path
       required: true
       schema:
-        type: string
+        type: integer
         example: '12345'
       description: The Referred Company Id.
-    FieldSet:
+    fieldset:
       name: fieldset
       in: query
       required: false
       schema:
         type: string
       description: Name of the fieldset
-    Sort:
+    sort:
       name: sort
       in: query
       required: false
       schema:
         type: string
       description: List of comma-separated fields for result sorting (minus for desc sorting)
-    Fields:
+    fields:
       name: fields
       in: query
       required: false
@@ -2505,7 +2501,7 @@ components:
         type: integer
         default: 1
       description: Requested page
-    ById:
+    by_id:
       name: by_id
       in: query
       required: false
@@ -2513,25 +2509,25 @@ components:
         type: integer
         default: 0
       description: 'If 1, return an object instead of an array'
-    ClientId:
-      name: ClientId
+    client_id:
+      name: client_id
       in: path
       required: true
       schema:
         type: string
-    SupplierId:
-      name: SupplierId
+    supplier_id:
+      name: supplier_id
       in: path
       required: true
       schema:
         type: string
-    ProductId:
-      name: ProductId
+    product_id:
+      name: product_id
       in: path
       required: true
       schema:
         type: string
-    IssuedDocumentType:
+    issued_document_type:
       name: type
       in: query
       required: true
@@ -2554,14 +2550,14 @@ components:
         type: integer
         default: 5
       description: Items to be shown per page
-    DocumentId:
-      name: DocumentId
+    document_id:
+      name: document_id
       in: path
       required: true
       schema:
         type: integer
       description: Unique Id of the document
-    ReceivedDocumentType:
+    received_document_type:
       name: type
       in: query
       required: true

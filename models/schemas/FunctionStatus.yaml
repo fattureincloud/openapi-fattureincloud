@@ -1,0 +1,5 @@
+title: FunctionStatus
+type: object
+properties:
+  active:
+    type: boolean

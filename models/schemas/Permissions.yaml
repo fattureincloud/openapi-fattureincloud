@@ -1,5 +1,19 @@
 type: object
 description: Set of permissions.
+examples:
+  - fic_situation: write
+    fic_clients: write
+    fic_suppliers: write
+    fic_products: write
+    fic_issued_documents: write
+    fic_received_documents: write
+    fic_receipts: write
+    fic_calendar: write
+    fic_archive: write
+    fic_taxes: write
+    fic_stock: write
+    fic_cashbook: write
+    fic_settings: write
 properties:
   fic_situation:
     $ref: ./PermissionLevel.yaml
@@ -27,17 +41,25 @@ properties:
     $ref: ./PermissionLevel.yaml
   fic_settings:
     $ref: ./PermissionLevel.yaml
-examples:
-  - fic_situation: write
-    fic_clients: write
-    fic_suppliers: write
-    fic_products: write
-    fic_issued_documents: write
-    fic_received_documents: write
-    fic_receipts: write
-    fic_calendar: write
-    fic_archive: write
-    fic_taxes: write
-    fic_stock: write
-    fic_cashbook: write
-    fic_settings: write
+  fic_emails:
+    $ref: ./PermissionLevel.yaml
+  fic_export:
+    $ref: ./PermissionLevel.yaml
+  fic_import_bankstatements:
+    $ref: ./PermissionLevel.yaml
+  fic_import_clients_suppliers:
+    $ref: ./PermissionLevel.yaml
+  fic_import_issued_documents:
+    $ref: ./PermissionLevel.yaml
+  fic_import_products:
+    $ref: ./PermissionLevel.yaml
+  fic_recurring:
+    $ref: ./PermissionLevel.yaml
+  fic_riba:
+    $ref: ./PermissionLevel.yaml
+  dic_employees:
+    $ref: ./PermissionLevel.yaml
+  dic_settings:
+    $ref: ./PermissionLevel.yaml
+  dic_timesheet:
+    $ref: ./PermissionLevel.yaml
