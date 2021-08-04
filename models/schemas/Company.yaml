@@ -69,3 +69,16 @@ properties:
       [Only if type=accountant]
     items:
       $ref: ./Company.yaml
+  connection_id:
+    type: number
+  dic:
+    type: boolean
+  fic:
+    type: boolean
+  fic_license_expire:
+    type: string
+    format: date
+  fic_plan:
+    type: string
+  tax_code:
+    type: string

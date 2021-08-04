@@ -1,4 +1,6 @@
 type: object
+examples: []
+description: User infos.
 properties:
   id:
     type: integer
@@ -16,10 +18,8 @@ properties:
     nullable: true
   email:
     type: string
-examples:
-  - id: 12345
-    name: Mario Rossi
-    first_name: Mario
-    last_name: Rossi
-    email: mario.rossi@example.it
-description: User infos.
+  hash:
+    type: string
+  picture:
+    type: string
+    nullable: true
