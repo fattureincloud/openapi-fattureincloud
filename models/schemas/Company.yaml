@@ -1,36 +1,4 @@
 type: object
-properties:
-  id:
-    type: integer
-    description: Company unique identifier.
-    example: 12345
-  name:
-    type: string
-    description: Company name.
-    example: Rossi S.r.l.
-  type:
-    type: string
-    description: Company type.
-    enum:
-      - company
-      - accountant
-  access_token:
-    maxLength: 160
-    minLength: 160
-    type: string
-    description: |-
-      CompanyAuthentication token for this company.
-      [Only if type=company]
-    example: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
-  permissions:
-    $ref: ./Permissions.yaml
-  controlled_companies:
-    type: array
-    description: |-
-      List of controlled companies.
-      [Only if type=accountant]
-    items:
-      $ref: ./Company.yaml
 examples:
   - id: 12345
     name: Rossi S.r.l.
@@ -71,3 +39,46 @@ examples:
           fic_settings: write
         controlled_companies: []
 description: Description of a company.
+properties:
+  id:
+    type: integer
+    description: Company unique identifier.
+    example: 12345
+  name:
+    type: string
+    description: Company name.
+    example: Rossi S.r.l.
+  type:
+    type: string
+    description: Company type.
+    enum:
+      - company
+      - accountant
+  access_token:
+    type: string
+    description: |-
+      CompanyAuthentication token for this company.
+      [Only if type=company]
+    example: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
+  permissions:
+    $ref: ./Permissions.yaml
+  controlled_companies:
+    type: array
+    description: |-
+      List of controlled companies.
+      [Only if type=accountant]
+    items:
+      $ref: ./Company.yaml
+  connection_id:
+    type: number
+  dic:
+    type: boolean
+  fic:
+    type: boolean
+  fic_license_expire:
+    type: string
+    format: date
+  fic_plan:
+    type: string
+  tax_code:
+    type: string
