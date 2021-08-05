@@ -744,7 +744,7 @@ paths:
       - $ref: '#/components/parameters/company_id'
     post:
       summary: Upload Issued Document Attachment
-      operationId: uploadAttachment
+      operationId: uploadIssuedDocumentAttachment
       responses:
         '200':
           $ref: '#/components/responses/UploadIssuedDocumentAttachmentResponse'
@@ -769,8 +769,8 @@ paths:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
     delete:
-      summary: Remove Issued Document Attachment
-      operationId: removeReceivedDocumentAttachment
+      summary: Delete Issued Document Attachment
+      operationId: deleteIssuedDocumentAttachment
       responses:
         '200':
           description: File removed.
