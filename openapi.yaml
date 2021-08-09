@@ -187,12 +187,12 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'entity.suppliers:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/Page'
         - $ref: '#/components/parameters/by_id'
+        - $ref: '#/components/parameters/PerPage'
       tags:
         - Suppliers
     post:
@@ -205,8 +205,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'entity.suppliers:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
