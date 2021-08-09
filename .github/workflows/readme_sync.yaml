@@ -4,14 +4,24 @@ on:
     branches:
       - master
       - main
+      - action-test
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: readmeio/github-readme-sync@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
         with:
-          readme-oas-key: v8f6zlqQ6wIUxDzULdsHoTZrBXTeLUcK:60a6fabdc557028e9c231034
-          oas-file-path: './openapi.yaml'
+          python-version: '3.8'
+      - name: Run Script
+      - run: |
+          python -m pip install --upgrade pip
+          if [ -f ./scripts/requirements.txt ]; then pip install -r ./scripts/requirements.txt; fi
+          python ./scripts/retrieve_spec_id.py
+      # - uses: readmeio/github-readme-sync@v2
+      #   with:
+      #     readme-oas-key: v8f6zlqQ6wIUxDzULdsHoTZrBXTeLUcK:60a6fabdc557028e9c231034
+      #     oas-file-path: './openapi.yaml'
           # OPTIONAL CONFIG, use if necessary
           # api-version: 'v1.0.0'
