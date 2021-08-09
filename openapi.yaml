@@ -497,7 +497,6 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'products:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
     put:
@@ -514,8 +513,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'products:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -538,8 +536,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'products:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       tags:
         - Products
   '/c/{company_id}/issued_documents':
@@ -2522,7 +2519,7 @@ components:
       in: path
       required: true
       schema:
-        type: string
+        type: integer
     issued_document_type:
       name: type
       in: query
