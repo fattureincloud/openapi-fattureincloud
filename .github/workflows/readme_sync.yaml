@@ -19,10 +19,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r ./.github/workflows/scripts/requirements.txt
           python ./.github/workflows/scripts/retrieve_spec_id.py
-          echo "OAS_KEY=$OAS_KEY" >> $GITHUB_ENV
+          echo "oas_key=$OAS_KEY" >> $GITHUB_ENV
+      - name: Test step
+        run: |
+          echo "${{ env.oas_key }}"
       - uses: readmeio/github-readme-sync@v2
         with:
-          readme-oas-key: ${{ env.OAS_KEY }}
+          readme-oas-key: "${{ env.oas_key }}"
           oas-file-path: './openapi.yaml'
           # OPTIONAL CONFIG, use if necessary
           # api-version: 'v1.0.0'
