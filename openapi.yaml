@@ -595,8 +595,7 @@ paths:
             - 'issued_documents.quote:a'
             - 'issued_documents.proforma:a'
             - 'issued_documents.delivery_note:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -630,7 +629,6 @@ paths:
             - 'issued_documents.proforma:r'
             - 'issued_documents.delivery_note:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
     put:
@@ -653,8 +651,7 @@ paths:
             - 'issued_documents.quote:a'
             - 'issued_documents.proforma:a'
             - 'issued_documents.delivery_note:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -683,8 +680,7 @@ paths:
             - 'issued_documents.quote:a'
             - 'issued_documents.proforma:a'
             - 'issued_documents.delivery_note:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       tags:
         - Issued Documents
   '/c/{company_id}/issued_documents/totals':
