@@ -19,8 +19,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r ./.github/workflows/scripts/requirements.txt
           python ./.github/workflows/scripts/retrieve_spec_id.py
-          echo
-          echo "oas_key=${OAS_KEY}" >> $GITHUB_ENV
+          echo $OAS_KEY
+          echo ${{ env.OAS_KEY }}
+          echo "oas_key=$OAS_KEY"
+          echo "oas_key=$OAS_KEY" >> $GITHUB_ENV
       - name: Test step
         run: |
           echo "${{ env.oas_key }}"
