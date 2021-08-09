@@ -9,7 +9,7 @@ info:
   license:
     name: ''
     url: 'https://www.fattureincloud.it'
-  version: v1.0.1
+  version: v2.0.0
 servers:
   - url: 'https://api-v2.fattureincloud.it'
 tags:
