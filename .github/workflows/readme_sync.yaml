@@ -22,7 +22,7 @@ jobs:
           echo "::set-env name=OAS_KEY::$OAS_KEY"
       - uses: readmeio/github-readme-sync@v2
         with:
-          readme-oas-key: {{ OAS_KEY }}
+          readme-oas-key: ${{ OAS_KEY }}
           oas-file-path: './openapi.yaml'
           # OPTIONAL CONFIG, use if necessary
           # api-version: 'v1.0.0'
