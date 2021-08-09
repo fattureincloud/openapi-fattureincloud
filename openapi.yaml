@@ -96,6 +96,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/Page'
         - $ref: '#/components/parameters/by_id'
+        - $ref: '#/components/parameters/PerPage'
     post:
       summary: Create Client
       operationId: createClient
