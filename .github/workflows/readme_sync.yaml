@@ -15,7 +15,7 @@ jobs:
         with:
           python-version: '3.8'
       - name: Run Script
-      - run: |
+        run: |
           python -m pip install --upgrade pip
           if [ -f ./scripts/requirements.txt ]; then pip install -r ./scripts/requirements.txt; fi
           python ./scripts/retrieve_spec_id.py
