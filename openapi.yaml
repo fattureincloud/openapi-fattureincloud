@@ -479,8 +479,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'products:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/products/{product_id}':
     parameters:
       - $ref: '#/components/parameters/company_id'
