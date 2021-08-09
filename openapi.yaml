@@ -491,6 +491,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetProductResponse'
+        '401':
+          description: Unauthorized
       operationId: getProduct
       description: "\U0001F465 Company context\n\U0001F512 Required scope: products:r\n\U0001F3A9 Customized responses supported\n\nGet product details"
       security:
