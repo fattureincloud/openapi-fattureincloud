@@ -16,11 +16,9 @@ jobs:
           python-version: '3.8'
       - name: Run Script
         run: |
-          pwd
-          ls
           python -m pip install --upgrade pip
-          if [ -f ./scripts/requirements.txt ]; then pip install -r ./scripts/requirements.txt; fi
-          python ./scripts/retrieve_spec_id.py
+          pip install -r ./.github/workflows/scripts/requirements.txt
+          python ./.github/workflows/scripts/retrieve_spec_id.py
       # - uses: readmeio/github-readme-sync@v2
       #   with:
       #     readme-oas-key: v8f6zlqQ6wIUxDzULdsHoTZrBXTeLUcK:60a6fabdc557028e9c231034
