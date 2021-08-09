@@ -19,9 +19,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r ./.github/workflows/scripts/requirements.txt
           python ./.github/workflows/scripts/retrieve_spec_id.py
-      # - uses: readmeio/github-readme-sync@v2
-      #   with:
-      #     readme-oas-key: v8f6zlqQ6wIUxDzULdsHoTZrBXTeLUcK:60a6fabdc557028e9c231034
-      #     oas-file-path: './openapi.yaml'
+          echo "::set-env name=OAS_KEY::$OAS_KEY"
+      - uses: readmeio/github-readme-sync@v2
+        with:
+          readme-oas-key: {{ OAS_KEY }}
+          oas-file-path: './openapi.yaml'
           # OPTIONAL CONFIG, use if necessary
           # api-version: 'v1.0.0'
