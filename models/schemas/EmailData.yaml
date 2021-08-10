@@ -1,9 +1,9 @@
 type: object
 description: Email
 properties:
-  supplier_email:
+  recipient_email:
     type: string
-    description: Document supplier's (or client's) email
+    description: Recipient's email
   default_sender_email:
     type: object
     description: Default sender email. (Other emails can be found in `sender_emails_list`)
@@ -53,8 +53,11 @@ properties:
   accompanying_invoice_exists:
     type: string
     description: 'If an accompanying invoice exists, this flag will be set to true'
+  default_attach_pdf:
+    type: boolean
+    description: 'If a pdf is attached, this flag will be set to true'
 required:
-  - supplier_email
+  - recipient_email
   - default_sender_email
   - sender_emails_list
   - cc_email
@@ -64,3 +67,4 @@ required:
   - delivery_note_exists
   - attachment_exists
   - accompanying_invoice_exists
+  - default_attach_pdf

@@ -96,6 +96,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/Page'
         - $ref: '#/components/parameters/by_id'
+        - $ref: '#/components/parameters/PerPage'
     post:
       summary: Create Client
       operationId: createClient
@@ -186,12 +187,12 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'entity.suppliers:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/Page'
         - $ref: '#/components/parameters/by_id'
+        - $ref: '#/components/parameters/PerPage'
       tags:
         - Suppliers
     post:
@@ -204,8 +205,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'entity.suppliers:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -377,7 +377,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
-        - $ref: '#/components/parameters/Authorization'
       tags:
         - Suppliers
     put:
@@ -394,8 +393,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'entity.suppliers:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -439,8 +437,7 @@ paths:
         '404':
           description: Not Found
       description: "\U0001F465 Company context\n\U0001F512 Required scope: entity.suppliers:a\n\nDelete an existing supplier by its unique id."
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'entity.suppliers:a'
@@ -464,12 +461,12 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'products:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/Page'
         - $ref: '#/components/parameters/by_id'
+        - $ref: '#/components/parameters/PerPage'
     post:
       summary: ''
       operationId: createProduct
@@ -482,8 +479,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'products:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/products/{product_id}':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -495,13 +491,16 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetProductResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
       operationId: getProduct
       description: "\U0001F465 Company context\n\U0001F512 Required scope: products:r\n\U0001F3A9 Customized responses supported\n\nGet product details"
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'products:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
     put:
@@ -518,8 +517,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'products:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -542,8 +540,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'products:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       tags:
         - Products
   '/c/{company_id}/issued_documents':
@@ -572,7 +569,6 @@ paths:
             - 'issued_documents.proforma:r'
             - 'issued_documents.delivery_note:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/issued_document_type'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -600,8 +596,7 @@ paths:
             - 'issued_documents.quote:a'
             - 'issued_documents.proforma:a'
             - 'issued_documents.delivery_note:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -635,7 +630,6 @@ paths:
             - 'issued_documents.proforma:r'
             - 'issued_documents.delivery_note:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
     put:
@@ -658,8 +652,7 @@ paths:
             - 'issued_documents.quote:a'
             - 'issued_documents.proforma:a'
             - 'issued_documents.delivery_note:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -688,8 +681,7 @@ paths:
             - 'issued_documents.quote:a'
             - 'issued_documents.proforma:a'
             - 'issued_documents.delivery_note:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       tags:
         - Issued Documents
   '/c/{company_id}/issued_documents/totals':
@@ -701,13 +693,14 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetNewIssuedDocumentTotalsResponse'
+        '401':
+          description: Unauthorized
       description: "\U0001F465 Company context\n\nGet the totals of a document"
       tags:
         - Issued Documents
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -732,8 +725,7 @@ paths:
       description: "\U0001F465 Company context\n\nGet existing document totals"
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -755,8 +747,7 @@ paths:
       description: "\U0001F465 Company context\n\nUpload an attachment to an issued document"
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           multipart/form-data:
@@ -764,6 +755,22 @@ paths:
               $ref: ./models/requests/UploadIssuedDocumentAttachmentRequest.yaml
             examples: {}
         description: Attachment.
+  '/c/{company_id}/issued_documents/info':
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+    get:
+      summary: Get Issued Document Pre-create info
+      tags:
+        - Issued Documents
+      responses:
+        '200':
+          $ref: '#/components/responses/GetIssuedDocumentPreCreateInfoResponse'
+      operationId: getIssuedDocumentPreCreateInfo
+      description: "\U0001F465 Company context\n\nGet the info needed for the document creation flow."
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      parameters:
+        - $ref: '#/components/parameters/issued_document_type'
   '/c/{company_id}/issued_documents/{document_id}/attachment':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -781,27 +788,9 @@ paths:
       description: "\U0001F465 Company context\n\nRemove the attachment (but not the document)"
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       tags:
         - Issued Documents
-  '/c/{company_id}/issued_documents/info':
-    parameters:
-      - $ref: '#/components/parameters/company_id'
-    get:
-      summary: Get Issued Document Pre-create info
-      tags:
-        - Issued Documents
-      responses:
-        '200':
-          $ref: '#/components/responses/GetIssuedDocumentPreCreateInfoResponse'
-      operationId: getIssuedDocumentPreCreateInfo
-      description: "\U0001F465 Company context\n\nGet the info needed for the document creation flow."
-      security:
-        - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/issued_document_type'
   '/c/{company_id}/issued_documents/{document_id}/email':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -824,8 +813,7 @@ paths:
             - 'issued_documents.quote:r'
             - 'issued_documents.proforma:r'
             - 'issued_documents.delivery_note:r'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
     post:
       summary: Schedule Email
       operationId: scheduleEmail
@@ -848,8 +836,7 @@ paths:
             - 'issued_documents.delivery_note:r'
       tags:
         - Issued Documents
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -873,8 +860,7 @@ paths:
       description: "\U0001F465 Company context\n\nSend the e-invoice to SDI"
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -901,11 +887,10 @@ paths:
         '422':
           $ref: '#/components/responses/VerifyEInvoiceXmlErrorResponse'
       operationId: verifyEInvoiceXml
-      description: "\U0001F465 Company context\n\nVerify e-invoice xml format. Check if all mandatory fields are filled and if all fieldds are in right format."
+      description: "\U0001F465 Company context\n\nVerify e-invoice xml format. Check if all mandatory fields are filled and if all fields are in right format."
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/received_documents':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -925,13 +910,13 @@ paths:
             - 'received_documents:r'
             - 'stock:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/received_document_type'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/Page'
         - $ref: '#/components/parameters/by_id'
+        - $ref: '#/components/parameters/PerPage'
     post:
       summary: Create Received Document
       operationId: createReceivedDocument
@@ -945,8 +930,7 @@ paths:
             - 'stock:a'
       tags:
         - Received Documents
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -1043,7 +1027,6 @@ paths:
             - 'received_documents:r'
             - 'stock:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
     put:
@@ -1063,8 +1046,7 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'received_documents:a'
             - 'stock:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -1146,8 +1128,7 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'received_documents:a'
             - 'stock:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/received_documents/totals':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -1168,8 +1149,7 @@ paths:
             - 'stock:a'
       tags:
         - Received Documents
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -1260,8 +1240,7 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'received_documents:a'
             - 'stock:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -1353,8 +1332,7 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'received_documents:a'
             - 'stock:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           multipart/form-data:
@@ -1382,8 +1360,7 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'received_documents:a'
             - 'stock:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/received_documents/info':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -1400,7 +1377,6 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'received_documents:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/received_document_type'
   '/c/{company_id}/receipts':
     parameters:
@@ -2514,7 +2490,7 @@ components:
       in: path
       required: true
       schema:
-        type: string
+        type: integer
     supplier_id:
       name: supplier_id
       in: path
@@ -2526,7 +2502,7 @@ components:
       in: path
       required: true
       schema:
-        type: string
+        type: integer
     issued_document_type:
       name: type
       in: query

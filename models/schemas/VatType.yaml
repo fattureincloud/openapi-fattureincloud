@@ -1,6 +1,13 @@
-required:
-  - value
 type: object
+examples:
+  - id: 0
+    value: 22
+    description: Non imponibile art. 123
+    notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+    e_invoice: string
+    ei_type: 2
+    ei_description: string
+    editable: true
 properties:
   id:
     type: integer
@@ -33,12 +40,7 @@ properties:
     type: boolean
     description: '[Read-only]'
     default: true
-examples:
-  - id: 0
-    value: 22
-    description: Non imponibile art. 123
-    notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
-    e_invoice: string
-    ei_type: 2
-    ei_description: string
-    editable: true
+  is_disabled:
+    type: boolean
+required:
+  - value
