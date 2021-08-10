@@ -26,5 +26,6 @@ jobs:
         with:
           readme-oas-key: "${{ env.oas_key }}"
           oas-file-path: './openapi.yaml'
+          actions-step-debug: true
           # OPTIONAL CONFIG, use if necessary
           # api-version: 'v1.0.0'
