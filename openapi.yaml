@@ -1884,8 +1884,7 @@ paths:
             schema:
               $ref: ./models/requests/UploadArchiveDocumentAttachmentRequest.yaml
         description: Attachment.
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/cashbook':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -1906,7 +1905,6 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'cashbook:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - schema:
             type: string
             format: date
@@ -1925,6 +1923,7 @@ paths:
             type: integer
           in: query
           name: year
+          description: Filter cashbook by year.
         - schema:
             type: string
             enum:
