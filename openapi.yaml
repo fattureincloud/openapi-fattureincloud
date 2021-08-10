@@ -930,8 +930,7 @@ paths:
             - 'stock:a'
       tags:
         - Received Documents
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -1028,7 +1027,6 @@ paths:
             - 'received_documents:r'
             - 'stock:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
     put:
@@ -1048,8 +1046,7 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'received_documents:a'
             - 'stock:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -1131,8 +1128,7 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'received_documents:a'
             - 'stock:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/received_documents/totals':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -1153,8 +1149,7 @@ paths:
             - 'stock:a'
       tags:
         - Received Documents
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -1245,8 +1240,7 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'received_documents:a'
             - 'stock:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -1338,8 +1332,7 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'received_documents:a'
             - 'stock:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           multipart/form-data:
@@ -1367,8 +1360,7 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'received_documents:a'
             - 'stock:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/received_documents/info':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -1385,7 +1377,6 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'received_documents:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/received_document_type'
   '/c/{company_id}/receipts':
     parameters:
