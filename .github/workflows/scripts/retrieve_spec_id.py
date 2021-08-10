@@ -1,7 +1,6 @@
 import yaml
 import requests
 import base64
-import os
 
 
 base_url = 'https://dash.readme.com/api/v1/'
