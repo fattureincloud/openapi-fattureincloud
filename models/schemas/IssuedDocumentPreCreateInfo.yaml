@@ -39,6 +39,17 @@ properties:
         description: Use gross price by default.
       payment_method:
         $ref: ./PaymentMethod.yaml
+  extra_data_default_values:
+    type: object
+    properties:
+      ts_communication:
+        type: boolean
+      ts_tipo_spesa:
+        type: string
+      ts_flag_tipo_spesa:
+        type: integer
+      ts_pagamento_tracciato:
+        type: boolean
   items_default_values:
     type: object
     description: Default values for the document items.
