@@ -2,7 +2,7 @@ title: F24
 type: object
 properties:
   id:
-    type: string
+    type: integer
     description: Unique F24 identifier.
   due_date:
     type: string

@@ -1620,8 +1620,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'taxes:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
