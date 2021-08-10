@@ -2112,7 +2112,7 @@ paths:
           $ref: '#/components/responses/ListCountriesResponse'
         '401':
           description: Unauthorized
-      operationId: List Countries
+      operationId: listCountries
       description: Get the list of the countries supported by entities and documents.
       security:
         - OAuth2AuthenticationCodeFlow: []
