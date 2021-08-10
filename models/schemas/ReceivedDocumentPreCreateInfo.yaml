@@ -25,10 +25,10 @@ examples:
         editable: true
 description: Pre-create info.
 properties:
-  series:
+  numerations:
     type: object
     description: 'Next number by year, receipt type and numeration name.'
-  series_list:
+  numerations_list:
     type: array
     description: List of series used in the past.
     items:
@@ -54,8 +54,8 @@ properties:
     items:
       $ref: ./VatType.yaml
 required:
-  - series
-  - series_list
+  - numerations
+  - numerations_list
   - rc_centers_list
   - payment_accounts_list
   - categories_list
