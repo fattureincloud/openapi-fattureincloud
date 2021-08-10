@@ -11,12 +11,12 @@ api_key = 'v8f6zlqQ6wIUxDzULdsHoTZrBXTeLUcK'
 
 def main():
     curr_version = retrieve_version_from_openapi()
-    print('Required version: {}'.format(curr_version))
+    #print('Required version: {}'.format(curr_version))
 
     if curr_version:
-        print('Retrieving versions...')
+        #print('Retrieving versions...')
         versions_list =  get_versions()
-        print('Done.')
+        #print('Done.')
 
         spec_id = None
         last_version = None
@@ -29,15 +29,15 @@ def main():
                 last_version = v
         
         if not spec_id:
-            print('Required version not found. Creating...')
-            print('Last version: {}'.format(last_version))
+            #print('Required version not found. Creating...')
+            #print('Last version: {}'.format(last_version))
             res = create_version(curr_version, last_version).json()
-            print(res)
-            print('Created.')
+            #print(res)
+            #print('Created.')
             spec_id = res['_id']
 
-        print('Spec ID: {}'.format(spec_id))
-        os.environ['OAS_KEY'] = '{}:{}'.format(api_key, spec_id)
+        #print('Spec ID: {}'.format(spec_id))
+        print('oas_key={}:{}'.format(api_key, spec_id))
     else:
         raise Exception('Version not found!!!')
 
@@ -78,7 +78,7 @@ def create_version(version, last_version):
         'is_stable': False,
         'is_hidden': True
     }
-    print(payload)
+    #print(payload)
 
     response = requests.request('POST', version_url, headers=headers, json=payload)
     return response
