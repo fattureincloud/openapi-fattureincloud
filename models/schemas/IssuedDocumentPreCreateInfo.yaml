@@ -16,10 +16,10 @@ properties:
         $ref: ./DocumentTemplate.yaml
       ai_template:
         $ref: ./DocumentTemplate.yaml
-      default_notes:
+      notes:
         type: string
         description: Default notes.
-      default_rivalsa:
+      rivalsa:
         type: number
         description: Default rivalsa percentage.
       cassa:
