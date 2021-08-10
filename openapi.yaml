@@ -1396,12 +1396,12 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'receipts:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/Page'
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/by_id'
     post:
       summary: Create Receipt
       operationId: createReceipt
