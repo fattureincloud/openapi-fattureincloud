@@ -1807,7 +1807,6 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'archive:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
     put:
@@ -1826,8 +1825,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'archive:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -1860,8 +1858,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'archive:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/archive/attachment':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -4120,13 +4117,14 @@ components:
               id:
                 type: integer
     GetArchiveDocumentResponse:
-      description: Example response
+      description: Archive Document Details
       content:
         application/json:
           schema:
-            properties:
-              id:
-                type: string
+            type: object
+        application/xml:
+          schema:
+            $ref: ./models/responses/GetArchiveDocumentResponse.yaml
     ModifyArchiveDocumentResponse:
       description: The modified Archived Document
       content:
