@@ -694,13 +694,14 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetNewIssuedDocumentTotalsResponse'
+        '401':
+          description: Unauthorized
       description: "\U0001F465 Company context\n\nGet the totals of a document"
       tags:
         - Issued Documents
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -725,8 +726,7 @@ paths:
       description: "\U0001F465 Company context\n\nGet existing document totals"
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -748,8 +748,7 @@ paths:
       description: "\U0001F465 Company context\n\nUpload an attachment to an issued document"
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           multipart/form-data:
@@ -757,6 +756,22 @@ paths:
               $ref: ./models/requests/UploadIssuedDocumentAttachmentRequest.yaml
             examples: {}
         description: Attachment.
+  '/c/{company_id}/issued_documents/info':
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+    get:
+      summary: Get Issued Document Pre-create info
+      tags:
+        - Issued Documents
+      responses:
+        '200':
+          $ref: '#/components/responses/GetIssuedDocumentPreCreateInfoResponse'
+      operationId: getIssuedDocumentPreCreateInfo
+      description: "\U0001F465 Company context\n\nGet the info needed for the document creation flow."
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      parameters:
+        - $ref: '#/components/parameters/issued_document_type'
   '/c/{company_id}/issued_documents/{document_id}/attachment':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -778,23 +793,6 @@ paths:
         - $ref: '#/components/parameters/Authorization'
       tags:
         - Issued Documents
-  '/c/{company_id}/issued_documents/info':
-    parameters:
-      - $ref: '#/components/parameters/company_id'
-    get:
-      summary: Get Issued Document Pre-create info
-      tags:
-        - Issued Documents
-      responses:
-        '200':
-          $ref: '#/components/responses/GetIssuedDocumentPreCreateInfoResponse'
-      operationId: getIssuedDocumentPreCreateInfo
-      description: "\U0001F465 Company context\n\nGet the info needed for the document creation flow."
-      security:
-        - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/issued_document_type'
   '/c/{company_id}/issued_documents/{document_id}/email':
     parameters:
       - $ref: '#/components/parameters/company_id'
