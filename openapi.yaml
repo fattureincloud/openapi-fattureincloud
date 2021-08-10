@@ -569,7 +569,6 @@ paths:
             - 'issued_documents.proforma:r'
             - 'issued_documents.delivery_note:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/issued_document_type'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -789,8 +788,7 @@ paths:
       description: "\U0001F465 Company context\n\nRemove the attachment (but not the document)"
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       tags:
         - Issued Documents
   '/c/{company_id}/issued_documents/{document_id}/email':
@@ -815,8 +813,7 @@ paths:
             - 'issued_documents.quote:r'
             - 'issued_documents.proforma:r'
             - 'issued_documents.delivery_note:r'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
     post:
       summary: Schedule Email
       operationId: scheduleEmail
@@ -839,8 +836,7 @@ paths:
             - 'issued_documents.delivery_note:r'
       tags:
         - Issued Documents
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
