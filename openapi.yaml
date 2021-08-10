@@ -1598,12 +1598,12 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'taxes:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/Page'
         - $ref: '#/components/parameters/by_id'
+        - $ref: '#/components/parameters/PerPage'
     post:
       summary: Create F24
       operationId: createF24
