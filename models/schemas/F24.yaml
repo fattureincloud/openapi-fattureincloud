@@ -30,7 +30,6 @@ properties:
     type: string
     description: Name or brief description.
 required:
-  - id
   - due_date
   - amount
   - description
