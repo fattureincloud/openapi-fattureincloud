@@ -1716,7 +1716,9 @@ paths:
       summary: Upload F24 Attachment
       tags:
         - Taxes
-      responses: {}
+      responses:
+        '200':
+          $ref: '#/components/responses/UploadF24AttachmentResponse'
       operationId: uploadF24Attachment
       description: "\U0001F465 Company context\n\U0001F512 Required scope: taxes:a\n\nUpload an attachment an return its relative token."
       security:
