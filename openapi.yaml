@@ -1648,7 +1648,6 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'taxes:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
     put:
@@ -1667,8 +1666,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'taxes:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -1691,8 +1689,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'taxes:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/taxes/attachment':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -1706,8 +1703,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'taxes:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           multipart/form-data:
@@ -1761,12 +1757,12 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'archive:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/Page'
         - $ref: '#/components/parameters/by_id'
+        - $ref: '#/components/parameters/PerPage'
     post:
       summary: Create Archive Document
       operationId: createArchiveDocument
@@ -1783,8 +1779,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'archive:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
