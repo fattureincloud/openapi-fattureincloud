@@ -860,8 +860,7 @@ paths:
       description: "\U0001F465 Company context\n\nSend the e-invoice to SDI"
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -888,11 +887,10 @@ paths:
         '422':
           $ref: '#/components/responses/VerifyEInvoiceXmlErrorResponse'
       operationId: verifyEInvoiceXml
-      description: "\U0001F465 Company context\n\nVerify e-invoice xml format. Check if all mandatory fields are filled and if all fieldds are in right format."
+      description: "\U0001F465 Company context\n\nVerify e-invoice xml format. Check if all mandatory fields are filled and if all fields are in right format."
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/received_documents':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -912,13 +910,13 @@ paths:
             - 'received_documents:r'
             - 'stock:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/received_document_type'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/Page'
         - $ref: '#/components/parameters/by_id'
+        - $ref: '#/components/parameters/PerPage'
     post:
       summary: Create Received Document
       operationId: createReceivedDocument
