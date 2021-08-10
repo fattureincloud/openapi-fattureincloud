@@ -94,7 +94,7 @@ paths:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
-        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/by_id'
     post:
       summary: Create Client
@@ -190,7 +190,7 @@ paths:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
-        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/by_id'
       tags:
         - Suppliers
@@ -468,7 +468,7 @@ paths:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
-        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/by_id'
     post:
       summary: ''
@@ -577,9 +577,9 @@ paths:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
-        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/by_id'
-        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/per_page'
     post:
       summary: Create Issued Document
       operationId: createIssuedDocument
@@ -930,7 +930,7 @@ paths:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
-        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/by_id'
     post:
       summary: Create Received Document
@@ -1423,8 +1423,8 @@ paths:
         - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
-        - $ref: '#/components/parameters/Page'
-        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/per_page'
         - $ref: '#/components/parameters/sort'
     post:
       summary: Create Receipt
@@ -1617,7 +1617,7 @@ paths:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
-        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/by_id'
     post:
       summary: Create F24
@@ -1781,7 +1781,7 @@ paths:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
-        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/by_id'
     post:
       summary: Create Archive Document
@@ -2493,7 +2493,7 @@ components:
       schema:
         type: string
       description: List of comma-separated fields.
-    Page:
+    page:
       name: page
       in: query
       required: false
@@ -2542,7 +2542,7 @@ components:
           - proforma
           - delivery_note
       description: Issued Document Type
-    PerPage:
+    per_page:
       name: per_page
       in: query
       required: false
