@@ -4115,9 +4115,10 @@ components:
       content:
         application/json:
           schema:
+            type: object
             properties:
               id:
-                type: string
+                type: integer
     GetArchiveDocumentResponse:
       description: Example response
       content:
