@@ -1544,8 +1544,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'receipts:r'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/receipts/monthly_totals':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -1566,7 +1565,21 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'receipts:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
+        - in: query
+          name: type
+          schema:
+            type: string
+            enum:
+              - sales_receipt
+              - till_receipt
+          description: Receipt Type
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: year
+          required: true
+          description: Year for which you want monthly totals
   '/c/{company_id}/taxes':
     parameters:
       - $ref: '#/components/parameters/company_id'
