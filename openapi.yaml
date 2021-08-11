@@ -4349,11 +4349,5 @@ components:
         application/json:
           schema:
             $ref: ./models/responses/ListArchiveCategoriesResponse.yaml
-    GetReceivedDocumentInfoResponse:
-      description: Received Document Info
-      content:
-        application/json:
-          schema:
-            $ref: ./models/responses/GetReceivedDocumentInfoResponse.yaml
 security:
   - OAuth2AuthenticationCodeFlow: []
