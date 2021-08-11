@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.3
 info:
   title: Fatture in Cloud API v2 - API Reference
   description: "## Request informations\nIn every request description you will be able to find some additional informations about context, permissions and supported functionality:\n\n| Parameter | Description |\n|-----------|-------------|\n| \U0001F465 Context | Indicate the subject of the request. Can be `company`, `user` or `accountant`.  |\n| \U0001F512 Required scope | If present, indicates the required scope to fulfill the request. |\n| \U0001F50D Filtering | If present, indicates which fields support the filtering feature. |\n| ↕️ Sorting | If present, indicates which fields support the sorting feature. |\n| \U0001F4C4 Paginated results | If present, indicate that the results are paginated. |\n| \U0001F3A9 Customized responses supported | If present, indicate that you can use `field` or `fieldset` to customize the response body. |\n\nFor example the request `GET /entities/{entityRole}` have tis informations: \\\n\U0001F465 Company context \\\n\U0001F512 Required scope: `entity.clients:r` or `entity.suppliers:r` (depending on `entityRole`) \\\n\U0001F50D Filtering: `id`, `name` \\\n↕️ Sorting: `id`, `name` \\\n\U0001F4C4 Paginated results \\\n\U0001F3A9 Customized responses supported\n\nKeep in mind that if you are making **company realted requests**, you will need to specify the company id in the requests:\n```\nGET /c/{company_id}/issued_documents\n```"
@@ -95,7 +95,6 @@ paths:
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/by_id'
         - $ref: '#/components/parameters/per_page'
     post:
       summary: Create Client
@@ -191,7 +190,6 @@ paths:
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/by_id'
         - $ref: '#/components/parameters/per_page'
       tags:
         - Suppliers
@@ -465,7 +463,6 @@ paths:
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/by_id'
         - $ref: '#/components/parameters/per_page'
     post:
       summary: ''
@@ -574,7 +571,6 @@ paths:
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/by_id'
         - $ref: '#/components/parameters/per_page'
     post:
       summary: Create Issued Document
@@ -915,7 +911,6 @@ paths:
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/by_id'
         - $ref: '#/components/parameters/per_page'
     post:
       summary: Create Received Document
@@ -1401,7 +1396,6 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
         - $ref: '#/components/parameters/sort'
-        - $ref: '#/components/parameters/by_id'
     post:
       summary: Create Receipt
       operationId: createReceipt
@@ -1602,7 +1596,6 @@ paths:
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/by_id'
         - $ref: '#/components/parameters/per_page'
     post:
       summary: Create F24
@@ -1763,7 +1756,6 @@ paths:
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/by_id'
         - $ref: '#/components/parameters/per_page'
     post:
       summary: Create Archive Document
@@ -2229,7 +2221,6 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'settings:r'
       parameters:
-        - $ref: '#/components/parameters/by_id'
         - $ref: '#/components/parameters/fieldset'
       description: "\U0001F465 Company context \U0001F512 Required scope: settings:r\n\U0001F3A9 Customized responses supported\n\nGet the list of the available vat types."
   '/c/{company_id}/info/payment_methods':
@@ -2253,7 +2244,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
-        - $ref: '#/components/parameters/by_id'
         - $ref: '#/components/parameters/sort'
   '/c/{company_id}/info/payment_accounts':
     parameters:
@@ -2276,7 +2266,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
-        - $ref: '#/components/parameters/by_id'
         - $ref: '#/components/parameters/sort'
   '/c/{company_id}/info/revenue_centers':
     parameters:
@@ -2475,14 +2464,6 @@ components:
         type: integer
         default: 1
       description: Requested page
-    by_id:
-      name: by_id
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 0
-      description: 'If 1, return an object instead of an array'
     client_id:
       name: client_id
       in: path
