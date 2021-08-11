@@ -1954,8 +1954,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'cashbook:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -2091,8 +2090,7 @@ paths:
       description: Get the list of the countries supported by entities and documents.
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   /info/cities:
     get:
       summary: List Cities
@@ -2106,7 +2104,6 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - schema:
             type: string
           in: query
@@ -2131,8 +2128,7 @@ paths:
       description: Get the list of the supported languages.
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   /info/templates:
     get:
       summary: List Templates
@@ -2150,7 +2146,6 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - schema:
             type: string
             enum:
@@ -2182,8 +2177,7 @@ paths:
       description: Get the currencies list.
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   /info/measures:
     get:
       summary: List Units of Measure
@@ -2198,8 +2192,7 @@ paths:
       description: Get a list of the units of measure.
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   /info/dn_causals:
     get:
       summary: List Delivery Notes Default Causals
@@ -2214,8 +2207,7 @@ paths:
       description: Get the delivery note default causals.
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/info/vat_types':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -2235,7 +2227,8 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'settings:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/by_id'
+        - $ref: '#/components/parameters/fieldset'
       description: "\U0001F465 Company context \U0001F512 Required scope: settings:r\n\U0001F3A9 Customized responses supported\n\nGet the list of the available vat types."
   '/c/{company_id}/info/payment_methods':
     parameters:
@@ -2256,7 +2249,10 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
-        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
+        - $ref: '#/components/parameters/by_id'
+        - $ref: '#/components/parameters/sort'
   '/c/{company_id}/info/payment_accounts':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -2276,7 +2272,10 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
-        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
+        - $ref: '#/components/parameters/by_id'
+        - $ref: '#/components/parameters/sort'
   '/c/{company_id}/info/revenue_centers':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -2295,8 +2294,7 @@ paths:
       description: "\U0001F465 Company context\n\nGet a list of the revenue centers"
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/info/cost_centers':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -2315,8 +2313,7 @@ paths:
       description: "\U0001F465 Company context\n\nGet a list of the cost centers"
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/info/product_categories':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -2336,7 +2333,6 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - schema:
             type: string
             enum:
@@ -2360,8 +2356,7 @@ paths:
       description: "\U0001F465 Company context\n\nGet the received document categories list"
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/info/archive_categories':
     parameters:
       - schema:
@@ -2384,8 +2379,7 @@ paths:
       description: "\U0001F465 Company context\n\nGet the archive categories list"
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
 components:
   schemas: {}
   securitySchemes:
@@ -2453,6 +2447,9 @@ components:
       required: false
       schema:
         type: string
+        enum:
+          - basic
+          - detailed
       description: Name of the fieldset
     sort:
       name: sort
