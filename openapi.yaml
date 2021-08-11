@@ -96,7 +96,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/by_id'
-        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/per_page'
     post:
       summary: Create Client
       operationId: createClient
@@ -192,7 +192,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/by_id'
-        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/per_page'
       tags:
         - Suppliers
     post:
@@ -466,7 +466,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/by_id'
-        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/per_page'
     post:
       summary: ''
       operationId: createProduct
@@ -916,7 +916,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/by_id'
-        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/per_page'
     post:
       summary: Create Received Document
       operationId: createReceivedDocument
@@ -1603,7 +1603,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/by_id'
-        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/per_page'
     post:
       summary: Create F24
       operationId: createF24
@@ -1764,7 +1764,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/by_id'
-        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/per_page'
     post:
       summary: Create Archive Document
       operationId: createArchiveDocument
