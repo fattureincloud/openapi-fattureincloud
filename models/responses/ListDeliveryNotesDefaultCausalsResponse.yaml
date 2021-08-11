@@ -7,16 +7,3 @@ properties:
       type: string
 required:
   - data
-examples:
-  - data:
-      - Vendita
-      - Conto visione
-      - Conto deposito
-      - Conto vendita
-      - Tentata vendita
-      - Prestito d'uso
-      - Conto lavorazione
-      - Omaggio
-      - Riparazione
-      - Reso per accredito
-      - Reso per sostituzione

@@ -1,11 +1,4 @@
 type: object
-examples:
-  - id: 0
-    name: Conto Banca di Paperopoli
-    type: standard
-    iban: string
-    sia: string
-    cuc: string
 properties:
   id:
     type: integer

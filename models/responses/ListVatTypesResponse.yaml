@@ -5,14 +5,4 @@ properties:
     type: array
     items:
       $ref: ../schemas/VatType.yaml
-examples:
-  - data:
-      - id: 0
-        value: 22
-        description: Non imponibile art. 123
-        notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
-        e_invoice: string
-        ei_type: 2
-        ei_description: string
-        editable: true
 description: Vat Types List
