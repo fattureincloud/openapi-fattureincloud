@@ -1,4 +1,18 @@
 type: object
+examples:
+  - id: 0
+    name: string
+    type: standard
+    default_payment_account:
+      id: 0
+      name: Conto Banca di Paperopoli
+      type: standard
+      iban: string
+      sia: string
+      cuc: string
+    details:
+      - title: string
+        description: string
 properties:
   id:
     type: integer
@@ -13,6 +27,8 @@ properties:
     enum:
       - standard
       - riba
+  is_default:
+    type: boolean
   default_payment_account:
     $ref: ./PaymentAccount.yaml
   details:
@@ -28,17 +44,3 @@ properties:
           type: string
 required:
   - name
-examples:
-  - id: 0
-    name: string
-    type: standard
-    default_payment_account:
-      id: 0
-      name: Conto Banca di Paperopoli
-      type: standard
-      iban: string
-      sia: string
-      cuc: string
-    details:
-      - title: string
-        description: string

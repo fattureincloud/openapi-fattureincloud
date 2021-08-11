@@ -16,3 +16,5 @@ properties:
     type: string
     description: Template name.
     example: Light Smoke
+  type:
+    type: string
