@@ -63,3 +63,26 @@ properties:
     $ref: ./PermissionLevel.yaml
   dic_timesheet:
     $ref: ./PermissionLevel.yaml
+  fic_issued_documents_detailed:
+    type: object
+    properties:
+      quotes:
+        $ref: ./PermissionLevel.yaml
+      proformas:
+        $ref: ./PermissionLevel.yaml
+      invoices:
+        $ref: ./PermissionLevel.yaml
+      receipts:
+        $ref: ./PermissionLevel.yaml
+      delivery_notes:
+        $ref: ./PermissionLevel.yaml
+      credit_notes:
+        $ref: ./PermissionLevel.yaml
+      orders:
+        $ref: ./PermissionLevel.yaml
+      work_reports:
+        $ref: ./PermissionLevel.yaml
+      supplier_orders:
+        $ref: ./PermissionLevel.yaml
+      self_invoices:
+        $ref: ./PermissionLevel.yaml

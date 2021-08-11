@@ -1,6 +1,9 @@
 title: Receipt
 type: object
+description: Receipt
 properties:
+  id:
+    type: number
   date:
     type: string
   number:
@@ -8,6 +11,12 @@ properties:
   numeration:
     type: string
     description: If it's null or empty string use the default numeration.
+  amount_net:
+    type: number
+  amount_vat:
+    type: number
+  amount_gross:
+    type: number
   use_gross_prices:
     type: boolean
     default: false
@@ -20,6 +29,10 @@ properties:
     type: string
   rc_center:
     type: string
+  created_at:
+    type: string
+  updated_at:
+    type: string
   payment_account:
     type: object
     required:
@@ -27,11 +40,15 @@ properties:
     properties:
       id:
         type: number
+      name:
+        type: string
   items_list:
     type: array
     items:
       type: object
       properties:
+        id:
+          type: number
         amount_net:
           type: number
         amount_gross:
@@ -43,8 +60,11 @@ properties:
           properties:
             id:
               type: number
+            value:
+              type: number
+            description:
+              type: string
 required:
   - date
   - type
   - payment_account
-description: Receipt
