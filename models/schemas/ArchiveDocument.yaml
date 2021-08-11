@@ -21,3 +21,4 @@ required:
   - description
   - attachment_url
   - category
+  - attachment_token
