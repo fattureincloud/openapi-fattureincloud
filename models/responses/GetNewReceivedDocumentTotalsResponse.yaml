@@ -3,13 +3,4 @@ type: object
 properties:
   data:
     $ref: ../schemas/ReceivedDocumentTotals.yaml
-examples:
-  - data:
-      amount_net: 542
-      amount_vat: 24.5
-      amount_gross: 531.5
-      amount_withholding_tax: 31
-      amount_other_withholding_tax: 4
-      amount_due: 531.5
-      payments_sum: 535.5
 description: Document Totals.

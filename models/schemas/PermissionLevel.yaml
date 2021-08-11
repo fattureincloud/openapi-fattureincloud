@@ -1,10 +1,7 @@
 type: string
-example: write
 enum:
   - none
   - read
   - write
   - detailed
-examples:
-  - write
 description: Level of the permission

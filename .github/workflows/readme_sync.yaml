@@ -12,6 +12,12 @@ jobs:
       - uses: actions/checkout@v2
       - name: Setup Python
         uses: actions/setup-python@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+      - name: Validate schema
+        run: |
+          npm install -g @apidevtools/swagger-cli
+          swagger-cli validate openapi.yaml
       - name: Run Script
         run: |
           python -m pip install --upgrade pip
@@ -20,9 +26,9 @@ jobs:
       - name: Test step
         run: |
           echo "${{ env.oas_key }}"
-      - uses: readmeio/github-readme-sync@v2
-        with:
-          readme-oas-key: "${{ env.oas_key }}"
-          oas-file-path: './openapi.yaml'
+      # - uses: readmeio/github-readme-sync@v2
+      #   with:
+      #     readme-oas-key: "${{ env.oas_key }}"
+      #     oas-file-path: './openapi.yaml'
           # OPTIONAL CONFIG, use if necessary
           # api-version: 'v1.0.0'

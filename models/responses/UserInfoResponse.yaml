@@ -1,17 +1,4 @@
 description: The UserInfo response.
-examples:
-  - data:
-      id: 12345
-      name: string
-      first_name: string
-      last_name: string
-      email: string
-      hash: string
-      picture: string
-    info:
-      need_marketing_consents_confirmation: true
-      need_password_change: true
-      need_terms_of_service_confirmation: true
 type: object
 properties:
   data:

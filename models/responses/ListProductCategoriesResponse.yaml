@@ -6,4 +6,3 @@ properties:
     items:
       type: string
 description: Product Categories List.
-examples: []
