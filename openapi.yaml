@@ -1396,12 +1396,12 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'receipts:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/Page'
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/by_id'
     post:
       summary: Create Receipt
       operationId: createReceipt
@@ -1414,8 +1414,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'receipts:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -1464,7 +1463,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
-        - $ref: '#/components/parameters/Authorization'
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'receipts:r'
@@ -1484,8 +1482,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'receipts:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -1525,8 +1522,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'receipts:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       tags:
         - Receipts
   '/c/{company_id}/receipts/info':
@@ -1548,8 +1544,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'receipts:r'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/receipts/monthly_totals':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -1570,7 +1565,21 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'receipts:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
+        - in: query
+          name: type
+          schema:
+            type: string
+            enum:
+              - sales_receipt
+              - till_receipt
+          description: Receipt Type
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: year
+          required: true
+          description: Year for which you want monthly totals
   '/c/{company_id}/taxes':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -1589,12 +1598,12 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'taxes:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/Page'
         - $ref: '#/components/parameters/by_id'
+        - $ref: '#/components/parameters/PerPage'
     post:
       summary: Create F24
       operationId: createF24
@@ -1611,8 +1620,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'taxes:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -1640,7 +1648,6 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'taxes:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
     put:
@@ -1659,8 +1666,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'taxes:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -1683,8 +1689,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'taxes:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/taxes/attachment':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -1698,8 +1703,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'taxes:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           multipart/form-data:
@@ -1753,12 +1757,12 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'archive:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/Page'
         - $ref: '#/components/parameters/by_id'
+        - $ref: '#/components/parameters/PerPage'
     post:
       summary: Create Archive Document
       operationId: createArchiveDocument
@@ -1775,8 +1779,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'archive:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -1804,7 +1807,6 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'archive:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
     put:
@@ -1823,8 +1825,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'archive:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -1857,8 +1858,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'archive:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/archive/attachment':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -1884,8 +1884,7 @@ paths:
             schema:
               $ref: ./models/requests/UploadArchiveDocumentAttachmentRequest.yaml
         description: Attachment.
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/cashbook':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -1906,7 +1905,6 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'cashbook:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - schema:
             type: string
             format: date
@@ -1925,6 +1923,7 @@ paths:
             type: integer
           in: query
           name: year
+          description: Filter cashbook by year.
         - schema:
             type: string
             enum:
@@ -1955,8 +1954,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'cashbook:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -2088,12 +2086,11 @@ paths:
           $ref: '#/components/responses/ListCountriesResponse'
         '401':
           description: Unauthorized
-      operationId: List Countries
+      operationId: listCountries
       description: Get the list of the countries supported by entities and documents.
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   /info/cities:
     get:
       summary: List Cities
@@ -2107,7 +2104,6 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - schema:
             type: string
           in: query
@@ -2132,8 +2128,7 @@ paths:
       description: Get the list of the supported languages.
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   /info/templates:
     get:
       summary: List Templates
@@ -2151,7 +2146,6 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - schema:
             type: string
             enum:
@@ -2183,8 +2177,7 @@ paths:
       description: Get the currencies list.
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   /info/measures:
     get:
       summary: List Units of Measure
@@ -2199,8 +2192,7 @@ paths:
       description: Get a list of the units of measure.
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   /info/dn_causals:
     get:
       summary: List Delivery Notes Default Causals
@@ -2215,8 +2207,7 @@ paths:
       description: Get the delivery note default causals.
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/info/vat_types':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -2236,7 +2227,8 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'settings:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/by_id'
+        - $ref: '#/components/parameters/fieldset'
       description: "\U0001F465 Company context \U0001F512 Required scope: settings:r\n\U0001F3A9 Customized responses supported\n\nGet the list of the available vat types."
   '/c/{company_id}/info/payment_methods':
     parameters:
@@ -2257,7 +2249,10 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
-        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
+        - $ref: '#/components/parameters/by_id'
+        - $ref: '#/components/parameters/sort'
   '/c/{company_id}/info/payment_accounts':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -2277,7 +2272,10 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
-        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
+        - $ref: '#/components/parameters/by_id'
+        - $ref: '#/components/parameters/sort'
   '/c/{company_id}/info/revenue_centers':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -2296,8 +2294,7 @@ paths:
       description: "\U0001F465 Company context\n\nGet a list of the revenue centers"
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/info/cost_centers':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -2316,8 +2313,7 @@ paths:
       description: "\U0001F465 Company context\n\nGet a list of the cost centers"
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/info/product_categories':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -2337,7 +2333,6 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - schema:
             type: string
             enum:
@@ -2361,8 +2356,7 @@ paths:
       description: "\U0001F465 Company context\n\nGet the received document categories list"
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
   '/c/{company_id}/info/archive_categories':
     parameters:
       - schema:
@@ -2385,8 +2379,7 @@ paths:
       description: "\U0001F465 Company context\n\nGet the archive categories list"
       security:
         - OAuth2AuthenticationCodeFlow: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
 components:
   schemas: {}
   securitySchemes:
@@ -2454,6 +2447,9 @@ components:
       required: false
       schema:
         type: string
+        enum:
+          - basic
+          - detailed
       description: Name of the fieldset
     sort:
       name: sort
@@ -4112,17 +4108,19 @@ components:
       content:
         application/json:
           schema:
+            type: object
             properties:
               id:
-                type: string
+                type: integer
     GetArchiveDocumentResponse:
-      description: Example response
+      description: Archive Document Details
       content:
         application/json:
           schema:
-            properties:
-              id:
-                type: string
+            type: object
+        application/xml:
+          schema:
+            $ref: ./models/responses/GetArchiveDocumentResponse.yaml
     ModifyArchiveDocumentResponse:
       description: The modified Archived Document
       content:
@@ -4349,5 +4347,11 @@ components:
         application/json:
           schema:
             $ref: ./models/responses/ListArchiveCategoriesResponse.yaml
+    GetReceivedDocumentInfoResponse:
+      description: Received Document Info
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetReceivedDocumentInfoResponse.yaml
 security:
   - OAuth2AuthenticationCodeFlow: []

@@ -1,0 +1,23 @@
+title: ReceivedDocumentInfo
+type: object
+properties:
+  default_values:
+    type: object
+    properties:
+      detailed:
+        type: boolean
+  items_default_values:
+    type: object
+    properties:
+      vat:
+        type: integer
+  countries_list:
+    $ref: ../responses/ListCountriesResponse.yaml
+  currencies_list:
+    $ref: ../responses/ListCurrenciesResponse.yaml
+  categoies_list:
+    $ref: ../responses/ListProductCategoriesResponse.yaml
+  payment_account_list:
+    $ref: ../responses/ListPaymentAccountsResponse.yaml
+  vat_type_list:
+    $ref: ../responses/ListVatTypesResponse.yaml

@@ -110,5 +110,7 @@ properties:
   attachment_preview_url:
     type: string
     description: '[Read-only]'
+  attachment_token:
+    type: string
 required:
   - entity

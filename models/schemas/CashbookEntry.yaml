@@ -1,46 +1,5 @@
 title: CashbookEntry
 type: object
-properties:
-  id:
-    type: string
-    description: id of the entry
-  date:
-    type: string
-    format: date
-  amount_in:
-    type: number
-    description: Incoming amount
-  account_in:
-    $ref: ./PaymentAccount.yaml
-  amount_out:
-    type: number
-    description: Outgoing amount
-  account_out:
-    $ref: ./PaymentAccount.yaml
-  description:
-    type: string
-  kind:
-    type: string
-    enum:
-      - cashbook
-      - invoice
-      - expense
-      - tax
-      - receipt
-  type:
-    type: string
-    enum:
-      - in
-      - out
-required:
-  - id
-  - date
-  - amount_in
-  - account_in
-  - amount_out
-  - account_out
-  - description
-  - kind
 examples:
   - id: string
     date: '2019-08-24'
@@ -63,3 +22,55 @@ examples:
     description: string
     kind: cashbook
     type: in
+properties:
+  id:
+    type: string
+    description: id of the entry
+  date:
+    type: string
+    format: date
+  description:
+    type: string
+  kind:
+    type: string
+    enum:
+      - cashbook
+      - invoice
+      - expense
+      - tax
+      - receipt
+  type:
+    type: string
+    enum:
+      - in
+      - out
+  in_out:
+    oneOf:
+      - properties:
+          amount_in:
+            type: number
+          payment_account_in:
+            $ref: ./PaymentAccount.yaml
+      - properties:
+          amount_out:
+            type: number
+          payment_account_out:
+            $ref: ./PaymentAccount.yaml
+    type: object
+  document:
+    type: object
+    properties:
+      id:
+        type:
+          - string
+          - integer
+      type:
+        type: string
+      path:
+        type: string
+required:
+  - id
+  - date
+  - description
+  - kind
+  - in_out
