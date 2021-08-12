@@ -1,0 +1,5 @@
+type: string
+title: ReceiptType
+enum:
+  - till_receipt
+  - sales_receipt

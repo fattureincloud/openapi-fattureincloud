@@ -21,10 +21,7 @@ properties:
     type: boolean
     default: false
   type:
-    type: string
-    enum:
-      - till_receipt
-      - sales_receipt
+    $ref: ./ReceiptType.yaml
   description:
     type: string
   rc_center:
