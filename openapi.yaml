@@ -82,7 +82,7 @@ paths:
         - Clients
       responses:
         '200':
-          $ref: '#/components/responses/ListCompaniesResponse'
+          $ref: '#/components/responses/ListClientsResponse'
         '401':
           description: Unauthorized
       operationId: listClients
@@ -1962,31 +1962,6 @@ paths:
           application/json:
             schema:
               $ref: ./models/requests/CreateCashbookEntryRequest.yaml
-            examples:
-              example-1:
-                value:
-                  data:
-                    id: string
-                    date: '2019-08-24'
-                    amount_in: 0
-                    account_in:
-                      id: 0
-                      name: Conto Banca di Paperopoli
-                      type: standard
-                      iban: string
-                      sia: string
-                      cuc: string
-                    amount_out: 0
-                    account_out:
-                      id: 0
-                      name: Conto Banca di Paperopoli
-                      type: standard
-                      iban: string
-                      sia: string
-                      cuc: string
-                    description: string
-                    kind: cashbook
-                    type: in
         description: |
           Cashbook entry.
   '/c/{company_id}/cashbook/{document_id}':
@@ -2691,7 +2666,7 @@ components:
                   shipping_address: string
                   e_invoice: false
                   ei_code: string
-    ListCompaniesResponse:
+    ListClientsResponse:
       description: Example response
       content:
         application/json:
