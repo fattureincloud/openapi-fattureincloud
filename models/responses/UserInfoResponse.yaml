@@ -12,3 +12,8 @@ properties:
         type: boolean
       need_terms_of_service_confirmation:
         type: boolean
+  email_confirmation_state:
+    type: object
+    properties:
+      need_confirmation:
+        type: boolean
