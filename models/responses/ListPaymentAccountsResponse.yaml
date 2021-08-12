@@ -5,12 +5,4 @@ properties:
     type: array
     items:
       $ref: ../schemas/PaymentAccount.yaml
-examples:
-  - data:
-      - id: 0
-        name: Conto Banca di Paperopoli
-        type: standard
-        iban: string
-        sia: string
-        cuc: string
 description: Payment accounts list.

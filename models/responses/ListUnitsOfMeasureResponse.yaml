@@ -6,4 +6,3 @@ properties:
     items:
       type: string
 description: Units of measure.
-examples: []

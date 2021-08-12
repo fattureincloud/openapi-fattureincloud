@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.3
 info:
   title: Fatture in Cloud API v2 - API Reference
   description: "## Request informations\nIn every request description you will be able to find some additional informations about context, permissions and supported functionality:\n\n| Parameter | Description |\n|-----------|-------------|\n| \U0001F465 Context | Indicate the subject of the request. Can be `company`, `user` or `accountant`.  |\n| \U0001F512 Required scope | If present, indicates the required scope to fulfill the request. |\n| \U0001F50D Filtering | If present, indicates which fields support the filtering feature. |\n| ↕️ Sorting | If present, indicates which fields support the sorting feature. |\n| \U0001F4C4 Paginated results | If present, indicate that the results are paginated. |\n| \U0001F3A9 Customized responses supported | If present, indicate that you can use `field` or `fieldset` to customize the response body. |\n\nFor example the request `GET /entities/{entityRole}` have tis informations: \\\n\U0001F465 Company context \\\n\U0001F512 Required scope: `entity.clients:r` or `entity.suppliers:r` (depending on `entityRole`) \\\n\U0001F50D Filtering: `id`, `name` \\\n↕️ Sorting: `id`, `name` \\\n\U0001F4C4 Paginated results \\\n\U0001F3A9 Customized responses supported\n\nKeep in mind that if you are making **company realted requests**, you will need to specify the company id in the requests:\n```\nGET /c/{company_id}/issued_documents\n```"
@@ -82,7 +82,7 @@ paths:
         - Clients
       responses:
         '200':
-          $ref: '#/components/responses/ListCompaniesResponse'
+          $ref: '#/components/responses/ListClientsResponse'
         '401':
           description: Unauthorized
       operationId: listClients
@@ -95,7 +95,6 @@ paths:
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/by_id'
         - $ref: '#/components/parameters/per_page'
     post:
       summary: Create Client
@@ -191,7 +190,6 @@ paths:
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/by_id'
         - $ref: '#/components/parameters/per_page'
       tags:
         - Suppliers
@@ -465,7 +463,6 @@ paths:
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/by_id'
         - $ref: '#/components/parameters/per_page'
     post:
       summary: ''
@@ -574,7 +571,6 @@ paths:
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/by_id'
         - $ref: '#/components/parameters/per_page'
     post:
       summary: Create Issued Document
@@ -915,7 +911,6 @@ paths:
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/by_id'
         - $ref: '#/components/parameters/per_page'
     post:
       summary: Create Received Document
@@ -1401,7 +1396,6 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
         - $ref: '#/components/parameters/sort'
-        - $ref: '#/components/parameters/by_id'
     post:
       summary: Create Receipt
       operationId: createReceipt
@@ -1602,7 +1596,6 @@ paths:
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/by_id'
         - $ref: '#/components/parameters/per_page'
     post:
       summary: Create F24
@@ -1763,7 +1756,6 @@ paths:
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/by_id'
         - $ref: '#/components/parameters/per_page'
     post:
       summary: Create Archive Document
@@ -1962,31 +1954,6 @@ paths:
           application/json:
             schema:
               $ref: ./models/requests/CreateCashbookEntryRequest.yaml
-            examples:
-              example-1:
-                value:
-                  data:
-                    id: string
-                    date: '2019-08-24'
-                    amount_in: 0
-                    account_in:
-                      id: 0
-                      name: Conto Banca di Paperopoli
-                      type: standard
-                      iban: string
-                      sia: string
-                      cuc: string
-                    amount_out: 0
-                    account_out:
-                      id: 0
-                      name: Conto Banca di Paperopoli
-                      type: standard
-                      iban: string
-                      sia: string
-                      cuc: string
-                    description: string
-                    kind: cashbook
-                    type: in
         description: |
           Cashbook entry.
   '/c/{company_id}/cashbook/{document_id}':
@@ -2036,31 +2003,6 @@ paths:
           application/json:
             schema:
               $ref: ./models/requests/ModifyCashbookEntryRequest.yaml
-            examples:
-              example-1:
-                value:
-                  data:
-                    id: string
-                    date: '2019-08-24'
-                    amount_in: 0
-                    account_in:
-                      id: 0
-                      name: Conto Banca di Paperopoli
-                      type: standard
-                      iban: string
-                      sia: string
-                      cuc: string
-                    amount_out: 0
-                    account_out:
-                      id: 0
-                      name: Conto Banca di Paperopoli
-                      type: standard
-                      iban: string
-                      sia: string
-                      cuc: string
-                    description: string
-                    kind: cashbook
-                    type: in
         description: Cashbook Entry
     delete:
       summary: Delete Cashbook Entry
@@ -2229,7 +2171,6 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'settings:r'
       parameters:
-        - $ref: '#/components/parameters/by_id'
         - $ref: '#/components/parameters/fieldset'
       description: "\U0001F465 Company context \U0001F512 Required scope: settings:r\n\U0001F3A9 Customized responses supported\n\nGet the list of the available vat types."
   '/c/{company_id}/info/payment_methods':
@@ -2253,7 +2194,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
-        - $ref: '#/components/parameters/by_id'
         - $ref: '#/components/parameters/sort'
   '/c/{company_id}/info/payment_accounts':
     parameters:
@@ -2276,7 +2216,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
-        - $ref: '#/components/parameters/by_id'
         - $ref: '#/components/parameters/sort'
   '/c/{company_id}/info/revenue_centers':
     parameters:
@@ -2390,7 +2329,7 @@ components:
       flows:
         authorizationCode:
           tokenUrl: 'https://api-v2.fattureincloud.it/oauth/token'
-          refreshUrl: ''
+          refreshUrl: 'https://api-v2.fattureincloud.it/oauth/token'
           scopes:
             'entity.clients:r': ''
             'entity.clients:a': ''
@@ -2475,14 +2414,6 @@ components:
         type: integer
         default: 1
       description: Requested page
-    by_id:
-      name: by_id
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 0
-      description: 'If 1, return an object instead of an array'
     client_id:
       name: client_id
       in: path
@@ -2716,78 +2647,12 @@ components:
                   shipping_address: string
                   e_invoice: false
                   ei_code: string
-    ListCompaniesResponse:
+    ListClientsResponse:
       description: Example response
       content:
         application/json:
           schema:
             $ref: ./models/responses/ListClientsResponse.yaml
-          examples:
-            example-1:
-              value:
-                current_page: 1
-                first_page_url: 'http://api-v2.fattureincloud.it/c/11111/path?fieldset=basic&page=1'
-                from: 1
-                last_page: 1
-                last_page_url: 'http://api-v2.fattureincloud.it/c/11111/path?fieldset=basic&page=1'
-                next_page_url: null
-                path: 'http://api-v2.fattureincloud.it/c/11111/path'
-                per_page: 50
-                prev_page_url: null
-                to: 1
-                total: 1
-                data:
-                  - id: 0
-                    code: '123'
-                    name: Rossi S.r.l.
-                    type: null
-                    first_name: string
-                    last_name: string
-                    contact_person: string
-                    vat_number: IT01234567890
-                    tax_code: RSSMRA44A12E890Q
-                    address_street: 'Via dei tigli, 12'
-                    address_postal_code: '24010'
-                    address_city: Bergamo
-                    address_province: BG
-                    address_extra: string
-                    country: Italia
-                    email: mario.rossi@example.it
-                    certified_email: mario.rossi@pec.example.it
-                    phone: string
-                    fax: string
-                    notes: string
-                    default_vat:
-                      id: 0
-                      value: 22
-                      description: Non imponibile art. 123
-                      notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
-                      e_invoice: string
-                      ei_type: 2
-                      ei_description: string
-                      editable: true
-                    default_payment_terms: 30
-                    default_payment_terms_type: standard
-                    default_payment_method:
-                      id: 0
-                      name: string
-                      type: standard
-                      default_payment_account:
-                        id: 0
-                        name: Conto Banca di Paperopoli
-                        type: standard
-                        iban: string
-                        sia: string
-                        cuc: string
-                      details:
-                        - title: string
-                          description: string
-                    bank_name: string
-                    bank_iban: string
-                    bank_swift_code: string
-                    shipping_address: string
-                    e_invoice: false
-                    ei_code: string
     ListSuppliersResponse:
       description: Example response
       content:

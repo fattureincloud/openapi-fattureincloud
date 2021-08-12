@@ -6,9 +6,3 @@ properties:
     type: array
     items:
       $ref: ../schemas/Language.yaml
-examples:
-  - data:
-      - code: it
-        name: Italiano
-      - code: en
-        name: Inglese

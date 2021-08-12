@@ -1,5 +1,4 @@
 type: object
-examples: []
 description: User infos.
 properties:
   id:

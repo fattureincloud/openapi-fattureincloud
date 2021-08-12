@@ -6,14 +6,3 @@ properties:
     type: array
     items:
       $ref: ../schemas/Currency.yaml
-examples:
-  - data:
-      - id: EUR
-        symbol: €
-        exchange_rate: 1
-      - id: DKK
-        symbol: kr.
-        exchange_rate: 7.4606
-      - id: USD
-        symbol: $
-        exchange_rate: 1.067

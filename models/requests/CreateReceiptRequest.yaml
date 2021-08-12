@@ -1,24 +1,6 @@
 title: CreateReceiptRequest
 type: object
 description: Receipt.
-examples:
-  - data:
-      date: string
-      number: 0
-      numeration: string
-      use_gross_prices: false
-      type: till_receipt
-      description: string
-      rc_center: string
-      payment_account:
-        id: 0
-      items_list:
-        - amount_net: 0
-          amount_gross: 0
-          category: string
-          vat:
-            id: 0
-    autocomplete_number: true
 properties:
   data:
     $ref: ../schemas/Receipt.yaml
