@@ -1,28 +1,4 @@
 type: object
-examples:
-  - series: {}
-    series_list:
-      - string
-    rc_centers_list:
-      - string
-    payment_accounts_list:
-      - id: 0
-        name: Conto Banca Intesa
-        type: standard
-        iban: string
-        sia: string
-        cuc: string
-    categories_list:
-      - string
-    vat_types_list:
-      - id: 0
-        value: 22
-        description: Non imponibile art. 123
-        notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
-        e_invoice: string
-        ei_type: 2
-        ei_description: string
-        editable: true
 description: Pre-create info.
 properties:
   numerations:

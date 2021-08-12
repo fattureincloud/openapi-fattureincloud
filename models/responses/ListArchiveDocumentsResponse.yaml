@@ -7,23 +7,4 @@ allOf:
         type: array
         items:
           $ref: ../schemas/ArchiveDocument.yaml
-examples:
-  - current_page: 1
-    first_page_url: 'http://api-v2.fattureincloud.it/c/11111/path?fieldset=basic&page=1'
-    from: 1
-    last_page: 1
-    last_page_url: 'http://api-v2.fattureincloud.it/c/11111/path?fieldset=basic&page=1'
-    next_page_url: null
-    path: 'http://api-v2.fattureincloud.it/c/11111/path'
-    per_page: 50
-    prev_page_url: null
-    to: 1
-    total: 1
-    data:
-      - id: string
-        date: '2019-08-24'
-        type: string
-        attachment_url: string
-        attachment_token: string
-        description: string
 description: Results list.

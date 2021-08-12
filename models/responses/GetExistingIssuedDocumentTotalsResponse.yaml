@@ -4,33 +4,4 @@ description: Total
 properties:
   data:
     $ref: ../schemas/IssuedDocumentTotals.yaml
-examples:
-  - data: |-
-      {
-          "amount_net": 30,
-          "amount_rivalsa": 1.5,
-          "amount_net_with_rivalsa": 31.5,
-          "amount_cassa": 1.58,
-          "taxable_amount": 33.08,
-          "not_taxable_amount": 0.00,
-          "vat_list": {
-            "10": {
-              "net": 10,
-              "vat": 1
-            },
-            "20": {
-              "net": 23.08,
-              "vat": 4.62
-            }
-          },
-          "amount_vat": 5.62,
-          "amount_gross": 36.41,
-          "taxable_amount_withholding_tax": 15.75,
-          "amount_withholding_tax": 0.79,
-          "taxable_amount_other_withholding_tax": 30,
-          "amount_other_withholding_tax": 1.5,
-          "amount_due": 36.41,
-          "is_enasarco_maximal_exceeded": false,
-          "payments_sum": 36.41
-        }
 
