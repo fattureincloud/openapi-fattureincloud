@@ -19,6 +19,5 @@ properties:
 required:
   - date
   - description
-  - attachment_url
   - category
   - attachment_token
