@@ -7356,6 +7356,18 @@ components:
         application/json:
           schema:
             $ref: ./models/responses/ListCountriesResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  - Italia
+                  - Afghanistan
+                  - Albania
+                  - Algeria
+                  - Andorra
+                  - Angola
+                  - Anguilla
+                  - ...
     ListCitiesResponse:
       description: Cities List.
       content:
@@ -7409,12 +7421,35 @@ components:
         application/json:
           schema:
             $ref: ./models/responses/ListCurrenciesResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  - id: AED
+                    symbol: AED
+                    html_symbol: AED
+                    exchange_rate: '4.09500'
+                  - id: EUR
+                    symbol: €
+                    html_symbol: '&euro;'
+                    exchange_rate: '1.00000'
     ListUnitsOfMeasureResponse:
       description: Units of measure.
       content:
         application/json:
           schema:
             $ref: ./models/responses/ListUnitsOfMeasureResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  - pezzi
+                  - kg
+                  - litri
+                  - ore
+                  - giorni
+                  - km
+                  - mesi
     ListDeliveryNotesDefaultCausalsResponse:
       description: List of Delivery Notes Default Causals
       content:
@@ -7454,48 +7489,123 @@ components:
                     ei_type: 2
                     ei_description: string
                     editable: true
+                  - id: 1010
+                    value: 0
+                    description: NON IMPONIBILE IVA EX ART. 8 COMMA 1 LETT.A
+                    notes: ''
+                    e_invoice: false
+                    ei_type: 0
+                    ei_description: null
+                    is_disabled: false
+                    editable: true
     ListPaymentMethodsResponse:
       description: Payment methods list.
       content:
         application/json:
           schema:
             $ref: ./models/responses/ListPaymentMethodsResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  - id: 12345
+                    name: Carta di credito
+                    is_default: false
+                    default_payment_account: null
+                  - id: 12346
+                    name: Bonifico bancario
+                    is_default: true
+                    default_payment_account: null
     ListPaymentAccountsResponse:
       description: Payment accounts list.
       content:
         application/json:
           schema:
             $ref: ./models/responses/ListPaymentAccountsResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  - id: 21
+                    name: Indesa - Carta conto
+                    type: standard
+                    iban: null
+                    sia: null
+                    virtual: false
+                  - id: 109
+                    name: Indesa
+                    type: bank
+                    iban: IT17A1234563200000003498936
+                    sia: IN234
+                    virtual: false
     ListRevenueCentersResponse:
       description: List of Revenue Centers
       content:
         application/json:
           schema:
             $ref: ./models/responses/ListRevenueCentersResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  - Negozio Bergamo
+                  - Negozio Milano
     ListCostCentersResponse:
       description: List of Cost Centers
       content:
         application/json:
           schema:
             $ref: ./models/responses/ListCostCentersResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  - Negozio Bergamo
+                  - Negozio Milano
     ListProductCategoriesResponse:
       description: Product Categories List
       content:
         application/json:
           schema:
             $ref: ./models/responses/ListProductCategoriesResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  - Alimentari
+                  - Arredamento
     ListReceivedDocumentCategoriesResponse:
       description: Received Document Categories List
       content:
         application/json:
           schema:
             $ref: ./models/responses/ListReceivedDocumentCategoriesResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  - Telefono e internet
+                  - Assicurazioni e quote
+                  - Auto ed altri veicoli
+                  - Computer e accessori
+                  - Server e hosting
     ListArchiveCategoriesResponse:
       description: Archive Categories list.
       content:
         application/json:
           schema:
             $ref: ./models/responses/ListArchiveCategoriesResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  - Altri documenti
+                  - Conferme d'ordine
+                  - Contratti
+                  - Dichiarazioni dei redditi
+                  - Documenti per detrazioni
+                  - Estratti conto bancari
+                  - Estratti conto carte di credito
     UploadArchiveAttachmentResponse:
       description: Example response
       content:
