@@ -116,126 +116,41 @@ paths:
               example-1:
                 value:
                   data:
-                    id: 0
-                    code: '123'
-                    name: Rossi S.r.l.
-                    type: null
-                    first_name: string
-                    last_name: string
-                    contact_person: string
-                    vat_number: IT01234567890
-                    tax_code: RSSMRA44A12E890Q
-                    address_street: 'Via dei tigli, 12'
-                    address_postal_code: '24010'
-                    address_city: Bergamo
-                    address_province: BG
-                    address_extra: string
+                    code: AE86
+                    name: Avv. Maria Rossi
+                    type: person
+                    first_name: Maria
+                    last_name: Rossi
+                    contact_person: ''
+                    vat_number: IT12345640962
+                    tax_code: BLTGNI5ABCDA794E
+                    address_street: 'Via Roma, 1'
+                    address_postal_code: '20900'
+                    address_city: Milano
+                    address_province: MI
+                    address_extra: ''
                     country: Italia
-                    email: mario.rossi@example.it
-                    certified_email: mario.rossi@pec.example.it
-                    phone: string
-                    fax: string
-                    notes: string
-                    default_vat:
-                      id: 0
-                      value: 22
-                      description: Non imponibile art. 123
-                      notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
-                      e_invoice: string
-                      ei_type: 2
-                      ei_description: string
-                      editable: true
-                    default_payment_terms: 30
+                    email: maria.rossi@example.com
+                    certified_email: maria.rossi@pec.example.com
+                    phone: '1234567890'
+                    fax: ''
+                    notes: ''
+                    default_payment_terms: 1
                     default_payment_terms_type: standard
-                    default_payment_method:
-                      id: 0
-                      name: string
-                      type: standard
-                      default_payment_account:
-                        id: 0
-                        name: Conto Banca di Paperopoli
-                        type: standard
-                        iban: string
-                        sia: string
-                        cuc: string
-                      details:
-                        - title: string
-                          description: string
-                    bank_name: string
-                    bank_iban: string
-                    bank_swift_code: string
-                    shipping_address: string
-                    e_invoice: false
-                    ei_code: string
+                    bank_name: Indesa
+                    bank_iban: IT40P123456781000000123456
+                    bank_swift_code: AK86PCT
+                    shipping_address: Corso Magellano 4
+                    e_invoice: true
+                    ei_code: '111111'
+                    default_vat:
+                      id: 54321
+                      value: 45
+                      description: ''
+                      is_disabled: false
         description: The client to create
       tags:
         - Clients
-  '/c/{company_id}/entities/suppliers':
-    parameters:
-      - $ref: '#/components/parameters/company_id'
-    get:
-      summary: List Suppliers
-      responses:
-        '200':
-          $ref: '#/components/responses/ListSuppliersResponse'
-        '401':
-          description: Unauthorized
-      operationId: listSuppliers
-      description: "\U0001F465 Company context\n\U0001F512 Required scope: entity.suppliers:r\n\U0001F50D Filtering: id, code, name, type, vat_number, tax_code, address_street, address_postal_code, address_city, address_province, country, email, certified_email, phone, fax, notes, imported, atoka_show, created_at, updated_at\n↕️ Sorting: code, name, type, vat_number, tax_code, address_street, address_postal_code, address_city, address_province, country, email, certified_email, phone, fax, notes, created_at, updated_at\n\U0001F4C4 Paginated results\n\U0001F3A9 Customized responses supported\n\nGet a list of suppliers that match the filters."
-      security:
-        - OAuth2AuthenticationCodeFlow:
-            - 'entity.suppliers:r'
-      parameters:
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
-        - $ref: '#/components/parameters/sort'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/per_page'
-      tags:
-        - Suppliers
-    post:
-      summary: Create Supplier
-      operationId: createSupplier
-      responses:
-        '200':
-          $ref: '#/components/responses/CreateSupplierResponse'
-      description: "\U0001F465 Company context \\\n\U0001F512 Required scope: `entity.suppliers:a`\n\nCreate a new supplier."
-      security:
-        - OAuth2AuthenticationCodeFlow:
-            - 'entity.suppliers:a'
-      parameters: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ./models/requests/CreateSupplierRequest.yaml
-            examples:
-              example-1:
-                value:
-                  data:
-                    id: 0
-                    code: '123'
-                    name: Rossi S.r.l.
-                    type: null
-                    first_name: string
-                    last_name: string
-                    contact_person: string
-                    vat_number: IT01234567890
-                    tax_code: RSSMRA44A12E890Q
-                    address_street: 'Via dei tigli, 12'
-                    address_postal_code: '24010'
-                    address_city: Bergamo
-                    address_province: BG
-                    address_extra: string
-                    country: Italia
-                    email: mario.rossi@example.it
-                    certified_email: mario.rossi@pec.example.it
-                    phone: string
-                    fax: string
-                    notes: string
-        description: The supplier to create
-      tags:
-        - Suppliers
   '/c/{company_id}/entities/clients/{client_id}':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -283,57 +198,38 @@ paths:
               example-1:
                 value:
                   data:
-                    id: 0
-                    code: '123'
-                    name: Rossi S.r.l.
-                    type: null
-                    first_name: string
-                    last_name: string
-                    contact_person: string
-                    vat_number: IT01234567890
-                    tax_code: RSSMRA44A12E890Q
-                    address_street: 'Via dei tigli, 12'
-                    address_postal_code: '24010'
-                    address_city: Bergamo
-                    address_province: BG
-                    address_extra: string
+                    code: AE86
+                    name: Avv. Maria Rossi
+                    type: person
+                    first_name: Maria
+                    last_name: Rossi
+                    contact_person: ''
+                    vat_number: IT12345640962
+                    tax_code: BLTGNI5ABCDA794E
+                    address_street: 'Via Roma, 1'
+                    address_postal_code: '20900'
+                    address_city: Milano
+                    address_province: MI
+                    address_extra: ''
                     country: Italia
-                    email: mario.rossi@example.it
-                    certified_email: mario.rossi@pec.example.it
-                    phone: string
-                    fax: string
-                    notes: string
-                    default_vat:
-                      id: 0
-                      value: 22
-                      description: Non imponibile art. 123
-                      notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
-                      e_invoice: string
-                      ei_type: 2
-                      ei_description: string
-                      editable: true
-                    default_payment_terms: 30
+                    email: maria.rossi@example.com
+                    certified_email: maria.rossi@pec.example.com
+                    phone: '1234567890'
+                    fax: ''
+                    notes: ''
+                    default_payment_terms: 1
                     default_payment_terms_type: standard
-                    default_payment_method:
-                      id: 0
-                      name: string
-                      type: standard
-                      default_payment_account:
-                        id: 0
-                        name: Conto Banca di Paperopoli
-                        type: standard
-                        iban: string
-                        sia: string
-                        cuc: string
-                      details:
-                        - title: string
-                          description: string
-                    bank_name: string
-                    bank_iban: string
-                    bank_swift_code: string
-                    shipping_address: string
-                    e_invoice: false
-                    ei_code: string
+                    bank_name: Indesa
+                    bank_iban: IT40P123456781000000123456
+                    bank_swift_code: AK86PCT
+                    shipping_address: Corso Magellano 4
+                    e_invoice: true
+                    ei_code: '111111'
+                    default_vat:
+                      id: 54321
+                      value: 45
+                      description: ''
+                      is_disabled: false
         description: The modified Client. First level parameters are managed in delta mode.
       tags:
         - Clients
@@ -354,6 +250,72 @@ paths:
             - 'entity.clients:a'
       tags:
         - Clients
+  '/c/{company_id}/entities/suppliers':
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+    get:
+      summary: List Suppliers
+      responses:
+        '200':
+          $ref: '#/components/responses/ListSuppliersResponse'
+        '401':
+          description: Unauthorized
+      operationId: listSuppliers
+      description: "\U0001F465 Company context\n\U0001F512 Required scope: entity.suppliers:r\n\U0001F50D Filtering: id, code, name, type, vat_number, tax_code, address_street, address_postal_code, address_city, address_province, country, email, certified_email, phone, fax, notes, imported, atoka_show, created_at, updated_at\n↕️ Sorting: code, name, type, vat_number, tax_code, address_street, address_postal_code, address_city, address_province, country, email, certified_email, phone, fax, notes, created_at, updated_at\n\U0001F4C4 Paginated results\n\U0001F3A9 Customized responses supported\n\nGet a list of suppliers that match the filters."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'entity.suppliers:r'
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/per_page'
+      tags:
+        - Suppliers
+    post:
+      summary: Create Supplier
+      operationId: createSupplier
+      responses:
+        '200':
+          $ref: '#/components/responses/CreateSupplierResponse'
+      description: "\U0001F465 Company context \\\n\U0001F512 Required scope: `entity.suppliers:a`\n\nCreate a new supplier."
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'entity.suppliers:a'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/CreateSupplierRequest.yaml
+            examples:
+              example-1:
+                value:
+                  data:
+                    id: 12345
+                    code: AE86
+                    name: Mario Rossi S.R.L.
+                    type: company
+                    first_name: Mario
+                    last_name: Rossi
+                    contact_person: ''
+                    vat_number: '111222333'
+                    tax_code: '111122233'
+                    address_street: 'Corso Magellano, 46'
+                    address_postal_code: '20146'
+                    address_city: Milano
+                    address_province: MI
+                    address_extra: ''
+                    country: Italia
+                    email: mario.rossi@example.com
+                    certified_email: mario.rossi@pec.example.com
+                    phone: '1234567890'
+                    fax: '123456789'
+                    notes: ''
+        description: The supplier to create
+      tags:
+        - Suppliers
   '/c/{company_id}/entities/suppliers/{supplier_id}':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -401,26 +363,26 @@ paths:
               example-1:
                 value:
                   data:
-                    id: 0
-                    code: '123'
-                    name: Rossi S.r.l.
-                    type: null
-                    first_name: string
-                    last_name: string
-                    contact_person: string
-                    vat_number: IT01234567890
-                    tax_code: RSSMRA44A12E890Q
-                    address_street: 'Via dei tigli, 12'
-                    address_postal_code: '24010'
-                    address_city: Bergamo
-                    address_province: BG
-                    address_extra: string
+                    id: 12345
+                    code: AE86
+                    name: Mario Rossi S.R.L.
+                    type: company
+                    first_name: Mario
+                    last_name: Rossi
+                    contact_person: ''
+                    vat_number: '111222333'
+                    tax_code: '111122233'
+                    address_street: 'Corso Magellano, 46'
+                    address_postal_code: '20146'
+                    address_city: Milano
+                    address_province: MI
+                    address_extra: ''
                     country: Italia
-                    email: mario.rossi@example.it
-                    certified_email: mario.rossi@pec.example.it
-                    phone: string
-                    fax: string
-                    notes: string
+                    email: mario.rossi@example.com
+                    certified_email: mario.rossi@pec.example.com
+                    phone: '1234567890'
+                    fax: '123456789'
+                    notes: ''
         description: The modified Supplier. First level parameters are managed in delta mode.
       tags:
         - Suppliers
@@ -477,6 +439,32 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'products:a'
       parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/CreateProductRequest.yaml
+            examples:
+              example-1:
+                value:
+                  data:
+                    name: Tavolo di marmo
+                    code: TAVOLO003
+                    net_price: 240
+                    gross_price: 280
+                    use_gross_price: false
+                    net_cost: 0
+                    measure: ''
+                    description: Tavolo in marmo pregiato
+                    category: arredamento
+                    in_stock: true
+                    default_vat:
+                      id: 3
+                      value: 22
+                      description: Non imponibile art. 123
+                      notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+                      is_disabled: false
+        description: ''
   '/c/{company_id}/products/{product_id}':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -520,6 +508,26 @@ paths:
           application/json:
             schema:
               $ref: ./models/requests/ModifyProductRequest.yaml
+            examples:
+              example-1:
+                value:
+                  data:
+                    name: Tavolo di marmo
+                    code: TAVOLO003
+                    net_price: 240
+                    gross_price: 280
+                    use_gross_price: false
+                    net_cost: 0
+                    measure: ''
+                    description: Tavolo in marmo pregiato
+                    category: arredamento
+                    in_stock: true
+                    default_vat:
+                      id: 3
+                      value: 22
+                      description: Non imponibile art. 123
+                      notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+                      is_disabled: false
         description: Modified product details.
       tags:
         - Products
@@ -2582,45 +2590,99 @@ components:
             example-1:
               value:
                 data:
-                  data:
-                    id: 12345
-                    name: Mario Rossi S.r.l.
-                    email: mario@rossi-example.it
-                    type: company
-                    fic: true
-                    fic_plan: trial
-                    fic_license_expire: '2019-08-24'
-                    use_fic: true
-                    fic_need_setup: true
-                    dic: true
-                    dic_plan: trial
-                    dic_license_expire: '2019-08-24'
-                    use_dic: true
-                    dic_need_setup: true
-                    access_info:
-                      role: master
-                      permissions:
-                        fic_situation: write
-                        fic_clients: write
-                        fic_suppliers: write
-                        fic_products: write
-                        fic_issued_documents: write
-                        fic_received_documents: write
-                        fic_receipts: write
-                        fic_calendar: write
-                        fic_archive: write
-                        fic_taxes: write
-                        fic_stock: write
-                        fic_cashbook: write
-                        fic_settings: write
-                    plan_info:
-                      limits:
-                        clients: 0
-                        suppliers: 0
-                        products: 0
-                        documents: 0
-                      functions:
-                        example_function: true
+                  id: 12345
+                  name: Studio Commercialista
+                  email: mario.rossi@example.com
+                  type: accountant
+                  fic: true
+                  fic_plan_name: premium_plus
+                  fic_signup_date: '2013-11-01'
+                  fic_license_expire: '2030-12-31'
+                  use_fic: true
+                  fic_need_setup: false
+                  fic_license_type: coupon_b
+                  dic: true
+                  dic_plan_name: trial
+                  dic_signup_date: '2018-03-26'
+                  dic_license_expire: '2022-12-31'
+                  use_dic: true
+                  dic_license_type: null
+                  registration_service: fic
+                  can_use_coupon: false
+                  access_info:
+                    role: master
+                    through_accountant: false
+                    permissions:
+                      fic_situation: read
+                      fic_clients: write
+                      fic_suppliers: write
+                      fic_products: write
+                      fic_issued_documents: detailed
+                      fic_issued_documents_detailed:
+                        quotes: write
+                        proformas: write
+                        invoices: write
+                        receipts: write
+                        delivery_notes: write
+                        credit_notes: write
+                        orders: write
+                        work_reports: write
+                        supplier_orders: write
+                        self_invoices: write
+                      fic_received_documents: write
+                      fic_receipts: write
+                      fic_calendar: write
+                      fic_archive: write
+                      fic_taxes: write
+                      fic_stock: write
+                      fic_cashbook: write
+                      fic_settings: write
+                      fic_emails: read
+                      dic_employees: none
+                      dic_timesheet: none
+                      dic_settings: none
+                      fic_invoice_trading: none
+                      fic_export: write
+                      fic_import_clients_suppliers: write
+                      fic_import_products: write
+                      fic_import_issued_documents: none
+                      fic_import_bankstatements: none
+                      fic_recurring: write
+                      fic_riba: write
+                  plan_info:
+                    limits:
+                      clients: 5000
+                      suppliers: 5000
+                      products: 5000
+                      documents: 3000
+                    functions:
+                      document_attachments: true
+                      archive: true
+                      payment_notifications: true
+                      paypal: true
+                      receipts: true
+                      e_invoice: true
+                      genius: true
+                      stock: true
+                      smtp: true
+                      mail_tracking: true
+                      subaccounts: true
+                      tessera_sanitaria: true
+                      recurring: true
+                      sofort: false
+                      cerved: true
+                      ts_digital: true
+                      ts_pay: true
+                      ts_invoice_trading: true
+                    functions_status:
+                      ts_digital:
+                        active: true
+                      ts_pay:
+                        active: true
+                  is_accountant: true
+                  accountant_id: 12345
+                  fic_payment_subject: client
+                  dic_payment_subject: client
     CreateClientResponse:
       description: Example response
       content:
@@ -2631,63 +2693,138 @@ components:
             example-1:
               value:
                 data:
-                  id: 0
-                  code: '123'
-                  name: Rossi S.r.l.
-                  type: null
-                  first_name: string
-                  last_name: string
-                  contact_person: string
-                  vat_number: IT01234567890
-                  tax_code: RSSMRA44A12E890Q
-                  address_street: 'Via dei tigli, 12'
-                  address_postal_code: '24010'
-                  address_city: Bergamo
-                  address_province: BG
-                  address_extra: string
+                  id: 16451
+                  code: AE86
+                  name: Avv. Maria Rossi
+                  type: person
+                  first_name: Maria
+                  last_name: Rossi
+                  contact_person: ''
+                  vat_number: IT12345640962
+                  tax_code: BLTGNI5ABCDA794E
+                  address_street: 'Via Roma, 1'
+                  address_postal_code: '20900'
+                  address_city: Milano
+                  address_province: MI
+                  address_extra: ''
                   country: Italia
-                  email: mario.rossi@example.it
-                  certified_email: mario.rossi@pec.example.it
-                  phone: string
-                  fax: string
-                  notes: string
-                  default_vat:
-                    id: 0
-                    value: 22
-                    description: Non imponibile art. 123
-                    notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
-                    e_invoice: string
-                    ei_type: 2
-                    ei_description: string
-                    editable: true
-                  default_payment_terms: 30
+                  email: maria.rossi@example.com
+                  certified_email: maria.rossi@pec.example.com
+                  phone: '1234567890'
+                  fax: ''
+                  notes: ''
+                  created_at: '2021-04-29 08:53:07'
+                  updated_at: '2021-04-29 08:53:07'
+                  default_payment_terms: 1
                   default_payment_terms_type: standard
+                  bank_name: Indesa
+                  bank_iban: IT40P123456781000000123456
+                  bank_swift_code: AK86PCT
+                  shipping_address: Corso Magellano 4
+                  e_invoice: true
+                  ei_code: '111111'
+                  default_vat:
+                    id: 54321
+                    value: 45
+                    description: ''
+                    is_disabled: false
                   default_payment_method:
-                    id: 0
-                    name: string
-                    type: standard
-                    default_payment_account:
-                      id: 0
-                      name: Conto Banca di Paperopoli
-                      type: standard
-                      iban: string
-                      sia: string
-                      cuc: string
-                    details:
-                      - title: string
-                        description: string
-                  bank_name: string
-                  bank_iban: string
-                  bank_swift_code: string
-                  shipping_address: string
-                  e_invoice: false
-                  ei_code: string
+                    id: 386092
+                    name: Credit card
     ListClientsResponse:
       description: Example response
       content:
         application/json:
           schema:
             $ref: ./models/responses/ListClientsResponse.yaml
+          examples:
+            example-1:
+              value:
+                current_page: 1
+                data:
+                  - id: 16451
+                    code: AE86
+                    name: Avv. Maria Rossi
+                    type: person
+                    first_name: Maria
+                    last_name: Rossi
+                    contact_person: ''
+                    vat_number: IT12345640962
+                    tax_code: BLTGNI5ABCDA794E
+                    address_street: 'Via Roma, 1'
+                    address_postal_code: '20900'
+                    address_city: Milano
+                    address_province: MI
+                    address_extra: ''
+                    country: Italia
+                    email: maria.rossi@example.com
+                    certified_email: maria.rossi@pec.example.com
+                    phone: '1234567890'
+                    fax: ''
+                    notes: ''
+                    created_at: '2021-04-29 08:53:07'
+                    updated_at: '2021-04-29 08:53:07'
+                    default_payment_terms: 1
+                    default_payment_terms_type: standard
+                    bank_name: Indesa
+                    bank_iban: IT40P123456781000000123456
+                    bank_swift_code: AK86PCT
+                    shipping_address: Corso Magellano 4
+                    e_invoice: true
+                    ei_code: '111111'
+                    default_vat:
+                      id: 54321
+                      value: 45
+                      description: ''
+                      is_disabled: false
+                    default_payment_method:
+                      id: 386092
+                      name: Credit card
+                  - id: 25330696
+                    code: PD00
+                    name: Mario Rossi
+                    type: person
+                    first_name: Mario
+                    last_name: Rossi
+                    contact_person: ''
+                    vat_number: IT1234567890
+                    tax_code: ABCDEF12G34H567I
+                    address_street: Via largo augusto 123
+                    address_postal_code: '21012'
+                    address_city: Bergamo
+                    address_province: BG
+                    address_extra: ''
+                    country: Italia
+                    email: info@mariorossi.it
+                    certified_email: info@pec.mariorossi.it
+                    phone: '012345678'
+                    fax: '012345678'
+                    notes: ''
+                    created_at: '2021-04-29 08:53:07'
+                    default_payment_terms: 0
+                    default_payment_terms_type: standard
+                    bank_name: Monte dei Pascoli
+                    bank_iban: IT00P123456781000000123456
+                    bank_swift_code: APL86PCT
+                    shipping_address: Via Miilano 4
+                    e_invoice: false
+                    ei_code: '7654321'
+                    default_vat:
+                      id: 66
+                      value: 22
+                      description: ''
+                      is_disabled: false
+                    default_payment_method: null
+                first_page_url: page=1
+                from: 1
+                last_page: 2
+                last_page_url: page=2
+                next_page_url: page=2
+                path: entities/clients
+                per_page: 5
+                prev_page_url: null
+                to: 50
+                total: 8
     ListSuppliersResponse:
       description: Example response
       content:
@@ -2695,7 +2832,63 @@ components:
           schema:
             $ref: ./models/responses/ListSuppliersResponse.yaml
           examples:
-            example-1: {}
+            example-1:
+              value:
+                first_page_url: page=1
+                from: 1
+                last_page: 2
+                last_page_url: page=2
+                next_page_url: page=2
+                path: /entities/suppliers
+                per_page: 50
+                prev_page_url: null
+                to: 55
+                total: 55
+                data:
+                  - id: 12345
+                    code: AE86
+                    name: Mario Rossi S.R.L.
+                    type: company
+                    first_name: Mario
+                    last_name: Rossi
+                    contact_person: ''
+                    vat_number: '111222333'
+                    tax_code: '111122233'
+                    address_street: 'Corso Magellano, 46'
+                    address_postal_code: '20146'
+                    address_city: Milano
+                    address_province: MI
+                    address_extra: ''
+                    country: Italia
+                    email: mario.rossi@example.com
+                    certified_email: mario.rossi@pec.example.com
+                    phone: '1234567890'
+                    fax: '123456789'
+                    notes: ''
+                    created_at: '2021-15-08'
+                    updated_at: '2021-15-08'
+                  - id: 12346
+                    code: GT86
+                    name: Maria Grossi S.R.L.
+                    type: company
+                    first_name: ''
+                    last_name: ''
+                    contact_person: ''
+                    vat_number: '200020102020'
+                    tax_code: '200020102020'
+                    address_street: 'Vicolo stretto, 32'
+                    address_postal_code: '20146'
+                    address_city: Milano
+                    address_province: MI
+                    address_extra: ''
+                    country: Italia
+                    email: maria.grossi@example.com
+                    certified_email: maria.grossi@pec.example.com
+                    phone: '0987654321'
+                    fax: '098765432'
+                    notes: ''
+                    created_at: '2021-15-09'
+                    updated_at: '2021-15-09'
     CreateSupplierResponse:
       description: Example response
       content:
@@ -2706,26 +2899,28 @@ components:
             example-1:
               value:
                 data:
-                  id: 0
-                  code: '123'
-                  name: Rossi S.r.l.
-                  type: null
-                  first_name: string
-                  last_name: string
-                  contact_person: string
-                  vat_number: IT01234567890
-                  tax_code: RSSMRA44A12E890Q
-                  address_street: 'Via dei tigli, 12'
-                  address_postal_code: '24010'
-                  address_city: Bergamo
-                  address_province: BG
-                  address_extra: string
+                  id: 12345
+                  code: AE86
+                  name: Mario Rossi S.R.L.
+                  type: company
+                  first_name: Mario
+                  last_name: Rossi
+                  contact_person: ''
+                  vat_number: '111222333'
+                  tax_code: '111122233'
+                  address_street: 'Corso Magellano, 46'
+                  address_postal_code: '20146'
+                  address_city: Milano
+                  address_province: MI
+                  address_extra: ''
                   country: Italia
-                  email: mario.rossi@example.it
-                  certified_email: mario.rossi@pec.example.it
-                  phone: string
-                  fax: string
-                  notes: string
+                  email: mario.rossi@example.com
+                  certified_email: mario.rossi@pec.example.com
+                  phone: '1234567890'
+                  fax: '123456789'
+                  notes: ''
+                  created_at: '2021-15-08'
+                  updated_at: '2021-15-08'
     GetClientResponse:
       description: Client Details.
       content:
@@ -2736,57 +2931,38 @@ components:
             example-1:
               value:
                 data:
-                  id: 0
-                  code: '123'
-                  name: Rossi S.r.l.
-                  type: null
-                  first_name: string
-                  last_name: string
-                  contact_person: string
-                  vat_number: IT01234567890
-                  tax_code: RSSMRA44A12E890Q
-                  address_street: 'Via dei tigli, 12'
-                  address_postal_code: '24010'
-                  address_city: Bergamo
-                  address_province: BG
-                  address_extra: string
+                  code: AE86
+                  name: Avv. Maria Rossi
+                  type: person
+                  first_name: Maria
+                  last_name: Rossi
+                  contact_person: ''
+                  vat_number: IT12345640962
+                  tax_code: BLTGNI5ABCDA794E
+                  address_street: 'Via Roma, 1'
+                  address_postal_code: '20900'
+                  address_city: Milano
+                  address_province: MI
+                  address_extra: ''
                   country: Italia
-                  email: mario.rossi@example.it
-                  certified_email: mario.rossi@pec.example.it
-                  phone: string
-                  fax: string
-                  notes: string
-                  default_vat:
-                    id: 0
-                    value: 22
-                    description: Non imponibile art. 123
-                    notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
-                    e_invoice: string
-                    ei_type: 2
-                    ei_description: string
-                    editable: true
-                  default_payment_terms: 30
+                  email: maria.rossi@example.com
+                  certified_email: maria.rossi@pec.example.com
+                  phone: '1234567890'
+                  fax: ''
+                  notes: ''
+                  default_payment_terms: 1
                   default_payment_terms_type: standard
-                  default_payment_method:
-                    id: 0
-                    name: string
-                    type: standard
-                    default_payment_account:
-                      id: 0
-                      name: Conto Banca di Paperopoli
-                      type: standard
-                      iban: string
-                      sia: string
-                      cuc: string
-                    details:
-                      - title: string
-                        description: string
-                  bank_name: string
-                  bank_iban: string
-                  bank_swift_code: string
-                  shipping_address: string
-                  e_invoice: false
-                  ei_code: string
+                  bank_name: Indesa
+                  bank_iban: IT40P123456781000000123456
+                  bank_swift_code: AK86PCT
+                  shipping_address: Corso Magellano 4
+                  e_invoice: true
+                  ei_code: '111111'
+                  default_vat:
+                    id: 54321
+                    value: 45
+                    description: ''
+                    is_disabled: false
     ModifyClientResponse:
       description: Client modified.
       content:
@@ -2797,57 +2973,38 @@ components:
             example-1:
               value:
                 data:
-                  id: 0
-                  code: '123'
-                  name: Rossi S.r.l.
-                  type: null
-                  first_name: string
-                  last_name: string
-                  contact_person: string
-                  vat_number: IT01234567890
-                  tax_code: RSSMRA44A12E890Q
-                  address_street: 'Via dei tigli, 12'
-                  address_postal_code: '24010'
-                  address_city: Bergamo
-                  address_province: BG
-                  address_extra: string
+                  code: AE86
+                  name: Avv. Maria Rossi
+                  type: person
+                  first_name: Maria
+                  last_name: Rossi
+                  contact_person: ''
+                  vat_number: IT12345640962
+                  tax_code: BLTGNI5ABCDA794E
+                  address_street: 'Via Roma, 1'
+                  address_postal_code: '20900'
+                  address_city: Milano
+                  address_province: MI
+                  address_extra: ''
                   country: Italia
-                  email: mario.rossi@example.it
-                  certified_email: mario.rossi@pec.example.it
-                  phone: string
-                  fax: string
-                  notes: string
-                  default_vat:
-                    id: 0
-                    value: 22
-                    description: Non imponibile art. 123
-                    notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
-                    e_invoice: string
-                    ei_type: 2
-                    ei_description: string
-                    editable: true
-                  default_payment_terms: 30
+                  email: maria.rossi@example.com
+                  certified_email: maria.rossi@pec.example.com
+                  phone: '1234567890'
+                  fax: ''
+                  notes: ''
+                  default_payment_terms: 1
                   default_payment_terms_type: standard
-                  default_payment_method:
-                    id: 0
-                    name: string
-                    type: standard
-                    default_payment_account:
-                      id: 0
-                      name: Conto Banca di Paperopoli
-                      type: standard
-                      iban: string
-                      sia: string
-                      cuc: string
-                    details:
-                      - title: string
-                        description: string
-                  bank_name: string
-                  bank_iban: string
-                  bank_swift_code: string
-                  shipping_address: string
-                  e_invoice: false
-                  ei_code: string
+                  bank_name: Indesa
+                  bank_iban: IT40P123456781000000123456
+                  bank_swift_code: AK86PCT
+                  shipping_address: Corso Magellano 4
+                  e_invoice: true
+                  ei_code: '111111'
+                  default_vat:
+                    id: 54321
+                    value: 45
+                    description: ''
+                    is_disabled: false
     GetSupplierResponse:
       description: Example response
       content:
@@ -2858,32 +3015,60 @@ components:
             example-1:
               value:
                 data:
-                  id: 0
-                  code: '123'
-                  name: Rossi S.r.l.
-                  type: null
-                  first_name: string
-                  last_name: string
-                  contact_person: string
-                  vat_number: IT01234567890
-                  tax_code: RSSMRA44A12E890Q
-                  address_street: 'Via dei tigli, 12'
-                  address_postal_code: '24010'
-                  address_city: Bergamo
-                  address_province: BG
-                  address_extra: string
+                  id: 12345
+                  code: AE86
+                  name: Mario Rossi S.R.L.
+                  type: company
+                  first_name: Mario
+                  last_name: Rossi
+                  contact_person: ''
+                  vat_number: '111222333'
+                  tax_code: '111122233'
+                  address_street: 'Corso Magellano, 46'
+                  address_postal_code: '20146'
+                  address_city: Milano
+                  address_province: MI
+                  address_extra: ''
                   country: Italia
-                  email: mario.rossi@example.it
-                  certified_email: mario.rossi@pec.example.it
-                  phone: string
-                  fax: string
-                  notes: string
+                  email: mario.rossi@example.com
+                  certified_email: mario.rossi@pec.example.com
+                  phone: '1234567890'
+                  fax: '123456789'
+                  notes: ''
+                  created_at: '2021-15-08'
+                  updated_at: '2021-15-08'
     ModifySupplierResponse:
       description: Example response
       content:
         application/json:
           schema:
             $ref: ./models/responses/ModifySupplierResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 12345
+                  code: AE86
+                  name: Mario Rossi S.R.L.
+                  type: company
+                  first_name: Mario
+                  last_name: Rossi
+                  contact_person: ''
+                  vat_number: '111222333'
+                  tax_code: '111122233'
+                  address_street: 'Corso Magellano, 46'
+                  address_postal_code: '20146'
+                  address_city: Milano
+                  address_province: MI
+                  address_extra: ''
+                  country: Italia
+                  email: mario.rossi@example.com
+                  certified_email: mario.rossi@pec.example.com
+                  phone: '1234567890'
+                  fax: '123456789'
+                  notes: ''
+                  created_at: '2021-15-08'
+                  updated_at: '2021-15-08'
     ListProductsResponse:
       description: Products List.
       content:
@@ -2894,40 +3079,51 @@ components:
             example-1:
               value:
                 current_page: 1
-                first_page_url: 'http://api-v2.fattureincloud.it/c/11111/path?fieldset=basic&page=1'
-                from: 1
-                last_page: 1
-                last_page_url: 'http://api-v2.fattureincloud.it/c/11111/path?fieldset=basic&page=1'
-                next_page_url: null
-                path: 'http://api-v2.fattureincloud.it/c/11111/path'
-                per_page: 50
-                prev_page_url: null
-                to: 1
-                total: 1
                 data:
-                  - id: 0
-                    name: string
-                    code: string
-                    net_price: 0
-                    gross_price: 0
-                    use_gross_price: true
+                  - id: 12345
+                    name: Tavolo di marmo
+                    code: TAVOLO003
+                    net_price: 240
+                    gross_price: 280
+                    use_gross_price: false
+                    net_cost: 0
+                    measure: ''
+                    description: Tavolo in marmo pregiato
+                    category: arredamento
+                    in_stock: true
                     default_vat:
-                      id: 0
+                      id: 3
                       value: 22
                       description: Non imponibile art. 123
                       notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
-                      e_invoice: string
-                      ei_type: 2
-                      ei_description: string
-                      editable: true
+                      is_disabled: false
+                  - id: 12346
+                    name: Tavolo di legno
+                    code: TAVOLO001
+                    net_price: 120
+                    gross_price: 160
+                    use_gross_price: false
                     net_cost: 0
-                    measure: string
-                    description: string
-                    category: string
-                    notes: string
+                    measure: ''
+                    description: Tavolo in legno pregiato
+                    category: arredamento
                     in_stock: true
-                    stock_initial: 0
-                    stock_current: 0
+                    default_vat:
+                      id: 3
+                      value: 22
+                      description: Non imponibile art. 123
+                      notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+                      is_disabled: false
+                first_page_url: page=1
+                from: 1
+                last_page: 1
+                last_page_url: page=1
+                next_page_url: page=2
+                path: products
+                per_page: 50
+                prev_page_url: null
+                to: 55
+                total: 55
     CreateProductResponse:
       description: Example response
       content:
@@ -2938,29 +3134,23 @@ components:
             example-1:
               value:
                 data:
-                  id: 0
-                  name: string
-                  code: string
-                  net_price: 0
-                  gross_price: 0
-                  use_gross_price: true
+                  id: 12345
+                  name: Tavolo di marmo
+                  code: TAVOLO003
+                  net_price: 240
+                  gross_price: 280
+                  use_gross_price: false
+                  net_cost: 0
+                  measure: ''
+                  description: Tavolo in marmo pregiato
+                  category: arredamento
+                  in_stock: true
                   default_vat:
-                    id: 0
+                    id: 3
                     value: 22
                     description: Non imponibile art. 123
                     notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
-                    e_invoice: string
-                    ei_type: 2
-                    ei_description: string
-                    editable: true
-                  net_cost: 0
-                  measure: string
-                  description: string
-                  category: string
-                  notes: string
-                  in_stock: true
-                  stock_initial: 0
-                  stock_current: 0
+                    is_disabled: false
     GetProductResponse:
       description: Example response
       content:
@@ -2971,35 +3161,58 @@ components:
             example-1:
               value:
                 data:
-                  id: 0
-                  name: string
-                  code: string
-                  net_price: 0
-                  gross_price: 0
-                  use_gross_price: true
+                  id: 12345
+                  name: Tavolo di marmo
+                  code: TAVOLO003
+                  net_price: 240
+                  gross_price: 280
+                  use_gross_price: false
+                  net_cost: 0
+                  measure: ''
+                  description: Tavolo in marmo pregiato
+                  category: arredamento
+                  in_stock: true
+                  created_at: '2021-08-09 08:57:14'
+                  updated_at: '2021-08-09 08:57:14'
                   default_vat:
-                    id: 0
+                    id: 3
                     value: 22
                     description: Non imponibile art. 123
                     notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
-                    e_invoice: string
-                    ei_type: 2
-                    ei_description: string
-                    editable: true
-                  net_cost: 0
-                  measure: string
-                  description: string
-                  category: string
-                  notes: string
-                  in_stock: true
-                  stock_initial: 0
-                  stock_current: 0
+                    is_disabled: false
+                  stock_initial: 123
+                  stock_current: 123
     ModifyProductResponse:
       description: Example response
       content:
         application/json:
           schema:
             $ref: ./models/responses/ModifyProductResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 12345
+                  name: Tavolo di marmo
+                  code: TAVOLO003
+                  net_price: 240
+                  gross_price: 280
+                  use_gross_price: false
+                  net_cost: 0
+                  measure: ''
+                  description: Tavolo in marmo pregiato
+                  category: arredamento
+                  in_stock: true
+                  created_at: '2021-08-09 08:57:14'
+                  updated_at: '2021-08-15 08:57:14'
+                  default_vat:
+                    id: 3
+                    value: 22
+                    description: Non imponibile art. 123
+                    notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+                    is_disabled: false
+                  stock_initial: 123
+                  stock_current: 123
     ListIssuedDocumentsResponse:
       description: Results list.
       content:
