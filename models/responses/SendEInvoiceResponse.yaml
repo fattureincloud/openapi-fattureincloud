@@ -4,8 +4,7 @@ properties:
   data:
     type: object
     properties:
-      current_status:
+      name:
         type: string
-        description: |-
-          Current status of the e-invoice.
-          DO NOT USE THIS FOR NOW, IT WILL CHANGE.
+      date:
+        type: string
