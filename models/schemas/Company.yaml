@@ -41,10 +41,10 @@ properties:
   fic_license_expire:
     type: string
     format: date
-    description: Company FIC license expire date.
+    description: Company FIC license expiration date.
   fic_plan:
     type: string
-    description: Company DIC account plan.
+    description: Company FIC account plan.
   tax_code:
     type: string
     description: Tax code.
