@@ -35,9 +35,10 @@ properties:
     description: 'Company FIC account plan. '
   fic_payment_subject:
     type: string
+    description: Company FIC account payment subject.
   fic_license_expire:
     type: string
-    description: Company FIC license expire date.
+    description: Company FIC license expiration date.
     format: date
     nullable: true
   fic_signup_date:
@@ -59,7 +60,7 @@ properties:
       - trial
   dic_license_expire:
     type: string
-    description: Company FIC license expire date.
+    description: Company FIC license expiration date.
     format: date
     nullable: true
   use_dic:
@@ -147,13 +148,17 @@ properties:
             $ref: ./FunctionStatus.yaml
   can_use_coupon:
     type: boolean
+    description: Determine if a coupon can be used.
   accountant_id:
     type: string
     nullable: true
+    description: Accountant unique identifier.
   dic_license_type:
     type: string
+    description: Company DIC account license type.
   dic_payment_subject:
     type: string
+    description: Company DIC account payment subject.
   dic_plan_name:
     type: string
     description: Company DIC account plan name.

@@ -41,10 +41,12 @@ properties:
     description: 'Stamp duty value [0 if not present].'
   amount_due:
     type: number
+    description: Total amount due.
   is_enasarco_maximal_exceeded:
     type: boolean
   payments_sum:
     type: number
+    description: Payments sum.
   vat_list:
     type: object
     required:

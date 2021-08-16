@@ -34,13 +34,16 @@ properties:
     $ref: ./Language.yaml
   subject:
     type: string
+    description: Issued document subject.
   visible_subject:
     type: string
+    description: Issued document visible subject.
   rc_center:
     type: string
     description: 'Revenue center [or cost center if type=supplier_order].'
   notes:
     type: string
+    description: Issued document extra notes.
   rivalsa:
     maximum: 100
     minimum: 0
@@ -153,8 +156,10 @@ properties:
           description: Product description.
         qty:
           type: number
+          description: 'Items quantity,'
         measure:
           type: string
+          description: Item measure.
         net_price:
           type: number
           description: Net price.
@@ -312,25 +317,32 @@ properties:
     description: This is true if the document is marked.
   amount_net:
     type: number
-    description: '[Read-only] Total net amount (competenze).'
+    description: Total net amount (competenze).
+    readOnly: true
   amount_vat:
     type: number
-    description: '[Read-only] Total vat amount (IVA).'
+    description: Total vat amount (IVA).
+    readOnly: true
   amount_gross:
     type: number
-    description: '[Read-only] Total gross amount (totale documento).'
+    description: Total gross amount (totale documento).
+    readOnly: true
   amount_rivalsa:
     type: number
-    description: '[Read-only] Rivalsa amount.'
+    description: ' Rivalsa amount.'
+    readOnly: true
   amount_cassa:
     type: number
-    description: '[Read-only] Cassa amount.'
+    description: Cassa amount.
+    readOnly: true
   amount_withholding_tax:
     type: number
-    description: '[Read-only] Withholding tax amount (ritenuta d''acconto).'
+    description: Withholding tax amount (ritenuta d'acconto).
+    readOnly: true
   amount_other_withholding_tax:
     type: number
-    description: '[Read-only] Other withholding tax amount (altra ritenuta).'
+    description: Other withholding tax amount (altra ritenuta).
+    readOnly: true
   extra_data:
     type: object
     description: |-

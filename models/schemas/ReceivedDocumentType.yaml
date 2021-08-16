@@ -5,3 +5,4 @@ enum:
   - expense
   - passive_credit_note
   - passive_delivery_note
+description: Received document type.

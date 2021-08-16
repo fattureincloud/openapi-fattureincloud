@@ -32,6 +32,7 @@ properties:
       $ref: ./Company.yaml
   connection_id:
     type: number
+    description: Company connection id.
   dic:
     type: boolean
     description: Determine if the company has a DIC account.

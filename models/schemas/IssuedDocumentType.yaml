@@ -10,3 +10,4 @@ enum:
   - order
   - work_report
   - supplier_order
+description: Issued document type.

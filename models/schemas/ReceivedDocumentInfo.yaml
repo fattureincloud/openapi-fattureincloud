@@ -13,6 +13,7 @@ properties:
     properties:
       vat:
         type: integer
+        description: Default vat value.
   countries_list:
     $ref: ../responses/ListCountriesResponse.yaml
   currencies_list:
