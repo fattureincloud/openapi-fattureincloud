@@ -7,9 +7,11 @@ properties:
   code:
     type: string
     example: '123'
+    description: Supplier code.
   name:
     type: string
     example: Rossi S.r.l.
+    description: Supplier name.
   type:
     type: string
     default: null
@@ -19,48 +21,64 @@ properties:
       - person
       - pa
       - condo
+    description: Supplier type.
   first_name:
     type: string
+    description: Supplier first name.
   last_name:
     type: string
+    description: Supplier last name.
   contact_person:
     type: string
   vat_number:
     type: string
     example: IT01234567890
+    description: Supplier vat number.
   tax_code:
     type: string
     example: RSSMRA44A12E890Q
+    description: Supplier tax code.
   address_street:
     type: string
     example: 'Via dei tigli, 12'
+    description: Supplier street address.
   address_postal_code:
     type: string
     example: '24010'
+    description: Supplier postal code.
   address_city:
     type: string
     example: Bergamo
+    description: Supplier city.
   address_province:
     type: string
     example: BG
+    description: Supplier province.
   address_extra:
     type: string
+    description: Supplier address extra info.
   country:
     type: string
     example: Italia
     default: Italia
+    description: Supplier country.
   email:
     type: string
     example: mario.rossi@example.it
+    description: Supplier email.
   certified_email:
     type: string
     example: mario.rossi@pec.example.it
+    description: Supplier certified email.
   phone:
     type: string
+    description: Supplier phone.
   fax:
     type: string
+    description: Supplier fax.
   notes:
     type: string
+    description: Supplier extra notes.
   created_at:
     type: string
   updated_at:

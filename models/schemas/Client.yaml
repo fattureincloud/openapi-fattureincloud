@@ -7,9 +7,11 @@ properties:
   code:
     type: string
     example: '123'
+    description: Client code.
   name:
     type: string
     example: Rossi S.r.l.
+    description: Client name
   type:
     type: string
     default: null
@@ -19,48 +21,64 @@ properties:
       - person
       - pa
       - condo
+    description: Client type
   first_name:
     type: string
+    description: Client first name.
   last_name:
     type: string
+    description: Client last name.
   contact_person:
     type: string
   vat_number:
     type: string
     example: IT01234567890
+    description: Client vat number
   tax_code:
     type: string
     example: RSSMRA44A12E890Q
+    description: Client tax code.
   address_street:
     type: string
     example: 'Via dei tigli, 12'
+    description: Client street address.
   address_postal_code:
     type: string
     example: '24010'
+    description: Client postal code.
   address_city:
     type: string
     example: Bergamo
+    description: Client city.
   address_province:
     type: string
     example: BG
+    description: Client province.
   address_extra:
     type: string
+    description: Client address extra info.
   country:
     type: string
     example: Italia
     default: Italia
+    description: Client country
   email:
     type: string
     example: mario.rossi@example.it
+    description: Client email.
   certified_email:
     type: string
     example: mario.rossi@pec.example.it
+    description: Client certified email.
   phone:
     type: string
+    description: Client phone.
   fax:
     type: string
+    description: Client fax.
   notes:
     type: string
+    description: Extra notes.
   default_vat:
     $ref: ./VatType.yaml
   default_payment_terms:
@@ -76,12 +94,16 @@ properties:
     $ref: ./PaymentMethod.yaml
   bank_name:
     type: string
+    description: Client bank name.
   bank_iban:
     type: string
+    description: Client iban.
   bank_swift_code:
     type: string
+    description: Client bank swift code.
   shipping_address:
     type: string
+    description: Client shipping address.
   e_invoice:
     type: boolean
     description: Use e-invoices for this entity

@@ -6,3 +6,4 @@ properties:
     properties:
       success:
         type: boolean
+        description: Determine if the invoice XML is valid.

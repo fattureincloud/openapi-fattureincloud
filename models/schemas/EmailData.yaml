@@ -45,13 +45,13 @@ properties:
     type: boolean
     description: 'If the document is not a delivery note, this flag will be set to true'
   delivery_note_exists:
-    type: string
+    type: boolean
     description: 'If the document is a delivery note, this flag will be set to true'
   attachment_exists:
-    type: string
+    type: boolean
     description: 'If the document has one or more attachments, this flag will be set to true'
   accompanying_invoice_exists:
-    type: string
+    type: boolean
     description: 'If an accompanying invoice exists, this flag will be set to true'
   default_attach_pdf:
     type: boolean

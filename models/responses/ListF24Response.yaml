@@ -8,3 +8,10 @@ allOf:
         type: array
         items:
           $ref: ../schemas/F24.yaml
+  - type: object
+    properties:
+      aggregated_data:
+        type: object
+        properties:
+          amount:
+            type: number

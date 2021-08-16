@@ -1,9 +1,10 @@
 title: UploadIssuedDocumentAttachmentResponse
 type: object
+description: Attachment Token.
 properties:
   data:
     type: object
     properties:
       attachment_token:
         type: string
-description: Attachment Token.
+        description: Uploaded attachment token.

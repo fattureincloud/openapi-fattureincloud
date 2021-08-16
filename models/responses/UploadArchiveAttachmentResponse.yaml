@@ -1,10 +1,8 @@
-title: SendEInvoiceResponse
+title: UploadArchiveAttachmentResponse
 type: object
 properties:
   data:
     type: object
     properties:
-      name:
-        type: string
-      date:
+      attachment_token:
         type: string

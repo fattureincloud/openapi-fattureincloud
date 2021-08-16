@@ -8,12 +8,14 @@ properties:
     type: string
     format: date
     example: '2018-02-12'
+    description: Due date.
   status:
     type: string
     enum:
       - paid
       - not_paid
       - reversed
+    description: Tax status.
   payment_account:
     $ref: ./PaymentAccount.yaml
   amount:
