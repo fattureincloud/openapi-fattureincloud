@@ -2,6 +2,7 @@ type: object
 properties:
   id:
     type: integer
+    description: Unique identifier of the document.
   type:
     $ref: ./ReceivedDocumentType.yaml
   entity:
@@ -13,18 +14,25 @@ properties:
         type: string
   date:
     type: string
+    description: 'Date of the document [If not specified, today date is used].'
   category:
     type: string
+    description: Document category.
   description:
     type: string
+    description: Document description.
   amount_net:
     type: number
+    description: Total net amount.
   amount_vat:
     type: number
+    description: Total vat amount.
   amount_withholding_tax:
     type: number
+    description: Withholding tax amount.
   amount_other_withholding_tax:
     type: number
+    description: Other withholding tax amount.
   amount_gross:
     type: number
     description: '[Read-only]'
@@ -32,18 +40,20 @@ properties:
     type: number
   rc_center:
     type: string
+    description: Revenue center.
   invoice_number:
     type: string
+    description: Invoice number
   is_marked:
     type: boolean
   is_detailed:
     type: boolean
   e_invoice:
     type: boolean
-    description: '[Read-only]'
+    description: 'Indicates if this is an e-invoice [Read-only]'
   next_due_date:
     type: string
-    description: '[Read-only]'
+    description: 'Next due date [Read-only].'
     format: date
   currency:
     $ref: ./Currency.yaml
@@ -51,10 +61,12 @@ properties:
     maximum: 100
     minimum: 0
     type: number
+    description: Tax deducibility percentage.
   vat_deductibility:
     maximum: 100
     minimum: 0
     type: number
+    description: Vat deducibility percentage.
   items_list:
     type: array
     items:
@@ -64,22 +76,30 @@ properties:
           type: integer
         product_id:
           type: integer
+          description: Unique identifier of the product
         code:
           type: string
+          description: Product code.
         name:
           type: string
+          description: Product name.
         measure:
           type: string
+          description: Product measure.
         net_price:
           type: number
+          description: Product net price.
         category:
           type: string
+          description: Product category.
         qty:
           type: number
+          description: Product quantity.
         vat:
           $ref: ./VatType.yaml
         stock:
           type: number
+          description: Number of items in stock
   payments_list:
     type: array
     items:
@@ -87,30 +107,37 @@ properties:
       properties:
         id:
           type: integer
+          description: Unique identifier.
         amount:
           type: number
+          description: Amount of items.
         due_date:
           type: string
+          description: Due date
         paid_date:
           type: string
+          description: Paid date
         payment_terms:
           type: object
           properties:
             days:
               type: number
+              description: Number of days.
             type:
               type: string
         status:
           type: string
+          description: Payment status.
         payment_account:
           $ref: ./PaymentAccount.yaml
   attachment_url:
     type: string
-    description: '[Read-only]'
+    description: 'Attachment url [Read-only].'
   attachment_preview_url:
     type: string
-    description: '[Read-only]'
+    description: 'Attachment preview url [Read-only].'
   attachment_token:
     type: string
+    description: Uploaded attachement token.
 required:
   - entity

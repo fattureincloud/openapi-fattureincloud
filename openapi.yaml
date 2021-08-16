@@ -2497,7 +2497,7 @@ paths:
             enum:
               - products
               - issued_documents
-              - expenses_documents
+              - received_documents
           in: query
           name: context
           required: true

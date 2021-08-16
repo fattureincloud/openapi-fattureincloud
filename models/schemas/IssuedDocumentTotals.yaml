@@ -1,57 +1,70 @@
-required:
-  - amount_due
-  - amount_gross
-  - amount_net
-  - amount_vat
-  - is_enasarco_maximal_exceeded
-  - payments_sum
-  - vat_list
 type: object
 properties:
   amount_net:
     type: number
+    description: Total net amount.
   amount_rivalsa:
     type: number
+    description: Rivalsa amount.
   amount_net_with_rivalsa:
     type: number
+    description: Net amount with rivalsa.
   amount_cassa:
     type: number
+    description: Cassa amount.
   taxable_amount:
     type: number
+    description: Taxable amount.
   not_taxable_amount:
     type: number
-  vat_list:
-    required:
-      - vat_item
-    type: object
-    properties:
-      vat_item:
-        required:
-          - net
-          - vat
-        type: object
-        properties:
-          net:
-            type: number
-          vat:
-            type: number
+    description: Not taxable amount.
   amount_vat:
     type: number
+    description: Total vat amount.
   amount_gross:
     type: number
+    description: Total grosas amount.
   taxable_amount_withholding_tax:
     type: number
+    description: Taxable withholding tax amount.
   amount_withholding_tax:
     type: number
+    description: Withholding tax amount.
   taxable_amount_other_withholding_tax:
     type: number
+    description: Other withholding tax taxable amount.
   amount_other_withholding_tax:
     type: number
+    description: Other withholding tax amount.
   stamp_duty:
     type: number
+    description: 'Stamp duty value [0 if not present].'
   amount_due:
     type: number
   is_enasarco_maximal_exceeded:
     type: boolean
   payments_sum:
     type: number
+  vat_list:
+    type: object
+    required:
+      - vat_item
+    properties:
+      vat_item:
+        type: object
+        required:
+          - net
+          - vat
+        properties:
+          net:
+            type: number
+          vat:
+            type: number
+required:
+  - amount_net
+  - amount_vat
+  - amount_gross
+  - amount_due
+  - is_enasarco_maximal_exceeded
+  - payments_sum
+  - vat_list

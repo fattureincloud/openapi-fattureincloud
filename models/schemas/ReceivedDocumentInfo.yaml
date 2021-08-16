@@ -3,11 +3,13 @@ type: object
 properties:
   default_values:
     type: object
+    description: Default values for the document.
     properties:
       detailed:
         type: boolean
   items_default_values:
     type: object
+    description: Default values for the document items.
     properties:
       vat:
         type: integer
