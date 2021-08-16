@@ -2583,6 +2583,7 @@ components:
             'cashbook:a': ''
             'settings:r': ''
             'settings:a': ''
+            'situation:r': ''
           authorizationUrl: 'https://api-v2.fattureincloud.it/oauth/authorize'
   parameters:
     Authorization:
@@ -2643,7 +2644,7 @@ components:
       in: path
       required: true
       schema:
-        type: string
+        type: integer
     product_id:
       name: product_id
       in: path
