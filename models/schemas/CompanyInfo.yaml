@@ -30,17 +30,19 @@ properties:
       - standard
       - premium
       - premium_plus
+  fic_license_type:
+    type: string
+    description: 'Company FIC account plan. '
+  fic_payment_subject:
+    type: string
   fic_license_expire:
     type: string
     description: Company FIC license expire date.
     format: date
     nullable: true
-  fic_license_type:
-    type: string
-  fic_payment_subject:
-    type: string
   fic_signup_date:
     type: string
+    description: FIC account sign up date.
   use_fic:
     type: boolean
     description: 'Determine if the FIC account is actually used. If type="company" this is always true; if type="accountant" it can be true or false. If false, it means that the accountant uses FIC only to control other companies and not to control itself.'
@@ -154,10 +156,13 @@ properties:
     type: string
   dic_plan_name:
     type: string
+    description: Company DIC account plan name.
   dic_signup_date:
     type: string
     nullable: true
+    description: DIC account sign up date.
   is_accountant:
     type: boolean
+    description: Determine if the logged account is an accountant.
   registration_service:
     type: string

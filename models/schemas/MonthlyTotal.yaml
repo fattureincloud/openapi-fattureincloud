@@ -1,15 +1,18 @@
 description: |
   MonthlyTotal
 type: object
+title: ''
 properties:
   net:
     type: number
+    description: Monthly total net amount.
   gross:
     type: number
+    description: Monthly total gross amount.
   count:
     type: number
+    description: Monthly total receipt number.
 required:
   - net
   - gross
   - count
-title: ''

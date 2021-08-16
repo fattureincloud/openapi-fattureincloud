@@ -4,19 +4,25 @@ description: Receipt
 properties:
   id:
     type: number
+    description: Receipt date.
   date:
     type: string
+    description: Receipt date.
   number:
     type: number
+    description: Receipt number.
   numeration:
     type: string
     description: If it's null or empty string use the default numeration.
   amount_net:
     type: number
+    description: Total net amount.
   amount_vat:
     type: number
+    description: Total vat amount.
   amount_gross:
     type: number
+    description: Total gross amount.
   use_gross_prices:
     type: boolean
     default: false
@@ -24,21 +30,16 @@ properties:
     $ref: ./ReceiptType.yaml
   description:
     type: string
+    description: Receipt description.
   rc_center:
     type: string
+    description: Revenue center.
   created_at:
     type: string
   updated_at:
     type: string
   payment_account:
-    type: object
-    required:
-      - id
-    properties:
-      id:
-        type: number
-      name:
-        type: string
+    $ref: ./PaymentAccount.yaml
   items_list:
     type: array
     items:
@@ -46,12 +47,16 @@ properties:
       properties:
         id:
           type: number
+          description: Item unique identifier.
         amount_net:
           type: number
+          description: Item total net amount.
         amount_gross:
           type: number
+          description: Item total gross amount.
         category:
           type: string
+          description: Item category.
         vat:
           type: object
           properties:

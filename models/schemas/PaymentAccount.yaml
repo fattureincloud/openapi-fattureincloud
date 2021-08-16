@@ -5,7 +5,7 @@ properties:
     description: Unique identifier
   name:
     type: string
-    description: Name of the payment account
+    description: Payment account name.
     example: Conto Banca Intesa
   type:
     type: string
@@ -13,12 +13,16 @@ properties:
     enum:
       - standard
       - bank
+    description: Payment account type.
   iban:
     type: string
+    description: Payment account iban.
   sia:
     type: string
+    description: Payment account sia.
   cuc:
     type: string
+    description: Payment account cuc.
   virtual:
     type: boolean
 required:

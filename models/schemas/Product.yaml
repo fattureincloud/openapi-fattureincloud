@@ -46,8 +46,10 @@ properties:
     description: '[READ_ONLY] Product current stock.'
   average_cost:
     type: number
+    description: Product average cost.
   average_price:
     type: number
+    description: Product average price.
   created_at:
     type: string
   updated_at:

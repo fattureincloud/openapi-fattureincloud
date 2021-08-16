@@ -34,12 +34,17 @@ properties:
     type: number
   dic:
     type: boolean
+    description: Determine if the company has a DIC account.
   fic:
     type: boolean
+    description: Determine if the company has a FIC account.
   fic_license_expire:
     type: string
     format: date
+    description: Company FIC license expire date.
   fic_plan:
     type: string
+    description: Company DIC account plan.
   tax_code:
     type: string
+    description: Tax code.
