@@ -10,8 +10,10 @@ properties:
     properties:
       id:
         type: integer
+        description: Entity unique identifier.
       name:
         type: string
+        description: Entity name.
   date:
     type: string
     description: 'Date of the document [If not specified, today date is used].'
@@ -35,9 +37,11 @@ properties:
     description: Other withholding tax amount.
   amount_gross:
     type: number
-    description: '[Read-only]'
+    description: Total gross amount.
+    readOnly: true
   amortization:
     type: number
+    description: Amortization value
   rc_center:
     type: string
     description: Revenue center.

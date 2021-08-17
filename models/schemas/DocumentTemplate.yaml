@@ -10,3 +10,4 @@ properties:
     example: Light Smoke
   type:
     type: string
+    description: Template type.

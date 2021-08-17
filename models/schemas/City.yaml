@@ -3,10 +3,13 @@ type: object
 properties:
   postal_code:
     type: string
+    description: City postal code.
   city:
     type: string
+    description: City name.
   province:
     type: string
+    description: Province.
 required:
   - postal_code
   - city

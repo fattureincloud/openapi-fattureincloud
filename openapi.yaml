@@ -31,20 +31,20 @@ paths:
     get:
       tags:
         - User
-      summary: Get user info
+      summary: Get User Info
       responses:
         '200':
           $ref: '#/components/responses/UserInfoResponse'
         '401':
           description: Unauthorized.
-      operationId: userInfo
+      operationId: getUserInfo
       description: "Makes possible to retrieve the current user's info.\n\n\U0001F464 Person context\n\nGet user email, name and id."
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters: []
   /user/companies:
     get:
-      summary: userCompanies
+      summary: Get User Companies
       tags:
         - User
       responses:
@@ -52,7 +52,7 @@ paths:
           $ref: '#/components/responses/UserCompaniesResponse'
         '401':
           description: Unauthorized
-      operationId: userCompanies
+      operationId: getUserCompanies
       description: "\U0001F464 Person context\n\nGet a list of the controlled companies and their CompanyAuthentication tokens."
       security:
         - OAuth2AuthenticationCodeFlow: []
@@ -427,7 +427,7 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
     post:
-      summary: ''
+      summary: Create Product
       operationId: createProduct
       responses:
         '200':
@@ -532,7 +532,7 @@ paths:
       tags:
         - Products
     delete:
-      summary: ''
+      summary: Delete Product
       operationId: deleteProduct
       responses:
         '200':
@@ -1342,7 +1342,7 @@ paths:
                           virtual: false
         description: Modified document.
     delete:
-      summary: ''
+      summary: Delete Received Document
       operationId: deleteReceivedDocument
       responses:
         '200':

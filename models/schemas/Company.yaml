@@ -32,6 +32,7 @@ properties:
       $ref: ./Company.yaml
   connection_id:
     type: number
+    description: Company connection id.
   dic:
     type: boolean
     description: Determine if the company has a DIC account.
@@ -41,10 +42,10 @@ properties:
   fic_license_expire:
     type: string
     format: date
-    description: Company FIC license expire date.
+    description: Company FIC license expiration date.
   fic_plan:
     type: string
-    description: Company DIC account plan.
+    description: Company FIC account plan.
   tax_code:
     type: string
     description: Tax code.

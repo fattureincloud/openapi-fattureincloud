@@ -3,15 +3,17 @@ description: ''
 properties:
   id:
     type: string
-    description: Currency code
+    description: Currency code.
     example: EUR
   symbol:
     type: string
-    description: Currency symbol
+    description: Currency symbol.
     example: €
   exchange_rate:
     type: string
     description: Currency exchange rate (EUR to this)
+    example: 1
   html_symbol:
     type: string
     example: EUR
+    description: Currency html code.
