@@ -140,6 +140,7 @@ properties:
   attachment_preview_url:
     type: string
     description: 'Attachment preview url [Read-only].'
+    readOnly: true
   attachment_token:
     type: string
     description: Uploaded attachement token.

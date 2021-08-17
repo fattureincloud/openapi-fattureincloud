@@ -373,9 +373,11 @@ properties:
   attachment_url:
     type: string
     description: '[Read only] Public url of the attached file. Authomatically set if a valid attachment token is passed via POST /issued_documents or PUT /issued_documents/{documentId}.'
+    readOnly: true
   attachment_token:
     type: string
     description: '[Write only] Attachment token returned by POST /issued_documents/attachment. Used to attach the file already uploaded.'
+    writeOnly: true
   ei_raw:
     type: object
     description: Advanced raw attributes for e-invoices.
