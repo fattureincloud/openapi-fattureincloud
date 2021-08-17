@@ -13,14 +13,18 @@ properties:
     description: Archive Document description.
   attachment_url:
     type: string
-    description: 'Absolute url of the attached file. Authomatically set if a valid attachment token is passed via POST /archive or PUT /archive/{documentId}.'
+    description: |-
+      [Read Only]
+      Absolute url of the attached file. Authomatically set if a valid attachment token is passed via POST /archive or PUT /archive/{documentId}.
     readOnly: true
   category:
     type: string
     description: Archive document category.
   attachment_token:
     type: string
-    description: Attachment token returned by POST /archive/attachment. Used to attach the file already uploaded.
+    description: |-
+      [Write Only]
+      Attachment token returned by POST /archive/attachment. Used to attach the file already uploaded.
     writeOnly: true
 required:
   - date

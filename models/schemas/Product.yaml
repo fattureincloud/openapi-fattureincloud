@@ -43,7 +43,9 @@ properties:
     description: Product initial stock.
   stock_current:
     type: number
-    description: Product current stock.
+    description: |-
+      [Read Only]
+      Product current stock.
     readOnly: true
   average_cost:
     type: number

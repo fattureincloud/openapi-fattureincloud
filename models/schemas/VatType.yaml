@@ -29,7 +29,9 @@ properties:
     description: E-invoice description.
   editable:
     type: boolean
-    description: 'Determine if this vat type is editable [Read-only]'
+    description: |-
+      [Read Only]
+      Determine if this vat type is editable.
     default: true
     readOnly: true
   is_disabled:

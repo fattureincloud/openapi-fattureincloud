@@ -317,31 +317,45 @@ properties:
     description: This is true if the document is marked.
   amount_net:
     type: number
-    description: Total net amount (competenze).
+    description: |-
+      [Read Only]
+      Total net amount (competenze).
     readOnly: true
   amount_vat:
     type: number
-    description: Total vat amount (IVA).
+    description: |-
+      [Read Only]
+      Total vat amount (IVA).
     readOnly: true
   amount_gross:
     type: number
-    description: Total gross amount (totale documento).
+    description: |-
+      [Read Only]
+      Total gross amount (totale documento).
     readOnly: true
   amount_rivalsa:
     type: number
-    description: ' Rivalsa amount.'
+    description: |-
+      [Read Only]
+      Rivalsa amount.
     readOnly: true
   amount_cassa:
     type: number
-    description: Cassa amount.
+    description: |-
+      [Read Only]
+      Cassa amount.
     readOnly: true
   amount_withholding_tax:
     type: number
-    description: Withholding tax amount (ritenuta d'acconto).
+    description: |-
+      [Read Only]
+      Withholding tax amount (ritenuta d'acconto).
     readOnly: true
   amount_other_withholding_tax:
     type: number
-    description: Other withholding tax amount (altra ritenuta).
+    description: |-
+      [Read Only]
+      Other withholding tax amount (altra ritenuta).
     readOnly: true
   extra_data:
     type: object
@@ -372,11 +386,15 @@ properties:
     description: Public url of the document PDF file.
   attachment_url:
     type: string
-    description: '[Read only] Public url of the attached file. Authomatically set if a valid attachment token is passed via POST /issued_documents or PUT /issued_documents/{documentId}.'
+    description: |-
+      [Read Only]
+      Public url of the attached file. Authomatically set if a valid attachment token is passed via POST /issued_documents or PUT /issued_documents/{documentId}.
     readOnly: true
   attachment_token:
     type: string
-    description: '[Write only] Attachment token returned by POST /issued_documents/attachment. Used to attach the file already uploaded.'
+    description: |-
+      [Write Only]
+      Attachment token returned by POST /issued_documents/attachment. Used to attach the file already uploaded.
     writeOnly: true
   ei_raw:
     type: object

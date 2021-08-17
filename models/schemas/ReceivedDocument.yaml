@@ -37,7 +37,9 @@ properties:
     description: Other withholding tax amount.
   amount_gross:
     type: number
-    description: Total gross amount.
+    description: |-
+      [Read Only]
+      Total gross amount.
     readOnly: true
   amortization:
     type: number
@@ -54,11 +56,16 @@ properties:
     type: boolean
   e_invoice:
     type: boolean
-    description: 'Indicates if this is an e-invoice [Read-only]'
+    description: |-
+      [Read Only]
+      Indicates if this is an e-invoice.
   next_due_date:
     type: string
-    description: 'Next due date [Read-only].'
+    description: |-
+      [Read Only]
+      Next due date.
     format: date
+    readOnly: true
   currency:
     $ref: ./Currency.yaml
   tax_deductibility:
@@ -136,10 +143,15 @@ properties:
           $ref: ./PaymentAccount.yaml
   attachment_url:
     type: string
-    description: 'Attachment url [Read-only].'
+    description: |-
+      [Read Only]
+      Attachment url.
+    readOnly: true
   attachment_preview_url:
     type: string
-    description: 'Attachment preview url [Read-only].'
+    description: |-
+      [Read Only]
+      Attachment preview url.
     readOnly: true
   attachment_token:
     type: string
