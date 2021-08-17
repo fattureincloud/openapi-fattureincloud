@@ -2518,11 +2518,7 @@ paths:
       parameters: []
   '/c/{company_id}/info/archive_categories':
     parameters:
-      - schema:
-          type: string
-        name: company_id
-        in: path
-        required: true
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: List Archive Categories
       tags:
@@ -2583,6 +2579,7 @@ components:
             'cashbook:a': ''
             'settings:r': ''
             'settings:a': ''
+            'situation:r': ''
           authorizationUrl: 'https://api-v2.fattureincloud.it/oauth/authorize'
   parameters:
     Authorization:
@@ -2643,7 +2640,7 @@ components:
       in: path
       required: true
       schema:
-        type: string
+        type: integer
     product_id:
       name: product_id
       in: path

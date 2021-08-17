@@ -20,6 +20,7 @@ properties:
     description: Determine which price to use for calculations.
   default_vat:
     $ref: ./VatType.yaml
+    nullable: true
   net_cost:
     type: number
     description: Net cost of the product (used for received documents).
@@ -53,6 +54,7 @@ properties:
     description: Product average price.
   created_at:
     type: string
+    nullable: true
   updated_at:
     type: string
 required:
