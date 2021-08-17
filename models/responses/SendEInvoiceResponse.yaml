@@ -6,5 +6,7 @@ properties:
     properties:
       name:
         type: string
+        description: Response message.
       date:
         type: string
+        description: E-invoice sent date.

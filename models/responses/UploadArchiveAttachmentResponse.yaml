@@ -6,3 +6,4 @@ properties:
     properties:
       attachment_token:
         type: string
+        description: Uploaded attachment token.

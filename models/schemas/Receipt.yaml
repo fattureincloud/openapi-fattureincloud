@@ -4,7 +4,7 @@ description: Receipt
 properties:
   id:
     type: number
-    description: Receipt date.
+    description: Receipt unique identifier.
   date:
     type: string
     description: Receipt date.
@@ -58,14 +58,7 @@ properties:
           type: string
           description: Item category.
         vat:
-          type: object
-          properties:
-            id:
-              type: number
-            value:
-              type: number
-            description:
-              type: string
+          $ref: ./VatType.yaml
 required:
   - date
   - type

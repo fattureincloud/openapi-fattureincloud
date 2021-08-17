@@ -3,12 +3,14 @@ type: object
 properties:
   id:
     type: string
-    description: id of the entry
+    description: Cashbook unique identifier.
   date:
     type: string
     format: date
+    description: Cashbook date.
   description:
     type: string
+    description: Cashbook description.
   kind:
     type: string
     enum:
@@ -17,21 +19,26 @@ properties:
       - expense
       - tax
       - receipt
+    description: Cashbook kind.
   type:
     type: string
     enum:
       - in
       - out
-  in_out:
+    description: Cashbook type.
+  '':
     oneOf:
       - properties:
           amount_in:
             type: number
+            description: Total amount in.
           payment_account_in:
             $ref: ./PaymentAccount.yaml
-      - properties:
+      - description: ''
+        properties:
           amount_out:
             type: number
+            description: Total amount out.
           payment_account_out:
             $ref: ./PaymentAccount.yaml
     type: object
@@ -40,13 +47,16 @@ properties:
     properties:
       id:
         type: integer
+        description: Document unique identifier.
       type:
         type: string
+        description: Document type.
       path:
         type: string
+        description: Document path.
 required:
   - id
   - date
   - description
   - kind
-  - in_out
+  - ''

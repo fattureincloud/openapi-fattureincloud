@@ -1,4 +1,5 @@
 type: object
+description: Payment account.
 properties:
   id:
     type: integer
@@ -25,5 +26,6 @@ properties:
     description: Payment account cuc.
   virtual:
     type: boolean
+    description: Determine if the payment method is virtual.
 required:
   - name

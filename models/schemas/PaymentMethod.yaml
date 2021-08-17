@@ -15,6 +15,7 @@ properties:
       - riba
   is_default:
     type: boolean
+    description: Determines if this is the default payment method.
   default_payment_account:
     $ref: ./PaymentAccount.yaml
   details:
@@ -26,7 +27,9 @@ properties:
       properties:
         title:
           type: string
+          description: Details title.
         description:
           type: string
+          description: Details description.
 required:
   - name
