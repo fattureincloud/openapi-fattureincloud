@@ -31,7 +31,7 @@ paths:
     get:
       tags:
         - User
-      summary: Get user info
+      summary: Get User Info
       responses:
         '200':
           $ref: '#/components/responses/UserInfoResponse'
@@ -44,7 +44,7 @@ paths:
       parameters: []
   /user/companies:
     get:
-      summary: User Companies
+      summary: Get User Companies
       tags:
         - User
       responses:
