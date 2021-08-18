@@ -8,12 +8,15 @@ properties:
     description: Product name.
   code:
     type: string
+    nullable: true
     description: Product code.
   net_price:
     type: number
+    nullable: true
     description: 'Net sale price (used if use_gross_price is false, otherwise it''s competed automatically).'
   gross_price:
     type: number
+    nullable: true
     description: 'Gross sale price (used if use_gross_price is false, otherwise it''s competed automatically).'
   use_gross_price:
     type: boolean
@@ -23,9 +26,11 @@ properties:
     nullable: true
   net_cost:
     type: number
+    nullable: true
     description: Net cost of the product (used for received documents).
   measure:
     type: string
+    nullable: true
     description: Unit of measure.
   description:
     type: string
@@ -35,6 +40,7 @@ properties:
     description: Product category.
   notes:
     type: string
+    nullable: true
     description: Extra notes.
   in_stock:
     type: boolean
@@ -44,7 +50,9 @@ properties:
     description: Product initial stock.
   stock_current:
     type: number
-    description: Product current stock.
+    description: |-
+      [Read Only]
+      Product current stock.
     readOnly: true
   average_cost:
     type: number

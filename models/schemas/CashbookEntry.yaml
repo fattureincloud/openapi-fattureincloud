@@ -6,6 +6,7 @@ properties:
     description: Cashbook unique identifier.
   date:
     type: string
+    nullable: true
     format: date
     description: Cashbook date.
   description:

@@ -88,12 +88,14 @@ properties:
     default: false
   ei_data:
     type: object
+    nullable: true
     description: |-
       E-invoice data.
       [Only if e_invoice=true]
     properties:
       vat_kind:
         type: string
+        nullable: true
         description: Vat kind (esigibilità IVA).
         default: null
         enum:
@@ -103,6 +105,7 @@ properties:
           - S
       original_document_type:
         type: string
+        nullable: true
         description: Type of document followed by the the current invoice.
         default: ordine
         enum:
@@ -111,6 +114,7 @@ properties:
           - convenzione
       od_number:
         type: string
+        nullable: true
         description: Original document number.
       od_date:
         type: string
@@ -118,29 +122,37 @@ properties:
         format: date
       cig:
         type: string
+        nullable: true
         description: CIG.
       cup:
         type: string
+        nullable: true
         description: CUP.
       payment_method:
         type: string
+        nullable: true
         description: 'Payment method (see https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.1/Rappresentazione-tabellare-fattura-ordinaria.pdf for the accepted values of ModalitaPagamento).'
       bank_name:
         type: string
+        nullable: true
         description: Bank name.
       bank_iban:
         type: string
+        nullable: true
         description: IBAN.
       bank_beneficiary:
         type: string
+        nullable: true
         description: Bank beneficiary.
   items_list:
     type: array
+    nullable: true
     items:
       type: object
       properties:
         product_id:
           type: integer
+          nullable: true
           description: Unique identifier of the product.
           example: 1234
         code:
@@ -166,6 +178,7 @@ properties:
           example: 1.23
         gross_price:
           type: number
+          nullable: true
           description: Gross price.
           example: 1.45
         vat:
@@ -190,11 +203,13 @@ properties:
           default: true
         stock:
           type: boolean
+          nullable: true
         ei_raw:
           type: object
           description: Advanced raw attributes for e-invoices.
   payments_list:
     type: array
+    nullable: true
     items:
       type: object
       properties:
@@ -226,6 +241,7 @@ properties:
           example: '2018-04-03'
         ei_raw:
           type: object
+          nullable: true
           description: Advanced raw attributes for e-invoices.
   template:
     $ref: ./DocumentTemplate.yaml
@@ -269,6 +285,7 @@ properties:
     default: false
   dn_number:
     type: integer
+    nullable: true
     description: Number (for the attached delivery note).
   dn_date:
     type: string
@@ -276,21 +293,27 @@ properties:
     format: date
   dn_ai_packages_number:
     type: string
+    nullable: true
     description: Number of packages (for the attached delivery note).
   dn_ai_weight:
     type: string
+    nullable: true
     description: Weight (for the attached delivery note).
   dn_ai_causal:
     type: string
+    nullable: true
     description: Causal (for the attached delivery note).
   dn_ai_destination:
     type: string
+    nullable: true
     description: Destination (for the attached delivery note).
   dn_ai_transporter:
     type: string
+    nullable: true
     description: Transporter (for the attached delivery note).
   dn_ai_notes:
     type: string
+    nullable: true
     description: Notes (for the attached delivery note).
   refers_to:
     type: object
@@ -317,34 +340,49 @@ properties:
     description: This is true if the document is marked.
   amount_net:
     type: number
-    description: Total net amount (competenze).
+    description: |-
+      [Read Only]
+      Total net amount (competenze).
     readOnly: true
   amount_vat:
     type: number
-    description: Total vat amount (IVA).
+    description: |-
+      [Read Only]
+      Total vat amount (IVA).
     readOnly: true
   amount_gross:
     type: number
-    description: Total gross amount (totale documento).
+    description: |-
+      [Read Only]
+      Total gross amount (totale documento).
     readOnly: true
   amount_rivalsa:
     type: number
-    description: ' Rivalsa amount.'
+    description: |-
+      [Read Only]
+      Rivalsa amount.
     readOnly: true
   amount_cassa:
     type: number
-    description: Cassa amount.
+    description: |-
+      [Read Only]
+      Cassa amount.
     readOnly: true
   amount_withholding_tax:
     type: number
-    description: Withholding tax amount (ritenuta d'acconto).
+    description: |-
+      [Read Only]
+      Withholding tax amount (ritenuta d'acconto).
     readOnly: true
   amount_other_withholding_tax:
     type: number
-    description: Other withholding tax amount (altra ritenuta).
+    description: |-
+      [Read Only]
+      Other withholding tax amount (altra ritenuta).
     readOnly: true
   extra_data:
     type: object
+    nullable: true
     description: |-
       Extra data.
       TS fields follow the technical specifications provided by "Sistema Tessera Sanitaria".
@@ -361,10 +399,12 @@ properties:
         description: 'Can be [ ''TK'', ''FC'', ''FV'', ''SV'', ''SP'', ''AD'', ''AS'', ''SR'', ''CT'', ''PI'', ''IC'', ''AA'' ]. Refer to the technical specifications to learn more.'
   seen_date:
     type: string
+    nullable: true
     description: Date when the client/supplier has seen the document.
     format: date
   next_due_date:
     type: string
+    nullable: true
     description: Date of the next not paid payment.
     format: date
   url:
@@ -372,12 +412,20 @@ properties:
     description: Public url of the document PDF file.
   attachment_url:
     type: string
-    description: '[Read only] Public url of the attached file. Authomatically set if a valid attachment token is passed via POST /issued_documents or PUT /issued_documents/{documentId}.'
+    description: |-
+      [Read Only]
+      Public url of the attached file. Authomatically set if a valid attachment token is passed via POST /issued_documents or PUT /issued_documents/{documentId}.
+    readOnly: true
   attachment_token:
     type: string
-    description: '[Write only] Attachment token returned by POST /issued_documents/attachment. Used to attach the file already uploaded.'
+    nullable: true
+    description: |-
+      [Write Only]
+      Attachment token returned by POST /issued_documents/attachment. Used to attach the file already uploaded.
+    writeOnly: true
   ei_raw:
     type: object
+    nullable: true
     description: Advanced raw attributes for e-invoices.
 required:
   - items_list
