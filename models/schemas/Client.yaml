@@ -13,9 +13,8 @@ properties:
     example: Rossi S.r.l.
     description: Client name
   type:
-    type:
-      - string
-      - 'null'
+    type: string
+    nullable: true
     default: null
     enum:
       - null

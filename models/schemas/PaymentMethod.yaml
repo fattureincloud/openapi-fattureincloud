@@ -2,7 +2,7 @@ type: object
 properties:
   id:
     type: integer
-     nullable: true
+    nullable: true
     description: Unique identifier
   name:
     type: string
