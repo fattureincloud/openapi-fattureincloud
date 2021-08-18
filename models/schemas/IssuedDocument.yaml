@@ -87,17 +87,15 @@ properties:
     description: Indicates if this is an e-invoice.
     default: false
   ei_data:
-    type:
-      - object
-      - 'null'
+    type: object
+    nullable: true
     description: |-
       E-invoice data.
       [Only if e_invoice=true]
     properties:
       vat_kind:
-        type:
-          - string
-          - 'null'
+        type: string
+        nullable: true
         description: Vat kind (esigibilità IVA).
         default: null
         enum:
@@ -106,9 +104,8 @@ properties:
           - D
           - S
       original_document_type:
-        type:
-          - string
-          - 'null'
+        type: string
+        nullable: true
         description: Type of document followed by the the current invoice.
         default: ordine
         enum:
@@ -116,55 +113,46 @@ properties:
           - contratto
           - convenzione
       od_number:
-        type:
-          - string
-          - 'null'
+        type: string
+        nullable: true
         description: Original document number.
       od_date:
         type: string
         description: Original document date.
         format: date
       cig:
-        type:
-          - string
-          - 'null'
+        type: string
+        nullable: true
         description: CIG.
       cup:
-        type:
-          - string
-          - 'null'
+        type: string
+        nullable: true
         description: CUP.
       payment_method:
-        type:
-          - string
-          - 'null'
+        type: string
+        nullable: true
         description: 'Payment method (see https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.1/Rappresentazione-tabellare-fattura-ordinaria.pdf for the accepted values of ModalitaPagamento).'
       bank_name:
-        type:
-          - string
-          - 'null'
+        type: string
+        nullable: true
         description: Bank name.
       bank_iban:
-        type:
-          - string
-          - 'null'
+        type: string
+        nullable: true
         description: IBAN.
       bank_beneficiary:
-        type:
-          - string
-          - 'null'
+        type: string
+        nullable: true
         description: Bank beneficiary.
   items_list:
-    type:
-      - array
-      - 'null'
+    type: array
+    nullable: true
     items:
       type: object
       properties:
         product_id:
-          type:
-            - integer
-            - 'null'
+          type: integer
+          nullable: true
           description: Unique identifier of the product.
           example: 1234
         code:
@@ -189,9 +177,8 @@ properties:
           description: Net price.
           example: 1.23
         gross_price:
-          type:
-            - number
-            - 'null'
+          type: number
+          nullable: true
           description: Gross price.
           example: 1.45
         vat:
@@ -215,16 +202,14 @@ properties:
           type: boolean
           default: true
         stock:
-          type:
-            - boolean
-            - 'null'
+          type: boolean
+          nullable: true
         ei_raw:
           type: object
           description: Advanced raw attributes for e-invoices.
   payments_list:
-    type:
-      - array
-      - 'null'
+    type: array
+    nullable: true
     items:
       type: object
       properties:
@@ -255,9 +240,8 @@ properties:
           format: date
           example: '2018-04-03'
         ei_raw:
-          type:
-            - object
-            - 'null'
+          type: object
+          nullable: true
           description: Advanced raw attributes for e-invoices.
   template:
     $ref: ./DocumentTemplate.yaml
@@ -300,43 +284,36 @@ properties:
     description: Attach an accompanying invoice.
     default: false
   dn_number:
-    type:
-      - integer
-      - 'null'
+    type: integer
+    nullable: true
     description: Number (for the attached delivery note).
   dn_date:
     type: string
     description: Date (for the attached delivery note).
     format: date
   dn_ai_packages_number:
-    type:
-      - string
-      - 'null'
+    type: string
+    nullable: true
     description: Number of packages (for the attached delivery note).
   dn_ai_weight:
-    type:
-      - string
-      - 'null'
+    type: string
+    nullable: true
     description: Weight (for the attached delivery note).
   dn_ai_causal:
-    type:
-      - string
-      - 'null'
+    type: string
+    nullable: true
     description: Causal (for the attached delivery note).
   dn_ai_destination:
-    type:
-      - string
-      - 'null'
+    type: string
+    nullable: true
     description: Destination (for the attached delivery note).
   dn_ai_transporter:
-    type:
-      - string
-      - 'null'
+    type: string
+    nullable: true
     description: Transporter (for the attached delivery note).
   dn_ai_notes:
-    type:
-      - string
-      - 'null'
+    type: string
+    nullable: true
     description: Notes (for the attached delivery note).
   refers_to:
     type: object
@@ -404,9 +381,8 @@ properties:
       Other withholding tax amount (altra ritenuta).
     readOnly: true
   extra_data:
-    type:
-      - object
-      - 'null'
+    type: object
+    nullable: true
     description: |-
       Extra data.
       TS fields follow the technical specifications provided by "Sistema Tessera Sanitaria".
@@ -422,15 +398,13 @@ properties:
         type: string
         description: 'Can be [ ''TK'', ''FC'', ''FV'', ''SV'', ''SP'', ''AD'', ''AS'', ''SR'', ''CT'', ''PI'', ''IC'', ''AA'' ]. Refer to the technical specifications to learn more.'
   seen_date:
-    type:
-      - string
-      - 'null'
+    type: string
+    nullable: true
     description: Date when the client/supplier has seen the document.
     format: date
   next_due_date:
-    type:
-      - string
-      - 'null'
+    type: string
+    nullable: true
     description: Date of the next not paid payment.
     format: date
   url:
@@ -443,17 +417,15 @@ properties:
       Public url of the attached file. Authomatically set if a valid attachment token is passed via POST /issued_documents or PUT /issued_documents/{documentId}.
     readOnly: true
   attachment_token:
-    type:
-      - string
-      - 'null'
+    type: string
+    nullable: true
     description: |-
       [Write Only]
       Attachment token returned by POST /issued_documents/attachment. Used to attach the file already uploaded.
     writeOnly: true
   ei_raw:
-    type:
-      - object
-      - 'null'
+    type: object
+    nullable: true
     description: Advanced raw attributes for e-invoices.
 required:
   - items_list

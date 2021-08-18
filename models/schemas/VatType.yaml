@@ -1,6 +1,5 @@
-type:
-  - object
-  - 'null'
+type: object
+nullable: true
 properties:
   id:
     type: integer

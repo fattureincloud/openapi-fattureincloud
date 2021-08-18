@@ -6,39 +6,30 @@ properties:
     example: 12345
     description: User unique identifier
   name:
-    type:
-      - string
-      - 'null'
-    description: Full name of the user.
+    type: string
     nullable: true
+    description: Full name of the user.
     example: Mario Rossi
   first_name:
-    type:
-      - string
-      - 'null'
+    type: string
     nullable: true
     example: Mario
     description: First name of the user.
   last_name:
-    type:
-      - string
-      - 'null'
+    type: string
     nullable: true
     example: Rossi
     description: Last name of the user.
   email:
-    type:
-      - string
-      - 'null'
+    type: string
+    nullable: true
     example: mario.rossi@example.com
     description: Email of the user.
   hash:
     type: string
     example: 5add29e1234532a1bf2ed7b612043029
   picture:
-    type:
-      - string
-      - 'null'
+    type: string
     nullable: true
     example: picture.jpg
     description: Picture of the user.

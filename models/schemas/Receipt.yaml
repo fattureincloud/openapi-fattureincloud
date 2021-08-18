@@ -9,9 +9,8 @@ properties:
     type: string
     description: Receipt date.
   number:
-    type:
-      - number
-      - 'null'
+    type: number
+    nullable: true
     description: Receipt number.
   numeration:
     type: string
@@ -43,9 +42,8 @@ properties:
   payment_account:
     $ref: ./PaymentAccount.yaml
   items_list:
-    type:
-      - array
-      - 'null'
+    type: array
+    nullable: true
     items:
       type: object
       properties:

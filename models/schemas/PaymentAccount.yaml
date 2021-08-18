@@ -1,6 +1,5 @@
-type:
-  - object
-  - 'null'
+type: object
+nullable: true
 description: Payment account.
 properties:
   id:
@@ -18,14 +17,12 @@ properties:
       - bank
     description: Payment account type.
   iban:
-    type:
-      - string
-      - 'null'
+    type: string
+    nullable: true
     description: Payment account iban.
   sia:
-    type:
-      - string
-      - 'null'
+    type: string
+    nullable: true
     description: Payment account sia.
   cuc:
     type: string

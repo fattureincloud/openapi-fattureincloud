@@ -1,9 +1,8 @@
 type: object
 properties:
   id:
-    type:
-      - integer
-      - 'null'
+    type: integer
+     nullable: true
     description: Unique identifier
   name:
     type: string
@@ -22,9 +21,8 @@ properties:
     $ref: ./PaymentAccount.yaml
   details:
     maxItems: 5
-    type:
-      - array
-      - 'null'
+    type: array
+    nullable: true
     description: Method details rows
     items:
       type: object
