@@ -26,22 +26,9 @@ properties:
       - in
       - out
     description: Cashbook type.
-  '':
-    oneOf:
-      - properties:
-          amount_in:
-            type: number
-            description: Total amount in.
-          payment_account_in:
-            $ref: ./PaymentAccount.yaml
-      - description: ''
-        properties:
-          amount_out:
-            type: number
-            description: Total amount out.
-          payment_account_out:
-            $ref: ./PaymentAccount.yaml
-    type: object
+  oneOf:
+    - $ref: ./CashbookEntryIn.yaml
+    - $ref: ./CashbookEntryOut.yaml
   document:
     type: object
     properties:
