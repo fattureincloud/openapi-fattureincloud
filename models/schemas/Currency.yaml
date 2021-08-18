@@ -10,10 +10,10 @@ properties:
     description: Currency symbol.
     example: €
   exchange_rate:
-    type: number
+    type: string
     nullable: true
     description: Currency exchange rate (EUR to this).
-    example: 1
+    example: "1"
   html_symbol:
     type: string
     example: EUR
