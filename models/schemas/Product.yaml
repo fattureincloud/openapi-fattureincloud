@@ -7,13 +7,19 @@ properties:
     type: string
     description: Product name.
   code:
-    type: string
+    type:
+      - string
+      - 'null'
     description: Product code.
   net_price:
-    type: number
+    type:
+      - number
+      - 'null'
     description: 'Net sale price (used if use_gross_price is false, otherwise it''s competed automatically).'
   gross_price:
-    type: number
+    type:
+      - number
+      - 'null'
     description: 'Gross sale price (used if use_gross_price is false, otherwise it''s competed automatically).'
   use_gross_price:
     type: boolean
@@ -21,10 +27,14 @@ properties:
   default_vat:
     $ref: ./VatType.yaml
   net_cost:
-    type: number
+    type:
+      - number
+      - 'null'
     description: Net cost of the product (used for received documents).
   measure:
-    type: string
+    type:
+      - string
+      - 'null'
     description: Unit of measure.
   description:
     type: string
@@ -33,7 +43,9 @@ properties:
     type: string
     description: Product category.
   notes:
-    type: string
+    type:
+      - string
+      - 'null'
     description: Extra notes.
   in_stock:
     type: boolean

@@ -18,7 +18,9 @@ properties:
     type: string
     description: 'Date of the document [If not specified, today date is used].'
   category:
-    type: string
+    type:
+      - string
+      - 'null'
     description: Document category.
   description:
     type: string
@@ -60,7 +62,9 @@ properties:
       [Read Only]
       Indicates if this is an e-invoice.
   next_due_date:
-    type: string
+    type:
+      - string
+      - 'null'
     description: |-
       [Read Only]
       Next due date.
@@ -79,7 +83,9 @@ properties:
     type: number
     description: Vat deducibility percentage.
   items_list:
-    type: array
+    type:
+      - array
+      - 'null'
     items:
       type: object
       properties:
@@ -154,7 +160,9 @@ properties:
       Attachment preview url.
     readOnly: true
   attachment_token:
-    type: string
+    type:
+      - string
+      - 'null'
     description: Uploaded attachement token.
 required:
   - entity
