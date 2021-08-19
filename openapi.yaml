@@ -7243,110 +7243,28 @@ components:
         application/json:
           schema:
             $ref: ./models/responses/ListCashbookEntriesResponse.yaml
-          examples:
-            example-1:
-              value:
-                data:
-                  - id: 12345
-                    date: '2021-08-24'
-                    amount_in: 122
-                    payment_account_in:
-                      id: 333
-                      name: Carta di credito
-                    description: Fattura n. 201/2021
-                    entity_name: Rossi S.r.l.
-                    kind: issued_document
-                    document:
-                      id: 54321
-                      type: invoice
-                      path: issued_documents/54321
-                    type: in
-                  - id: 12346
-                    date: '2021-08-20'
-                    amount_in: 75
-                    payment_account_in:
-                      id: 333
-                      name: Carta di credito
-                    description: Fattura n. 200/2021
-                    entity_name: Rossi S.r.l.
-                    kind: issued_document
-                    document:
-                      id: 54320
-                      type: invoice
-                      path: issued_documents/54320
-                    type: in
+          examples: {}
     CreateCashbookEntryResponse:
       description: The created Cashbook Entry.
       content:
         application/json:
           schema:
             $ref: ./models/responses/CreateCashbookEntryResponse.yaml
-          examples:
-            example-1:
-              value:
-                data:
-                  id: 12345
-                  date: '2021-08-24'
-                  amount_in: 122
-                  payment_account_in:
-                    id: 333
-                    name: Carta di credito
-                  description: Fattura n. 201/2021
-                  entity_name: Rossi S.r.l.
-                  kind: issued_document
-                  document:
-                    id: 54321
-                    type: invoice
-                    path: issued_documents/54321
-                  type: in
+          examples: {}
     GetCashbookEntryResponse:
       description: Cashbook Entry.
       content:
         application/json:
           schema:
             $ref: ./models/responses/GetCashbookEntryResponse.yaml
-          examples:
-            example-1:
-              value:
-                data:
-                  id: 12345
-                  date: '2021-08-24'
-                  amount_in: 122
-                  payment_account_in:
-                    id: 333
-                    name: Carta di credito
-                  description: Fattura n. 201/2021
-                  entity_name: Rossi S.r.l.
-                  kind: issued_document
-                  document:
-                    id: 54321
-                    type: invoice
-                    path: issued_documents/54321
-                  type: in
+          examples: {}
     ModifyCashbookEntryResponse:
       description: The modified Cashbook Entry
       content:
         application/json:
           schema:
             $ref: ./models/responses/ModifyCashbookEntryResponse.yaml
-          examples:
-            example-1:
-              value:
-                data:
-                  id: 12345
-                  date: '2021-08-24'
-                  amount_in: 122
-                  payment_account_in:
-                    id: 333
-                    name: Carta di credito
-                  description: Fattura n. 201/2021
-                  entity_name: Rossi S.r.l.
-                  kind: issued_document
-                  document:
-                    id: 54321
-                    type: invoice
-                    path: issued_documents/54321
-                  type: in
+          examples: {}
     ListCountriesResponse:
       description: List of countries
       content:
