@@ -1,3 +1,4 @@
+title: ListSuppliersResponse
 allOf:
   - $ref: ../schemas/Pagination.yaml
   - type: object

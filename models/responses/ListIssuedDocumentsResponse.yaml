@@ -1,3 +1,4 @@
+title: ListIssuedDocumentsResponse
 allOf:
   - $ref: ../schemas/Pagination.yaml
   - type: object

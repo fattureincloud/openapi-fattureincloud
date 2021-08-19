@@ -1,5 +1,6 @@
-description: List of Delivery Notes Default Causals.
+title: ListDeliveryNotesDefaultCasualsResponse
 type: object
+description: List of Delivery Notes Default Causals.
 properties:
   data:
     type: array

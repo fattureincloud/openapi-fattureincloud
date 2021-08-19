@@ -1,3 +1,4 @@
+title: ListProductsResponse
 allOf:
   - $ref: ../schemas/Pagination.yaml
   - type: object

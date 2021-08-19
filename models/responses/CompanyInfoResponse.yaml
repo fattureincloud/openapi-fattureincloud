@@ -1,3 +1,4 @@
+title: CompanyInfoResponse
 description: The CompanyInfo response.
 type: object
 properties:

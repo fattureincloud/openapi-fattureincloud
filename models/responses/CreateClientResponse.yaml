@@ -1,3 +1,4 @@
+title: CreateClientResponse
 type: object
 properties:
   data:

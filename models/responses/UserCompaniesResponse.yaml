@@ -1,5 +1,6 @@
-description: The UserCompany response.
+title: UserCompaniesResponse
 type: object
+description: The UserCompany response.
 properties:
   data:
     type: object
