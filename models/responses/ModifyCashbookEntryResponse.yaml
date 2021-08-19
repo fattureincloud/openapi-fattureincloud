@@ -4,4 +4,3 @@ properties:
   data:
     $ref: ../schemas/CashbookEntry.yaml
 description: The modified Cashbook Entry.
-examples: []

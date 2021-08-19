@@ -47,4 +47,3 @@ allOf:
       - date
       - description
       - kind
-examples: []
