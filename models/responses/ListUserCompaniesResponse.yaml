@@ -1,4 +1,4 @@
-title: UserCompaniesResponse
+title: ListUserCompaniesResponse
 type: object
 description: The UserCompany response.
 properties:

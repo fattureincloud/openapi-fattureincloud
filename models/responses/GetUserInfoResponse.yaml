@@ -1,4 +1,4 @@
-title: UserInfoResponse
+title: GetUserInfoResponse
 type: object
 description: The UserInfo response.
 properties:
