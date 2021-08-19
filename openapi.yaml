@@ -7243,28 +7243,24 @@ components:
         application/json:
           schema:
             $ref: ./models/responses/ListCashbookEntriesResponse.yaml
-          examples: {}
     CreateCashbookEntryResponse:
       description: The created Cashbook Entry.
       content:
         application/json:
           schema:
             $ref: ./models/responses/CreateCashbookEntryResponse.yaml
-          examples: {}
     GetCashbookEntryResponse:
       description: Cashbook Entry.
       content:
         application/json:
           schema:
             $ref: ./models/responses/GetCashbookEntryResponse.yaml
-          examples: {}
     ModifyCashbookEntryResponse:
       description: The modified Cashbook Entry
       content:
         application/json:
           schema:
             $ref: ./models/responses/ModifyCashbookEntryResponse.yaml
-          examples: {}
     ListCountriesResponse:
       description: List of countries
       content:
