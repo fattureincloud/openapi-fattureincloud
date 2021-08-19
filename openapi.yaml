@@ -2792,7 +2792,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: ./models/responses/CompanyInfoResponse.yaml
+            $ref: ./models/responses/GetCompanyInfoResponse.yaml
           examples:
             example-1:
               value:
