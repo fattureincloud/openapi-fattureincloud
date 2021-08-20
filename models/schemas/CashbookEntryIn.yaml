@@ -1,10 +1,4 @@
 title: CashbookEntryIn
 allOf:
   - $ref: ./CashbookEntryData.yaml
-  - type: object
-    properties:
-      amount_in:
-        type: number
-        description: Total amount in.
-      payment_account_in:
-        $ref: ./PaymentAccount.yaml
+  - $ref: ./CashbookEntryInData.yaml
