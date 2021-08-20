@@ -34,7 +34,7 @@ paths:
       summary: Get User Info
       responses:
         '200':
-          $ref: '#/components/responses/UserInfoResponse'
+          $ref: '#/components/responses/GetUserInfoResponse'
         '401':
           description: Unauthorized.
       operationId: getUserInfo
@@ -49,10 +49,10 @@ paths:
         - User
       responses:
         '200':
-          $ref: '#/components/responses/UserCompaniesResponse'
+          $ref: '#/components/responses/ListUserCompaniesResponse'
         '401':
           description: Unauthorized
-      operationId: getUserCompanies
+      operationId: listUserCompanies
       description: "\U0001F464 Person context\n\nGet a list of the controlled companies and their CompanyAuthentication tokens."
       security:
         - OAuth2AuthenticationCodeFlow: []
@@ -64,7 +64,7 @@ paths:
       summary: Get Company Info
       responses:
         '200':
-          $ref: '#/components/responses/CompanyInfoResponse'
+          $ref: '#/components/responses/GetCompanyInfoResponse'
         '401':
           description: Unauthorized.
       operationId: getCompanyInfo
@@ -2689,12 +2689,12 @@ components:
           - passive_delivery_note
       description: Received Document Type
   responses:
-    UserInfoResponse:
+    GetUserInfoResponse:
       description: User info.
       content:
         application/json:
           schema:
-            $ref: ./models/responses/UserInfoResponse.yaml
+            $ref: ./models/responses/GetUserInfoResponse.yaml
           examples:
             example-1:
               value:
@@ -2712,12 +2712,12 @@ components:
                   need_terms_of_service_confirmation: false
                 email_confirmation_state:
                   need_confirmation: false
-    UserCompaniesResponse:
+    ListUserCompaniesResponse:
       description: User Companies.
       content:
         application/json:
           schema:
-            $ref: ./models/responses/UserCompaniesResponse.yaml
+            $ref: ./models/responses/ListUserCompaniesResponse.yaml
           examples:
             example-1:
               value:
@@ -2787,12 +2787,12 @@ components:
                         dic_employees: none
                         dic_timesheet: none
                         dic_settings: none
-    CompanyInfoResponse:
+    GetCompanyInfoResponse:
       description: Company info.
       content:
         application/json:
           schema:
-            $ref: ./models/responses/CompanyInfoResponse.yaml
+            $ref: ./models/responses/GetCompanyInfoResponse.yaml
           examples:
             example-1:
               value:
@@ -7243,110 +7243,24 @@ components:
         application/json:
           schema:
             $ref: ./models/responses/ListCashbookEntriesResponse.yaml
-          examples:
-            example-1:
-              value:
-                data:
-                  - id: 12345
-                    date: '2021-08-24'
-                    amount_in: 122
-                    payment_account_in:
-                      id: 333
-                      name: Carta di credito
-                    description: Fattura n. 201/2021
-                    entity_name: Rossi S.r.l.
-                    kind: issued_document
-                    document:
-                      id: 54321
-                      type: invoice
-                      path: issued_documents/54321
-                    type: in
-                  - id: 12346
-                    date: '2021-08-20'
-                    amount_in: 75
-                    payment_account_in:
-                      id: 333
-                      name: Carta di credito
-                    description: Fattura n. 200/2021
-                    entity_name: Rossi S.r.l.
-                    kind: issued_document
-                    document:
-                      id: 54320
-                      type: invoice
-                      path: issued_documents/54320
-                    type: in
     CreateCashbookEntryResponse:
       description: The created Cashbook Entry.
       content:
         application/json:
           schema:
             $ref: ./models/responses/CreateCashbookEntryResponse.yaml
-          examples:
-            example-1:
-              value:
-                data:
-                  id: 12345
-                  date: '2021-08-24'
-                  amount_in: 122
-                  payment_account_in:
-                    id: 333
-                    name: Carta di credito
-                  description: Fattura n. 201/2021
-                  entity_name: Rossi S.r.l.
-                  kind: issued_document
-                  document:
-                    id: 54321
-                    type: invoice
-                    path: issued_documents/54321
-                  type: in
     GetCashbookEntryResponse:
       description: Cashbook Entry.
       content:
         application/json:
           schema:
             $ref: ./models/responses/GetCashbookEntryResponse.yaml
-          examples:
-            example-1:
-              value:
-                data:
-                  id: 12345
-                  date: '2021-08-24'
-                  amount_in: 122
-                  payment_account_in:
-                    id: 333
-                    name: Carta di credito
-                  description: Fattura n. 201/2021
-                  entity_name: Rossi S.r.l.
-                  kind: issued_document
-                  document:
-                    id: 54321
-                    type: invoice
-                    path: issued_documents/54321
-                  type: in
     ModifyCashbookEntryResponse:
       description: The modified Cashbook Entry
       content:
         application/json:
           schema:
             $ref: ./models/responses/ModifyCashbookEntryResponse.yaml
-          examples:
-            example-1:
-              value:
-                data:
-                  id: 12345
-                  date: '2021-08-24'
-                  amount_in: 122
-                  payment_account_in:
-                    id: 333
-                    name: Carta di credito
-                  description: Fattura n. 201/2021
-                  entity_name: Rossi S.r.l.
-                  kind: issued_document
-                  document:
-                    id: 54321
-                    type: invoice
-                    path: issued_documents/54321
-                  type: in
     ListCountriesResponse:
       description: List of countries
       content:

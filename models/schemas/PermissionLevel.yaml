@@ -1,3 +1,4 @@
+title: PermissionLevel
 type: string
 enum:
   - none

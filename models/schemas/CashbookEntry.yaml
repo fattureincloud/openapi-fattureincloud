@@ -1,50 +1,9 @@
 title: CashbookEntry
-type: object
-properties:
-  id:
-    type: string
-    description: Cashbook unique identifier.
-  date:
-    type: string
-    nullable: true
-    format: date
-    description: Cashbook date.
-  description:
-    type: string
-    description: Cashbook description.
-  kind:
-    type: string
-    enum:
-      - cashbook
-      - invoice
-      - expense
-      - tax
-      - receipt
-    description: Cashbook kind.
-  type:
-    type: string
-    enum:
-      - in
-      - out
-    description: Cashbook type.
-  oneOf:
-    - $ref: ./CashbookEntryIn.yaml
-    - $ref: ./CashbookEntryOut.yaml
-  document:
-    type: object
-    properties:
-      id:
-        type: integer
-        description: Document unique identifier.
-      type:
-        type: string
-        description: Document type.
-      path:
-        type: string
-        description: Document path.
-required:
-  - id
-  - date
-  - description
-  - kind
-  - ''
+oneOf:
+  - $ref: ./CashbookEntryIn.yaml
+  - $ref: ./CashbookEntryOut.yaml
+discriminator:
+  propertyName: type
+  mapping:
+    in: ./CashbookEntryIn.yaml
+    out: ./CashbookEntryOut.yaml
