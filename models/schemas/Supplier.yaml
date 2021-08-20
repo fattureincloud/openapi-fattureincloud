@@ -82,7 +82,9 @@ properties:
     description: Supplier extra notes.
   created_at:
     type: string
+    nullable: true
   updated_at:
     type: string
+    nullable: true
 required:
   - name
