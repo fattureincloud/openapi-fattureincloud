@@ -11,8 +11,9 @@ properties:
     example: €
   exchange_rate:
     type: string
-    description: Currency exchange rate (EUR to this)
-    example: 1
+    nullable: true
+    description: Currency exchange rate (EUR to this).
+    example: "1"
   html_symbol:
     type: string
     example: EUR

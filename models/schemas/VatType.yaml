@@ -1,4 +1,5 @@
 type: object
+nullable: true
 properties:
   id:
     type: integer
@@ -29,8 +30,11 @@ properties:
     description: E-invoice description.
   editable:
     type: boolean
-    description: 'Determines if this vat type is editable [Read-only]'
+    description: |-
+      [Read Only]
+      Determine if this vat type is editable.
     default: true
+    readOnly: true
   is_disabled:
     type: boolean
     description: Determine if the vat type is disabled.

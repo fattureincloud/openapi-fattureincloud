@@ -7,8 +7,8 @@ properties:
     description: User unique identifier
   name:
     type: string
-    description: Full name of the user.
     nullable: true
+    description: Full name of the user.
     example: Mario Rossi
   first_name:
     type: string
@@ -22,6 +22,7 @@ properties:
     description: Last name of the user.
   email:
     type: string
+    nullable: true
     example: mario.rossi@example.com
     description: Email of the user.
   hash:

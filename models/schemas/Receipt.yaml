@@ -10,6 +10,7 @@ properties:
     description: Receipt date.
   number:
     type: number
+    nullable: true
     description: Receipt number.
   numeration:
     type: string
@@ -42,6 +43,7 @@ properties:
     $ref: ./PaymentAccount.yaml
   items_list:
     type: array
+    nullable: true
     items:
       type: object
       properties:
