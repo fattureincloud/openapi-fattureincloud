@@ -1,0 +1,9 @@
+title: ListF24ResponseAggregatedData
+type: object
+properties:
+  aggregated_data:
+    type: object
+    properties:
+      amount:
+        type: string
+        description: Total amount.

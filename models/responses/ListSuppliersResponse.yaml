@@ -1,9 +1,4 @@
 title: ListSuppliersResponse
 allOf:
-  - $ref: ../schemas/Pagination.yaml
-  - type: object
-    properties:
-      data:
-        type: array
-        items:
-          $ref: ../schemas/Supplier.yaml
+  - $ref: ./pagination/Pagination.yaml
+  - $ref: ./pagination/ListSuppliersResponsePage.yaml

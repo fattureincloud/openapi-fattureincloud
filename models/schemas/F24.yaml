@@ -28,6 +28,7 @@ properties:
       [Read Only]
       Absolute url of the attached file. Authomatically set if a valid attachment token is passed via POST /taxes or PUT /taxes/{documentId}.
     readOnly: true
+    nullable: true
   attachment_token:
     type: string
     nullable: true
