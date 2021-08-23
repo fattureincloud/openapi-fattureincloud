@@ -150,12 +150,13 @@ properties:
     type: boolean
     description: Determine if a coupon can be used.
   accountant_id:
-    type: string
+    type: integer
     nullable: true
     description: Accountant unique identifier.
   dic_license_type:
     type: string
     description: Company DIC account license type.
+    nullable: true
   dic_payment_subject:
     type: string
     description: Company DIC account payment subject.

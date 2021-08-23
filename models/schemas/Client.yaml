@@ -17,7 +17,6 @@ properties:
     nullable: true
     default: null
     enum:
-      - null
       - company
       - person
       - pa
@@ -92,7 +91,9 @@ properties:
       - standard
       - end_of_month
   default_payment_method:
-    $ref: ./PaymentMethod.yaml
+    nullable: true
+    allOf:
+      - $ref: ./PaymentMethod.yaml
   bank_name:
     type: string
     description: Client bank name.
@@ -114,7 +115,9 @@ properties:
     description: E-invoice code
   created_at:
     type: string
+    nullable: true
   updated_at:
     type: string
+    nullable: true
 required:
   - name
