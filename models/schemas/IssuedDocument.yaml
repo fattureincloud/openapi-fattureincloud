@@ -5,9 +5,7 @@ properties:
     type: integer
     description: Unique identifier of the document.
   entity:
-    oneOf:
-      - $ref: ./Client.yaml
-      - $ref: ./Supplier.yaml
+    $ref: ./Entity.yaml
   type:
     $ref: ./IssuedDocumentType.yaml
   number:
