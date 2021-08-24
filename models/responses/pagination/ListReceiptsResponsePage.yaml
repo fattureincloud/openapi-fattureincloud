@@ -1,0 +1,7 @@
+title: ListReceiptsResponsePage
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: ../../schemas/Receipt.yaml

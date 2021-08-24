@@ -1,10 +1,5 @@
 title: ListReceivedDocumentsResponse
 allOf:
-  - $ref: ../schemas/Pagination.yaml
-  - type: object
-    properties:
-      data:
-        type: array
-        items:
-          $ref: ../schemas/ReceivedDocument.yaml
+  - $ref: ./pagination/Pagination.yaml
+  - $ref: ./pagination/ListReceivedDocumentsResponsePage.yaml
 description: Results list.

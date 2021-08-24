@@ -1,0 +1,7 @@
+title: ListF24ResponsePage
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: ../../schemas/F24.yaml

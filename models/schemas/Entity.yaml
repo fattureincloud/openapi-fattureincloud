@@ -1,0 +1,4 @@
+title: Entity
+oneOf:
+  - $ref: ./Client.yaml
+  - $ref: ./Supplier.yaml

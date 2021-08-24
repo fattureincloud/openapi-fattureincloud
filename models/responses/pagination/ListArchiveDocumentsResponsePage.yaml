@@ -1,0 +1,7 @@
+title: ListArchiveDocumentsResponsePage
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: ../../schemas/ArchiveDocument.yaml

@@ -1,18 +1,6 @@
 title: ListF24Response
 description: Results list.
 allOf:
-  - $ref: ../schemas/Pagination.yaml
-  - type: object
-    properties:
-      data:
-        type: array
-        items:
-          $ref: ../schemas/F24.yaml
-  - type: object
-    properties:
-      aggregated_data:
-        type: object
-        properties:
-          amount:
-            type: number
-            description: Total amount.
+  - $ref: ./pagination/Pagination.yaml
+  - $ref: ./pagination/ListF24ResponsePage.yaml
+  - $ref: ./pagination/ListF24ResponseAggregatedData.yaml
