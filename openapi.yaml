@@ -2162,10 +2162,10 @@ paths:
                     type: in
         description: |
           Cashbook entry.
-  '/c/{company_id}/cashbook/{document_id}':
+  '/c/{company_id}/cashbook/{cashbook_id}':
     parameters:
       - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/document_id'
+      - $ref: '#/components/parameters/cashbook_id'
     get:
       summary: Get Cashbook Entry
       tags:
@@ -2677,6 +2677,12 @@ components:
           - passive_credit_note
           - passive_delivery_note
       description: Received Document Type
+    cashbook_id:
+      name: cashbook_id
+      in: path
+      required: true
+      schema:
+        type: string
   responses:
     GetUserInfoResponse:
       description: User info.
