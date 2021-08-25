@@ -23,11 +23,11 @@ properties:
   attachment_token:
     type: string
     description: |-
-      [Write Only]
+      [Write Only] 
+      [Required]
       Attachment token returned by POST /archive/attachment. Used to attach the file already uploaded.
     writeOnly: true
 required:
   - date
   - description
   - category
-  - attachment_token

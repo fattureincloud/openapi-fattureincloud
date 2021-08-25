@@ -1,6 +1,7 @@
 type: object
+description: Pre-create info.
 properties:
-  series:
+  numerations:
     type: object
     description: 'Next number by year, receipt type and numeration name.'
   series_list:
@@ -29,10 +30,9 @@ properties:
     items:
       $ref: ./VatType.yaml
 required:
-  - series
+  - numerations
   - series_list
   - rc_centers_list
   - payment_accounts_list
   - categories_list
   - vat_types_list
-description: Pre-create info.

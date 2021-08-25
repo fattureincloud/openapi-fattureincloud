@@ -387,18 +387,14 @@ properties:
     properties:
       ts_communication:
         type: boolean
-        nullable: true
       ts_flag_tipo_spesa:
         type: number
         description: 1 => TK (Ticket di pronto soccorso); 2 => SR (Visita in intramoenia)
-        nullable: true
       ts_pagamento_tracciato:
         type: boolean
-        nullable: true
       ts_tipo_spesa:
         type: string
         description: 'Can be [ ''TK'', ''FC'', ''FV'', ''SV'', ''SP'', ''AD'', ''AS'', ''SR'', ''CT'', ''PI'', ''IC'', ''AA'' ]. Refer to the technical specifications to learn more.'
-        nullable: true
   seen_date:
     type: string
     nullable: true
@@ -418,7 +414,6 @@ properties:
       [Read Only]
       Public url of the attached file. Authomatically set if a valid attachment token is passed via POST /issued_documents or PUT /issued_documents/{documentId}.
     readOnly: true
-    nullable: true
   attachment_token:
     type: string
     nullable: true
@@ -430,5 +425,3 @@ properties:
     type: object
     nullable: true
     description: Advanced raw attributes for e-invoices.
-required:
-  - items_list

@@ -10,6 +10,7 @@ properties:
     properties:
       id:
         type: integer
+        nullable: true
         description: Entity unique identifier.
       name:
         type: string
