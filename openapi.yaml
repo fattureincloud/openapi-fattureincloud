@@ -1914,8 +1914,6 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'taxes:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
   '/c/{company_id}/archive':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -2164,10 +2162,10 @@ paths:
                     type: in
         description: |
           Cashbook entry.
-  '/c/{company_id}/cashbook/{document_id}':
+  '/c/{company_id}/cashbook/{cashbook_id}':
     parameters:
       - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/document_id'
+      - $ref: '#/components/parameters/cashbook_id'
     get:
       summary: Get Cashbook Entry
       tags:
@@ -2185,7 +2183,6 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - 'cashbook:r'
       parameters:
-        - $ref: '#/components/parameters/Authorization'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
     put:
@@ -2204,8 +2201,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'cashbook:a'
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -2582,13 +2578,6 @@ components:
             'situation:r': ''
           authorizationUrl: 'https://api-v2.fattureincloud.it/oauth/authorize'
   parameters:
-    Authorization:
-      name: Authorization
-      in: header
-      description: Access token to authenticate the user
-      required: true
-      schema:
-        type: string
     company_id:
       name: company_id
       in: path
@@ -2688,6 +2677,12 @@ components:
           - passive_credit_note
           - passive_delivery_note
       description: Received Document Type
+    cashbook_id:
+      name: cashbook_id
+      in: path
+      required: true
+      schema:
+        type: string
   responses:
     GetUserInfoResponse:
       description: User info.
