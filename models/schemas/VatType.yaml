@@ -19,10 +19,10 @@ properties:
     description: Long description and notes shown in documents.
     example: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
   e_invoice:
-    type: string
+    type: boolean
     description: Usable for e-invoices.
   ei_type:
-    type: integer
+    type: string
     description: E-invoice type (natura).
     example: 2
   ei_description:

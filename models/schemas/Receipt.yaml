@@ -45,22 +45,7 @@ properties:
     type: array
     nullable: true
     items:
-      type: object
-      properties:
-        id:
-          type: number
-          description: Item unique identifier.
-        amount_net:
-          type: number
-          description: Item total net amount.
-        amount_gross:
-          type: number
-          description: Item total gross amount.
-        category:
-          type: string
-          description: Item category.
-        vat:
-          $ref: ./VatType.yaml
+      $ref: ./ReceiptItemsListItem.yaml
 required:
   - date
   - type
