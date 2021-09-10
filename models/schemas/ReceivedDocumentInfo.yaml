@@ -16,12 +16,23 @@ properties:
         nullable: true
         description: Default vat value.
   countries_list:
-    $ref: ../responses/ListCountriesResponse.yaml
+    type: array
+    items:
+      type: string
   currencies_list:
-    $ref: ../responses/ListCurrenciesResponse.yaml
-  categoies_list:
-    $ref: ../responses/ListProductCategoriesResponse.yaml
-  payment_account_list:
-    $ref: ../responses/ListPaymentAccountsResponse.yaml
-  vat_type_list:
-    $ref: ../responses/ListVatTypesResponse.yaml
+    type: array
+    items:
+      $ref: ./Currency.yaml
+  categories_list:
+    type: array
+    items:
+      type: string
+  payment_accounts_list:
+    type: array
+    items:
+      $ref: ./PaymentAccount.yaml
+  vat_types_list:
+    type: array
+    items:
+      $ref: ./VatType.yaml
+description: ''

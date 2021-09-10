@@ -11,6 +11,7 @@ properties:
     description: First page url.
   from:
     type: integer
+    nullable: true
     description: First result of the page.
   last_page:
     type: integer
@@ -38,6 +39,7 @@ properties:
     description: Previous page url.
   to:
     type: integer
+    nullable: true
     description: Last result of the page.
   total:
     type: integer

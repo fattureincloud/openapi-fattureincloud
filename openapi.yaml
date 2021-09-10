@@ -1567,29 +1567,30 @@ paths:
             examples:
               example-1:
                 value:
-                  date: '2021-08-19'
-                  number: 6
-                  numeration: REC006
-                  amount_net: 8.2
-                  amount_vat: 1.8
-                  amount_gross: 10
-                  use_gross_prices: true
-                  type: sales_receipt
-                  description: cassa 1
-                  rc_center: ''
-                  payment_account:
-                    id: 555
-                    name: contanti
-                  items_list:
-                    - id: 888
-                      amount_net: 8.2
-                      amount_vat: 1.8
-                      amount_gross: 10
-                      category: altro
-                      vat:
-                        id: 0
-                        value: 22
-                        description: iva
+                  data:
+                    date: '2021-08-19'
+                    number: 6
+                    numeration: REC006
+                    amount_net: 8.2
+                    amount_vat: 1.8
+                    amount_gross: 10
+                    use_gross_prices: true
+                    type: sales_receipt
+                    description: cassa 1
+                    rc_center: ''
+                    payment_account:
+                      id: 555
+                      name: contanti
+                    items_list:
+                      - id: 888
+                        amount_net: 8.2
+                        amount_vat: 1.8
+                        amount_gross: 10
+                        category: altro
+                        vat:
+                          id: 0
+                          value: 22
+                          description: iva
         description: The Receipt to create.
       tags:
         - Receipts
@@ -1914,6 +1915,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'taxes:a'
+      parameters: []
   '/c/{company_id}/archive':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -2093,14 +2095,12 @@ paths:
       parameters:
         - schema:
             type: string
-            format: date
           in: query
           name: date_from
           description: Start date.
           required: true
         - schema:
             type: string
-            format: date
           in: query
           name: date_to
           description: End date.
@@ -2162,10 +2162,10 @@ paths:
                     type: in
         description: |
           Cashbook entry.
-  '/c/{company_id}/cashbook/{cashbook_id}':
+  '/c/{company_id}/cashbook/{document_id}':
     parameters:
       - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/cashbook_id'
+      - $ref: '#/components/parameters/document_id'
     get:
       summary: Get Cashbook Entry
       tags:
@@ -2501,7 +2501,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
-      summary: List Received Document Categories List
+      summary: List Received Document Categories
       tags:
         - Info
       responses:
@@ -2578,6 +2578,13 @@ components:
             'situation:r': ''
           authorizationUrl: 'https://api-v2.fattureincloud.it/oauth/authorize'
   parameters:
+    Authorization:
+      name: Authorization
+      in: header
+      description: Access token to authenticate the user
+      required: true
+      schema:
+        type: string
     company_id:
       name: company_id
       in: path
@@ -2677,12 +2684,6 @@ components:
           - passive_credit_note
           - passive_delivery_note
       description: Received Document Type
-    cashbook_id:
-      name: cashbook_id
-      in: path
-      required: true
-      schema:
-        type: string
   responses:
     GetUserInfoResponse:
       description: User info.

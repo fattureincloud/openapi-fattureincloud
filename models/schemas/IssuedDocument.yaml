@@ -118,6 +118,7 @@ properties:
         type: string
         description: Original document date.
         format: date
+        nullable: true
       cig:
         type: string
         nullable: true
@@ -283,7 +284,6 @@ properties:
     default: false
   dn_number:
     type: integer
-    nullable: true
     description: Number (for the attached delivery note).
   dn_date:
     type: string
@@ -385,16 +385,47 @@ properties:
       Extra data.
       TS fields follow the technical specifications provided by "Sistema Tessera Sanitaria".
     properties:
+      show_sofort_button:
+        type: boolean
+        nullable: true
+      multifatture_sent:
+        type: integer
+        nullable: true
       ts_communication:
         type: boolean
+        nullable: true
       ts_flag_tipo_spesa:
         type: number
         description: 1 => TK (Ticket di pronto soccorso); 2 => SR (Visita in intramoenia)
+        nullable: true
       ts_pagamento_tracciato:
         type: boolean
+        nullable: true
       ts_tipo_spesa:
         type: string
         description: 'Can be [ ''TK'', ''FC'', ''FV'', ''SV'', ''SP'', ''AD'', ''AS'', ''SR'', ''CT'', ''PI'', ''IC'', ''AA'' ]. Refer to the technical specifications to learn more.'
+        nullable: true
+      ts_opposizione:
+        type: boolean
+        nullable: true
+      ts_status:
+        type: integer
+        nullable: true
+      ts_file_id:
+        type: string
+        nullable: true
+      ts_sent_date:
+        type: string
+        nullable: true
+      ts_full_amount:
+        type: boolean
+        nullable: true
+      imported_by:
+        type: string
+        nullable: true
+      ts_single_sending:
+        type: boolean
+        nullable: true
   seen_date:
     type: string
     nullable: true
