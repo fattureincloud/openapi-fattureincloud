@@ -1,6 +1,8 @@
 title: CreateCashbookEntryResponse
+description: The created Cashbook Entry.
 type: object
 properties:
   data:
-    $ref: ../schemas/CashbookEntry.yaml
-description: The created Cashbook Entry.
+    allOf:
+      - $ref: ../schemas/CashbookEntryIn.yaml
+      - $ref: ../schemas/CashbookEntryOut.yaml
