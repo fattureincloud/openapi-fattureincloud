@@ -54,9 +54,9 @@ properties:
       vat_item:
         type: object
         properties:
-          net:
+          amount_net:
             type: number
-          vat:
+          amount_vat:
             type: number
 required:
   - amount_net

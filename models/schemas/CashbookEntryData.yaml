@@ -6,7 +6,6 @@ properties:
     description: Cashbook unique identifier.
   date:
     type: string
-    format: date
     description: Cashbook date.
   description:
     type: string
@@ -26,6 +25,10 @@ properties:
       - in
       - out
     description: Cashbook type.
+  entity_name:
+    type: string
+    description: Entity name.
+    nullable: true
   document:
     type: object
     properties:
