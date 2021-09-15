@@ -18,6 +18,7 @@ properties:
   date:
     type: string
     description: 'Date of the document [If not specified, today date is used].'
+    format: date
   category:
     type: string
     nullable: true
