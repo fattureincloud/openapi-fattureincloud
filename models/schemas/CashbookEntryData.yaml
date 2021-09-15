@@ -5,8 +5,9 @@ properties:
     type: string
     description: Cashbook unique identifier.
   date:
-    type: string
     description: Cashbook date.
+    format: date
+    type: string
   description:
     type: string
     description: Cashbook description.
