@@ -8,6 +8,7 @@ properties:
   date:
     type: string
     description: Receipt date.
+    format: date
   number:
     type: number
     nullable: true
