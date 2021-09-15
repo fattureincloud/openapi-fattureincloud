@@ -43,7 +43,7 @@ def main():
 
 def retrieve_version_from_openapi():
     version = None
-    with open('./openapi.yaml', 'r') as stream:
+    with open('openapi.yaml', 'r') as stream:
         data_loaded = yaml.safe_load(stream)
         version = data_loaded['info']['version']
         version = version.replace('v', '')

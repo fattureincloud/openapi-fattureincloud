@@ -4,7 +4,6 @@ on:
     branches:
       - master
       - main
-      - action-test
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -15,11 +14,11 @@ jobs:
         uses: actions/setup-python@v2
       - name: Setup Node.js
         uses: actions/setup-node@v2
-      # - name: Setup Java
-      #   uses: actions/setup-java@v2
-      #   with:
-      #     distribution: 'adopt'
-      #     java-version: '8'
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '8'
       - name: Init GIT
         run: |
           git config --global user.email "info@fattureincloud.it"
@@ -29,14 +28,14 @@ jobs:
           npm install -g yarn
           yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli
           python -m pip install --upgrade pip
-          pip install -r ./.github/workflows/scripts/requirements.txt
+          pip install -r .github/workflows/scripts/requirements.txt
       - name: Validate schema
         run: |
           swagger-cli validate openapi.yaml
-          openapi-generator-cli validate -i ./openapi.yaml
+          openapi-generator-cli validate -i openapi.yaml
       - name: Run Versions Manager Script
         run: |
-          python ./.github/workflows/scripts/retrieve_spec_id.py >> $GITHUB_ENV
+          python .github/workflows/scripts/retrieve_spec_id.py >> $GITHUB_ENV
       - name: Test step
         run: |
           echo "${{ env.oas_key }}"
@@ -45,27 +44,27 @@ jobs:
         if: ${{ !env.ACT }}
         with:
           readme-oas-key: "${{ env.oas_key }}"
-          oas-file-path: './openapi.yaml'
+          oas-file-path: 'openapi.yaml'
           # OPTIONAL CONFIG, use if necessary
           # api-version: 'v1.0.0'
         
       # - name: Generate Java SDK
       #   run: |
-      #     mkdir -p ../generated/java
-      #     git clone https://Valmoz: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@github.com/fattureincloud/test-target-repo.git ../generated/java
-      #     openapi-generator-cli generate -i ./openapi.yaml -g java -o ../generated/java
-      #     echo "TEST" > ../generated/java/test.txt
-      #     cd ../generated/java
+      #     mkdir -p .generated/java
+      #     git clone https://Valmoz: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@github.com/fattureincloud/test-target-repo.git .generated/java
+      #     openapi-generator-cli generate -i openapi.yaml -g java -o .generated/java
+      #     echo "TEST" > .generated/java/test.txt
+      #     cd .generated/java
       #     git add .
       #     git commit -m "TODO COMMIT MESSAGE"
       #     git push -u origin main
 
       # - name: Generate Python SDK
       #   run: |
-      #     mkdir -p ../generated/python
-      #     git clone https://Valmoz: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@github.com/fattureincloud/test-target-repo-py.git ../generated/python
-      #     openapi-generator-cli generate -i ./openapi.yaml -g python -o ../generated/python
-      #     cd ../generated/python
+      #     mkdir -p .generated/python
+      #     git clone https://Valmoz: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@github.com/fattureincloud/test-target-repo-py.git .generated/python
+      #     openapi-generator-cli generate -i openapi.yaml -g python -o .generated/python
+      #     cd .generated/python
       #     git add .
       #     git commit -m "TODO COMMIT MESSAGE"
       #     git push -u origin main
@@ -73,9 +72,9 @@ jobs:
 
       # - name: INIT REPO
       #   run: |
-      #     mkdir -p ../generated/python
-      #     openapi-generator-cli generate -i ./openapi.yaml -g python -o ../generated/python
-      #     cd ../generated/python
+      #     mkdir -p .generated/python
+      #     openapi-generator-cli generate -i openapi.yaml -g python -o .generated/python
+      #     cd .generated/python
       #     echo "@@@@@@@@@@@@@@@@"
       #     pwd
       #     echo "@@@@@@@@@@@@@@@@"
@@ -90,11 +89,11 @@ jobs:
 
       # - name: Generate Java SDK
       #   run: |
-      #     mkdir -p ../generated/java
-      #     git clone https://Valmoz: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@github.com/fattureincloud/test-target-repo.git ../generated/java
-      #     openapi-generator-cli generate -i ./openapi.yaml -g java -o ../generated/java
-      #     echo "TEST" > ../generated/java/test.txt
-      #     cd ../generated/java
+      #     mkdir -p .generated/java
+      #     git clone https://Valmoz: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@github.com/fattureincloud/test-target-repo.git .generated/java
+      #     openapi-generator-cli generate -i openapi.yaml -g java -o .generated/java
+      #     echo "TEST" > .generated/java/test.txt
+      #     cd .generated/java
       #     mvn javadoc:javadoc
       #     git add .
       #     git commit -m "TODO COMMIT MESSAGE"
