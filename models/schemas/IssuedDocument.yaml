@@ -456,3 +456,6 @@ properties:
     type: object
     nullable: true
     description: Advanced raw attributes for e-invoices.
+  show_tspay_button:
+    type: boolean
+    description: Show ts pay button.
