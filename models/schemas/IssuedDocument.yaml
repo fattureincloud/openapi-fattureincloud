@@ -143,6 +143,15 @@ properties:
         type: string
         nullable: true
         description: Bank beneficiary.
+      invoice_number:
+        type: string
+        description: Invoice number.
+        nullable: true
+      invoice_date:
+        type: string
+        format: date
+        description: Invoice date.
+        nullable: true
   items_list:
     type: array
     nullable: true
@@ -276,8 +285,6 @@ properties:
     default: false
   delivery_note:
     type: boolean
-    description: Attach a delivery note.
-    default: false
   accompanying_invoice:
     type: boolean
     description: Attach an accompanying invoice.
@@ -459,3 +466,49 @@ properties:
   show_tspay_button:
     type: boolean
     description: Show ts pay button.
+    nullable: true
+  year:
+    type: integer
+    description: Invoice year.
+  amount_rivalsa_taxable:
+    type: number
+    nullable: true
+  amount_global_cassa_taxable:
+    type: number
+    nullable: true
+  amount_cassa_taxable:
+    type: number
+    nullable: true
+  amount_cassa2:
+    type: number
+    nullable: true
+  amount_cassa2_taxable:
+    type: number
+    nullable: true
+  amount_withholding_tax_taxable:
+    type: number
+    nullable: true
+  amount_enasarco_taxable:
+    type: number
+    nullable: true
+  amount_other_withholding_tax_taxable:
+    type: number
+    nullable: true
+  ei_cassa_type:
+    type: string
+    nullable: true
+  ei_cassa2_type:
+    type: string
+    nullable: true
+  ei_withholding_tax_causal:
+    type: string
+    nullable: true
+  ei_other_withholding_tax_type:
+    type: string
+    nullable: true
+  ei_other_withholding_tax_causal:
+    type: string
+    nullable: true
+  amount_due_discount:
+    type: number
+    nullable: true
