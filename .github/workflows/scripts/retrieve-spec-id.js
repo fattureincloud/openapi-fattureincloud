@@ -15,8 +15,8 @@ if (bumpVersion != null) {
     var major = semver.major(bumpVersion)
     var minor = semver.minor(bumpVersion)
     var apiVersion = `v${major}.${minor}`
-    console.log('api_version=' + apiVersion)
-    console.error(apiKey)
+    // console.log('api_version=' + apiVersion)
+    // console.error(apiKey)
 
 	getVersions(apiKey, function lv(versionList) {
         console.error(versionList)
