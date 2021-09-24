@@ -36,7 +36,7 @@ if (bumpVersion != null) {
 			createVersion(apiVersion, lastVersion, function cv(result) {
                 specId = JSON.parse(result)['_id']
                 if (specId == null) {
-                    //console.error(result)
+                    console.error(result)
                 } else {
                     exportVariable('spec_id', specId)
                 }
@@ -48,11 +48,11 @@ if (bumpVersion != null) {
         }
 	})
 } else {
-    //console.error("OpenAPI spec version not found!!!")
+    console.error("OpenAPI spec version not found!!!")
 }
 
 function exportVariable(key, val) {
-    //console.log(key + '=' + val)
+    process.env[key] = val
 }
 
 function retrieveVersionFromOpenApi(contents) {
@@ -132,7 +132,7 @@ function createVersion(version, lastVersion, callback) {
       })
       
       req.on('error', (e) => {
-        //console.error(e)
+        console.error(e)
       })
       
       req.write(json)

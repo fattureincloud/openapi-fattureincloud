@@ -49,6 +49,7 @@ jobs:
         run: |
           cd .github/workflows/scripts/
           yarn specid
+          echo "$api_version - $spec_id"
         #yarn specid >> $GITHUB_ENV
         env: 
           README_API_KEY: ${{ secrets.README_API_KEY }}
