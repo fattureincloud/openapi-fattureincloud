@@ -15,10 +15,9 @@ if (bumpVersion != null) {
     var major = semver.major(bumpVersion)
     var minor = semver.minor(bumpVersion)
     var apiVersion = `v${major}.${minor}`
-    console.log('api_version=' + apiVersion)
+    exportVariable('api_version', apiVersion)
 
 	getVersions(apiKey, function lv(versionList) {
-        console.error(versionList)
 		versionList = JSON.parse(versionList)
 		specId = null
 		lastVersion = null
@@ -39,20 +38,21 @@ if (bumpVersion != null) {
                 if (specId == null) {
                     console.error(result)
                 } else {
-                    exportOasKey(apiKey, specId)
+                    exportVariable('spec_id', specId)
                 }
 				
 			})
 
 		} else {
-            exportOasKey(apiKey, specId)
+            exportOasKey('spec_id', specId)
         }
 	})
+} else {
+    console.error("OpenAPI spec version not found!!!")
 }
 
-function exportOasKey(apiKey, specId) {
-    console.error('spec_id=' + specId)
-    console.log('spec_id=' + specId)
+function exportVariable(key, val) {
+    console.log(key + '=' + val)
 }
 
 function retrieveVersionFromOpenApi(contents) {
