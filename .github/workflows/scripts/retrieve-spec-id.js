@@ -15,9 +15,9 @@ if (bumpVersion != null) {
     var major = semver.major(bumpVersion)
     var minor = semver.minor(bumpVersion)
     var apiVersion = `v${major}.${minor}`
-    console.log('api_version=' + apiVersion)
+    /*console.log('api_version=' + apiVersion)*/
 
-	/*getVersions(apiKey, function lv(versionList) {
+	getVersions(apiKey, function lv(versionList) {
         console.error(versionList)
 		versionList = JSON.parse(versionList)
 		specId = null
@@ -34,7 +34,7 @@ if (bumpVersion != null) {
 
 		if (specId == null) {
 
-			/*écreateVersion(apiVersion, lastVersion, function cv(result) {
+			createVersion(apiVersion, lastVersion, function cv(result) {
                 specId = JSON.parse(result)['_id']
                 if (specId == null) {
                     console.error(result)
@@ -42,15 +42,16 @@ if (bumpVersion != null) {
                     exportOasKey(apiKey, specId)
                 }
 				
-			})* /
+			})
 
 		} else {
             exportOasKey(apiKey, specId)
         }
-	})*/
+	})
 }
 
 function exportOasKey(apiKey, specId) {
+    console.error('oas_key={' + apiKey + '}:{' + specId + '}')
     console.log('oas_key={' + apiKey + '}:{' + specId + '}')
 }
 
