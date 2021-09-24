@@ -26,10 +26,14 @@ if (bumpVersion != null) {
 
 		for (var elem in versionList) {
 
-			var v = versionList[elem]['version']
+			var v = semver.clean(versionList[elem]['version'])
 
-			if (v == apiVersion) specId = versionList[elem]['_id']
-			if (lastVersion == null || lastVersion < v) lastVersion = v
+			if (semver.eq(v, apiVersion)) {
+                specId = versionList[elem]['_id']
+            } 
+			if (lastVersion == null || semver.lt(lastVersion, v)) {
+                lastVersion = v
+            }
 
 		}
 
@@ -54,10 +58,6 @@ if (bumpVersion != null) {
 }
 
 console.log(JSON.stringify(result))
-
-function exportVariable(key, val) {
-    process.env[key] = val
-}
 
 function retrieveVersionFromOpenApi(contents) {
 
