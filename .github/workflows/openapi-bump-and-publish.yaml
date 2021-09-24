@@ -48,7 +48,8 @@ jobs:
       - name: Run Readme Versions Manager Script
         run: |
           cd .github/workflows/scripts/
-          yarn specid >> $GITHUB_ENV
+          yarn specid
+        #yarn specid >> $GITHUB_ENV
         env: 
           README_API_KEY: ${{ secrets.README_API_KEY }}
       - name: Test step
