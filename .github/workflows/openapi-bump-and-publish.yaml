@@ -1,9 +1,9 @@
 name: Bump and Publish OpenAPI to Readme
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
-  workflow_dispatch
 jobs:
   bump-and-publish:
     runs-on: ubuntu-latest
