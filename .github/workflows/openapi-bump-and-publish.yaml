@@ -48,7 +48,7 @@ jobs:
       - name: Run Readme Versions Manager Script
         run: |
           cd .github/workflows/scripts/
-          RES=yarn specid
+          RES=$(yarn specid)
           echo "$RES"
         #yarn specid >> $GITHUB_ENV
         env: 
