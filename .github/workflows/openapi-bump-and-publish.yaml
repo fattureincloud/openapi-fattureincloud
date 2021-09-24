@@ -49,6 +49,8 @@ jobs:
         run: |
           cd .github/workflows/scripts/
           yarn specid >> $GITHUB_ENV
+        env: 
+          README_API_KEY: ${{ secrets.README_API_KEY }}
       - name: Test step
         run: |
           echo "${{ env.api_version }}"
