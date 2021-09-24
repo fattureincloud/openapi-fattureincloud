@@ -1,6 +1,8 @@
 name: Bump and Publish OpenAPI to Readme
 on:
-  workflow_dispatch:
+  pull_request:
+    branches:
+      - develop
   push:
     branches:
       - master
