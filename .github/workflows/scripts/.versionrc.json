@@ -1,0 +1,14 @@
+{
+    "bumpFiles": [
+        {
+            "filename": "../../../openapi.yaml",
+            "updater": "openapi-version-updater.js"
+        }
+    ],
+    "packageFiles": [
+        {
+            "filename": "../../../openapi.yaml",
+            "updater": "openapi-version-updater.js"
+        }
+    ]
+}

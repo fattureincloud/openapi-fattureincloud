@@ -1,0 +1,11 @@
+{
+  "license": "MIT",
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "semver": "^7.3.5"
+  },
+  "scripts": {
+    "specid": "node retrieve-spec-id.js",
+    "release": "standard-version"
+  }
+}

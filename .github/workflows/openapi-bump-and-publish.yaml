@@ -1,25 +1,23 @@
-name: Sync OAS to ReadMe
+name: Bump and Publish OpenAPI to Readme
 on:
   push:
     branches:
       - master
-      - main
-      - action-test
 jobs:
-  sync:
+  bump-and-publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-      - name: Setup Python
-        uses: actions/setup-python@v2
+      # - name: Setup Python
+      #   uses: actions/setup-python@v2
       - name: Setup Node.js
         uses: actions/setup-node@v2
-      # - name: Setup Java
-      #   uses: actions/setup-java@v2
-      #   with:
-      #     distribution: 'adopt'
-      #     java-version: '8'
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '8'
       - name: Init GIT
         run: |
           git config --global user.email "info@fattureincloud.it"
@@ -27,19 +25,34 @@ jobs:
       - name: Install libraries
         run: |
           npm install -g yarn
-          yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli
-          python -m pip install --upgrade pip
-          pip install -r ./.github/workflows/scripts/requirements.txt
+          yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli standard-version
+          add-apt-repository ppa:rmescandon/yq -y
+          apt update
+          apt install yq -y
       - name: Validate schema
         run: |
           swagger-cli validate openapi.yaml
           openapi-generator-cli validate -i ./openapi.yaml
-      - name: Run Versions Manager Script
+      - name: Bump OpenAPI spec version
         run: |
-          python ./.github/workflows/scripts/retrieve_spec_id.py >> $GITHUB_ENV
+          cd .github/workflows/scripts/
+          yarn
+          CURR_VER=$(yq e '.info.version' ../../../openapi.yaml)
+          echo "Previous version: $CURR_VER"
+          yarn release
+          BUMP_VER=$(yq e '.info.version' ../../../openapi.yaml)
+          echo "New version: $BUMP_VER"
+      - name: Run Readme Versions Manager Script
+        run: |
+          cd .github/workflows/scripts/
+          yarn specid >> $GITHUB_ENV
       - name: Test step
         run: |
+          echo "${{ env.api_version }}"
           echo "${{ env.oas_key }}"
+
+
+
       # - name: Upload to Readme.io
       #   uses: readmeio/github-readme-sync@v2
       #   if: ${{ !env.ACT }}

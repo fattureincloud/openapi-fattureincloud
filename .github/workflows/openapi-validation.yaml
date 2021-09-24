@@ -21,7 +21,7 @@ jobs:
         run: |
           npm install -g yarn
           yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli
-      - name: Validate schema
+      - name: Validate specification
         run: |
           swagger-cli validate openapi.yaml
           openapi-generator-cli validate -i ./openapi.yaml
