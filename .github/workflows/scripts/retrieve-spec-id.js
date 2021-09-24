@@ -15,8 +15,7 @@ if (bumpVersion != null) {
     var major = semver.major(bumpVersion)
     var minor = semver.minor(bumpVersion)
     var apiVersion = `v${major}.${minor}`
-    // console.log('api_version=' + apiVersion)
-    // console.error(apiKey)
+    console.log('api_version=' + apiVersion)
 
 	getVersions(apiKey, function lv(versionList) {
         console.error(versionList)
@@ -35,7 +34,7 @@ if (bumpVersion != null) {
 
 		if (specId == null) {
 
-			createVersion(apiVersion, lastVersion, function cv(result) {
+			/*écreateVersion(apiVersion, lastVersion, function cv(result) {
                 specId = JSON.parse(result)['_id']
                 if (specId == null) {
                     console.error(result)
@@ -43,7 +42,7 @@ if (bumpVersion != null) {
                     exportOasKey(apiKey, specId)
                 }
 				
-			})
+			})*/
 
 		} else {
             exportOasKey(apiKey, specId)
