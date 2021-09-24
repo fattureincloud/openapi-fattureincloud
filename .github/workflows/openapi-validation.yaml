@@ -1,8 +1,9 @@
-name: Validation
+name: OpenAPI Validation
 on:
   pull_request:
     branches:
       - develop
+      - master
 jobs:
   validate-openapi:
     runs-on: ubuntu-latest
@@ -25,62 +26,64 @@ jobs:
           swagger-cli validate openapi.yaml
           openapi-generator-cli validate -i ./openapi.yaml
   
-  validate-java:
-    runs-on: ubuntu-latest
-    needs: validate-openapi
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-      - name: Setup Java
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'adopt'
-          java-version: '8'
-      - name: Install libraries
-        run: |
-          npm install -g yarn
-          yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli
+  # validate-java:
+  #   runs-on: ubuntu-latest
+  #   needs: validate-openapi
+  #   steps:
+  #     - name: Checkout repo
+  #       uses: actions/checkout@v2
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v2
+  #     - name: Setup Java
+  #       uses: actions/setup-java@v2
+  #       with:
+  #         distribution: 'adopt'
+  #         java-version: '8'
+  #     - name: Install libraries
+  #       run: |
+  #         npm install -g yarn
+  #         yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli
 
-      - name: Validate Java SDK
-        run: |
-          mkdir -p ../generated/java
-          git clone https://Valmoz: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@github.com/fattureincloud/test-target-repo.git ../generated/java
-          openapi-generator-cli generate -i ./openapi.yaml -g java -o ../generated/java
-          cd ../generated/java
-          chmod +x ./gradlew
-          ./gradlew test
+  #     - name: Validate Java SDK
+  #       run: |
+  #         mkdir -p ../generated/java
+  #         git clone https://Valmoz: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@github.com/fattureincloud/test-target-repo.git ../generated/java
+  #         rm -rf ../generated/java/src/test
+  #         openapi-generator-cli generate -i ./openapi.yaml -g java -o ../generated/java
+  #         cd ../generated/java
+  #         rm -rf /src/test
+  #         chmod +x ./gradlew
+  #         ./gradlew test
 
-  validate-python:
-    runs-on: ubuntu-latest
-    needs: validate-openapi
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-      - name: Setup Java
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'adopt'
-          java-version: '8'
-      - name: Setup Python
-        uses: actions/setup-python@v2
-      - name: Install libraries
-        run: |
-          npm install -g yarn
-          yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli
+  # validate-python:
+  #   runs-on: ubuntu-latest
+  #   needs: validate-openapi
+  #   steps:
+  #     - name: Checkout repo
+  #       uses: actions/checkout@v2
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v2
+  #     - name: Setup Java
+  #       uses: actions/setup-java@v2
+  #       with:
+  #         distribution: 'adopt'
+  #         java-version: '8'
+  #     - name: Setup Python
+  #       uses: actions/setup-python@v2
+  #     - name: Install libraries
+  #       run: |
+  #         npm install -g yarn
+  #         yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli
 
-      - name: Validate Python SDK
-        run: |
-          mkdir -p ../generated/python
-          git clone https://Valmoz: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@github.com/fattureincloud/test-target-repo-py.git ../generated/python
-          openapi-generator-cli generate -i ./openapi.yaml -g python -o ../generated/python
-          cd ../generated/python
-          pip install -r requirements.txt
-          pip install -r test-requirements.txt
-          python -m unittest
+  #     - name: Validate Python SDK
+  #       run: |
+  #         mkdir -p ../generated/python
+  #         git clone https://Valmoz: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@github.com/fattureincloud/test-target-repo-py.git ../generated/python
+  #         openapi-generator-cli generate -i ./openapi.yaml -g python -o ../generated/python
+  #         cd ../generated/python
+  #         pip install -r requirements.txt
+  #         pip install -r test-requirements.txt
+  #         python -m unittest
 
 
       # - name: Generate Python SDK
