@@ -54,7 +54,7 @@ jobs:
       - name: Test step
         run: |
           echo "${{ env.api_version }}"
-          echo "${{ env.oas_key }}"
+          echo "{${{ secrets.README_API_KEY }}}.{${{ env.spec_id }}}"
 
 
 
