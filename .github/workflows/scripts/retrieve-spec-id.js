@@ -10,12 +10,14 @@ var yamlFile = "../../../openapi.yaml"
 
 var bumpVersion = retrieveVersionFromOpenApi(yamlFile)
 
+var result = {}
+
 if (bumpVersion != null) {
 
     var major = semver.major(bumpVersion)
     var minor = semver.minor(bumpVersion)
     var apiVersion = `v${major}.${minor}`
-    exportVariable('api_version', apiVersion)
+    result['api_version'] = apiVersion
 
 	getVersions(apiKey, function lv(versionList) {
 		versionList = JSON.parse(versionList)
@@ -38,18 +40,20 @@ if (bumpVersion != null) {
                 if (specId == null) {
                     console.error(result)
                 } else {
-                    exportVariable('spec_id', specId)
+                    result['spec_id'] = specId
                 }
 				
 			})
 
 		} else {
-            exportOasKey('spec_id', specId)
+            result['spec_id'] = specId
         }
 	})
 } else {
     console.error("OpenAPI spec version not found!!!")
 }
+
+console.log(JSON.stringify(result))
 
 function exportVariable(key, val) {
     process.env[key] = val
