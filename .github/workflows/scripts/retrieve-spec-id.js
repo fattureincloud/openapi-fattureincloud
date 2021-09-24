@@ -17,7 +17,7 @@ if (bumpVersion != null) {
     var apiVersion = `v${major}.${minor}`
     console.log('api_version=' + apiVersion)
 
-	getVersions(apiKey, function lv(versionList) {
+	/*getVersions(apiKey, function lv(versionList) {
         console.error(versionList)
 		versionList = JSON.parse(versionList)
 		specId = null
@@ -42,12 +42,12 @@ if (bumpVersion != null) {
                     exportOasKey(apiKey, specId)
                 }
 				
-			})*/
+			})* /
 
 		} else {
             exportOasKey(apiKey, specId)
         }
-	})
+	})*/
 }
 
 function exportOasKey(apiKey, specId) {
