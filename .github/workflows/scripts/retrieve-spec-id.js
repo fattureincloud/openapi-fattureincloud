@@ -5,59 +5,70 @@ const fs   = require('fs')
 
 var baseUrl = 'dash.readme.com'
 var path = '/api/v1/version'
-var apiKey = process.env.README_API_KEY
+var apiKey = process.argv[2]
 var yamlFile = "../../../openapi.yaml"
 
-var bumpVersion = retrieveVersionFromOpenApi(yamlFile)
+function main() {
+	var bumpVersion = retrieveVersionFromOpenApi(yamlFile)
 
-var result = {}
+	var result = {}
 
-if (bumpVersion != null) {
+	if (bumpVersion != null) {
 
-    var major = semver.major(bumpVersion)
-    var minor = semver.minor(bumpVersion)
-    var apiVersion = `v${major}.${minor}`
-    result['api_version'] = apiVersion
+		var specId = null
+		var major = semver.major(bumpVersion)
+		var minor = semver.minor(bumpVersion)
+		var apiVersion = `v${major}.${minor}`
+		result['api_version'] = apiVersion
 
-	getVersions(apiKey, function lv(versionList) {
-		versionList = JSON.parse(versionList)
-		specId = null
-		lastVersion = null
+		getVersions(apiKey, function lv(versionList) {
+			var versionList = JSON.parse(versionList)
+			var lastVersion = null
+			var compareVersion = semver.coerce(apiVersion).version
 
-		for (var elem in versionList) {
+			for (var elem in versionList) {
 
-			var v = semver.clean(versionList[elem]['version'])
-
-			if (semver.eq(v, apiVersion)) {
-                specId = versionList[elem]['_id']
-            } 
-			if (lastVersion == null || semver.lt(lastVersion, v)) {
-                lastVersion = v
-            }
-
-		}
-
-		if (specId == null) {
-
-			createVersion(apiVersion, lastVersion, function cv(result) {
-                specId = JSON.parse(result)['_id']
-                if (specId == null) {
-                    console.error(result)
-                } else {
-                    result['spec_id'] = specId
-                }
+				var elemVersion = versionList[elem]['version']
+				var v = semver.coerce(elemVersion).version
 				
-			})
+				if (semver.eq(v, compareVersion)) {
+					specId = versionList[elem]['_id']
+				} 
+				if (lastVersion == null || semver.lt(lastVersion, v)) {
+					lastVersion = v
+				}
 
-		} else {
-            result['spec_id'] = specId
-        }
-	})
-} else {
-    console.error("OpenAPI spec version not found!!!")
+			}
+
+			if (specId == null) {
+
+				createVersion(apiVersion, lastVersion, function cv(response) {
+					
+					specId = JSON.parse(response)['_id']
+					if (specId == null) {
+						throw "SpecId not found!!!"
+					} else {
+						result['spec_id'] = specId
+						printResult(result)
+					}
+				})
+			}  else {
+				result['spec_id'] = specId
+				printResult(result)
+			}
+		})
+		
+	} else {
+		throw "OpenAPI spec version not found!!!"
+	}
+	
 }
 
-console.log(JSON.stringify(result))
+main()
+
+function printResult(result) {
+	console.log(yaml.dump(result))
+}
 
 function retrieveVersionFromOpenApi(contents) {
 
@@ -136,7 +147,7 @@ function createVersion(version, lastVersion, callback) {
       })
       
       req.on('error', (e) => {
-        console.error(e)
+        throw e
       })
       
       req.write(json)

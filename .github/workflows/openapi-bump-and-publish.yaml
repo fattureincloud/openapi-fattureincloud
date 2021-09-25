@@ -48,15 +48,20 @@ jobs:
       - name: Run Readme Versions Manager Script
         run: |
           cd .github/workflows/scripts/
-          RES=$(yarn specid)
-          echo "$RES"
+          node retrieve-spec-id.js ${{ secrets.README_API_KEY }} > res.yaml
+          head res.yaml
+          SPEC_ID=$(yq e '.spec_id' ./res.yaml)
+          API_VERSION=$(yq e '.api_version' ./res.yaml)
+          echo "api_version=$API_VERSION" >> $GITHUB_ENV
+          echo "oas_key={${{ secrets.README_API_KEY }}}:{$SPEC_ID}" >> $GITHUB_ENV
+          rm ./res.yaml
         #yarn specid >> $GITHUB_ENV
         env: 
           README_API_KEY: ${{ secrets.README_API_KEY }}
       - name: Test step
         run: |
           echo "${{ env.api_version }}"
-          echo "{${{ secrets.README_API_KEY }}}.{${{ env.spec_id }}}"
+          echo "${{ env.oas_key }}"
 
 
 

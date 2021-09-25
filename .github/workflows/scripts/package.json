@@ -5,7 +5,6 @@
     "semver": "^7.3.5"
   },
   "scripts": {
-    "specid": "node retrieve-spec-id.js",
     "release": "standard-version"
   }
 }
