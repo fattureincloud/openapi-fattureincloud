@@ -80,7 +80,6 @@ jobs:
       - name: Pushing to Git repo
         if: ${{ !env.ACT }}
         run: |
-          git --no-pager log origin/validation..validation
           git push
           git push --tags origin
 
