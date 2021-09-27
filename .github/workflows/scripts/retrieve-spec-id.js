@@ -42,7 +42,17 @@ function main() {
 
 			if (specId == null) {
 
-				createVersion(apiVersion, lastVersion, function cv(response) {
+				/*createVersion(apiVersion, lastVersion, apiKey, function cv(response) {
+					
+					specId = JSON.parse(response)['_id']
+					if (specId == null) {
+						throw "SpecId not found!!!"
+					} else {
+						result['spec_id'] = specId
+						printResult(result)
+					}
+				})*/
+				getVersion(lastVersion, apiKey, function cv(response) {
 					
 					specId = JSON.parse(response)['_id']
 					if (specId == null) {
@@ -107,7 +117,37 @@ function getVersions(apiKey, callback) {
 	})
 }
 
-function createVersion(version, lastVersion, callback) {
+function getVersion(version, apiKey, callback) {
+
+	var apiKeyB64 = Buffer.from(apiKey).toString('base64')
+
+	var headers = {
+		'Accept': 'application/json',
+		'Content-Type': 'application/json',
+		'Authorization': 'Basic ' + apiKeyB64
+	}
+
+	const options = {
+		hostname: baseUrl,
+		path: path + '/' + version,
+		headers: headers
+	}
+
+	https.get(options, (response) => {
+
+		var result = ''
+		response.on('data', function (chunk) {
+			result += chunk
+		})
+
+		response.on('end', function () {
+			callback(result)
+		})
+
+	})
+}
+
+function createVersion(version, lastVersion, apiKey, callback) {
 
 	var apiKeyB64 = Buffer.from(apiKey).toString('base64')
 
