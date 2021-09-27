@@ -1,9 +1,11 @@
-const yaml = require('js-yaml')
+const axios = require('axios')
+const fs = require('fs')
 const semver = require('semver')
-const https = require('https')
-const fs   = require('fs')
+const yaml = require('js-yaml')
 
-var baseUrl = 'dash.readme.com'
+
+
+var baseUrl = 'https://dash.readme.com'
 var versionPath = '/api/v1/version'
 var specificationPath = '/api/v1/api-specification'
 var apiKey = process.argv[2]
@@ -31,10 +33,10 @@ function main() {
 
 				var elemVersion = versionList[elem]['version']
 				var v = semver.coerce(elemVersion).version
-				
+
 				if (semver.eq(v, compareVersion)) {
 					versionId = versionList[elem]['_id']
-				} 
+				}
 				if (lastVersion == null || semver.lt(lastVersion, v)) {
 					lastVersion = v
 				}
@@ -44,7 +46,7 @@ function main() {
 			if (versionId == null) {
 
 				createVersion(apiVersion, lastVersion, apiKey, function cv(createdVersion) {
-					
+
 					versionId = JSON.parse(createdVersion)['_id']
 					if (versionId == null) {
 						throw "VersionId not found!!!"
@@ -61,24 +63,26 @@ function main() {
 									printResult(result)
 								})
 							}
-							
+
 						})
 					}
 				})
-				
-			}  else {
+
+			} else {
 				result['version_id'] = versionId
 				printResult(result)
 			}
 		})
-		
+
 	} else {
 		throw "OpenAPI version ID not found!!!"
 	}
-	
+
 }
 
 main()
+
+//-----------------------------------------------------------------------------------------------
 
 function printResult(result) {
 	console.log(yaml.dump(result))
@@ -91,76 +95,26 @@ function retrieveVersionFromOpenApi(contents) {
 
 }
 
+//-----------------------------------------------------------------------------------------------
+
 function getVersions(apiKey, callback) {
 
-	var apiKeyB64 = Buffer.from(apiKey).toString('base64')
+	var url = baseUrl + versionPath
 
-	var headers = {
-		'Accept': 'application/json',
-		'Content-Type': 'application/json',
-		'Authorization': 'Basic ' + apiKeyB64
-	}
-
-	const options = {
-		hostname: baseUrl,
-		path: versionPath,
-		headers: headers
-	}
-
-	https.get(options, (response) => {
-
-		var result = ''
-		response.on('data', function (chunk) {
-			result += chunk
-		})
-
-		response.on('end', function () {
-			callback(result)
-		})
-
-	})
+	restGet(url, apiKey, callback)
 }
 
 function getVersion(version, apiKey, callback) {
 
-	var apiKeyB64 = Buffer.from(apiKey).toString('base64')
+	var url = baseUrl + versionPath + '/' + version
 
-	var headers = {
-		'Accept': 'application/json',
-		'Content-Type': 'application/json',
-		'Authorization': 'Basic ' + apiKeyB64
-	}
-
-	const options = {
-		hostname: baseUrl,
-		path: versionPath + '/' + version,
-		headers: headers
-	}
-
-	https.get(options, (response) => {
-
-		var result = ''
-		response.on('data', function (chunk) {
-			result += chunk
-		})
-
-		response.on('end', function () {
-			callback(result)
-		})
-
-	})
+	restGet(url, apiKey, callback)
 }
 
 
 function createVersion(version, lastVersion, apiKey, callback) {
 
-	var apiKeyB64 = Buffer.from(apiKey).toString('base64')
-
-	var headers = {
-		'Accept': 'application/json',
-		'Content-Type': 'application/json',
-		'Authorization': 'Basic ' + apiKeyB64
-	}
+	var url = baseUrl + versionPath
 
 	var payload = {
 		'version': version,
@@ -169,70 +123,82 @@ function createVersion(version, lastVersion, apiKey, callback) {
 		'is_hidden': true
 	}
 
-    var json = JSON.stringify(payload)
-    
-    const options = {
-		hostname: baseUrl,
-		path: versionPath,
-		method: 'POST',
-		json: true,
-		headers: headers
-	}
-
-    var req = https.request(options, (response) => {
-  
-        var result = ''
-		response.on('data', function (chunk) {
-			result += chunk
-		})
-
-		response.on('end', function () {
-			callback(result)
-		})
-      })
-      
-      req.on('error', (e) => {
-        throw e
-      })
-      
-      req.write(json)
-      req.end()
+	restPost(url, payload, apiKey, callback)
 
 }
 
 function getSpecificationMetadata(version, apiKey, callback) {
 
-	var apiKeyB64 = Buffer.from(apiKey).toString('base64')
+	var url = baseUrl + specificationPath
 
 	var headers = {
-		'Accept': 'application/json',
-		'Content-Type': 'application/json',
-		'Authorization': 'Basic ' + apiKeyB64,
 		'x-readme-version': version
 	}
 
-	const options = {
-		hostname: baseUrl,
-		path: specificationPath,
-		headers: headers
-	}
-
-	https.get(options, (response) => {
-
-		var result = ''
-		response.on('data', function (chunk) {
-			result += chunk
-		})
-
-		response.on('end', function () {
-			callback(result)
-		})
-
-	})
+	restGet(url, apiKey, callback, headers)
 }
 
 function deleteSpecification(specId, apiKey, callback) {
 
+	var url = baseUrl + specificationPath + '/' + specId
+
+	restDelete(url, apiKey, callback)
+}
+
+//-----------------------------------------------------------------------------------------------
+
+function restGet(url, apiKey, callback, additionalHeaders = null) {
+	const config = {
+		headers: getHeaders(apiKey, additionalHeaders)
+	}
+
+	axios.get(url, config)
+		.then(function (response) {
+			callback(response)
+		})
+		.catch(function (error) {
+			throw error
+		})
+}
+
+function restPost(url, data, apiKey, callback, additionalHeaders = null) {
+	const config = {
+		headers: getHeaders(apiKey, additionalHeaders)
+	}
+
+	axios.post(url, data, config)
+		.then(function (response) {
+			callback(response)
+		})
+		.catch(function (error) {
+			throw error
+		})
+}
+
+function restDelete(url, apiKey, callback, additionalHeaders = null) {
+	const config = {
+		headers: getHeaders(apiKey, additionalHeaders)
+	}
+
+	axios.delete(url, config)
+		.then(function (response) {
+			callback(response)
+		}).catch(function (error) {
+			throw error
+		})
+}
+
+function getHeaders(apiKey, additionalHeaders) {
+	var base = getBaseHeaders(apiKey)
+	if (additionalHeaders) {
+		return {...base, ...additionalHeaders}
+	} else {
+		return base
+	}
+	
+}
+
+function getBaseHeaders(apiKey) {
 	var apiKeyB64 = Buffer.from(apiKey).toString('base64')
 
 	var headers = {
@@ -241,28 +207,7 @@ function deleteSpecification(specId, apiKey, callback) {
 		'Authorization': 'Basic ' + apiKeyB64
 	}
 
-	const options = {
-		hostname: baseUrl,
-		path: specificationPath + '/' + specId,
-		headers: headers,
-		method: 'DELETE',
+	const config = {
+		headers: headers
 	}
-
-	var req = https.request(options, (response) => {
-  
-        var result = ''
-		response.on('data', function (chunk) {
-			result += chunk
-		})
-
-		response.on('end', function () {
-			callback(result)
-		})
-      })
-      
-      req.on('error', (e) => {
-        throw e
-      })
-      
-      req.end()
 }
