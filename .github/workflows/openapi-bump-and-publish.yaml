@@ -67,7 +67,7 @@ jobs:
         uses: readmeio/github-readme-sync@v2
         if: ${{ !env.ACT }}
         with:
-          readme-oas-key: "${{ secrets.README_API_KEY }}"
+          readme-oas-key: "${{ env.oas_key }}"
           oas-file-path: './openapi.yaml'
           api-version: "${{ env.api_version }}"
         
