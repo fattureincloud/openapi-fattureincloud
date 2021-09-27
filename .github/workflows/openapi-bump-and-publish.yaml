@@ -1,58 +1,91 @@
-name: Sync OAS to ReadMe
+name: Bump and Publish OpenAPI to Readme
 on:
   push:
     branches:
+      - develop
       - master
-      - main
-      - action-test
 jobs:
-  sync:
+  bump-and-publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-      - name: Setup Python
-        uses: actions/setup-python@v2
+
       - name: Setup Node.js
         uses: actions/setup-node@v2
-      # - name: Setup Java
-      #   uses: actions/setup-java@v2
-      #   with:
-      #     distribution: 'adopt'
-      #     java-version: '8'
+
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '8'
+
       - name: Init GIT
         run: |
           git config --global user.email "info@fattureincloud.it"
           git config --global user.name "Github Action"
+
       - name: Install libraries
         run: |
           npm install -g yarn
-          yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli
-          python -m pip install --upgrade pip
-          pip install -r ./.github/workflows/scripts/requirements.txt
-      - name: Validate schema
+          yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli standard-version
+          sudo add-apt-repository ppa:rmescandon/yq -y
+          sudo apt update
+          sudo apt install yq -y
+
+      - name: Validate specification
         run: |
           swagger-cli validate openapi.yaml
           openapi-generator-cli validate -i ./openapi.yaml
-      - name: Run Versions Manager Script
+
+      - name: Bump OpenAPI spec version
         run: |
-          python ./.github/workflows/scripts/retrieve_spec_id.py >> $GITHUB_ENV
-      - name: Test step
+          cd .github/workflows/scripts/
+          yarn
+          CURR_VER=$(yq e '.info.version' ../../../openapi.yaml)
+          echo "Previous version: $CURR_VER"
+          yarn release
+          BUMP_VER=$(yq e '.info.version' ../../../openapi.yaml)
+          echo "New version: $BUMP_VER"
+
+      - name: Run Readme Versions Manager Script
         run: |
+          cd .github/workflows/scripts/
+          node readme-api-manager.js ${{ secrets.README_API_KEY }} > res.yaml
+          head res.yaml
+          VERSION_ID=$(yq e '.version_id' ./res.yaml)
+          API_VERSION=$(yq e '.api_version' ./res.yaml)
+          echo "api_version=$API_VERSION" >> $GITHUB_ENV
+          echo "oas_key=${{ secrets.README_API_KEY }}:$VERSION_ID" >> $GITHUB_ENV
+          rm ./res.yaml
+
+      # Executed only if launched locally using ACT
+      - name: Mock Update to Readme.io
+        if: ${{ env.ACT }}
+        run: |
+          echo "This is only a mock of the Update to Readme step. Printing the variables that would be used to upload the spec..."
+          echo "${{ env.api_version }}"
           echo "${{ env.oas_key }}"
+
       - name: Upload to Readme.io
         uses: readmeio/github-readme-sync@v2
         if: ${{ !env.ACT }}
         with:
           readme-oas-key: "${{ env.oas_key }}"
           oas-file-path: './openapi.yaml'
-          # OPTIONAL CONFIG, use if necessary
-          # api-version: 'v1.0.0'
+          api-version: "${{ env.api_version }}"
+
+      - name: Pushing to Git repo
+        if: ${{ !env.ACT }}
+        run: |
+          git status
+
+      
         
       # - name: Generate Java SDK
       #   run: |
       #     mkdir -p ../generated/java
-      #     git clone https://Valmoz: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@github.com/fattureincloud/test-target-repo.git ../generated/java
+      #     git clone https://Valmoz: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@github.com/fattureincloud/test-target-repo.git ../generated/java
       #     openapi-generator-cli generate -i ./openapi.yaml -g java -o ../generated/java
       #     echo "TEST" > ../generated/java/test.txt
       #     cd ../generated/java
@@ -63,7 +96,7 @@ jobs:
       # - name: Generate Python SDK
       #   run: |
       #     mkdir -p ../generated/python
-      #     git clone https://Valmoz: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@github.com/fattureincloud/test-target-repo-py.git ../generated/python
+      #     git clone https://Valmoz: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@github.com/fattureincloud/test-target-repo-py.git ../generated/python
       #     openapi-generator-cli generate -i ./openapi.yaml -g python -o ../generated/python
       #     cd ../generated/python
       #     git add .
@@ -85,13 +118,13 @@ jobs:
       #     git add .
       #     git commit -m "First commit."
       #     git branch -M main
-      #     git remote add origin https://Valmoz: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@github.com/fattureincloud/test-target-repo-py.git
+      #     git remote add origin https://Valmoz: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@github.com/fattureincloud/test-target-repo-py.git
       #     git push -u origin main
 
       # - name: Generate Java SDK
       #   run: |
       #     mkdir -p ../generated/java
-      #     git clone https://Valmoz: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@github.com/fattureincloud/test-target-repo.git ../generated/java
+      #     git clone https://Valmoz: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@github.com/fattureincloud/test-target-repo.git ../generated/java
       #     openapi-generator-cli generate -i ./openapi.yaml -g java -o ../generated/java
       #     echo "TEST" > ../generated/java/test.txt
       #     cd ../generated/java
@@ -106,6 +139,6 @@ jobs:
       #     git add .
       #     git commit -m "First commit."
       #     git branch -M main
-      #     git remote add origin https://Valmoz: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@github.com/fattureincloud/test-target-repo.git
+      #     git remote add origin https://Valmoz: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@github.com/fattureincloud/test-target-repo.git
       #     git push -u origin main
 
