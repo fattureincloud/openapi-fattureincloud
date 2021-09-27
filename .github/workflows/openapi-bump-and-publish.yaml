@@ -55,24 +55,22 @@ jobs:
           echo "api_version=$API_VERSION" >> $GITHUB_ENV
           echo "oas_key={${{ secrets.README_API_KEY }}}:{$SPEC_ID}" >> $GITHUB_ENV
           rm ./res.yaml
-        #yarn specid >> $GITHUB_ENV
-        env: 
-          README_API_KEY: ${{ secrets.README_API_KEY }}
-      - name: Test step
+
+      # Executed only if launched locally using ACT
+      - name: Mock Update to Readme.io
+        if: ${{ env.ACT }}
         run: |
+          echo "This is only a mock of the Update to Readme step. Printing the variables that would be used to upload the spec..."
           echo "${{ env.api_version }}"
           echo "${{ env.oas_key }}"
 
-
-
-      # - name: Upload to Readme.io
-      #   uses: readmeio/github-readme-sync@v2
-      #   if: ${{ !env.ACT }}
-      #   with:
-      #     readme-oas-key: "${{ env.oas_key }}"
-      #     oas-file-path: './openapi.yaml'
-          # OPTIONAL CONFIG, use if necessary
-          # api-version: 'v1.0.0'
+      - name: Upload to Readme.io
+        uses: readmeio/github-readme-sync@v2
+        if: ${{ !env.ACT }}
+        with:
+          readme-oas-key: "${{ env.oas_key }}"
+          oas-file-path: './openapi.yaml'
+          api-version: "${{ env.api_version }}"
         
       # - name: Generate Java SDK
       #   run: |
