@@ -1,10 +1,8 @@
 name: Bump and Publish OpenAPI to Readme
 on:
-  pull_request:
-    branches:
-      - develop
   push:
     branches:
+      - develop
       - master
 jobs:
   bump-and-publish:
