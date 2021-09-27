@@ -55,7 +55,6 @@ jobs:
           echo "api_version=$API_VERSION" >> $GITHUB_ENV
           echo "oas_key=${{ secrets.README_API_KEY }}:$SPEC_ID" >> $GITHUB_ENV
           rm ./res.yaml
-
       # Executed only if launched locally using ACT
       - name: Mock Update to Readme.io
         if: ${{ env.ACT }}
@@ -68,7 +67,7 @@ jobs:
         uses: readmeio/github-readme-sync@v2
         if: ${{ !env.ACT }}
         with:
-          readme-oas-key: "${{ env.oas_key }}"
+          readme-oas-key: "${{ secrets.README_API_KEY }}"
           oas-file-path: './openapi.yaml'
           api-version: "${{ env.api_version }}"
         
