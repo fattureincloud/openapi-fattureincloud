@@ -81,7 +81,6 @@ jobs:
           git --no-pager log origin/master..master
           git push
           git push origin --tags
-
       
         
       # - name: Generate Java SDK
