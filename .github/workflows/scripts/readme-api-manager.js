@@ -24,8 +24,8 @@ function main() {
 		var apiVersion = `v${major}.${minor}`
 		result['api_version'] = apiVersion
 
-		getVersions(apiKey, function lv(versionList) {
-			var versionList = JSON.parse(versionList)
+		listVersions(apiKey, function lv(lvResponse) {
+			var versionList = lvResponse.data
 			var lastVersion = null
 			var compareVersion = semver.coerce(apiVersion).version
 
@@ -45,15 +45,15 @@ function main() {
 
 			if (versionId == null) {
 
-				createVersion(apiVersion, lastVersion, apiKey, function cv(createdVersion) {
+				createVersion(apiVersion, lastVersion, apiKey, function cv(cvResponse) {
 
-					versionId = JSON.parse(createdVersion)['_id']
+					versionId = cvResponse.data['_id']
 					if (versionId == null) {
 						throw "VersionId not found!!!"
 					} else {
-						getSpecificationMetadata(apiVersion, apiKey, function gsm(metadata) {
+						getSpecificationMetadata(apiVersion, apiKey, function gsm(gsmResponse) {
 							//  should have only one spec in the newly created version
-							var specList = JSON.parse(metadata)
+							var specList = gsmResponse.data
 							if (specList.length != 1) {
 								throw "Something strange happened!!!"
 							} else {
@@ -97,7 +97,7 @@ function retrieveVersionFromOpenApi(contents) {
 
 //-----------------------------------------------------------------------------------------------
 
-function getVersions(apiKey, callback) {
+function listVersions(apiKey, callback) {
 
 	var url = baseUrl + versionPath
 
@@ -157,7 +157,7 @@ function restGet(url, apiKey, callback, additionalHeaders = null) {
 			callback(response)
 		})
 		.catch(function (error) {
-			throw error
+			console.error(error)
 		})
 }
 
@@ -171,7 +171,7 @@ function restPost(url, data, apiKey, callback, additionalHeaders = null) {
 			callback(response)
 		})
 		.catch(function (error) {
-			throw error
+			console.error(error)
 		})
 }
 
@@ -184,18 +184,18 @@ function restDelete(url, apiKey, callback, additionalHeaders = null) {
 		.then(function (response) {
 			callback(response)
 		}).catch(function (error) {
-			throw error
+			console.error(error)
 		})
 }
 
 function getHeaders(apiKey, additionalHeaders) {
 	var base = getBaseHeaders(apiKey)
 	if (additionalHeaders) {
-		return {...base, ...additionalHeaders}
+		return { ...base, ...additionalHeaders }
 	} else {
 		return base
 	}
-	
+
 }
 
 function getBaseHeaders(apiKey) {
@@ -207,7 +207,5 @@ function getBaseHeaders(apiKey) {
 		'Authorization': 'Basic ' + apiKeyB64
 	}
 
-	const config = {
-		headers: headers
-	}
+	return headers
 }
