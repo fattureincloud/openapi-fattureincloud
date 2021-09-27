@@ -42,17 +42,7 @@ function main() {
 
 			if (specId == null) {
 
-				/*createVersion(apiVersion, lastVersion, apiKey, function cv(response) {
-					
-					specId = JSON.parse(response)['_id']
-					if (specId == null) {
-						throw "SpecId not found!!!"
-					} else {
-						result['spec_id'] = specId
-						printResult(result)
-					}
-				})*/
-				getVersion(lastVersion, apiKey, function cv(response) {
+				createVersion(apiVersion, lastVersion, apiKey, function cv(response) {
 					
 					specId = JSON.parse(response)['_id']
 					if (specId == null) {
@@ -62,6 +52,7 @@ function main() {
 						printResult(result)
 					}
 				})
+				
 			}  else {
 				result['spec_id'] = specId
 				printResult(result)
