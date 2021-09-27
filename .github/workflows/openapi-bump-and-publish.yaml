@@ -78,7 +78,6 @@ jobs:
       - name: Pushing to Git repo
         if: ${{ !env.ACT }}
         run: |
-          git --no-pager log origin/master..master
           git push
           git push origin --tags
       
