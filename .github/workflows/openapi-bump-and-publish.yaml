@@ -80,8 +80,7 @@ jobs:
       - name: Pushing to Git repo
         if: ${{ !env.ACT }}
         run: |
-          git push
-          git push --tags origin
+          git status
 
       
         
