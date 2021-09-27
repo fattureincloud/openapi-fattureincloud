@@ -244,12 +244,13 @@ function deleteSpecification(specId, apiKey, callback) {
 	const options = {
 		hostname: baseUrl,
 		path: specificationPath + '/' + specId,
-		headers: headers
+		headers: headers,
+		method: 'DELETE',
 	}
 
-	https.get(options, (response) => {
-
-		var result = ''
+	var req = https.request(options, (response) => {
+  
+        var result = ''
 		response.on('data', function (chunk) {
 			result += chunk
 		})
@@ -257,6 +258,11 @@ function deleteSpecification(specId, apiKey, callback) {
 		response.on('end', function () {
 			callback(result)
 		})
-
-	})
+      })
+      
+      req.on('error', (e) => {
+        throw e
+      })
+      
+      req.end()
 }
