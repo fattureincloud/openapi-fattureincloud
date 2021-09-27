@@ -16,7 +16,7 @@ function main() {
 
 	if (bumpVersion != null) {
 
-		var specId = null
+		var versionId = null
 		var major = semver.major(bumpVersion)
 		var minor = semver.minor(bumpVersion)
 		var apiVersion = `v${major}.${minor}`
@@ -33,7 +33,7 @@ function main() {
 				var v = semver.coerce(elemVersion).version
 				
 				if (semver.eq(v, compareVersion)) {
-					specId = versionList[elem]['_id']
+					versionId = versionList[elem]['_id']
 				} 
 				if (lastVersion == null || semver.lt(lastVersion, v)) {
 					lastVersion = v
@@ -45,7 +45,7 @@ function main() {
 
 				createVersion(apiVersion, lastVersion, apiKey, function cv(createdVersion) {
 					
-					var versionId = JSON.parse(createdVersion)['_id']
+					versionId = JSON.parse(createdVersion)['_id']
 					if (versionId == null) {
 						throw "VersionId not found!!!"
 					} else {
