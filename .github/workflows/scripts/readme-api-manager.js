@@ -4,7 +4,8 @@ const https = require('https')
 const fs   = require('fs')
 
 var baseUrl = 'dash.readme.com'
-var path = '/api/v1/version'
+var versionPath = '/api/v1/version'
+var specificationPath = '/api/v1/api-specification'
 var apiKey = process.argv[2]
 var yamlFile = "../../../openapi.yaml"
 
@@ -40,27 +41,39 @@ function main() {
 
 			}
 
-			if (specId == null) {
+			if (versionId == null) {
 
-				createVersion(apiVersion, lastVersion, apiKey, function cv(response) {
+				createVersion(apiVersion, lastVersion, apiKey, function cv(createdVersion) {
 					
-					specId = JSON.parse(response)['_id']
-					if (specId == null) {
-						throw "SpecId not found!!!"
+					var versionId = JSON.parse(createdVersion)['_id']
+					if (versionId == null) {
+						throw "VersionId not found!!!"
 					} else {
-						result['spec_id'] = specId
-						printResult(result)
+						getSpecificationMetadata(apiVersion, apiKey, function gsm(metadata) {
+							//  should have only one spec in the newly created version
+							var specList = JSON.parse(metadata)
+							if (specList.length != 1) {
+								throw "Something strange happened!!!"
+							} else {
+								var specId = specList[0]['_id']
+								deleteSpecification(specId, apiKey, function ds() {
+									result['version_id'] = versionId
+									printResult(result)
+								})
+							}
+							
+						})
 					}
 				})
 				
 			}  else {
-				result['spec_id'] = specId
+				result['version_id'] = versionId
 				printResult(result)
 			}
 		})
 		
 	} else {
-		throw "OpenAPI spec version not found!!!"
+		throw "OpenAPI version ID not found!!!"
 	}
 	
 }
@@ -90,7 +103,7 @@ function getVersions(apiKey, callback) {
 
 	const options = {
 		hostname: baseUrl,
-		path: path,
+		path: versionPath,
 		headers: headers
 	}
 
@@ -120,7 +133,7 @@ function getVersion(version, apiKey, callback) {
 
 	const options = {
 		hostname: baseUrl,
-		path: path + '/' + version,
+		path: versionPath + '/' + version,
 		headers: headers
 	}
 
@@ -137,6 +150,7 @@ function getVersion(version, apiKey, callback) {
 
 	})
 }
+
 
 function createVersion(version, lastVersion, apiKey, callback) {
 
@@ -159,7 +173,7 @@ function createVersion(version, lastVersion, apiKey, callback) {
     
     const options = {
 		hostname: baseUrl,
-		path: path,
+		path: versionPath,
 		method: 'POST',
 		json: true,
 		headers: headers
@@ -184,4 +198,65 @@ function createVersion(version, lastVersion, apiKey, callback) {
       req.write(json)
       req.end()
 
+}
+
+function getSpecificationMetadata(version, apiKey, callback) {
+
+	var apiKeyB64 = Buffer.from(apiKey).toString('base64')
+
+	var headers = {
+		'Accept': 'application/json',
+		'Content-Type': 'application/json',
+		'Authorization': 'Basic ' + apiKeyB64,
+		'x-readme-version': version
+	}
+
+	const options = {
+		hostname: baseUrl,
+		path: specificationPath,
+		headers: headers
+	}
+
+	https.get(options, (response) => {
+
+		var result = ''
+		response.on('data', function (chunk) {
+			result += chunk
+		})
+
+		response.on('end', function () {
+			callback(result)
+		})
+
+	})
+}
+
+function deleteSpecification(specId, apiKey, callback) {
+
+	var apiKeyB64 = Buffer.from(apiKey).toString('base64')
+
+	var headers = {
+		'Accept': 'application/json',
+		'Content-Type': 'application/json',
+		'Authorization': 'Basic ' + apiKeyB64
+	}
+
+	const options = {
+		hostname: baseUrl,
+		path: specificationPath + '/' + specId,
+		headers: headers
+	}
+
+	https.get(options, (response) => {
+
+		var result = ''
+		response.on('data', function (chunk) {
+			result += chunk
+		})
+
+		response.on('end', function () {
+			callback(result)
+		})
+
+	})
 }

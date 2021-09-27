@@ -48,12 +48,12 @@ jobs:
       - name: Run Readme Versions Manager Script
         run: |
           cd .github/workflows/scripts/
-          node retrieve-spec-id.js ${{ secrets.README_API_KEY }} > res.yaml
+          node readme-api-manager.js ${{ secrets.README_API_KEY }} > res.yaml
           head res.yaml
-          SPEC_ID=$(yq e '.spec_id' ./res.yaml)
+          VERSION_ID=$(yq e '.version_id' ./res.yaml)
           API_VERSION=$(yq e '.api_version' ./res.yaml)
           echo "api_version=$API_VERSION" >> $GITHUB_ENV
-          echo "oas_key=${{ secrets.README_API_KEY }}:$SPEC_ID" >> $GITHUB_ENV
+          echo "oas_key=${{ secrets.README_API_KEY }}:$VERSION_ID" >> $GITHUB_ENV
           rm ./res.yaml
       # Executed only if launched locally using ACT
       - name: Mock Update to Readme.io
