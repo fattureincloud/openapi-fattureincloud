@@ -86,20 +86,21 @@ jobs:
           CURR_BRANCH=$(basename "${{ github.ref }}")
           echo "curr_branch=$CURR_BRANCH" >> $GITHUB_ENV
 
-      - name: Pushing to Git repo
-        uses: ad-m/github-push-action@master
-        with:
-          # github_token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ env.curr_branch }}
-          tags: true
-
       # - name: Pushing to Git repo
-      #   if: ${{ !env.ACT }}
-      #   run: |
-      #     git remote add bot-remote https://fattureincloud-bot:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud.git
-      #     git push bot-remote
-      #     git push bot-remote --tags
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     # github_token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     branch: ${{ env.curr_branch }}
+      #     tags: true
+
+      - name: Pushing to Git repo
+        if: ${{ !env.ACT }}
+        run: |
+          REMOTE_REPO="https://fattureincloud-bot:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud.git"
+          echo "$REMOTE_REPO"
+          git push "$REMOTE_REPO" HEAD:${{ env.curr_branch }} --follow-tags --tags;
+
         
 
 
