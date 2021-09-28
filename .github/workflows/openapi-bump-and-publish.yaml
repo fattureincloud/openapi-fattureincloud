@@ -82,14 +82,15 @@ jobs:
       - name: Check GIT
         run: |
           git status
-          git --no-pager log
-          echo "${{ GITHUB_REF }}""
+          git --no-pager log -10
+          echo "${{ env.GITHUB_REF }}"
 
       - name: Pushing to Git repo
         uses: ad-m/github-push-action@master
         with:
           # github_token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
-          branch: ${{ GITHUB_REF }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ env.GITHUB_REF }}
           tags: true
 
       # - name: Pushing to Git repo
