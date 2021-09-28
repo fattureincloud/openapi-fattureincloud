@@ -13,6 +13,11 @@ jobs:
         # with:
         #   token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
 
+      - name: Init GIT
+        run: |
+          git config --global user.email "info@fattureincloud.it"
+          git config --global user.name "fattureincloud-bot"
+
       - name: Setup Node.js
         uses: actions/setup-node@v2
 
@@ -21,11 +26,6 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '8'
-
-      - name: Init GIT
-        run: |
-          git config --global user.email "info@fattureincloud.it"
-          git config --global user.name "fattureincloud-bot"
 
       - name: Install libraries
         run: |
@@ -83,6 +83,11 @@ jobs:
       #     git push
       #     git push origin --tags
 
+       - name: CHECK GIT
+        run: |
+          git status
+          git --no-pager log
+
       - name: Pushing to Git repo
         uses: ad-m/github-push-action@master
         with:
@@ -90,6 +95,9 @@ jobs:
           tags: true
       
         
+
+
+
       # - name: Generate Java SDK
       #   run: |
       #     mkdir -p ../generated/java
