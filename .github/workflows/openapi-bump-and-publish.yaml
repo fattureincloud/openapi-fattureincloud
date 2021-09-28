@@ -93,8 +93,9 @@ jobs:
       - name: Pushing to Git repo
         if: ${{ !env.ACT }}
         run: |
-          git push "https://fattureincloud-bot:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud"
-          git push "https://fattureincloud-bot:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud" --tags
+          git remote add bot-remote https://fattureincloud-bot:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud.git
+          git push bot-remote
+          git push bot-remote --tags
         
 
 
