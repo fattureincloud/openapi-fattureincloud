@@ -83,14 +83,15 @@ jobs:
         run: |
           git status
           git --no-pager log -10
-          echo $(basename "${{ github.ref }}")
+          CURR_BRANCH=$(basename "${{ github.ref }}")
+          echo "curr_branch=$CURR_BRANCH" >> $GITHUB_ENV
 
       - name: Pushing to Git repo
         uses: ad-m/github-push-action@master
         with:
           # github_token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: $(basename "${{ github.ref }}")
+          branch: ${{ env.curr_branch }}
           tags: true
 
       # - name: Pushing to Git repo
