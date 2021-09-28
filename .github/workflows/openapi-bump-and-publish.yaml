@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
@@ -20,10 +22,10 @@ jobs:
           distribution: 'adopt'
           java-version: '8'
 
-      - name: Init GIT
-        run: |
-          git config --global user.email "info@fattureincloud.it"
-          git config --global user.name "Github Action"
+      # - name: Init GIT
+      #   run: |
+      #     git config --global user.email "info@fattureincloud.it"
+      #     git config --global user.name "fattureincloud-bot"
 
       - name: Install libraries
         run: |
