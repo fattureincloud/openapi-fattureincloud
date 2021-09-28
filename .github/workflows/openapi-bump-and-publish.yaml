@@ -83,12 +83,13 @@ jobs:
         run: |
           git status
           git --no-pager log
+          echo "${{ GITHUB_REF##*/ }}""
 
       - name: Pushing to Git repo
         uses: ad-m/github-push-action@master
         with:
           # github_token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
-          branch: ${GITHUB_REF##*/}
+          branch: ${{ GITHUB_REF##*/ }}
           tags: true
 
       # - name: Pushing to Git repo
