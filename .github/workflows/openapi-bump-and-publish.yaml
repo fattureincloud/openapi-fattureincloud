@@ -84,18 +84,18 @@ jobs:
           git status
           git --no-pager log
 
-      # - name: Pushing to Git repo
-      #   uses: ad-m/github-push-action@master
-      #   with:
-      #     # github_token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
-      #     tags: true
-
       - name: Pushing to Git repo
-        if: ${{ !env.ACT }}
-        run: |
-          git remote add bot-remote https://fattureincloud-bot:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud.git
-          git push bot-remote
-          git push bot-remote --tags
+        uses: ad-m/github-push-action@master
+        with:
+          # github_token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+          tags: true
+
+      # - name: Pushing to Git repo
+      #   if: ${{ !env.ACT }}
+      #   run: |
+      #     git remote add bot-remote https://fattureincloud-bot:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud.git
+      #     git push bot-remote
+      #     git push bot-remote --tags
         
 
 
