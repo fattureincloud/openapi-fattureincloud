@@ -22,10 +22,10 @@ jobs:
           distribution: 'adopt'
           java-version: '8'
 
-      # - name: Init GIT
-      #   run: |
-      #     git config --global user.email "info@fattureincloud.it"
-      #     git config --global user.name "fattureincloud-bot"
+      - name: Init GIT
+        run: |
+          git config --global user.email "info@fattureincloud.it"
+          git config --global user.name "fattureincloud-bot"
 
       - name: Install libraries
         run: |
