@@ -77,23 +77,24 @@ jobs:
           oas-file-path: './openapi.yaml'
           api-version: "${{ env.api_version }}"
 
-      # - name: Pushing to Git repo
-      #   if: ${{ !env.ACT }}
-      #   run: |
-      #     git push
-      #     git push origin --tags
+      
 
-      - name: Init GIT
+      - name: Check GIT
         run: |
           git status
           git --no-pager log
 
+      # - name: Pushing to Git repo
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     # github_token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+      #     tags: true
+
       - name: Pushing to Git repo
-        uses: ad-m/github-push-action@master
-        with:
-          # github_token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
-          tags: true
-      
+        if: ${{ !env.ACT }}
+        run: |
+          git push "https://fattureincloud-bot:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud"
+          git push "https://fattureincloud-bot:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud" --tags
         
 
 
