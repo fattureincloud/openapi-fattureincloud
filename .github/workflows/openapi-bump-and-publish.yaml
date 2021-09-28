@@ -77,11 +77,17 @@ jobs:
           oas-file-path: './openapi.yaml'
           api-version: "${{ env.api_version }}"
 
+      # - name: Pushing to Git repo
+      #   if: ${{ !env.ACT }}
+      #   run: |
+      #     git push
+      #     git push origin --tags
+
       - name: Pushing to Git repo
-        if: ${{ !env.ACT }}
-        run: |
-          git push
-          git push origin --tags
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+          tags: true
       
         
       # - name: Generate Java SDK
