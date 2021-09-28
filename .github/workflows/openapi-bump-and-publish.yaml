@@ -5,9 +5,25 @@ on:
       - develop
       - master
 jobs:
+  filter-trigger:
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ steps.pusher-check.conclusion }}
+    steps:
+
+      - id: pusher-check
+        name: Check pusher
+        run: |
+          echo "CHECKING..."
+          echo "The name of the pusher: ${{ github.event.pusher.name }}"
+          echo "The email of the pusher: ${{ github.event.pusher.email }}"
+          exit 0
+
   bump-and-publish:
     runs-on: ubuntu-latest
+    needs: filter-trigger
     steps:
+
       - name: Checkout repo
         uses: actions/checkout@v2
         # with:
@@ -95,11 +111,11 @@ jobs:
       #     tags: true
 
       - name: Pushing to Git repo
-        if: ${{ !env.ACT }}
+        if: ${{ env.ACT }}
         run: |
-          REMOTE_REPO="https://fattureincloud-bot:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud.git"
+          REMOTE_REPO="https://${{ secrets.FATTUREINCLOUD_BOT_NAME }}:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud.git"
           echo "$REMOTE_REPO"
-          git push "$REMOTE_REPO" HEAD:${{ env.curr_branch }} --follow-tags --tags;
+          git push "$REMOTE_REPO" HEAD:${{ env.curr_branch }} --follow-tags --tags
 
         
 
