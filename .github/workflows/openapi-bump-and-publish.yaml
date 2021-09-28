@@ -83,7 +83,7 @@ jobs:
       #     git push
       #     git push origin --tags
 
-       - name: CHECK GIT
+      - name: Init GIT
         run: |
           git status
           git --no-pager log
