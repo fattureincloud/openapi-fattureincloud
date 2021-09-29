@@ -91,7 +91,7 @@ jobs:
         run: |
           CURR_VER=$(yq e '.info.version' ./openapi.yaml)
           echo "Previous version: $CURR_VER"
-          yarn release
+          standard-version
           BUMP_VER=$(yq e '.info.version' ./openapi.yaml)
           echo "New version: $BUMP_VER"
 
