@@ -2,6 +2,7 @@ name: Bump and Publish OpenAPI to Readme
 on:
   push:
     branches:
+      - test-filter
       - develop
       - master
 jobs:
@@ -19,7 +20,7 @@ jobs:
           echo "The name of the pusher: ${{ github.event.pusher.name }}"
           echo "The email of the pusher: ${{ github.event.pusher.email }}"
           
-          if [ ${{ github.event.pusher.name }} == 'fattureincloud-bot' ]; 
+          if [ ${{ github.event.pusher.name }} == 'Valmoz' ]; 
           then 
             exit 1; 
           else 
