@@ -5564,7 +5564,9 @@ components:
       content:
         application/json:
           schema:
-            $ref: ./models/responses/VerifyEInvoiceXmlResponse.yaml
+            oneOf:
+              - $ref: ./models/responses/VerifyEInvoiceXmlErrorResponse.yaml
+              - $ref: ./models/responses/VerifyEInvoiceXmlResponse.yaml
           examples:
             example-1:
               value:
@@ -7195,11 +7197,12 @@ components:
           examples:
             example-1:
               value:
-                id: 12345
-                date: '2021-08-20'
-                category: Altri documenti
-                description: spesa 1
-                attachment_url: spesa1.pdf
+                data:
+                  id: 12345
+                  date: '2021-08-20'
+                  category: Altri documenti
+                  description: spesa 1
+                  attachment_url: spesa1.pdf
     GetArchiveDocumentResponse:
       description: Archive Document Details
       content:
