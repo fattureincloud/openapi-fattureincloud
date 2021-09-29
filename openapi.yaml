@@ -5564,7 +5564,9 @@ components:
       content:
         application/json:
           schema:
-            $ref: ./models/responses/VerifyEInvoiceXmlResponse.yaml
+            oneOf:
+              - $ref: ./models/responses/VerifyEInvoiceXmlErrorResponse.yaml
+              - $ref: ./models/responses/VerifyEInvoiceXmlResponse.yaml
           examples:
             example-1:
               value:
