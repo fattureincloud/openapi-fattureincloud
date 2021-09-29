@@ -35,7 +35,7 @@ jobs:
           if [ ${{ !env.ACT }} ];
           then
             echo "CHECKING..."
-            if [ '${{ env.pusher_name }}' == 'Valmoz' ]; 
+            if [ '${{ env.pusher_name }}' == 'fattureincloud-bot' ]; 
             then 
               echo "WORKFLOW MUST BE SKIPPED!"
               echo "::set-output name=status::stop"; 
