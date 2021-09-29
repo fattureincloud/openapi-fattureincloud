@@ -48,9 +48,17 @@ jobs:
             echo "::set-output name=status::execute"; 
           fi
 
+  check-filter:
+    if: ${{needs.filter-trigger.outputs.status}} == 'execute'
+    needs: filter-trigger
+    steps:
+      - name: Print result
+        run: |
+          echo "The name of the pusher: ${{ needs.filter-trigger.outputs.status }}"
+
   bump-and-publish:
     runs-on: ubuntu-latest
-    if: ${{needs.filter-trigger.outputs.status}} == 'execute'
+    if: false
     needs: filter-trigger
     steps:
 
