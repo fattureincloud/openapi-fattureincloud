@@ -9,7 +9,7 @@ var baseUrl = 'https://dash.readme.com'
 var versionPath = '/api/v1/version'
 var specificationPath = '/api/v1/api-specification'
 var apiKey = process.argv[2]
-var yamlFile = "../../../openapi.yaml"
+var yamlFile = "../openapi.yaml"
 
 function main() {
 	var bumpVersion = retrieveVersionFromOpenApi(yamlFile)
