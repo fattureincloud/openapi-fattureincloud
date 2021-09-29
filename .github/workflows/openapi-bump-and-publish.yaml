@@ -49,6 +49,7 @@ jobs:
           fi
 
   check-filter:
+    runs-on: ubuntu-latest
     if: ${{needs.filter-trigger.outputs.status}} == 'execute'
     needs: filter-trigger
     steps:
