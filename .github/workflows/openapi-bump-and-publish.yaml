@@ -2,7 +2,6 @@ name: Bump and Publish OpenAPI to Readme
 on:
   push:
     branches:
-      - test-filter
       - develop
       - master
 jobs:
@@ -48,18 +47,9 @@ jobs:
             echo "::set-output name=status::execute"; 
           fi
 
-  check-filter:
-    runs-on: ubuntu-latest
-    if: needs.filter-trigger.outputs.status == 'execute'
-    needs: filter-trigger
-    steps:
-      - name: Print result
-        run: |
-          echo "The name of the pusher: ${{ needs.filter-trigger.outputs.status }}"
-
   bump-and-publish:
     runs-on: ubuntu-latest
-    if: false
+    if: needs.filter-trigger.outputs.status == 'execute'
     needs: filter-trigger
     steps:
 
