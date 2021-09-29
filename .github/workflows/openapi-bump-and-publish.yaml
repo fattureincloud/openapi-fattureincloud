@@ -79,6 +79,8 @@ jobs:
           sudo add-apt-repository ppa:rmescandon/yq -y
           sudo apt update
           sudo apt install yq -y
+          cd .github/workflows/scripts/
+          yarn
 
       - name: Validate specification
         run: |
@@ -87,12 +89,10 @@ jobs:
 
       - name: Bump OpenAPI spec version
         run: |
-          cd .github/workflows/scripts/
-          yarn
-          CURR_VER=$(yq e '.info.version' ../../../openapi.yaml)
+          CURR_VER=$(yq e '.info.version' ./openapi.yaml)
           echo "Previous version: $CURR_VER"
           yarn release
-          BUMP_VER=$(yq e '.info.version' ../../../openapi.yaml)
+          BUMP_VER=$(yq e '.info.version' ./openapi.yaml)
           echo "New version: $BUMP_VER"
 
       - name: Run Readme Versions Manager Script

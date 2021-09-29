@@ -3,6 +3,4 @@ description: The created Cashbook Entry.
 type: object
 properties:
   data:
-    allOf:
-      - $ref: ../schemas/CashbookEntryIn.yaml
-      - $ref: ../schemas/CashbookEntryOut.yaml
+    $ref: ../schemas/CashbookEntryInOut.yaml

@@ -91,9 +91,7 @@ properties:
       - standard
       - end_of_month
   default_payment_method:
-    nullable: true
-    allOf:
-      - $ref: ./PaymentMethod.yaml
+    $ref: ./PaymentMethod.yaml
   bank_name:
     type: string
     description: Client bank name.
