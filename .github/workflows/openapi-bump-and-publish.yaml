@@ -50,7 +50,7 @@ jobs:
 
   check-filter:
     runs-on: ubuntu-latest
-    if: ${{needs.filter-trigger.outputs.status}} == 'execute'
+    if: needs.filter-trigger.outputs.status == 'execute'
     needs: filter-trigger
     steps:
       - name: Print result
