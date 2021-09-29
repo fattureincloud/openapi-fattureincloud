@@ -8,26 +8,48 @@ jobs:
   filter-trigger:
     runs-on: ubuntu-latest
     outputs:
-      status: ${{ steps.pusher-check.conclusion }}
+      status: ${{ steps.pusher-check.outputs.status }}
     steps:
-      # The filter is executed only on Github Action
-      - id: pusher-check
+
+      - id: retrieve-name
         if: ${{ !env.ACT }}
-        name: Check pusher
+        name: Retrieve name
         run: |
-          echo "CHECKING..."
+          echo "Retrieving name..."
           echo "The name of the pusher: ${{ github.event.pusher.name }}"
           echo "The email of the pusher: ${{ github.event.pusher.email }}"
-          
-          if [ ${{ github.event.pusher.name }} == 'fattureincloud-bot' ]; 
-          then 
-            exit 1; 
-          else 
-            exit 0; 
+          echo "pusher_name=${{ github.event.pusher.name }}" >> $GITHUB_ENV
+        
+      - id: retrieve-name-mock
+        if: ${{ env.ACT }}
+        name: Retrieve name Mock
+        run: |
+          echo "pusher_name=fake_pusher" >> $GITHUB_ENV
+            
+
+      # The filter is executed only on Github Action, otherwise always returns execute
+      - id: pusher-check
+        name: Check pusher
+        run: |
+          if [ ${{ !env.ACT }} ];
+          then
+            echo "CHECKING..."
+            if [ '${{ env.pusher_name }}' == 'fattureincloud-bot' ]; 
+            then 
+              echo "WORKFLOW MUST BE SKIPPED!"
+              echo "::set-output name=status::stop"; 
+            else 
+              echo "EXECUTING..."
+              echo "::set-output name=status::execute"; 
+            fi
+          else
+            echo "LOCAL ENV, SKIPPING FILTER..."
+            echo "::set-output name=status::execute"; 
           fi
 
   bump-and-publish:
     runs-on: ubuntu-latest
+    if: needs.filter-trigger.outputs.status == 'execute'
     needs: filter-trigger
     steps:
 
