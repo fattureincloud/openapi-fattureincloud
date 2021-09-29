@@ -37,8 +37,10 @@ jobs:
             echo "CHECKING..."
             if [ '${{ env.pusher_name }}' == 'Valmoz' ]; 
             then 
+              echo "WORKFLOW MUST BE SKIPPED!"
               echo "::set-output name=status::stop"; 
             else 
+              echo "EXECUTING..."
               echo "::set-output name=status::execute"; 
             fi
           else
