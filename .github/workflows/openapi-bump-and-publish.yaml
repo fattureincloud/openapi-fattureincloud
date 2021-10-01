@@ -1,0 +1,190 @@
+name: Bump and Publish OpenAPI to Readme
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'openapi.yaml'
+      - 'models/**'
+jobs:
+  filter-trigger:
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ steps.pusher-check.conclusion }}
+    steps:
+      # The filter is executed only on Github Action
+      - id: pusher-check
+        if: ${{ !env.ACT }}
+        name: Check pusher
+        run: |
+          echo "CHECKING..."
+          echo "The name of the pusher: ${{ github.event.pusher.name }}"
+          echo "The email of the pusher: ${{ github.event.pusher.email }}"
+          
+          if [ ${{ github.event.pusher.name }} == 'fattureincloud-bot' ]; 
+          then 
+            exit 1; 
+          else 
+            exit 0; 
+          fi
+
+  bump-and-publish:
+    runs-on: ubuntu-latest
+    needs: filter-trigger
+    steps:
+
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        # with:
+        #   token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+
+      - name: Init GIT
+        run: |
+          git config --global user.email "info@fattureincloud.it"
+          git config --global user.name "fattureincloud-bot"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '8'
+
+      - name: Install libraries
+        run: |
+          npm install -g yarn
+          yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli standard-version
+          sudo add-apt-repository ppa:rmescandon/yq -y
+          sudo apt update
+          sudo apt install yq -y
+          cd ./scripts/
+          yarn
+
+      - name: Validate specification
+        run: |
+          swagger-cli validate openapi.yaml
+          openapi-generator-cli validate -i ./openapi.yaml
+
+      - name: Bump OpenAPI spec version
+        run: |
+          CURR_VER=$(yq e '.info.version' ./openapi.yaml)
+          echo "Previous version: $CURR_VER"
+          standard-version
+          BUMP_VER=$(yq e '.info.version' ./openapi.yaml)
+          echo "New version: $BUMP_VER"
+
+      - name: Run Readme Versions Manager Script
+        run: |
+          cd ./scripts/
+          node readme-api-manager.js ${{ secrets.README_API_KEY }} > res.yaml
+          head res.yaml
+          VERSION_ID=$(yq e '.version_id' ./res.yaml)
+          API_VERSION=$(yq e '.api_version' ./res.yaml)
+          echo "api_version=$API_VERSION" >> $GITHUB_ENV
+          echo "oas_key=${{ secrets.README_API_KEY }}:$VERSION_ID" >> $GITHUB_ENV
+          rm ./res.yaml
+
+      # Executed only if launched locally using ACT
+      - name: Mock Update to Readme.io
+        if: ${{ env.ACT }}
+        run: |
+          echo "This is only a mock of the Update to Readme step. Printing the variables that would be used to upload the spec..."
+          echo "${{ env.api_version }}"
+          echo "${{ env.oas_key }}"
+
+      - name: Upload to Readme.io
+        uses: readmeio/github-readme-sync@v2
+        if: ${{ !env.ACT }}
+        with:
+          readme-oas-key: "${{ env.oas_key }}"
+          oas-file-path: './openapi.yaml'
+          api-version: "${{ env.api_version }}"
+
+      - name: Check GIT
+        run: |
+          git status
+          git --no-pager log -10
+          CURR_BRANCH=$(basename "${{ github.ref }}")
+          echo "curr_branch=$CURR_BRANCH" >> $GITHUB_ENV
+
+      # - name: Pushing to Git repo
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     # github_token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     branch: ${{ env.curr_branch }}
+      #     tags: true
+
+      - name: Pushing to Git repo
+        if: ${{ !env.ACT }}
+        run: |
+          REMOTE_REPO="https://${{ secrets.FATTUREINCLOUD_BOT_NAME }}:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud.git"
+          echo "$REMOTE_REPO"
+          git push "$REMOTE_REPO" HEAD:${{ env.curr_branch }} --follow-tags --tags;
+
+        
+
+
+
+      # - name: Generate Java SDK
+      #   run: |
+      #     mkdir -p ../generated/java
+      #     git clone https://github.com/fattureincloud/test-target-repo.git ../generated/java
+      #     openapi-generator-cli generate -i ./openapi.yaml -g java -o ../generated/java
+      #     echo "TEST" > ../generated/java/test.txt
+      #     cd ../generated/java
+      #     git add .
+      #     git commit -m "TODO COMMIT MESSAGE"
+      #     git push -u origin main
+
+      # - name: Generate Python SDK
+      #   run: |
+      #     mkdir -p ../generated/python
+      #     git clone https://github.com/fattureincloud/test-target-repo-py.git ../generated/python
+      #     openapi-generator-cli generate -i ./openapi.yaml -g python -o ../generated/python
+      #     cd ../generated/python
+      #     git add .
+      #     git commit -m "TODO COMMIT MESSAGE"
+      #     git push -u origin main
+
+
+      # - name: INIT REPO
+      #   run: |
+      #     mkdir -p ../generated/python
+      #     openapi-generator-cli generate -i ./openapi.yaml -g python -o ../generated/python
+      #     cd ../generated/python
+      #     echo "@@@@@@@@@@@@@@@@"
+      #     pwd
+      #     echo "@@@@@@@@@@@@@@@@"
+      #     ls 
+      #     echo "@@@@@@@@@@@@@@@@"
+      #     git init
+      #     git add .
+      #     git commit -m "First commit."
+      #     git branch -M main
+      #     git remote add origin https://github.com/fattureincloud/test-target-repo-py.git
+      #     git push -u origin main
+
+      # - name: Generate Java SDK
+      #   run: |
+      #     mkdir -p ../generated/java
+      #     git clone https://github.com/fattureincloud/test-target-repo.git ../generated/java
+      #     openapi-generator-cli generate -i ./openapi.yaml -g java -o ../generated/java
+      #     echo "TEST" > ../generated/java/test.txt
+      #     cd ../generated/java
+      #     mvn javadoc:javadoc
+      #     git add .
+      #     git commit -m "TODO COMMIT MESSAGE"
+      #     git push -u origin main
+
+      # - name: INIT REPO
+      #   run: |
+      #     git init
+      #     git add .
+      #     git commit -m "First commit."
+      #     git branch -M main
+      #     git remote add origin https://github.com/fattureincloud/test-target-repo.git
+      #     git push -u origin main
+
