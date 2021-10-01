@@ -2,8 +2,10 @@ name: Bump and Publish OpenAPI to Readme
 on:
   push:
     branches:
-      - develop
       - master
+    paths:
+      - 'openapi.yaml'
+      - 'models/**'
 jobs:
   filter-trigger:
     runs-on: ubuntu-latest
@@ -129,7 +131,7 @@ jobs:
       # - name: Generate Java SDK
       #   run: |
       #     mkdir -p ../generated/java
-      #     git clone https://Valmoz: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@github.com/fattureincloud/test-target-repo.git ../generated/java
+      #     git clone https://github.com/fattureincloud/test-target-repo.git ../generated/java
       #     openapi-generator-cli generate -i ./openapi.yaml -g java -o ../generated/java
       #     echo "TEST" > ../generated/java/test.txt
       #     cd ../generated/java
@@ -140,7 +142,7 @@ jobs:
       # - name: Generate Python SDK
       #   run: |
       #     mkdir -p ../generated/python
-      #     git clone https://Valmoz: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@github.com/fattureincloud/test-target-repo-py.git ../generated/python
+      #     git clone https://github.com/fattureincloud/test-target-repo-py.git ../generated/python
       #     openapi-generator-cli generate -i ./openapi.yaml -g python -o ../generated/python
       #     cd ../generated/python
       #     git add .
@@ -162,13 +164,13 @@ jobs:
       #     git add .
       #     git commit -m "First commit."
       #     git branch -M main
-      #     git remote add origin https://Valmoz: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@github.com/fattureincloud/test-target-repo-py.git
+      #     git remote add origin https://github.com/fattureincloud/test-target-repo-py.git
       #     git push -u origin main
 
       # - name: Generate Java SDK
       #   run: |
       #     mkdir -p ../generated/java
-      #     git clone https://Valmoz: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@github.com/fattureincloud/test-target-repo.git ../generated/java
+      #     git clone https://github.com/fattureincloud/test-target-repo.git ../generated/java
       #     openapi-generator-cli generate -i ./openapi.yaml -g java -o ../generated/java
       #     echo "TEST" > ../generated/java/test.txt
       #     cd ../generated/java
@@ -183,6 +185,6 @@ jobs:
       #     git add .
       #     git commit -m "First commit."
       #     git branch -M main
-      #     git remote add origin https://Valmoz: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@github.com/fattureincloud/test-target-repo.git
+      #     git remote add origin https://github.com/fattureincloud/test-target-repo.git
       #     git push -u origin main
 
