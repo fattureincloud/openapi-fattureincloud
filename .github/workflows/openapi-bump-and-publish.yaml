@@ -234,6 +234,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: ./generated/php
+          ref: master
           repository: fattureincloud/fattureincloud-php-sdk
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
 
@@ -295,8 +296,13 @@ jobs:
         name: Pushing to PHP SDK repo
         if: ${{ !env.ACT }}
         run: |
+          SDK_VERSION=$(yq e '.version' ./generated/php/sdk-version.yaml)
+          RELEASE_NOTE="${{ github.event.head_commit.message }}"
+          git checkout -b "devel-$SDK_VERSION"
+          git add .
+          git commit -m"$RELEASE_NOTE"
           REMOTE_REPO="https://${{ secrets.FATTUREINCLOUD_BOT_NAME }}:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/fattureincloud-php-sdk.git"
-          git push "$REMOTE_REPO" HEAD:${{ env.curr_branch }} --follow-tags --tags;
+          git push "$REMOTE_REPO" --set-upstream;
           
           
     # composer install
