@@ -1,11 +1,9 @@
 name: Bump and Publish OpenAPI to Readme
 on:
-  pull_request:
-    branches:
-      - develop
   push:
     branches:
       - master
+      - php-sdk-generation
     paths:
       - 'openapi.yaml'
       - 'models/**'
