@@ -1,5 +1,8 @@
 name: Bump and Publish OpenAPI to Readme
 on:
+  pull_request:
+    branches:
+      - develop
   push:
     branches:
       - master
@@ -53,28 +56,35 @@ jobs:
     runs-on: ubuntu-latest
     if: needs.filter-trigger.outputs.status == 'execute'
     needs: filter-trigger
+    outputs:
+      version: ${{ steps.bump-version.outputs.version }}
     steps:
 
-      - name: Checkout repo
+      - id: checkout
+        name: Checkout repo
         uses: actions/checkout@v2
         # with:
         #   token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
 
-      - name: Init GIT
+      - id: init-git
+        name: Init GIT
         run: |
           git config --global user.email "info@fattureincloud.it"
           git config --global user.name "fattureincloud-bot"
 
-      - name: Setup Node.js
+      - id: setup-node
+        name: Setup Node.js
         uses: actions/setup-node@v2
 
-      - name: Setup Java
+      - id: setup-java
+        name: Setup Java
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
           java-version: '8'
 
-      - name: Install libraries
+      - id: setup-libraries
+        name: Install libraries
         run: |
           npm install -g yarn
           yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli standard-version
@@ -84,20 +94,24 @@ jobs:
           cd ./scripts/
           yarn
 
-      - name: Validate specification
+      - id: validate-spec
+        name: Validate specification
         run: |
           swagger-cli validate openapi.yaml
           openapi-generator-cli validate -i ./openapi.yaml
 
-      - name: Bump OpenAPI spec version
+      - if: bump-version
+        name: Bump OpenAPI spec version
         run: |
           CURR_VER=$(yq e '.info.version' ./openapi.yaml)
           echo "Previous version: $CURR_VER"
           standard-version
           BUMP_VER=$(yq e '.info.version' ./openapi.yaml)
           echo "New version: $BUMP_VER"
+          echo "::set-output name=version::$BUMP_VER";
 
-      - name: Run Readme Versions Manager Script
+      - id: version-manager
+        name: Run Readme Versions Manager Script
         run: |
           cd ./scripts/
           node readme-api-manager.js ${{ secrets.README_API_KEY }} > res.yaml
@@ -109,14 +123,16 @@ jobs:
           rm ./res.yaml
 
       # Executed only if launched locally using ACT
-      - name: Mock Update to Readme.io
+      - id: mock-readme-upload
+        name: Mock Upload to Readme.io
         if: ${{ env.ACT }}
         run: |
           echo "This is only a mock of the Update to Readme step. Printing the variables that would be used to upload the spec..."
           echo "${{ env.api_version }}"
           echo "${{ env.oas_key }}"
 
-      - name: Upload to Readme.io
+      - id: readme-upload
+        name: Upload to Readme.io
         uses: readmeio/github-readme-sync@v2
         if: ${{ !env.ACT }}
         with:
@@ -124,32 +140,24 @@ jobs:
           oas-file-path: './openapi.yaml'
           api-version: "${{ env.api_version }}"
 
-      - name: Check GIT
+      - id: check-git
+        name: Check GIT
         run: |
           git status
           git --no-pager log -10
           CURR_BRANCH=$(basename "${{ github.ref }}")
           echo "curr_branch=$CURR_BRANCH" >> $GITHUB_ENV
 
-      # - name: Pushing to Git repo
-      #   uses: ad-m/github-push-action@master
-      #   with:
-      #     # github_token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     branch: ${{ env.curr_branch }}
-      #     tags: true
 
-      - name: Pushing to Git repo
-        if: ${{ !env.ACT }}
+      - id: git-push
+        name: Pushing to Git repo
+        if: false
+        # if: ${{ !env.ACT }}
         run: |
           REMOTE_REPO="https://${{ secrets.FATTUREINCLOUD_BOT_NAME }}:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud.git"
-          echo "$REMOTE_REPO"
           git push "$REMOTE_REPO" HEAD:${{ env.curr_branch }} --follow-tags --tags;
 
-    # PACKAGE_NAME="\"FattureInCloud PHP SDK\""
-    # RELEASE_NOTE="\"Mi è semblato di vedele un gatto\""
-    # openapi-generator-cli generate -i /openapi/openapi.yaml -g php -o $GEN_FOLDER/openapi/php/ --package-name=${PACKAGE_NAME} --invoker-package=FattureInCloud --artifact-version v11.9.21 --git-repo-id fattureincloud-php-sdk --git-user-id fattureincloud --release-note=${RELEASE_NOTE} -t /templates/php
-
+    
 
 
       # - name: Generate Java SDK
@@ -217,60 +225,80 @@ jobs:
     needs: bump-and-publish
     steps: 
 
-      - name: Checkout repo
+      - id: checkout
+        name: Checkout repo
         uses: actions/checkout@v2
       
-      - name: Checkout PHP repo
+      - id: checkout-php
+        name: Checkout PHP repo
         uses: actions/checkout@v2
         with:
           path: ./generated/php
           repository: fattureincloud/fattureincloud-php-sdk
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
 
-      - name: Check step
-        run: |
-          ls ./generated/php
-
-      - name: Setup Node.js
+      - id: setup-node
+        name: Setup Node.js
         uses: actions/setup-node@v2
 
-      - name: Setup Java
+      - id: setup-java
+        name: Setup Java
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
           java-version: '8'
 
-      - name: Install libraries
+      - id: setup-libraries
+        name: Install libraries
         run: |
           npm install -g yarn
           yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli
           sudo add-apt-repository ppa:rmescandon/yq -y
           sudo apt update
-          sudo apt install yq libsodium-dev -y
+          sudo apt install yq -y
           cd ./scripts/
           yarn
           
-      - name: Setup PHP
-        run: |
-          sudo apt install php-cli php-curl unzip -y
-          wget -O composer-setup.php https://getcomposer.org/installer
-          sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+      # - name: Setup PHP
+      #   run: |
+      #     sudo apt install php-cli php-curl php-mbstring php-xml unzip -y
+      #     wget -O composer-setup.php https://getcomposer.org/installer
+      #     sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
-      - name: Generate PHP SDK
+      - id: generate-php-sdk
+        name: Generate PHP SDK
         run: |
           PACKAGE_NAME="\"FattureInCloud PHP SDK\""
           INVOKER_PACKAGE=FattureInCloud
-          ARTIFACT_VERSION=v11.9.21
-          RELEASE_NOTE="\"Mi è semblato di vedele un gatto\""
+          OPENAPI_VERSION="${{ needs.bump-and-publish.outputs.version }}"
+          RELEASE_NOTE="${{ github.event.head_commit.message }}"
           GIT_REPO_ID=fattureincloud-php-sdk
           GIT_USER_ID=fattureincloud
-          ACTION_TOKEN=aaa
+          
+          node ./scripts/sdk-version-updater.js ./generated/php/sdk-version.yaml $OPENAPI_VERSION
+          SDK_VERSION=$(yq e '.version' ./generated/php/sdk-version.yaml)
 
-          openapi-generator-cli generate -i ./openapi.yaml -g php -o ./generated/php/ --package-name=${PACKAGE_NAME} --invoker-package=${INVOKER_PACKAGE} --artifact-version=${ARTIFACT_VERSION} --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE}
-          ls ./generated/php
+          echo "sdk_version=$SDK_VERSION"
+          echo "release_note=$RELEASE_NOTE"
+
+          echo "Release note: ${{ github.event.head_commit.message }}"
+          openapi-generator-cli generate -i ./openapi.yaml -g php -o ./generated/php/ --package-name=${PACKAGE_NAME} --invoker-package=${INVOKER_PACKAGE} --artifact-version=${SDK_VERSION} --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE}
+          
           cd ./generated/php
-          composer install
+          ls
 
+      - id: git-push-php-sdk
+        name: Pushing to PHP SDK repo
+        if: false
+        # if: ${{ !env.ACT }}
+        run: |
+          REMOTE_REPO="https://${{ secrets.FATTUREINCLOUD_BOT_NAME }}:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/fattureincloud-php-sdk.git"
+          git push "$REMOTE_REPO" HEAD:${{ env.curr_branch }} --follow-tags --tags;
+          
+          
+    # composer install
+    # ls
+    # ./vendor/bin/phpunit
 
 
       # - name: PHPUnit tests
