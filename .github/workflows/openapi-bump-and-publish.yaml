@@ -283,8 +283,8 @@ jobs:
           node ./scripts/sdk-version-updater.js ./generated/php/sdk-version.yaml $OPENAPI_VERSION
           SDK_VERSION=$(yq e '.version' ./generated/php/sdk-version.yaml)
 
-          echo "sdk_version=$SDK_VERSION"
-          echo "release_note=$RELEASE_NOTE"
+          echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
+          echo "release_note=$RELEASE_NOTE" >> $GITHUB_ENV
 
           echo "Release note: ${{ github.event.head_commit.message }}"
           openapi-generator-cli generate -i ./openapi.yaml -g php -o ./generated/php/ -t ./templates/php --package-name=${PACKAGE_NAME} --invoker-package=${INVOKER_PACKAGE} --artifact-version=${SDK_VERSION} --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE}
@@ -292,17 +292,27 @@ jobs:
           cd ./generated/php
           ls
 
-      - id: git-push-php-sdk
-        name: Pushing to PHP SDK repo
-        if: ${{ !env.ACT }}
-        run: |
-          SDK_VERSION=$(yq e '.version' ./generated/php/sdk-version.yaml)
-          RELEASE_NOTE="${{ github.event.head_commit.message }}"
-          git checkout -b "devel-$SDK_VERSION"
-          git add .
-          git commit -m"$RELEASE_NOTE"
-          REMOTE_REPO="https://${{ secrets.FATTUREINCLOUD_BOT_NAME }}:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/fattureincloud-php-sdk.git"
-          git push "$REMOTE_REPO" --set-upstream;
+      # - id: git-push-php-sdk
+      #   name: Pushing to PHP SDK repo
+      #   if: ${{ !env.ACT }}
+      #   run: |
+      #     SDK_VERSION=$(yq e '.version' ./generated/php/sdk-version.yaml)
+      #     RELEASE_NOTE="${{ github.event.head_commit.message }}"
+      #     git checkout -b "devel-$SDK_VERSION"
+      #     git add .
+      #     git commit -m"$RELEASE_NOTE"
+      #     REMOTE_REPO="https://${{ secrets.FATTUREINCLOUD_BOT_NAME }}:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/fattureincloud-php-sdk.git"
+      #     git push "$REMOTE_REPO" --set-upstream;
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          path: ./generated/php
+          branch: "devel-${{ env.sdk_version }}"
+          token: "${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}"
+          delete-branch: true
+          base: master
+          title: "${{ env.release_note }}"
           
           
     # composer install
