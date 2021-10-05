@@ -100,7 +100,7 @@ jobs:
           swagger-cli validate openapi.yaml
           openapi-generator-cli validate -i ./openapi.yaml
 
-      - if: bump-version
+      - id: bump-version
         name: Bump OpenAPI spec version
         run: |
           CURR_VER=$(yq e '.info.version' ./openapi.yaml)
@@ -267,14 +267,18 @@ jobs:
 
       - id: generate-php-sdk
         name: Generate PHP SDK
+        env:
+          OPENAPI_VERSION: ${{ needs.bump-and-publish.outputs.version }}
         run: |
           PACKAGE_NAME="\"FattureInCloud PHP SDK\""
           INVOKER_PACKAGE=FattureInCloud
-          OPENAPI_VERSION="${{ needs.bump-and-publish.outputs.version }}"
+          
           RELEASE_NOTE="${{ github.event.head_commit.message }}"
           GIT_REPO_ID=fattureincloud-php-sdk
           GIT_USER_ID=fattureincloud
-          
+
+          echo "openapi_version=$OPENAPI_VERSION"
+
           node ./scripts/sdk-version-updater.js ./generated/php/sdk-version.yaml $OPENAPI_VERSION
           SDK_VERSION=$(yq e '.version' ./generated/php/sdk-version.yaml)
 
