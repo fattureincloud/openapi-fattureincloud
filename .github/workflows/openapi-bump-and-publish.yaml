@@ -33,11 +33,13 @@ jobs:
       # The filter is executed only on Github Action, otherwise always returns execute
       - id: pusher-check
         name: Check pusher
+        env:
+          BOT_NAME: fattureincloud-bot
         run: |
           if [ ${{ !env.ACT }} ];
           then
             echo "CHECKING..."
-            if [ '${{ env.pusher_name }}' == 'fattureincloud-bot' ]; 
+            if [ '${{ env.pusher_name }}' == '${{ env.BOT_NAME }}' ]; 
             then 
               echo "WORKFLOW MUST BE SKIPPED!"
               echo "::set-output name=status::stop"; 
@@ -61,8 +63,6 @@ jobs:
       - id: checkout
         name: Checkout repo
         uses: actions/checkout@v2
-        # with:
-        #   token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
 
       - id: init-git
         name: Init GIT
@@ -127,7 +127,6 @@ jobs:
         run: |
           echo "This is only a mock of the Update to Readme step. Printing the variables that would be used to upload the spec..."
           echo "${{ env.api_version }}"
-          echo "${{ env.oas_key }}"
 
       - id: readme-upload
         name: Upload to Readme.io
@@ -220,6 +219,9 @@ jobs:
 
   generate-php-sdk:
     runs-on: ubuntu-latest
+    env:
+      GIT_REPO_ID: fattureincloud-php-sdk
+      GIT_USER_ID: fattureincloud
     needs: bump-and-publish
     steps: 
 
@@ -233,8 +235,14 @@ jobs:
         with:
           path: ./generated/php
           ref: master
-          repository: fattureincloud/fattureincloud-php-sdk
+          repository: $GIT_USER_ID/$GIT_REPO_ID
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+
+      - id: init-git
+        name: Init GIT
+        run: |
+          git config --global user.email "info@fattureincloud.it"
+          git config --global user.name "fattureincloud-bot"
 
       - id: setup-node
         name: Setup Node.js
@@ -251,10 +259,10 @@ jobs:
         name: Install libraries
         run: |
           npm install -g yarn
-          yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli
+          yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli standard-version
           sudo add-apt-repository ppa:rmescandon/yq -y
           sudo apt update
-          sudo apt install yq -y
+          sudo apt install yq jq -y
           cd ./scripts/
           yarn
           
@@ -264,43 +272,54 @@ jobs:
       #     wget -O composer-setup.php https://getcomposer.org/installer
       #     sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
-      - id: generate-php-sdk
-        name: Generate PHP SDK
+      - id: bump-php-sdk-version
+        name: Bump PHP SDK
         env:
           OPENAPI_VERSION: ${{ needs.bump-and-publish.outputs.version }}
         run: |
-          PACKAGE_NAME="\"FattureInCloud PHP SDK\""
-          INVOKER_PACKAGE=FattureInCloud
-          
-          RELEASE_NOTE="${{ github.event.head_commit.message }}"
-          GIT_REPO_ID=fattureincloud-php-sdk
-          GIT_USER_ID=fattureincloud
 
           echo "openapi_version=$OPENAPI_VERSION"
 
-          node ./scripts/sdk-version-updater.js ./generated/php/sdk-version.yaml $OPENAPI_VERSION
-          SDK_VERSION=$(yq e '.version' ./generated/php/sdk-version.yaml)
+          BUMP_TYPE=$(node ./scripts/sdk-version-checker.js ./generated/php/sdk-version.yaml $OPENAPI_VERSION)
+
+          cd ./generated/php
+
+          if [ "$BUMP_TYPE" == "patch" ];then
+            echo 'Bumping the SDK patch version...'
+            standard-version --release-as patch
+          elif [ "$BUMP_TYPE" == "openapi" ];then
+            echo 'Using the openapi version...'
+            standard-version --release-as $OPENAPI_VERSION
+          else
+            echo "Something bad happened - impossible to bump PHP SDK version. value=$BUMP_TYPE"
+          fi
+
+          SDK_VERSION=$(yq e '.info.version' ./sdk-version.yaml)
+
 
           echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
-          echo "release_note=$RELEASE_NOTE" >> $GITHUB_ENV
+          echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
 
-          echo "Release note: ${{ github.event.head_commit.message }}"
-          openapi-generator-cli generate -i ./openapi.yaml -g php -o ./generated/php/ -t ./templates/php --package-name=${PACKAGE_NAME} --invoker-package=${INVOKER_PACKAGE} --artifact-version=${SDK_VERSION} --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE}
+      - id: generate-php-sdk
+        name: Generate PHP SDK
+        env:
+          PACKAGE_NAME: "FattureInCloud PHP SDK"
+          INVOKER_PACKAGE: FattureInCloud
+        run: |
           
-          cd ./generated/php
-          ls
+          RELEASE_NOTE="\"Prova Release Note decente\""
 
-      # - id: git-push-php-sdk
-      #   name: Pushing to PHP SDK repo
-      #   if: ${{ !env.ACT }}
-      #   run: |
-      #     SDK_VERSION=$(yq e '.version' ./generated/php/sdk-version.yaml)
-      #     RELEASE_NOTE="${{ github.event.head_commit.message }}"
-      #     git checkout -b "devel-$SDK_VERSION"
-      #     git add .
-      #     git commit -m"$RELEASE_NOTE"
-      #     REMOTE_REPO="https://${{ secrets.FATTUREINCLOUD_BOT_NAME }}:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/fattureincloud-php-sdk.git"
-      #     git push "$REMOTE_REPO" --set-upstream;
+          SDK_VERSION=${{ env.sdk_version }}
+          echo "${{ env.sdk_version }}"
+
+          USER_AGENT="$INVOKER_PACKAGE/${{ env.sdk_version }}/PHP-SDK"
+
+          openapi-generator-cli generate -i ./openapi.yaml -g php -o ./generated/php/ -t ./templates/php --package-name=${PACKAGE_NAME} --invoker-package=${INVOKER_PACKAGE} --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT}
+
+          node ./scripts/postprocess-php.js clean ./generated/php/lib/ ./generated/php/test/
+          node ./scripts/postprocess-php.js version ${SDK_VERSION} ./generated/php/README.md
+          
+          echo "Release note - ${{ github.event.head_commit.message }}"
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
@@ -310,7 +329,9 @@ jobs:
           token: "${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}"
           delete-branch: true
           base: master
-          title: "${{ env.release_note }}"
+          commit-message: "Generated new version from OpenAPI Spec ${{ env.openapi_version }}"
+          title: "Updating SDK to ${{ env.sdk_version }}"
+          body: "New SDK verson ${{ env.sdk_version }} generated by Github Action from OpenAPI Spec ${{ env.openapi_version }}"
           
           
     # composer install
