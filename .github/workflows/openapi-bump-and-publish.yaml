@@ -311,7 +311,7 @@ jobs:
           INVOKER_PACKAGE: FattureInCloud
         run: |
           
-          RELEASE_NOTE="${{ github.event.head_commit.message }}"
+          RELEASE_NOTE="\"${{ github.event.head_commit.message }}\""
 
           SDK_VERSION=${{ env.sdk_version }}
           echo "${{ env.sdk_version }}"
