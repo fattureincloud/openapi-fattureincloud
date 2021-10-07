@@ -222,6 +222,7 @@ jobs:
     env:
       GIT_REPO_ID: fattureincloud-php-sdk
       GIT_USER_ID: fattureincloud
+      GIT_REPO_PATH: '${{ env.GIT_USER_ID }}/${{ env.GIT_REPO_ID }}'
     needs: bump-and-publish
     steps: 
 
@@ -235,7 +236,7 @@ jobs:
         with:
           path: ./generated/php
           ref: master
-          repository: ${{ env.GIT_USER_ID }}/${{ env.GIT_REPO_ID }}
+          repository: ${{ env.GIT_REPO_PATH }}
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
 
       - id: init-git
