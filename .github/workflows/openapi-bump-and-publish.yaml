@@ -3,10 +3,10 @@ on:
   push:
     branches:
       - master
-      - php-sdk-generation
-    paths:
-      - 'openapi.yaml'
-      - 'models/**'
+      - php-sdk-generation-temp-test
+    # paths:
+    #   - 'openapi.yaml'
+    #   - 'models/**'
 jobs:
   filter-trigger:
     runs-on: ubuntu-latest
