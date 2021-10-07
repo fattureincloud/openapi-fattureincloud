@@ -237,7 +237,7 @@ jobs:
         with:
           path: ./generated/php
           ref: master
-          repository: ${{ GIT_REPO_PATH }}
+          repository: ${{ env.GIT_REPO_PATH }}
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
 
       - id: init-git
