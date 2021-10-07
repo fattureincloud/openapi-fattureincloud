@@ -222,7 +222,7 @@ jobs:
     env:
       GIT_REPO_ID: fattureincloud-php-sdk
       GIT_USER_ID: fattureincloud
-      GIT_REPO_PATH: '${{ env.GIT_USER_ID }}/${{ env.GIT_REPO_ID }}'
+      GIT_REPO_PATH: '${{ GIT_USER_ID }}/${{ GIT_REPO_ID }}'
     needs: bump-and-publish
     steps: 
 
