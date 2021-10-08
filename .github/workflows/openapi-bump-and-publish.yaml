@@ -152,8 +152,8 @@ jobs:
         name: Pushing to Git repo
         if: ${{ !env.ACT }}
         run: |
-          
-          git push
+          git remote -v
+          git push origin
           git push origin --tags
 
       
