@@ -1,9 +1,4 @@
 title: VerifyEInvoiceXmlResponse
-type: object
-properties:
-  data:
-    type: object
-    properties:
-      success:
-        type: boolean
-        description: Determine if the invoice XML is valid.
+oneOf:
+  - $ref: ./VerifyEInvoiceXmlSuccessResponse.yaml
+  - $ref: ./VerifyEInvoiceXmlErrorResponse.yaml
