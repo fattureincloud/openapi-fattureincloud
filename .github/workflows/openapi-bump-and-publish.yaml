@@ -68,7 +68,7 @@ jobs:
         run: |
           git config --global user.email "info@fattureincloud.it"
           git config --global user.name "fattureincloud-bot"
-          REMOTE_REPO="https://${{ secrets.MAURO_BOT_NAME }}:${{ secrets.MAURO_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud.git"
+          REMOTE_REPO="${{ secrets.MAURO_REMOTE }}"
           git remote set-url origin "$REMOTE_REPO"
           git remote -v
 
