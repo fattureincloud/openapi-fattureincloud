@@ -12,7 +12,7 @@ switch (command) {
     replaceVersionPlaceholder(version, path)
 }
 
-function cleanPHPComments(dir) {  
+function cleanPHPComments(dir) {
   files = fs.readdirSync(dir)
 
   files.forEach(function (file) {
@@ -23,14 +23,17 @@ function cleanPHPComments(dir) {
         if (err) {
           return console.log(err)
         }
+
         var result = data.replace(
           /@link.*/g,
           "@link     https://fattureincloud.it"
         )
+
         result = result.replace(
           /@author.*/g,
           "@author   Fatture In Cloud API team"
         )
+
         fs.writeFile(dir + file, result, "utf8", function (err) {
           if (err) {
             return console.log(err)
@@ -41,7 +44,7 @@ function cleanPHPComments(dir) {
   })
 }
 
-function replaceVersionPlaceholder(version, path) { 
+function replaceVersionPlaceholder(version, path) {
   fs.readFile(path, "utf8", function (err, data) {
     if (err) {
       return console.log(err)

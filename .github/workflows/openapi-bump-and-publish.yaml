@@ -68,6 +68,9 @@ jobs:
         run: |
           git config --global user.email "info@fattureincloud.it"
           git config --global user.name "fattureincloud-bot"
+          REMOTE_REPO="https://${{ secrets.MAURO_BOT_NAME }}:${{ secrets.MAURO_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud.git"
+          git remote set-url origin "$REMOTE_REPO"
+          git remote -v
 
       - id: setup-node
         name: Setup Node.js
@@ -145,13 +148,13 @@ jobs:
           echo "curr_branch=$CURR_BRANCH" >> $GITHUB_ENV
 
 
-      - id: git-push
-        name: Pushing to Git repo
-        if: ${{ !env.ACT }}
-        run: |
-          REMOTE_REPO="https://${{ secrets.FATTUREINCLOUD_BOT_NAME }}:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud.git"
-          git remote set-url origin "$REMOTE_REPO"
-          git push origin --tags
+      # - id: git-push
+      #   name: Pushing to Git repo
+      #   if: ${{ !env.ACT }}
+      #   run: |
+      #     git remote -v
+      #     git push origin
+      #     git push origin --tags
 
       
 
@@ -321,8 +324,8 @@ jobs:
 
           openapi-generator-cli generate -i ./openapi.yaml -g php -o ./generated/php/ -t ./templates/php --package-name=${PACKAGE_NAME} --invoker-package=${INVOKER_PACKAGE} --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT}
 
-          node ./scripts/postprocess-php.js clean ./generated/php/lib/ ./generated/php/test/
-          node ./scripts/postprocess-php.js version ${SDK_VERSION} ./generated/php/README.md
+          node ./scripts/postprocess-php.js clean './generated/php/lib/' './generated/php/test/'
+          node ./scripts/postprocess-php.js version ${SDK_VERSION} './generated/php/README.md'
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
