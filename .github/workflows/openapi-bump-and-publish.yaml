@@ -68,6 +68,9 @@ jobs:
         run: |
           git config --global user.email "info@fattureincloud.it"
           git config --global user.name "fattureincloud-bot"
+          REMOTE_REPO="https://${{ secrets.FATTUREINCLOUD_BOT_NAME }}:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud.git"
+          git remote set-url origin "$REMOTE_REPO"
+          git remote -v
 
       - id: setup-node
         name: Setup Node.js
@@ -149,8 +152,7 @@ jobs:
         name: Pushing to Git repo
         if: ${{ !env.ACT }}
         run: |
-          REMOTE_REPO="https://${{ secrets.FATTUREINCLOUD_BOT_NAME }}:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud.git"
-          git remote set-url origin "$REMOTE_REPO"
+          
           git push
           git push origin --tags
 
