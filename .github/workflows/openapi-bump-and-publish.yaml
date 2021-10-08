@@ -151,6 +151,7 @@ jobs:
         run: |
           REMOTE_REPO="https://${{ secrets.FATTUREINCLOUD_BOT_NAME }}:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud.git"
           git remote set-url origin "$REMOTE_REPO"
+          git push
           git push origin --tags
 
       
