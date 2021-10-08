@@ -150,7 +150,10 @@ jobs:
         if: ${{ !env.ACT }}
         run: |
           REMOTE_REPO="https://${{ secrets.FATTUREINCLOUD_BOT_NAME }}:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud.git"
-          git push "$REMOTE_REPO" HEAD:${{ env.curr_branch }} --follow-tags --tags --force;
+          git remote set-url origin "$REMOTE_REPO"
+          git push origin --tags
+
+      
 
     
 
