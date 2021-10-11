@@ -109,7 +109,7 @@ jobs:
           standard-version
           BUMP_VER=$(yq e '.info.version' ./openapi.yaml)
           echo "New version: $BUMP_VER"
-          echo "bump_version=$BUMP_VERSION" >> $GITHUB_ENV
+          echo "bump_version=$BUMP_VER" >> $GITHUB_ENV
           echo "::set-output name=version::$BUMP_VER";
 
       - id: version-manager
