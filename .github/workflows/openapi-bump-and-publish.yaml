@@ -151,42 +151,42 @@ jobs:
           CURR_BRANCH=$(basename "${{ github.ref }}")
           echo "curr_branch=$CURR_BRANCH" >> $GITHUB_ENV
 
-      - id: create-pull-request
-        name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
-        with:
-          branch: "bump-${{ env.bump_version }}"
-          token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
-          delete-branch: true
-          base: master
-          commit-message: ${{ github.event.head_commit.message }}
-          title: "Bumping OpenAPI to ${{ env.bump_version }}"
-          body: "Bumping OpenAPI version to ${{ env.bump_version }} by Github Action"
+      # - id: create-pull-request
+      #   name: Create Pull Request
+      #   uses: peter-evans/create-pull-request@v3
+      #   with:
+      #     branch: "bump-${{ env.bump_version }}"
+      #     token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+      #     delete-branch: true
+      #     base: master
+      #     commit-message: ${{ github.event.head_commit.message }}
+      #     title: "Bumping OpenAPI to ${{ env.bump_version }}"
+      #     body: "Bumping OpenAPI version to ${{ env.bump_version }} by Github Action"
 
 
-      - name: Approve Pull Request
-        uses: juliangruber/approve-pull-request-action@v1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          number: ${{ steps.create-pull-request.outputs.pull-request-number }}
+      # - name: Approve Pull Request
+      #   uses: juliangruber/approve-pull-request-action@v1
+      #   with:
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     number: ${{ steps.create-pull-request.outputs.pull-request-number }}
 
-      - id: automerge-pull-request
-        name: Enable Pull Request Automerge
-        if: steps.create-pull-request.outputs.pull-request-operation == 'created'
-        uses: peter-evans/enable-pull-request-automerge@v1
-        with:
-          token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
-          pull-request-number: ${{ steps.create-pull-request.outputs.pull-request-number }}
-          merge-method: squash
+      # - id: automerge-pull-request
+      #   name: Enable Pull Request Automerge
+      #   if: steps.create-pull-request.outputs.pull-request-operation == 'created'
+      #   uses: peter-evans/enable-pull-request-automerge@v1
+      #   with:
+      #     token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+      #     pull-request-number: ${{ steps.create-pull-request.outputs.pull-request-number }}
+      #     merge-method: squash
 
 
-      # - id: git-push
-      #   name: Pushing to Git repo
-      #   if: ${{ !env.ACT }}
-      #   run: |
-      #     git remote -v
-      #     git push origin
-      #     git push origin --tags
+      - id: git-push
+        name: Pushing to Git repo
+        if: ${{ !env.ACT }}
+        run: |
+          git push origin
+
+        # git push origin --tags
 
       
 
