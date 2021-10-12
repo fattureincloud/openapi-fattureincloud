@@ -4,6 +4,7 @@ on:
     branches:
       - develop
       - master
+      - test-auto-merge
 jobs:
   validate-openapi:
     runs-on: ubuntu-latest
