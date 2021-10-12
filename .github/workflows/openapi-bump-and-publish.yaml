@@ -163,14 +163,14 @@ jobs:
           title: "Bumping OpenAPI to ${{ env.bump_version }}"
           body: "Bumping OpenAPI version to ${{ env.bump_version }} by Github Action"
 
-      # - id: automerge-pull-request
-      #   name: Enable Pull Request Automerge
-      #   if: steps.create-pull-request.outputs.pull-request-operation == 'created'
-      #   uses: peter-evans/enable-pull-request-automerge@v1
-      #   with:
-      #     token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
-      #     pull-request-number: ${{ steps.create-pull-request.outputs.pull-request-number }}
-      #     merge-method: squash
+      - id: automerge-pull-request
+        name: Enable Pull Request Automerge
+        if: steps.create-pull-request.outputs.pull-request-operation == 'created'
+        uses: peter-evans/enable-pull-request-automerge@v1
+        with:
+          token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+          pull-request-number: ${{ steps.create-pull-request.outputs.pull-request-number }}
+          merge-method: squash
 
 
       # - id: git-push
