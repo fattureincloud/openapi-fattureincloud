@@ -63,7 +63,8 @@ jobs:
       - id: checkout
         name: Checkout repo
         uses: actions/checkout@v2
-        token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+        with:
+          token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
 
       - id: init-git
         name: Init GIT
@@ -257,7 +258,8 @@ jobs:
       - id: checkout
         name: Checkout repo
         uses: actions/checkout@v2
-        token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+        with:
+          token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
       
       - id: checkout-php
         name: Checkout PHP repo
