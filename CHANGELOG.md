@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.0.2 (2021-10-12)
+
+
+### Bug Fixes
+
+* adding pull req approval step ([860aef7](https://github.com/fattureincloud/openapi-fattureincloud/commit/860aef73b387748109a55fd0e26b82a55f1878b2))
+
 ### 2.0.1 (2021-10-11)
 
 
