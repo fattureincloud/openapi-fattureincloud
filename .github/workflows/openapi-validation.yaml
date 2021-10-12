@@ -13,6 +13,7 @@ jobs:
         env:
           BOT_NAME: fattureincloud-bot
         run: |
+          echo "Checking if this PR must be validated..."
           echo "This PR is opened by ${{ github.event.pull_request.user.login }} ."
           if [ '${{ github.event.pull_request.user.login }}' == '${{ env.BOT_NAME }}' ]; 
           then 
