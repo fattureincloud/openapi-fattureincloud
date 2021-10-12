@@ -25,17 +25,17 @@ jobs:
           fi
 
       - id: checkout
-        if: ${{ env.GITHUB_ENV == 'execute' }}
+        if: ${{ env.status == 'execute' }}
         name: Checkout repo
         uses: actions/checkout@v2
 
       - id: setup-node
-        if: ${{ env.GITHUB_ENV == 'execute' }}
+        if: ${{ env.status == 'execute' }}
         name: Setup Node.js
         uses: actions/setup-node@v2
 
       - id: setup-java
-        if: ${{ env.GITHUB_ENV == 'execute' }}
+        if: ${{ env.status == 'execute' }}
         name: Setup Java
         uses: actions/setup-java@v2
         with:
@@ -43,14 +43,14 @@ jobs:
           java-version: '8'
 
       - id: setup-libraries
-        if: ${{ env.GITHUB_ENV == 'execute' }}
+        if: ${{ env.status == 'execute' }}
         name: Install libraries
         run: |
           npm install -g yarn
           yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli
 
       - id: validate-spec
-        if: ${{ env.GITHUB_ENV == 'execute' }}
+        if: ${{ env.status == 'execute' }}
         name: Validate specification
         run: |
           swagger-cli validate openapi.yaml
