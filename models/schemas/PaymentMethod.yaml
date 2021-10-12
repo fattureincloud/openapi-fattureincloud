@@ -33,5 +33,20 @@ properties:
         description:
           type: string
           description: Details description.
+  bank_iban:
+    type: string
+    description: Bank iban
+    nullable: true
+  bank_name:
+    type: string
+    description: Bank name
+    nullable: true
+  bank_beneficiary:
+    type: string
+    description: Bank beneficiary
+    nullable: true
+  ei_payment_method:
+    type: integer
+    description: EInvoice payment method
 required:
   - name
