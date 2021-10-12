@@ -9,6 +9,11 @@ jobs:
   validate-openapi:
     runs-on: ubuntu-latest
     steps:
+      - id: test
+        name: TEST
+        run: |
+          echo "This PR is opened by ${{ github.event.pull_request.user.login }} ."
+
       - id: check-pr-author
         name: Check PR author
         env:
