@@ -63,15 +63,16 @@ jobs:
       - id: checkout
         name: Checkout repo
         uses: actions/checkout@v2
+        token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
 
       - id: init-git
         name: Init GIT
         run: |
           git config --global user.email "info@fattureincloud.it"
           git config --global user.name "fattureincloud-bot"
-          REMOTE_REPO="https://${{ secrets.FATTUREINCLOUD_BOT_NAME }}:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud.git"
-          git remote set-url origin "$REMOTE_REPO"
-          git remote -v
+        # REMOTE_REPO="https://${{ secrets.FATTUREINCLOUD_BOT_NAME }}:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud.git"
+        # git remote set-url origin "$REMOTE_REPO"
+        # git remote -v
 
       - id: setup-node
         name: Setup Node.js
@@ -161,14 +162,14 @@ jobs:
           title: "Bumping OpenAPI to ${{ env.bump_version }}"
           body: "Bumping OpenAPI version to ${{ env.bump_version }} by Github Action"
 
-      - id: automerge-pull-request
-        name: Enable Pull Request Automerge
-        if: steps.create-pull-request.outputs.pull-request-operation == 'created'
-        uses: peter-evans/enable-pull-request-automerge@v1
-        with:
-          token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
-          pull-request-number: ${{ steps.create-pull-request.outputs.pull-request-number }}
-          merge-method: squash
+      # - id: automerge-pull-request
+      #   name: Enable Pull Request Automerge
+      #   if: steps.create-pull-request.outputs.pull-request-operation == 'created'
+      #   uses: peter-evans/enable-pull-request-automerge@v1
+      #   with:
+      #     token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+      #     pull-request-number: ${{ steps.create-pull-request.outputs.pull-request-number }}
+      #     merge-method: squash
 
 
       # - id: git-push
@@ -256,6 +257,7 @@ jobs:
       - id: checkout
         name: Checkout repo
         uses: actions/checkout@v2
+        token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
       
       - id: checkout-php
         name: Checkout PHP repo
