@@ -46,7 +46,7 @@ properties:
     description: Bank beneficiary
     nullable: true
   ei_payment_method:
-    $ref: ./PaymentMethod.yaml
-    nullable: true
+    type: integer
+    description: EInvoice payment method
 required:
   - name
