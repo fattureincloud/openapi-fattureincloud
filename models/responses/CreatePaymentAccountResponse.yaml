@@ -1,0 +1,5 @@
+title: CreatePaymentAccountResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/PaymentAccount.yaml
