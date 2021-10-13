@@ -62,8 +62,8 @@ info:
     email: info@fattureincloud.it
   license:
     name: ''
-    url: 'https://www.fattureincloud.it'
-  version: 2.0.1
+    url: https://www.fattureincloud.it
+  version: 2.0.2
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -877,7 +877,7 @@ paths:
         '404':
           description: Not Found
       operationId: getIssuedDocument
-      description: |+
+      description: |
         👥 Company context
         🔒 Required scope: issued_documents.[documentType]:r
         🎩 Customized responses supported
@@ -2452,7 +2452,7 @@ paths:
           description: Not Found
       tags:
         - Archive
-      description: |+
+      description: |
         👥 Company context
         🔒 Required scope: archive:a
 
@@ -3007,7 +3007,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters: []
-  '/c/{companyId}/settings/payment_methods':
+  /c/{companyId}/settings/payment_methods:
     parameters:
       - $ref: '#/components/parameters/company_id'
     post:
@@ -3018,7 +3018,7 @@ paths:
       description: Create a new payment method.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - 'settings:a'
+            - settings:a
       responses:
         '200':
           $ref: '#/components/responses/CreatePaymentMethodResponse'
@@ -3041,7 +3041,7 @@ paths:
                     default_payment_account:
                       id: 12345
                       name: conto banca SP
-  '/c/{companyId}/settings/payment_method/{paymentMethodId}':
+  /c/{companyId}/settings/payment_method/{paymentMethodId}:
     parameters:
       - $ref: '#/components/parameters/company_id'
       - schema:
@@ -3075,7 +3075,7 @@ paths:
       operationId: modifyPaymentMethod
       security:
         - OAuth2AuthenticationCodeFlow:
-            - 'settings:a'
+            - settings:a
       description: Modify payment method by its unique id.
       requestBody:
         content:
@@ -3108,8 +3108,8 @@ paths:
       description: Delete an existing payment method by its unique id.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - 'settings:a'
-  '/c/{companyId}/settings/payment_accounts':
+            - settings:a
+  /c/{companyId}/settings/payment_accounts:
     parameters:
       - $ref: '#/components/parameters/company_id'
     post:
@@ -3122,7 +3122,7 @@ paths:
       operationId: createPaymentAccount
       security:
         - OAuth2AuthenticationCodeFlow:
-            - 'settings:a'
+            - settings:a
       description: Create a new payment account
       requestBody:
         content:
@@ -3139,7 +3139,7 @@ paths:
                     iban: IT17Q0051343200000003497636
                     sia: T1234
                     virtual: false
-  '/c/{companyId}/settings/payment_accounts/{paymentAccountId}':
+  /c/{companyId}/settings/payment_accounts/{paymentAccountId}:
     parameters:
       - $ref: '#/components/parameters/company_id'
       - schema:
@@ -3180,7 +3180,7 @@ paths:
       description: Modify payment account by its unique id.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - 'settings:a'
+            - settings:a
       requestBody:
         content:
           application/json:
@@ -3208,7 +3208,7 @@ paths:
       description: Delete an existing payment account by its unique id.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - 'settings:a'
+            - settings:a
 components:
   schemas: {}
   securitySchemes:
