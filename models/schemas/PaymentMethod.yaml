@@ -46,7 +46,7 @@ properties:
     description: Bank beneficiary
     nullable: true
   ei_payment_method:
-    type: integer
+    type: string
     description: EInvoice payment method
 required:
   - name
