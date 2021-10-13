@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - test-auto-merge
     # paths:
     #   - 'openapi.yaml'
     #   - 'models/**'
@@ -157,12 +158,7 @@ jobs:
         run: |
           git push origin
           git push origin --tags
-
-      
-
-    
-
-
+          
       # - name: Generate Java SDK
       #   run: |
       #     mkdir -p ../generated/java
@@ -225,6 +221,7 @@ jobs:
 
   generate-php-sdk:
     runs-on: ubuntu-latest
+    if: false
     env:
       GIT_REPO_ID: fattureincloud-php-sdk
       GIT_USER_ID: fattureincloud
