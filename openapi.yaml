@@ -62,7 +62,7 @@ info:
     email: info@fattureincloud.it
   license:
     name: ''
-    url: https://www.fattureincloud.it
+    url: 'https://www.fattureincloud.it'
   version: 2.0.1
 servers:
   - url: https://api-v2.fattureincloud.it
@@ -883,7 +883,6 @@ paths:
         🎩 Customized responses supported
 
         Get details of an existing document by its unique id.
-
       security:
         - OAuth2AuthenticationCodeFlow:
             - issued_documents.invoice:r
@@ -2458,7 +2457,6 @@ paths:
         🔒 Required scope: archive:a
 
         Delete an existing document by its unique id.
-
       security:
         - OAuth2AuthenticationCodeFlow:
             - archive:a
@@ -3009,6 +3007,208 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters: []
+  '/c/{companyId}/settings/payment_methods':
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+    post:
+      summary: Create Payment Method
+      tags:
+        - Settings
+      operationId: createPaymentMethod
+      description: Create a new payment method.
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'settings:a'
+      responses:
+        '200':
+          $ref: '#/components/responses/CreatePaymentMethodResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/CreatePaymentMethodRequest.yaml
+            examples:
+              example-1:
+                value:
+                  data:
+                    id: 386683
+                    name: Bonifico bancario
+                    is_default: true
+                    type: standard
+                    details:
+                      - title: Banca
+                        description: Sao Paulo
+                    default_payment_account:
+                      id: 12345
+                      name: conto banca SP
+  '/c/{companyId}/settings/payment_method/{paymentMethodId}':
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+      - schema:
+          type: integer
+          example: 1
+        name: paymentMethodId
+        in: path
+        required: true
+        description: The Referred Payment Method Id.
+    get:
+      summary: Get Payment Method
+      tags:
+        - Settings
+      responses:
+        '200':
+          $ref: '#/components/responses/GetPaymentMethodResponse'
+      operationId: getPaymentMethod
+      description: Get details of an existing payment method by its unique id.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
+    put:
+      summary: Modify Payment Method
+      tags:
+        - Settings
+      responses:
+        '200':
+          $ref: '#/components/responses/ModifyPaymentMethodResponse'
+      operationId: modifyPaymentMethod
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'settings:a'
+      description: Modify payment method by its unique id.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/ModifyPaymentMethodRequest.yaml
+            examples:
+              example-1:
+                value:
+                  data:
+                    id: 386683
+                    name: Bonifico bancario
+                    is_default: true
+                    type: standard
+                    details:
+                      - title: Banca
+                        description: Sao Paulo
+                    default_payment_account:
+                      id: 12345
+                      name: conto banca SP
+        description: ''
+    delete:
+      summary: Delete Payment Method
+      tags:
+        - Settings
+      responses:
+        '200':
+          description: OK
+      operationId: deletePaymentMethod
+      description: Delete an existing payment method by its unique id.
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'settings:a'
+  '/c/{companyId}/settings/payment_accounts':
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+    post:
+      summary: Create Payment Account
+      tags:
+        - Settings
+      responses:
+        '200':
+          $ref: '#/components/responses/CreatePaymentAccountResponse'
+      operationId: createPaymentAccount
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'settings:a'
+      description: Create a new payment account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/CreatePaymentAccountRequest.yaml
+            examples:
+              example-1:
+                value:
+                  data:
+                    id: 12345
+                    name: Indesa
+                    type: bank
+                    iban: IT17Q0051343200000003497636
+                    sia: T1234
+                    virtual: false
+  '/c/{companyId}/settings/payment_accounts/{paymentAccountId}':
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+      - schema:
+          type: string
+          example: '1'
+        name: paymentAccountId
+        in: path
+        required: true
+        description: The Referred Payment Account Id.
+    get:
+      summary: Get Payment Account
+      tags:
+        - Settings
+      responses:
+        '200':
+          $ref: '#/components/responses/GetPaymentAccountResponse'
+      operationId: getPaymentAccount
+      description: Get details of an existing payment account by its unique id.
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+    put:
+      summary: Modify Payment Account
+      tags:
+        - Settings
+      responses:
+        '200':
+          $ref: '#/components/responses/ModifyPaymentAccountResponse'
+      operationId: modifyPaymentAccount
+      description: Modify payment account by its unique id.
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'settings:a'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/ModifyPaymentAccountRequest.yaml
+            examples:
+              example-1:
+                value:
+                  data:
+                    id: 0
+                    name: Conto Banca Intesa
+                    type: standard
+                    iban: string
+                    sia: string
+                    cuc: string
+                    virtual: true
+    delete:
+      summary: Delete Payment Account
+      tags:
+        - Settings
+      responses:
+        '200':
+          description: OK
+      operationId: deletePaymentAccount
+      description: Delete an existing payment account by its unique id.
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'settings:a'
 components:
   schemas: {}
   securitySchemes:
@@ -8224,5 +8424,113 @@ components:
               value:
                 data:
                   attachment_token: YmMyNWYxYzIwMTU3N212ABCDZjZiMzg5OWY0ODNkZDQveXl5LmRvYw
+    CreatePaymentMethodResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/CreatePaymentMethodResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 386683
+                  name: Bonifico bancario
+                  is_default: true
+                  type: standard
+                  details:
+                    - title: Banca
+                      description: Sao Paulo
+                  default_payment_account:
+                    id: 12345
+                    name: conto banca SP
+    GetPaymentMethodResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetPaymentMethodResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 386683
+                  name: Bonifico bancario
+                  is_default: true
+                  type: standard
+                  details:
+                    - title: Banca
+                      description: Sao Paulo
+                  default_payment_account:
+                    id: 12345
+                    name: conto banca SP
+    ModifyPaymentMethodResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ModifyPaymentMethodResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 386683
+                  name: Bonifico bancario
+                  is_default: true
+                  type: standard
+                  details:
+                    - title: Banca
+                      description: Sao Paulo
+                  default_payment_account:
+                    id: 12345
+                    name: conto banca SP
+    CreatePaymentAccountResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/CreatePaymentAccountResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 12345
+                  name: Indesa
+                  type: bank
+                  iban: IT17Q0051343200000003497636
+                  sia: T1234
+                  virtual: false
+    GetPaymentAccountResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetPaymentAccountResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 12345
+                  name: Indesa
+                  type: bank
+                  iban: IT17Q0051343200000003497636
+                  sia: T1234
+                  virtual: false
+    ModifyPaymentAccountResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ModifyPaymentAccountResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 12345
+                  name: Indesa
+                  type: bank
+                  iban: IT17Q0051343200000003497636
+                  sia: T1234
+                  virtual: false
 security:
   - OAuth2AuthenticationCodeFlow: []
