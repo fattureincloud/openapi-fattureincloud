@@ -1,10 +1,10 @@
 type: object
-description: User infos.
+description: The current user.
 properties:
   id:
     type: integer
     example: 12345
-    description: User unique identifier
+    description: User identifier.
   name:
     type: string
     nullable: true
