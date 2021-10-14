@@ -257,6 +257,8 @@ jobs:
 
           node ./scripts/postprocess-php.js clean './generated/php/lib/' './generated/php/test/'
           node ./scripts/postprocess-php.js version ${SDK_VERSION} './generated/php/README.md'
+          node ./scripts/postprocess-php.js backport './generated/php/composer.json'
+          node ./scripts/postprocess-php.js license MIT './generated/php/composer.json'
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
