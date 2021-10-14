@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - test-auto-merge
     # paths:
     #   - 'openapi.yaml'
     #   - 'models/**'
@@ -156,6 +157,7 @@ jobs:
 
   generate-php-sdk:
     runs-on: ubuntu-latest
+    if: false
     env:
       GIT_REPO_ID: fattureincloud-php-sdk
       GIT_USER_ID: fattureincloud
