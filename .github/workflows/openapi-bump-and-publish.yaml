@@ -256,7 +256,8 @@ jobs:
           openapi-generator-cli generate -i ./openapi.yaml -g php -o ./generated/php/ -t ./templates/php --package-name=${PACKAGE_NAME} --invoker-package=${INVOKER_PACKAGE} --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT}
 
           node ./scripts/postprocess-php.js clean './generated/php/lib/' './generated/php/test/'
-          node ./scripts/postprocess-php.js version ${SDK_VERSION} './generated/php/README.md'
+          node ./scripts/postprocess-php.js backport './generated/php/composer.json'
+          node ./scripts/postprocess-php.js license MIT './generated/php/composer.json'
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
