@@ -7,11 +7,6 @@ switch (command) {
   case 'clean':
     process.argv.slice(3).forEach((val, _) => cleanPHPComments(val))
     break
-  case 'version':
-    var version = process.argv[3]
-    var path = process.argv[4]
-    replaceVersionPlaceholder(version, path)
-    break
   case 'backport':
     var path = process.argv[3]
     transformJsonByLocation(path, {'require': {'php': '>=7.1', 'guzzlehttp/guzzle': '>=6.2 <7.0.0'}, 'require-dev': {'phpunit/phpunit': '>=7.0 <8.0.0'}})
@@ -54,23 +49,6 @@ function cleanPHPComments(dir) {
         })
       })
     }
-  })
-}
-
-function replaceVersionPlaceholder(version, path) {
-  fs.readFile(path, "utf8", function (err, data) {
-    if (err) {
-      return console.log(err)
-    }
-    var result = data.replace(
-      '@@@VERSION_PLACEHOLDER@@@',
-      version
-    )
-    fs.writeFile(path, result, "utf8", function (err) {
-      if (err) {
-        return console.log(err)
-      }
-    })
   })
 }
 
