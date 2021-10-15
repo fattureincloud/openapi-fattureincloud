@@ -628,7 +628,7 @@ paths:
                       name: Mary Red S.r.L.
                       vat_number: IT05432181211
                       tax_code: IT05432181211
-                      address_street: 'Corso impero, 66'
+                      address_street: 'Via Italia, 66'
                       address_postal_code: '20900'
                       address_city: Milano
                       address_province: MI
@@ -745,7 +745,7 @@ paths:
                       name: Mary Red S.r.L.
                       vat_number: IT05432181211
                       tax_code: IT05432181211
-                      address_street: 'Corso impero, 66'
+                      address_street: 'Via Italia, 66'
                       address_postal_code: '20900'
                       address_city: Milano
                       address_province: MI
@@ -883,7 +883,7 @@ paths:
                       name: Mary Red S.r.L.
                       vat_number: IT05432181211
                       tax_code: IT05432181211
-                      address_street: 'Corso impero, 66'
+                      address_street: 'Via Italia, 66'
                       address_postal_code: '20900'
                       address_city: Milano
                       address_province: MI
@@ -3645,7 +3645,7 @@ components:
                       name: Mary Red S.r.L.
                       vat_number: IT05432181211
                       tax_code: IT05432181211
-                      address_street: 'Corso impero, 66'
+                      address_street: 'Via Italia, 66'
                       address_postal_code: '20900'
                       address_city: Milano
                       address_province: MI
@@ -3673,7 +3673,7 @@ components:
                       name: Mary Red S.r.L.
                       vat_number: IT05432181211
                       tax_code: IT05432181211
-                      address_street: 'Corso impero, 66'
+                      address_street: 'Via Italia, 66'
                       address_postal_code: '20900'
                       address_city: Milano
                       address_province: MI
@@ -3750,7 +3750,7 @@ components:
                     name: Mary Red S.r.L.
                     vat_number: IT05432181211
                     tax_code: IT05432181211
-                    address_street: 'Corso impero, 66'
+                    address_street: 'Via Italia, 66'
                     address_postal_code: '20900'
                     address_city: Milano
                     address_province: MI
@@ -3875,7 +3875,7 @@ components:
                     name: Mary Red S.r.L.
                     vat_number: IT05432181211
                     tax_code: IT05432181211
-                    address_street: 'Corso impero, 66'
+                    address_street: 'Via Italia, 66'
                     address_postal_code: '20900'
                     address_city: Milano
                     address_province: MI
@@ -4000,7 +4000,7 @@ components:
                     name: Mary Red S.r.L.
                     vat_number: IT05432181211
                     tax_code: IT05432181211
-                    address_street: 'Corso impero, 66'
+                    address_street: 'Via Italia, 66'
                     address_postal_code: '20900'
                     address_city: Milano
                     address_province: MI
