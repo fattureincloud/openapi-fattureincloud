@@ -1,6 +1,6 @@
 title: GetUserInfoResponse
 type: object
-description: The UserInfo response.
+description: ''
 properties:
   data:
     $ref: ../schemas/User.yaml
