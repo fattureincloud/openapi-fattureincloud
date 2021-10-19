@@ -71,9 +71,6 @@ jobs:
         run: |
           git config --global user.email "info@fattureincloud.it"
           git config --global user.name "fattureincloud-bot"
-        # REMOTE_REPO="https://${{ secrets.FATTUREINCLOUD_BOT_NAME }}:${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}@github.com/fattureincloud/openapi-fattureincloud.git"
-        # git remote set-url origin "$REMOTE_REPO"
-        # git remote -v
 
       - id: setup-node
         name: Setup Node.js
@@ -111,7 +108,6 @@ jobs:
           standard-version
           BUMP_VER=$(yq e '.info.version' ./openapi.yaml)
           echo "New version: $BUMP_VER"
-          echo "bump_version=$BUMP_VER" >> $GITHUB_ENV
           echo "::set-output name=version::$BUMP_VER";
 
       - id: version-manager
@@ -157,77 +153,10 @@ jobs:
         if: ${{ !env.ACT }}
         run: |
           git push origin
-
-        # git push origin --tags
-
-      
-
-    
-
-
-      # - name: Generate Java SDK
-      #   run: |
-      #     mkdir -p ../generated/java
-      #     git clone https://github.com/fattureincloud/test-target-repo.git ../generated/java
-      #     openapi-generator-cli generate -i ./openapi.yaml -g java -o ../generated/java
-      #     echo "TEST" > ../generated/java/test.txt
-      #     cd ../generated/java
-      #     git add .
-      #     git commit -m "TODO COMMIT MESSAGE"
-      #     git push -u origin main
-
-      # - name: Generate Python SDK
-      #   run: |
-      #     mkdir -p ../generated/python
-      #     git clone https://github.com/fattureincloud/test-target-repo-py.git ../generated/python
-      #     openapi-generator-cli generate -i ./openapi.yaml -g python -o ../generated/python
-      #     cd ../generated/python
-      #     git add .
-      #     git commit -m "TODO COMMIT MESSAGE"
-      #     git push -u origin main
-
-
-      # - name: INIT REPO
-      #   run: |
-      #     mkdir -p ../generated/python
-      #     openapi-generator-cli generate -i ./openapi.yaml -g python -o ../generated/python
-      #     cd ../generated/python
-      #     echo "@@@@@@@@@@@@@@@@"
-      #     pwd
-      #     echo "@@@@@@@@@@@@@@@@"
-      #     ls 
-      #     echo "@@@@@@@@@@@@@@@@"
-      #     git init
-      #     git add .
-      #     git commit -m "First commit."
-      #     git branch -M main
-      #     git remote add origin https://github.com/fattureincloud/test-target-repo-py.git
-      #     git push -u origin main
-
-      # - name: Generate Java SDK
-      #   run: |
-      #     mkdir -p ../generated/java
-      #     git clone https://github.com/fattureincloud/test-target-repo.git ../generated/java
-      #     openapi-generator-cli generate -i ./openapi.yaml -g java -o ../generated/java
-      #     echo "TEST" > ../generated/java/test.txt
-      #     cd ../generated/java
-      #     mvn javadoc:javadoc
-      #     git add .
-      #     git commit -m "TODO COMMIT MESSAGE"
-      #     git push -u origin main
-
-      # - name: INIT REPO
-      #   run: |
-      #     git init
-      #     git add .
-      #     git commit -m "First commit."
-      #     git branch -M main
-      #     git remote add origin https://github.com/fattureincloud/test-target-repo.git
-      #     git push -u origin main
+          git push origin --tags
 
   generate-php-sdk:
     runs-on: ubuntu-latest
-    if: false
     env:
       GIT_REPO_ID: fattureincloud-php-sdk
       GIT_USER_ID: fattureincloud
@@ -280,12 +209,6 @@ jobs:
           yarn
           cd ../generated/php/scripts
           yarn
-          
-      # - name: Setup PHP
-      #   run: |
-      #     sudo apt install php-cli php-curl php-mbstring php-xml unzip -y
-      #     wget -O composer-setup.php https://getcomposer.org/installer
-      #     sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
       - id: bump-php-sdk-version
         name: Bump PHP SDK
@@ -332,9 +255,11 @@ jobs:
           openapi-generator-cli generate -i ./openapi.yaml -g php -o ./generated/php/ -t ./templates/php --package-name=${PACKAGE_NAME} --invoker-package=${INVOKER_PACKAGE} --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT}
 
           node ./scripts/postprocess-php.js clean './generated/php/lib/' './generated/php/test/'
-          node ./scripts/postprocess-php.js version ${SDK_VERSION} './generated/php/README.md'
+          node ./scripts/postprocess-php.js backport './generated/php/composer.json'
+          node ./scripts/postprocess-php.js license MIT './generated/php/composer.json'
 
-      - name: Create Pull Request
+      - id: create-pr
+        name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
           path: ./generated/php
@@ -345,12 +270,119 @@ jobs:
           commit-message: "${{ github.event.head_commit.message }}"
           title: "Updating SDK to ${{ env.sdk_version }}"
           body: "New SDK verson ${{ env.sdk_version }} generated by Github Action from OpenAPI Spec ${{ env.openapi_version }}"
-          
-          
-    # composer install
-    # ls
-    # ./vendor/bin/phpunit
+
+  generate-js-sdk:
+    runs-on: ubuntu-latest
+    env:
+      GIT_REPO_ID: fattureincloud-js-sdk
+      GIT_USER_ID: fattureincloud
+    needs: bump-and-publish
+    steps: 
+
+      - id: checkout
+        name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+      
+      - id: checkout-js
+        name: Checkout JS repo
+        env:
+          GIT_REPO_PATH: '${{ env.GIT_USER_ID }}/${{ env.GIT_REPO_ID }}'
+        uses: actions/checkout@v2
+        with:
+          path: ./generated/javascript
+          ref: master
+          repository: ${{ env.GIT_REPO_PATH }}
+          token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+
+      - id: init-git
+        name: Init GIT
+        run: |
+          git config --global user.email "info@fattureincloud.it"
+          git config --global user.name "fattureincloud-bot"
+
+      - id: setup-node
+        name: Setup Node.js
+        uses: actions/setup-node@v2
+
+      - id: setup-java
+        name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '8'
+
+      - id: setup-libraries
+        name: Install libraries
+        run: |
+          npm install -g yarn
+          yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli standard-version
+          sudo add-apt-repository ppa:rmescandon/yq -y
+          sudo apt update
+          sudo apt install yq -y
+          cd ./scripts/
+          yarn
+          cd ../generated/javascript/scripts
+          yarn
+
+      - id: bump-js-sdk-version
+        name: Bump JS SDK
+        env:
+          OPENAPI_VERSION: ${{ needs.bump-and-publish.outputs.version }}
+        run: |
+
+          echo "openapi_version=$OPENAPI_VERSION"
+
+          BUMP_TYPE=$(node ./scripts/sdk-version-checker.js ./generated/javascript/sdk-version.yaml $OPENAPI_VERSION)
+
+          cd ./generated/javascript
+
+          if [ "$BUMP_TYPE" == "patch" ];then
+            echo 'Bumping the SDK patch version...'
+            standard-version --release-as patch
+          elif [ "$BUMP_TYPE" == "openapi" ];then
+            echo 'Using the openapi version...'
+            standard-version --release-as $OPENAPI_VERSION
+          else
+            echo "Something bad happened - impossible to bump JS SDK version. value=$BUMP_TYPE"
+          fi
+
+          SDK_VERSION=$(yq e '.info.version' ./sdk-version.yaml)
 
 
-      # - name: PHPUnit tests
-      #   uses: php-actions/phpunit@v3
+          echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
+          echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
+
+      - id: generate-js-sdk
+        name: Generate JS SDK
+        env:
+          PACKAGE_NAME: "\"FattureInCloud JavaScript SDK\""
+          APP_NAME: FattureInCloudPROJECT_NAME="@fattureincloud/fattureincloud-js-sdk"
+          MODULE_NAME: "fattureInCloudSdk"
+          PROJECT_DESCRIPTION: "\"JavaScript SDK for the Fatture in Cloud API\""
+        run: |
+          
+          RELEASE_NOTE="\"${{ github.event.head_commit.message }}\""
+
+          SDK_VERSION=${{ env.sdk_version }}
+          echo "${{ env.sdk_version }}"
+
+          USER_AGENT="$APP_NAME/${{ env.sdk_version }}/JavaScript-SDK"
+
+          openapi-generator-cli generate -i ./openapi.yaml -g javascript -o ./generated/javascript/ -t ./templates/javascript --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=projectName=$PROJECT_NAME,projectDescription=$PROJECT_DESCRIPTION,moduleName=$MODULE_NAME
+
+          node ./scripts/postprocess-javascript.js nyc './generated/javascript/package.json'
+
+      - id: create-pr
+        name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          path: ./generated/javascript
+          branch: "devel-${{ env.sdk_version }}"
+          token: "${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}"
+          delete-branch: true
+          base: master
+          commit-message: "${{ github.event.head_commit.message }}"
+          title: "Updating SDK to ${{ env.sdk_version }}"
+          body: "New SDK verson ${{ env.sdk_version }} generated by Github Action from OpenAPI Spec ${{ env.openapi_version }}"   

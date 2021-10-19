@@ -1,0 +1,5 @@
+title: GetPaymentMethodResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/PaymentMethod.yaml

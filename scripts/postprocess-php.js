@@ -1,4 +1,5 @@
 var fs = require("fs")
+var transformJson = require("./transform-json")
 
 var command = process.argv[2]
 
@@ -6,10 +7,17 @@ switch (command) {
   case 'clean':
     process.argv.slice(3).forEach((val, _) => cleanPHPComments(val))
     break
-  case 'version':
-    var version = process.argv[3]
+  case 'backport':
+    var path = process.argv[3]
+    transformJson.transformJsonByLocation(path, {'require': {'php': '>=7.1', 'guzzlehttp/guzzle': '>=6.2 <7.0.0'}, 'require-dev': {'phpunit/phpunit': '>=7.0 <8.0.0'}})
+    break
+  case 'license':
+    var license = process.argv[3]
     var path = process.argv[4]
-    replaceVersionPlaceholder(version, path)
+    transformJson.transformJsonByLocation(path, {'$': {'license': license}})
+    break
+  default:
+    console.err("Unrecognised command: " + command)
 }
 
 function cleanPHPComments(dir) {
@@ -41,22 +49,5 @@ function cleanPHPComments(dir) {
         })
       })
     }
-  })
-}
-
-function replaceVersionPlaceholder(version, path) {
-  fs.readFile(path, "utf8", function (err, data) {
-    if (err) {
-      return console.log(err)
-    }
-    var result = data.replace(
-      '@@@VERSION_PLACEHOLDER@@@',
-      version
-    )
-    fs.writeFile(path, result, "utf8", function (err) {
-      if (err) {
-        return console.log(err)
-      }
-    })
   })
 }
