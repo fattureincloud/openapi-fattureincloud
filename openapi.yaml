@@ -9,11 +9,10 @@ info:
     The Fatture in Cloud API is based on REST, and makes possible to interact
     with the user related data prior authorization via OAuth2 protocol.
 
-
     For more information, please visit https://www.fattureincloud.it.
   contact:
     name: Fatture in Cloud
-    url: https://www.fattureincloud.it
+    url: 'https://www.fattureincloud.it'
     email: info@fattureincloud.it
   license:
     name: MIT
@@ -21,7 +20,7 @@ info:
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
   version: 2.0.2
 servers:
-  - url: https://api-v2.fattureincloud.it
+  - url: 'https://api-v2.fattureincloud.it'
 tags:
   - name: Archive
   - name: Cashbook
@@ -67,7 +66,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters: []
-  /c/{company_id}/company/info:
+  '/c/{company_id}/company/info':
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -83,7 +82,7 @@ paths:
         - OAuth2AuthenticationCodeFlow: []
       tags:
         - Companies
-  /c/{company_id}/entities/clients:
+  '/c/{company_id}/entities/clients':
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -99,7 +98,7 @@ paths:
       description: Lists the clients.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - entity.clients:r
+            - 'entity.clients:r'
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -115,7 +114,7 @@ paths:
       description: Creates a new client.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - entity.clients:a
+            - 'entity.clients:a'
       parameters: []
       requestBody:
         content:
@@ -134,7 +133,7 @@ paths:
                     contact_person: ''
                     vat_number: IT12345640962
                     tax_code: BLTGNI5ABCDA794E
-                    address_street: Via Roma, 1
+                    address_street: 'Via Roma, 1'
                     address_postal_code: '20900'
                     address_city: Milano
                     address_province: MI
@@ -161,7 +160,7 @@ paths:
         description: The client to create
       tags:
         - Clients
-  /c/{company_id}/entities/clients/{client_id}:
+  '/c/{company_id}/entities/clients/{client_id}':
     parameters:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/client_id'
@@ -179,7 +178,7 @@ paths:
       operationId: getClient
       security:
         - OAuth2AuthenticationCodeFlow:
-            - entity.clients:r
+            - 'entity.clients:r'
       description: Gets the specified client.
       parameters:
         - $ref: '#/components/parameters/fields'
@@ -197,7 +196,7 @@ paths:
       description: Modifies the specified client.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - entity.clients:a
+            - 'entity.clients:a'
       parameters: []
       requestBody:
         content:
@@ -216,7 +215,7 @@ paths:
                     contact_person: ''
                     vat_number: IT12345640962
                     tax_code: BLTGNI5ABCDA794E
-                    address_street: Via Roma, 1
+                    address_street: 'Via Roma, 1'
                     address_postal_code: '20900'
                     address_city: Milano
                     address_province: MI
@@ -257,10 +256,10 @@ paths:
       parameters: []
       security:
         - OAuth2AuthenticationCodeFlow:
-            - entity.clients:a
+            - 'entity.clients:a'
       tags:
         - Clients
-  /c/{company_id}/entities/suppliers:
+  '/c/{company_id}/entities/suppliers':
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -274,7 +273,7 @@ paths:
       description: Lists the suppliers.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - entity.suppliers:r
+            - 'entity.suppliers:r'
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -292,7 +291,7 @@ paths:
       description: Creates a new supplier.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - entity.suppliers:a
+            - 'entity.suppliers:a'
       parameters: []
       requestBody:
         content:
@@ -312,7 +311,7 @@ paths:
                     contact_person: ''
                     vat_number: '111222333'
                     tax_code: '111122233'
-                    address_street: Corso Magellano, 46
+                    address_street: 'Corso Magellano, 46'
                     address_postal_code: '20146'
                     address_city: Milano
                     address_province: MI
@@ -326,7 +325,7 @@ paths:
         description: The supplier to create
       tags:
         - Suppliers
-  /c/{company_id}/entities/suppliers/{supplier_id}:
+  '/c/{company_id}/entities/suppliers/{supplier_id}':
     parameters:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/supplier_id'
@@ -362,7 +361,7 @@ paths:
       description: Modifies the specified supplier.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - entity.suppliers:a
+            - 'entity.suppliers:a'
       parameters: []
       requestBody:
         content:
@@ -382,7 +381,7 @@ paths:
                     contact_person: ''
                     vat_number: '111222333'
                     tax_code: '111122233'
-                    address_street: Corso Magellano, 46
+                    address_street: 'Corso Magellano, 46'
                     address_postal_code: '20146'
                     address_city: Milano
                     address_province: MI
@@ -393,9 +392,7 @@ paths:
                     phone: '1234567890'
                     fax: '123456789'
                     notes: ''
-        description: >-
-          The modified Supplier. First level parameters are managed in delta
-          mode.
+        description: The modified Supplier. First level parameters are managed in delta mode.
       tags:
         - Suppliers
     delete:
@@ -412,10 +409,10 @@ paths:
       parameters: []
       security:
         - OAuth2AuthenticationCodeFlow:
-            - entity.suppliers:a
+            - 'entity.suppliers:a'
       tags:
         - Suppliers
-  /c/{company_id}/products:
+  '/c/{company_id}/products':
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -431,7 +428,7 @@ paths:
       description: Lists the products.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - products:r
+            - 'products:r'
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -449,7 +446,7 @@ paths:
       description: Creates a new product.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - products:a
+            - 'products:a'
       parameters: []
       requestBody:
         content:
@@ -474,10 +471,10 @@ paths:
                       id: 3
                       value: 22
                       description: Non imponibile art. 123
-                      notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
+                      notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
                       is_disabled: false
         description: ''
-  /c/{company_id}/products/{product_id}:
+  '/c/{company_id}/products/{product_id}':
     parameters:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/product_id'
@@ -496,7 +493,7 @@ paths:
       description: Gets the specified product.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - products:r
+            - 'products:r'
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -513,7 +510,7 @@ paths:
       description: Modifies the specified product.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - products:a
+            - 'products:a'
       parameters: []
       requestBody:
         content:
@@ -538,7 +535,7 @@ paths:
                       id: 3
                       value: 22
                       description: Non imponibile art. 123
-                      notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
+                      notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
                       is_disabled: false
         description: Modified product details.
       tags:
@@ -556,11 +553,11 @@ paths:
       description: Deletes the specified product.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - products:a
+            - 'products:a'
       parameters: []
       tags:
         - Products
-  /c/{company_id}/issued_documents:
+  '/c/{company_id}/issued_documents':
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -578,13 +575,13 @@ paths:
       description: Lists the issued documents.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - issued_documents.invoice:r
-            - issued_documents.credit_note:r
-            - issued_documents.receipt:r
-            - issued_documents.order:r
-            - issued_documents.quote:r
-            - issued_documents.proforma:r
-            - issued_documents.delivery_note:r
+            - 'issued_documents.invoice:r'
+            - 'issued_documents.credit_note:r'
+            - 'issued_documents.receipt:r'
+            - 'issued_documents.order:r'
+            - 'issued_documents.quote:r'
+            - 'issued_documents.proforma:r'
+            - 'issued_documents.delivery_note:r'
       parameters:
         - $ref: '#/components/parameters/issued_document_type'
         - $ref: '#/components/parameters/fields'
@@ -605,13 +602,13 @@ paths:
       description: Creates a new document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - issued_documents.invoice:a
-            - issued_documents.credit_note:a
-            - issued_documents.receipt:a
-            - issued_documents.order:a
-            - issued_documents.quote:a
-            - issued_documents.proforma:a
-            - issued_documents.delivery_note:a
+            - 'issued_documents.invoice:a'
+            - 'issued_documents.credit_note:a'
+            - 'issued_documents.receipt:a'
+            - 'issued_documents.order:a'
+            - 'issued_documents.quote:a'
+            - 'issued_documents.proforma:a'
+            - 'issued_documents.delivery_note:a'
       parameters: []
       requestBody:
         content:
@@ -679,7 +676,7 @@ paths:
                         status: not_paid
                         payment_account: null
         description: The Issued Document
-  /c/{company_id}/issued_documents/{document_id}:
+  '/c/{company_id}/issued_documents/{document_id}':
     parameters:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
@@ -699,13 +696,13 @@ paths:
         Gets the specified document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - issued_documents.invoice:r
-            - issued_documents.credit_note:r
-            - issued_documents.receipt:r
-            - issued_documents.order:r
-            - issued_documents.quote:r
-            - issued_documents.proforma:r
-            - issued_documents.delivery_note:r
+            - 'issued_documents.invoice:r'
+            - 'issued_documents.credit_note:r'
+            - 'issued_documents.receipt:r'
+            - 'issued_documents.order:r'
+            - 'issued_documents.quote:r'
+            - 'issued_documents.proforma:r'
+            - 'issued_documents.delivery_note:r'
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -722,13 +719,13 @@ paths:
       description: Modifies the specified document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - issued_documents.invoice:a
-            - issued_documents.credit_note:a
-            - issued_documents.receipt:a
-            - issued_documents.order:a
-            - issued_documents.quote:a
-            - issued_documents.proforma:a
-            - issued_documents.delivery_note:a
+            - 'issued_documents.invoice:a'
+            - 'issued_documents.credit_note:a'
+            - 'issued_documents.receipt:a'
+            - 'issued_documents.order:a'
+            - 'issued_documents.quote:a'
+            - 'issued_documents.proforma:a'
+            - 'issued_documents.delivery_note:a'
       parameters: []
       requestBody:
         content:
@@ -811,17 +808,17 @@ paths:
       description: Deletes the specified document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - issued_documents.invoice:a
-            - issued_documents.credit_note:a
-            - issued_documents.receipt:a
-            - issued_documents.order:a
-            - issued_documents.quote:a
-            - issued_documents.proforma:a
-            - issued_documents.delivery_note:a
+            - 'issued_documents.invoice:a'
+            - 'issued_documents.credit_note:a'
+            - 'issued_documents.receipt:a'
+            - 'issued_documents.order:a'
+            - 'issued_documents.quote:a'
+            - 'issued_documents.proforma:a'
+            - 'issued_documents.delivery_note:a'
       parameters: []
       tags:
         - Issued Documents
-  /c/{company_id}/issued_documents/totals:
+  '/c/{company_id}/issued_documents/totals':
     parameters:
       - $ref: '#/components/parameters/company_id'
     post:
@@ -962,7 +959,7 @@ paths:
                     has_ts_pay_pending_payment: false
                     show_tspay_button: false
                     pay_with_tspay_url: null
-  /c/{company_id}/issued_documents/{document_id}/totals:
+  '/c/{company_id}/issued_documents/{document_id}/totals':
     parameters:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
@@ -992,7 +989,7 @@ paths:
                 value:
                   data:
                     rivalsa: 20
-  /c/{company_id}/issued_documents/attachment:
+  '/c/{company_id}/issued_documents/attachment':
     parameters:
       - $ref: '#/components/parameters/company_id'
     post:
@@ -1023,7 +1020,7 @@ paths:
                   filename: ricevuta_maryRedSRL
                   attachment: ricevuta_20_08_2020.pdf
         description: Attachment.
-  /c/{company_id}/issued_documents/{document_id}/attachment:
+  '/c/{company_id}/issued_documents/{document_id}/attachment':
     parameters:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
@@ -1043,7 +1040,7 @@ paths:
       parameters: []
       tags:
         - Issued Documents
-  /c/{company_id}/issued_documents/info:
+  '/c/{company_id}/issued_documents/info':
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -1059,7 +1056,7 @@ paths:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
         - $ref: '#/components/parameters/issued_document_type'
-  /c/{company_id}/issued_documents/{document_id}/email:
+  '/c/{company_id}/issued_documents/{document_id}/email':
     parameters:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
@@ -1074,13 +1071,13 @@ paths:
       description: Gets the pre-compiled email details.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - issued_documents.invoice:r
-            - issued_documents.credit_note:r
-            - issued_documents.receipt:r
-            - issued_documents.order:r
-            - issued_documents.quote:r
-            - issued_documents.proforma:r
-            - issued_documents.delivery_note:r
+            - 'issued_documents.invoice:r'
+            - 'issued_documents.credit_note:r'
+            - 'issued_documents.receipt:r'
+            - 'issued_documents.order:r'
+            - 'issued_documents.quote:r'
+            - 'issued_documents.proforma:r'
+            - 'issued_documents.delivery_note:r'
       parameters: []
     post:
       summary: Schedule Email
@@ -1095,13 +1092,13 @@ paths:
       description: Schedules the sending of a document by email.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - issued_documents.invoice:r
-            - issued_documents.credit_note:r
-            - issued_documents.receipt:r
-            - issued_documents.order:r
-            - issued_documents.quote:r
-            - issued_documents.proforma:r
-            - issued_documents.delivery_note:r
+            - 'issued_documents.invoice:r'
+            - 'issued_documents.credit_note:r'
+            - 'issued_documents.receipt:r'
+            - 'issued_documents.order:r'
+            - 'issued_documents.quote:r'
+            - 'issued_documents.proforma:r'
+            - 'issued_documents.delivery_note:r'
       tags:
         - Issued Documents
       parameters: []
@@ -1117,11 +1114,7 @@ paths:
                     sender_email: mariorossi@fattureincloud.it
                     recipient_email: mary.red@example.com
                     subject: Nostra pro forma nr. 1
-                    body: >-
-                      Gentile Mario Rossi,<br>per vedere la nostra pro forma di 
-                      o per scaricarne una copia in versione PDF prema sul
-                      bottone sottostante.<br><br>{{allegati}}<br><br>Cordiali
-                      saluti,<br><b>Mario Rossi</b>
+                    body: 'Gentile Mario Rossi,<br>per vedere la nostra pro forma di  o per scaricarne una copia in versione PDF prema sul bottone sottostante.<br><br>{{allegati}}<br><br>Cordiali saluti,<br><b>Mario Rossi</b>'
                     include:
                       document: false
                       delivery_note: false
@@ -1130,7 +1123,7 @@ paths:
                     attach_pdf: true
                     send_copy: false
         description: Email Schedule
-  /c/{company_id}/issued_documents/{document_id}/e_invoice/send:
+  '/c/{company_id}/issued_documents/{document_id}/e_invoice/send':
     parameters:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
@@ -1161,7 +1154,7 @@ paths:
         description: ''
       tags:
         - Issued e-invoices
-  /c/{company_id}/issued_documents/{document_id}/e_invoice/xml_verify:
+  '/c/{company_id}/issued_documents/{document_id}/e_invoice/xml_verify':
     parameters:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
@@ -1185,7 +1178,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters: []
-  /c/{company_id}/received_documents:
+  '/c/{company_id}/received_documents':
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -1201,8 +1194,8 @@ paths:
       description: Lists the received documents.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - received_documents:r
-            - stock:r
+            - 'received_documents:r'
+            - 'stock:r'
       parameters:
         - $ref: '#/components/parameters/received_document_type'
         - $ref: '#/components/parameters/fields'
@@ -1219,8 +1212,8 @@ paths:
       description: Creates a new document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - received_documents:a
-            - stock:a
+            - 'received_documents:a'
+            - 'stock:a'
       tags:
         - Received Documents
       parameters: []
@@ -1273,7 +1266,7 @@ paths:
                           virtual: false
                     attachment_token: bnopjao8gvydtgnewgiovs74yrfqwefEF
         description: Document to create
-  /c/{company_id}/received_documents/{document_id}:
+  '/c/{company_id}/received_documents/{document_id}':
     parameters:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
@@ -1292,8 +1285,8 @@ paths:
       description: Gets the specified document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - received_documents:r
-            - stock:r
+            - 'received_documents:r'
+            - 'stock:r'
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -1312,8 +1305,8 @@ paths:
       description: Modifies the specified document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - received_documents:a
-            - stock:a
+            - 'received_documents:a'
+            - 'stock:a'
       parameters: []
       requestBody:
         content:
@@ -1378,10 +1371,10 @@ paths:
       description: Deletes the specified document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - received_documents:a
-            - stock:a
+            - 'received_documents:a'
+            - 'stock:a'
       parameters: []
-  /c/{company_id}/received_documents/totals:
+  '/c/{company_id}/received_documents/totals':
     parameters:
       - $ref: '#/components/parameters/company_id'
     post:
@@ -1397,8 +1390,8 @@ paths:
       description: Returns the totals for a new document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - received_documents:a
-            - stock:a
+            - 'received_documents:a'
+            - 'stock:a'
       tags:
         - Received Documents
       parameters: []
@@ -1447,7 +1440,7 @@ paths:
                           type: standard
                         status: paid
         description: Received document.
-  /c/{company_id}/received_documents/{document_id}/totals:
+  '/c/{company_id}/received_documents/{document_id}/totals':
     parameters:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
@@ -1462,8 +1455,8 @@ paths:
       description: Returns the totals for the specified document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - received_documents:a
-            - stock:a
+            - 'received_documents:a'
+            - 'stock:a'
       parameters: []
       requestBody:
         content:
@@ -1476,7 +1469,7 @@ paths:
                   data:
                     amount_vat: 20
         description: Received document.
-  /c/{company_id}/received_documents/attachment:
+  '/c/{company_id}/received_documents/attachment':
     parameters:
       - $ref: '#/components/parameters/company_id'
     post:
@@ -1495,8 +1488,8 @@ paths:
         separately, using the returned token.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - received_documents:a
-            - stock:a
+            - 'received_documents:a'
+            - 'stock:a'
       parameters: []
       requestBody:
         content:
@@ -1509,7 +1502,7 @@ paths:
                   filename: spesa_HotelRubino
                   attachment: spesa_08_08_2020.pdf
         description: Attachment.
-  /c/{company_id}/received_documents/{document_id}/attachment:
+  '/c/{company_id}/received_documents/{document_id}/attachment':
     parameters:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
@@ -1528,10 +1521,10 @@ paths:
       description: Removes the attachment of the specified document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - received_documents:a
-            - stock:a
+            - 'received_documents:a'
+            - 'stock:a'
       parameters: []
-  /c/{company_id}/received_documents/info:
+  '/c/{company_id}/received_documents/info':
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -1545,10 +1538,10 @@ paths:
       description: Retrieves the information useful while creating a new document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - received_documents:r
+            - 'received_documents:r'
       parameters:
         - $ref: '#/components/parameters/received_document_type'
-  /c/{company_id}/receipts:
+  '/c/{company_id}/receipts':
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -1564,7 +1557,7 @@ paths:
       description: Lists the receipts.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - receipts:r
+            - 'receipts:r'
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -1582,7 +1575,7 @@ paths:
       description: Creates a new receipt.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - receipts:a
+            - 'receipts:a'
       parameters: []
       requestBody:
         content:
@@ -1619,7 +1612,7 @@ paths:
         description: The Receipt to create.
       tags:
         - Receipts
-  /c/{company_id}/receipts/{document_id}:
+  '/c/{company_id}/receipts/{document_id}':
     parameters:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
@@ -1641,7 +1634,7 @@ paths:
         - $ref: '#/components/parameters/fieldset'
       security:
         - OAuth2AuthenticationCodeFlow:
-            - receipts:r
+            - 'receipts:r'
     put:
       summary: Modify Receipt
       operationId: modifyReceipt
@@ -1657,7 +1650,7 @@ paths:
       description: Modifies the specified receipt.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - receipts:a
+            - 'receipts:a'
       parameters: []
       requestBody:
         content:
@@ -1705,11 +1698,11 @@ paths:
       description: Deletes the specified receipt.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - receipts:a
+            - 'receipts:a'
       parameters: []
       tags:
         - Receipts
-  /c/{company_id}/receipts/info:
+  '/c/{company_id}/receipts/info':
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -1727,9 +1720,9 @@ paths:
       description: Retrieves the information useful while creating a new receipt.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - receipts:r
+            - 'receipts:r'
       parameters: []
-  /c/{company_id}/receipts/monthly_totals:
+  '/c/{company_id}/receipts/monthly_totals':
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -1747,7 +1740,7 @@ paths:
       description: Returns the monthly totals by year and receipt type.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - receipts:r
+            - 'receipts:r'
       parameters:
         - in: query
           name: type
@@ -1764,7 +1757,7 @@ paths:
           name: year
           required: true
           description: Year for which you want monthly totals
-  /c/{company_id}/taxes:
+  '/c/{company_id}/taxes':
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -1780,7 +1773,7 @@ paths:
       description: Lists the F24s.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - taxes:r
+            - 'taxes:r'
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -1802,7 +1795,7 @@ paths:
       description: Creates a new F24.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - taxes:a
+            - 'taxes:a'
       parameters: []
       requestBody:
         content:
@@ -1821,7 +1814,7 @@ paths:
                       id: 111
                     attachment_token: b19c01da9b1688fb73d0d9e8ad
         description: The F24 to create
-  /c/{company_id}/taxes/{document_id}:
+  '/c/{company_id}/taxes/{document_id}':
     parameters:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
@@ -1840,7 +1833,7 @@ paths:
       description: Gets the specified F24.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - taxes:r
+            - 'taxes:r'
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -1859,7 +1852,7 @@ paths:
         - Taxes
       security:
         - OAuth2AuthenticationCodeFlow:
-            - taxes:a
+            - 'taxes:a'
       parameters: []
       requestBody:
         content:
@@ -1892,9 +1885,9 @@ paths:
       description: Removes the specified F24.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - taxes:a
+            - 'taxes:a'
       parameters: []
-  /c/{company_id}/taxes/attachment:
+  '/c/{company_id}/taxes/attachment':
     parameters:
       - $ref: '#/components/parameters/company_id'
     post:
@@ -1911,7 +1904,7 @@ paths:
         the returned token.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - taxes:a
+            - 'taxes:a'
       parameters: []
       requestBody:
         content:
@@ -1924,7 +1917,7 @@ paths:
                   filename: F24_IVA21
                   attachment: pagamento_f24_31_12_2021.pdf
         description: Attachment.
-  /c/{company_id}/taxes/{document_id}/attachment:
+  '/c/{company_id}/taxes/{document_id}/attachment':
     parameters:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
@@ -1943,9 +1936,9 @@ paths:
       description: Removes the attachment of the specified F24.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - taxes:a
+            - 'taxes:a'
       parameters: []
-  /c/{company_id}/archive:
+  '/c/{company_id}/archive':
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -1963,7 +1956,7 @@ paths:
       description: Lists the archive documents.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - archive:r
+            - 'archive:r'
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -1985,7 +1978,7 @@ paths:
       description: Creates a new archive document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - archive:a
+            - 'archive:a'
       parameters: []
       requestBody:
         content:
@@ -2001,7 +1994,7 @@ paths:
                     description: spesa 1
                     attachment_token: ibfjdbf94ey9w94g3w894qbasrga
         description: The Archive Document.
-  /c/{company_id}/archive/{document_id}:
+  '/c/{company_id}/archive/{document_id}':
     parameters:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
@@ -2020,7 +2013,7 @@ paths:
       description: Gets the specified archive document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - archive:r
+            - 'archive:r'
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -2039,7 +2032,7 @@ paths:
       description: Modifies the specified archive document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - archive:a
+            - 'archive:a'
       parameters: []
       requestBody:
         content:
@@ -2069,9 +2062,9 @@ paths:
       description: Deletes the specified archive document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - archive:a
+            - 'archive:a'
       parameters: []
-  /c/{company_id}/archive/attachment:
+  '/c/{company_id}/archive/attachment':
     parameters:
       - $ref: '#/components/parameters/company_id'
     post:
@@ -2092,7 +2085,7 @@ paths:
         separately, using the returned token.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - archive:a
+            - 'archive:a'
       requestBody:
         content:
           multipart/form-data:
@@ -2105,7 +2098,7 @@ paths:
                   attachment: spesa_20_08_2020.pdf
         description: Attachment.
       parameters: []
-  /c/{company_id}/cashbook:
+  '/c/{company_id}/cashbook':
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -2123,7 +2116,7 @@ paths:
       description: Lists the cashbook entries.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - cashbook:r
+            - 'cashbook:r'
       parameters:
         - schema:
             type: string
@@ -2171,7 +2164,7 @@ paths:
       description: Creates a new cashbook entry.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - cashbook:a
+            - 'cashbook:a'
       parameters: []
       requestBody:
         content:
@@ -2194,7 +2187,7 @@ paths:
                     type: in
         description: |
           Cashbook entry.
-  /c/{company_id}/cashbook/{document_id}:
+  '/c/{company_id}/cashbook/{document_id}':
     parameters:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
@@ -2213,7 +2206,7 @@ paths:
       description: Gets the specified cashbook entry.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - cashbook:r
+            - 'cashbook:r'
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -2232,7 +2225,7 @@ paths:
       description: Modifies the specified cashbook entry.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - cashbook:a
+            - 'cashbook:a'
       parameters: []
       requestBody:
         content:
@@ -2263,7 +2256,7 @@ paths:
       description: Deletes the specified cashbook entry.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - cashbook:a
+            - 'cashbook:a'
       tags:
         - Cashbook
   /info/countries:
@@ -2350,9 +2343,7 @@ paths:
             default: 'false'
           in: query
           name: by_type
-          description: >-
-            [Only if type=all] If true, splits the list in objects, grouping
-            templates by type.
+          description: '[Only if type=all] If true, splits the list in objects, grouping templates by type.'
   /info/currencies:
     get:
       summary: List Currencies
@@ -2398,7 +2389,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters: []
-  /c/{company_id}/info/vat_types:
+  '/c/{company_id}/info/vat_types':
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -2415,7 +2406,7 @@ paths:
       operationId: listVatTypes
       security:
         - OAuth2AuthenticationCodeFlow:
-            - settings:r
+            - 'settings:r'
       parameters:
         - $ref: '#/components/parameters/fieldset'
       description: Lists the available vat types.
@@ -2441,7 +2432,7 @@ paths:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
-  /c/{company_id}/info/payment_accounts:
+  '/c/{company_id}/info/payment_accounts':
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -2463,7 +2454,7 @@ paths:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
         - $ref: '#/components/parameters/sort'
-  /c/{company_id}/info/revenue_centers:
+  '/c/{company_id}/info/revenue_centers':
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -2482,7 +2473,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters: []
-  /c/{company_id}/info/cost_centers:
+  '/c/{company_id}/info/cost_centers':
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -2501,7 +2492,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters: []
-  /c/{company_id}/info/product_categories:
+  '/c/{company_id}/info/product_categories':
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -2529,7 +2520,7 @@ paths:
           in: query
           name: context
           required: true
-  /c/{company_id}/info/received_document_categories:
+  '/c/{company_id}/info/received_document_categories':
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -2544,7 +2535,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters: []
-  /c/{company_id}/info/archive_categories:
+  '/c/{company_id}/info/archive_categories':
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -2772,45 +2763,45 @@ components:
       type: oauth2
       flows:
         authorizationCode:
-          tokenUrl: https://api-v2.fattureincloud.it/oauth/token
-          refreshUrl: https://api-v2.fattureincloud.it/oauth/token
+          tokenUrl: 'https://api-v2.fattureincloud.it/oauth/token'
+          refreshUrl: 'https://api-v2.fattureincloud.it/oauth/token'
           scopes:
-            entity.clients:r: ''
-            entity.clients:a: ''
-            entity.suppliers:r: ''
-            entity.suppliers:a: ''
-            products:r: ''
-            products:a: ''
-            issued_documents.invoice:r: ''
-            issued_documents.credit_note:r: ''
-            issued_documents.receipt:r: ''
-            issued_documents.order:r: ''
-            issued_documents.quote:r: ''
-            issued_documents.proforma:r: ''
-            issued_documents.delivery_note:r: ''
-            issued_documents.invoice:a: ''
-            issued_documents.credit_note:a: ''
-            issued_documents.receipt:a: ''
-            issued_documents.order:a: ''
-            issued_documents.quote:a: ''
-            issued_documents.proforma:a: ''
-            issued_documents.delivery_note:a: ''
-            received_documents:r: ''
-            received_documents:a: ''
-            stock:r: ''
-            stock:a: ''
-            receipts:r: ''
-            receipts:a: ''
-            taxes:r: ''
-            taxes:a: ''
-            archive:r: ''
-            archive:a: ''
-            cashbook:r: ''
-            cashbook:a: ''
-            settings:r: ''
-            settings:a: ''
-            situation:r: ''
-          authorizationUrl: https://api-v2.fattureincloud.it/oauth/authorize
+            'entity.clients:r': ''
+            'entity.clients:a': ''
+            'entity.suppliers:r': ''
+            'entity.suppliers:a': ''
+            'products:r': ''
+            'products:a': ''
+            'issued_documents.invoice:r': ''
+            'issued_documents.credit_note:r': ''
+            'issued_documents.receipt:r': ''
+            'issued_documents.order:r': ''
+            'issued_documents.quote:r': ''
+            'issued_documents.proforma:r': ''
+            'issued_documents.delivery_note:r': ''
+            'issued_documents.invoice:a': ''
+            'issued_documents.credit_note:a': ''
+            'issued_documents.receipt:a': ''
+            'issued_documents.order:a': ''
+            'issued_documents.quote:a': ''
+            'issued_documents.proforma:a': ''
+            'issued_documents.delivery_note:a': ''
+            'received_documents:r': ''
+            'received_documents:a': ''
+            'stock:r': ''
+            'stock:a': ''
+            'receipts:r': ''
+            'receipts:a': ''
+            'taxes:r': ''
+            'taxes:a': ''
+            'archive:r': ''
+            'archive:a': ''
+            'cashbook:r': ''
+            'cashbook:a': ''
+            'settings:r': ''
+            'settings:a': ''
+            'situation:r': ''
+          authorizationUrl: 'https://api-v2.fattureincloud.it/oauth/authorize'
   parameters:
     company_id:
       name: company_id
@@ -2955,16 +2946,14 @@ components:
                       name: Studio Commercialista
                       tax_code: ABCSFN94T17A794K
                       type: accountant
-                      access_token: >-
-                        4ff5f0fe5abcd1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4f7362a848fa32dbb8c3a3f94c34f3df95
+                      access_token: 4ff5f0fe5abcd1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4f7362a848fa32dbb8c3a3f94c34f3df95
                       connection_id: 94566
                       controlled_companies:
                         - id: 12246
                           name: Studio Commercialista
                           tax_code: ABCSFN94T17A794K
                           type: company
-                          access_token: >-
-                            4ff5f0fe5abcdf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4f7362a848fa32dbb8c3a3f94c34f3df95
+                          access_token: 4ff5f0fe5abcdf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4f7362a848fa32dbb8c3a3f94c34f3df95
                           connection_id: 94566
                           controlled_companies: []
                           fic: true
@@ -2993,8 +2982,7 @@ components:
                           name: Mario Rossi SRL
                           tax_code: '57398280214'
                           type: company
-                          access_token: >-
-                            86690c98be13592e78b763c52fab2ba0c22faa118708ca5273da2b4dcdc7ad1234517107266d463fd9ae424a78c16cde
+                          access_token: 86690c98be13592e78b763c52fab2ba0c22faa118708ca5273da2b4dcdc7ad1234517107266d463fd9ae424a78c16cde
                           connection_id: 94566
                           controlled_companies: []
                           fic: true
@@ -3141,7 +3129,7 @@ components:
                   contact_person: ''
                   vat_number: IT12345640962
                   tax_code: BLTGNI5ABCDA794E
-                  address_street: Via Roma, 1
+                  address_street: 'Via Roma, 1'
                   address_postal_code: '20900'
                   address_city: Milano
                   address_province: MI
@@ -3190,7 +3178,7 @@ components:
                     contact_person: ''
                     vat_number: IT12345640962
                     tax_code: BLTGNI5ABCDA794E
-                    address_street: Via Roma, 1
+                    address_street: 'Via Roma, 1'
                     address_postal_code: '20900'
                     address_city: Milano
                     address_province: MI
@@ -3293,7 +3281,7 @@ components:
                     contact_person: ''
                     vat_number: '111222333'
                     tax_code: '111122233'
-                    address_street: Corso Magellano, 46
+                    address_street: 'Corso Magellano, 46'
                     address_postal_code: '20146'
                     address_city: Milano
                     address_province: MI
@@ -3315,7 +3303,7 @@ components:
                     contact_person: ''
                     vat_number: '200020102020'
                     tax_code: '200020102020'
-                    address_street: Vicolo stretto, 32
+                    address_street: 'Vicolo stretto, 32'
                     address_postal_code: '20146'
                     address_city: Milano
                     address_province: MI
@@ -3347,7 +3335,7 @@ components:
                   contact_person: ''
                   vat_number: '111222333'
                   tax_code: '111122233'
-                  address_street: Corso Magellano, 46
+                  address_street: 'Corso Magellano, 46'
                   address_postal_code: '20146'
                   address_city: Milano
                   address_province: MI
@@ -3378,7 +3366,7 @@ components:
                   contact_person: ''
                   vat_number: IT12345640962
                   tax_code: BLTGNI5ABCDA794E
-                  address_street: Via Roma, 1
+                  address_street: 'Via Roma, 1'
                   address_postal_code: '20900'
                   address_city: Milano
                   address_province: MI
@@ -3420,7 +3408,7 @@ components:
                   contact_person: ''
                   vat_number: IT12345640962
                   tax_code: BLTGNI5ABCDA794E
-                  address_street: Via Roma, 1
+                  address_street: 'Via Roma, 1'
                   address_postal_code: '20900'
                   address_city: Milano
                   address_province: MI
@@ -3463,7 +3451,7 @@ components:
                   contact_person: ''
                   vat_number: '111222333'
                   tax_code: '111122233'
-                  address_street: Corso Magellano, 46
+                  address_street: 'Corso Magellano, 46'
                   address_postal_code: '20146'
                   address_city: Milano
                   address_province: MI
@@ -3495,7 +3483,7 @@ components:
                   contact_person: ''
                   vat_number: '111222333'
                   tax_code: '111122233'
-                  address_street: Corso Magellano, 46
+                  address_street: 'Corso Magellano, 46'
                   address_postal_code: '20146'
                   address_city: Milano
                   address_province: MI
@@ -3534,7 +3522,7 @@ components:
                       id: 3
                       value: 22
                       description: Non imponibile art. 123
-                      notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
+                      notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
                       is_disabled: false
                   - id: 12346
                     name: Tavolo di legno
@@ -3551,7 +3539,7 @@ components:
                       id: 3
                       value: 22
                       description: Non imponibile art. 123
-                      notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
+                      notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
                       is_disabled: false
                 first_page_url: page=1
                 from: 1
@@ -3588,7 +3576,7 @@ components:
                     id: 3
                     value: 22
                     description: Non imponibile art. 123
-                    notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
+                    notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
                     is_disabled: false
     GetProductResponse:
       description: Example response
@@ -3617,7 +3605,7 @@ components:
                     id: 3
                     value: 22
                     description: Non imponibile art. 123
-                    notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
+                    notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
                     is_disabled: false
                   stock_initial: 123
                   stock_current: 123
@@ -3648,7 +3636,7 @@ components:
                     id: 3
                     value: 22
                     description: Non imponibile art. 123
-                    notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
+                    notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
                     is_disabled: false
                   stock_initial: 123
                   stock_current: 123
@@ -5070,40 +5058,18 @@ components:
                                     TD04: TD04 - nota di credito
                                     TD05: TD05 - nota di debito
                                     TD06: TD06 - parcella
-                                    TD16: >-
-                                      TD16 - integrazione fattura reverse charge
-                                      interno
-                                    TD17: >-
-                                      TD17 - integrazione/autofattura per
-                                      acquisto servizi dall'estero
-                                    TD18: >-
-                                      TD18 - integrazione per acquisto di beni
-                                      intracomunitari
-                                    TD19: >-
-                                      TD19 - integrazione/autofattura per
-                                      acquisto di beni ex art.17 c.2 DPR 633/72
-                                    TD20: >-
-                                      TD20 - autofattura per regolarizzazione e
-                                      integrazione delle fatture (art.6 c.8
-                                      d.lgs. 471/97 o art.46 c.5 D.L. 331/93)
+                                    TD16: TD16 - integrazione fattura reverse charge interno
+                                    TD17: TD17 - integrazione/autofattura per acquisto servizi dall'estero
+                                    TD18: TD18 - integrazione per acquisto di beni intracomunitari
+                                    TD19: TD19 - integrazione/autofattura per acquisto di beni ex art.17 c.2 DPR 633/72
+                                    TD20: TD20 - autofattura per regolarizzazione e integrazione delle fatture (art.6 c.8 d.lgs. 471/97 o art.46 c.5 D.L. 331/93)
                                     TD21: TD21 - autofattura per splafonamento
                                     TD22: TD22 - estrazione beni da Deposito IVA
-                                    TD23: >-
-                                      TD23 - estrazione beni da Deposito IVA con
-                                      versamento dell'IVA
-                                    TD24: >-
-                                      TD24 - fattura differita di cui all'art.
-                                      21, comma 4, lett. a)
-                                    TD25: >-
-                                      TD25 - fattura differita di cui all'art.
-                                      21, comma 4, terzo periodo, lett. b)
-                                    TD26: >-
-                                      TD26 - cessione di beni ammortizzabili e
-                                      per passaggi interni (ex art.36 DPR
-                                      633/72)
-                                    TD27: >-
-                                      TD27 - fattura per autoconsumo o per
-                                      cessioni gratuite senza rivalsa
+                                    TD23: TD23 - estrazione beni da Deposito IVA con versamento dell'IVA
+                                    TD24: 'TD24 - fattura differita di cui all''art. 21, comma 4, lett. a)'
+                                    TD25: 'TD25 - fattura differita di cui all''art. 21, comma 4, terzo periodo, lett. b)'
+                                    TD26: TD26 - cessione di beni ammortizzabili e per passaggi interni (ex art.36 DPR 633/72)
+                                    TD27: TD27 - fattura per autoconsumo o per cessioni gratuite senza rivalsa
                                 Arrotondamento:
                                   idx: 10
                                   type: text
@@ -5656,9 +5622,7 @@ components:
                     TD17:
                       self_own_invoice: false
                       self_supplier_invoice: true
-                      description: >-
-                        TD17 - integrazione/autofattura per acquisto servizi
-                        dall'estero
+                      description: TD17 - integrazione/autofattura per acquisto servizi dall'estero
                     TD18:
                       self_own_invoice: false
                       self_supplier_invoice: true
@@ -5666,16 +5630,11 @@ components:
                     TD19:
                       self_own_invoice: false
                       self_supplier_invoice: true
-                      description: >-
-                        TD19 - integrazione/autofattura per acquisto di beni ex
-                        art.17 c.2 DPR 633/72
+                      description: TD19 - integrazione/autofattura per acquisto di beni ex art.17 c.2 DPR 633/72
                     TD20:
                       self_own_invoice: false
                       self_supplier_invoice: true
-                      description: >-
-                        TD20 - autofattura per regolarizzazione e integrazione
-                        delle fatture (art.6 c.8 d.lgs. 471/97 o art.46 c.5 D.L.
-                        331/93)
+                      description: TD20 - autofattura per regolarizzazione e integrazione delle fatture (art.6 c.8 d.lgs. 471/97 o art.46 c.5 D.L. 331/93)
                     TD21:
                       self_own_invoice: true
                       self_supplier_invoice: false
@@ -5687,235 +5646,95 @@ components:
                     TD23:
                       self_own_invoice: false
                       self_supplier_invoice: true
-                      description: >-
-                        TD23 - estrazione beni da Deposito IVA con versamento
-                        dell'IVA
+                      description: TD23 - estrazione beni da Deposito IVA con versamento dell'IVA
                     TD24:
                       self_own_invoice: true
                       self_supplier_invoice: true
-                      description: >-
-                        TD24 - fattura differita di cui all'art. 21, comma 4,
-                        lett. a)
+                      description: 'TD24 - fattura differita di cui all''art. 21, comma 4, lett. a)'
                     TD25:
                       self_own_invoice: true
                       self_supplier_invoice: true
-                      description: >-
-                        TD25 - fattura differita di cui all'art. 21, comma 4,
-                        terzo periodo, lett. b)
+                      description: 'TD25 - fattura differita di cui all''art. 21, comma 4, terzo periodo, lett. b)'
                     TD26:
                       self_own_invoice: true
                       self_supplier_invoice: true
-                      description: >-
-                        TD26 - cessione di beni ammortizzabili e per passaggi
-                        interni (ex art.36 DPR 633/72)
+                      description: TD26 - cessione di beni ammortizzabili e per passaggi interni (ex art.36 DPR 633/72)
                     TD27:
                       self_own_invoice: true
                       self_supplier_invoice: true
-                      description: >-
-                        TD27 - fattura per autoconsumo o per cessioni gratuite
-                        senza rivalsa
+                      description: TD27 - fattura per autoconsumo o per cessioni gratuite senza rivalsa
                   ei_regime_info:
                     RF01: Ordinario
-                    RF02: Contribuenti minimi (art.1, c.96-117, L. 244/07)
-                    RF04: >-
-                      Agricoltura e attività connesse e pesca (artt.34 e
-                      34-bis, DPR 633/72)
-                    RF05: Vendita sali e tabacchi (art.74, c.1, DPR. 633/72)
-                    RF06: Commercio fiammiferi (art.74, c.1, DPR 633/72)
-                    RF07: Editoria (art.74, c.1, DPR 633/72)
-                    RF08: >-
-                      Gestione servizi telefonia pubblica (art.74, c.1, DPR
-                      633/72)
-                    RF09: >-
-                      Rivendita documenti di trasporto pubblico e di sosta
-                      (art.74, c.1, DPR 633/72)
-                    RF10: >-
-                      Intrattenimenti, giochi e altre attività di cui alla
-                      tariffa allegata al DPR 640/72 (art.74, c.6, DPR 633/72)
-                    RF11: Agenzie viaggi e turismo (art.74-ter, DPR 633/72)
-                    RF12: Agriturismo (art.5, c.2, L. 413/91)
-                    RF13: Vendite a domicilio (art.25-bis, c.6, DPR 600/73)
-                    RF14: >-
-                      Rivendita beni usati, oggetti d’arte, d’antiquariato o da
-                      collezione (art.36, DL 41/95)
-                    RF15: >-
-                      Agenzie di vendite all’asta di oggetti d'arte,
-                      antiquariato o da collezione (art.40-bis, DL 41/95)
-                    RF16: IVA per cassa P.A. (art.6, c.5, DPR 633/72)
-                    RF17: IVA per cassa (art. 32-bis, DL 83/2012)
+                    RF02: 'Contribuenti minimi (art.1, c.96-117, L. 244/07)'
+                    RF04: 'Agricoltura e attività connesse e pesca (artt.34 e 34-bis, DPR 633/72)'
+                    RF05: 'Vendita sali e tabacchi (art.74, c.1, DPR. 633/72)'
+                    RF06: 'Commercio fiammiferi (art.74, c.1, DPR 633/72)'
+                    RF07: 'Editoria (art.74, c.1, DPR 633/72)'
+                    RF08: 'Gestione servizi telefonia pubblica (art.74, c.1, DPR 633/72)'
+                    RF09: 'Rivendita documenti di trasporto pubblico e di sosta (art.74, c.1, DPR 633/72)'
+                    RF10: 'Intrattenimenti, giochi e altre attività di cui alla tariffa allegata al DPR 640/72 (art.74, c.6, DPR 633/72)'
+                    RF11: 'Agenzie viaggi e turismo (art.74-ter, DPR 633/72)'
+                    RF12: 'Agriturismo (art.5, c.2, L. 413/91)'
+                    RF13: 'Vendite a domicilio (art.25-bis, c.6, DPR 600/73)'
+                    RF14: 'Rivendita beni usati, oggetti d’arte, d’antiquariato o da collezione (art.36, DL 41/95)'
+                    RF15: 'Agenzie di vendite all’asta di oggetti d''arte, antiquariato o da collezione (art.40-bis, DL 41/95)'
+                    RF16: 'IVA per cassa P.A. (art.6, c.5, DPR 633/72)'
+                    RF17: 'IVA per cassa (art. 32-bis, DL 83/2012)'
                     RF18: Altro
-                    RF19: Regime forfettario (art.1, c.54-89, L. 190/2014)
+                    RF19: 'Regime forfettario (art.1, c.54-89, L. 190/2014)'
                   ei_cassa_type_info:
                     '': Nessuna cassa previdenziale
-                    TC01: >-
-                      Cassa nazionale previdenza e assistenza avvocati e
-                      procuratori legali
+                    TC01: Cassa nazionale previdenza e assistenza avvocati e procuratori legali
                     TC02: Cassa previdenza dottori commercialisti
                     TC03: Cassa previdenza e assistenza geometri
-                    TC04: >-
-                      Cassa nazionale previdenza e assistenza ingegneri e
-                      architetti liberi professionisti
+                    TC04: Cassa nazionale previdenza e assistenza ingegneri e architetti liberi professionisti
                     TC05: Cassa nazionale del notariato
-                    TC06: >-
-                      Cassa nazionale previdenza e assistenza ragionieri e
-                      periti commerciali
-                    TC07: >-
-                      Ente nazionale assistenza agenti e rappresentanti di
-                      commercio (ENASARCO)
-                    TC08: >-
-                      Ente nazionale previdenza e assistenza consulenti del
-                      lavoro (ENPACL)
+                    TC06: Cassa nazionale previdenza e assistenza ragionieri e periti commerciali
+                    TC07: Ente nazionale assistenza agenti e rappresentanti di commercio (ENASARCO)
+                    TC08: Ente nazionale previdenza e assistenza consulenti del lavoro (ENPACL)
                     TC09: Ente nazionale previdenza e assistenza medici (ENPAM)
                     TC10: Ente nazionale previdenza e assistenza farmacisti (ENPAF)
                     TC11: Ente nazionale previdenza e assistenza veterinari (ENPAV)
-                    TC12: >-
-                      Ente nazionale previdenza e assistenza impiegati
-                      dell'agricoltura (ENPAIA)
-                    TC13: >-
-                      Fondo previdenza impiegati imprese di spedizione e agenzie
-                      marittime
+                    TC12: Ente nazionale previdenza e assistenza impiegati dell'agricoltura (ENPAIA)
+                    TC13: Fondo previdenza impiegati imprese di spedizione e agenzie marittime
                     TC14: Istituto nazionale previdenza giornalisti italiani (INPGI)
-                    TC15: >-
-                      Opera nazionale assistenza orfani sanitari italiani
-                      (ONAOSI)
-                    TC16: >-
-                      Cassa autonoma assistenza integrativa giornalisti italiani
-                      (CASAGIT)
-                    TC17: >-
-                      Ente previdenza periti industriali e periti industriali
-                      laureati (EPPI)
+                    TC15: Opera nazionale assistenza orfani sanitari italiani (ONAOSI)
+                    TC16: Cassa autonoma assistenza integrativa giornalisti italiani (CASAGIT)
+                    TC17: Ente previdenza periti industriali e periti industriali laureati (EPPI)
                     TC18: Ente previdenza e assistenza pluricategoriale (EPAP)
                     TC19: Ente nazionale previdenza e assistenza biologi (ENPAB)
-                    TC20: >-
-                      Ente nazionale previdenza e assistenza professione
-                      infermieristica (ENPAPI)
+                    TC20: Ente nazionale previdenza e assistenza professione infermieristica (ENPAPI)
                     TC21: Ente nazionale previdenza e assistenza psicologi (ENPAP)
                     TC22: INPS
                   ei_causal_payment_info:
                     '': Nessuna ritenuta
-                    A: >-
-                      Prestazioni di lavoro autonomo rientranti nell'esercizio
-                      di arte o professione abituale
-                    B: >-
-                      Utilizzazione economica, da parte dell'autore o
-                      dell'inventore, di opere dell'ingegno, di brevetti
-                      industriali e di processi, formule o informazioni relativi
-                      ad esperienze acquisite in campo industriale, commerciale
-                      o scientifico
-                    C: >-
-                      Utili derivanti da contratti di associazione in
-                      partecipazione e da contratti di cointeressenza, quando
-                      l'apporto è costituito esclusivamente dalla prestazione di
-                      lavoro
-                    D: >-
-                      Utili spettanti ai soci promotori ed ai soci fondatori
-                      delle società di capitali
-                    E: >-
-                      Levata di protesti cambiari da parte dei segretari
-                      comunali
-                    G: >-
-                      Indennità corrisposte per la cessazione di attività
-                      sportiva professionale
-                    H: >-
-                      Indennità corrisposte per la cessazione dei rapporti di
-                      agenzia delle persone fisiche e delle società di persone
-                      con esclusione delle somme maturate entro il 31 dicembre
-                      2003, già imputate per competenza e tassate come reddito
-                      d'impresa
-                    I: >-
-                      Indennità corrisposte per la cessazione da funzioni
-                      notarili
-                    L: >-
-                      Redditi derivanti dall'utilizzazione economica di opere
-                      dell'ingegno, di brevetti industriali e di processi,
-                      formule e informazioni relativi a esperienze acquisite in
-                      campo industriale, commerciale o scientifico, che sono
-                      percepiti dagli aventi causa a titolo gratuito (ad es.
-                      eredi e legatari dell'autore e inventore)
-                    L1: >-
-                      Redditi derivanti dall'utilizzazione economica di opere
-                      dell'ingegno, di brevetti industriali e di processi,
-                      formule e informazioni relativi a esperienze acquisite in
-                      campo industriale, commerciale o scientifico, che sono
-                      percepiti da soggetti che abbiano acquistato a titolo
-                      oneroso i diritti alla loro utilizzazione
+                    A: Prestazioni di lavoro autonomo rientranti nell'esercizio di arte o professione abituale
+                    B: 'Utilizzazione economica, da parte dell''autore o dell''inventore, di opere dell''ingegno, di brevetti industriali e di processi, formule o informazioni relativi ad esperienze acquisite in campo industriale, commerciale o scientifico'
+                    C: 'Utili derivanti da contratti di associazione in partecipazione e da contratti di cointeressenza, quando l''apporto è costituito esclusivamente dalla prestazione di lavoro'
+                    D: Utili spettanti ai soci promotori ed ai soci fondatori delle società di capitali
+                    E: Levata di protesti cambiari da parte dei segretari comunali
+                    G: Indennità corrisposte per la cessazione di attività sportiva professionale
+                    H: 'Indennità corrisposte per la cessazione dei rapporti di agenzia delle persone fisiche e delle società di persone con esclusione delle somme maturate entro il 31 dicembre 2003, già imputate per competenza e tassate come reddito d''impresa'
+                    I: Indennità corrisposte per la cessazione da funzioni notarili
+                    L: 'Redditi derivanti dall''utilizzazione economica di opere dell''ingegno, di brevetti industriali e di processi, formule e informazioni relativi a esperienze acquisite in campo industriale, commerciale o scientifico, che sono percepiti dagli aventi causa a titolo gratuito (ad es. eredi e legatari dell''autore e inventore)'
+                    L1: 'Redditi derivanti dall''utilizzazione economica di opere dell''ingegno, di brevetti industriali e di processi, formule e informazioni relativi a esperienze acquisite in campo industriale, commerciale o scientifico, che sono percepiti da soggetti che abbiano acquistato a titolo oneroso i diritti alla loro utilizzazione'
                     M: Prestazioni di lavoro autonomo non esercitate abitualmente
-                    M1: >-
-                      Redditi derivanti dall'assunzione di obblighi di fare, di
-                      non fare o permettere
-                    M2: >-
-                      Prestazioni di lavoro autonomo non esercitate abitualmente
-                      per le quali sussiste l'obbligo di iscrizione alla
-                      Gestione Separata ENPAPI
+                    M1: 'Redditi derivanti dall''assunzione di obblighi di fare, di non fare o permettere'
+                    M2: Prestazioni di lavoro autonomo non esercitate abitualmente per le quali sussiste l'obbligo di iscrizione alla Gestione Separata ENPAPI
                     'N': "Indennità di trasferta, rimborso forfettario di spese, premi e compensi erogati: \x96 nell'esercizio diretto di attività sportive dilettantistiche; in relazione a rapporti di collaborazione coordinata e continuativa di carattere amministrativo-gestionale di natura non professionale resi a favore di società e associazioni sportive dilettantistiche e di cori, bande e filodrammatiche da parte del direttore e dei collaboratori tecnici;"
-                    O: >-
-                      Prestazioni di lavoro autonomo non esercitate
-                      abitualmente, obblighi di fare, di non fare o permettere,
-                      per le quali non sussiste l'obbligo di iscrizione alla
-                      gestione separata (Circ. INPS n. 104/2001)
-                    O1: >-
-                      Redditi derivanti dall’assunzione di obblighi di fare, di
-                      non fare o permettere, per le quali non sussiste l'obbligo
-                      di iscrizione alla gestione separata (Circ. INPS n.
-                      104/2001)
-                    P: >-
-                      compensi corrisposti a soggetti non residenti privi di
-                      stabile organizzazione per l'uso o la concessione in uso
-                      di attrezzature industriali, commerciali o scientifiche
-                      che si trovano nel territorio dello Stato ovvero a società
-                      svizzere o stabili organizzazioni di società svizzere che
-                      possiedono i requisiti di cui all'art. 15, comma 2
-                      dell'Accordo tra la Comunità europea e la Confederazione
-                      svizzera del 26 ottobre 2004 (pubblicato in G.U.C.E. del
-                      29 dicembre 2004 n. L385/30)
-                    Q: >-
-                      Provvigioni corrisposte ad agente o rappresentante di
-                      commercio monomandatario
-                    R: >-
-                      Provvigioni corrisposte ad agente o rappresentante di
-                      commercio plurimandatario
+                    O: 'Prestazioni di lavoro autonomo non esercitate abitualmente, obblighi di fare, di non fare o permettere, per le quali non sussiste l''obbligo di iscrizione alla gestione separata (Circ. INPS n. 104/2001)'
+                    O1: 'Redditi derivanti dall’assunzione di obblighi di fare, di non fare o permettere, per le quali non sussiste l''obbligo di iscrizione alla gestione separata (Circ. INPS n. 104/2001)'
+                    P: 'compensi corrisposti a soggetti non residenti privi di stabile organizzazione per l''uso o la concessione in uso di attrezzature industriali, commerciali o scientifiche che si trovano nel territorio dello Stato ovvero a società svizzere o stabili organizzazioni di società svizzere che possiedono i requisiti di cui all''art. 15, comma 2 dell''Accordo tra la Comunità europea e la Confederazione svizzera del 26 ottobre 2004 (pubblicato in G.U.C.E. del 29 dicembre 2004 n. L385/30)'
+                    Q: Provvigioni corrisposte ad agente o rappresentante di commercio monomandatario
+                    R: Provvigioni corrisposte ad agente o rappresentante di commercio plurimandatario
                     S: Provvigioni corrisposte a commissionario
                     T: Provvigioni corrisposte a mediatore
                     U: Provvigioni corrisposte a procacciatore di affari
-                    V: >-
-                      Provvigioni corrisposte a incaricato per le vendite a
-                      domicilio; provvigioni corrisposte a incaricato per la
-                      vendita porta a porta e per la vendita ambulante di
-                      giornali quotidiani e periodici (L. 25 febbraio 1987, n.
-                      67)
-                    V1: >-
-                      Redditi derivanti da attività commerciali non esercitate
-                      abitualmente (ad esempio, provvigioni corrisposte per
-                      prestazioni occasionali ad agente o rappresentante di
-                      commercio, mediatore, procacciatore d'affari)
-                    W: >-
-                      Corrispettivi erogati nell'anno corrente per prestazioni
-                      relative a contratti d'appalto cui si sono resi
-                      applicabili le disposizioni contenute nell'art. 25-ter del
-                      D.P.R. n. 600 del 29 settembre 1973
-                    X: >-
-                      Canoni corrisposti nel 2004 da società o enti residenti
-                      ovvero da stabili organizzazioni di società estere di cui
-                      all'art. 26-quater, comma 1, lett. a) e b) del D.P.R. 600
-                      del 29 settembre 1973, a società o stabili organizzazioni
-                      di società, situate in altro stato membro dell'Unione
-                      Europea in presenza dei requisiti di cui al citato art.
-                      26-quater, del D.P.R. 600 del 29 settembre 1973, per i
-                      quali è stato effettuato, nell'anno 2006, il rimborso
-                      della ritenuta ai sensi dell'art. 4 del D.Lgs. 30 maggio
-                      2005 n. 143
-                    'Y': >-
-                      Canoni corrisposti dal 1° gennaio 2005 al 26 luglio 2005
-                      da società o enti residenti ovvero da stabili
-                      organizzazioni di società estere di cui all'art.
-                      26-quater, comma 1, lett. a) e b) del D.P.R. n. 600 del 29
-                      settembre 1973, asocietà o stabili organizzazioni di
-                      società, situate in altro stato membro dell'Unione Europea
-                      in presenza dei requisiti di cui al citato art. 26-quater,
-                      del D.P.R. n. 600 del 29 settembre 1973, per i quali è
-                      stato effettuato, nell'anno 2006, il rimborso della
-                      ritenuta ai sensi dell'art. 4 del D.Lgs. 30 maggio 2005 n.
-                      143
+                    V: 'Provvigioni corrisposte a incaricato per le vendite a domicilio; provvigioni corrisposte a incaricato per la vendita porta a porta e per la vendita ambulante di giornali quotidiani e periodici (L. 25 febbraio 1987, n. 67)'
+                    V1: 'Redditi derivanti da attività commerciali non esercitate abitualmente (ad esempio, provvigioni corrisposte per prestazioni occasionali ad agente o rappresentante di commercio, mediatore, procacciatore d''affari)'
+                    W: Corrispettivi erogati nell'anno corrente per prestazioni relative a contratti d'appalto cui si sono resi applicabili le disposizioni contenute nell'art. 25-ter del D.P.R. n. 600 del 29 settembre 1973
+                    X: 'Canoni corrisposti nel 2004 da società o enti residenti ovvero da stabili organizzazioni di società estere di cui all''art. 26-quater, comma 1, lett. a) e b) del D.P.R. 600 del 29 settembre 1973, a società o stabili organizzazioni di società, situate in altro stato membro dell''Unione Europea in presenza dei requisiti di cui al citato art. 26-quater, del D.P.R. 600 del 29 settembre 1973, per i quali è stato effettuato, nell''anno 2006, il rimborso della ritenuta ai sensi dell''art. 4 del D.Lgs. 30 maggio 2005 n. 143'
+                    'Y': 'Canoni corrisposti dal 1° gennaio 2005 al 26 luglio 2005 da società o enti residenti ovvero da stabili organizzazioni di società estere di cui all''art. 26-quater, comma 1, lett. a) e b) del D.P.R. n. 600 del 29 settembre 1973, asocietà o stabili organizzazioni di società, situate in altro stato membro dell''Unione Europea in presenza dei requisiti di cui al citato art. 26-quater, del D.P.R. n. 600 del 29 settembre 1973, per i quali è stato effettuato, nell''anno 2006, il rimborso della ritenuta ai sensi dell''art. 4 del D.Lgs. 30 maggio 2005 n. 143'
                     ZO: Titolo diverso dai precedenti
                   ei_withholding_type_info:
                     '': Nessuna ritenuta
@@ -5947,11 +5766,7 @@ components:
                       email: mariorossi@fattureincloud.it
                   cc_email: m.rossi@exxample.com
                   subject: Nostra pro forma nr. 1
-                  body: >-
-                    Gentile Mario Rossi,<br>per vedere la nostra pro forma di  o
-                    per scaricarne una copia in versione PDF prema sul bottone
-                    sottoastante.<br><br>{{allegati}}<br><br>Cordiali
-                    saluti,<br><b>Mario Rossi</b>
+                  body: 'Gentile Mario Rossi,<br>per vedere la nostra pro forma di  o per scaricarne una copia in versione PDF prema sul bottone sottoastante.<br><br>{{allegati}}<br><br>Cordiali saluti,<br><b>Mario Rossi</b>'
                   document_exists: true
                   delivery_note_exists: false
                   attachment_exists: false
@@ -6889,11 +6704,11 @@ components:
                       is_disabled: false
                     - id: 10
                       value: 0
-                      description: Oper. non soggetta, art.7 ter
+                      description: 'Oper. non soggetta, art.7 ter'
                       is_disabled: false
                     - id: 11
                       value: 0
-                      description: Inversione contabile, art.7 ter
+                      description: 'Inversione contabile, art.7 ter'
                       is_disabled: false
                     - id: 12
                       value: 0
@@ -6917,7 +6732,7 @@ components:
                       is_disabled: false
                     - id: 17
                       value: 0
-                      description: Non Imp. Art.72, D.P.R. 633/72
+                      description: 'Non Imp. Art.72, D.P.R. 633/72'
                       is_disabled: false
                     - id: 18
                       value: 0
@@ -7057,15 +6872,11 @@ components:
                       is_disabled: false
                     - id: 62
                       value: 0
-                      description: >-
-                        R.C. art. 17/6/a-ter servizi comparto edile e settori
-                        connessi
+                      description: R.C. art. 17/6/a-ter servizi comparto edile e settori connessi
                       is_disabled: false
                     - id: 63
                       value: 0
-                      description: >-
-                        R.C. art. 17/6/d-bis,d-ter,d-quater gas/energia
-                        elettrica
+                      description: 'R.C. art. 17/6/d-bis,d-ter,d-quater gas/energia elettrica'
                       is_disabled: false
                     - id: 64
                       value: 0
@@ -7843,7 +7654,7 @@ components:
                   - id: 0
                     value: 22
                     description: Non imponibile art. 123
-                    notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
+                    notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
                     e_invoice: string
                     ei_type: 2
                     ei_description: string
