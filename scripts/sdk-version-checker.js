@@ -22,13 +22,18 @@ try {
             throw "Unexpected semver diff: " + diff
         }
     } else {
+        // SDK version YAML file not found
+        // Initing the SDK to the same major.minor version of openAPI (patch to 0)
+        var major = semver.major(openapiVersion)
+        var minor = semver.minor(openapiVersion)
+
         var doc = {
             'info': {
-                'version': openapiVersion
+                'version': `${major}.${minor}.0`
             }
         }
         fs.writeFileSync(sdkVersionFile, yaml.dump(doc))
-        console.log('openapi')
+        console.log('patch')
     }
     
 
