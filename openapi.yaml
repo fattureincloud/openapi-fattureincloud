@@ -1,10 +1,13 @@
 openapi: 3.0.3
 info:
   title: Fatture in Cloud API v2 - API Reference
-  description: |-
-    Connect your software with Fatture in Cloud, the invoicing platform chosen by more than 400.000 businesses in Italy. 
+  description: >-
+    Connect your software with Fatture in Cloud, the invoicing platform chosen
+    by more than 400.000 businesses in Italy. 
 
-    The Fatture in Cloud API is based on REST, and makes possible to interact with the user related data prior authorization via OAuth2 protocol.
+
+    The Fatture in Cloud API is based on REST, and makes possible to interact
+    with the user related data prior authorization via OAuth2 protocol.
 
     For more information, please visit https://www.fattureincloud.it.
   contact:
@@ -13,8 +16,9 @@ info:
     email: info@fattureincloud.it
   license:
     name: MIT
-    url: 'https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE'
-  version: 2.0.1
+    url: >-
+      https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
+  version: 2.0.2
 servers:
   - url: 'https://api-v2.fattureincloud.it'
 tags:
@@ -337,7 +341,7 @@ paths:
       operationId: getSupplier
       security:
         - OAuth2AuthenticationCodeFlow:
-            - 'entity.suppliers:r'
+            - entity.suppliers:r
       description: Gets the specified supplier.
       parameters:
         - $ref: '#/components/parameters/fields'
@@ -628,7 +632,7 @@ paths:
                       name: Mary Red S.r.L.
                       vat_number: IT05432181211
                       tax_code: IT05432181211
-                      address_street: 'Via Italia, 66'
+                      address_street: Via Italia, 66
                       address_postal_code: '20900'
                       address_city: Milano
                       address_province: MI
@@ -745,7 +749,7 @@ paths:
                       name: Mary Red S.r.L.
                       vat_number: IT05432181211
                       tax_code: IT05432181211
-                      address_street: 'Via Italia, 66'
+                      address_street: Via Italia, 66
                       address_postal_code: '20900'
                       address_city: Milano
                       address_province: MI
@@ -883,7 +887,7 @@ paths:
                       name: Mary Red S.r.L.
                       vat_number: IT05432181211
                       tax_code: IT05432181211
-                      address_street: 'Via Italia, 66'
+                      address_street: Via Italia, 66
                       address_postal_code: '20900'
                       address_city: Milano
                       address_province: MI
@@ -998,7 +1002,10 @@ paths:
           description: Unauthorized
       tags:
         - Issued Documents
-      description: 'Uploads an attachment destined to an issued document. The actual association between the document and the attachment must be implemented separately, using the returned token.'
+      description: >-
+        Uploads an attachment destined to an issued document. The actual
+        association between the document and the attachment must be implemented
+        separately, using the returned token.
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters: []
@@ -1165,7 +1172,9 @@ paths:
         '422':
           $ref: '#/components/responses/VerifyEInvoiceXmlErrorResponse'
       operationId: verifyEInvoiceXml
-      description: Verifies the e-invoice xml format. Checks if all of the mandatory fields are filled and compliant to the right format.
+      description: >-
+        Verifies the e-invoice xml format. Checks if all of the mandatory fields
+        are filled and compliant to the right format.
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters: []
@@ -1473,7 +1482,10 @@ paths:
           description: Unauthorized
       tags:
         - Received Documents
-      description: 'Uploads an attachment destined to a received document. The actual association between the document and the attachment must be implemented separately, using the returned token.'
+      description: >-
+        Uploads an attachment destined to a received document. The actual
+        association between the document and the attachment must be implemented
+        separately, using the returned token.
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'received_documents:a'
@@ -1886,7 +1898,10 @@ paths:
         '200':
           $ref: '#/components/responses/UploadF24AttachmentResponse'
       operationId: uploadF24Attachment
-      description: 'Uploads an attachment destined to a F24. The actual association between the document and the attachment must be implemented separately, using the returned token.'
+      description: >-
+        Uploads an attachment destined to a F24. The actual association between
+        the document and the attachment must be implemented separately, using
+        the returned token.
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'taxes:a'
@@ -2064,7 +2079,10 @@ paths:
         '404':
           description: Not Found
       operationId: uploadArchiveDocumentAttachment
-      description: 'Uploads an attachment destined to an archive document. The actual association between the document and the attachment must be implemented separately, using the returned token.'
+      description: >-
+        Uploads an attachment destined to an archive document. The actual
+        association between the document and the attachment must be implemented
+        separately, using the returned token.
       security:
         - OAuth2AuthenticationCodeFlow:
             - 'archive:a'
@@ -2392,7 +2410,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/fieldset'
       description: Lists the available vat types.
-  '/c/{company_id}/info/payment_methods':
+  /c/{company_id}/info/payment_methods:
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
@@ -2536,7 +2554,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters: []
-  '/c/{companyId}/settings/payment_methods':
+  /c/{companyId}/settings/payment_methods:
     parameters:
       - $ref: '#/components/parameters/company_id'
     post:
@@ -2547,7 +2565,7 @@ paths:
       description: Creates a new payment method.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - 'settings:a'
+            - settings:a
       responses:
         '200':
           $ref: '#/components/responses/CreatePaymentMethodResponse'
@@ -2570,7 +2588,7 @@ paths:
                     default_payment_account:
                       id: 12345
                       name: conto banca SP
-  '/c/{companyId}/settings/payment_method/{paymentMethodId}':
+  /c/{companyId}/settings/payment_method/{paymentMethodId}:
     parameters:
       - $ref: '#/components/parameters/company_id'
       - schema:
@@ -2604,7 +2622,7 @@ paths:
       operationId: modifyPaymentMethod
       security:
         - OAuth2AuthenticationCodeFlow:
-            - 'settings:a'
+            - settings:a
       description: Modifies the specified payment method.
       requestBody:
         content:
@@ -2637,8 +2655,8 @@ paths:
       description: Deletes the specified payment method.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - 'settings:a'
-  '/c/{companyId}/settings/payment_accounts':
+            - settings:a
+  /c/{companyId}/settings/payment_accounts:
     parameters:
       - $ref: '#/components/parameters/company_id'
     post:
@@ -2651,7 +2669,7 @@ paths:
       operationId: createPaymentAccount
       security:
         - OAuth2AuthenticationCodeFlow:
-            - 'settings:a'
+            - settings:a
       description: Creates a new payment account.
       requestBody:
         content:
@@ -2668,7 +2686,7 @@ paths:
                     iban: IT17Q0051343200000003497636
                     sia: T1234
                     virtual: false
-  '/c/{companyId}/settings/payment_accounts/{paymentAccountId}':
+  /c/{companyId}/settings/payment_accounts/{paymentAccountId}:
     parameters:
       - $ref: '#/components/parameters/company_id'
       - schema:
@@ -2709,7 +2727,7 @@ paths:
       description: Modifies the specified payment account.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - 'settings:a'
+            - settings:a
       requestBody:
         content:
           application/json:
@@ -2737,7 +2755,7 @@ paths:
       description: Deletes the specified payment account.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - 'settings:a'
+            - settings:a
 components:
   schemas: {}
   securitySchemes:
@@ -2809,7 +2827,9 @@ components:
       required: false
       schema:
         type: string
-      description: List of comma-separated fields for result sorting (minus for desc sorting).
+      description: >-
+        List of comma-separated fields for result sorting (minus for desc
+        sorting).
     fields:
       name: fields
       in: query
@@ -3645,7 +3665,7 @@ components:
                       name: Mary Red S.r.L.
                       vat_number: IT05432181211
                       tax_code: IT05432181211
-                      address_street: 'Via Italia, 66'
+                      address_street: Via Italia, 66
                       address_postal_code: '20900'
                       address_city: Milano
                       address_province: MI
@@ -3673,7 +3693,7 @@ components:
                       name: Mary Red S.r.L.
                       vat_number: IT05432181211
                       tax_code: IT05432181211
-                      address_street: 'Via Italia, 66'
+                      address_street: Via Italia, 66
                       address_postal_code: '20900'
                       address_city: Milano
                       address_province: MI
@@ -3750,7 +3770,7 @@ components:
                     name: Mary Red S.r.L.
                     vat_number: IT05432181211
                     tax_code: IT05432181211
-                    address_street: 'Via Italia, 66'
+                    address_street: Via Italia, 66
                     address_postal_code: '20900'
                     address_city: Milano
                     address_province: MI
@@ -3875,7 +3895,7 @@ components:
                     name: Mary Red S.r.L.
                     vat_number: IT05432181211
                     tax_code: IT05432181211
-                    address_street: 'Via Italia, 66'
+                    address_street: Via Italia, 66
                     address_postal_code: '20900'
                     address_city: Milano
                     address_province: MI
@@ -4000,7 +4020,7 @@ components:
                     name: Mary Red S.r.L.
                     vat_number: IT05432181211
                     tax_code: IT05432181211
-                    address_street: 'Via Italia, 66'
+                    address_street: Via Italia, 66
                     address_postal_code: '20900'
                     address_city: Milano
                     address_province: MI
