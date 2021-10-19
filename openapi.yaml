@@ -178,7 +178,7 @@ paths:
       operationId: getClient
       security:
         - OAuth2AuthenticationCodeFlow:
-            - 'entity.clients:r'
+            - entity.clients:r
       description: Gets the specified client.
       parameters:
         - $ref: '#/components/parameters/fields'
