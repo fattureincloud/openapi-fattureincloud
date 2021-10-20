@@ -90,7 +90,8 @@ jobs:
         name: Generate JS SDK
         env:
           PACKAGE_NAME: "\"FattureInCloud JavaScript SDK\""
-          APP_NAME: FattureInCloudPROJECT_NAME="@fattureincloud/fattureincloud-js-sdk"
+          APP_NAME: FattureInCloud
+          PROJECT_NAME: "@fattureincloud/fattureincloud-js-sdk"
           MODULE_NAME: "fattureInCloudSdk"
           PROJECT_DESCRIPTION: "\"JavaScript SDK for the Fatture in Cloud API\""
         run: |
