@@ -96,12 +96,10 @@ jobs:
           PROJECT_DESCRIPTION: "\"JavaScript SDK for the Fatture in Cloud API\""
         run: |
           
-          RELEASE_NOTE="\"${{ github.event.head_commit.message }}\""
+          RELEASE_NOTE="\"bumping version to $SDK_VERSION\""
 
           SDK_VERSION=${{ env.sdk_version }}
           echo "${{ env.sdk_version }}"
-
-          if [ -z "$RELEASE_NOTE" ]; then RELEASE_NOTE="chore: bumping version to $SDK_VERSION"; fi
 
           USER_AGENT="$APP_NAME/${{ env.sdk_version }}/JavaScript-SDK"
 
@@ -109,7 +107,8 @@ jobs:
 
           node ./scripts/postprocess-javascript.js nyc './generated/javascript/package.json'
 
-          echo "commit_message=$RELEASE_NOTE" >> $GITHUB_ENV
+          COMMIT_MESSAGE="\"chore: $RELEASE_NOTE\""
+          echo "commit_message=$COMMIT_MESSAGE" >> $GITHUB_ENV
 
       - id: create-pr
         name: Create Pull Request
