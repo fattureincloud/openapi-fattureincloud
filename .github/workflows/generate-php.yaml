@@ -92,13 +92,10 @@ jobs:
           PACKAGE_NAME: "\"FattureInCloud PHP SDK\""
           INVOKER_PACKAGE: FattureInCloud
         run: |
-          
-          RELEASE_NOTE="\"bumping version to $SDK_VERSION\""
-
           SDK_VERSION=${{ env.sdk_version }}
           echo "${{ env.sdk_version }}"
           
-          if [ -z "$RELEASE_NOTE" ]; then RELEASE_NOTE="chore: bumping version to $SDK_VERSION"; fi
+          RELEASE_NOTE="bumping version to $SDK_VERSION"
 
           USER_AGENT="$INVOKER_PACKAGE/${{ env.sdk_version }}/PHP-SDK"
 
@@ -108,7 +105,7 @@ jobs:
           node ./scripts/postprocess-php.js backport './generated/php/composer.json'
           node ./scripts/postprocess-php.js license MIT './generated/php/composer.json'
 
-          COMMIT_MESSAGE="\"chore: $RELEASE_NOTE\""
+          COMMIT_MESSAGE="chore: $RELEASE_NOTE"
           echo "commit_message=$COMMIT_MESSAGE" >> $GITHUB_ENV
 
 
