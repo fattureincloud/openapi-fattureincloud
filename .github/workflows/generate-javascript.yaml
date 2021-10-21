@@ -95,11 +95,10 @@ jobs:
           MODULE_NAME: "fattureInCloudSdk"
           PROJECT_DESCRIPTION: "\"JavaScript SDK for the Fatture in Cloud API\""
         run: |
-          
-          RELEASE_NOTE="\"bumping version to $SDK_VERSION\""
-
           SDK_VERSION=${{ env.sdk_version }}
           echo "${{ env.sdk_version }}"
+          
+          RELEASE_NOTE="bumping version to $SDK_VERSION"
 
           USER_AGENT="$APP_NAME/${{ env.sdk_version }}/JavaScript-SDK"
 
@@ -107,7 +106,7 @@ jobs:
 
           node ./scripts/postprocess-javascript.js nyc './generated/javascript/package.json'
 
-          COMMIT_MESSAGE="\"chore: $RELEASE_NOTE\""
+          COMMIT_MESSAGE="chore: $RELEASE_NOTE"
           echo "commit_message=$COMMIT_MESSAGE" >> $GITHUB_ENV
 
       - id: create-pr
