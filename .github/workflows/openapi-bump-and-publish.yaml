@@ -169,4 +169,4 @@ jobs:
         with:
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
           event-type: ${{ matrix.event }}
-          client-payload: '{"version": "${{ needs.bump-and-publish.outputs.version }}"}'
+          client-payload: '{"version": "${{ needs.bump-and-publish.outputs.version }}", "from-openapi": true}'

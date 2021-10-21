@@ -96,7 +96,7 @@ jobs:
           PROJECT_DESCRIPTION: "\"JavaScript SDK for the Fatture in Cloud API\""
         run: |
           
-          RELEASE_NOTE="\"${{ github.event.head_commit.message }}\""
+          RELEASE_NOTE="\"bumping version to $SDK_VERSION\""
 
           SDK_VERSION=${{ env.sdk_version }}
           echo "${{ env.sdk_version }}"
@@ -108,8 +108,9 @@ jobs:
           openapi-generator-cli generate -i ./openapi.yaml -g javascript -o ./generated/javascript/ -t ./templates/javascript --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=projectName=$PROJECT_NAME,projectDescription=$PROJECT_DESCRIPTION,moduleName=$MODULE_NAME
 
           node ./scripts/postprocess-javascript.js nyc './generated/javascript/package.json'
-
-          echo "commit_message=$RELEASE_NOTE" >> $GITHUB_ENV
+          
+          COMMIT_MESSAGE="\"chore: $RELEASE_NOTE\""
+          echo "commit_message=$COMMIT_MESSAGE" >> $GITHUB_ENV
 
       - id: create-pr
         name: Create Pull Request
