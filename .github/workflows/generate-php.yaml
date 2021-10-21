@@ -106,7 +106,6 @@ jobs:
           node ./scripts/postprocess-php.js license MIT './generated/php/composer.json'
 
 
-
       - id: create-pr
         name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
