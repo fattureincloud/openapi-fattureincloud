@@ -100,6 +100,8 @@ jobs:
           
           RELEASE_NOTE="bumping version to $SDK_VERSION"
 
+          if [ -z "$RELEASE_NOTE" ]; then RELEASE_NOTE="chore: bumping version to $SDK_VERSION"; fi
+
           USER_AGENT="$APP_NAME/${{ env.sdk_version }}/JavaScript-SDK"
 
           openapi-generator-cli generate -i ./openapi.yaml -g javascript -o ./generated/javascript/ -t ./templates/javascript --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=projectName=$PROJECT_NAME,projectDescription=$PROJECT_DESCRIPTION,moduleName=$MODULE_NAME
