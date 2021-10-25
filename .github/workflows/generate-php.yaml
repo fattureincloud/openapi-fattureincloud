@@ -92,9 +92,6 @@ jobs:
           PACKAGE_NAME: "\"FattureInCloud PHP SDK\""
           INVOKER_PACKAGE: FattureInCloud
         run: |
-          SDK_VERSION=${{ env.sdk_version }}
-          echo "${{ env.sdk_version }}"
-          
           RELEASE_NOTE="\"bumping version to $SDK_VERSION\""
 
           USER_AGENT="$INVOKER_PACKAGE/${{ env.sdk_version }}/PHP-SDK"
@@ -104,7 +101,6 @@ jobs:
           node ./scripts/postprocess-php.js clean './generated/php/lib/' './generated/php/test/'
           node ./scripts/postprocess-php.js backport './generated/php/composer.json'
           node ./scripts/postprocess-php.js license MIT './generated/php/composer.json'
-
 
       - id: create-pr
         name: Create Pull Request
