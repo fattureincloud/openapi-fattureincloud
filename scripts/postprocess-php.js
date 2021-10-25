@@ -9,7 +9,7 @@ switch (command) {
     break
   case 'backport':
     var path = process.argv[3]
-    transformJson.transformJsonByLocation(path, {'require': {'php': '^7.1 || ^8.0'}, 'require-dev': {'phpunit/phpunit': '^7.0 || ^8.0 || ^9.0'}})
+    transformJson.transformJsonByLocation(path, {'require': {'php': '^7.1 || ^8.0', "guzzlehttp/guzzle": "^6.2 || ^7.3", "guzzlehttp/psr7": "^1.8 || ^2.0"}, 'require-dev': {'phpunit/phpunit': '^7.0 || ^8.0 || ^9.0'}})
     break
   case 'license':
     var license = process.argv[3]
