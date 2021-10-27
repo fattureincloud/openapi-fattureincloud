@@ -1,6 +1,6 @@
 title: CreateReceiptRequest
 type: object
-description: Receipt.
+description: ''
 properties:
   data:
     $ref: ../schemas/Receipt.yaml

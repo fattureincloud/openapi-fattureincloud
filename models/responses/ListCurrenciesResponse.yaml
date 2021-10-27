@@ -1,6 +1,6 @@
 title: ListCurrenciesResponse
 type: object
-description: Currencies List.
+description: ''
 properties:
   data:
     type: array

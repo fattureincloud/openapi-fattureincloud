@@ -1,5 +1,5 @@
 title: GetCompanyInfoResponse
-description: The CompanyInfo response.
+description: ''
 type: object
 properties:
   data:
