@@ -1,6 +1,6 @@
 title: ModifyArchiveDocumentResponse
 type: object
-description: The modified Archive Document
+description: ''
 properties:
   data:
     $ref: ../schemas/ArchiveDocument.yaml

@@ -1,6 +1,6 @@
 title: UploadReceivedDocumentAttachmentResponse
 type: object
-description: Attachment Token.
+description: ''
 properties:
   data:
     type: object

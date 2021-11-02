@@ -1,5 +1,5 @@
 title: CreateCashbookEntryResponse
-description: The created Cashbook Entry.
+description: ''
 type: object
 properties:
   data:

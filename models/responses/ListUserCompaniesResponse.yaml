@@ -1,6 +1,6 @@
 title: ListUserCompaniesResponse
 type: object
-description: The UserCompany response.
+description: ''
 properties:
   data:
     type: object

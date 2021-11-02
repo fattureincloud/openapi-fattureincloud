@@ -1,6 +1,6 @@
 title: ListPaymentMethodsResponse
 type: object
-description: List of Payment Methods.
+description: ''
 properties:
   data:
     type: array

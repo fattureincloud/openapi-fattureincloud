@@ -1,6 +1,6 @@
 title: GetReceivedDocumentPreCreateInfoResponse
 type: object
-description: Received Document Info
+description: ''
 properties:
   data:
     $ref: ../schemas/ReceivedDocumentInfo.yaml

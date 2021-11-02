@@ -1,6 +1,6 @@
 title: GetNewReceivedDocumentTotalsRequest
 type: object
-description: Document.
+description: ''
 properties:
   data:
     $ref: ../schemas/ReceivedDocument.yaml

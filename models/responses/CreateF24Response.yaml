@@ -3,4 +3,4 @@ type: object
 properties:
   data:
     $ref: ../schemas/F24.yaml
-description: The created F24
+description: ''
