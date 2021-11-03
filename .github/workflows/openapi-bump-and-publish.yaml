@@ -1,11 +1,12 @@
 name: Bump and Publish OpenAPI to Readme
-on:
-  push:
-    branches:
-      - master
-    # paths:
-    #   - 'openapi.yaml'
-    #   - 'models/**'
+on: [workflow_dispatch]
+# on:
+#   push:
+#     branches:
+#       - master
+#     paths:
+#       - 'openapi.yaml'
+#       - 'models/**'
 jobs:
   filter-trigger:
     runs-on: ubuntu-latest

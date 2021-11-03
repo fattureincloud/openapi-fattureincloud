@@ -1,6 +1,6 @@
 title: ListCitiesResponse
 type: object
-description: Cities list.
+description: ''
 properties:
   data:
     type: array

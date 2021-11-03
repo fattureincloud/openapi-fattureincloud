@@ -1,6 +1,6 @@
 title: ModifyReceiptRequest
 type: object
-description: Modified receipt.
+description: ''
 properties:
   data:
     $ref: ../schemas/Receipt.yaml

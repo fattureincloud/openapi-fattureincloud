@@ -1,6 +1,6 @@
 title: CreateCashbookEntryRequest
 type: object
-description: Cashbook Entry.
+description: ''
 properties:
   data:
     $ref: ../schemas/CashbookEntry.yaml

@@ -1,6 +1,6 @@
 title: ListReceivedDocumentCategoriesResponse
 type: object
-description: Received Document Categories List
+description: ''
 properties:
   data:
     type: array
