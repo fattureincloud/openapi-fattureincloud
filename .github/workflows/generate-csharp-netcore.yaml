@@ -4,7 +4,7 @@ on:
     types: [generate-csharp-netcore]
 
 jobs:
-  generate-csharp-netcore-sdk:
+  generate-csharp-sdk:
     runs-on: ubuntu-latest
     env:
       GIT_REPO_ID: fattureincloud-csharp-sdk
