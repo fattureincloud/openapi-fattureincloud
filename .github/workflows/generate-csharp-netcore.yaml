@@ -53,11 +53,11 @@ jobs:
           sudo add-apt-repository ppa:rmescandon/yq -y
           sudo apt update
           sudo apt install yq -y
-        #run: |
-        #  cd ./scripts/
-        #  yarn
-        #  cd ../generated/csharp-netcore/scripts
-        #  yarn
+        run: |
+          cd ./scripts/
+          yarn
+          cd ../generated/csharp-netcore/scripts
+          yarn
 
       - id: bump-csharp-netcore-sdk-version
         name: Bump Csharp-netcore SDK

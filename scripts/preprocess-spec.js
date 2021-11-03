@@ -1,11 +1,10 @@
 
 const yaml = require('js-yaml');
 const fs   = require('fs');
-const path = "./generated/csharp-netcore/src/It.FattureInCloud.Sdk/";
-const dir = path + "models/";
+const path = "./models/";
 
 
-iterateAllFiles(dir);
+iterateAllFiles(path);
 
 function iterateAllFiles(dir) {
   files = fs.readdirSync(dir);
@@ -13,7 +12,7 @@ function iterateAllFiles(dir) {
   files.forEach(function (file) {
     if (fs.statSync(dir + file).isDirectory()) {
       iterateAllFiles(dir + file + "/");
-    } else if(file.split('.').pop() === "yaml"){
+    } else if(file.split('.').pop() === "yaml") {
         try {
             const doc = yaml.load(fs.readFileSync(dir + file, 'utf8'));
             fs.writeFile(dir + file, yaml.dump(removeRequired(doc)), "utf8", function (err) {
@@ -29,10 +28,10 @@ function iterateAllFiles(dir) {
 function removeRequired(nodo){
 
     for(prop in nodo){
-        if(prop === "required"){
+        if(prop === "required") {
              nodo[prop] = undefined;
         }
-        else if(typeof(nodo) === "object"){
+        else if(typeof(nodo) === "object") {
             removeRequired(prop);
         }
     }
