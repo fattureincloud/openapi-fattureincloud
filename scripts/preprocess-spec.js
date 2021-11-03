@@ -13,7 +13,9 @@ function iterateAllFiles(dir) {
     } else if(file.split('.').pop() === "yaml") {
         try {
             const doc = yaml.load(fs.readFileSync(dir + file, 'utf8'));
-            fs.writeFile(dir + file, yaml.dump(removeRequired(doc)), "utf8", function (err) {
+            var newDoc = removeRequired(doc);
+            var newYaml = yaml.dump(newDoc);
+            fs.writeFile(dir + file, newYaml, "utf8", function (err) {
               if (err) return console.log(err);
             });
           } catch (e) {
