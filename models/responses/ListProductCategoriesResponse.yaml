@@ -5,4 +5,4 @@ properties:
     type: array
     items:
       type: string
-description: Product Categories List.
+description: ''

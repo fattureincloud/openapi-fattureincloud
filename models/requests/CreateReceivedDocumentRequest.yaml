@@ -1,6 +1,6 @@
 title: CreateReceivedDocumentRequest
 type: object
-description: Received document.
+description: ''
 properties:
   pending_id:
     type: integer

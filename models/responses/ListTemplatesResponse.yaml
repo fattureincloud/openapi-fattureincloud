@@ -5,4 +5,4 @@ properties:
     type: array
     items:
       $ref: ../schemas/DocumentTemplate.yaml
-description: Templates list.
+description: ''

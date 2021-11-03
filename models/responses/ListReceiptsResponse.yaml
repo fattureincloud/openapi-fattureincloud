@@ -2,4 +2,4 @@ title: ListReceiptsResponse
 allOf:
   - $ref: ./pagination/Pagination.yaml
   - $ref: ./pagination/ListReceiptsResponsePage.yaml
-description: Receipts list.
+description: ''
