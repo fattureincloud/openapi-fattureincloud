@@ -1,6 +1,6 @@
 title: ListLanguagesResponse
 type: object
-description: Languages list.
+description: ''
 properties:
   data:
     type: array

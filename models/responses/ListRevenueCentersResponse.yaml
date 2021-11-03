@@ -1,6 +1,6 @@
 title: ListRevenueCentersResponse
 type: object
-description: Revenue Centers List
+description: ''
 properties:
   data:
     type: array

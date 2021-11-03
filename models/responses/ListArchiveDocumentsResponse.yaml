@@ -2,4 +2,4 @@ title: ListArchiveDocumentsResponse
 allOf:
   - $ref: ./pagination/Pagination.yaml
   - $ref: ./pagination/ListArchiveDocumentsResponsePage.yaml
-description: Results list.
+description: ''

@@ -1,6 +1,6 @@
 title: GetReceiptsMonthlyTotalsResponse
 type: object
-description: Monthly totals.
+description: ''
 properties:
   data:
     type: array
