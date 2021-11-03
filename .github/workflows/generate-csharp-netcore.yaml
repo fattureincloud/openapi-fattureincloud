@@ -90,9 +90,9 @@ jobs:
         name: Generate C# SDK
         env:
           PACKAGE_NAME: It.FattureInCloud.Sdk
-          PACKAGE_AUTHORS: "Fatture in Cloud API Team"
-          PACKAGE_COMPANY: "Fatture in Cloud"
-          PACKAGE_DESCRIPTION: "Connect your software with Fatture in Cloud, the invoicing platform chosen by more than 400.000 businesses in Italy. \nThe Fatture in Cloud API is based on REST, and makes possible to interact with the user related data prior authorization via OAuth2 protocol. For more information, please visit https://www.fattureincloud.it."
+          PACKAGE_AUTHORS: "\"Fatture in Cloud API Team\""
+          PACKAGE_COMPANY: "\"Fatture in Cloud\""
+          PACKAGE_DESCRIPTION: "\"Connect your software with Fatture in Cloud, the invoicing platform chosen by more than 400.000 businesses in Italy. \nThe Fatture in Cloud API is based on REST, and makes possible to interact with the user related data prior authorization via OAuth2 protocol. For more information, please visit https://www.fattureincloud.it.\""
         run: |
           SDK_VERSION=${{ env.sdk_version }}
           echo "${{ env.sdk_version }}"
