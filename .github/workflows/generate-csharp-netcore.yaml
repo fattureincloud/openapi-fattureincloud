@@ -1,4 +1,4 @@
-name: Generate Csharp-netcore SDK
+name: Generate C# SDK
 on:
   repository_dispatch:
     types: [generate-csharp-netcore]
@@ -17,8 +17,8 @@ jobs:
         with:
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
       
-      - id: checkout-csharp-netcore
-        name: Checkout Csharp-netcore repo
+      - id: checkout-csharp
+        name: Checkout C# repo
         env:
           GIT_REPO_PATH: '${{ env.GIT_USER_ID }}/${{ env.GIT_REPO_ID }}'
         uses: actions/checkout@v2
@@ -59,8 +59,8 @@ jobs:
           cd ../generated/csharp-netcore/scripts
           yarn
 
-      - id: bump-csharp-netcore-sdk-version
-        name: Bump Csharp-netcore SDK
+      - id: bump-csharp-sdk-version
+        name: Bump C# SDK
         env:
           OPENAPI_VERSION: ${{ github.event.client_payload.version }}
         run: |
@@ -78,7 +78,7 @@ jobs:
             echo 'Using the openapi version...'
             standard-version --release-as $OPENAPI_VERSION
           else
-            echo "Something bad happened - impossible to bump Csharp-netcore SDK version. value=$BUMP_TYPE"
+            echo "Something bad happened - impossible to bump C# SDK version. value=$BUMP_TYPE"
           fi
 
           SDK_VERSION=$(yq e '.info.version' ./sdk-version.yaml)
@@ -87,8 +87,8 @@ jobs:
           echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
           echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
 
-      - id: generate-csharp-netcore-sdk
-        name: Generate Csharp-netcore SDK
+      - id: generate-csharp-sdk
+        name: Generate C# SDK
         env:
           PACKAGE_NAME: It.FattureInCloud.Sdk
           PACKAGE_AUTHORS: "Fatture in Cloud API Team"
@@ -100,7 +100,7 @@ jobs:
           
           RELEASE_NOTE="\"bumping version to $SDK_VERSION\""
 
-          USER_AGENT="$APP_NAME/${{ env.sdk_version }}/csharp-netcore-SDK"
+          USER_AGENT="$APP_NAME/${{ env.sdk_version }}/csharp-SDK"
 
           node ./scripts/preprocess-spec.js
 
