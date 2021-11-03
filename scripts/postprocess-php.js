@@ -17,7 +17,9 @@ switch (command) {
     var url = process.argv[5]
     var path = process.argv[6]
     var authorKey = 'authors[' + index + ']'
-    transformJson.transformJsonByLocation(path, {authorKey: {"name": name, "homepage": url}})
+    var transform = {}
+    transform[authorKey] = {"name": name, "homepage": url}
+    transformJson.transformJsonByLocation(path, transform)
     break
   case 'homepage':
     var url = process.argv[3]
