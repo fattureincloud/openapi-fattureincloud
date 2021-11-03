@@ -91,6 +91,8 @@ jobs:
         env:
           PACKAGE_NAME: "\"FattureInCloud PHP SDK\""
           INVOKER_PACKAGE: FattureInCloud
+          AUTHOR_NAME: "\"Fatture in Cloud API Team\""
+          HOMEPAGE_URL: https://www.fattureincloud.it
         run: |
           SDK_VERSION=${{ env.sdk_version }}
           echo "${{ env.sdk_version }}"
@@ -103,6 +105,8 @@ jobs:
           node ./scripts/postprocess-php.js clean './generated/php/lib/' './generated/php/test/'
           node ./scripts/postprocess-php.js backport './generated/php/composer.json'
           node ./scripts/postprocess-php.js license MIT './generated/php/composer.json'
+          node ./scripts/postprocess-php.js homepage $HOMEPAGE_URL './generated/php/composer.json'
+          node ./scripts/postprocess-php.js authors 0 $AUTHOR_NAME $HOMEPAGE_URL './generated/php/composer.json'
 
       - id: create-pr
         name: Create Pull Request

@@ -11,6 +11,21 @@ switch (command) {
     var path = process.argv[3]
     transformJson.transformJsonByLocation(path, {'require': {'php': '^7.1 || ^8.0', "guzzlehttp/guzzle": "^6.2 || ^7.3", "guzzlehttp/psr7": "^1.8 || ^2.0"}, 'require-dev': {'phpunit/phpunit': '^7.0 || ^8.0 || ^9.0'}})
     break
+  case 'authors':
+    var index = process.argv[3]
+    var name = process.argv[4]
+    var url = process.argv[5]
+    var path = process.argv[6]
+    var authorKey = 'authors[' + index + ']'
+    var transform = {}
+    transform[authorKey] = {"name": name, "homepage": url}
+    transformJson.transformJsonByLocation(path, transform)
+    break
+  case 'homepage':
+    var url = process.argv[3]
+    var path = process.argv[4]
+    transformJson.transformJsonByLocation(path, {'$': {'homepage': url}})
+    break
   case 'license':
     var license = process.argv[3]
     var path = process.argv[4]
