@@ -1,6 +1,6 @@
 title: ModifyIssuedDocumentRequest
 type: object
-description: The issued document
+description: ''
 properties:
   data:
     $ref: ../schemas/IssuedDocument.yaml

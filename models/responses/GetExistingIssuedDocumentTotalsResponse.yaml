@@ -1,7 +1,6 @@
 title: GetExistingIssuedDocumentTotalsResponse
 type: object
-description: Total
+description: ''
 properties:
   data:
     $ref: ../schemas/IssuedDocumentTotals.yaml
-

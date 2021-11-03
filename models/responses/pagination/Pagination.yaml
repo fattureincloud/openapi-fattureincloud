@@ -1,6 +1,6 @@
 title: Pagination
 type: object
-description: Pagination fields.
+description: ''
 properties:
   current_page:
     type: integer
