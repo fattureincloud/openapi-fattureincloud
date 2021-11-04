@@ -10,7 +10,7 @@ function transformJsonByLocation(path, updateMap) {
             Object.keys(updateMap).map(function (key, _) {
                 var update = updateMap[key]
                 var location = null
-                if (key == "$") {
+                if (key.includes("$")) {
                     location = key
                 } else {
                     location = `$.\"${key}\"`

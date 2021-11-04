@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
-      
+
       - id: checkout-csharp
         name: Checkout C# repo
         env:
@@ -33,7 +33,7 @@ jobs:
         run: |
           git config --global user.email "info@fattureincloud.it"
           git config --global user.name "fattureincloud-bot"
-
+          
       - id: setup-node
         name: Setup Node.js
         uses: actions/setup-node@v2
@@ -90,6 +90,7 @@ jobs:
         name: Generate C# SDK
         env:
           PACKAGE_NAME: It.FattureInCloud.Sdk
+          PACKAGE_TITLE: "\"Fatture in Cloud C# SDK\""
           PACKAGE_AUTHORS: "\"Fatture in Cloud API Team\""
           PACKAGE_COMPANY: "\"Fatture in Cloud\""
           PACKAGE_DESCRIPTION: "\"Connect your software with Fatture in Cloud, the invoicing platform chosen by more than 400.000 businesses in Italy. \nThe Fatture in Cloud API is based on REST, and makes possible to interact with the user related data prior authorization via OAuth2 protocol. For more information, please visit https://www.fattureincloud.it.\""
@@ -102,9 +103,9 @@ jobs:
           USER_AGENT="$APP_NAME/${{ env.sdk_version }}/csharp-SDK"
 
           node ./scripts/preprocess-spec.js
-
-          openapi-generator-cli generate -i ./openapi.yaml -g csharp-netcore -o generated/csharp-netcore/ --additional-properties=useDateTimeOffset=true,packageName=${PACKAGE_NAME},packageAuthors=${PACKAGE_AUTHORS},packageCompany=${PACKAGE_COMPANY},packageDescription={PACKAGE_DESCRIPTION} --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT}
-
+          
+          openapi-generator-cli generate -i ./openapi.yaml -g csharp-netcore -o generated/csharp-netcore/ -t ./templates/csharp-netcore --additional-properties=useDateTimeOffset=true,packageName=${PACKAGE_NAME},packageAuthors=${PACKAGE_AUTHORS},packageCompany=${PACKAGE_COMPANY},packageDescription=${PACKAGE_DESCRIPTION},packageTitle=${PACKAGE_TITLE},packageVersion=${SDK_VERSION} --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT}
+     
       - id: create-pr
         name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
