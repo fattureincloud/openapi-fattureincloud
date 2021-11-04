@@ -32,7 +32,7 @@ function removeRequired(nodo){
              nodo[prop] = undefined;
         }
         else if(typeof(nodo) === "object") {
-            removeRequired(prop);
+            removeRequired(nodo[prop]);
         }
     }
     return(nodo);
