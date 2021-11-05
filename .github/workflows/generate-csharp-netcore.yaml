@@ -94,6 +94,7 @@ jobs:
           PACKAGE_AUTHORS: "\"Fatture in Cloud API Team\""
           PACKAGE_COMPANY: "\"Fatture in Cloud\""
           PACKAGE_DESCRIPTION: "\"Connect your software with Fatture in Cloud, the invoicing platform chosen by more than 400.000 businesses in Italy. \nThe Fatture in Cloud API is based on REST, and makes possible to interact with the user related data prior authorization via OAuth2 protocol. For more information, please visit https://www.fattureincloud.it.\""
+          TARGET_FRAMEWORK: "\"netstandard2.0;netstandard2.1;netcoreapp2.0;netcoreapp2.1;netcoreapp3.0;netcoreapp3.1;net47;net5.0\""
         run: |
           SDK_VERSION=${{ env.sdk_version }}
           echo "${{ env.sdk_version }}"
@@ -104,7 +105,7 @@ jobs:
 
           node ./scripts/preprocess-spec.js
           
-          openapi-generator-cli generate -i ./openapi.yaml -g csharp-netcore -o generated/csharp-netcore/ -t ./templates/csharp-netcore --additional-properties=useDateTimeOffset=true,packageName=${PACKAGE_NAME},packageAuthors=${PACKAGE_AUTHORS},packageCompany=${PACKAGE_COMPANY},packageDescription=${PACKAGE_DESCRIPTION},packageTitle=${PACKAGE_TITLE},packageVersion=${SDK_VERSION} --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT}
+          openapi-generator-cli generate -i ./openapi.yaml -g csharp-netcore -o generated/csharp-netcore/ -t ./templates/csharp-netcore --additional-properties=useDateTimeOffset=true,packageName=${PACKAGE_NAME},packageAuthors=${PACKAGE_AUTHORS},packageCompany=${PACKAGE_COMPANY},packageDescription=${PACKAGE_DESCRIPTION},packageTitle=${PACKAGE_TITLE},packageVersion=${SDK_VERSION},targetFramework=${TARGET_FRAMEWORK} --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT}
      
       - id: create-pr
         name: Create Pull Request
