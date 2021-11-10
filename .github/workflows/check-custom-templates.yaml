@@ -1,0 +1,78 @@
+name: Check Custom Templates
+on:
+  - repository_dispatch
+  - schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '0 0 1 * *'
+
+jobs:
+  check-custom-templates:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        sdk: ['php', 'javascript', 'csharp-netcore']
+    steps: 
+
+      - id: checkout
+        name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+
+      - id: init-git
+        name: Init GIT
+        run: |
+          git config --global user.email "info@fattureincloud.it"
+          git config --global user.name "fattureincloud-bot"
+          
+      - id: setup-node
+        name: Setup Node.js
+        uses: actions/setup-node@v2
+
+      - id: setup-java
+        name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '8'
+
+      - id: setup-libraries
+        name: Install libraries
+        run: |
+          npm install -g yarn
+          yarn global add @openapitools/openapi-generator-cli
+          
+      - id: retrieve-templates
+        name: Retrieve templates
+        run: |
+          openapi-generator-cli author template -g ${{ matrix.sdk }} -o templates-temp/${{ matrix.sdk }}
+          for entry in "templates-temp/${{ matrix.sdk }}"/*; do
+            FILE="${entry/templates-temp/templates}"
+            if test -f "$FILE"; then
+              echo "Moving $entry to $FILE"
+              mv $entry $FILE
+            fi
+          done
+          rm -rf templates-temp/${{ matrix.sdk }}
+          cd templates/${{ matrix.sdk }}
+          git add .
+        
+
+      - id: get-timestamp
+        name: Get Current Timestamp
+        run: |
+          DATE=$(date '+%Y%m%d')
+          echo "date_ts=$DATE" >> $GITHUB_ENV
+
+      - id: create-pr
+        name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          path: "."
+          branch: "check-templates-${{ matrix.sdk }}-${{ env.date_ts }}"
+          token: "${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}"
+          delete-branch: true
+          base: master
+          commit-message: "chore: updating templates for ${{ matrix.sdk }} sdk"
+          title: "Checking templates for ${{ matrix.sdk }} SDK"
+          body: "Automatically checking modifies on custom templates for ${{ matrix.sdk }} SDK"
