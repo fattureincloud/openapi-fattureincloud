@@ -1,7 +1,7 @@
 name: Check Custom Templates
 on:
-  - repository_dispatch
-  - schedule:
+  repository_dispatch:
+  schedule:
     # * is a special character in YAML so you have to quote this string
     - cron:  '0 0 1 * *'
 
