@@ -63,16 +63,13 @@ NOTE: RestSharp for .Net Core creates a new socket for each api call, which can 
 {{/useRestSharp}}
 <a name="installation"></a>
 ## Installation
-{{#netStandard}}
-Generate the DLL using your preferred tool (e.g. `dotnet build`)
-{{/netStandard}}
-{{^netStandard}}
-Run the following command to generate the DLL
-- [Mac/Linux] `/bin/sh build.sh`
-- [Windows] `build.bat`
-{{/netStandard}}
 
-Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
+To install the bindings via [Nuget](https://www.nuget.org), run the following command:
+```shell
+dotnet add package It.FattureInCloud.Sdk
+```
+
+Then add the following namespaces to your project:
 ```csharp
 using {{packageName}}.{{apiPackage}};
 using {{packageName}}.Client;
