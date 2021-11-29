@@ -10,11 +10,7 @@ properties:
     description: Company name.
     example: Rossi S.r.l.
   type:
-    type: string
-    description: Company type.
-    enum:
-      - company
-      - accountant
+    $ref: ../enums/CompanyType.yaml
   access_token:
     type: string
     description: |-
