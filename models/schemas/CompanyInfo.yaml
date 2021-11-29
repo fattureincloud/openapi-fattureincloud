@@ -23,13 +23,7 @@ properties:
     type: boolean
     description: Determine if the company has a FIC account.
   fic_plan_name:
-    type: string
-    description: Company FIC account plan.
-    enum:
-      - trial
-      - standard
-      - premium
-      - premium_plus
+    $ref: ../enums/PlanType.yaml
   fic_license_type:
     type: string
     description: 'Company FIC account plan. '
