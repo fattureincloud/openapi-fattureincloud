@@ -40,7 +40,7 @@ properties:
     format: date
     description: Company FIC license expiration date.
   fic_plan:
-    $ref: ../enums/PlanType.yaml
+    $ref: ../enums/FattureInCloudPlanType.yaml
   tax_code:
     type: string
     description: Tax code.
