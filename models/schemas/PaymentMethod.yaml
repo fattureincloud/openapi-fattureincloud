@@ -8,12 +8,7 @@ properties:
     type: string
     description: Name of the payment method
   type:
-    type: string
-    description: Method type
-    default: standard
-    enum:
-      - standard
-      - riba
+    $ref: ../enums/PaymentMethodType.yaml
   is_default:
     type: boolean
     description: Determines if this is the default payment method.

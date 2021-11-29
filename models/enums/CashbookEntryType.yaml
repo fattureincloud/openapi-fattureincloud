@@ -1,0 +1,6 @@
+title: CashbookEntryType
+type: string
+enum:
+  - in
+  - out
+description: Cashbook type.

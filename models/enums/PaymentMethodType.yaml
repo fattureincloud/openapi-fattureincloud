@@ -1,0 +1,7 @@
+title: PaymentMethodType
+type: string
+description: Method type.
+default: standard
+enum:
+  - standard
+  - riba

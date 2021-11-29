@@ -1,0 +1,8 @@
+title: IssuedDocumentStatus
+type: string
+description: Payment status.
+default: not_paid
+enum:
+  - not_paid
+  - paid
+  - reversed

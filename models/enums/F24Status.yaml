@@ -1,0 +1,7 @@
+title: F24Status
+type: string
+enum:
+  - paid
+  - not_paid
+  - reversed
+description: Tax status.

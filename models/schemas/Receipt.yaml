@@ -29,7 +29,7 @@ properties:
     type: boolean
     default: false
   type:
-    $ref: ./ReceiptType.yaml
+    $ref: ../enums/ReceiptType.yaml
   description:
     type: string
     description: Receipt description.

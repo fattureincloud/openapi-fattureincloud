@@ -1,0 +1,5 @@
+title: DipendentiInCloudPlanType
+type: string
+description: Company DIC account plan.
+enum:
+  - trial

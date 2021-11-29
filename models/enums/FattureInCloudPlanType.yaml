@@ -1,5 +1,5 @@
+title: FattureInCloudPlanType
 type: string
-title: PlanType
 description: Fatture in Cloud account plan type.
 enum:
   - trial

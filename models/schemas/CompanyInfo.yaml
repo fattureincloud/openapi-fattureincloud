@@ -14,11 +14,7 @@ properties:
     description: Company email.
     example: mario@rossi-example.it
   type:
-    type: string
-    description: Company type.
-    enum:
-      - company
-      - accountant
+    $ref: ../enums/CompanyType.yaml
   fic:
     type: boolean
     description: Determine if the company has a FIC account.
@@ -48,10 +44,7 @@ properties:
     type: boolean
     description: Determine if the company has a DIC account.
   dic_plan:
-    type: string
-    description: Company DIC account plan.
-    enum:
-      - trial
+    $ref: ../enums/DipendentiInCloudPlanType.yaml
   dic_license_expire:
     type: string
     description: Company FIC license expiration date.
@@ -67,12 +60,7 @@ properties:
     type: object
     properties:
       role:
-        type: string
-        description: Role of the user in this company.
-        enum:
-          - master
-          - subaccount
-          - employee
+        $ref: ../enums/UserCompanyRole.yaml
       permissions:
         $ref: ./Permissions.yaml
       through_accountant:

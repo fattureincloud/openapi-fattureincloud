@@ -1,0 +1,9 @@
+title: OriginalDocumentType
+type: string
+nullable: true
+description: Type of document followed by the the current invoice.
+default: ordine
+enum:
+  - ordine
+  - contratto
+  - convenzione
