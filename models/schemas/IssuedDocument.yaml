@@ -397,6 +397,7 @@ properties:
       ts_sent_date:
         type: string
         nullable: true
+        format: date
       ts_full_amount:
         type: boolean
         nullable: true
@@ -484,4 +485,3 @@ properties:
     nullable: true
   amount_due_discount:
     type: number
-    nullable: true

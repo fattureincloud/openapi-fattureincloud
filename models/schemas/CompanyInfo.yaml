@@ -34,6 +34,7 @@ properties:
   fic_signup_date:
     type: string
     description: FIC account sign up date.
+    format: date
   use_fic:
     type: boolean
     description: 'Determine if the FIC account is actually used. If type="company" this is always true; if type="accountant" it can be true or false. If false, it means that the accountant uses FIC only to control other companies and not to control itself.'
@@ -147,8 +148,9 @@ properties:
     description: Company DIC account plan name.
   dic_signup_date:
     type: string
-    nullable: true
     description: DIC account sign up date.
+    format: date
+    nullable: true
   is_accountant:
     type: boolean
     description: Determine if the logged account is an accountant.
