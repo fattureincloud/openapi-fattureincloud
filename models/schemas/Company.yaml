@@ -17,8 +17,6 @@ properties:
       CompanyAuthentication token for this company.
       [Only if type=company]
     example: fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
-  permissions:
-    $ref: ./Permissions.yaml
   controlled_companies:
     type: array
     description: |-
@@ -29,18 +27,6 @@ properties:
   connection_id:
     type: number
     description: Company connection id.
-  dic:
-    type: boolean
-    description: Determine if the company has a DIC account.
-  fic:
-    type: boolean
-    description: Determine if the company has a FIC account.
-  fic_license_expire:
-    type: string
-    format: date
-    description: Company FIC license expiration date.
-  fic_plan:
-    $ref: ../enums/FattureInCloudPlanType.yaml
   tax_code:
     type: string
     description: Tax code.
