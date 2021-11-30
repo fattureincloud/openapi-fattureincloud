@@ -5,5 +5,5 @@ properties:
     type: object
     properties:
       amount:
-        type: string
+        type: number
         description: Total amount.

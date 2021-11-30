@@ -3,7 +3,7 @@ type: object
 description: Receipt
 properties:
   id:
-    type: number
+    type: integer
     description: Receipt unique identifier.
   date:
     type: string

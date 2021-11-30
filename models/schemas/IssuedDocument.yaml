@@ -484,4 +484,3 @@ properties:
     nullable: true
   amount_due_discount:
     type: number
-    nullable: true
