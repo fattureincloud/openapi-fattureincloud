@@ -7,7 +7,7 @@ properties:
   entity:
     $ref: ./Entity.yaml
   type:
-    $ref: ./IssuedDocumentType.yaml
+    $ref: ../enums/IssuedDocumentType.yaml
   number:
     type: integer
     description: |-
@@ -92,24 +92,9 @@ properties:
       [Only if e_invoice=true]
     properties:
       vat_kind:
-        type: string
-        nullable: true
-        description: Vat kind (esigibilità IVA).
-        default: null
-        enum:
-          - null
-          - I
-          - D
-          - S
+        $ref: ../enums/VatKind.yaml
       original_document_type:
-        type: string
-        nullable: true
-        description: Type of document followed by the the current invoice.
-        default: ordine
-        enum:
-          - ordine
-          - contratto
-          - convenzione
+        $ref: ../enums/OriginalDocumentType.yaml
       od_number:
         type: string
         nullable: true
@@ -231,13 +216,7 @@ properties:
           description: Payment amount.
           example: 1.45
         status:
-          type: string
-          description: Payment status.
-          default: not_paid
-          enum:
-            - not_paid
-            - paid
-            - reversed
+          $ref: ../enums/IssuedDocumentStatus.yaml
         payment_account:
           $ref: ./PaymentAccount.yaml
         paid_date:
@@ -267,13 +246,7 @@ properties:
     type: boolean
     description: Show the payment method details on the document.
   show_totals:
-    type: string
-    description: Totals mode.
-    default: all
-    enum:
-      - none
-      - nets
-      - all
+    $ref: ../enums/ShowTotalsMode.yaml
   v_margins:
     type: integer
     description: Vertical margins.

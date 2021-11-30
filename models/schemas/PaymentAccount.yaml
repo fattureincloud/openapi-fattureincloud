@@ -10,12 +10,7 @@ properties:
     description: Payment account name.
     example: Conto Banca Intesa
   type:
-    type: string
-    default: standard
-    enum:
-      - standard
-      - bank
-    description: Payment account type.
+    $ref: ../enums/PaymentAccountType.yaml
   iban:
     type: string
     nullable: true

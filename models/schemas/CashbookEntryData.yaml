@@ -12,20 +12,9 @@ properties:
     type: string
     description: Cashbook description.
   kind:
-    type: string
-    enum:
-      - cashbook
-      - issued_document
-      - received_document
-      - tax
-      - receipt
-    description: Cashbook kind.
+    $ref: ../enums/CashbookEntryKind.yaml
   type:
-    type: string
-    enum:
-      - in
-      - out
-    description: Cashbook type.
+    $ref: ../enums/CashbookEntryType.yaml
   entity_name:
     type: string
     description: Entity name.

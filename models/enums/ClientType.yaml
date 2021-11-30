@@ -1,0 +1,10 @@
+title: ClientType
+type: string
+nullable: true
+default: null
+enum:
+  - company
+  - person
+  - pa
+  - condo
+description: Client type.

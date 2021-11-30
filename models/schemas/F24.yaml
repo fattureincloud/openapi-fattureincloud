@@ -10,12 +10,7 @@ properties:
     example: '2018-02-12'
     description: Due date.
   status:
-    type: string
-    enum:
-      - paid
-      - not_paid
-      - reversed
-    description: Tax status.
+    $ref: ../enums/F24Status.yaml
   payment_account:
     $ref: ./PaymentAccount.yaml
   amount:

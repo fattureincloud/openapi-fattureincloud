@@ -1,0 +1,7 @@
+title: PaymentAccountType
+type: string
+default: standard
+enum:
+  - standard
+  - bank
+description: Payment account type.
