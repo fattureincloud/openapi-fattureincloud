@@ -130,9 +130,11 @@ properties:
         due_date:
           type: string
           description: Due date
+          format: date
         paid_date:
           type: string
           description: Paid date
+          format: date
         payment_terms:
           type: object
           properties:
