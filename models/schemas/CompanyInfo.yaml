@@ -15,48 +15,6 @@ properties:
     example: mario@rossi-example.it
   type:
     $ref: ../enums/CompanyType.yaml
-  fic:
-    type: boolean
-    description: Determine if the company has a FIC account.
-  fic_plan_name:
-    $ref: ../enums/FattureInCloudPlanType.yaml
-  fic_license_type:
-    type: string
-    description: 'Company FIC account plan. '
-  fic_payment_subject:
-    type: string
-    description: Company FIC account payment subject.
-  fic_license_expire:
-    type: string
-    description: Company FIC license expiration date.
-    format: date
-    nullable: true
-  fic_signup_date:
-    type: string
-    description: FIC account sign up date.
-    format: date
-  use_fic:
-    type: boolean
-    description: 'Determine if the FIC account is actually used. If type="company" this is always true; if type="accountant" it can be true or false. If false, it means that the accountant uses FIC only to control other companies and not to control itself.'
-  fic_need_setup:
-    type: boolean
-    description: Indicate that the initial setup for FIC is required.
-  dic:
-    type: boolean
-    description: Determine if the company has a DIC account.
-  dic_plan:
-    $ref: ../enums/DipendentiInCloudPlanType.yaml
-  dic_license_expire:
-    type: string
-    description: Company FIC license expiration date.
-    format: date
-    nullable: true
-  use_dic:
-    type: boolean
-    description: 'Determine if the DIC account is actually used. If type=“company” this is always true; if type=“accountant” it can be true or false. If false, it means that the accountant uses DIC only to control other companies and not to control itself.'
-  dic_need_setup:
-    type: boolean
-    description: Indicate that the initial setup for DIC is required.
   access_info:
     type: object
     properties:
@@ -129,30 +87,10 @@ properties:
             $ref: ./FunctionStatus.yaml
           ts_pay:
             $ref: ./FunctionStatus.yaml
-  can_use_coupon:
-    type: boolean
-    description: Determine if a coupon can be used.
   accountant_id:
     type: integer
     nullable: true
     description: Accountant unique identifier.
-  dic_license_type:
-    type: string
-    description: Company DIC account license type.
-    nullable: true
-  dic_payment_subject:
-    type: string
-    description: Company DIC account payment subject.
-  dic_plan_name:
-    type: string
-    description: Company DIC account plan name.
-  dic_signup_date:
-    type: string
-    description: DIC account sign up date.
-    format: date
-    nullable: true
   is_accountant:
     type: boolean
     description: Determine if the logged account is an accountant.
-  registration_service:
-    type: string
