@@ -1,0 +1,6 @@
+title: CompanyType
+type: string
+description: Company type.
+enum:
+  - company
+  - accountant

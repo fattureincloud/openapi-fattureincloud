@@ -1,0 +1,11 @@
+title: SupplierType
+type: string
+nullable: true
+default: null
+enum:
+  - null
+  - company
+  - person
+  - pa
+  - condo
+description: Supplier type.

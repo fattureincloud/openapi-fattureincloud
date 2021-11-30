@@ -2,73 +2,73 @@ type: object
 description: Set of permissions.
 properties:
   fic_situation:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   fic_clients:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   fic_suppliers:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   fic_products:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   fic_issued_documents:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   fic_received_documents:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   fic_receipts:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   fic_calendar:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   fic_archive:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   fic_taxes:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   fic_stock:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   fic_cashbook:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   fic_settings:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   fic_emails:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   fic_export:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   fic_import_bankstatements:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   fic_import_clients_suppliers:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   fic_import_issued_documents:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   fic_import_products:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   fic_recurring:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   fic_riba:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   dic_employees:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   dic_settings:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   dic_timesheet:
-    $ref: ./PermissionLevel.yaml
+    $ref: ../enums/PermissionLevel.yaml
   fic_issued_documents_detailed:
     type: object
     properties:
       quotes:
-        $ref: ./PermissionLevel.yaml
+        $ref: ../enums/PermissionLevel.yaml
       proformas:
-        $ref: ./PermissionLevel.yaml
+        $ref: ../enums/PermissionLevel.yaml
       invoices:
-        $ref: ./PermissionLevel.yaml
+        $ref: ../enums/PermissionLevel.yaml
       receipts:
-        $ref: ./PermissionLevel.yaml
+        $ref: ../enums/PermissionLevel.yaml
       delivery_notes:
-        $ref: ./PermissionLevel.yaml
+        $ref: ../enums/PermissionLevel.yaml
       credit_notes:
-        $ref: ./PermissionLevel.yaml
+        $ref: ../enums/PermissionLevel.yaml
       orders:
-        $ref: ./PermissionLevel.yaml
+        $ref: ../enums/PermissionLevel.yaml
       work_reports:
-        $ref: ./PermissionLevel.yaml
+        $ref: ../enums/PermissionLevel.yaml
       supplier_orders:
-        $ref: ./PermissionLevel.yaml
+        $ref: ../enums/PermissionLevel.yaml
       self_invoices:
-        $ref: ./PermissionLevel.yaml
+        $ref: ../enums/PermissionLevel.yaml

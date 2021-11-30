@@ -8,8 +8,6 @@ info:
 
     The Fatture in Cloud API is based on REST, and makes possible to interact
     with the user related data prior authorization via OAuth2 protocol.
-
-
   contact:
     name: Fatture in Cloud
     url: https://www.fattureincloud.it
@@ -18,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.0.3
+  version: 2.0.4
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -53,7 +51,7 @@ paths:
       parameters: []
   /user/companies:
     get:
-      summary: Get User Companies
+      summary: List User Companies
       tags:
         - User
       responses:

@@ -1,0 +1,7 @@
+title: DefaultPaymentTermsType
+type: string
+default: standard
+enum:
+  - standard
+  - end_of_month
+description: Default payment terms.
