@@ -13,7 +13,7 @@ properties:
     example: Rossi S.r.l.
     description: Supplier name.
   type:
-    $ref: ../enums/CompanyType.yaml
+    $ref: ../enums/SupplierType.yaml
   first_name:
     type: string
     description: Supplier first name.
