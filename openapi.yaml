@@ -2714,12 +2714,6 @@ paths:
         - $ref: '#/components/parameters/fieldset'
       security:
         - OAuth2AuthenticationCodeFlow: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties: {}
     put:
       summary: Modify Payment Account
       tags:
@@ -2842,15 +2836,16 @@ paths:
             examples:
               example-1:
                 value:
-                  id: 0
-                  value: 22
-                  description: Non imponibile art. 123
-                  notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
-                  e_invoice: true
-                  ei_type: 2
-                  ei_description: string
-                  editable: true
-                  is_disabled: true
+                  data:
+                    id: 0
+                    value: 22
+                    description: Non imponibile art. 123
+                    notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
+                    e_invoice: true
+                    ei_type: 2
+                    ei_description: string
+                    editable: true
+                    is_disabled: true
     delete:
       summary: Delete Vat Type
       tags:
@@ -8190,16 +8185,17 @@ components:
             $ref: ./models/responses/CreateVatTypeResponse.yaml
           examples:
             example-1:
-              data:
-                id: 0
-                value: 22
-                description: Non imponibile art. 123
-                notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
-                e_invoice: true
-                ei_type: 2
-                ei_description: string
-                editable: true
-                is_disabled: true
+              value:
+                data:
+                  id: 0
+                  value: 22
+                  description: Non imponibile art. 123
+                  notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
+                  e_invoice: true
+                  ei_type: 2
+                  ei_description: string
+                  editable: true
+                  is_disabled: true
     GetVatTypeResponse:
       description: Example response
       content:
@@ -8208,16 +8204,17 @@ components:
             $ref: ./models/responses/GetVatTypeResponse.yaml
           examples:
             example-1:
-              data:
-                id: 0
-                value: 22
-                description: Non imponibile art. 123
-                notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
-                e_invoice: true
-                ei_type: 2
-                ei_description: string
-                editable: true
-                is_disabled: true
+              value:
+                data:
+                  id: 0
+                  value: 22
+                  description: Non imponibile art. 123
+                  notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
+                  e_invoice: true
+                  ei_type: 2
+                  ei_description: string
+                  editable: true
+                  is_disabled: true
     ModifyVatTypeResponse:
       description: Example response
       content:
@@ -8226,14 +8223,16 @@ components:
             $ref: ./models/responses/ModifyVatTypeResponse.yaml
           examples:
             example-1:
-              id: 0
-              value: 22
-              description: Non imponibile art. 123
-              notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
-              e_invoice: true
-              ei_type: 2
-              ei_description: string
-              editable: true
-              is_disabled: true
+              value:
+                data:
+                  id: 0
+                  value: 22
+                  description: Non imponibile art. 123
+                  notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
+                  e_invoice: true
+                  ei_type: 2
+                  ei_description: string
+                  editable: true
+                  is_disabled: true
 security:
   - OAuth2AuthenticationCodeFlow: []
