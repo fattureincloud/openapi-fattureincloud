@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.0.7 (2021-12-02)
+
+
+### Bug Fixes
+
+* removed options from create issued document request ([cf546c2](https://github.com/fattureincloud/openapi-fattureincloud/commit/cf546c2bbbbceaa7da46a6ef21c5ddaf8c7ca655))
+
 ### 2.0.6 (2021-12-01)
 
 
