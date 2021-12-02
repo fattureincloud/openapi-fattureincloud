@@ -8,7 +8,7 @@ properties:
     maximum: 100
     minimum: 0
     type: number
-    description: Percentual value.
+    description: '[Read Only] Percentual value.'
     example: 22
   description:
     type: string
@@ -40,3 +40,5 @@ properties:
     description: Determine if the vat type is disabled.
 required:
   - value
+title: VatType
+description: ''

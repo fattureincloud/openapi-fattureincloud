@@ -1,6 +1,6 @@
 title: Attachment
 type: object
-description: Attachment
+description: ''
 properties:
   filename:
     type: string

@@ -1,6 +1,6 @@
 title: Receipt
 type: object
-description: Receipt
+description: ''
 properties:
   id:
     type: integer

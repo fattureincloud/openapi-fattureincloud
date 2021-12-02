@@ -11,3 +11,4 @@ properties:
   type:
     type: string
     description: Template type.
+title: DocumentTemplate

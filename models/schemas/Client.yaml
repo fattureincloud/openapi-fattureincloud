@@ -1,5 +1,5 @@
 type: object
-description: Client.
+description: ''
 properties:
   id:
     type: integer
@@ -107,3 +107,4 @@ properties:
     nullable: true
 required:
   - name
+title: Client

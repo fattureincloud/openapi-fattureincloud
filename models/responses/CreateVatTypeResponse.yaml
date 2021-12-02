@@ -1,0 +1,5 @@
+title: CreateVatTypeResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/VatType.yaml

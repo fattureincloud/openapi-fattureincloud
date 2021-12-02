@@ -9,3 +9,4 @@ properties:
     type: boolean
   entity_update:
     type: string
+title: EntityOptions

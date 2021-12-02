@@ -1,5 +1,5 @@
 type: object
-description: Supplier.
+description: ''
 properties:
   id:
     type: integer
@@ -79,3 +79,4 @@ properties:
     nullable: true
 required:
   - name
+title: Supplier

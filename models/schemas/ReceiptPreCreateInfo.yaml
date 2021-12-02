@@ -1,5 +1,5 @@
 type: object
-description: Pre-create info.
+description: ''
 properties:
   numerations:
     type: object
@@ -36,3 +36,4 @@ required:
   - payment_accounts_list
   - categories_list
   - vat_types_list
+title: ReceiptPreCreateInfo
