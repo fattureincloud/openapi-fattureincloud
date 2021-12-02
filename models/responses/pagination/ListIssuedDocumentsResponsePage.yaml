@@ -1,4 +1,4 @@
-title: ListClientsResponsePage
+title: ListIssuedDocumentResponsePage
 type: object
 properties:
   data:
