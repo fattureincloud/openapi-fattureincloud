@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.0.7 (2021-12-02)
+
+
+### Bug Fixes
+
+* removed options from create issued document request ([cf546c2](https://github.com/fattureincloud/openapi-fattureincloud/commit/cf546c2bbbbceaa7da46a6ef21c5ddaf8c7ca655))
+
+### 2.0.6 (2021-12-01)
+
+
+### Bug Fixes
+
+* fixed enum reference in supplier model ([1ce06ad](https://github.com/fattureincloud/openapi-fattureincloud/commit/1ce06ad1b27ecf58bf23f0e2d714a88319d3a652))
+
+### 2.0.5 (2021-11-30)
+
 ### 2.0.4 (2021-11-29)
 
 ### 2.0.3 (2021-11-04)
