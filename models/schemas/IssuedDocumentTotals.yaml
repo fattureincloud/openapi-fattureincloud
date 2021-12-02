@@ -65,3 +65,4 @@ required:
   - amount_due
   - is_enasarco_maximal_exceeded
   - payments_sum
+title: IssuedDocumentTotals

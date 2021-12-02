@@ -9,3 +9,4 @@ properties:
   name:
     type: string
     description: Language extended name.
+title: Language

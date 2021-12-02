@@ -45,3 +45,4 @@ properties:
     description: EInvoice payment method
 required:
   - name
+title: PaymentMethod

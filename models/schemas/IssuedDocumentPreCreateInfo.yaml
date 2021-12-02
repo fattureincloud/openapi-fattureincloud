@@ -96,3 +96,4 @@ properties:
     description: Vat types list.
     items:
       $ref: ./VatType.yaml
+title: IssuedDocumentPreCreateInfo

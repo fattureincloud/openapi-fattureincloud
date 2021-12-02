@@ -48,3 +48,4 @@ properties:
   send_copy:
     type: boolean
     description: 'If set to true, a copy of the email will be sent to the `cc_email` specified by `Get email data`'
+title: EmailSchedule

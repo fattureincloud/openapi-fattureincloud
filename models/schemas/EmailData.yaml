@@ -1,5 +1,5 @@
 type: object
-description: Email
+description: ''
 properties:
   recipient_email:
     type: string
@@ -68,3 +68,4 @@ required:
   - attachment_exists
   - accompanying_invoice_exists
   - default_attach_pdf
+title: EmailData

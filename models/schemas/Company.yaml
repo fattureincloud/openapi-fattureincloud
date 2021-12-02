@@ -1,5 +1,5 @@
 type: object
-description: Description of a company.
+description: ''
 properties:
   id:
     type: integer
@@ -30,3 +30,4 @@ properties:
   tax_code:
     type: string
     description: Tax code.
+title: Company
