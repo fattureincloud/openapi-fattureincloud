@@ -2560,7 +2560,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters: []
-  /c/{companyId}/settings/payment_methods:
+  /c/{company_id}/settings/payment_methods:
     parameters:
       - $ref: '#/components/parameters/company_id'
     post:
