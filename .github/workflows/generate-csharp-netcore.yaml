@@ -72,10 +72,10 @@ jobs:
 
           if [ "$BUMP_TYPE" == "patch" ];then
             echo 'Bumping the SDK patch version...'
-            standard-version --release-as patch
+            standard-version --skip.tag --skip.changelog --skip.commit --release-as patch
           elif [ "$BUMP_TYPE" == "openapi" ];then
             echo 'Using the openapi version...'
-            standard-version --release-as $OPENAPI_VERSION
+            standard-version --skip.tag --skip.changelog --skip.commit --release-as $OPENAPI_VERSION
           else
             echo "Something bad happened - impossible to bump C# SDK version. value=$BUMP_TYPE"
           fi
