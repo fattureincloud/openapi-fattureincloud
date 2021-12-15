@@ -94,8 +94,8 @@ jobs:
           GEM_DESCRIPTION: "\"Ruby SDK for the Fatture in Cloud API\""
           GEM_HOMEPAGE: "https://github.com/fattureincloud/fattureincloud-ruby-sdk"
           GEM_LICENSE: "MIT"
-          GEM_NAME: "fattureincloud-ruby-sdk"
-          MODULE_NAME: "FattureInCloudSdk"
+          GEM_NAME: "fattureincloud_ruby_sdk"
+          MODULE_NAME: "FattureInCloud_Ruby_Sdk"
           APP_NAME: "FattureInCloud"
 
         run: |
