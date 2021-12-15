@@ -1,6 +1,6 @@
 type: object
 nullable: true
-description: Payment account.
+description: ''
 properties:
   id:
     type: integer
@@ -27,3 +27,4 @@ properties:
     description: Determine if the payment method is virtual.
 required:
   - name
+title: PaymentAccount

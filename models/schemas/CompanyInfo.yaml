@@ -1,5 +1,5 @@
 type: object
-description: Detailed information for the company.
+description: ''
 properties:
   id:
     type: integer
@@ -94,3 +94,4 @@ properties:
   is_accountant:
     type: boolean
     description: Determine if the logged account is an accountant.
+title: CompanyInfo

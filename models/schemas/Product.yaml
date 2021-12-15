@@ -69,3 +69,4 @@ properties:
     nullable: true
 required:
   - name
+title: Product

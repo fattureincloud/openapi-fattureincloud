@@ -166,3 +166,4 @@ properties:
     description: Uploaded attachement token.
 required:
   - entity
+title: ReceivedDocument

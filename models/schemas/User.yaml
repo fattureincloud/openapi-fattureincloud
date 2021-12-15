@@ -1,5 +1,5 @@
 type: object
-description: The current user.
+description: ''
 properties:
   id:
     type: integer
@@ -33,3 +33,4 @@ properties:
     nullable: true
     example: picture.jpg
     description: Picture of the user.
+title: User

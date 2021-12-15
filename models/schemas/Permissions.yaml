@@ -1,5 +1,5 @@
 type: object
-description: Set of permissions.
+description: ''
 properties:
   fic_situation:
     $ref: ../enums/PermissionLevel.yaml
@@ -72,3 +72,4 @@ properties:
         $ref: ../enums/PermissionLevel.yaml
       self_invoices:
         $ref: ../enums/PermissionLevel.yaml
+title: Permissions

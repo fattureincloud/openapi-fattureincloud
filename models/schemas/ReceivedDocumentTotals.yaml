@@ -1,5 +1,5 @@
 type: object
-description: Document Totals.
+description: ''
 properties:
   amount_net:
     type: number
@@ -28,3 +28,4 @@ required:
   - amount_gross
   - amount_due
   - payments_sum
+title: ReceivedDocumentTotals

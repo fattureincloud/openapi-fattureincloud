@@ -1,13 +1,13 @@
-name: Generate PHP SDK
+name: Generate Ruby SDK
 on:
   repository_dispatch:
-    types: [generate-php]
-    
+    types: [generate-ruby]
+
 jobs:
-  generate-php-sdk:
+  generate-ruby-sdk:
     runs-on: ubuntu-latest
     env:
-      GIT_REPO_ID: fattureincloud-php-sdk
+      GIT_REPO_ID: fattureincloud-ruby-sdk
       GIT_USER_ID: fattureincloud
     steps: 
 
@@ -17,13 +17,13 @@ jobs:
         with:
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
       
-      - id: checkout-php
-        name: Checkout PHP repo
+      - id: checkout-ruby
+        name: Checkout Ruby repo
         env:
           GIT_REPO_PATH: '${{ env.GIT_USER_ID }}/${{ env.GIT_REPO_ID }}'
         uses: actions/checkout@v2
         with:
-          path: ./generated/php
+          path: ./generated/ruby
           ref: master
           repository: ${{ env.GIT_REPO_PATH }}
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
@@ -55,20 +55,20 @@ jobs:
           sudo apt install yq -y
           cd ./scripts/
           yarn
-          cd ../generated/php/scripts
+          cd ../generated/ruby/scripts
           yarn
 
-      - id: bump-php-sdk-version
-        name: Bump PHP SDK
+      - id: bump-ruby-sdk-version
+        name: Bump Ruby SDK
         env:
           OPENAPI_VERSION: ${{ github.event.client_payload.version }}
         run: |
 
           echo "openapi_version=$OPENAPI_VERSION"
 
-          BUMP_TYPE=$(node ./scripts/sdk-version-checker.js ./generated/php/sdk-version.yaml $OPENAPI_VERSION)
+          BUMP_TYPE=$(node ./scripts/sdk-version-checker.js ./generated/ruby/sdk-version.yaml $OPENAPI_VERSION)
 
-          cd ./generated/php
+          cd ./generated/ruby
 
           if [ "$BUMP_TYPE" == "patch" ];then
             echo 'Bumping the SDK patch version...'
@@ -77,7 +77,7 @@ jobs:
             echo 'Using the openapi version...'
             standard-version --skip.tag --skip.changelog --skip.commit --release-as $OPENAPI_VERSION
           else
-            echo "Something bad happened - impossible to bump PHP SDK version. value=$BUMP_TYPE"
+            echo "Something bad happened - impossible to bump Ruby SDK version. value=$BUMP_TYPE"
           fi
 
           SDK_VERSION=$(yq e '.info.version' ./sdk-version.yaml)
@@ -86,37 +86,37 @@ jobs:
           echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
           echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
 
-      - id: generate-php-sdk
-        name: Generate PHP SDK
+      - id: generate-ruby-sdk
+        name: Generate Ruby SDK
         env:
-          PACKAGE_NAME: "\"FattureInCloud PHP SDK\""
-          INVOKER_PACKAGE: FattureInCloud
-          AUTHOR_NAME: "Fatture in Cloud API Team"
-          HOMEPAGE_URL: https://www.fattureincloud.it
+          GEM_AUTHOR: "\"Fatture in Cloud API Team\""
+          GEM_AUTHOR_EMAIL: "info@fattureincloud.it"
+          GEM_DESCRIPTION: "\"Ruby SDK for the Fatture in Cloud API\""
+          GEM_HOMEPAGE: "https://github.com/fattureincloud/fattureincloud-ruby-sdk"
+          GEM_LICENSE: "MIT"
+          GEM_NAME: "fattureincloud-ruby-sdk"
+          MODULE_NAME: "FattureInCloudSdk"
+          APP_NAME: "FattureInCloud"
+
         run: |
           SDK_VERSION=${{ env.sdk_version }}
           echo "${{ env.sdk_version }}"
+          
           RELEASE_NOTE="\"bumping version to $SDK_VERSION\""
 
-          USER_AGENT="$INVOKER_PACKAGE/${{ env.sdk_version }}/PHP-SDK"
+          USER_AGENT="$APP_NAME/${{ env.sdk_version }}/Ruby-SDK"
 
-          openapi-generator-cli generate -i ./openapi.yaml -g php -o ./generated/php/ -t ./templates/php --package-name=${PACKAGE_NAME} --invoker-package=${INVOKER_PACKAGE} --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT}
-
-          node ./scripts/postprocess-php.js clean './generated/php/lib/' './generated/php/test/'
-          node ./scripts/postprocess-php.js backport './generated/php/composer.json'
-          node ./scripts/postprocess-php.js license MIT './generated/php/composer.json'
-          node ./scripts/postprocess-php.js homepage $HOMEPAGE_URL './generated/php/composer.json'
-          node ./scripts/postprocess-php.js authors 0 "${AUTHOR_NAME}" $HOMEPAGE_URL './generated/php/composer.json'
+          openapi-generator-cli generate -i ./openapi.yaml -g ruby -o ./generated/ruby/  --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=gemVersion=${SDK_VERSION},gemAuthor=${GEM_AUTHOR},gemAuthorEmail=${GEM_AUTHOR_EMAIL},gemDescription=${GEM_DESCRIPTION},gemHomepage=${GEM_HOMEPAGE},gemLicense=${GEM_LICENSE},gemName=${GEM_NAME},gemSummary=${GEM_SUMMARY},moduleName=${MODULE_NAME}
 
       - id: create-pr
         name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          path: ./generated/php
+          path: ./generated/ruby
           branch: "devel-${{ env.sdk_version }}"
           token: "${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}"
           delete-branch: true
           base: master
-          commit-message:  "chore: bumping version to ${{ env.sdk_version }}"
+          commit-message: "chore: bumping version to ${{ env.sdk_version }}"
           title: "Updating SDK to ${{ env.sdk_version }}"
-          body: "New SDK verson ${{ env.sdk_version }} generated by Github Action from OpenAPI Spec ${{ env.openapi_version }}"
+          body: "New SDK verson ${{ env.sdk_version }} generated by Github Action from OpenAPI Spec ${{ env.openapi_version }}"   

@@ -2560,7 +2560,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters: []
-  /c/{companyId}/settings/payment_methods:
+  /c/{company_id}/settings/payment_methods:
     parameters:
       - $ref: '#/components/parameters/company_id'
     post:
@@ -2594,13 +2594,12 @@ paths:
                     default_payment_account:
                       id: 12345
                       name: conto banca SP
-  /c/{companyId}/settings/payment_method/{paymentMethodId}:
+  /c/{company_id}/settings/payment_methods/{payment_method_id}:
     parameters:
       - $ref: '#/components/parameters/company_id'
       - schema:
           type: integer
-          example: 1
-        name: paymentMethodId
+        name: payment_method_id
         in: path
         required: true
         description: The Referred Payment Method Id.
@@ -2662,7 +2661,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - settings:a
-  /c/{companyId}/settings/payment_accounts:
+  /c/{company_id}/settings/payment_accounts:
     parameters:
       - $ref: '#/components/parameters/company_id'
     post:
@@ -2692,13 +2691,12 @@ paths:
                     iban: IT17Q0051343200000003497636
                     sia: T1234
                     virtual: false
-  /c/{companyId}/settings/payment_accounts/{paymentAccountId}:
+  /c/{company_id}/settings/payment_accounts/{payment_account_id}:
     parameters:
       - $ref: '#/components/parameters/company_id'
       - schema:
-          type: string
-          example: '1'
-        name: paymentAccountId
+          type: integer
+        name: payment_account_id
         in: path
         required: true
         description: The Referred Payment Account Id.
@@ -2716,12 +2714,6 @@ paths:
         - $ref: '#/components/parameters/fieldset'
       security:
         - OAuth2AuthenticationCodeFlow: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties: {}
     put:
       summary: Modify Payment Account
       tags:
@@ -2759,6 +2751,110 @@ paths:
           description: OK
       operationId: deletePaymentAccount
       description: Deletes the specified payment account.
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - settings:a
+  /c/{company_id}/settings/vat_types:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+    post:
+      summary: Create Vat Type
+      tags:
+        - Settings
+      responses:
+        '200':
+          $ref: '#/components/responses/CreateVatTypeResponse'
+      operationId: createVatType
+      description: Creates a vat type.
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - settings:a
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/CreateVatTypeRequest.yaml
+            examples:
+              example-1:
+                value:
+                  data:
+                    id: 0
+                    value: 22
+                    description: Non imponibile art. 123
+                    notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
+                    e_invoice: true
+                    ei_type: 2
+                    ei_description: string
+                    editable: true
+                    is_disabled: true
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+          multipart/form-data:
+            schema:
+              type: object
+              properties: {}
+        description: ''
+  /c/{company_id}/settings/vat_types/{vat_type_id}:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+      - schema:
+          type: integer
+        name: vat_type_id
+        in: path
+        required: true
+        description: The Referred Vat Type Id.
+    get:
+      summary: Get Vat Type
+      tags:
+        - Settings
+      responses:
+        '200':
+          $ref: '#/components/responses/GetVatTypeResponse'
+      operationId: getVatType
+      description: Gets the specified vat type.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+    put:
+      summary: Modify Vat Type
+      tags:
+        - Settings
+      responses:
+        '200':
+          $ref: '#/components/responses/ModifyVatTypeResponse'
+      operationId: modifyVatType
+      description: Modifies the specified vat type.
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - settings:a
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/ModifyVatTypeRequest.yaml
+            examples:
+              example-1:
+                value:
+                  data:
+                    id: 0
+                    value: 22
+                    description: Non imponibile art. 123
+                    notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
+                    e_invoice: true
+                    ei_type: 2
+                    ei_description: string
+                    editable: true
+                    is_disabled: true
+    delete:
+      summary: Delete Vat Type
+      tags:
+        - Settings
+      responses:
+        '200':
+          description: OK
+      operationId: deleteVatType
+      description: Deletes the specified vat type.
       security:
         - OAuth2AuthenticationCodeFlow:
             - settings:a
@@ -8081,5 +8177,62 @@ components:
                   iban: IT17Q0051343200000003497636
                   sia: T1234
                   virtual: false
+    CreateVatTypeResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/CreateVatTypeResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 0
+                  value: 22
+                  description: Non imponibile art. 123
+                  notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
+                  e_invoice: true
+                  ei_type: 2
+                  ei_description: string
+                  editable: true
+                  is_disabled: true
+    GetVatTypeResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetVatTypeResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 0
+                  value: 22
+                  description: Non imponibile art. 123
+                  notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
+                  e_invoice: true
+                  ei_type: 2
+                  ei_description: string
+                  editable: true
+                  is_disabled: true
+    ModifyVatTypeResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ModifyVatTypeResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 0
+                  value: 22
+                  description: Non imponibile art. 123
+                  notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
+                  e_invoice: true
+                  ei_type: 2
+                  ei_description: string
+                  editable: true
+                  is_disabled: true
 security:
   - OAuth2AuthenticationCodeFlow: []

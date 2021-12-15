@@ -1,7 +1,6 @@
-description: |
-  MonthlyTotal
+description: ''
 type: object
-title: ''
+title: MonthlyTotal
 properties:
   net:
     type: number
