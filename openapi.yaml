@@ -2560,7 +2560,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters: []
-  /c/{companyId}/settings/payment_methods:
+  /c/{company_id}/settings/payment_methods:
     parameters:
       - $ref: '#/components/parameters/company_id'
     post:
@@ -2594,7 +2594,7 @@ paths:
                     default_payment_account:
                       id: 12345
                       name: conto banca SP
-  /c/{company_id}/settings/payment_method/{payment_method_id}:
+  /c/{company_id}/settings/payment_methods/{payment_method_id}:
     parameters:
       - $ref: '#/components/parameters/company_id'
       - schema:
@@ -2661,7 +2661,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - settings:a
-  /c/{companyId}/settings/payment_accounts:
+  /c/{company_id}/settings/payment_accounts:
     parameters:
       - $ref: '#/components/parameters/company_id'
     post:
