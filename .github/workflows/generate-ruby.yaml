@@ -18,7 +18,7 @@ jobs:
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
       
       - id: checkout-ruby
-        name: Checkout RUBY repo
+        name: Checkout Ruby repo
         env:
           GIT_REPO_PATH: '${{ env.GIT_USER_ID }}/${{ env.GIT_REPO_ID }}'
         uses: actions/checkout@v2
@@ -33,6 +33,10 @@ jobs:
         run: |
           git config --global user.email "info@fattureincloud.it"
           git config --global user.name "fattureincloud-bot"
+
+      - id: setup-node
+        name: Setup Node.js
+        uses: actions/setup-node@v2
 
       - id: setup-java
         name: Setup Java
@@ -55,7 +59,7 @@ jobs:
           yarn
 
       - id: bump-ruby-sdk-version
-        name: Bump RUBY SDK
+        name: Bump Ruby SDK
         env:
           OPENAPI_VERSION: ${{ github.event.client_payload.version }}
         run: |
@@ -73,7 +77,7 @@ jobs:
             echo 'Using the openapi version...'
             standard-version --skip.tag --skip.changelog --skip.commit --release-as $OPENAPI_VERSION
           else
-            echo "Something bad happened - impossible to bump RUBY SDK version. value=$BUMP_TYPE"
+            echo "Something bad happened - impossible to bump Ruby SDK version. value=$BUMP_TYPE"
           fi
 
           SDK_VERSION=$(yq e '.info.version' ./sdk-version.yaml)
@@ -83,7 +87,7 @@ jobs:
           echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
 
       - id: generate-ruby-sdk
-        name: Generate RUBY SDK
+        name: Generate Ruby SDK
         env:
           GEM_AUTHOR: "\"Fatture in Cloud API Team\""
           GEM_AUTHOR_EMAIL: "info@fattureincloud.it"
@@ -92,6 +96,7 @@ jobs:
           GEM_LICENSE: "MIT"
           GEM_NAME: "fattureincloud-ruby-sdk"
           MODULE_NAME: "FattureInCloudSdk"
+          APP_NAME: "FattureInCloud"
 
         run: |
           SDK_VERSION=${{ env.sdk_version }}

@@ -95,6 +95,7 @@ jobs:
           PACKAGE_COMPANY: "\"Fatture in Cloud\""
           TARGET_FRAMEWORK: "\"netstandard2.0\""
           TEST_TARGET_FRAMEWORK: "\"netcoreapp3.1;net5.0\""
+          APP_NAME: "FattureInCloud"
         run: |
           SDK_VERSION=${{ env.sdk_version }}
           echo "${{ env.sdk_version }}"
