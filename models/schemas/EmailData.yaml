@@ -1,9 +1,11 @@
 type: object
 description: ''
+title: EmailData
 properties:
   recipient_email:
     type: string
     description: Recipient's email
+    nullable: true
   default_sender_email:
     type: object
     description: Default sender email. (Other emails can be found in `sender_emails_list`)
@@ -68,4 +70,3 @@ required:
   - attachment_exists
   - accompanying_invoice_exists
   - default_attach_pdf
-title: EmailData

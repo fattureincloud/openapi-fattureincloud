@@ -1,4 +1,5 @@
 type: object
+title: IssuedDocumentTotals
 properties:
   amount_net:
     type: number
@@ -44,6 +45,7 @@ properties:
     description: Total amount due.
   is_enasarco_maximal_exceeded:
     type: boolean
+    nullable: true
   payments_sum:
     type: number
     description: Payments sum.
@@ -63,6 +65,4 @@ required:
   - amount_vat
   - amount_gross
   - amount_due
-  - is_enasarco_maximal_exceeded
   - payments_sum
-title: IssuedDocumentTotals
