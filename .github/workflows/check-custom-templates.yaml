@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        sdk: ['php', 'javascript', 'csharp-netcore', 'ruby']
+        sdk: ['php', 'javascript', 'csharp-netcore', 'ruby', 'java']
     steps: 
 
       - id: checkout
