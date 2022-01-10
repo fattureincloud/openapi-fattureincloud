@@ -1,0 +1,9 @@
+title: AttachmentData
+type: object
+properties:
+  attachment_token:
+    type: string
+    example: YmMyNWYxYzIwMTU3N2Y4ZGE3ZjZiMzg5OWY0ODNkZDQveXl5LmRvYw
+    description: Uploaded attachment token.
+required:
+  - attachment_token
