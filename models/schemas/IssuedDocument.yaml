@@ -1,5 +1,6 @@
 title: IssuedDocument
 type: object
+description: ''
 properties:
   id:
     type: integer
@@ -52,6 +53,11 @@ properties:
     minimum: 0
     type: number
     description: '"Cassa previdenziale" percentual value'
+  cassa2:
+    maximum: 100
+    minimum: 0
+    type: number
+    description: '"Cassa previdenziale 2" percentual value'
   withholding_tax:
     maximum: 100
     minimum: 0
@@ -450,15 +456,28 @@ properties:
   amount_global_cassa_taxable:
     type: number
     nullable: true
+    description: |-
+      [Can be set only if global_cassa_taxable is NULL]
+      Global cassa taxable amount
   amount_cassa_taxable:
     type: number
     nullable: true
+    description: |-
+      [Can be set only if cassa_taxable is NULL]
+      Cassa2 taxable amount
   amount_cassa2:
     type: number
     nullable: true
+    description: |-
+      [Read Only]
+      Cassa amount.
+    readOnly: true
   amount_cassa2_taxable:
     type: number
     nullable: true
+    description: |-
+      [Can be set only if cassa2_taxable is NULL]
+      Cassa2 taxable amount
   amount_withholding_tax_taxable:
     type: number
     nullable: true
@@ -485,3 +504,18 @@ properties:
     nullable: true
   amount_due_discount:
     type: number
+  cassa_taxable:
+    type: number
+    minimum: 0
+    maximum: 100
+    description: Cassa taxable percentage
+  cassa2_taxable:
+    type: number
+    minimum: 0
+    maximum: 100
+    description: Cassa2 taxable percentage
+  global_cassa_taxable:
+    type: number
+    minimum: 0
+    maximum: 100
+    description: Global cassa taxable percentage
