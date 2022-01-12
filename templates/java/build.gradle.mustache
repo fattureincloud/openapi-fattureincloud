@@ -3,6 +3,7 @@ plugins {
     id 'maven-publish'
     id 'signing'
     id "com.diffplug.spotless" version "6.1.2"
+    id "io.github.gradle-nexus.publish-plugin" version "1.1.0"
 }
 
 group = '{{groupId}}'
@@ -86,7 +87,7 @@ publishing {
             }
         }
     }
-    repositories {
+    /*repositories {
         maven {
             name = "OSSRH"
             url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
@@ -94,6 +95,17 @@ publishing {
                 username = System.getenv("OSSRH_USERNAME")
                 password = System.getenv("OSSRH_PASSWORD")
             }
+        }
+    }*/
+}
+
+nexusPublishing {
+    repositories {
+        sonatype {
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+            username = System.getenv("OSSRH_USERNAME")
+            password = System.getenv("OSSRH_PASSWORD")
         }
     }
 }
