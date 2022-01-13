@@ -1,5 +1,6 @@
 title: IssuedDocument
 type: object
+description: ''
 properties:
   id:
     type: integer
@@ -26,6 +27,9 @@ properties:
       Date of the document
       [If not specified, today date is used]
     format: date
+  year:
+    type: integer
+    description: Invoice year.
   currency:
     $ref: ./Currency.yaml
   language:
@@ -52,6 +56,57 @@ properties:
     minimum: 0
     type: number
     description: '"Cassa previdenziale" percentual value'
+  amount_cassa:
+    type: number
+    description: |-
+      [Read Only]
+      Cassa amount.
+    readOnly: true
+  cassa_taxable:
+    type: number
+    minimum: 0
+    maximum: 100
+    description: Cassa taxable percentage
+  amount_cassa_taxable:
+    type: number
+    nullable: true
+    description: |-
+      [Can be set only if cassa_taxable is NULL]
+      Cassa2 taxable amount
+  cassa2:
+    maximum: 100
+    minimum: 0
+    type: number
+    description: '"Cassa previdenziale 2" percentual value'
+  amount_cassa2:
+    type: number
+    nullable: true
+    description: |-
+      [Read Only]
+      Cassa amount.
+    readOnly: true
+  cassa2_taxable:
+    type: number
+    minimum: 0
+    maximum: 100
+    description: Cassa2 taxable percentage
+  amount_cassa2_taxable:
+    type: number
+    nullable: true
+    description: |-
+      [Can be set only if cassa2_taxable is NULL]
+      Cassa2 taxable amount
+  global_cassa_taxable:
+    type: number
+    minimum: 0
+    maximum: 100
+    description: Global cassa taxable percentage
+  amount_global_cassa_taxable:
+    type: number
+    nullable: true
+    description: |-
+      [Can be set only if global_cassa_taxable is NULL]
+      Global cassa taxable amount
   withholding_tax:
     maximum: 100
     minimum: 0
@@ -77,9 +132,11 @@ properties:
   use_split_payment:
     type: boolean
     default: false
+    description: Use split payment
   use_gross_prices:
     type: boolean
     default: false
+    description: Use gross prices
   e_invoice:
     type: boolean
     description: Indicates if this is an e-invoice.
@@ -137,6 +194,26 @@ properties:
         format: date
         description: Invoice date.
         nullable: true
+  ei_cassa_type:
+    type: string
+    nullable: true
+    description: Einvoice cassa type
+  ei_cassa2_type:
+    type: string
+    nullable: true
+    description: Einvoice cassa2 type
+  ei_withholding_tax_causal:
+    type: string
+    nullable: true
+    description: Einvoice withholding tax causal
+  ei_other_withholding_tax_type:
+    type: string
+    nullable: true
+    description: Einvoice other withholding tax type
+  ei_other_withholding_tax_causal:
+    type: string
+    nullable: true
+    description: Einvoice other withholding tax causal
   items_list:
     type: array
     nullable: true
@@ -239,6 +316,9 @@ properties:
   h_margins:
     type: integer
     description: Horizontal margins.
+  v_margins:
+    type: integer
+    description: Vertical margins.
   show_payments:
     type: boolean
     description: Shows the expiration dates of the payments on the document.
@@ -247,15 +327,18 @@ properties:
     description: Show the payment method details on the document.
   show_totals:
     $ref: ../enums/ShowTotalsMode.yaml
-  v_margins:
-    type: integer
-    description: Vertical margins.
   show_paypal_button:
     type: boolean
     default: false
+    description: Show paypal button
   show_notification_button:
     type: boolean
     default: false
+    description: Show notification button
+  show_tspay_button:
+    type: boolean
+    description: Show ts pay button.
+    nullable: true
   delivery_note:
     type: boolean
   accompanying_invoice:
@@ -334,30 +417,43 @@ properties:
       [Read Only]
       Total gross amount (totale documento).
     readOnly: true
+  amount_due_discount:
+    type: number
+    description: Amount due discount
   amount_rivalsa:
     type: number
     description: |-
       [Read Only]
       Rivalsa amount.
     readOnly: true
-  amount_cassa:
+  amount_rivalsa_taxable:
     type: number
-    description: |-
-      [Read Only]
-      Cassa amount.
-    readOnly: true
+    nullable: true
+    description: Taxable rivalsa amount
   amount_withholding_tax:
     type: number
     description: |-
       [Read Only]
       Withholding tax amount (ritenuta d'acconto).
     readOnly: true
+  amount_withholding_tax_taxable:
+    type: number
+    nullable: true
+    description: Taxable withholding tax amount
   amount_other_withholding_tax:
     type: number
     description: |-
       [Read Only]
       Other withholding tax amount (altra ritenuta).
     readOnly: true
+  amount_other_withholding_tax_taxable:
+    type: number
+    nullable: true
+    description: Taxable other withholding tax amount
+  amount_enasarco_taxable:
+    type: number
+    nullable: true
+    description: Taxable enasarco amount
   extra_data:
     type: object
     nullable: true
@@ -437,51 +533,3 @@ properties:
     type: object
     nullable: true
     description: Advanced raw attributes for e-invoices.
-  show_tspay_button:
-    type: boolean
-    description: Show ts pay button.
-    nullable: true
-  year:
-    type: integer
-    description: Invoice year.
-  amount_rivalsa_taxable:
-    type: number
-    nullable: true
-  amount_global_cassa_taxable:
-    type: number
-    nullable: true
-  amount_cassa_taxable:
-    type: number
-    nullable: true
-  amount_cassa2:
-    type: number
-    nullable: true
-  amount_cassa2_taxable:
-    type: number
-    nullable: true
-  amount_withholding_tax_taxable:
-    type: number
-    nullable: true
-  amount_enasarco_taxable:
-    type: number
-    nullable: true
-  amount_other_withholding_tax_taxable:
-    type: number
-    nullable: true
-  ei_cassa_type:
-    type: string
-    nullable: true
-  ei_cassa2_type:
-    type: string
-    nullable: true
-  ei_withholding_tax_causal:
-    type: string
-    nullable: true
-  ei_other_withholding_tax_type:
-    type: string
-    nullable: true
-  ei_other_withholding_tax_causal:
-    type: string
-    nullable: true
-  amount_due_discount:
-    type: number
