@@ -50,8 +50,8 @@ jobs:
           echo "Generating Postman collection..."
           openapi2postmanv2 -s ./openapi-resolved.yaml -o ./postman/fic-api.json -p -O folderStrategy=Tags,includeAuthInfoInExample=false
 
-        # echo "Removing single file..."
-        # rm ./openapi-resolved.yaml
+          echo "Removing single file..."
+          rm ./openapi-resolved.yaml
 
       - id: create-pr
         name: Create Pull Request
