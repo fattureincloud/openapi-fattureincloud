@@ -104,7 +104,7 @@ jobs:
 
           node ./scripts/preprocess-spec.js
 
-          openapi-generator-cli generate -i ./openapi.yaml -g javascript -o ./generated/javascript/ -t ./templates/javascript --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=projectVersion=$SDK_VERSION,projectName=$PROJECT_NAME,projectDescription=$PROJECT_DESCRIPTION,moduleName=$MODULE_NAME,usePromises=true
+          openapi-generator-cli generate -i ./openapi.yaml -g javascript -o ./generated/javascript/ -t ./templates/javascript --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=projectVersion=$SDK_VERSION,projectName=$PROJECT_NAME,projectDescription=$PROJECT_DESCRIPTION,moduleName=$MODULE_NAME,usePromises=true,useInheritance=false
 
           node ./scripts/postprocess-javascript.js nyc './generated/javascript/package.json'
 
