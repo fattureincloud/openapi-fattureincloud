@@ -86,7 +86,7 @@ class {{classname}} {{#parent}}{{^parentModel}}{{#vendorExtensions.x-is-array}}e
 {{#useInheritance}}{{#interfaceModels}}// Implement {{classname}} interface:
 {{#allVars}}{{#emitJSDoc}}/**{{#description}}
  * {{{.}}}{{/description}}
- * @member {{=< >=}}<&vendorExtensions.x-jsdoc-type>}<={{ }}=> {{baseName}}{{#defaultValue}}
+ * @member {{=< >=}}{<&vendorExtensions.x-jsdoc-type>}<={{ }}=> {{baseName}}{{#defaultValue}}
  * @default {{{.}}}{{/defaultValue}}
  */{{/emitJSDoc}}
 {{classname}}.prototype['{{baseName}}'] = {{{defaultValue}}}{{^defaultValue}}{{=< >=}}<&vendorExtensions.x-jsdoc-type><={{ }}=>.prototype{{/defaultValue}};
