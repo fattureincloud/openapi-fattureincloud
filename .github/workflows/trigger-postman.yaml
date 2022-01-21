@@ -2,7 +2,7 @@ name: Trigger Postman Collection Generation
 on: [ workflow_dispatch ]
 
 jobs:
-  bump-version:
+  trigger-postman:
     runs-on: ubuntu-latest
 
     steps:
