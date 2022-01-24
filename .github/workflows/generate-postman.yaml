@@ -57,7 +57,7 @@ jobs:
         name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: "devel-${{ env.api_version }}"
+          branch: "postman-${{ env.api_version }}"
           token: "${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}"
           delete-branch: true
           base: master
