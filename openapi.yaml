@@ -1192,7 +1192,7 @@ paths:
         - Issued e-invoices
       responses:
         '200':
-          $ref: '#/components/responses/VerifyEInvoiceXmlResponse'
+          $ref: '#/components/responses/GetEInvoiceXmlResponse'
         '401':
           description: Unauthorized
         '404':
