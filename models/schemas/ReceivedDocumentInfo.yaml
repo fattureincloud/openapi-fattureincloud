@@ -1,5 +1,6 @@
 title: ReceivedDocumentInfo
 type: object
+description: ''
 properties:
   default_values:
     type: object
@@ -12,7 +13,7 @@ properties:
     description: Default values for the document items.
     properties:
       vat:
-        type: integer
+        type: number
         nullable: true
         description: Default vat value.
   countries_list:
@@ -35,4 +36,3 @@ properties:
     type: array
     items:
       $ref: ./VatType.yaml
-description: ''
