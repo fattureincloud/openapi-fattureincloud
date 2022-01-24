@@ -1,4 +1,5 @@
 type: object
+title: ReceivedDocument
 properties:
   id:
     type: integer
@@ -139,7 +140,7 @@ properties:
           type: object
           properties:
             days:
-              type: number
+              type: integer
               description: Number of days.
             type:
               type: string
@@ -166,4 +167,3 @@ properties:
     description: Uploaded attachement token.
 required:
   - entity
-title: ReceivedDocument

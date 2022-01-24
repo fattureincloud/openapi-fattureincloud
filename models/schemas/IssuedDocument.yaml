@@ -233,6 +233,9 @@ properties:
           type: string
           description: Product name.
           example: Water bottle
+        category:
+          type: string
+          description: Product category
         description:
           type: string
           description: Product description.
