@@ -1182,6 +1182,27 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters: []
+  /c/{company_id}/issued_documents/{document_id}/e_invoice/xml:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
+    get:
+      summary: Get e-invoice XML
+      tags:
+        - Issued e-invoices
+      responses:
+        '200':
+          $ref: '#/components/responses/GetEInvoiceXmlResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: getEInvoiceXml
+      description: Downloads the e-invoice in XML format.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      parameters:
+        - $ref: '#/components/parameters/include_attachment'
   /c/{company_id}/received_documents:
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -3001,6 +3022,13 @@ components:
           - passive_credit_note
           - passive_delivery_note
       description: The type of the received document.
+    include_attachment:
+      name: include_attachment
+      in: query
+      required: false
+      schema:
+        type: boolean
+      description: Include the attachment to the XML e-invoice.
   responses:
     GetUserInfoResponse:
       description: ''
@@ -8223,5 +8251,11 @@ components:
                   ei_description: string
                   editable: true
                   is_disabled: true
+    GetEInvoiceXmlResponse:
+      description: ''
+      content:
+        text/xml:
+          schema:
+            $ref: ./models/responses/GetEInvoiceXmlResponse.yaml
 security:
   - OAuth2AuthenticationCodeFlow: []
