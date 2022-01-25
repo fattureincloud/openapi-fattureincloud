@@ -1,7 +1,7 @@
 name: Generate Python SDK
 on:
   repository_dispatch:
-    types: [generate-python-legacy]
+    types: [generate-python]
 
 jobs:
   generate-python-sdk:
@@ -23,7 +23,7 @@ jobs:
           GIT_REPO_PATH: '${{ env.GIT_USER_ID }}/${{ env.GIT_REPO_ID }}'
         uses: actions/checkout@v2
         with:
-          path: ./generated/python-legacy
+          path: ./generated/python
           ref: master
           repository: ${{ env.GIT_REPO_PATH }}
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
@@ -55,7 +55,7 @@ jobs:
           sudo apt install yq -y
           cd ./scripts/
           yarn
-          cd ../generated/python-legacy/scripts
+          cd ../generated/python/scripts
           yarn
 
       - id: bump-python-sdk-version
@@ -66,9 +66,9 @@ jobs:
 
           echo "openapi_version=$OPENAPI_VERSION"
 
-          BUMP_TYPE=$(node ./scripts/sdk-version-checker.js ./generated/python-legacy/sdk-version.yaml $OPENAPI_VERSION)
+          BUMP_TYPE=$(node ./scripts/sdk-version-checker.js ./generated/python/sdk-version.yaml $OPENAPI_VERSION)
 
-          cd ./generated/python-legacy
+          cd ./generated/python
 
           if [ "$BUMP_TYPE" == "patch" ];then
             echo 'Bumping the SDK patch version...'
@@ -103,13 +103,15 @@ jobs:
 
           USER_AGENT="$APP_NAME/${{ env.sdk_version }}/Python-SDK"
 
-          openapi-generator-cli generate -i ./openapi.yaml -g python-legacy -o ./generated/python-legacy/ -t ./templates/python-legacy --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=packageVersion=${SDK_VERSION},packageName=${PACKAGE_NAME},packageUrl=${PACKAGE_URL},projectName=${PROJECT_NAME},infoName=${INFO_NAME}
+          node ./scripts/preprocess-spec.js
+
+          openapi-generator-cli generate -i ./openapi.yaml -g python -o ./generated/python/ -t ./templates/python --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=packageVersion=${SDK_VERSION},packageName=${PACKAGE_NAME},packageUrl=${PACKAGE_URL},projectName=${PROJECT_NAME},infoName=${INFO_NAME}
 
       - id: create-pr
         name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          path: ./generated/python-legacy
+          path: ./generated/python
           branch: "devel-${{ env.sdk_version }}"
           token: "${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}"
           delete-branch: true
