@@ -1,14 +1,8 @@
-required:
-  - attach_pdf
-  - body
-  - include
-  - recipient_email
-  - send_copy
-  - subject
 type: object
+title: EmailSchedule
 properties:
   sender_id:
-    type: number
+    type: integer
     description: Sender id. Required if `sender_email` is not specified
   sender_email:
     type: string
@@ -23,12 +17,12 @@ properties:
     type: string
     description: Email body
   include:
-    required:
-      - accompanying_invoice
-      - attachment
-      - delivery_note
-      - document
     type: object
+    required:
+      - document
+      - delivery_note
+      - attachment
+      - accompanying_invoice
     properties:
       document:
         type: boolean
@@ -48,4 +42,10 @@ properties:
   send_copy:
     type: boolean
     description: 'If set to true, a copy of the email will be sent to the `cc_email` specified by `Get email data`'
-title: EmailSchedule
+required:
+  - recipient_email
+  - subject
+  - body
+  - include
+  - attach_pdf
+  - send_copy

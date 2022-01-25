@@ -16,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.0.7
+  version: 2.0.8
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -1182,6 +1182,27 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters: []
+  /c/{company_id}/issued_documents/{document_id}/e_invoice/xml:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
+    get:
+      summary: Get e-invoice XML
+      tags:
+        - Issued e-invoices
+      responses:
+        '200':
+          $ref: '#/components/responses/GetEInvoiceXmlResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: getEInvoiceXml
+      description: Downloads the e-invoice in XML format.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      parameters:
+        - $ref: '#/components/parameters/include_attachment'
   /c/{company_id}/received_documents:
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -2787,14 +2808,6 @@ paths:
                     ei_description: string
                     editable: true
                     is_disabled: true
-          application/xml:
-            schema:
-              type: object
-              properties: {}
-          multipart/form-data:
-            schema:
-              type: object
-              properties: {}
         description: ''
   /c/{company_id}/settings/vat_types/{vat_type_id}:
     parameters:
@@ -3009,6 +3022,13 @@ components:
           - passive_credit_note
           - passive_delivery_note
       description: The type of the received document.
+    include_attachment:
+      name: include_attachment
+      in: query
+      required: false
+      schema:
+        type: boolean
+      description: Include the attachment to the XML e-invoice.
   responses:
     GetUserInfoResponse:
       description: ''
@@ -7722,9 +7742,6 @@ components:
                   category: Altri documenti
                   description: spesa 2
                   attachment_url: spesa2.pdf
-        application/xml:
-          schema:
-            $ref: ./models/responses/GetArchiveDocumentResponse.yaml
     ModifyArchiveDocumentResponse:
       description: The modified Archived Document
       content:
@@ -8234,5 +8251,11 @@ components:
                   ei_description: string
                   editable: true
                   is_disabled: true
+    GetEInvoiceXmlResponse:
+      description: ''
+      content:
+        text/xml:
+          schema:
+            $ref: ./models/responses/GetEInvoiceXmlResponse.yaml
 security:
   - OAuth2AuthenticationCodeFlow: []

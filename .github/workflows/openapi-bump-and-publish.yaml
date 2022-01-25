@@ -159,7 +159,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        event: ['generate-php', 'generate-javascript', 'generate-csharp-netcore', 'generate-java', 'generate-ruby', 'generate-python-legacy']
+        event: ['generate-php', 'generate-javascript', 'generate-csharp-netcore', 'generate-java', 'generate-ruby', 'generate-postman', 'generate-python-legacy']
     
     needs: bump-and-publish
     steps: 
