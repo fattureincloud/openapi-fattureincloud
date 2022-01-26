@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.0.9 (2022-01-24)
+
+
+### Bug Fixes
+
+* added get xml method ([c20fb4b](https://github.com/fattureincloud/openapi-fattureincloud/commit/c20fb4bfd5cc020565b50a9f5466e4aaf4a3d3d8))
+
 ### 2.0.8 (2022-01-10)
 
 ### 2.0.7 (2021-12-02)
