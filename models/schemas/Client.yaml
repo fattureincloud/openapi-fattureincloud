@@ -99,6 +99,12 @@ properties:
   ei_code:
     type: string
     description: E-invoice code
+  discount_highlight:
+    type: boolean
+    description: Discount Highlight.
+  default_discount:
+    type: number
+    description: Default discount.
   created_at:
     type: string
     nullable: true
