@@ -1,4 +1,144 @@
 title: Entity
-oneOf:
-  - $ref: ./Client.yaml
-  - $ref: ./Supplier.yaml
+type: object
+description: ''
+properties:
+  id:
+    type: integer
+    description: Unique identifier
+  code:
+    type: string
+    example: '123'
+    description: Code.
+  name:
+    type: string
+    example: Rossi S.r.l.
+    description: Client name
+  type:
+    $ref: ../enums/EntityType.yaml
+  first_name:
+    type: string
+    description: First name.
+  last_name:
+    type: string
+    description: Last name.
+  contact_person:
+    type: string
+  vat_number:
+    type: string
+    example: IT01234567890
+    description: Vat number
+  tax_code:
+    type: string
+    example: RSSMRA44A12E890Q
+    description: Tax code.
+  address_street:
+    type: string
+    example: 'Via dei tigli, 12'
+    description: Street address.
+  address_postal_code:
+    type: string
+    example: '24010'
+    description: Postal code.
+  address_city:
+    type: string
+    example: Bergamo
+    description: City.
+  address_province:
+    type: string
+    example: BG
+    description: Province.
+  address_extra:
+    type: string
+    description: Address extra info.
+  country:
+    type: string
+    example: Italia
+    default: Italia
+    description: Country
+  email:
+    type: string
+    example: mario.rossi@example.it
+    description: Email.
+  certified_email:
+    type: string
+    example: mario.rossi@pec.example.it
+    description: Certified email.
+  phone:
+    type: string
+    description: Phone.
+  fax:
+    type: string
+    description: Fax.
+  notes:
+    type: string
+    description: Extra notes.
+  default_vat:
+    $ref: ./VatType.yaml
+    description: |-
+      [Only for client]
+      Default vat.
+    nullable: true
+  default_payment_terms:
+    type: integer
+    example: 30
+    description: |-
+      [Only for client]
+      Default payment terms.
+    nullable: true
+  default_payment_terms_type:
+    $ref: ../enums/DefaultPaymentTermsType.yaml
+    description: |-
+      [Only for client]
+      Default payment terms type.
+    nullable: true
+  default_payment_method:
+    $ref: ./PaymentMethod.yaml
+    description: |-
+      [Only for client]
+      Default payment method.
+    nullable: true
+  bank_name:
+    type: string
+    description: |-
+      [Only for client]
+      Bank name.
+    nullable: true
+  bank_iban:
+    type: string
+    description: |-
+      [Only for client]
+      Iban.
+    nullable: true
+  bank_swift_code:
+    type: string
+    description: |-
+      [Only for client]
+      Bank swift code.
+    nullable: true
+  shipping_address:
+    type: string
+    description: |-
+      [Only for client]
+      Shipping address.
+    nullable: true
+  e_invoice:
+    type: boolean
+    description: |-
+      [Only for client]
+      Use e-invoices.
+    nullable: true
+    default: false
+  ei_code:
+    type: string
+    description: |-
+      [Only for client]
+      E-invoices code.
+    nullable: true
+  created_at:
+    type: string
+    nullable: true
+  updated_at:
+    type: string
+    nullable: true
+required:
+  - name
