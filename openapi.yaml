@@ -1175,6 +1175,19 @@ paths:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
         - $ref: '#/components/parameters/include_attachment'
+  /c/{company_id}/issued_documents/{document_id}/e_invoice/error_reason:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
+    get:
+      summary: Get EInvoice rejection reason
+      tags:
+        - Issued e-invoices
+      responses:
+        '200':
+          $ref: '#/components/responses/GetEInvoiceRejectionReason'
+      operationId: getEInvoiceRejectionReason
+      description: Get EInvoice rejection reason
   /c/{company_id}/received_documents:
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -8218,5 +8231,11 @@ components:
         text/xml:
           schema:
             $ref: ./models/responses/GetEInvoiceXmlResponse.yaml
+    GetEInvoiceRejectionReason:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetEInvoiceRejectionReason.yaml
 security:
   - OAuth2AuthenticationCodeFlow: []

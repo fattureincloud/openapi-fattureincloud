@@ -80,6 +80,7 @@ properties:
     $ref: ../enums/DefaultPaymentTermsType.yaml
   default_payment_method:
     $ref: ./PaymentMethod.yaml
+    nullable: true
   bank_name:
     type: string
     description: Client bank name.
