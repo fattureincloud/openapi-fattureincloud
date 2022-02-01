@@ -12,7 +12,7 @@ properties:
   name:
     type: string
     example: Rossi S.r.l.
-    description: Client name
+    description: Name
   type:
     $ref: ../enums/EntityType.yaml
   first_name:
