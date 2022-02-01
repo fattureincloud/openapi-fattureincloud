@@ -382,30 +382,6 @@ properties:
     type: string
     nullable: true
     description: Notes (for the attached delivery note).
-  refers_to:
-    type: object
-    description: >-
-      Link to another document (e.g. the original proforma or the quote from
-      which this has been created).
-    properties:
-      id:
-        type: integer
-        description: >-
-          Unique identifier of the linked document (can be null if the document
-          has been deleted or other reasons).
-      date:
-        type: string
-        description: Date of the linked document.
-        format: date
-      number:
-        type: integer
-        description: Number of the linked document.
-      numeration:
-        type: string
-        description: Numeration of the linked document.
-      description:
-        type: string
-        description: Description to show.
   is_marked:
     type: boolean
     description: This is true if the document is marked.
