@@ -13,11 +13,15 @@ properties:
   net_price:
     type: number
     nullable: true
-    description: 'Net sale price (used if use_gross_price is false, otherwise it''s competed automatically).'
+    description: >-
+      Net sale price (used if use_gross_price is false, otherwise it's competed
+      automatically).
   gross_price:
     type: number
     nullable: true
-    description: 'Gross sale price (used if use_gross_price is false, otherwise it''s competed automatically).'
+    description: >-
+      Gross sale price (used if use_gross_price is false, otherwise it's
+      competed automatically).
   use_gross_price:
     type: boolean
     description: Determine which price to use for calculations.

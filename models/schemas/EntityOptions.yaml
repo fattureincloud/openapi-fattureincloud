@@ -2,7 +2,7 @@ type: object
 properties:
   entity_search_fields:
     type: string
-    example: 'entity.id,tax_code,vat_number,code'
+    example: entity.id,tax_code,vat_number,code
   entity_autocomplete:
     type: boolean
   entity_create:

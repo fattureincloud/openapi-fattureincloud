@@ -2,8 +2,3 @@ title: CashbookEntry
 oneOf:
   - $ref: ./CashbookEntryIn.yaml
   - $ref: ./CashbookEntryOut.yaml
-# discriminator:
-#   propertyName: type
-#   mapping:
-#     in: ./CashbookEntryIn.yaml
-#     out: ./CashbookEntryOut.yaml
