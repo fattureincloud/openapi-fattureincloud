@@ -32,7 +32,7 @@ properties:
     description: Client tax code.
   address_street:
     type: string
-    example: 'Via dei tigli, 12'
+    example: Via dei tigli, 12
     description: Client street address.
   address_postal_code:
     type: string
@@ -80,6 +80,7 @@ properties:
     $ref: ../enums/DefaultPaymentTermsType.yaml
   default_payment_method:
     $ref: ./PaymentMethod.yaml
+    nullable: true
   bank_name:
     type: string
     description: Client bank name.
@@ -99,6 +100,12 @@ properties:
   ei_code:
     type: string
     description: E-invoice code
+  discount_highlight:
+    type: boolean
+    description: Discount Highlight.
+  default_discount:
+    type: number
+    description: Default discount.
   created_at:
     type: string
     nullable: true

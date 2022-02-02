@@ -18,7 +18,7 @@ properties:
         description: Entity name.
   date:
     type: string
-    description: 'Date of the document [If not specified, today date is used].'
+    description: Date of the document [If not specified, today date is used].
     format: date
   category:
     type: string
@@ -87,68 +87,11 @@ properties:
     type: array
     nullable: true
     items:
-      type: object
-      properties:
-        id:
-          type: integer
-        product_id:
-          type: integer
-          description: Unique identifier of the product
-        code:
-          type: string
-          description: Product code.
-        name:
-          type: string
-          description: Product name.
-        measure:
-          type: string
-          description: Product measure.
-        net_price:
-          type: number
-          description: Product net price.
-        category:
-          type: string
-          description: Product category.
-        qty:
-          type: number
-          description: Product quantity.
-        vat:
-          $ref: ./VatType.yaml
-        stock:
-          type: number
-          description: Number of items in stock
+      $ref: ./ReceivedDocumentItemsListItem.yaml
   payments_list:
     type: array
     items:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Unique identifier.
-        amount:
-          type: number
-          description: Amount of items.
-        due_date:
-          type: string
-          description: Due date
-          format: date
-        paid_date:
-          type: string
-          description: Paid date
-          format: date
-        payment_terms:
-          type: object
-          properties:
-            days:
-              type: integer
-              description: Number of days.
-            type:
-              type: string
-        status:
-          type: string
-          description: Payment status.
-        payment_account:
-          $ref: ./PaymentAccount.yaml
+      $ref: ./ReceivedDocumentPaymentsListItem.yaml
   attachment_url:
     type: string
     description: |-

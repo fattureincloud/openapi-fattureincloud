@@ -1,0 +1,12 @@
+title: SenderEmail
+type: object
+properties:
+  id:
+    type: integer
+    description: Id
+  email:
+    type: string
+    description: Email address
+required:
+  - id
+  - email

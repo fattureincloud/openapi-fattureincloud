@@ -42,7 +42,7 @@ properties:
     description: Issued document visible subject.
   rc_center:
     type: string
-    description: 'Revenue center [or cost center if type=supplier_order].'
+    description: Revenue center [or cost center if type=supplier_order].
   notes:
     type: string
     description: Issued document extra notes.
@@ -172,7 +172,10 @@ properties:
       payment_method:
         type: string
         nullable: true
-        description: 'Payment method (see https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.1/Rappresentazione-tabellare-fattura-ordinaria.pdf for the accepted values of ModalitaPagamento).'
+        description: >-
+          Payment method (see
+          https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.1/Rappresentazione-tabellare-fattura-ordinaria.pdf
+          for the accepted values of ModalitaPagamento).
       bank_name:
         type: string
         nullable: true
@@ -218,98 +221,12 @@ properties:
     type: array
     nullable: true
     items:
-      type: object
-      properties:
-        product_id:
-          type: integer
-          nullable: true
-          description: Unique identifier of the product.
-          example: 1234
-        code:
-          type: string
-          description: Product code.
-          example: '239874892374982'
-        name:
-          type: string
-          description: Product name.
-          example: Water bottle
-        category:
-          type: string
-          description: Product category
-        description:
-          type: string
-          description: Product description.
-        qty:
-          type: number
-          description: 'Items quantity,'
-        measure:
-          type: string
-          description: Item measure.
-        net_price:
-          type: number
-          description: Net price.
-          example: 1.23
-        gross_price:
-          type: number
-          nullable: true
-          description: Gross price.
-          example: 1.45
-        vat:
-          $ref: ./VatType.yaml
-        not_taxable:
-          type: boolean
-          default: false
-        apply_withholding_taxes:
-          type: boolean
-          description: 'Apply withholding taxes, rivalsa and cassa.'
-          default: true
-        discount:
-          maximum: 100
-          minimum: 0
-          type: number
-          description: Discount percentual value.
-        discount_highlight:
-          type: boolean
-          default: false
-        in_ddt:
-          type: boolean
-          default: true
-        stock:
-          type: boolean
-          nullable: true
-        ei_raw:
-          type: object
-          description: Advanced raw attributes for e-invoices.
+      $ref: ./IssuedDocumentItemsListItem.yaml
   payments_list:
     type: array
     nullable: true
     items:
-      type: object
-      properties:
-        due_date:
-          type: string
-          description: Due date.
-          format: date
-          example: '2018-04-03'
-        amount:
-          type: number
-          description: Payment amount.
-          example: 1.45
-        status:
-          $ref: ../enums/IssuedDocumentStatus.yaml
-        payment_account:
-          $ref: ./PaymentAccount.yaml
-        paid_date:
-          type: string
-          description: |-
-            Payment date.
-            [Only if status is paid]
-          format: date
-          example: '2018-04-03'
-        ei_raw:
-          type: object
-          nullable: true
-          description: Advanced raw attributes for e-invoices.
+      $ref: ./IssuedDocumentPaymentsListItem.yaml
   template:
     $ref: ./DocumentTemplate.yaml
   delivery_note_template:
@@ -379,26 +296,6 @@ properties:
     type: string
     nullable: true
     description: Notes (for the attached delivery note).
-  refers_to:
-    type: object
-    description: Link to another document (e.g. the original proforma or the quote from which this has been created).
-    properties:
-      id:
-        type: integer
-        description: Unique identifier of the linked document (can be null if the document has been deleted or other reasons).
-      date:
-        type: string
-        description: Date of the linked document.
-        format: date
-      number:
-        type: integer
-        description: Number of the linked document.
-      numeration:
-        type: string
-        description: Numeration of the linked document.
-      description:
-        type: string
-        description: Description to show.
   is_marked:
     type: boolean
     description: This is true if the document is marked.
@@ -460,9 +357,11 @@ properties:
   extra_data:
     type: object
     nullable: true
-    description: |-
+    description: >-
       Extra data.
-      TS fields follow the technical specifications provided by "Sistema Tessera Sanitaria".
+
+      TS fields follow the technical specifications provided by "Sistema Tessera
+      Sanitaria".
     properties:
       show_sofort_button:
         type: boolean
@@ -482,7 +381,9 @@ properties:
         nullable: true
       ts_tipo_spesa:
         type: string
-        description: 'Can be [ ''TK'', ''FC'', ''FV'', ''SV'', ''SP'', ''AD'', ''AS'', ''SR'', ''CT'', ''PI'', ''IC'', ''AA'' ]. Refer to the technical specifications to learn more.'
+        description: >-
+          Can be [ 'TK', 'FC', 'FV', 'SV', 'SP', 'AD', 'AS', 'SR', 'CT', 'PI',
+          'IC', 'AA' ]. Refer to the technical specifications to learn more.
         nullable: true
       ts_opposizione:
         type: boolean
@@ -521,18 +422,50 @@ properties:
     description: Public url of the document PDF file.
   attachment_url:
     type: string
-    description: |-
+    description: >-
       [Read Only]
-      Public url of the attached file. Authomatically set if a valid attachment token is passed via POST /issued_documents or PUT /issued_documents/{documentId}.
+
+      Public url of the attached file. Authomatically set if a valid attachment
+      token is passed via POST /issued_documents or PUT
+      /issued_documents/{documentId}.
     readOnly: true
   attachment_token:
     type: string
     nullable: true
-    description: |-
+    description: >-
       [Write Only]
-      Attachment token returned by POST /issued_documents/attachment. Used to attach the file already uploaded.
+
+      Attachment token returned by POST /issued_documents/attachment. Used to
+      attach the file already uploaded.
     writeOnly: true
   ei_raw:
     type: object
     nullable: true
     description: Advanced raw attributes for e-invoices.
+  ei_status:
+    type: string
+    description: |
+      [Read only] Status of the e-invoice.
+        * `attempt` - We are trying to send the invoice, please wait up to 2 hours
+        * `missing` - The invoice is missing
+        * `not_sent` - The invoice has yet to be sent
+        * `pending` - The checks for the digital signature and sending are in progress
+        * `processing` - The SDI is delivering the invoice to the customer
+        * `error` - An error occurred while handling the invoice, please try to resend it or contact support
+        * `discarded` - The invoice has been rejected by the SDI, so it must be corrected and re-sent
+        * `not_delivered` - The SDI was unable to deliver the invoice
+        * `accepted` - The customer accepted the invoice
+        * `rejected` - The customer rejected the invoice, so it must be corrected
+        * `no_response` - A response has not yet been received whithin the deadline, contact the customer to ascertain the status of the invoice
+    enum:
+      - attempt
+      - missing
+      - not_sent
+      - pending
+      - processing
+      - error
+      - discarded
+      - not_delivered
+      - accepted
+      - rejected
+      - no_response

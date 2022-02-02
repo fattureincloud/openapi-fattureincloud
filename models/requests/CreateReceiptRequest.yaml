@@ -6,4 +6,4 @@ properties:
     $ref: ../schemas/Receipt.yaml
   autocomplete_number:
     type: boolean
-    description: 'If true, the number is autocompleted progressively.'
+    description: If true, the number is autocompleted progressively.

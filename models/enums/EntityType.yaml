@@ -1,4 +1,4 @@
-title: ClientType
+title: EntityType
 type: string
 nullable: true
 default: null
@@ -7,4 +7,4 @@ enum:
   - person
   - pa
   - condo
-description: Client type.
+description: Entity type.

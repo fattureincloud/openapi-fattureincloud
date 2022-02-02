@@ -1,0 +1,32 @@
+title: ItemsListItem
+type: object
+properties:
+  id:
+    type: integer
+    description: Unique identifier.
+  product_id:
+    type: integer
+    description: Unique identifier of the product
+  code:
+    type: string
+    description: Product code.
+  name:
+    type: string
+    description: Product name.
+  measure:
+    type: string
+    description: Product measure.
+  net_price:
+    type: number
+    description: Product net price.
+  category:
+    type: string
+    description: Product category.
+  qty:
+    type: number
+    description: Product quantity.
+  vat:
+    $ref: ./VatType.yaml
+  stock:
+    type: number
+    description: Number of items in stock

@@ -4,7 +4,9 @@ description: ''
 properties:
   pending_id:
     type: integer
-    description: Pending received document id of the document from which the new document is created.
+    description: >-
+      Pending received document id of the document from which the new document
+      is created.
   data:
     $ref: ../schemas/ReceivedDocument.yaml
 required:

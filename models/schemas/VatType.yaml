@@ -17,7 +17,7 @@ properties:
   notes:
     type: string
     description: Long description and notes shown in documents.
-    example: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+    example: IVA non imponibile ai sensi dell'articolo 123, comma 2
   e_invoice:
     type: boolean
     description: Usable for e-invoices.
