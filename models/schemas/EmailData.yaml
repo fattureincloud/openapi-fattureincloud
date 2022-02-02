@@ -23,20 +23,12 @@ properties:
     type: array
     description: List of all emails from which the document can be sent
     items:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Id
-        email:
-          type: string
-          description: Email address
-      required:
-        - id
-        - email
+      $ref: ./SenderEmail.yaml
   cc_email:
     type: string
-    description: By default is the logged company email. This is the email address to which a copy will be sent.
+    description: >-
+      By default is the logged company email. This is the email address to which
+      a copy will be sent.
   subject:
     type: string
     description: Email subject
@@ -45,19 +37,19 @@ properties:
     description: Email body
   document_exists:
     type: boolean
-    description: 'If the document is not a delivery note, this flag will be set to true'
+    description: If the document is not a delivery note, this flag will be set to true
   delivery_note_exists:
     type: boolean
-    description: 'If the document is a delivery note, this flag will be set to true'
+    description: If the document is a delivery note, this flag will be set to true
   attachment_exists:
     type: boolean
-    description: 'If the document has one or more attachments, this flag will be set to true'
+    description: If the document has one or more attachments, this flag will be set to true
   accompanying_invoice_exists:
     type: boolean
-    description: 'If an accompanying invoice exists, this flag will be set to true'
+    description: If an accompanying invoice exists, this flag will be set to true
   default_attach_pdf:
     type: boolean
-    description: 'If a pdf is attached, this flag will be set to true'
+    description: If a pdf is attached, this flag will be set to true
 required:
   - recipient_email
   - default_sender_email

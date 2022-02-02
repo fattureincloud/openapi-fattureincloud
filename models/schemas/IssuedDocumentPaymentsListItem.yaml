@@ -1,0 +1,30 @@
+title: IssuedDocumentPaymentsListItem
+type: object
+properties:
+  id:
+    type: integer
+    description: Unique identifier.
+  due_date:
+    type: string
+    description: Due date.
+    format: date
+    example: '2018-04-03'
+  amount:
+    type: number
+    description: Payment amount.
+    example: 1.45
+  status:
+    $ref: ../enums/IssuedDocumentStatus.yaml
+  payment_account:
+    $ref: ./PaymentAccount.yaml
+  paid_date:
+    type: string
+    description: |-
+      Payment date.
+      [Only if status is paid]
+    format: date
+    example: '2018-04-03'
+  ei_raw:
+    type: object
+    nullable: true
+    description: Advanced raw attributes for e-invoices.
