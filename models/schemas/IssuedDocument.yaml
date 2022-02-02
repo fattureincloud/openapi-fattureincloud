@@ -221,98 +221,12 @@ properties:
     type: array
     nullable: true
     items:
-      type: object
-      properties:
-        product_id:
-          type: integer
-          nullable: true
-          description: Unique identifier of the product.
-          example: 1234
-        code:
-          type: string
-          description: Product code.
-          example: '239874892374982'
-        name:
-          type: string
-          description: Product name.
-          example: Water bottle
-        category:
-          type: string
-          description: Product category
-        description:
-          type: string
-          description: Product description.
-        qty:
-          type: number
-          description: Items quantity,
-        measure:
-          type: string
-          description: Item measure.
-        net_price:
-          type: number
-          description: Net price.
-          example: 1.23
-        gross_price:
-          type: number
-          nullable: true
-          description: Gross price.
-          example: 1.45
-        vat:
-          $ref: ./VatType.yaml
-        not_taxable:
-          type: boolean
-          default: false
-        apply_withholding_taxes:
-          type: boolean
-          description: Apply withholding taxes, rivalsa and cassa.
-          default: true
-        discount:
-          maximum: 100
-          minimum: 0
-          type: number
-          description: Discount percentual value.
-        discount_highlight:
-          type: boolean
-          default: false
-        in_ddt:
-          type: boolean
-          default: true
-        stock:
-          type: boolean
-          nullable: true
-        ei_raw:
-          type: object
-          description: Advanced raw attributes for e-invoices.
+      $ref: ./IssuedDocumentItemsListItem.yaml
   payments_list:
     type: array
     nullable: true
     items:
-      type: object
-      properties:
-        due_date:
-          type: string
-          description: Due date.
-          format: date
-          example: '2018-04-03'
-        amount:
-          type: number
-          description: Payment amount.
-          example: 1.45
-        status:
-          $ref: ../enums/IssuedDocumentStatus.yaml
-        payment_account:
-          $ref: ./PaymentAccount.yaml
-        paid_date:
-          type: string
-          description: |-
-            Payment date.
-            [Only if status is paid]
-          format: date
-          example: '2018-04-03'
-        ei_raw:
-          type: object
-          nullable: true
-          description: Advanced raw attributes for e-invoices.
+      $ref: ./IssuedDocumentPaymentsListItem.yaml
   template:
     $ref: ./DocumentTemplate.yaml
   delivery_note_template:

@@ -32,7 +32,7 @@ properties:
     description: Supplier tax code.
   address_street:
     type: string
-    example: 'Via dei tigli, 12'
+    example: Via dei tigli, 12
     description: Supplier street address.
   address_postal_code:
     type: string

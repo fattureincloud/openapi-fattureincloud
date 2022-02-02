@@ -39,7 +39,7 @@ properties:
     description: Other withholding tax amount.
   stamp_duty:
     type: number
-    description: 'Stamp duty value [0 if not present].'
+    description: Stamp duty value [0 if not present].
   amount_due:
     type: number
     description: Total amount due.

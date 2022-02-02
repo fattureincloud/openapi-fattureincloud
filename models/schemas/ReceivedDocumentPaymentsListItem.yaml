@@ -1,0 +1,30 @@
+title: PaymentsListItem
+type: object
+properties:
+  id:
+    type: integer
+    description: Unique identifier.
+  amount:
+    type: number
+    description: Amount of items.
+  due_date:
+    type: string
+    description: Due date
+    format: date
+  paid_date:
+    type: string
+    description: Paid date
+    format: date
+  payment_terms:
+    type: object
+    properties:
+      days:
+        type: integer
+        description: Number of days.
+      type:
+        type: string
+  status:
+    type: string
+    description: Payment status.
+  payment_account:
+    $ref: ./PaymentAccount.yaml
