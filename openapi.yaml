@@ -1185,7 +1185,7 @@ paths:
         - Issued e-invoices
       responses:
         '200':
-          $ref: '#/components/responses/GetEInvoiceRejectionReason'
+          $ref: '#/components/responses/GetEInvoiceRejectionReasonResponse'
       operationId: getEInvoiceRejectionReason
       description: Get EInvoice rejection reason
   /c/{company_id}/received_documents:
@@ -8231,11 +8231,11 @@ components:
         text/xml:
           schema:
             $ref: ./models/responses/GetEInvoiceXmlResponse.yaml
-    GetEInvoiceRejectionReason:
+    GetEInvoiceRejectionReasonResponse:
       description: Example response
       content:
         application/json:
           schema:
-            $ref: ./models/responses/GetEInvoiceRejectionReason.yaml
+            $ref: ./models/responses/GetEInvoiceRejectionReasonResponse.yaml
 security:
   - OAuth2AuthenticationCodeFlow: []
