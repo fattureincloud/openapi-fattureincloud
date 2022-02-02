@@ -3,4 +3,3 @@ type: object
 properties:
   data:
     $ref: ../schemas/EinvoiceRejectionReason.yaml
-examples: []
