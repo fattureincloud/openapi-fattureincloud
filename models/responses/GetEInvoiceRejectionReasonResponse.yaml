@@ -3,6 +3,4 @@ type: object
 properties:
   data:
     $ref: ../schemas/EinvoiceRejectionReason.yaml
-examples:
-  - data:
-      reason: Invalid date
+examples: []
