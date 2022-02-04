@@ -86,6 +86,12 @@ jobs:
           echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
           echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
 
+      - id: delete-old-files
+        name: Delete old files
+        run: |
+          rm -rf ./generated/php/lib
+          rm -rf ./generated/php/docs
+
       - id: generate-php-sdk
         name: Generate PHP SDK
         env:
