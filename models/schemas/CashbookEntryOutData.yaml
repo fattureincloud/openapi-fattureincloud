@@ -1,8 +1,0 @@
-title: CashbookEntryOutData
-type: object
-properties:
-  amount_out:
-    type: number
-    description: Total amount out.
-  payment_account_out:
-    $ref: ./PaymentAccount.yaml
