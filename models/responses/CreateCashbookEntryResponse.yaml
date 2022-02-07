@@ -3,4 +3,4 @@ description: ''
 type: object
 properties:
   data:
-    $ref: ../schemas/CashbookEntryInOut.yaml
+    $ref: ../schemas/CashbookEntry.yaml
