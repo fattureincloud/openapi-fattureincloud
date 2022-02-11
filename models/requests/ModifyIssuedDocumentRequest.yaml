@@ -4,3 +4,5 @@ description: ''
 properties:
   data:
     $ref: ../schemas/IssuedDocument.yaml
+  option:
+    $ref: ../schemas/EntityOptions.yaml
