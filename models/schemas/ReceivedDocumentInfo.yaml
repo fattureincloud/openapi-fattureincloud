@@ -8,6 +8,8 @@ properties:
     properties:
       detailed:
         type: boolean
+        nullable: true
+    nullable: true
   items_default_values:
     type: object
     description: Default values for the document items.
@@ -16,23 +18,29 @@ properties:
         type: number
         nullable: true
         description: Default vat value.
+    nullable: true
   countries_list:
     type: array
     items:
       type: string
+    nullable: true
   currencies_list:
     type: array
     items:
       $ref: ./Currency.yaml
+    nullable: true
   categories_list:
     type: array
     items:
       type: string
+    nullable: true
   payment_accounts_list:
     type: array
     items:
       $ref: ./PaymentAccount.yaml
+    nullable: true
   vat_types_list:
     type: array
     items:
       $ref: ./VatType.yaml
+    nullable: true

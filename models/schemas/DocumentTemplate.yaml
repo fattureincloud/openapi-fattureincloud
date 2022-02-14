@@ -4,11 +4,14 @@ properties:
     type: integer
     description: Unique identifier.
     example: 123
+    nullable: true
   name:
     type: string
     description: Template name.
     example: Light Smoke
+    nullable: true
   type:
     type: string
     description: Template type.
+    nullable: true
 title: DocumentTemplate

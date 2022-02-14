@@ -5,10 +5,12 @@ properties:
   current_page:
     type: integer
     description: Current page number.
+    nullable: true
   first_page_url:
     type: string
     format: uri
     description: First page url.
+    nullable: true
   from:
     type: integer
     nullable: true
@@ -16,10 +18,12 @@ properties:
   last_page:
     type: integer
     description: Last page number.
+    nullable: true
   last_page_url:
     type: string
     format: uri
     description: Last page url.
+    nullable: true
   next_page_url:
     type: string
     format: uri
@@ -29,9 +33,11 @@ properties:
     type: string
     format: uri
     description: Request path.
+    nullable: true
   per_page:
     type: integer
     description: Number of result per page.
+    nullable: true
   prev_page_url:
     type: string
     format: uri
@@ -44,3 +50,4 @@ properties:
   total:
     type: integer
     description: Total number of results
+    nullable: true

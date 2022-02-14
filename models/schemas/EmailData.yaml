@@ -9,56 +9,53 @@ properties:
   default_sender_email:
     type: object
     description: Default sender email. (Other emails can be found in `sender_emails_list`)
-    required:
-      - id
-      - email
     properties:
       id:
         type: integer
         description: Id
+        nullable: true
       email:
         type: string
         description: Email address
+        nullable: true
+    nullable: true
   sender_emails_list:
     type: array
     description: List of all emails from which the document can be sent
     items:
       $ref: ./SenderEmail.yaml
+    nullable: true
   cc_email:
     type: string
     description: >-
       By default is the logged company email. This is the email address to which
       a copy will be sent.
+    nullable: true
   subject:
     type: string
     description: Email subject
+    nullable: true
   body:
     type: string
     description: Email body
+    nullable: true
   document_exists:
     type: boolean
     description: If the document is not a delivery note, this flag will be set to true
+    nullable: true
   delivery_note_exists:
     type: boolean
     description: If the document is a delivery note, this flag will be set to true
+    nullable: true
   attachment_exists:
     type: boolean
     description: If the document has one or more attachments, this flag will be set to true
+    nullable: true
   accompanying_invoice_exists:
     type: boolean
     description: If an accompanying invoice exists, this flag will be set to true
+    nullable: true
   default_attach_pdf:
     type: boolean
     description: If a pdf is attached, this flag will be set to true
-required:
-  - recipient_email
-  - default_sender_email
-  - sender_emails_list
-  - cc_email
-  - subject
-  - body
-  - document_exists
-  - delivery_note_exists
-  - attachment_exists
-  - accompanying_invoice_exists
-  - default_attach_pdf
+    nullable: true

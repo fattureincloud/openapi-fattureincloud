@@ -4,3 +4,4 @@ description: ''
 properties:
   data:
     $ref: ../schemas/IssuedDocument.yaml
+    nullable: true

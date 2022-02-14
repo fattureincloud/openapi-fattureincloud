@@ -4,36 +4,35 @@ properties:
   numerations:
     type: object
     description: Next number by year, receipt type and numeration name.
+    nullable: true
   numerations_list:
     type: array
     description: List of series used in the past.
     items:
       type: string
+    nullable: true
   rc_centers_list:
     type: array
     description: List of revenue centers used in the past.
     items:
       type: string
+    nullable: true
   payment_accounts_list:
     type: array
     description: User payment accounts list.
     items:
       $ref: ./PaymentAccount.yaml
+    nullable: true
   categories_list:
     type: array
     description: List of categories used in the past.
     items:
       type: string
+    nullable: true
   vat_types_list:
     type: array
     description: List of user vat types with the default 22%, 10%, 4% and 0% vats.
     items:
       $ref: ./VatType.yaml
-required:
-  - numerations
-  - numerations_list
-  - rc_centers_list
-  - payment_accounts_list
-  - categories_list
-  - vat_types_list
+    nullable: true
 title: ReceivedDocumentPreCreateInfo

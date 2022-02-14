@@ -5,4 +5,5 @@ properties:
     type: array
     items:
       $ref: ../schemas/VatType.yaml
+    nullable: true
 description: ''

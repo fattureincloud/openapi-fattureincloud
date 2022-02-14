@@ -5,73 +5,92 @@ properties:
   id:
     type: integer
     description: Unique identifier
+    nullable: true
   code:
     type: string
     example: '123'
     description: Code.
+    nullable: true
   name:
     type: string
     example: Rossi S.r.l.
     description: Name
+    nullable: true
   type:
     $ref: ../enums/EntityType.yaml
+    nullable: true
   first_name:
     type: string
     description: First name.
+    nullable: true
   last_name:
     type: string
     description: Last name.
+    nullable: true
   contact_person:
     type: string
+    nullable: true
   vat_number:
     type: string
     example: IT01234567890
     description: Vat number
+    nullable: true
   tax_code:
     type: string
     example: RSSMRA44A12E890Q
     description: Tax code.
+    nullable: true
   address_street:
     type: string
-    example: 'Via dei tigli, 12'
+    example: Via dei tigli, 12
     description: Street address.
+    nullable: true
   address_postal_code:
     type: string
     example: '24010'
     description: Postal code.
+    nullable: true
   address_city:
     type: string
     example: Bergamo
     description: City.
+    nullable: true
   address_province:
     type: string
     example: BG
     description: Province.
+    nullable: true
   address_extra:
     type: string
     description: Address extra info.
+    nullable: true
   country:
     type: string
     example: Italia
-    default: Italia
     description: Country
+    nullable: true
   email:
     type: string
     example: mario.rossi@example.it
     description: Email.
+    nullable: true
   certified_email:
     type: string
     example: mario.rossi@pec.example.it
     description: Certified email.
+    nullable: true
   phone:
     type: string
     description: Phone.
+    nullable: true
   fax:
     type: string
     description: Fax.
+    nullable: true
   notes:
     type: string
     description: Extra notes.
+    nullable: true
   default_vat:
     $ref: ./VatType.yaml
     description: |-
@@ -127,7 +146,6 @@ properties:
       [Only for client]
       Use e-invoices.
     nullable: true
-    default: false
   ei_code:
     type: string
     description: |-
@@ -140,5 +158,3 @@ properties:
   updated_at:
     type: string
     nullable: true
-required:
-  - name
