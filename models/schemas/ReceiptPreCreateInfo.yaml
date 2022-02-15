@@ -1,9 +1,9 @@
 type: object
 description: ''
+title: ReceiptPreCreateInfo
 properties:
   numerations:
-    type: object
-    description: Next number by year, receipt type and numeration name.
+    $ref: ./Numeration.yaml
   numerations_list:
     type: array
     description: List of series used in the past.
@@ -26,7 +26,7 @@ properties:
       type: string
   vat_types_list:
     type: array
-    description: List of user vat types with the default 22%, 10%, 4% and 0% vats.
+    description: 'List of user vat types with the default 22%, 10%, 4% and 0% vats.'
     items:
       $ref: ./VatType.yaml
 required:
@@ -36,4 +36,3 @@ required:
   - payment_accounts_list
   - categories_list
   - vat_types_list
-title: ReceiptPreCreateInfo
