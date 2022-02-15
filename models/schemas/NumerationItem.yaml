@@ -1,0 +1,4 @@
+title: NumerationItem
+type: object
+additionalProperties:
+  type: integer

@@ -1,9 +1,9 @@
 type: object
 description: ''
+title: ReceiptPreCreateInfo
 properties:
   numerations:
-    type: object
-    description: Next number by year, receipt type and numeration name.
+    $ref: ./Numeration.yaml
     nullable: true
   numerations_list:
     type: array
@@ -35,4 +35,3 @@ properties:
     items:
       $ref: ./VatType.yaml
     nullable: true
-title: ReceiptPreCreateInfo

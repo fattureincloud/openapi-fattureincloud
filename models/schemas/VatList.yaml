@@ -1,0 +1,5 @@
+title: VatList
+type: object
+additionalProperties:
+  type: object
+  $ref: ./VatItem.yaml

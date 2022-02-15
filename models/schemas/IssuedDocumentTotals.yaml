@@ -65,16 +65,5 @@ properties:
     description: Payments sum.
     nullable: true
   vat_list:
-    type: object
+    $ref: ./VatList.yaml
     nullable: true
-    properties:
-      vat_item:
-        type: object
-        properties:
-          amount_net:
-            type: number
-            nullable: true
-          amount_vat:
-            type: number
-            nullable: true
-        nullable: true
