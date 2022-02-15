@@ -1,9 +1,9 @@
 type: object
 description: ''
+title: ReceivedDocumentPreCreateInfo
 properties:
   numerations:
-    type: object
-    description: Next number by year, receipt type and numeration name.
+    $ref: ./Numeration.yaml
   numerations_list:
     type: array
     description: List of series used in the past.
@@ -36,4 +36,3 @@ required:
   - payment_accounts_list
   - categories_list
   - vat_types_list
-title: ReceivedDocumentPreCreateInfo
