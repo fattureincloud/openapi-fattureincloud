@@ -5,13 +5,12 @@ properties:
   net:
     type: number
     description: Monthly total net amount.
+    nullable: true
   gross:
     type: number
     description: Monthly total gross amount.
+    nullable: true
   count:
     type: number
     description: Monthly total receipt number.
-required:
-  - net
-  - gross
-  - count
+    nullable: true

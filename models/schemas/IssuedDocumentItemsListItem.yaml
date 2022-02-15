@@ -4,6 +4,7 @@ properties:
   id:
     type: integer
     description: Unique identifier.
+    nullable: true
   product_id:
     type: integer
     nullable: true
@@ -13,26 +14,33 @@ properties:
     type: string
     description: Product code.
     example: '239874892374982'
+    nullable: true
   name:
     type: string
     description: Product name.
     example: Water bottle
+    nullable: true
   category:
     type: string
     description: Product category
+    nullable: true
   description:
     type: string
     description: Product description.
+    nullable: true
   qty:
     type: number
     description: Items quantity,
+    nullable: true
   measure:
     type: string
     description: Item measure.
+    nullable: true
   net_price:
     type: number
     description: Net price.
     example: 1.23
+    nullable: true
   gross_price:
     type: number
     nullable: true
@@ -40,27 +48,28 @@ properties:
     example: 1.45
   vat:
     $ref: ./VatType.yaml
+    nullable: true
   not_taxable:
     type: boolean
-    default: false
+    nullable: true
   apply_withholding_taxes:
     type: boolean
     description: Apply withholding taxes, rivalsa and cassa.
-    default: true
+    nullable: true
   discount:
-    maximum: 100
-    minimum: 0
     type: number
     description: Discount percentual value.
+    nullable: true
   discount_highlight:
     type: boolean
-    default: false
+    nullable: true
   in_ddt:
     type: boolean
-    default: true
+    nullable: true
   stock:
     type: boolean
     nullable: true
   ei_raw:
     type: object
     description: Advanced raw attributes for e-invoices.
+    nullable: true

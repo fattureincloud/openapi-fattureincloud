@@ -3,3 +3,4 @@ type: object
 properties:
   active:
     type: boolean
+    nullable: true

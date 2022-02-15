@@ -3,73 +3,108 @@ description: ''
 properties:
   fic_situation:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   fic_clients:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   fic_suppliers:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   fic_products:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   fic_issued_documents:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   fic_received_documents:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   fic_receipts:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   fic_calendar:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   fic_archive:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   fic_taxes:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   fic_stock:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   fic_cashbook:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   fic_settings:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   fic_emails:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   fic_export:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   fic_import_bankstatements:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   fic_import_clients_suppliers:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   fic_import_issued_documents:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   fic_import_products:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   fic_recurring:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   fic_riba:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   dic_employees:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   dic_settings:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   dic_timesheet:
     $ref: ../enums/PermissionLevel.yaml
+    nullable: true
   fic_issued_documents_detailed:
     type: object
     properties:
       quotes:
         $ref: ../enums/PermissionLevel.yaml
+        nullable: true
       proformas:
         $ref: ../enums/PermissionLevel.yaml
+        nullable: true
       invoices:
         $ref: ../enums/PermissionLevel.yaml
+        nullable: true
       receipts:
         $ref: ../enums/PermissionLevel.yaml
+        nullable: true
       delivery_notes:
         $ref: ../enums/PermissionLevel.yaml
+        nullable: true
       credit_notes:
         $ref: ../enums/PermissionLevel.yaml
+        nullable: true
       orders:
         $ref: ../enums/PermissionLevel.yaml
+        nullable: true
       work_reports:
         $ref: ../enums/PermissionLevel.yaml
+        nullable: true
       supplier_orders:
         $ref: ../enums/PermissionLevel.yaml
+        nullable: true
       self_invoices:
         $ref: ../enums/PermissionLevel.yaml
+        nullable: true
+    nullable: true
 title: Permissions

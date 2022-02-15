@@ -6,5 +6,4 @@ properties:
     type: array
     items:
       type: string
-required:
-  - data
+    nullable: true

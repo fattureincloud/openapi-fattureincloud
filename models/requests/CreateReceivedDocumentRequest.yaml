@@ -7,7 +7,7 @@ properties:
     description: >-
       Pending received document id of the document from which the new document
       is created.
+    nullable: true
   data:
     $ref: ../schemas/ReceivedDocument.yaml
-required:
-  - data
+    nullable: true

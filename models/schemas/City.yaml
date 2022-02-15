@@ -4,13 +4,12 @@ properties:
   postal_code:
     type: string
     description: City postal code.
+    nullable: true
   city:
     type: string
     description: City name.
+    nullable: true
   province:
     type: string
     description: Province.
-required:
-  - postal_code
-  - city
-  - province
+    nullable: true
