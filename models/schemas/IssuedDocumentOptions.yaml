@@ -1,0 +1,6 @@
+title: IssuedDocumentOptions
+type: object
+properties:
+  fix_payments:
+    type: boolean
+    description: Fixes your last payment amount to match your document total

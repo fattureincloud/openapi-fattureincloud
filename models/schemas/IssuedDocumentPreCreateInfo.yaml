@@ -1,11 +1,10 @@
 type: object
+title: IssuedDocumentPreCreateInfo
 properties:
   numerations:
-    type: object
-    description: Next numbers by year and numeration name (for the given document type).
+    $ref: ./Numeration.yaml
   dn_numerations:
-    type: object
-    description: Next numbers by year and numeration name (for delivery_notes).
+    $ref: ./Numeration.yaml
   default_values:
     type: object
     description: Default values for the document.
@@ -96,4 +95,3 @@ properties:
     description: Vat types list.
     items:
       $ref: ./VatType.yaml
-title: IssuedDocumentPreCreateInfo
