@@ -96,10 +96,3 @@ properties:
     description: Vat types list.
     items:
       $ref: ./VatType.yaml
-  ei_structure:
-    additionalProperties:
-      $ref: ./EiStructure.yaml
-  ei_payment_structure:
-    type: object
-  ei_item_structure:
-    type: object
