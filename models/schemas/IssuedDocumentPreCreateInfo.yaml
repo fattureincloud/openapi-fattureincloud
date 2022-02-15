@@ -3,6 +3,7 @@ title: IssuedDocumentPreCreateInfo
 properties:
   numerations:
     $ref: ./Numeration.yaml
+    description: Next numbers by year and numeration name (for the given document type).
   dn_numerations:
     type: object
     description: Next numbers by year and numeration name (for delivery_notes).
