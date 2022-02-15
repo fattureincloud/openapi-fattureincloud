@@ -6,10 +6,9 @@ properties:
     type: string
     description: Name of the file.
     example: attachment.pdf
+    nullable: true
   attachment:
     type: string
     description: 'Valid format: .png, .jpg, .gif, .pdf, .zip, .xls, .xlsx, .doc, .docx'
     format: binary
-required:
-  - filename
-  - attachment
+    nullable: true

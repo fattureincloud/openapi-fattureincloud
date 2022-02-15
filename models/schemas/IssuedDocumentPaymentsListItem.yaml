@@ -4,19 +4,24 @@ properties:
   id:
     type: integer
     description: Unique identifier.
+    nullable: true
   due_date:
     type: string
     description: Due date.
     format: date
     example: '2018-04-03'
+    nullable: true
   amount:
     type: number
     description: Payment amount.
     example: 1.45
+    nullable: true
   status:
     $ref: ../enums/IssuedDocumentStatus.yaml
+    nullable: true
   payment_account:
     $ref: ./PaymentAccount.yaml
+    nullable: true
   paid_date:
     type: string
     description: |-
@@ -24,6 +29,7 @@ properties:
       [Only if status is paid]
     format: date
     example: '2018-04-03'
+    nullable: true
   ei_raw:
     type: object
     nullable: true

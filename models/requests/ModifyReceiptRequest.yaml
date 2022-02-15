@@ -4,3 +4,4 @@ description: ''
 properties:
   data:
     $ref: ../schemas/Receipt.yaml
+    nullable: true

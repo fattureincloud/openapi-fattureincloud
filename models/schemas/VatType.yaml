@@ -4,41 +4,45 @@ properties:
   id:
     type: integer
     description: Unique identifier
+    nullable: true
   value:
-    maximum: 100
-    minimum: 0
     type: number
     description: '[Read Only] Percentual value.'
     example: 22
+    nullable: true
   description:
     type: string
     description: Short description.
     example: Non imponibile art. 123
+    nullable: true
   notes:
     type: string
     description: Long description and notes shown in documents.
     example: IVA non imponibile ai sensi dell'articolo 123, comma 2
+    nullable: true
   e_invoice:
     type: boolean
     description: Usable for e-invoices.
+    nullable: true
   ei_type:
     type: string
     description: E-invoice type (natura).
     example: 2
+    nullable: true
   ei_description:
     type: string
     description: E-invoice description.
+    nullable: true
   editable:
     type: boolean
     description: |-
       [Read Only]
       Determine if this vat type is editable.
-    default: true
     readOnly: true
+    nullable: true
   is_disabled:
     type: boolean
     description: Determine if the vat type is disabled.
-required:
-  - value
+    nullable: true
 title: VatType
 description: ''

@@ -4,56 +4,66 @@ properties:
   amount_net:
     type: number
     description: Total net amount.
+    nullable: true
   amount_rivalsa:
     type: number
     description: Rivalsa amount.
+    nullable: true
   amount_net_with_rivalsa:
     type: number
     description: Net amount with rivalsa.
+    nullable: true
   amount_cassa:
     type: number
     description: Cassa amount.
+    nullable: true
   taxable_amount:
     type: number
     description: Taxable amount.
+    nullable: true
   not_taxable_amount:
     type: number
     description: Not taxable amount.
+    nullable: true
   amount_vat:
     type: number
     description: Total vat amount.
+    nullable: true
   amount_gross:
     type: number
     description: Total grosas amount.
+    nullable: true
   taxable_amount_withholding_tax:
     type: number
     description: Taxable withholding tax amount.
+    nullable: true
   amount_withholding_tax:
     type: number
     description: Withholding tax amount.
+    nullable: true
   taxable_amount_other_withholding_tax:
     type: number
     description: Other withholding tax taxable amount.
+    nullable: true
   amount_other_withholding_tax:
     type: number
     description: Other withholding tax amount.
+    nullable: true
   stamp_duty:
     type: number
     description: Stamp duty value [0 if not present].
+    nullable: true
   amount_due:
     type: number
     description: Total amount due.
+    nullable: true
   is_enasarco_maximal_exceeded:
     type: boolean
     nullable: true
   payments_sum:
     type: number
     description: Payments sum.
+    nullable: true
   vat_list:
     $ref: ./VatList.yaml
-required:
-  - amount_net
-  - amount_vat
-  - amount_gross
-  - amount_due
-  - payments_sum
+    nullable: true

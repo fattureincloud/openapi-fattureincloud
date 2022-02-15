@@ -4,5 +4,7 @@ description: ''
 properties:
   data:
     $ref: ../schemas/IssuedDocument.yaml
+    nullable: true
   option:
     $ref: ../schemas/EntityOptions.yaml
+    nullable: true

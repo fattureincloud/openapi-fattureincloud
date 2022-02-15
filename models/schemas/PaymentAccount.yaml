@@ -5,12 +5,15 @@ properties:
   id:
     type: integer
     description: Unique identifier
+    nullable: true
   name:
     type: string
     description: Payment account name.
     example: Conto Banca Intesa
+    nullable: true
   type:
     $ref: ../enums/PaymentAccountType.yaml
+    nullable: true
   iban:
     type: string
     nullable: true
@@ -22,9 +25,9 @@ properties:
   cuc:
     type: string
     description: Payment account cuc.
+    nullable: true
   virtual:
     type: boolean
     description: Determine if the payment method is virtual.
-required:
-  - name
+    nullable: true
 title: PaymentAccount

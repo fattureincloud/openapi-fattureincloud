@@ -4,9 +4,8 @@ properties:
   id:
     type: integer
     description: Id
+    nullable: true
   email:
     type: string
     description: Email address
-required:
-  - id
-  - email
+    nullable: true
