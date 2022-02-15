@@ -50,16 +50,7 @@ properties:
     type: number
     description: Payments sum.
   vat_list:
-    type: object
-    nullable: true
-    properties:
-      vat_item:
-        type: object
-        properties:
-          amount_net:
-            type: number
-          amount_vat:
-            type: number
+    $ref: ./VatList.yaml
 required:
   - amount_net
   - amount_vat

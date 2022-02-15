@@ -1,0 +1,7 @@
+title: VatItem
+type: object
+properties:
+  amount_net:
+    type: number
+  amount_vat:
+    type: number
