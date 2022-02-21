@@ -21,7 +21,7 @@ switch (command) {
       // er is an error object or null.
       files.forEach(function(filePath){
         formatFile(filePath)
-      });
+      })
     })
     break
   default:

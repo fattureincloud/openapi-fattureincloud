@@ -5,3 +5,4 @@ properties:
     type: array
     items:
       $ref: ../../schemas/Client.yaml
+    nullable: true

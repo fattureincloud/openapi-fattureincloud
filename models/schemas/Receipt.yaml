@@ -5,10 +5,12 @@ properties:
   id:
     type: integer
     description: Receipt unique identifier.
+    nullable: true
   date:
     type: string
     description: Receipt date.
     format: date
+    nullable: true
   number:
     type: number
     nullable: true
@@ -16,38 +18,44 @@ properties:
   numeration:
     type: string
     description: If it's null or empty string use the default numeration.
+    nullable: true
   amount_net:
     type: number
     description: Total net amount.
+    nullable: true
   amount_vat:
     type: number
     description: Total vat amount.
+    nullable: true
   amount_gross:
     type: number
     description: Total gross amount.
+    nullable: true
   use_gross_prices:
     type: boolean
-    default: false
+    nullable: true
   type:
     $ref: ../enums/ReceiptType.yaml
+    nullable: true
   description:
     type: string
     description: Receipt description.
+    nullable: true
   rc_center:
     type: string
     description: Revenue center.
+    nullable: true
   created_at:
     type: string
+    nullable: true
   updated_at:
     type: string
+    nullable: true
   payment_account:
     $ref: ./PaymentAccount.yaml
+    nullable: true
   items_list:
     type: array
     nullable: true
     items:
       $ref: ./ReceiptItemsListItem.yaml
-required:
-  - date
-  - type
-  - payment_account

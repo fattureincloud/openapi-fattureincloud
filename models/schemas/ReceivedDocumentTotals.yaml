@@ -4,28 +4,29 @@ properties:
   amount_net:
     type: number
     description: Total net amount.
+    nullable: true
   amount_vat:
     type: number
     description: Total vat amount.
+    nullable: true
   amount_gross:
     type: number
     description: Total gross amount.
+    nullable: true
   amount_withholding_tax:
     type: number
     description: Total withholding tax amount.
+    nullable: true
   amount_other_withholding_tax:
     type: number
     description: Total other withholding tax amount.
+    nullable: true
   amount_due:
     type: number
     description: Total amount due.
+    nullable: true
   payments_sum:
     type: number
     description: Payments sum.
-required:
-  - amount_net
-  - amount_vat
-  - amount_gross
-  - amount_due
-  - payments_sum
+    nullable: true
 title: ReceivedDocumentTotals
