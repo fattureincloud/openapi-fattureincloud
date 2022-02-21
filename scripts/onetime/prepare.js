@@ -1,10 +1,14 @@
+// This file was used to prepare the YAML files to be used by the enrichment script.
+// We performed two operations:
+// - Removed all the details that were exported to the details.yaml file (see "detailsToRemove" array below)
+// - Add the 'nullable' detail to all the properties
+
 const yaml = require('js-yaml')
 const fs = require('fs')
 const glob = require("glob")
 
 var options = {}
 glob("./models/**/*.yaml", options, function (er, files) {
-//glob("./models/schemas/ReceivedDocumentPaymentsListItem.yaml", options, function (er, files) {
   
   // files is an array of filenames.
   // If the `nonull` option is set, and nothing
@@ -32,7 +36,7 @@ function prepareFile(filePath) {
   }
 }
 
-function prepareProperty(prop, level, path) {
+function prepareProperty(prop) {
   if (Object.keys(prop).includes('required')) {
     delete prop['required']
   }
@@ -51,7 +55,7 @@ function prepareProperty(prop, level, path) {
       filtered['nullable'] = true
 
       if (Object.keys(filtered).includes('properties')) {
-        filtered = prepareProperty(filtered, level + 1, path + '.' + key)
+        filtered = prepareProperty(filtered)
       }
       properties[key] = filtered
     })

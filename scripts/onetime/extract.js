@@ -1,3 +1,8 @@
+// This file was used to export the details of interest from the requests models to the details.yaml file
+// The source file was not modified, we used the prepare.js for that.
+// The list of the details of interest can be found in the "detailsOfInterest" array below.
+// Please note that the details file does not strictly follow the OpenAPI Path, but we removed some levels that were unuseful for our purposes.
+
 const yaml = require('js-yaml')
 const fs = require('fs')
 
