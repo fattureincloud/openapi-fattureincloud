@@ -4,13 +4,16 @@ properties:
   id:
     type: integer
     description: Archive document unique identifier.
+    nullable: true
   date:
     type: string
     format: date
     description: Archive document date.
+    nullable: true
   description:
     type: string
     description: Archive Document description.
+    nullable: true
   attachment_url:
     type: string
     description: >-
@@ -19,9 +22,11 @@ properties:
       Absolute url of the attached file. Authomatically set if a valid
       attachment token is passed via POST /archive or PUT /archive/{documentId}.
     readOnly: true
+    nullable: true
   category:
     type: string
     description: Archive document category.
+    nullable: true
   attachment_token:
     type: string
     description: >-
@@ -32,7 +37,4 @@ properties:
       Attachment token returned by POST /archive/attachment. Used to attach the
       file already uploaded.
     writeOnly: true
-required:
-  - date
-  - description
-  - category
+    nullable: true

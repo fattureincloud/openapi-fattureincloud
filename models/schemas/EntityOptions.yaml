@@ -3,10 +3,14 @@ properties:
   entity_search_fields:
     type: string
     example: entity.id,tax_code,vat_number,code
+    nullable: true
   entity_autocomplete:
     type: boolean
+    nullable: true
   entity_create:
     type: boolean
+    nullable: true
   entity_update:
     type: string
+    nullable: true
 title: EntityOptions

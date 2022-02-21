@@ -3,95 +3,124 @@ title: IssuedDocumentPreCreateInfo
 properties:
   numerations:
     $ref: ./Numeration.yaml
+    nullable: true
   dn_numerations:
     $ref: ./Numeration.yaml
+    nullable: true
   default_values:
     type: object
     description: Default values for the document.
     properties:
       default_template:
         $ref: ./DocumentTemplate.yaml
+        nullable: true
       dn_template:
         $ref: ./DocumentTemplate.yaml
+        nullable: true
       ai_template:
         $ref: ./DocumentTemplate.yaml
+        nullable: true
       notes:
         type: string
         description: Default notes.
+        nullable: true
       rivalsa:
         type: number
         description: Default rivalsa percentage.
+        nullable: true
       cassa:
         type: number
         description: Default cassa percentage.
+        nullable: true
       withholding_tax:
         type: number
         description: Default withholding tax percentage.
+        nullable: true
       withholding_tax_taxable:
         type: number
         description: Default withholding tax taxable percentage.
+        nullable: true
       other_withholding_tax:
         type: number
         description: Default other withholding tax percentage.
+        nullable: true
       use_gross_prices:
         type: boolean
         description: Use gross price by default.
+        nullable: true
       payment_method:
         $ref: ./PaymentMethod.yaml
+        nullable: true
+    nullable: true
   extra_data_default_values:
     type: object
     properties:
       ts_communication:
         type: boolean
+        nullable: true
       ts_tipo_spesa:
         type: string
+        nullable: true
       ts_flag_tipo_spesa:
         type: integer
+        nullable: true
       ts_pagamento_tracciato:
         type: boolean
+        nullable: true
+    nullable: true
   items_default_values:
     type: object
     description: Default values for the document items.
     properties:
       vat:
         $ref: ./VatType.yaml
+        nullable: true
+    nullable: true
   countries_list:
     type: array
     description: Countries list.
     items:
       type: string
+    nullable: true
   currencies_list:
     type: array
     description: Currencies list.
     items:
       $ref: ./Currency.yaml
+    nullable: true
   templates_list:
     type: array
     description: Document templates list.
     items:
       $ref: ./DocumentTemplate.yaml
+    nullable: true
   dn_templates_list:
     type: array
     description: Delivery note templates list.
     items:
       $ref: ./DocumentTemplate.yaml
+    nullable: true
   ai_templates_list:
     type: array
     description: Accompanying invoice templates list.
     items:
       $ref: ./DocumentTemplate.yaml
+    nullable: true
   payment_methods_list:
     type: array
     description: Payment methods list.
     items:
       $ref: ./PaymentMethod.yaml
+    nullable: true
   payment_accounts_list:
     type: array
     description: Payment accounts list.
     items:
       $ref: ./PaymentAccount.yaml
+    nullable: true
   vat_types_list:
     type: array
     description: Vat types list.
     items:
       $ref: ./VatType.yaml
+    nullable: true

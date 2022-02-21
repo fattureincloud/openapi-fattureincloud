@@ -3,4 +3,5 @@ type: object
 properties:
   data:
     $ref: ../schemas/ReceivedDocument.yaml
+    nullable: true
 description: ''

@@ -3,9 +3,11 @@ properties:
   id:
     type: integer
     description: Unique identifier.
+    nullable: true
   name:
     type: string
     description: Product name.
+    nullable: true
   code:
     type: string
     nullable: true
@@ -25,6 +27,7 @@ properties:
   use_gross_price:
     type: boolean
     description: Determine which price to use for calculations.
+    nullable: true
   default_vat:
     $ref: ./VatType.yaml
     nullable: true
@@ -43,6 +46,7 @@ properties:
   category:
     type: string
     description: Product category.
+    nullable: true
   notes:
     type: string
     nullable: true
@@ -50,27 +54,30 @@ properties:
   in_stock:
     type: boolean
     description: Determine if the product is in stock.
+    nullable: true
   stock_initial:
     type: number
     description: Product initial stock.
+    nullable: true
   stock_current:
     type: number
     description: |-
       [Read Only]
       Product current stock.
     readOnly: true
+    nullable: true
   average_cost:
     type: number
     description: Product average cost.
+    nullable: true
   average_price:
     type: number
     description: Product average price.
+    nullable: true
   created_at:
     type: string
     nullable: true
   updated_at:
     type: string
     nullable: true
-required:
-  - name
 title: Product

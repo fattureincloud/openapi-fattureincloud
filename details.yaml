@@ -1,0 +1,1718 @@
+/c/{company_id}/entities/clients:
+  post:
+    application/json:
+      data:
+        properties:
+          type:
+            nullable: true
+            default: null
+          country:
+            default: Italia
+          default_vat:
+            nullable: true
+            properties:
+              value:
+                maximum: 100
+                minimum: 0
+              editable:
+                default: true
+            required:
+              - value
+          default_payment_terms_type:
+            default: standard
+          default_payment_method:
+            properties:
+              id:
+                nullable: true
+              type:
+                default: standard
+              default_payment_account:
+                nullable: true
+                properties:
+                  type:
+                    default: standard
+                  iban:
+                    nullable: true
+                  sia:
+                    nullable: true
+                required:
+                  - name
+              details:
+                nullable: true
+              bank_iban:
+                nullable: true
+              bank_name:
+                nullable: true
+              bank_beneficiary:
+                nullable: true
+            required:
+              - name
+            nullable: true
+          e_invoice:
+            default: false
+          created_at:
+            nullable: true
+          updated_at:
+            nullable: true
+        required:
+          - name
+/c/{company_id}/entities/clients/{client_id}:
+  put:
+    application/json:
+      data:
+        properties:
+          type:
+            nullable: true
+            default: null
+          country:
+            default: Italia
+          default_vat:
+            nullable: true
+            properties:
+              value:
+                maximum: 100
+                minimum: 0
+              editable:
+                default: true
+            required:
+              - value
+          default_payment_terms_type:
+            default: standard
+          default_payment_method:
+            properties:
+              id:
+                nullable: true
+              type:
+                default: standard
+              default_payment_account:
+                nullable: true
+                properties:
+                  type:
+                    default: standard
+                  iban:
+                    nullable: true
+                  sia:
+                    nullable: true
+                required:
+                  - name
+              details:
+                nullable: true
+              bank_iban:
+                nullable: true
+              bank_name:
+                nullable: true
+              bank_beneficiary:
+                nullable: true
+            required:
+              - name
+            nullable: true
+          e_invoice:
+            default: false
+          created_at:
+            nullable: true
+          updated_at:
+            nullable: true
+        required:
+          - name
+/c/{company_id}/entities/suppliers:
+  post:
+    application/json:
+      data:
+        properties:
+          type:
+            nullable: true
+            default: null
+          country:
+            default: Italia
+          created_at:
+            nullable: true
+          updated_at:
+            nullable: true
+        required:
+          - name
+/c/{company_id}/entities/suppliers/{supplier_id}:
+  put:
+    application/json:
+      data:
+        properties:
+          type:
+            nullable: true
+            default: null
+          country:
+            default: Italia
+          created_at:
+            nullable: true
+          updated_at:
+            nullable: true
+        required:
+          - name
+/c/{company_id}/products:
+  post:
+    application/json:
+      data:
+        properties:
+          code:
+            nullable: true
+          net_price:
+            nullable: true
+          gross_price:
+            nullable: true
+          default_vat:
+            nullable: true
+            properties:
+              value:
+                maximum: 100
+                minimum: 0
+              editable:
+                default: true
+            required:
+              - value
+          net_cost:
+            nullable: true
+          measure:
+            nullable: true
+          description:
+            nullable: true
+          notes:
+            nullable: true
+          created_at:
+            nullable: true
+          updated_at:
+            nullable: true
+        required:
+          - name
+/c/{company_id}/products/{product_id}:
+  put:
+    application/json:
+      data:
+        properties:
+          code:
+            nullable: true
+          net_price:
+            nullable: true
+          gross_price:
+            nullable: true
+          default_vat:
+            nullable: true
+            properties:
+              value:
+                maximum: 100
+                minimum: 0
+              editable:
+                default: true
+            required:
+              - value
+          net_cost:
+            nullable: true
+          measure:
+            nullable: true
+          description:
+            nullable: true
+          notes:
+            nullable: true
+          created_at:
+            nullable: true
+          updated_at:
+            nullable: true
+        required:
+          - name
+/c/{company_id}/issued_documents:
+  post:
+    application/json:
+      data:
+        properties:
+          entity:
+            properties:
+              type:
+                nullable: true
+                default: null
+              country:
+                default: Italia
+              default_vat:
+                nullable: true
+                properties:
+                  value:
+                    maximum: 100
+                    minimum: 0
+                  editable:
+                    default: true
+                required:
+                  - value
+              default_payment_terms:
+                nullable: true
+              default_payment_terms_type:
+                default: standard
+                nullable: true
+              default_payment_method:
+                properties:
+                  id:
+                    nullable: true
+                  type:
+                    default: standard
+                  default_payment_account:
+                    nullable: true
+                    properties:
+                      type:
+                        default: standard
+                      iban:
+                        nullable: true
+                      sia:
+                        nullable: true
+                    required:
+                      - name
+                  details:
+                    nullable: true
+                  bank_iban:
+                    nullable: true
+                  bank_name:
+                    nullable: true
+                  bank_beneficiary:
+                    nullable: true
+                required:
+                  - name
+                nullable: true
+              bank_name:
+                nullable: true
+              bank_iban:
+                nullable: true
+              bank_swift_code:
+                nullable: true
+              shipping_address:
+                nullable: true
+              e_invoice:
+                nullable: true
+                default: false
+              ei_code:
+                nullable: true
+              created_at:
+                nullable: true
+              updated_at:
+                nullable: true
+            required:
+              - name
+          type:
+            default: invoice
+          currency:
+            properties:
+              exchange_rate:
+                nullable: true
+          language:
+            required:
+              - code
+              - name
+          rivalsa:
+            maximum: 100
+            minimum: 0
+          cassa:
+            maximum: 100
+            minimum: 0
+          cassa_taxable:
+            minimum: 0
+            maximum: 100
+          amount_cassa_taxable:
+            nullable: true
+          cassa2:
+            maximum: 100
+            minimum: 0
+          amount_cassa2:
+            nullable: true
+          cassa2_taxable:
+            minimum: 0
+            maximum: 100
+          amount_cassa2_taxable:
+            nullable: true
+          global_cassa_taxable:
+            minimum: 0
+            maximum: 100
+          amount_global_cassa_taxable:
+            nullable: true
+          withholding_tax:
+            maximum: 100
+            minimum: 0
+          withholding_tax_taxable:
+            maximum: 100
+            minimum: 0
+          other_withholding_tax:
+            maximum: 100
+            minimum: 0
+          payment_method:
+            properties:
+              id:
+                nullable: true
+              type:
+                default: standard
+              default_payment_account:
+                nullable: true
+                properties:
+                  type:
+                    default: standard
+                  iban:
+                    nullable: true
+                  sia:
+                    nullable: true
+                required:
+                  - name
+              details:
+                nullable: true
+              bank_iban:
+                nullable: true
+              bank_name:
+                nullable: true
+              bank_beneficiary:
+                nullable: true
+            required:
+              - name
+          use_split_payment:
+            default: false
+          use_gross_prices:
+            default: false
+          e_invoice:
+            default: false
+          ei_data:
+            nullable: true
+            properties:
+              vat_kind:
+                nullable: true
+                default: null
+              original_document_type:
+                nullable: true
+                default: ordine
+              od_number:
+                nullable: true
+              od_date:
+                nullable: true
+              cig:
+                nullable: true
+              cup:
+                nullable: true
+              payment_method:
+                nullable: true
+              bank_name:
+                nullable: true
+              bank_iban:
+                nullable: true
+              bank_beneficiary:
+                nullable: true
+              invoice_number:
+                nullable: true
+              invoice_date:
+                nullable: true
+          ei_cassa_type:
+            nullable: true
+          ei_cassa2_type:
+            nullable: true
+          ei_withholding_tax_causal:
+            nullable: true
+          ei_other_withholding_tax_type:
+            nullable: true
+          ei_other_withholding_tax_causal:
+            nullable: true
+          items_list:
+            nullable: true
+          payments_list:
+            nullable: true
+          show_totals:
+            default: all
+          show_paypal_button:
+            default: false
+          show_notification_button:
+            default: false
+          show_tspay_button:
+            nullable: true
+          accompanying_invoice:
+            default: false
+          dn_ai_packages_number:
+            nullable: true
+          dn_ai_weight:
+            nullable: true
+          dn_ai_causal:
+            nullable: true
+          dn_ai_destination:
+            nullable: true
+          dn_ai_transporter:
+            nullable: true
+          dn_ai_notes:
+            nullable: true
+          amount_rivalsa_taxable:
+            nullable: true
+          amount_withholding_tax_taxable:
+            nullable: true
+          amount_other_withholding_tax_taxable:
+            nullable: true
+          amount_enasarco_taxable:
+            nullable: true
+          extra_data:
+            nullable: true
+            properties:
+              show_sofort_button:
+                nullable: true
+              multifatture_sent:
+                nullable: true
+              ts_communication:
+                nullable: true
+              ts_flag_tipo_spesa:
+                nullable: true
+              ts_pagamento_tracciato:
+                nullable: true
+              ts_tipo_spesa:
+                nullable: true
+              ts_opposizione:
+                nullable: true
+              ts_status:
+                nullable: true
+              ts_file_id:
+                nullable: true
+              ts_sent_date:
+                nullable: true
+              ts_full_amount:
+                nullable: true
+              imported_by:
+                nullable: true
+              ts_single_sending:
+                nullable: true
+          seen_date:
+            nullable: true
+          next_due_date:
+            nullable: true
+          attachment_token:
+            nullable: true
+          ei_raw:
+            nullable: true
+/c/{company_id}/issued_documents/{document_id}:
+  put:
+    application/json:
+      data:
+        properties:
+          entity:
+            properties:
+              type:
+                nullable: true
+                default: null
+              country:
+                default: Italia
+              default_vat:
+                nullable: true
+                properties:
+                  value:
+                    maximum: 100
+                    minimum: 0
+                  editable:
+                    default: true
+                required:
+                  - value
+              default_payment_terms:
+                nullable: true
+              default_payment_terms_type:
+                default: standard
+                nullable: true
+              default_payment_method:
+                properties:
+                  id:
+                    nullable: true
+                  type:
+                    default: standard
+                  default_payment_account:
+                    nullable: true
+                    properties:
+                      type:
+                        default: standard
+                      iban:
+                        nullable: true
+                      sia:
+                        nullable: true
+                    required:
+                      - name
+                  details:
+                    nullable: true
+                  bank_iban:
+                    nullable: true
+                  bank_name:
+                    nullable: true
+                  bank_beneficiary:
+                    nullable: true
+                required:
+                  - name
+                nullable: true
+              bank_name:
+                nullable: true
+              bank_iban:
+                nullable: true
+              bank_swift_code:
+                nullable: true
+              shipping_address:
+                nullable: true
+              e_invoice:
+                nullable: true
+                default: false
+              ei_code:
+                nullable: true
+              created_at:
+                nullable: true
+              updated_at:
+                nullable: true
+            required:
+              - name
+          type:
+            default: invoice
+          currency:
+            properties:
+              exchange_rate:
+                nullable: true
+          language:
+            required:
+              - code
+              - name
+          rivalsa:
+            maximum: 100
+            minimum: 0
+          cassa:
+            maximum: 100
+            minimum: 0
+          cassa_taxable:
+            minimum: 0
+            maximum: 100
+          amount_cassa_taxable:
+            nullable: true
+          cassa2:
+            maximum: 100
+            minimum: 0
+          amount_cassa2:
+            nullable: true
+          cassa2_taxable:
+            minimum: 0
+            maximum: 100
+          amount_cassa2_taxable:
+            nullable: true
+          global_cassa_taxable:
+            minimum: 0
+            maximum: 100
+          amount_global_cassa_taxable:
+            nullable: true
+          withholding_tax:
+            maximum: 100
+            minimum: 0
+          withholding_tax_taxable:
+            maximum: 100
+            minimum: 0
+          other_withholding_tax:
+            maximum: 100
+            minimum: 0
+          payment_method:
+            properties:
+              id:
+                nullable: true
+              type:
+                default: standard
+              default_payment_account:
+                nullable: true
+                properties:
+                  type:
+                    default: standard
+                  iban:
+                    nullable: true
+                  sia:
+                    nullable: true
+                required:
+                  - name
+              details:
+                nullable: true
+              bank_iban:
+                nullable: true
+              bank_name:
+                nullable: true
+              bank_beneficiary:
+                nullable: true
+            required:
+              - name
+          use_split_payment:
+            default: false
+          use_gross_prices:
+            default: false
+          e_invoice:
+            default: false
+          ei_data:
+            nullable: true
+            properties:
+              vat_kind:
+                nullable: true
+                default: null
+              original_document_type:
+                nullable: true
+                default: ordine
+              od_number:
+                nullable: true
+              od_date:
+                nullable: true
+              cig:
+                nullable: true
+              cup:
+                nullable: true
+              payment_method:
+                nullable: true
+              bank_name:
+                nullable: true
+              bank_iban:
+                nullable: true
+              bank_beneficiary:
+                nullable: true
+              invoice_number:
+                nullable: true
+              invoice_date:
+                nullable: true
+          ei_cassa_type:
+            nullable: true
+          ei_cassa2_type:
+            nullable: true
+          ei_withholding_tax_causal:
+            nullable: true
+          ei_other_withholding_tax_type:
+            nullable: true
+          ei_other_withholding_tax_causal:
+            nullable: true
+          items_list:
+            nullable: true
+          payments_list:
+            nullable: true
+          show_totals:
+            default: all
+          show_paypal_button:
+            default: false
+          show_notification_button:
+            default: false
+          show_tspay_button:
+            nullable: true
+          accompanying_invoice:
+            default: false
+          dn_ai_packages_number:
+            nullable: true
+          dn_ai_weight:
+            nullable: true
+          dn_ai_causal:
+            nullable: true
+          dn_ai_destination:
+            nullable: true
+          dn_ai_transporter:
+            nullable: true
+          dn_ai_notes:
+            nullable: true
+          amount_rivalsa_taxable:
+            nullable: true
+          amount_withholding_tax_taxable:
+            nullable: true
+          amount_other_withholding_tax_taxable:
+            nullable: true
+          amount_enasarco_taxable:
+            nullable: true
+          extra_data:
+            nullable: true
+            properties:
+              show_sofort_button:
+                nullable: true
+              multifatture_sent:
+                nullable: true
+              ts_communication:
+                nullable: true
+              ts_flag_tipo_spesa:
+                nullable: true
+              ts_pagamento_tracciato:
+                nullable: true
+              ts_tipo_spesa:
+                nullable: true
+              ts_opposizione:
+                nullable: true
+              ts_status:
+                nullable: true
+              ts_file_id:
+                nullable: true
+              ts_sent_date:
+                nullable: true
+              ts_full_amount:
+                nullable: true
+              imported_by:
+                nullable: true
+              ts_single_sending:
+                nullable: true
+          seen_date:
+            nullable: true
+          next_due_date:
+            nullable: true
+          attachment_token:
+            nullable: true
+          ei_raw:
+            nullable: true
+/c/{company_id}/issued_documents/totals:
+  post:
+    application/json:
+      data:
+        properties:
+          entity:
+            properties:
+              type:
+                nullable: true
+                default: null
+              country:
+                default: Italia
+              default_vat:
+                nullable: true
+                properties:
+                  value:
+                    maximum: 100
+                    minimum: 0
+                  editable:
+                    default: true
+                required:
+                  - value
+              default_payment_terms:
+                nullable: true
+              default_payment_terms_type:
+                default: standard
+                nullable: true
+              default_payment_method:
+                properties:
+                  id:
+                    nullable: true
+                  type:
+                    default: standard
+                  default_payment_account:
+                    nullable: true
+                    properties:
+                      type:
+                        default: standard
+                      iban:
+                        nullable: true
+                      sia:
+                        nullable: true
+                    required:
+                      - name
+                  details:
+                    nullable: true
+                  bank_iban:
+                    nullable: true
+                  bank_name:
+                    nullable: true
+                  bank_beneficiary:
+                    nullable: true
+                required:
+                  - name
+                nullable: true
+              bank_name:
+                nullable: true
+              bank_iban:
+                nullable: true
+              bank_swift_code:
+                nullable: true
+              shipping_address:
+                nullable: true
+              e_invoice:
+                nullable: true
+                default: false
+              ei_code:
+                nullable: true
+              created_at:
+                nullable: true
+              updated_at:
+                nullable: true
+            required:
+              - name
+          type:
+            default: invoice
+          currency:
+            properties:
+              exchange_rate:
+                nullable: true
+          language:
+            required:
+              - code
+              - name
+          rivalsa:
+            maximum: 100
+            minimum: 0
+          cassa:
+            maximum: 100
+            minimum: 0
+          cassa_taxable:
+            minimum: 0
+            maximum: 100
+          amount_cassa_taxable:
+            nullable: true
+          cassa2:
+            maximum: 100
+            minimum: 0
+          amount_cassa2:
+            nullable: true
+          cassa2_taxable:
+            minimum: 0
+            maximum: 100
+          amount_cassa2_taxable:
+            nullable: true
+          global_cassa_taxable:
+            minimum: 0
+            maximum: 100
+          amount_global_cassa_taxable:
+            nullable: true
+          withholding_tax:
+            maximum: 100
+            minimum: 0
+          withholding_tax_taxable:
+            maximum: 100
+            minimum: 0
+          other_withholding_tax:
+            maximum: 100
+            minimum: 0
+          payment_method:
+            properties:
+              id:
+                nullable: true
+              type:
+                default: standard
+              default_payment_account:
+                nullable: true
+                properties:
+                  type:
+                    default: standard
+                  iban:
+                    nullable: true
+                  sia:
+                    nullable: true
+                required:
+                  - name
+              details:
+                nullable: true
+              bank_iban:
+                nullable: true
+              bank_name:
+                nullable: true
+              bank_beneficiary:
+                nullable: true
+            required:
+              - name
+          use_split_payment:
+            default: false
+          use_gross_prices:
+            default: false
+          e_invoice:
+            default: false
+          ei_data:
+            nullable: true
+            properties:
+              vat_kind:
+                nullable: true
+                default: null
+              original_document_type:
+                nullable: true
+                default: ordine
+              od_number:
+                nullable: true
+              od_date:
+                nullable: true
+              cig:
+                nullable: true
+              cup:
+                nullable: true
+              payment_method:
+                nullable: true
+              bank_name:
+                nullable: true
+              bank_iban:
+                nullable: true
+              bank_beneficiary:
+                nullable: true
+              invoice_number:
+                nullable: true
+              invoice_date:
+                nullable: true
+          ei_cassa_type:
+            nullable: true
+          ei_cassa2_type:
+            nullable: true
+          ei_withholding_tax_causal:
+            nullable: true
+          ei_other_withholding_tax_type:
+            nullable: true
+          ei_other_withholding_tax_causal:
+            nullable: true
+          items_list:
+            nullable: true
+          payments_list:
+            nullable: true
+          show_totals:
+            default: all
+          show_paypal_button:
+            default: false
+          show_notification_button:
+            default: false
+          show_tspay_button:
+            nullable: true
+          accompanying_invoice:
+            default: false
+          dn_ai_packages_number:
+            nullable: true
+          dn_ai_weight:
+            nullable: true
+          dn_ai_causal:
+            nullable: true
+          dn_ai_destination:
+            nullable: true
+          dn_ai_transporter:
+            nullable: true
+          dn_ai_notes:
+            nullable: true
+          amount_rivalsa_taxable:
+            nullable: true
+          amount_withholding_tax_taxable:
+            nullable: true
+          amount_other_withholding_tax_taxable:
+            nullable: true
+          amount_enasarco_taxable:
+            nullable: true
+          extra_data:
+            nullable: true
+            properties:
+              show_sofort_button:
+                nullable: true
+              multifatture_sent:
+                nullable: true
+              ts_communication:
+                nullable: true
+              ts_flag_tipo_spesa:
+                nullable: true
+              ts_pagamento_tracciato:
+                nullable: true
+              ts_tipo_spesa:
+                nullable: true
+              ts_opposizione:
+                nullable: true
+              ts_status:
+                nullable: true
+              ts_file_id:
+                nullable: true
+              ts_sent_date:
+                nullable: true
+              ts_full_amount:
+                nullable: true
+              imported_by:
+                nullable: true
+              ts_single_sending:
+                nullable: true
+          seen_date:
+            nullable: true
+          next_due_date:
+            nullable: true
+          attachment_token:
+            nullable: true
+          ei_raw:
+            nullable: true
+/c/{company_id}/issued_documents/{document_id}/totals:
+  post:
+    application/json:
+      data:
+        properties:
+          entity:
+            properties:
+              type:
+                nullable: true
+                default: null
+              country:
+                default: Italia
+              default_vat:
+                nullable: true
+                properties:
+                  value:
+                    maximum: 100
+                    minimum: 0
+                  editable:
+                    default: true
+                required:
+                  - value
+              default_payment_terms:
+                nullable: true
+              default_payment_terms_type:
+                default: standard
+                nullable: true
+              default_payment_method:
+                properties:
+                  id:
+                    nullable: true
+                  type:
+                    default: standard
+                  default_payment_account:
+                    nullable: true
+                    properties:
+                      type:
+                        default: standard
+                      iban:
+                        nullable: true
+                      sia:
+                        nullable: true
+                    required:
+                      - name
+                  details:
+                    nullable: true
+                  bank_iban:
+                    nullable: true
+                  bank_name:
+                    nullable: true
+                  bank_beneficiary:
+                    nullable: true
+                required:
+                  - name
+                nullable: true
+              bank_name:
+                nullable: true
+              bank_iban:
+                nullable: true
+              bank_swift_code:
+                nullable: true
+              shipping_address:
+                nullable: true
+              e_invoice:
+                nullable: true
+                default: false
+              ei_code:
+                nullable: true
+              created_at:
+                nullable: true
+              updated_at:
+                nullable: true
+            required:
+              - name
+          type:
+            default: invoice
+          currency:
+            properties:
+              exchange_rate:
+                nullable: true
+          language:
+            required:
+              - code
+              - name
+          rivalsa:
+            maximum: 100
+            minimum: 0
+          cassa:
+            maximum: 100
+            minimum: 0
+          cassa_taxable:
+            minimum: 0
+            maximum: 100
+          amount_cassa_taxable:
+            nullable: true
+          cassa2:
+            maximum: 100
+            minimum: 0
+          amount_cassa2:
+            nullable: true
+          cassa2_taxable:
+            minimum: 0
+            maximum: 100
+          amount_cassa2_taxable:
+            nullable: true
+          global_cassa_taxable:
+            minimum: 0
+            maximum: 100
+          amount_global_cassa_taxable:
+            nullable: true
+          withholding_tax:
+            maximum: 100
+            minimum: 0
+          withholding_tax_taxable:
+            maximum: 100
+            minimum: 0
+          other_withholding_tax:
+            maximum: 100
+            minimum: 0
+          payment_method:
+            properties:
+              id:
+                nullable: true
+              type:
+                default: standard
+              default_payment_account:
+                nullable: true
+                properties:
+                  type:
+                    default: standard
+                  iban:
+                    nullable: true
+                  sia:
+                    nullable: true
+                required:
+                  - name
+              details:
+                nullable: true
+              bank_iban:
+                nullable: true
+              bank_name:
+                nullable: true
+              bank_beneficiary:
+                nullable: true
+            required:
+              - name
+          use_split_payment:
+            default: false
+          use_gross_prices:
+            default: false
+          e_invoice:
+            default: false
+          ei_data:
+            nullable: true
+            properties:
+              vat_kind:
+                nullable: true
+                default: null
+              original_document_type:
+                nullable: true
+                default: ordine
+              od_number:
+                nullable: true
+              od_date:
+                nullable: true
+              cig:
+                nullable: true
+              cup:
+                nullable: true
+              payment_method:
+                nullable: true
+              bank_name:
+                nullable: true
+              bank_iban:
+                nullable: true
+              bank_beneficiary:
+                nullable: true
+              invoice_number:
+                nullable: true
+              invoice_date:
+                nullable: true
+          ei_cassa_type:
+            nullable: true
+          ei_cassa2_type:
+            nullable: true
+          ei_withholding_tax_causal:
+            nullable: true
+          ei_other_withholding_tax_type:
+            nullable: true
+          ei_other_withholding_tax_causal:
+            nullable: true
+          items_list:
+            nullable: true
+          payments_list:
+            nullable: true
+          show_totals:
+            default: all
+          show_paypal_button:
+            default: false
+          show_notification_button:
+            default: false
+          show_tspay_button:
+            nullable: true
+          accompanying_invoice:
+            default: false
+          dn_ai_packages_number:
+            nullable: true
+          dn_ai_weight:
+            nullable: true
+          dn_ai_causal:
+            nullable: true
+          dn_ai_destination:
+            nullable: true
+          dn_ai_transporter:
+            nullable: true
+          dn_ai_notes:
+            nullable: true
+          amount_rivalsa_taxable:
+            nullable: true
+          amount_withholding_tax_taxable:
+            nullable: true
+          amount_other_withholding_tax_taxable:
+            nullable: true
+          amount_enasarco_taxable:
+            nullable: true
+          extra_data:
+            nullable: true
+            properties:
+              show_sofort_button:
+                nullable: true
+              multifatture_sent:
+                nullable: true
+              ts_communication:
+                nullable: true
+              ts_flag_tipo_spesa:
+                nullable: true
+              ts_pagamento_tracciato:
+                nullable: true
+              ts_tipo_spesa:
+                nullable: true
+              ts_opposizione:
+                nullable: true
+              ts_status:
+                nullable: true
+              ts_file_id:
+                nullable: true
+              ts_sent_date:
+                nullable: true
+              ts_full_amount:
+                nullable: true
+              imported_by:
+                nullable: true
+              ts_single_sending:
+                nullable: true
+          seen_date:
+            nullable: true
+          next_due_date:
+            nullable: true
+          attachment_token:
+            nullable: true
+          ei_raw:
+            nullable: true
+/c/{company_id}/issued_documents/{document_id}/email:
+  post:
+    application/json:
+      data:
+        properties:
+          include:
+            required:
+              - document
+              - delivery_note
+              - attachment
+              - accompanying_invoice
+        required:
+          - recipient_email
+          - subject
+          - body
+          - include
+          - attach_pdf
+          - send_copy
+/c/{company_id}/received_documents:
+  post:
+    application/json:
+      data:
+        properties:
+          type:
+            default: expense
+          entity:
+            properties:
+              id:
+                nullable: true
+          category:
+            nullable: true
+          next_due_date:
+            nullable: true
+          currency:
+            properties:
+              exchange_rate:
+                nullable: true
+          tax_deductibility:
+            maximum: 100
+            minimum: 0
+          vat_deductibility:
+            maximum: 100
+            minimum: 0
+          items_list:
+            nullable: true
+          attachment_token:
+            nullable: true
+        required:
+          - entity
+/c/{company_id}/received_documents/{document_id}:
+  put:
+    application/json:
+      data:
+        properties:
+          type:
+            default: expense
+          entity:
+            properties:
+              id:
+                nullable: true
+          category:
+            nullable: true
+          next_due_date:
+            nullable: true
+          currency:
+            properties:
+              exchange_rate:
+                nullable: true
+          tax_deductibility:
+            maximum: 100
+            minimum: 0
+          vat_deductibility:
+            maximum: 100
+            minimum: 0
+          items_list:
+            nullable: true
+          attachment_token:
+            nullable: true
+        required:
+          - entity
+/c/{company_id}/received_documents/totals:
+  post:
+    application/json:
+      data:
+        properties:
+          type:
+            default: expense
+          entity:
+            properties:
+              id:
+                nullable: true
+          category:
+            nullable: true
+          next_due_date:
+            nullable: true
+          currency:
+            properties:
+              exchange_rate:
+                nullable: true
+          tax_deductibility:
+            maximum: 100
+            minimum: 0
+          vat_deductibility:
+            maximum: 100
+            minimum: 0
+          items_list:
+            nullable: true
+          attachment_token:
+            nullable: true
+        required:
+          - entity
+/c/{company_id}/received_documents/{document_id}/totals:
+  post:
+    application/json:
+      data:
+        properties:
+          type:
+            default: expense
+          entity:
+            properties:
+              id:
+                nullable: true
+          category:
+            nullable: true
+          next_due_date:
+            nullable: true
+          currency:
+            properties:
+              exchange_rate:
+                nullable: true
+          tax_deductibility:
+            maximum: 100
+            minimum: 0
+          vat_deductibility:
+            maximum: 100
+            minimum: 0
+          items_list:
+            nullable: true
+          attachment_token:
+            nullable: true
+        required:
+          - entity
+/c/{company_id}/receipts:
+  post:
+    application/json:
+      data:
+        properties:
+          number:
+            nullable: true
+          use_gross_prices:
+            default: false
+          payment_account:
+            nullable: true
+            properties:
+              type:
+                default: standard
+              iban:
+                nullable: true
+              sia:
+                nullable: true
+            required:
+              - name
+          items_list:
+            nullable: true
+        required:
+          - date
+          - type
+          - payment_account
+/c/{company_id}/receipts/{document_id}:
+  put:
+    application/json:
+      data:
+        properties:
+          number:
+            nullable: true
+          use_gross_prices:
+            default: false
+          payment_account:
+            nullable: true
+            properties:
+              type:
+                default: standard
+              iban:
+                nullable: true
+              sia:
+                nullable: true
+            required:
+              - name
+          items_list:
+            nullable: true
+        required:
+          - date
+          - type
+          - payment_account
+/c/{company_id}/taxes:
+  post:
+    application/json:
+      data:
+        properties:
+          payment_account:
+            nullable: true
+            properties:
+              type:
+                default: standard
+              iban:
+                nullable: true
+              sia:
+                nullable: true
+            required:
+              - name
+          attachment_url:
+            nullable: true
+          attachment_token:
+            nullable: true
+        required:
+          - due_date
+          - amount
+          - description
+/c/{company_id}/taxes/{document_id}:
+  put:
+    application/json:
+      data:
+        properties:
+          payment_account:
+            nullable: true
+            properties:
+              type:
+                default: standard
+              iban:
+                nullable: true
+              sia:
+                nullable: true
+            required:
+              - name
+          attachment_url:
+            nullable: true
+          attachment_token:
+            nullable: true
+        required:
+          - due_date
+          - amount
+          - description
+/c/{company_id}/archive:
+  post:
+    application/json:
+      data:
+        required:
+          - date
+          - description
+          - category
+/c/{company_id}/archive/{document_id}:
+  put:
+    application/json:
+      data:
+        required:
+          - date
+          - description
+          - category
+/c/{company_id}/cashbook:
+  post:
+    application/json:
+      data:
+        properties:
+          type:
+            nullable: true
+          entity_name:
+            nullable: true
+          amount_in:
+            nullable: true
+          payment_account_in:
+            nullable: true
+            properties:
+              type:
+                default: standard
+              iban:
+                nullable: true
+              sia:
+                nullable: true
+            required:
+              - name
+          amount_out:
+            nullable: true
+          payment_account_out:
+            nullable: true
+            properties:
+              type:
+                default: standard
+              iban:
+                nullable: true
+              sia:
+                nullable: true
+            required:
+              - name
+        required:
+          - id
+          - date
+          - description
+          - kind
+/c/{company_id}/cashbook/{document_id}:
+  put:
+    application/json:
+      data:
+        properties:
+          type:
+            nullable: true
+          entity_name:
+            nullable: true
+          amount_in:
+            nullable: true
+          payment_account_in:
+            nullable: true
+            properties:
+              type:
+                default: standard
+              iban:
+                nullable: true
+              sia:
+                nullable: true
+            required:
+              - name
+          amount_out:
+            nullable: true
+          payment_account_out:
+            nullable: true
+            properties:
+              type:
+                default: standard
+              iban:
+                nullable: true
+              sia:
+                nullable: true
+            required:
+              - name
+        required:
+          - id
+          - date
+          - description
+          - kind
+/c/{company_id}/settings/payment_methods:
+  post:
+    application/json:
+      data:
+        properties:
+          id:
+            nullable: true
+          type:
+            default: standard
+          default_payment_account:
+            nullable: true
+            properties:
+              type:
+                default: standard
+              iban:
+                nullable: true
+              sia:
+                nullable: true
+            required:
+              - name
+          details:
+            nullable: true
+          bank_iban:
+            nullable: true
+          bank_name:
+            nullable: true
+          bank_beneficiary:
+            nullable: true
+        required:
+          - name
+/c/{company_id}/settings/payment_methods/{payment_method_id}:
+  put:
+    application/json:
+      data:
+        properties:
+          id:
+            nullable: true
+          type:
+            default: standard
+          default_payment_account:
+            nullable: true
+            properties:
+              type:
+                default: standard
+              iban:
+                nullable: true
+              sia:
+                nullable: true
+            required:
+              - name
+          details:
+            nullable: true
+          bank_iban:
+            nullable: true
+          bank_name:
+            nullable: true
+          bank_beneficiary:
+            nullable: true
+        required:
+          - name
+/c/{company_id}/settings/payment_accounts:
+  post:
+    application/json:
+      data:
+        nullable: true
+        properties:
+          type:
+            default: standard
+          iban:
+            nullable: true
+          sia:
+            nullable: true
+        required:
+          - name
+/c/{company_id}/settings/payment_accounts/{payment_account_id}:
+  put:
+    application/json:
+      data:
+        nullable: true
+        properties:
+          type:
+            default: standard
+          iban:
+            nullable: true
+          sia:
+            nullable: true
+        required:
+          - name
+/c/{company_id}/settings/vat_types:
+  post:
+    application/json:
+      data:
+        nullable: true
+        properties:
+          value:
+            maximum: 100
+            minimum: 0
+          editable:
+            default: true
+        required:
+          - value
+/c/{company_id}/settings/vat_types/{vat_type_id}:
+  put:
+    application/json:
+      data:
+        nullable: true
+        properties:
+          value:
+            maximum: 100
+            minimum: 0
+          editable:
+            default: true
+        required:
+          - value

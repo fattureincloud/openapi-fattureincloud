@@ -3,4 +3,5 @@ type: object
 properties:
   data:
     $ref: ../schemas/ReceiptPreCreateInfo.yaml
+    nullable: true
 description: ''

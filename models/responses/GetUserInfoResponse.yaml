@@ -4,17 +4,24 @@ description: ''
 properties:
   data:
     $ref: ../schemas/User.yaml
+    nullable: true
   info:
     type: object
     properties:
       need_marketing_consents_confirmation:
         type: boolean
+        nullable: true
       need_password_change:
         type: boolean
+        nullable: true
       need_terms_of_service_confirmation:
         type: boolean
+        nullable: true
+    nullable: true
   email_confirmation_state:
     type: object
     properties:
       need_confirmation:
         type: boolean
+        nullable: true
+    nullable: true

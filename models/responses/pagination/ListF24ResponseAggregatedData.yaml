@@ -4,3 +4,4 @@ properties:
   amount:
     type: number
     description: Total amount.
+    nullable: true

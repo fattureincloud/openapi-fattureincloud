@@ -3,3 +3,4 @@ type: object
 properties:
   aggregated_data:
     $ref: ./ListF24ResponseAggregatedData.yaml
+    nullable: true
