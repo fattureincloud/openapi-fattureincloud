@@ -5,68 +5,79 @@ properties:
   id:
     type: integer
     description: Unique identifier of the document.
+    nullable: true
   entity:
     $ref: ./Entity.yaml
+    nullable: true
   type:
     $ref: ../enums/IssuedDocumentType.yaml
+    nullable: true
   number:
     type: integer
     description: |-
       Number of the document
       [If not specified, next number is used]
     example: 1
+    nullable: true
   numeration:
     type: string
     description: |-
       Numeration of the document
       [Not available if type=delivery_note]
     example: /A
+    nullable: true
   date:
     type: string
     description: |-
       Date of the document
       [If not specified, today date is used]
     format: date
+    nullable: true
   year:
     type: integer
     description: Invoice year.
+    nullable: true
   currency:
     $ref: ./Currency.yaml
+    nullable: true
   language:
     $ref: ./Language.yaml
+    nullable: true
   subject:
     type: string
     description: Issued document subject.
+    nullable: true
   visible_subject:
     type: string
     description: Issued document visible subject.
+    nullable: true
   rc_center:
     type: string
     description: Revenue center [or cost center if type=supplier_order].
+    nullable: true
   notes:
     type: string
     description: Issued document extra notes.
+    nullable: true
   rivalsa:
-    maximum: 100
-    minimum: 0
     type: number
     description: '"Rivalsa INPS" percentual value'
+    nullable: true
   cassa:
-    maximum: 100
-    minimum: 0
     type: number
     description: '"Cassa previdenziale" percentual value'
+    nullable: true
   amount_cassa:
     type: number
     description: |-
       [Read Only]
       Cassa amount.
     readOnly: true
+    nullable: true
   cassa_taxable:
     type: number
-    minimum: 0
-    maximum: 100
     description: Cassa taxable percentage
+    nullable: true
   amount_cassa_taxable:
     type: number
     nullable: true
@@ -74,10 +85,9 @@ properties:
       [Can be set only if cassa_taxable is NULL]
       Cassa2 taxable amount
   cassa2:
-    maximum: 100
-    minimum: 0
     type: number
     description: '"Cassa previdenziale 2" percentual value'
+    nullable: true
   amount_cassa2:
     type: number
     nullable: true
@@ -87,9 +97,8 @@ properties:
     readOnly: true
   cassa2_taxable:
     type: number
-    minimum: 0
-    maximum: 100
     description: Cassa2 taxable percentage
+    nullable: true
   amount_cassa2_taxable:
     type: number
     nullable: true
@@ -98,9 +107,8 @@ properties:
       Cassa2 taxable amount
   global_cassa_taxable:
     type: number
-    minimum: 0
-    maximum: 100
     description: Global cassa taxable percentage
+    nullable: true
   amount_global_cassa_taxable:
     type: number
     nullable: true
@@ -108,39 +116,38 @@ properties:
       [Can be set only if global_cassa_taxable is NULL]
       Global cassa taxable amount
   withholding_tax:
-    maximum: 100
-    minimum: 0
     type: number
     description: Withholding tax (ritenuta d'acconto) percentual value
+    nullable: true
   withholding_tax_taxable:
-    maximum: 100
-    minimum: 0
     type: number
     description: Withholding tax taxable (imponibile) percentual value
+    nullable: true
   other_withholding_tax:
-    maximum: 100
-    minimum: 0
     type: number
     description: Other withholding tax (altra ritenuta) percentual value
+    nullable: true
   stamp_duty:
     type: number
     description: |-
       Stamp duty value
       [0 if not present]
+    nullable: true
   payment_method:
     $ref: ./PaymentMethod.yaml
+    nullable: true
   use_split_payment:
     type: boolean
-    default: false
     description: Use split payment
+    nullable: true
   use_gross_prices:
     type: boolean
-    default: false
     description: Use gross prices
+    nullable: true
   e_invoice:
     type: boolean
     description: Indicates if this is an e-invoice.
-    default: false
+    nullable: true
   ei_data:
     type: object
     nullable: true
@@ -150,8 +157,10 @@ properties:
     properties:
       vat_kind:
         $ref: ../enums/VatKind.yaml
+        nullable: true
       original_document_type:
         $ref: ../enums/OriginalDocumentType.yaml
+        nullable: true
       od_number:
         type: string
         nullable: true
@@ -229,49 +238,60 @@ properties:
       $ref: ./IssuedDocumentPaymentsListItem.yaml
   template:
     $ref: ./DocumentTemplate.yaml
+    nullable: true
   delivery_note_template:
     $ref: ./DocumentTemplate.yaml
+    nullable: true
   acc_inv_template:
     $ref: ./DocumentTemplate.yaml
+    nullable: true
   h_margins:
     type: integer
     description: Horizontal margins.
+    nullable: true
   v_margins:
     type: integer
     description: Vertical margins.
+    nullable: true
   show_payments:
     type: boolean
     description: Shows the expiration dates of the payments on the document.
+    nullable: true
   show_payment_method:
     type: boolean
     description: Show the payment method details on the document.
+    nullable: true
   show_totals:
     $ref: ../enums/ShowTotalsMode.yaml
+    nullable: true
   show_paypal_button:
     type: boolean
-    default: false
     description: Show paypal button
+    nullable: true
   show_notification_button:
     type: boolean
-    default: false
     description: Show notification button
+    nullable: true
   show_tspay_button:
     type: boolean
     description: Show ts pay button.
     nullable: true
   delivery_note:
     type: boolean
+    nullable: true
   accompanying_invoice:
     type: boolean
     description: Attach an accompanying invoice.
-    default: false
+    nullable: true
   dn_number:
     type: integer
     description: Number (for the attached delivery note).
+    nullable: true
   dn_date:
     type: string
     description: Date (for the attached delivery note).
     format: date
+    nullable: true
   dn_ai_packages_number:
     type: string
     nullable: true
@@ -299,33 +319,39 @@ properties:
   is_marked:
     type: boolean
     description: This is true if the document is marked.
+    nullable: true
   amount_net:
     type: number
     description: |-
       [Read Only]
       Total net amount (competenze).
     readOnly: true
+    nullable: true
   amount_vat:
     type: number
     description: |-
       [Read Only]
       Total vat amount (IVA).
     readOnly: true
+    nullable: true
   amount_gross:
     type: number
     description: |-
       [Read Only]
       Total gross amount (totale documento).
     readOnly: true
+    nullable: true
   amount_due_discount:
     type: number
     description: Amount due discount
+    nullable: true
   amount_rivalsa:
     type: number
     description: |-
       [Read Only]
       Rivalsa amount.
     readOnly: true
+    nullable: true
   amount_rivalsa_taxable:
     type: number
     nullable: true
@@ -336,6 +362,7 @@ properties:
       [Read Only]
       Withholding tax amount (ritenuta d'acconto).
     readOnly: true
+    nullable: true
   amount_withholding_tax_taxable:
     type: number
     nullable: true
@@ -346,6 +373,7 @@ properties:
       [Read Only]
       Other withholding tax amount (altra ritenuta).
     readOnly: true
+    nullable: true
   amount_other_withholding_tax_taxable:
     type: number
     nullable: true
@@ -420,6 +448,7 @@ properties:
   url:
     type: string
     description: Public url of the document PDF file.
+    nullable: true
   attachment_url:
     type: string
     description: >-
@@ -429,6 +458,7 @@ properties:
       token is passed via POST /issued_documents or PUT
       /issued_documents/{documentId}.
     readOnly: true
+    nullable: true
   attachment_token:
     type: string
     nullable: true
@@ -469,3 +499,4 @@ properties:
       - accepted
       - rejected
       - no_response
+    nullable: true

@@ -5,10 +5,12 @@ properties:
     type: string
     description: Currency code.
     example: EUR
+    nullable: true
   symbol:
     type: string
     description: Currency symbol.
     example: €
+    nullable: true
   exchange_rate:
     type: string
     nullable: true
@@ -18,4 +20,5 @@ properties:
     type: string
     example: EUR
     description: Currency html code.
+    nullable: true
 title: Currency

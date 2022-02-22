@@ -7,3 +7,5 @@ properties:
       success:
         type: boolean
         description: Determine if the invoice XML is valid.
+        nullable: true
+    nullable: true

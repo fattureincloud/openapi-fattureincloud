@@ -7,6 +7,9 @@ properties:
       name:
         type: string
         description: Response message.
+        nullable: true
       date:
         type: string
         description: E-invoice sent date.
+        nullable: true
+    nullable: true
