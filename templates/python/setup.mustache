@@ -32,6 +32,8 @@ REQUIRES = [
 def readme():
     with open('README.md') as f:
         return f.read()
+        
+file = readme()
 
 setup(
     name=NAME,
@@ -46,7 +48,7 @@ setup(
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     {{#licenseInfo}}license="{{.}}",
-    {{/licenseInfo}}long_description=readme()  # noqa: E501
+    {{/licenseInfo}}long_description=file  # noqa: E501
 )
 {{/-last}}
 {{/apis}}
