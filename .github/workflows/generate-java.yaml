@@ -86,6 +86,12 @@ jobs:
           echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
           echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
 
+      - id: delete-old-files
+        name: Delete old files
+        run: |
+          rm -rf ./generated/java/src/main
+          rm -rf ./generated/java/docs
+
       - id: generate-java-sdk
         name: Generate Java SDK
         env:

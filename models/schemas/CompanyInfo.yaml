@@ -5,25 +5,33 @@ properties:
     type: integer
     description: Company unique identifier.
     example: 12345
+    nullable: true
   name:
     type: string
     description: Company name.
     example: Mario Rossi S.r.l.
+    nullable: true
   email:
     type: string
     description: Company email.
     example: mario@rossi-example.it
+    nullable: true
   type:
     $ref: ../enums/CompanyType.yaml
+    nullable: true
   access_info:
     type: object
     properties:
       role:
         $ref: ../enums/UserCompanyRole.yaml
+        nullable: true
       permissions:
         $ref: ./Permissions.yaml
+        nullable: true
       through_accountant:
         type: boolean
+        nullable: true
+    nullable: true
   plan_info:
     type: object
     properties:
@@ -33,60 +41,87 @@ properties:
         properties:
           clients:
             type: integer
+            nullable: true
           suppliers:
             type: integer
+            nullable: true
           products:
             type: integer
+            nullable: true
           documents:
             type: integer
+            nullable: true
+        nullable: true
       functions:
         type: object
         description: Access to functions for this company.
         properties:
           archive:
             type: boolean
+            nullable: true
           cerved:
             type: boolean
+            nullable: true
           document_attachments:
             type: boolean
+            nullable: true
           e_invoice:
             type: boolean
+            nullable: true
           genius:
             type: boolean
+            nullable: true
           mail_tracking:
             type: boolean
+            nullable: true
           payment_notifications:
             type: boolean
+            nullable: true
           paypal:
             type: boolean
+            nullable: true
           receipts:
             type: boolean
+            nullable: true
           recurring:
             type: boolean
+            nullable: true
           smtp:
             type: boolean
+            nullable: true
           sofort:
             type: boolean
+            nullable: true
           stock:
             type: boolean
+            nullable: true
           subaccounts:
             type: boolean
+            nullable: true
           tessera_sanitaria:
             type: boolean
+            nullable: true
           ts_digital:
             type: boolean
+            nullable: true
           ts_invoice_trading:
             type: boolean
             nullable: true
           ts_pay:
             type: boolean
+            nullable: true
+        nullable: true
       functions_status:
         type: object
         properties:
           ts_digital:
             $ref: ./FunctionStatus.yaml
+            nullable: true
           ts_pay:
             $ref: ./FunctionStatus.yaml
+            nullable: true
+        nullable: true
+    nullable: true
   accountant_id:
     type: integer
     nullable: true
@@ -94,4 +129,5 @@ properties:
   is_accountant:
     type: boolean
     description: Determine if the logged account is an accountant.
+    nullable: true
 title: CompanyInfo

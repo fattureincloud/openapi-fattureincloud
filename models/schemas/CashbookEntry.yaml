@@ -1,9 +1,62 @@
 title: CashbookEntry
-oneOf:
-  - $ref: ./CashbookEntryIn.yaml
-  - $ref: ./CashbookEntryOut.yaml
-# discriminator:
-#   propertyName: type
-#   mapping:
-#     in: ./CashbookEntryIn.yaml
-#     out: ./CashbookEntryOut.yaml
+type: object
+properties:
+  id:
+    type: string
+    description: Cashbook unique identifier.
+    nullable: true
+  date:
+    description: Cashbook date.
+    format: date
+    type: string
+    nullable: true
+  description:
+    type: string
+    description: Cashbook description.
+    nullable: true
+  kind:
+    $ref: ../enums/CashbookEntryKind.yaml
+    nullable: true
+  type:
+    $ref: ../enums/CashbookEntryType.yaml
+    nullable: true
+  entity_name:
+    type: string
+    description: Entity name.
+    nullable: true
+  document:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Document unique identifier.
+        nullable: true
+      type:
+        type: string
+        description: Document type.
+        nullable: true
+      path:
+        type: string
+        description: Document path.
+        nullable: true
+    nullable: true
+  amount_in:
+    type: number
+    description: |-
+      [Only for cashbook entry in]
+      Total amount in.
+    nullable: true
+  payment_account_in:
+    $ref: ./PaymentAccount.yaml
+    description: '[Only for cashbook entry in]'
+    nullable: true
+  amount_out:
+    type: number
+    description: |-
+      [Only for cashbook entry out]
+      Total amount out.
+    nullable: true
+  payment_account_out:
+    $ref: ./PaymentAccount.yaml
+    description: '[Only for cashbook entry out]'
+    nullable: true

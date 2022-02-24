@@ -4,79 +4,96 @@ properties:
   id:
     type: integer
     description: Unique identifier
+    nullable: true
   code:
     type: string
     example: '123'
     description: Supplier code.
+    nullable: true
   name:
     type: string
     example: Rossi S.r.l.
     description: Supplier name.
+    nullable: true
   type:
     $ref: ../enums/SupplierType.yaml
+    nullable: true
   first_name:
     type: string
     description: Supplier first name.
+    nullable: true
   last_name:
     type: string
     description: Supplier last name.
+    nullable: true
   contact_person:
     type: string
+    nullable: true
   vat_number:
     type: string
     example: IT01234567890
     description: Supplier vat number.
+    nullable: true
   tax_code:
     type: string
     example: RSSMRA44A12E890Q
     description: Supplier tax code.
+    nullable: true
   address_street:
     type: string
-    example: 'Via dei tigli, 12'
+    example: Via dei tigli, 12
     description: Supplier street address.
+    nullable: true
   address_postal_code:
     type: string
     example: '24010'
     description: Supplier postal code.
+    nullable: true
   address_city:
     type: string
     example: Bergamo
     description: Supplier city.
+    nullable: true
   address_province:
     type: string
     example: BG
     description: Supplier province.
+    nullable: true
   address_extra:
     type: string
     description: Supplier address extra info.
+    nullable: true
   country:
     type: string
     example: Italia
-    default: Italia
     description: Supplier country.
+    nullable: true
   email:
     type: string
     example: mario.rossi@example.it
     description: Supplier email.
+    nullable: true
   certified_email:
     type: string
     example: mario.rossi@pec.example.it
     description: Supplier certified email.
+    nullable: true
   phone:
     type: string
     description: Supplier phone.
+    nullable: true
   fax:
     type: string
     description: Supplier fax.
+    nullable: true
   notes:
     type: string
     description: Supplier extra notes.
+    nullable: true
   created_at:
     type: string
     nullable: true
   updated_at:
     type: string
     nullable: true
-required:
-  - name
 title: Supplier

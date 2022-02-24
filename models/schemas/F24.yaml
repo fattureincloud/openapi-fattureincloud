@@ -4,37 +4,43 @@ properties:
   id:
     type: integer
     description: Unique F24 identifier.
+    nullable: true
   due_date:
     type: string
     format: date
     example: '2018-02-12'
     description: Due date.
+    nullable: true
   status:
     $ref: ../enums/F24Status.yaml
+    nullable: true
   payment_account:
     $ref: ./PaymentAccount.yaml
+    nullable: true
   amount:
     type: number
     description: Taxes amount.
     example: 300
+    nullable: true
   attachment_url:
     type: string
-    description: |-
+    description: >-
       [Read Only]
-      Absolute url of the attached file. Authomatically set if a valid attachment token is passed via POST /taxes or PUT /taxes/{documentId}.
+
+      Absolute url of the attached file. Authomatically set if a valid
+      attachment token is passed via POST /taxes or PUT /taxes/{documentId}.
     readOnly: true
     nullable: true
   attachment_token:
     type: string
     nullable: true
-    description: |-
+    description: >-
       [Write Only]
-      Attachment token returned by POST /taxes/attachment. Used to attach the file already uploaded.
+
+      Attachment token returned by POST /taxes/attachment. Used to attach the
+      file already uploaded.
     writeOnly: true
   description:
     type: string
     description: Name or brief description.
-required:
-  - due_date
-  - amount
-  - description
+    nullable: true

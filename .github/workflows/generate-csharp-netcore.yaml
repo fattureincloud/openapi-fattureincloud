@@ -86,6 +86,12 @@ jobs:
           echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
           echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
 
+      - id: delete-old-files
+        name: Delete old files
+        run: |
+          rm -rf ./generated/csharp-netcore/src/It.FattureInCloud.Sdk
+          rm -rf ./generated/csharp-netcore/docs
+
       - id: generate-csharp-sdk
         name: Generate C# SDK
         env:
@@ -106,7 +112,7 @@ jobs:
 
           node ./scripts/preprocess-spec.js
           
-          openapi-generator-cli generate -i ./openapi.yaml -g csharp-netcore -o generated/csharp-netcore/ -t ./templates/csharp-netcore --additional-properties=useDateTimeOffset=true,packageName=${PACKAGE_NAME},packageAuthors=${PACKAGE_AUTHORS},packageCompany=${PACKAGE_COMPANY},packageTitle=${PACKAGE_TITLE},packageVersion=${SDK_VERSION},targetFramework=${TARGET_FRAMEWORK},testTargetFramework=${TEST_TARGET_FRAMEWORK},multiTarget=true,licenseId=MIT --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT}
+          openapi-generator-cli generate -i ./openapi.yaml -g csharp-netcore -o generated/csharp-netcore/ -t ./templates/csharp-netcore --additional-properties=useDateTimeOffset=true,conditionalSerialization=true,packageName=${PACKAGE_NAME},packageAuthors=${PACKAGE_AUTHORS},packageCompany=${PACKAGE_COMPANY},packageTitle=${PACKAGE_TITLE},packageVersion=${SDK_VERSION},targetFramework=${TARGET_FRAMEWORK},testTargetFramework=${TEST_TARGET_FRAMEWORK},multiTarget=true,licenseId=MIT --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT}
 
       - id: create-pr
         name: Create Pull Request

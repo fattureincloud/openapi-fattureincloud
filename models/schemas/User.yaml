@@ -5,6 +5,7 @@ properties:
     type: integer
     example: 12345
     description: User identifier.
+    nullable: true
   name:
     type: string
     nullable: true
@@ -28,6 +29,7 @@ properties:
   hash:
     type: string
     example: 5add29e1234532a1bf2ed7b612043029
+    nullable: true
   picture:
     type: string
     nullable: true

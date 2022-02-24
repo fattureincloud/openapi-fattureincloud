@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.0.12 (2022-02-21)
+
+### 2.0.11 (2022-02-07)
+
+
+### Bug Fixes
+
+* refactor cashbook ([8eeb3c3](https://github.com/fattureincloud/openapi-fattureincloud/commit/8eeb3c33b5e43ce3bba7474496ed642e5607b480))
+
+### 2.0.10 (2022-02-02)
+
+
+### Bug Fixes
+
+* added einvoice rejection reason endpoint ([8813497](https://github.com/fattureincloud/openapi-fattureincloud/commit/881349706bf38eca0e22c894c5a51edaeb651def))
+
+### 2.0.9 (2022-01-24)
+
+
+### Bug Fixes
+
+* added get xml method ([c20fb4b](https://github.com/fattureincloud/openapi-fattureincloud/commit/c20fb4bfd5cc020565b50a9f5466e4aaf4a3d3d8))
+
 ### 2.0.8 (2022-01-10)
 
 ### 2.0.7 (2021-12-02)

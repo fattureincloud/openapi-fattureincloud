@@ -1,0 +1,75 @@
+title: IssuedDocumentItemsListItem
+type: object
+properties:
+  id:
+    type: integer
+    description: Unique identifier.
+    nullable: true
+  product_id:
+    type: integer
+    nullable: true
+    description: Unique identifier of the product.
+    example: 1234
+  code:
+    type: string
+    description: Product code.
+    example: '239874892374982'
+    nullable: true
+  name:
+    type: string
+    description: Product name.
+    example: Water bottle
+    nullable: true
+  category:
+    type: string
+    description: Product category
+    nullable: true
+  description:
+    type: string
+    description: Product description.
+    nullable: true
+  qty:
+    type: number
+    description: Items quantity,
+    nullable: true
+  measure:
+    type: string
+    description: Item measure.
+    nullable: true
+  net_price:
+    type: number
+    description: Net price.
+    example: 1.23
+    nullable: true
+  gross_price:
+    type: number
+    nullable: true
+    description: Gross price.
+    example: 1.45
+  vat:
+    $ref: ./VatType.yaml
+    nullable: true
+  not_taxable:
+    type: boolean
+    nullable: true
+  apply_withholding_taxes:
+    type: boolean
+    description: Apply withholding taxes, rivalsa and cassa.
+    nullable: true
+  discount:
+    type: number
+    description: Discount percentual value.
+    nullable: true
+  discount_highlight:
+    type: boolean
+    nullable: true
+  in_ddt:
+    type: boolean
+    nullable: true
+  stock:
+    type: boolean
+    nullable: true
+  ei_raw:
+    type: object
+    description: Advanced raw attributes for e-invoices.
+    nullable: true
