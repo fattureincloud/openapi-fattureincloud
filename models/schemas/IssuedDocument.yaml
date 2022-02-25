@@ -209,23 +209,23 @@ properties:
   ei_cassa_type:
     type: string
     nullable: true
-    description: Einvoice cassa type
+    description: E-invoice cassa type
   ei_cassa2_type:
     type: string
     nullable: true
-    description: Einvoice cassa2 type
+    description: E-invoice cassa2 type
   ei_withholding_tax_causal:
     type: string
     nullable: true
-    description: Einvoice withholding tax causal
+    description: E-invoice withholding tax causal
   ei_other_withholding_tax_type:
     type: string
     nullable: true
-    description: Einvoice other withholding tax type
+    description: E-invoice other withholding tax type
   ei_other_withholding_tax_causal:
     type: string
     nullable: true
-    description: Einvoice other withholding tax causal
+    description: E-invoice other withholding tax causal
   items_list:
     type: array
     nullable: true
