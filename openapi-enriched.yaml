@@ -30260,7 +30260,7 @@ components:
             type: object
             properties:
               data:
-                title: EinvoiceRejectionReason
+                title: EInvoiceRejectionReason
                 type: object
                 properties:
                   reason:

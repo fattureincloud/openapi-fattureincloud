@@ -1,4 +1,4 @@
-title: EinvoiceRejectionReason
+title: EInvoiceRejectionReason
 type: object
 properties:
   reason:
@@ -7,7 +7,7 @@ properties:
     nullable: true
   ei_status:
     type: string
-    description: EInvoice status.
+    description: E-invoice status.
     nullable: true
   solution:
     type: string

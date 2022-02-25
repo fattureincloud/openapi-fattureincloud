@@ -46,6 +46,6 @@ properties:
     nullable: true
   ei_payment_method:
     type: string
-    description: EInvoice payment method
+    description: E-invoice payment method
     nullable: true
 title: PaymentMethod
