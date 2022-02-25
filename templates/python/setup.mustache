@@ -38,7 +38,7 @@ file = readme()
 setup(
     name=NAME,
     version=VERSION,
-    description="{{appName}}",
+    description="Python SDK for the Fatture in Cloud API",
     author="{{infoName}}{{^infoName}}OpenAPI Generator community{{/infoName}}",
     author_email="{{infoEmail}}{{^infoEmail}}team@openapitools.org{{/infoEmail}}",
     url="{{packageUrl}}",
@@ -48,7 +48,8 @@ setup(
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     {{#licenseInfo}}license="{{.}}",
-    {{/licenseInfo}}long_description=file  # noqa: E501
+    {{/licenseInfo}}long_description=file,  # noqa: E501
+    long_description_content_type='text/markdown'
 )
 {{/-last}}
 {{/apis}}
