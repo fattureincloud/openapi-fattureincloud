@@ -86,6 +86,12 @@ jobs:
           echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
           echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
 
+      - id: delete-old-files
+        name: Delete old files
+        run: |
+          rm -rf ./generated/python/fattureincloud_python_sdk
+          rm -rf ./generated/python/docs
+
       - id: generate-python-sdk
         name: Generate Python SDK
         env:
