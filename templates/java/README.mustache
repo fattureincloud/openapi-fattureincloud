@@ -1,4 +1,4 @@
-# FattureInCloud Java SDK
+# {{artifactId}}
 
 {{appName}}
 
@@ -30,6 +30,20 @@ Building the API client library requires:
 
 ## Installation
 
+To install the API client library to your local Maven repository, simply execute:
+
+```shell
+mvn clean install
+```
+
+To deploy it to a remote Maven repository instead, configure the settings of the repository and execute:
+
+```shell
+mvn clean deploy
+```
+
+Refer to the [OSSRH Guide](http://central.sonatype.org/pages/ossrh-guide.html) for more information.
+
 ### Maven users
 
 Add this dependency to your project's POM:
@@ -39,6 +53,7 @@ Add this dependency to your project's POM:
   <groupId>{{{groupId}}}</groupId>
   <artifactId>{{{artifactId}}}</artifactId>
   <version>{{{artifactVersion}}}</version>
+  <scope>compile</scope>
 </dependency>
 ```
 
@@ -48,13 +63,27 @@ Add this dependency to your project's build file:
 
 ```groovy
   repositories {
-    mavenCentral()
+    mavenCentral()     // Needed if the '{{{artifactId}}}' jar has been published to maven central.
+    mavenLocal()       // Needed if the '{{{artifactId}}}' jar has been published to the local maven repo.
   }
 
   dependencies {
      implementation "{{{groupId}}}:{{{artifactId}}}:{{{artifactVersion}}}"
   }
 ```
+
+### Others
+
+At first generate the JAR by executing:
+
+```shell
+mvn clean package
+```
+
+Then manually install the following JARs:
+
+- `target/{{{artifactId}}}-{{{artifactVersion}}}.jar`
+- `target/lib/*.jar`
 
 {{#jersey2}}
 ## Usage
@@ -190,7 +219,7 @@ Class | Method | HTTP request | Description
 - **Flow**: {{flow}}
 - **Authorization URL**: {{authorizationUrl}}
 - **Scopes**: {{^scopes}}N/A{{/scopes}}
-{{#scopes}}  - **{{scope}}**: {{description}}
+{{#scopes}}  - {{scope}}: {{description}}
 {{/scopes}}
 {{/isOAuth}}
 
