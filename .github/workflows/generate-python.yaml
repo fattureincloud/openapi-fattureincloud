@@ -109,8 +109,6 @@ jobs:
 
           USER_AGENT="$APP_NAME/${{ env.sdk_version }}/Python-SDK"
 
-          node ./scripts/preprocess-spec.js
-
           openapi-generator-cli generate -i ./openapi.yaml -g python -o ./generated/python/ -t ./templates/python --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=packageVersion=${SDK_VERSION},packageName=${PACKAGE_NAME},packageUrl=${PACKAGE_URL},projectName=${PROJECT_NAME},infoName=${INFO_NAME}
 
       - id: create-pr
