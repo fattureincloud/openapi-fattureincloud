@@ -9,9 +9,9 @@ OpenAPI specification for Fatture in Cloud API.
 <table>
     <tr><th>Language</th><th>Package</th></tr>
     <tr><td>PHP</td><td><a href="https://packagist.org/packages/fattureincloud/fattureincloud-php-sdk"><img alt="Packagist" src="https://img.shields.io/packagist/v/fattureincloud/fattureincloud-php-sdk?color=8892be"></a></td></tr>
-    <tr><td>JavaScript</td><a href="https://www.npmjs.com/package/@fattureincloud/fattureincloud-js-sdk"><td><img alt="npm" src="https://img.shields.io/npm/v/@fattureincloud/fattureincloud-js-sdk?color=ffeb42"></a></td></tr>
+    <tr><td>JavaScript</td><td><a href="https://www.npmjs.com/package/@fattureincloud/fattureincloud-js-sdk"><img alt="npm" src="https://img.shields.io/npm/v/@fattureincloud/fattureincloud-js-sdk?color=ffeb42"></a></td></tr>
     <tr><td>C#</td><td><a href="https://www.nuget.org/packages/It.FattureInCloud.Sdk/"><img alt="Nuget" src="https://img.shields.io/nuget/v/It.FattureInCloud.Sdk?color=7b2f85"></a></td></tr>
     <tr><td>Java</td><td><a href="https://search.maven.org/artifact/it.fattureincloud/fattureincloud-java-sdk"><img alt="Maven Central" src="https://img.shields.io/maven-central/v/it.fattureincloud/fattureincloud-java-sdk?color=b07219"></a></td></tr>
-    <tr><td>Python</td><a href="https://pypi.org/project/fattureincloud-python-sdk/"><td><img alt="PyPI" src="https://img.shields.io/pypi/v/fattureincloud-python-sdk?color=16c0f8"></a></td></tr>
-    <tr><td>Ruby</td><a href="https://rubygems.org/gems/fattureincloud_ruby_sdk"><td><img alt="Gem" src="https://img.shields.io/gem/v/fattureincloud_ruby_sdk?color=c22815"></a></td></tr>
+    <tr><td>Python</td><td><a href="https://pypi.org/project/fattureincloud-python-sdk/"><img alt="PyPI" src="https://img.shields.io/pypi/v/fattureincloud-python-sdk?color=16c0f8"></a></td></tr>
+    <tr><td>Ruby</td><td><a href="https://rubygems.org/gems/fattureincloud_ruby_sdk"><img alt="Gem" src="https://img.shields.io/gem/v/fattureincloud_ruby_sdk?color=c22815"></a></td></tr>
 </table>
