@@ -32,11 +32,15 @@ OpenAPI specification for <a href="http://developers.fattureincloud.it">Fatture 
 <h3>openapi-enriched.yaml</h3>
 <p>The <b>openapi-enriched.yaml</b> file is the file we use for our documentation, it contains all the accessory informations to provide to the user the best documentation possible for the usage of our methods, it includes required parameteres, default values and other usefuls infos.</p>
 
-<h2>Postman collection<h2>
-<p>To use our postman collection you have to follow some simple steps: 
+<h2>Postman collection</h2>
+<p>To use our postman collection you have to follow some simple steps:</p>
 <ul>
     <li>Download the <a href="https://github.com/fattureincloud/openapi-fattureincloud/blob/master/postman/fic-api.json"><b>postman/fic-api.json</b></a> file tou can find in this repo</li>
     <li>Import it following <a href="https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#importing-data-into-postman">this procedure.</a></li>
 </ul>
-</p>
+
+<h2>Documentation</h2>
+<p>If you need any other information we have a very complete documentation <a href="https://developers.fattureincloud.it">here</a>, full of discursive and technical guides, including our api methods specs.</p>
+
+
 
