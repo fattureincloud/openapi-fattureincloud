@@ -18,7 +18,7 @@ OpenAPI specification for <a href="http://developers.fattureincloud.it">Fatture 
     <tr><td>Ruby</td><td><a href="https://rubygems.org/gems/fattureincloud_ruby_sdk"><img alt="Gem" src="https://img.shields.io/gem/v/fattureincloud_ruby_sdk?color=c22815"></a></td></tr>
 </table>
 
-<h1>Two specs</h1>
+<h2>Two specs</h2>
 <p>If you looked at our repo files you almost surely noticed that we have two api specifications:</p>
 <ul>
     <li>openapi.yaml</li>
@@ -26,7 +26,17 @@ OpenAPI specification for <a href="http://developers.fattureincloud.it">Fatture 
 </ul>
 
 <h3>openapi.yaml</h3>
-<p>The <b>openapi.yaml</b> file is the file we use to generate our SDKs, it contains only the necessary informations to generate a fully working SDK</p>
+<p>The <b>openapi.yaml</b> file is the file we use to generate our SDKs, it contains only the necessary informations to generate a fully working SDK, it's splitted in several files, contained in the models directory.
+</p>
 
 <h3>openapi-enriched.yaml</h3>
 <p>The <b>openapi-enriched.yaml</b> file is the file we use for our documentation, it contains all the accessory informations to provide to the user the best documentation possible for the usage of our methods, it includes required parameteres, default values and other usefuls infos.</p>
+
+<h2>Postman collection<h2>
+<p>To use our postman collection you have to follow some simple steps: 
+<ul>
+    <li>Download the <a href="https://github.com/fattureincloud/openapi-fattureincloud/blob/master/postman/fic-api.json"><b>postman/fic-api.json</b></a> file tou can find in this repo</li>
+    <li>Import it following <a href="https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#importing-data-into-postman">this procedure.</a></li>
+</ul>
+</p>
+
