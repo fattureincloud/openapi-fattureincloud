@@ -1,11 +1,10 @@
 # Fatture in cloud OpenApi specification
 
-OpenAPI specification for Fatture in Cloud API.
+OpenAPI specification for Fatture in Cloud API. <img alt ="OpenApi validation" src="https://validator.swagger.io/validator?url=https://raw.githubusercontent.com/fattureincloud/openapi-fattureincloud/master/openapi.yaml">
 
 <img alt="GitHub tag (latest SemVer)" src="https://img.shields.io/github/v/tag/fattureincloud/openapi-fattureincloud?color=violet&label=release&sort=semver">
 
-<img alt ="OpenApi validation" src="https://validator.swagger.io/validator?url=https://raw.githubusercontent.com/fattureincloud/openapi-fattureincloud/master/openapi.yaml">
-
+<h2>Available SDKs</h2>
 <table>
     <tr><th>Language</th><th>Package</th></tr>
     <tr><td>PHP</td><td><a href="https://packagist.org/packages/fattureincloud/fattureincloud-php-sdk"><img alt="Packagist" src="https://img.shields.io/packagist/v/fattureincloud/fattureincloud-php-sdk?color=8892be"></a></td></tr>
