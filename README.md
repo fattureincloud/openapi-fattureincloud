@@ -17,3 +17,16 @@ OpenAPI specification for <a href="http://developers.fattureincloud.it">Fatture 
     <tr><td>Python</td><td><a href="https://pypi.org/project/fattureincloud-python-sdk/"><img alt="PyPI" src="https://img.shields.io/pypi/v/fattureincloud-python-sdk?color=16c0f8"></a></td></tr>
     <tr><td>Ruby</td><td><a href="https://rubygems.org/gems/fattureincloud_ruby_sdk"><img alt="Gem" src="https://img.shields.io/gem/v/fattureincloud_ruby_sdk?color=c22815"></a></td></tr>
 </table>
+
+<h1>Two specs</h1>
+<p>If you looked at our repo files you almost surely noticed that we have two api specifications:</p>
+<ul>
+    <li>openapi.yaml</li>
+    <li>openapi-enriched.yaml</li>
+</ul>
+
+<h3>openapi.yaml</h3>
+<p>The <b>openapi.yaml</b> file is the file we use to generate our SDKs, it contains only the necessary informations to generate a fully working SDK</p>
+
+<h3>openapi-enriched.yaml</h3>
+<p>The <b>openapi-enriched.yaml</b> file is the file we use for our documentation, it contains all the accessory informations to provide to the user the best documentation possible for the usage of our methods, it includes required parameteres, default values and other usefuls infos.</p>
