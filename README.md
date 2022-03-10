@@ -2,4 +2,5 @@
 
 OpenAPI specification for Fatture in Cloud API.
 
-[![Sync OAS to ReadMe](https://github.com/fattureincloud/openapi-fattureincloud/actions/workflows/readme_sync.yaml/badge.svg)](https://github.com/fattureincloud/openapi-fattureincloud/actions/workflows/readme_sync.yaml)
+
+<img src="https://validator.swagger.io/validator?url=https://raw.githubusercontent.com/fattureincloud/openapi-fattureincloud/master/openapi.yaml">
