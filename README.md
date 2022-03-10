@@ -8,10 +8,10 @@ OpenAPI specification for Fatture in Cloud API.
 
 <table>
     <tr><th>Language</th><th>Package</th></tr>
-    <tr><td>PHP</td><td><a href="https://badge.fury.io/ph/fattureincloud%2Ffattureincloud-php-sdk"><img src="https://badge.fury.io/ph/fattureincloud%2Ffattureincloud-php-sdk.svg" alt="PHP version" height="18"></a></td></tr>
-    <tr><td>JavaScript</td><td><a href="https://badge.fury.io/js/@fattureincloud%2Ffattureincloud-js-sdk"><img src="https://badge.fury.io/js/@fattureincloud%2Ffattureincloud-js-sdk.svg" alt="npm version" height="18"></a></td></tr>
-    <tr><td>C#</td><td><a href="https://badge.fury.io/nu/It.FattureInCloud.Sdk"><img src="https://badge.fury.io/nu/It.FattureInCloud.Sdk.svg" alt="NuGet version" height="18"></a></td></tr>
-    <tr><td>Java</td><td><img alt="Maven Central" src="https://img.shields.io/maven-central/v/it.fattureincloud/fattureincloud-java-sdk?color=gree"></td></tr>
-    <tr><td>Python</td><td><a href="https://badge.fury.io/py/fattureincloud-python-sdk"><img src="https://badge.fury.io/py/fattureincloud-python-sdk.svg" alt="PyPI version" height="18"></a></td></tr>
-    <tr><td>Ruby</td><td><a href="https://badge.fury.io/rb/fattureincloud_ruby_sdk"><img src="https://badge.fury.io/rb/fattureincloud_ruby_sdk.svg" alt="Gem Version" height="18"></a></td></tr>
+    <tr><td>PHP</td><td><img alt="Packagist Version" src="https://img.shields.io/packagist/v/fattureincloud/fattureincloud-php-sdk?color=8892be"></td></tr>
+    <tr><td>JavaScript</td><td><img alt="npm" src="https://img.shields.io/npm/v/@fattureincloud/fattureincloud-js-sdk?color=ffeb42"></td></tr>
+    <tr><td>C#</td><td><img alt="Nuget" src="https://img.shields.io/nuget/v/It.FattureInCloud.Sdk?color=7b2f85"></td></tr>
+    <tr><td>Java</td><td><img alt="Maven Central" src="https://img.shields.io/maven-central/v/it.fattureincloud/fattureincloud-java-sdk?color=b07219"></td></tr>
+    <tr><td>Python</td><td><img alt="PyPI" src="https://img.shields.io/pypi/v/fattureincloud-python-sdk?color=16c0f8"></td></tr>
+    <tr><td>Ruby</td><td><img alt="PyPI" src="https://img.shields.io/pypi/v/fattureincloud-python-sdk?color=c22815"></td></tr>
 </table>
