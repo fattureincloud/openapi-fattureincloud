@@ -45,19 +45,18 @@ OpenAPI specification for <a href="http://developers.fattureincloud.it">Fatture 
 
 <h2>&#128193; Generate your sdk</h2>
 <p>If you need an SDK for a language we are not supporting right now you can always generate it using the <a href="https://github.com/OpenAPITools/openapi-generator">OpenAPI Generator</a> or a generator of your choice.
-   The steps to follow are very easy:
+The steps to follow are very easy:</p>
 <ul>
    <li>install the generator using your preferred method as explained <a href="https://openapi-generator.tech/docs/installation">here</a></li>
    <li>generate the sdk you want following <a href="https://openapi-generator.tech/docs/usage">these steps</a> using our <a href="https://github.com/fattureincloud/openapi-fattureincloud/blob/API-12-adding-badges/openapi.yaml">openapi.yaml</a></li>
 </ul>
-You can find a list of all the languages and additional options supported by the generator <a href="https://openapi-generator.tech/docs/generators">here</a>
-</p>
+<p>You can find a list of all the languages and additional options supported by the generator <a href="https://openapi-generator.tech/docs/generators">here.</a></p>
 
 <h2>&#128238; Postman collection</h2>
 <p>To use our postman collection you have to follow some simple steps:</p>
 <ul>
    <li>Download the <a href="https://github.com/fattureincloud/openapi-fattureincloud/blob/master/postman/fic-api.json">postman/fic-api.json</a> file you can find in our repo</li>
-   <li>Import it following <a href="https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#importing-data-into-postman">this procedure.</a></li>
+   <li>Import it following <a href="https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#importing-data-into-postman">this procedure</a></li>
 </ul>
 
 <h2>&#128218; Documentation</h2>
