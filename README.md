@@ -39,16 +39,16 @@ OpenAPI specification for <a href="http://developers.fattureincloud.it">Fatture 
 <h2>&#128109; Two specs</h2>
 <p>If you looked at our repo files you almost surely noticed that we have two api specifications:</p>
 <h3>openapi.yaml</h3>
-<p>The <b>openapi.yaml</b> file is the file we use to generate our SDKs, it contains only the necessary informations to generate a fully working SDK, it's splitted in several files, contained in the models directory.</p>
+<p>The <b>openapi.yaml</b> file is the file we use to generate our SDKs, it contains only the necessary information to generate a fully working SDK, it's split into several files, contained in the /models directory.</p>
 <h3>openapi-enriched.yaml</h3>
-<p>The <b>openapi-enriched.yaml</b> file is the file we use for our documentation, it contains all the accessory informations to provide to the user the best documentation possible for the usage of our methods, it includes required parameteres, default values and other usefuls infos.</p>
+<p>The <b>openapi-enriched.yaml</b> file is the file we use for our documentation, it contains all the accessory information to provide to the user the best documentation possible for the usage of our methods, it includes the required parameters, default values and other useful info.</p>
 
-<h2>&#128193; Generate your sdk</h2>
+<h2>&#128193; Generate your SDK</h2>
 <p>If you need an SDK for a language we are not supporting right now you can always generate it using the <a href="https://github.com/OpenAPITools/openapi-generator">OpenAPI Generator</a> or a generator of your choice.
 The steps to follow are very easy:</p>
 <ul>
    <li>install the generator using your preferred method as explained <a href="https://openapi-generator.tech/docs/installation">here</a></li>
-   <li>generate the sdk you want following <a href="https://openapi-generator.tech/docs/usage">these steps</a> using our <a href="https://github.com/fattureincloud/openapi-fattureincloud/blob/API-12-adding-badges/openapi.yaml">openapi.yaml</a></li>
+   <li>generate the SDK you want following <a href="https://openapi-generator.tech/docs/usage">these steps</a> using our <a href="https://github.com/fattureincloud/openapi-fattureincloud/blob/API-12-adding-badges/openapi.yaml">openapi.yaml</a></li>
 </ul>
 <p>You can find a list of all the languages and additional options supported by the generator <a href="https://openapi-generator.tech/docs/generators">here.</a></p>
 
