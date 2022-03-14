@@ -2275,6 +2275,21 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters: []
+  /info/detailed_countries:
+    get:
+      summary: List Detailed Countries
+      tags:
+        - Info
+      responses:
+        '200':
+          $ref: '#/components/responses/ListDetailedCountriesResponse'
+        '401':
+          description: Unauthorized
+      operationId: listDetailedCountries
+      description: Lists the supported countries.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      parameters: []
   /info/cities:
     get:
       summary: List Cities
@@ -8237,5 +8252,30 @@ components:
         application/json:
           schema:
             $ref: ./models/responses/GetEInvoiceRejectionReasonResponse.yaml
+    ListDetailedCountriesResponse:
+      description: List of detailed countries
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ListDetailedCountriesResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  - name: Italia
+                    settings_name: Italia
+                    iso: IT
+                    fiscal_iso: IT
+                    uic: '086'
+                  - name: Afghanistan
+                    settings_name: Afghanistan
+                    iso: AF
+                    fiscal_iso: AF
+                    uic: '002'
+                  - name: Albania
+                    settings_name: Albania
+                    iso: AL
+                    fiscal_iso: AL
+                    uic: '087'
 security:
   - OAuth2AuthenticationCodeFlow: []
