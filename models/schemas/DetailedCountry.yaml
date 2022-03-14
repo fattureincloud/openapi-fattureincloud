@@ -1,0 +1,15 @@
+title: DetailedCountry
+type: object
+properties:
+  name:
+    type: string
+    nullable: true
+    description: Country name.
+  iso:
+    type: string
+    nullable: true
+    description: Country iso.
+  uic:
+    type: string
+    nullable: true
+    description: Country uic.
