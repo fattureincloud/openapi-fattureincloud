@@ -7,12 +7,14 @@ properties:
     description: Country name.
   settings_name:
     type: string
+    nullable: true
   iso:
     type: string
     nullable: true
     description: Country iso.
   fiscal_iso:
     type: string
+    nullable: true
   uic:
     type: string
     nullable: true
