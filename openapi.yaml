@@ -103,7 +103,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
-        - $ref: '#/components/parameters/query'
+        - $ref: '#/components/parameters/q'
     post:
       summary: Create Client
       operationId: createClient
@@ -279,7 +279,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
-        - $ref: '#/components/parameters/query'
+        - $ref: '#/components/parameters/q'
       tags:
         - Suppliers
     post:
@@ -437,7 +437,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
-        - $ref: '#/components/parameters/query'
+        - $ref: '#/components/parameters/q'
     post:
       summary: Create Product
       operationId: createProduct
@@ -592,7 +592,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
-        - $ref: '#/components/parameters/query'
+        - $ref: '#/components/parameters/q'
     post:
       summary: Create Issued Document
       operationId: createIssuedDocument
@@ -1211,7 +1211,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
-        - $ref: '#/components/parameters/query'
+        - $ref: '#/components/parameters/q'
     post:
       summary: Create Received Document
       operationId: createReceivedDocument
@@ -1573,7 +1573,7 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
         - $ref: '#/components/parameters/sort'
-        - $ref: '#/components/parameters/query'
+        - $ref: '#/components/parameters/q'
     post:
       summary: Create Receipt
       operationId: createReceipt
@@ -1790,7 +1790,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
-        - $ref: '#/components/parameters/query'
+        - $ref: '#/components/parameters/q'
     post:
       summary: Create F24
       operationId: createF24
@@ -1974,7 +1974,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
-        - $ref: '#/components/parameters/query'
+        - $ref: '#/components/parameters/q'
     post:
       summary: Create Archive Document
       operationId: createArchiveDocument
@@ -3017,8 +3017,8 @@ components:
           - passive_credit_note
           - passive_delivery_note
       description: The type of the received document.
-    query:
-      name: query
+    q:
+      name: q
       in: query
       required: false
       schema:
