@@ -103,6 +103,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
+        - $ref: '#/components/parameters/q'
     post:
       summary: Create Client
       operationId: createClient
@@ -278,6 +279,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
+        - $ref: '#/components/parameters/q'
       tags:
         - Suppliers
     post:
@@ -435,6 +437,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
+        - $ref: '#/components/parameters/q'
     post:
       summary: Create Product
       operationId: createProduct
@@ -585,6 +588,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
+        - $ref: '#/components/parameters/q'
     post:
       summary: Create Issued Document
       operationId: createIssuedDocument
@@ -1213,6 +1217,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
+        - $ref: '#/components/parameters/q'
     post:
       summary: Create Received Document
       operationId: createReceivedDocument
@@ -1571,6 +1576,7 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
         - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/q'
     post:
       summary: Create Receipt
       operationId: createReceipt
@@ -1781,6 +1787,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
+        - $ref: '#/components/parameters/q'
     post:
       summary: Create F24
       operationId: createF24
@@ -1964,6 +1971,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
+        - $ref: '#/components/parameters/q'
     post:
       summary: Create Archive Document
       operationId: createArchiveDocument
@@ -2271,6 +2279,21 @@ paths:
         '401':
           description: Unauthorized
       operationId: listCountries
+      description: Lists the supported countries.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      parameters: []
+  /info/detailed_countries:
+    get:
+      summary: List Detailed Countries
+      tags:
+        - Info
+      responses:
+        '200':
+          $ref: '#/components/responses/ListDetailedCountriesResponse'
+        '401':
+          description: Unauthorized
+      operationId: listDetailedCountries
       description: Lists the supported countries.
       security:
         - OAuth2AuthenticationCodeFlow: []
@@ -2998,6 +3021,13 @@ components:
           - passive_credit_note
           - passive_delivery_note
       description: The type of the received document.
+    q:
+      name: q
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Query for filtering the results.
     include_attachment:
       name: include_attachment
       in: query
@@ -8237,5 +8267,30 @@ components:
         application/json:
           schema:
             $ref: ./models/responses/GetEInvoiceRejectionReasonResponse.yaml
+    ListDetailedCountriesResponse:
+      description: List of detailed countries
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ListDetailedCountriesResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  - name: Italia
+                    settings_name: Italia
+                    iso: IT
+                    fiscal_iso: IT
+                    uic: '086'
+                  - name: Afghanistan
+                    settings_name: Afghanistan
+                    iso: AF
+                    fiscal_iso: AF
+                    uic: '002'
+                  - name: Albania
+                    settings_name: Albania
+                    iso: AL
+                    fiscal_iso: AL
+                    uic: '087'
 security:
   - OAuth2AuthenticationCodeFlow: []
