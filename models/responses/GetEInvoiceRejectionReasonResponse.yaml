@@ -1,0 +1,6 @@
+title: GetEInvoiceRejectionReason
+type: object
+properties:
+  data:
+    $ref: ../schemas/EInvoiceRejectionReason.yaml
+    nullable: true

@@ -1,5 +1,6 @@
 title: CashbookEntryType
 type: string
+nullable: true
 enum:
   - in
   - out

@@ -1,0 +1,11 @@
+title: SenderEmail
+type: object
+properties:
+  id:
+    type: integer
+    description: Id
+    nullable: true
+  email:
+    type: string
+    description: Email address
+    nullable: true

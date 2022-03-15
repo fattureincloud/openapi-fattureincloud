@@ -7,13 +7,17 @@ properties:
   name:
     type: string
     description: Name of the payment method
+    nullable: true
   type:
     $ref: ../enums/PaymentMethodType.yaml
+    nullable: true
   is_default:
     type: boolean
     description: Determines if this is the default payment method.
+    nullable: true
   default_payment_account:
     $ref: ./PaymentAccount.yaml
+    nullable: true
   details:
     maxItems: 5
     type: array
@@ -42,7 +46,6 @@ properties:
     nullable: true
   ei_payment_method:
     type: string
-    description: EInvoice payment method
-required:
-  - name
+    description: E-invoice payment method
+    nullable: true
 title: PaymentMethod

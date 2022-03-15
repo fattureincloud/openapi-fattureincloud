@@ -1,51 +1,55 @@
-required:
-  - attach_pdf
-  - body
-  - include
-  - recipient_email
-  - send_copy
-  - subject
 type: object
+title: EmailSchedule
 properties:
   sender_id:
-    type: number
+    type: integer
     description: Sender id. Required if `sender_email` is not specified
+    nullable: true
   sender_email:
     type: string
     description: Sender email. Required if `sender_id` is not specified
+    nullable: true
   recipient_email:
     type: string
     description: One or more comma separated recipient emails
+    nullable: true
   subject:
     type: string
     description: Email subject
+    nullable: true
   body:
     type: string
     description: Email body
+    nullable: true
   include:
-    required:
-      - accompanying_invoice
-      - attachment
-      - delivery_note
-      - document
     type: object
     properties:
       document:
         type: boolean
-        description: 'If set to true, the email will have a button to view the document'
+        description: If set to true, the email will have a button to view the document
+        nullable: true
       delivery_note:
         type: boolean
-        description: 'If set to true, the email will have a button to view the delivery note'
+        description: If set to true, the email will have a button to view the delivery note
+        nullable: true
       attachment:
         type: boolean
-        description: 'If set to true, the email will have a button to view the attachment'
+        description: If set to true, the email will have a button to view the attachment
+        nullable: true
       accompanying_invoice:
         type: boolean
-        description: 'If set to true, the email will have a button to view the accompanying invoice'
+        description: >-
+          If set to true, the email will have a button to view the accompanying
+          invoice
+        nullable: true
+    nullable: true
   attach_pdf:
     type: boolean
-    description: 'If set to true, documents will be sent as PDF attachments too'
+    description: If set to true, documents will be sent as PDF attachments too
+    nullable: true
   send_copy:
     type: boolean
-    description: 'If set to true, a copy of the email will be sent to the `cc_email` specified by `Get email data`'
-title: EmailSchedule
+    description: >-
+      If set to true, a copy of the email will be sent to the `cc_email`
+      specified by `Get email data`
+    nullable: true

@@ -1,4 +1,0 @@
-title: CashbookEntryOut
-allOf:
-  - $ref: ./CashbookEntryData.yaml
-  - $ref: ./CashbookEntryOutData.yaml

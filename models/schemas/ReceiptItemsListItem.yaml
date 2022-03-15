@@ -2,16 +2,21 @@ title: ReceiptItemsListItem
 type: object
 properties:
   id:
-    type: number
+    type: integer
     description: Item unique identifier.
+    nullable: true
   amount_net:
     type: number
     description: Item total net amount.
+    nullable: true
   amount_gross:
     type: number
     description: Item total gross amount.
+    nullable: true
   category:
     type: string
     description: Item category.
+    nullable: true
   vat:
     $ref: ./VatType.yaml
+    nullable: true

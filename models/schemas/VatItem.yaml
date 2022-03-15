@@ -1,0 +1,9 @@
+title: VatItem
+type: object
+properties:
+  amount_net:
+    type: number
+    nullable: true
+  amount_vat:
+    type: number
+    nullable: true

@@ -2,8 +2,5 @@ title: UploadArchiveAttachmentResponse
 type: object
 properties:
   data:
-    type: object
-    properties:
-      attachment_token:
-        type: string
-        description: Uploaded attachment token.
+    $ref: ../schemas/AttachmentData.yaml
+    nullable: true

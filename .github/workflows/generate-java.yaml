@@ -1,0 +1,150 @@
+name: Generate Java SDK
+on:
+  repository_dispatch:
+    types: [generate-java]
+
+jobs:
+  generate-java-sdk:
+    runs-on: ubuntu-latest
+    env:
+      GIT_REPO_ID: fattureincloud-java-sdk
+      GIT_USER_ID: fattureincloud
+    steps: 
+
+      - id: checkout
+        name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+      
+      - id: checkout-java
+        name: Checkout Java repo
+        env:
+          GIT_REPO_PATH: '${{ env.GIT_USER_ID }}/${{ env.GIT_REPO_ID }}'
+        uses: actions/checkout@v2
+        with:
+          path: ./generated/java
+          ref: master
+          repository: ${{ env.GIT_REPO_PATH }}
+          token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+
+      - id: init-git
+        name: Init GIT
+        run: |
+          git config --global user.email "info@fattureincloud.it"
+          git config --global user.name "fattureincloud-bot"
+
+      - id: setup-node
+        name: Setup Node.js
+        uses: actions/setup-node@v2
+
+      - id: setup-java
+        name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '8'
+
+      - id: setup-libraries
+        name: Install libraries
+        run: |
+          npm install -g yarn
+          yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli standard-version
+          sudo add-apt-repository ppa:rmescandon/yq -y
+          sudo apt update
+          sudo apt install yq -y
+          cd ./scripts/
+          yarn
+          cd ../generated/java/scripts
+          yarn
+
+      - id: bump-java-sdk-version
+        name: Bump Java SDK
+        env:
+          OPENAPI_VERSION: ${{ github.event.client_payload.version }}
+        run: |
+
+          echo "openapi_version=$OPENAPI_VERSION"
+
+          BUMP_TYPE=$(node ./scripts/sdk-version-checker.js ./generated/java/sdk-version.yaml $OPENAPI_VERSION)
+
+          cd ./generated/java
+
+          if [ "$BUMP_TYPE" == "patch" ];then
+            echo 'Bumping the SDK patch version...'
+            standard-version --skip.tag --skip.changelog --skip.commit --release-as patch
+          elif [ "$BUMP_TYPE" == "openapi" ];then
+            echo 'Using the openapi version...'
+            standard-version --skip.tag --skip.changelog --skip.commit --release-as $OPENAPI_VERSION
+          else
+            echo "Something bad happened - impossible to bump Java SDK version. value=$BUMP_TYPE"
+          fi
+
+          SDK_VERSION=$(yq e '.info.version' ./sdk-version.yaml)
+
+
+          echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
+          echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
+
+      - id: delete-old-files
+        name: Delete old files
+        run: |
+          rm -rf ./generated/java/src/main
+          rm -rf ./generated/java/docs
+
+      - id: generate-java-sdk
+        name: Generate Java SDK
+        env:
+          APP_NAME: FattureInCloud
+          GROUP_ID: it.fattureincloud
+          ARTIFACT_DESCRIPTION: "\"Java SDK for the Fatture in Cloud API\""
+          DEVELOPER_EMAIL: info@fattureincloud.it
+          DEVELOPER_NAME: "\"Fatture In Cloud API Team\""
+          DEVELOPER_ORGANIZATION: "\"Fatture in Cloud\""
+          DEVELOPER_ORGANIZATION_URL: https://www.fattureincloud.it
+          
+        run: |
+          SDK_VERSION=${{ env.sdk_version }}
+          echo "${{ env.sdk_version }}"
+
+          BASE_PACKAGE="$GROUP_ID.sdk"
+          ADDITIONAL_PROPERTIES="artifactId=$GIT_REPO_ID"
+          ADDITIONAL_PROPERTIES="$ADDITIONAL_PROPERTIES,artifactVersion=$SDK_VERSION"
+          ADDITIONAL_PROPERTIES="$ADDITIONAL_PROPERTIES,artifactDescription=$ARTIFACT_DESCRIPTION"
+          ADDITIONAL_PROPERTIES="$ADDITIONAL_PROPERTIES,artifactUrl=https://github.com/$GIT_USER_ID/$GIT_REPO_ID"
+          ADDITIONAL_PROPERTIES="$ADDITIONAL_PROPERTIES,groupId=$GROUP_ID"
+          ADDITIONAL_PROPERTIES="$ADDITIONAL_PROPERTIES,invokerPackage=$BASE_PACKAGE"
+          ADDITIONAL_PROPERTIES="$ADDITIONAL_PROPERTIES,apiPackage=$BASE_PACKAGE.api"
+          ADDITIONAL_PROPERTIES="$ADDITIONAL_PROPERTIES,modelPackage=$BASE_PACKAGE.model"
+          ADDITIONAL_PROPERTIES="$ADDITIONAL_PROPERTIES,scmConnection=scm:git:git@github.com:$GIT_USER_ID/$GIT_REPO_ID.git"
+          ADDITIONAL_PROPERTIES="$ADDITIONAL_PROPERTIES,scmDeveloperConnection=scm:git:git@github.com:$GIT_USER_ID/$GIT_REPO_ID.git"
+          ADDITIONAL_PROPERTIES="$ADDITIONAL_PROPERTIES,scmUrl=https://github.com/$GIT_USER_ID/$GIT_REPO_ID.git"
+          ADDITIONAL_PROPERTIES="$ADDITIONAL_PROPERTIES,licenseName=MIT"
+          ADDITIONAL_PROPERTIES="$ADDITIONAL_PROPERTIES,licenseUrl=https://github.com/$GIT_USER_ID/$GIT_REPO_ID/blob/master/LICENSE"
+          ADDITIONAL_PROPERTIES="$ADDITIONAL_PROPERTIES,developerEmail=$DEVELOPER_EMAIL"
+          ADDITIONAL_PROPERTIES="$ADDITIONAL_PROPERTIES,developerName=$DEVELOPER_NAME"
+          ADDITIONAL_PROPERTIES="$ADDITIONAL_PROPERTIES,developerOrganization=$DEVELOPER_ORGANIZATION"
+          ADDITIONAL_PROPERTIES="$ADDITIONAL_PROPERTIES,developerOrganizationUrl=$DEVELOPER_ORGANIZATION_URL"
+          ADDITIONAL_PROPERTIES="$ADDITIONAL_PROPERTIES,dateLibrary=java8"
+          ADDITIONAL_PROPERTIES="$ADDITIONAL_PROPERTIES,serializableModel=true"
+          ADDITIONAL_PROPERTIES="$ADDITIONAL_PROPERTIES,serializationLibrary=jackson"
+          USER_AGENT="FattureInCloud/$SDK_VERSION/Java-SDK"
+          
+          RELEASE_NOTE="\"bumping version to $SDK_VERSION\""
+
+          USER_AGENT="$APP_NAME/${{ env.sdk_version }}/Java-SDK"
+
+          openapi-generator-cli generate -i ./openapi.yaml -g java -o ./generated/java/ -t ./templates/java --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=$ADDITIONAL_PROPERTIES
+
+      - id: create-pr
+        name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          path: ./generated/java
+          branch: "devel-${{ env.sdk_version }}"
+          token: "${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}"
+          delete-branch: true
+          base: master
+          commit-message: "chore: bumping version to ${{ env.sdk_version }}"
+          title: "Updating SDK to ${{ env.sdk_version }}"
+          body: "New SDK verson ${{ env.sdk_version }} generated by Github Action from OpenAPI Spec ${{ env.openapi_version }}"   

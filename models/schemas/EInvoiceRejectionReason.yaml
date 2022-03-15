@@ -1,0 +1,24 @@
+title: EInvoiceRejectionReason
+type: object
+properties:
+  reason:
+    type: string
+    description: Rejection reason.
+    nullable: true
+  ei_status:
+    type: string
+    description: E-invoice status.
+    nullable: true
+  solution:
+    type: string
+    description: Error solution.
+    nullable: true
+  code:
+    type: string
+    description: Error code.
+    nullable: true
+  date:
+    type: string
+    format: date
+    description: Rejection date.
+    nullable: true

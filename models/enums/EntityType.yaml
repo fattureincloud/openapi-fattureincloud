@@ -1,0 +1,10 @@
+title: EntityType
+type: string
+nullable: true
+default: null
+enum:
+  - company
+  - person
+  - pa
+  - condo
+description: Entity type.

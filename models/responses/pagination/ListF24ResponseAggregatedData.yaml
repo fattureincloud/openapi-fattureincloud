@@ -1,9 +1,7 @@
 title: ListF24ResponseAggregatedData
 type: object
 properties:
-  aggregated_data:
-    type: object
-    properties:
-      amount:
-        type: number
-        description: Total amount.
+  amount:
+    type: number
+    description: Total amount.
+    nullable: true

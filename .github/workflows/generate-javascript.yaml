@@ -72,10 +72,10 @@ jobs:
 
           if [ "$BUMP_TYPE" == "patch" ];then
             echo 'Bumping the SDK patch version...'
-            standard-version --release-as patch
+            standard-version --skip.tag --skip.changelog --skip.commit --release-as patch
           elif [ "$BUMP_TYPE" == "openapi" ];then
             echo 'Using the openapi version...'
-            standard-version --release-as $OPENAPI_VERSION
+            standard-version --skip.tag --skip.changelog --skip.commit --release-as $OPENAPI_VERSION
           else
             echo "Something bad happened - impossible to bump JS SDK version. value=$BUMP_TYPE"
           fi
@@ -85,6 +85,12 @@ jobs:
 
           echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
           echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
+
+      - id: delete-old-files
+        name: Delete old files
+        run: |
+          rm -rf ./generated/javascript/src
+          rm -rf ./generated/javascript/docs
 
       - id: generate-js-sdk
         name: Generate JS SDK
@@ -103,9 +109,6 @@ jobs:
           USER_AGENT="$APP_NAME/${{ env.sdk_version }}/JavaScript-SDK"
 
           openapi-generator-cli generate -i ./openapi.yaml -g javascript -o ./generated/javascript/ -t ./templates/javascript --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=projectVersion=$SDK_VERSION,projectName=$PROJECT_NAME,projectDescription=$PROJECT_DESCRIPTION,moduleName=$MODULE_NAME,usePromises=true
-
-
-          node ./scripts/postprocess-javascript.js nyc './generated/javascript/package.json'
 
       - id: create-pr
         name: Create Pull Request

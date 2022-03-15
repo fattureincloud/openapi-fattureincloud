@@ -16,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.0.7
+  version: 2.0.13
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -463,8 +463,6 @@ paths:
                     name: Tavolo di marmo
                     code: TAVOLO003
                     net_price: 240
-                    gross_price: 280
-                    use_gross_price: false
                     net_cost: 0
                     measure: ''
                     description: Tavolo in marmo pregiato
@@ -527,8 +525,6 @@ paths:
                     name: Tavolo di marmo
                     code: TAVOLO003
                     net_price: 240
-                    gross_price: 280
-                    use_gross_price: false
                     net_cost: 0
                     measure: ''
                     description: Tavolo in marmo pregiato
@@ -629,7 +625,6 @@ paths:
                     visible_subject: ''
                     amount_net: 68.18
                     amount_vat: 6.82
-                    amount_gross: 75
                     amount_due_discount: 0
                     entity:
                       id: 54321
@@ -672,13 +667,13 @@ paths:
                     payments_list:
                       - amount: 75
                         due_date: '2020-08-23'
-                        paid_date: null
                         id: 444
                         payment_terms:
                           days: 0
                           type: standard
                         status: not_paid
-                        payment_account: null
+                    payment_method:
+                      id: 4
         description: The Issued Document
   /c/{company_id}/issued_documents/{document_id}:
     parameters:
@@ -746,7 +741,6 @@ paths:
                     visible_subject: ''
                     amount_net: 68.18
                     amount_vat: 6.82
-                    amount_gross: 75
                     amount_due_discount: 0
                     entity:
                       id: 54321
@@ -789,13 +783,11 @@ paths:
                     payments_list:
                       - amount: 75
                         due_date: '2020-08-23'
-                        paid_date: null
                         id: 444
                         payment_terms:
                           days: 0
                           type: standard
                         status: not_paid
-                        payment_account: null
         description: The modified document
       tags:
         - Issued Documents
@@ -855,21 +847,12 @@ paths:
                     subject: ''
                     visible_subject: ''
                     rc_center: ''
-                    ei_cassa_type: null
-                    ei_withholding_tax_causal: null
-                    ei_other_withholding_tax_type: null
-                    ei_other_withholding_tax_causal: null
                     stamp_duty: 0
                     use_gross_prices: false
-                    e_invoice: false
-                    agyo_company_id: null
-                    agyo_id: null
-                    agyo_sent_at: null
                     delivery_note: false
                     accompanying_invoice: false
                     amount_net: 68.18
                     amount_vat: 6.82
-                    amount_gross: 75
                     amount_due_discount: 0
                     amount_rivalsa: 0
                     amount_cassa: 0
@@ -918,8 +901,6 @@ paths:
                       id: 4
                       name: Credit card
                     use_split_payment: false
-                    merged_in: null
-                    original_document: null
                     items_list:
                       - product_id: 5432
                         code: SG3
@@ -928,7 +909,6 @@ paths:
                         net_price: 68.18182
                         category: ''
                         id: 277876033
-                        gross_price: 75
                         apply_withholding_taxes: true
                         discount: 0
                         discount_highlight: false
@@ -944,25 +924,17 @@ paths:
                     payments_list:
                       - amount: 75
                         due_date: '2020-08-23'
-                        paid_date: null
                         id: 69078013
                         payment_terms:
                           days: 0
                           type: standard
                         status: not_paid
-                        payment_account: null
                     attachment_url: kdijrnf893hnwkfk45f50f.pdf
-                    seen_date: null
                     next_due_date: '2020-08-23'
                     template:
                       id: 2821
                       name: Light Smoke
-                    extra_data: null
                     url: y12h45rn9yf2mse0p43t7ec90vr.pdf
-                    locked: false
-                    has_ts_pay_pending_payment: false
-                    show_tspay_button: false
-                    pay_with_tspay_url: null
   /c/{company_id}/issued_documents/{document_id}/totals:
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -1167,7 +1139,7 @@ paths:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
     get:
-      summary: Verify e-invoice xml
+      summary: Verify e-invoice XML
       tags:
         - Issued e-invoices
       responses:
@@ -1181,11 +1153,45 @@ paths:
           $ref: '#/components/responses/VerifyEInvoiceXmlErrorResponse'
       operationId: verifyEInvoiceXml
       description: >-
-        Verifies the e-invoice xml format. Checks if all of the mandatory fields
+        Verifies the e-invoice XML format. Checks if all of the mandatory fields
         are filled and compliant to the right format.
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters: []
+  /c/{company_id}/issued_documents/{document_id}/e_invoice/xml:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
+    get:
+      summary: Get e-invoice XML
+      tags:
+        - Issued e-invoices
+      responses:
+        '200':
+          $ref: '#/components/responses/GetEInvoiceXmlResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: getEInvoiceXml
+      description: Downloads the e-invoice in XML format.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      parameters:
+        - $ref: '#/components/parameters/include_attachment'
+  /c/{company_id}/issued_documents/{document_id}/e_invoice/error_reason:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
+    get:
+      summary: Get e-invoice rejection reason
+      tags:
+        - Issued e-invoices
+      responses:
+        '200':
+          $ref: '#/components/responses/GetEInvoiceRejectionReasonResponse'
+      operationId: getEInvoiceRejectionReason
+      description: Get e-invoice rejection reason
   /c/{company_id}/received_documents:
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -1259,7 +1265,6 @@ paths:
                     amount_other_withholding_tax: 0
                     tax_deductibility: 50
                     vat_deductibility: 100
-                    items_list: null
                     payments_list:
                       - amount: 592
                         due_date: '2021-08-15'
@@ -1350,7 +1355,6 @@ paths:
                     amount_other_withholding_tax: 0
                     tax_deductibility: 50
                     vat_deductibility: 100
-                    items_list: null
                     payments_list:
                       - amount: 592
                         due_date: '2021-08-15'
@@ -1438,7 +1442,6 @@ paths:
                     amount_other_withholding_tax: 0
                     tax_deductibility: 50
                     vat_deductibility: 100
-                    items_list: null
                     payments_list:
                       - amount: 592
                         due_date: '2021-08-15'
@@ -1601,8 +1604,6 @@ paths:
                     numeration: REC006
                     amount_net: 8.2
                     amount_vat: 1.8
-                    amount_gross: 10
-                    use_gross_prices: true
                     type: sales_receipt
                     description: cassa 1
                     rc_center: ''
@@ -1613,7 +1614,6 @@ paths:
                       - id: 888
                         amount_net: 8.2
                         amount_vat: 1.8
-                        amount_gross: 10
                         category: altro
                         vat:
                           id: 0
@@ -1676,8 +1676,6 @@ paths:
                     numeration: REC006
                     amount_net: 8.2
                     amount_vat: 1.8
-                    amount_gross: 10
-                    use_gross_prices: true
                     type: sales_receipt
                     description: cassa 1
                     rc_center: ''
@@ -1688,7 +1686,6 @@ paths:
                       - id: 888
                         amount_net: 8.2
                         amount_vat: 1.8
-                        amount_gross: 10
                         category: altro
                         vat:
                           id: 0
@@ -2286,6 +2283,21 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters: []
+  /info/detailed_countries:
+    get:
+      summary: List Detailed Countries
+      tags:
+        - Info
+      responses:
+        '200':
+          $ref: '#/components/responses/ListDetailedCountriesResponse'
+        '401':
+          description: Unauthorized
+      operationId: listDetailedCountries
+      description: Lists the supported countries.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      parameters: []
   /info/cities:
     get:
       summary: List Cities
@@ -2795,14 +2807,6 @@ paths:
                     ei_description: string
                     editable: true
                     is_disabled: true
-          application/xml:
-            schema:
-              type: object
-              properties: {}
-          multipart/form-data:
-            schema:
-              type: object
-              properties: {}
         description: ''
   /c/{company_id}/settings/vat_types/{vat_type_id}:
     parameters:
@@ -3024,6 +3028,13 @@ components:
       schema:
         type: string
       description: Query for filtering the results.
+    include_attachment:
+      name: include_attachment
+      in: query
+      required: false
+      schema:
+        type: boolean
+      description: Include the attachment to the XML e-invoice.
   responses:
     GetUserInfoResponse:
       description: ''
@@ -3949,7 +3960,6 @@ components:
                         days: 0
                         type: standard
                       status: not_paid
-                      payment_account: null
                   attachment_url: kdijrnf893hnwkfk45f50f.pdf
                   seen_date: null
                   next_due_date: '2020-08-23'
@@ -4074,7 +4084,6 @@ components:
                         days: 0
                         type: standard
                       status: not_paid
-                      payment_account: null
                   attachment_url: kdijrnf893hnwkfk45f50f.pdf
                   seen_date: null
                   next_due_date: '2020-08-23'
@@ -7737,9 +7746,6 @@ components:
                   category: Altri documenti
                   description: spesa 2
                   attachment_url: spesa2.pdf
-        application/xml:
-          schema:
-            $ref: ./models/responses/GetArchiveDocumentResponse.yaml
     ModifyArchiveDocumentResponse:
       description: The modified Archived Document
       content:
@@ -8249,5 +8255,42 @@ components:
                   ei_description: string
                   editable: true
                   is_disabled: true
+    GetEInvoiceXmlResponse:
+      description: ''
+      content:
+        text/xml:
+          schema:
+            $ref: ./models/responses/GetEInvoiceXmlResponse.yaml
+    GetEInvoiceRejectionReasonResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetEInvoiceRejectionReasonResponse.yaml
+    ListDetailedCountriesResponse:
+      description: List of detailed countries
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ListDetailedCountriesResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  - name: Italia
+                    settings_name: Italia
+                    iso: IT
+                    fiscal_iso: IT
+                    uic: '086'
+                  - name: Afghanistan
+                    settings_name: Afghanistan
+                    iso: AF
+                    fiscal_iso: AF
+                    uic: '002'
+                  - name: Albania
+                    settings_name: Albania
+                    iso: AL
+                    fiscal_iso: AL
+                    uic: '087'
 security:
   - OAuth2AuthenticationCodeFlow: []
