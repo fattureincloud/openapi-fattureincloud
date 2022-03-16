@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.0.14 (2022-03-16)
+
+
+### Bug Fixes
+
+* added "q" filter param and detailed countries method ([f9c1e47](https://github.com/fattureincloud/openapi-fattureincloud/commit/f9c1e47b4539323e4716aa970113640e089c73d4))
+
 ### 2.0.13 (2022-02-22)
 
 ### 2.0.12 (2022-02-21)
