@@ -107,11 +107,11 @@ jobs:
           openapi-generator-cli generate -i ./openapi.yaml -g typescript-axios -o generated/typescript-axios/ -t ./templates/typescript-axios --additional-properties=npmName=${PACKAGE_NAME},npmVersion=${SDK_VERSION},supportsES6=true,withNodeImports=true,withSeparateModelsAndApi=true,apiPackage=src/api,modelPackage=src/models,withInterfaces=true --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT}
 
       - id: generate-typescript-axios-docs
-        name: generate docs
+        name: Generate Docs
         run: openapi-generator-cli generate -i ./openapi.yaml -g javascript -o generated/typescript-axios-docs/  -t ./templates/typescript-axios-docs
 
       - id: move-docs
-        name: move docs to right folder
+        name: Moving Docs To The Right Folder
         run: mv ./generated/typescript-axios-docs/docs ./generated/typescript-axios 
 
       - id: create-pr
