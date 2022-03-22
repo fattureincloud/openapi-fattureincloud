@@ -90,6 +90,7 @@ jobs:
         run: |
           rm -rf ./generated/typescript-axios/src
           rm -rf ./generated/typescript-axios/docs
+          rm -rf ./generated/typescript-axios-docs
 
       - id: generate-typescript-axios
         name: Generate TypeScript SDK
