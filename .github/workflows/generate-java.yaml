@@ -53,6 +53,7 @@ jobs:
           sudo add-apt-repository ppa:rmescandon/yq -y
           sudo apt update
           sudo apt install yq -y
+          sudo apt install jq -y
           cd ./scripts/
           yarn
           cd ../generated/java/scripts
@@ -135,13 +136,16 @@ jobs:
           USER_AGENT="$APP_NAME/${{ env.sdk_version }}/Java-SDK"
 
           openapi-generator-cli generate -i ./openapi.yaml -g java -o ./generated/java/ -t ./templates/java --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=$ADDITIONAL_PROPERTIES
+      
+      - id: download-linter
+        name: Download Java Linter
+        run: |
+          LAST_VERSION_LINK = curl -s https://api.github.com/repos/google/google-java-format/releases/latest | jq -r ".assets[] | select(.name | test(\"all-deps\")) | .browser_download_url"
+          curl -o linter.jar
 
       - id: format-code
-        uses: axel-op/googlejavaformat-action@v3
-        with:
-          skipCommit: true
-          args: "--replace"
-          files: "./generated/java/**/*.java"
+        name: Format Code
+        run: java -jar ./linter.jar --replace ./generated/java/**/*.java  
 
       - id: create-pr
         name: Create Pull Request
