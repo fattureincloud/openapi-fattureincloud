@@ -87,6 +87,11 @@ jobs:
           echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
           echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
 
+      - id: move-custom-files-to-backup
+        name: Move custom files to backup
+        run: |
+          mv ./generated/java/src/main/java/it/fattureincloud/sdk/filter ./backup/java/src/main/java/it/fattureincloud/sdk/filter
+
       - id: delete-old-files
         name: Delete old files
         run: |
@@ -137,6 +142,11 @@ jobs:
 
           openapi-generator-cli generate -i ./openapi.yaml -g java -o ./generated/java/ -t ./templates/java --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=$ADDITIONAL_PROPERTIES
       
+      - id: move-custom-files-to-repo
+        name: Move custom files to repo
+        run: |
+          mv ./backup/java/src/main/java/it/fattureincloud/sdk/filter ./generated/java/src/main/java/it/fattureincloud/sdk/filter
+
       - id: download-linter
         name: Download Java Linter
         run: |
