@@ -86,6 +86,11 @@ jobs:
           echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
           echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
 
+      - id: move-custom-files-to-backup
+        name: Move custom files to backup
+        run: |
+          mv ./generated/php/lib/Filter ./backup/php/lib/Filter
+
       - id: delete-old-files
         name: Delete old files
         run: |
@@ -110,6 +115,11 @@ jobs:
           openapi-generator-cli generate -i ./openapi.yaml -g php -o ./generated/php/ -t ./templates/php --package-name=${PACKAGE_NAME} --invoker-package=${INVOKER_PACKAGE} --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=composerPackageName=${COMPOSER_PACKAGE_NAME}
 
           node ./scripts/postprocess-php.js clean './generated/php/lib/' './generated/php/test/'
+
+      - id: move-custom-files-to-repo
+        name: Move custom files to repo
+        run: |
+          mv ./backup/php/lib/Filter ./generated/php/lib/Filter
 
       - id: create-pr
         name: Create Pull Request
