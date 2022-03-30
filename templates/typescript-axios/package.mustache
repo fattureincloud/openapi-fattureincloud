@@ -1,0 +1,41 @@
+{
+  "name": "{{npmName}}",
+  "version": "{{npmVersion}}",
+  "description": "TypeScript SDK for the Fatture in Cloud API",
+  "author": "Fatture in Cloud API Team",
+  "keywords": [
+    "axios",
+    "typescript",
+    "openapi-client",
+    "openapi-generator",
+    "{{npmName}}"
+  ],
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --outDir dist/",
+    "prepare": "npm run build",
+    "test": "mocha -r ts-node/register 'test/**/*.ts'"
+  },
+  "dependencies": {
+    "axios": "^0.21.4",
+    "form-data": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.11.5",
+    "typescript": "^3.6.4",
+    "ts-node": "^10.7.0",
+    "chai": "^4.3.6",
+    "@types/chai": "^4.3.0",
+    "mocha": "^8.0.1",
+    "@types/mocha": "^9.1.0",
+    "sinon": "^7.2.0",
+    "@types/sinon": "^10.0.11"
+  }{{#npmRepository}},{{/npmRepository}}
+{{#npmRepository}}
+  "publishConfig": {
+    "registry": "{{npmRepository}}"
+  }
+{{/npmRepository}}
+}
