@@ -90,6 +90,7 @@ jobs:
       - id: move-custom-files-to-backup
         name: Move custom files to backup
         run: |
+          mkdir -p ./backup/java/src/main/java/it/fattureincloud/sdk/
           mv ./generated/java/src/main/java/it/fattureincloud/sdk/filter ./backup/java/src/main/java/it/fattureincloud/sdk/filter
 
       - id: delete-old-files

@@ -89,7 +89,8 @@ jobs:
       - id: move-custom-files-to-backup
         name: Move custom files to backup
         run: |
-          mv ./generated/php/lib/Filter ./backup/php/lib/Filter
+          mkdir -p ./backup/php/lib/Filter
+          mv ./generated/php/lib/Filter ./backup/php/lib/
 
       - id: delete-old-files
         name: Delete old files
