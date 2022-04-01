@@ -1,7 +1,5 @@
 # {{packageName}}
 
-[![Packagist](https://img.shields.io/packagist/v/fattureincloud/fattureincloud-php-sdk?color=g)](https://packagist.org/packages/fattureincloud/fattureincloud-php-sdk) ![unit tests](https://github.com/fattureincloud/fattureincloud-php-sdk/actions/workflows/validate.yaml/badge.svg)
-
 {{#appDescriptionWithNewLines}}
 {{{.}}}
 {{/appDescriptionWithNewLines}}
@@ -14,16 +12,28 @@ For more information, please visit [{{{infoUrl}}}]({{{infoUrl}}}).
 
 ### Requirements
 
-PHP 7.1 and later.
+PHP 7.3 and later.
 Should also work with PHP 8.0 but has not been tested.
 
 ### Composer
 
-To install the bindings via [Composer](https://getcomposer.org/), run the following command:
+To install the bindings via [Composer](https://getcomposer.org/), add the following to `composer.json`:
 
-```sh
-$ composer require fattureincloud/fattureincloud-php-sdk
+```json
+{
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://{{gitHost}}/{{gitUserId}}/{{gitRepoId}}.git"
+    }
+  ],
+  "require": {
+    "{{gitUserId}}/{{gitRepoId}}": "*@dev"
+  }
+}
 ```
+
+Then run `composer install`
 
 ### Manual Installation
 
