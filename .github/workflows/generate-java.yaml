@@ -43,7 +43,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
-          java-version: '8'
+          java-version: '11'
 
       - id: setup-libraries
         name: Install libraries
@@ -152,11 +152,14 @@ jobs:
         name: Download Java Linter
         run: |
           LAST_VERSION_LINK=$(curl -s https://api.github.com/repos/google/google-java-format/releases/latest | jq -r ".assets[] | select(.name | test(\"all-deps\")) | .browser_download_url")
-          curl ${LAST_VERSION_LINK} -o linter.jar
+          curl ${LAST_VERSION_LINK} -L -o linter.jar
 
       - id: format-code
         name: Format Code
-        run: java -jar ./linter.jar --replace ./generated/java/**/*.java  
+        working-directory: ./generated/java
+        run: | 
+          java -jar ../../linter.jar --replace ./src/main/java/it/fattureincloud/sdk/**/*.java
+          java -jar ../../linter.jar --replace ./src/main/java/it/fattureincloud/sdk/*.java
 
       - id: create-pr
         name: Create Pull Request
