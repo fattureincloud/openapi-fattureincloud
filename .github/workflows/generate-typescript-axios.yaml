@@ -1,13 +1,13 @@
-name: Generate PHP SDK
+name: Generate TypeScript SDK
 on:
   repository_dispatch:
-    types: [generate-php]
-    
+    types: [generate-typescript-axios]
+
 jobs:
-  generate-php-sdk:
+  generate-typescript-sdk:
     runs-on: ubuntu-latest
     env:
-      GIT_REPO_ID: fattureincloud-php-sdk
+      GIT_REPO_ID: fattureincloud-ts-sdk
       GIT_USER_ID: fattureincloud
     steps: 
 
@@ -16,14 +16,14 @@ jobs:
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
-      
-      - id: checkout-php
-        name: Checkout PHP repo
+
+      - id: checkout-ts
+        name: Checkout TypeScript repo
         env:
           GIT_REPO_PATH: '${{ env.GIT_USER_ID }}/${{ env.GIT_REPO_ID }}'
         uses: actions/checkout@v2
         with:
-          path: ./generated/php
+          path: ./generated/typescript-axios
           ref: master
           repository: ${{ env.GIT_REPO_PATH }}
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
@@ -33,7 +33,7 @@ jobs:
         run: |
           git config --global user.email "info@fattureincloud.it"
           git config --global user.name "fattureincloud-bot"
-
+          
       - id: setup-node
         name: Setup Node.js
         uses: actions/setup-node@v2
@@ -55,20 +55,20 @@ jobs:
           sudo apt install yq -y
           cd ./scripts/
           yarn
-          cd ../generated/php/scripts
+          cd ../generated/typescript-axios/scripts
           yarn
 
-      - id: bump-php-sdk-version
-        name: Bump PHP SDK
+      - id: bump-typescript-sdk-version
+        name: Bump C# SDK
         env:
           OPENAPI_VERSION: ${{ github.event.client_payload.version }}
         run: |
 
           echo "openapi_version=$OPENAPI_VERSION"
 
-          BUMP_TYPE=$(node ./scripts/sdk-version-checker.js ./generated/php/sdk-version.yaml $OPENAPI_VERSION)
+          BUMP_TYPE=$(node ./scripts/sdk-version-checker.js ./generated/typescript-axios/sdk-version.yaml $OPENAPI_VERSION)
 
-          cd ./generated/php
+          cd ./generated/typescript-axios
 
           if [ "$BUMP_TYPE" == "patch" ];then
             echo 'Bumping the SDK patch version...'
@@ -77,60 +77,53 @@ jobs:
             echo 'Using the openapi version...'
             standard-version --skip.tag --skip.changelog --skip.commit --release-as $OPENAPI_VERSION
           else
-            echo "Something bad happened - impossible to bump PHP SDK version. value=$BUMP_TYPE"
+            echo "Something bad happened - impossible to bump C# SDK version. value=$BUMP_TYPE"
           fi
 
           SDK_VERSION=$(yq e '.info.version' ./sdk-version.yaml)
 
-
           echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
           echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
-
-      - id: move-custom-files-to-backup
-        name: Move custom files to backup
-        run: |
-          mkdir -p ./backup/php/lib/Filter
-          mv ./generated/php/lib/Filter ./backup/php/lib/
 
       - id: delete-old-files
         name: Delete old files
         run: |
-          rm -rf ./generated/php/lib
-          rm -rf ./generated/php/docs
+          rm -rf ./generated/typescript-axios/src
+          rm -rf ./generated/typescript-axios/docs
+          rm -rf ./generated/typescript-axios-docs
 
-      - id: generate-php-sdk
-        name: Generate PHP SDK
+      - id: generate-typescript-axios
+        name: Generate TypeScript SDK
         env:
-          PACKAGE_NAME: "\"FattureInCloud PHP SDK\""
-          INVOKER_PACKAGE: FattureInCloud
-          AUTHOR_NAME: "Fatture in Cloud API Team"
-          HOMEPAGE_URL: https://www.fattureincloud.it
-          COMPOSER_PACKAGE_NAME: "\"fattureincloud/fattureincloud-php-sdk\""
+          PACKAGE_NAME: "@fattureincloud/fattureincloud-ts-sdk"
+          APP_NAME: "FattureInCloud"
         run: |
           SDK_VERSION=${{ env.sdk_version }}
           echo "${{ env.sdk_version }}"
+          
           RELEASE_NOTE="\"bumping version to $SDK_VERSION\""
 
-          USER_AGENT="$INVOKER_PACKAGE/${{ env.sdk_version }}/PHP-SDK"
+          USER_AGENT="$APP_NAME/${{ env.sdk_version }}/TypeScript-SDK"
+          
+          openapi-generator-cli generate -i ./openapi.yaml -g typescript-axios -o generated/typescript-axios/ -t ./templates/typescript-axios --additional-properties=npmName=${PACKAGE_NAME},npmVersion=${SDK_VERSION},supportsES6=true,withNodeImports=true,withSeparateModelsAndApi=true,apiPackage=src/api,modelPackage=src/models,withInterfaces=true --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT}
 
-          openapi-generator-cli generate -i ./openapi.yaml -g php -o ./generated/php/ -t ./templates/php --package-name=${PACKAGE_NAME} --invoker-package=${INVOKER_PACKAGE} --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=composerPackageName=${COMPOSER_PACKAGE_NAME}
+      - id: generate-typescript-axios-docs
+        name: Generate Docs
+        run: openapi-generator-cli generate -i ./openapi.yaml -g javascript -o generated/typescript-axios-docs/  -t ./templates/typescript-axios-docs
 
-          node ./scripts/postprocess-php.js clean './generated/php/lib/' './generated/php/test/'
-
-      - id: move-custom-files-to-repo
-        name: Move custom files to repo
-        run: |
-          mv ./backup/php/lib/Filter ./generated/php/lib/Filter
+      - id: move-docs
+        name: Moving Docs To The Right Folder
+        run: mv ./generated/typescript-axios-docs/docs ./generated/typescript-axios 
 
       - id: create-pr
         name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          path: ./generated/php
+          path: ./generated/typescript-axios
           branch: "devel-${{ env.sdk_version }}"
           token: "${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}"
           delete-branch: true
           base: master
-          commit-message:  "chore: bumping version to ${{ env.sdk_version }}"
+          commit-message: "chore: bumping version to ${{ env.sdk_version }}"
           title: "Updating SDK to ${{ env.sdk_version }}"
-          body: "New SDK verson ${{ env.sdk_version }} generated by Github Action from OpenAPI Spec ${{ env.openapi_version }}"
+          body: "New SDK verson ${{ env.sdk_version }} generated by Github Action from OpenAPI Spec ${{ env.openapi_version }}"   
