@@ -43,7 +43,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
-          java-version: '8'
+          java-version: '11'
 
       - id: setup-libraries
         name: Install libraries
@@ -86,6 +86,12 @@ jobs:
 
           echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
           echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
+
+      - id: move-custom-files-to-backup
+        name: Move custom files to backup
+        run: |
+          mkdir -p ./backup/java/src/main/java/it/fattureincloud/sdk/
+          mv ./generated/java/src/main/java/it/fattureincloud/sdk/filter ./backup/java/src/main/java/it/fattureincloud/sdk/filter
 
       - id: delete-old-files
         name: Delete old files
@@ -137,15 +143,23 @@ jobs:
 
           openapi-generator-cli generate -i ./openapi.yaml -g java -o ./generated/java/ -t ./templates/java --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=$ADDITIONAL_PROPERTIES
       
+      - id: move-custom-files-to-repo
+        name: Move custom files to repo
+        run: |
+          mv ./backup/java/src/main/java/it/fattureincloud/sdk/filter ./generated/java/src/main/java/it/fattureincloud/sdk/filter
+
       - id: download-linter
         name: Download Java Linter
         run: |
-          LAST_VERSION_LINK = curl -s https://api.github.com/repos/google/google-java-format/releases/latest | jq -r ".assets[] | select(.name | test(\"all-deps\")) | .browser_download_url"
-          curl ${LAST_VERSION_LINK} -o linter.jar
+          LAST_VERSION_LINK=$(curl -s https://api.github.com/repos/google/google-java-format/releases/latest | jq -r ".assets[] | select(.name | test(\"all-deps\")) | .browser_download_url")
+          curl ${LAST_VERSION_LINK} -L -o linter.jar
 
       - id: format-code
         name: Format Code
-        run: java -jar ./linter.jar --replace ./generated/java/**/*.java  
+        working-directory: ./generated/java
+        run: | 
+          java -jar ../../linter.jar --replace ./src/main/java/it/fattureincloud/sdk/**/*.java
+          java -jar ../../linter.jar --replace ./src/main/java/it/fattureincloud/sdk/*.java
 
       - id: create-pr
         name: Create Pull Request
