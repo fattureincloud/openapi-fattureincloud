@@ -50,7 +50,7 @@ $apiInstance = new {{invokerPackage}}\Api\{{classname}}(
     new GuzzleHttp\Client(){{#hasAuthMethods}},
     $config{{/hasAuthMethods}}
 );
-{{#allParams}}${{paramName}} = {{{example}}}; // {{{dataType}}}{{#description}} | {{{.}}}{{/description}}
+{{#allParams}}${{paramName}} = {{#isPrimitiveType}}{{{example}}}{{/isPrimitiveType}}{{^isPrimitiveType}}new {{{dataType}}}{{/isPrimitiveType}}; // {{{dataType}}}{{#description}} | {{{.}}}{{/description}}
 {{/allParams}}
 
 try {
