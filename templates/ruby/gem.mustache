@@ -1,0 +1,58 @@
+=begin
+{{> api_info}}
+=end
+
+# Common files
+require '{{gemName}}/api_client'
+require '{{gemName}}/api_error'
+require '{{gemName}}/version'
+require '{{gemName}}/configuration'
+
+# Models
+{{#models}}
+{{#model}}
+{{^parent}}
+require '{{gemName}}/{{modelPackage}}/{{classFilename}}'
+{{/parent}}
+{{/model}}
+{{/models}}
+{{#models}}
+{{#model}}
+{{#parent}}
+require '{{gemName}}/{{modelPackage}}/{{classFilename}}'
+{{/parent}}
+{{/model}}
+{{/models}}
+
+# APIs
+{{#apiInfo}}
+{{#apis}}
+require '{{importPath}}'
+{{/apis}}
+{{/apiInfo}}
+
+# Filter
+require 'fattureincloud_ruby_sdk/filter/operator'
+require 'fattureincloud_ruby_sdk/filter/condition'
+require 'fattureincloud_ruby_sdk/filter/conjunction'
+require 'fattureincloud_ruby_sdk/filter/disjunction'
+require 'fattureincloud_ruby_sdk/filter/filter'
+require 'fattureincloud_ruby_sdk/filter/expression'
+
+module {{moduleName}}
+  class << self
+    # Customize default settings for the SDK using block.
+    #   {{moduleName}}.configure do |config|
+    #     config.username = "xxx"
+    #     config.password = "xxx"
+    #   end
+    # If no block given, return the default Configuration object.
+    def configure
+      if block_given?
+        yield(Configuration.default)
+      else
+        Configuration.default
+      end
+    end
+  end
+end
