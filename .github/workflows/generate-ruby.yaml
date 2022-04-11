@@ -86,6 +86,12 @@ jobs:
           echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
           echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
 
+      - id: move-custom-files-to-backup
+        name: Move custom files to backup
+        run: |
+          mkdir -p ./backup/ruby/lib/fattureincloud_ruby_sdk/filter
+          mv ./generated/ruby/lib/fattureincloud_ruby_sdk/filter ./backup/ruby/lib/fattureincloud_ruby_sdk/
+
       - id: delete-old-files
         name: Delete old files
         run: |
@@ -113,6 +119,11 @@ jobs:
           USER_AGENT="$APP_NAME/${{ env.sdk_version }}/Ruby-SDK"
 
           openapi-generator-cli generate -i ./openapi.yaml -g ruby -o ./generated/ruby/ -t ./templates/ruby --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=gemVersion=${SDK_VERSION},gemAuthor=${GEM_AUTHOR},gemAuthorEmail=${GEM_AUTHOR_EMAIL},gemDescription=${GEM_DESCRIPTION},gemSummary=${GEM_DESCRIPTION},gemHomepage=${GEM_HOMEPAGE},gemLicense=${GEM_LICENSE},gemName=${GEM_NAME},gemSummary=${GEM_SUMMARY},moduleName=${MODULE_NAME}
+      
+      - id: move-custom-files-to-repo
+        name: Move custom files to repo
+        run: |
+          mv ./backup/ruby/lib/fattureincloud_ruby_sdk/filter ./generated/ruby/lib/fattureincloud_ruby_sdk/
 
       - id: create-pr
         name: Create Pull Request
