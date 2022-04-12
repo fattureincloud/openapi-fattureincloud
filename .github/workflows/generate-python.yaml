@@ -86,6 +86,12 @@ jobs:
           echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
           echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
 
+      - id: move-custom-files-to-backup
+        name: Move custom files to backup
+        run: |
+          mkdir -p ./backup/python/fattureincloud_python_sdk/filter
+          mv ./generated/python/fattureincloud_python_sdk/filter ./backup/python/fattureincloud_python_sdk/
+
       - id: delete-old-files
         name: Delete old files
         run: |
@@ -110,6 +116,11 @@ jobs:
           USER_AGENT="$APP_NAME/${{ env.sdk_version }}/Python-SDK"
 
           openapi-generator-cli generate -i ./openapi.yaml -g python -o ./generated/python/ -t ./templates/python --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=packageVersion=${SDK_VERSION},packageName=${PACKAGE_NAME},packageUrl=${PACKAGE_URL},projectName=${PROJECT_NAME},infoName=${INFO_NAME}
+
+      - id: move-custom-files-to-repo
+        name: Move custom files to repo
+        run: |
+          mv ./backup/python/fattureincloud_python_sdk/filter ./generated/python/fattureincloud_python_sdk/
 
       - id: create-pr
         name: Create Pull Request

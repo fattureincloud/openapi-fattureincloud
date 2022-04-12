@@ -85,6 +85,12 @@ jobs:
           echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
           echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
 
+      - id: move-custom-files-to-backup
+        name: Move custom files to backup
+        run: |
+          mkdir -p ./backup/typescript-axios/src/filter
+          mv ./generated/typescript-axios/src/filter ./backup/typescript-axios/src/
+
       - id: delete-old-files
         name: Delete old files
         run: |
@@ -114,6 +120,11 @@ jobs:
       - id: move-docs
         name: Moving Docs To The Right Folder
         run: mv ./generated/typescript-axios-docs/docs ./generated/typescript-axios 
+
+      - id: move-custom-files-to-repo
+        name: Move custom files to repo
+        run: |
+          mv ./backup/typescript-axios/src/filter ./generated/typescript-axios/src/
 
       - id: create-pr
         name: Create Pull Request
