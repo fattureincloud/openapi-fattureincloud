@@ -86,6 +86,12 @@ jobs:
           echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
           echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
 
+      - id: move-custom-files-to-backup
+        name: Move custom files to backup
+        run: |
+          mkdir -p ./backup/javascript/src/filter
+          mv ./generated/javascript/src/filter ./backup/javascript/src/
+
       - id: delete-old-files
         name: Delete old files
         run: |
@@ -109,6 +115,11 @@ jobs:
           USER_AGENT="$APP_NAME/${{ env.sdk_version }}/JavaScript-SDK"
 
           openapi-generator-cli generate -i ./openapi.yaml -g javascript -o ./generated/javascript/ -t ./templates/javascript --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=projectVersion=$SDK_VERSION,projectName=$PROJECT_NAME,projectDescription=$PROJECT_DESCRIPTION,moduleName=$MODULE_NAME,usePromises=true
+
+      - id: move-custom-files-to-repo
+        name: Move custom files to repo
+        run: |
+          mv ./backup/javascript/src/filter ./generated/javascript/src/
 
       - id: create-pr
         name: Create Pull Request

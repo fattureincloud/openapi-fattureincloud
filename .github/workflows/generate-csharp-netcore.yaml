@@ -86,6 +86,12 @@ jobs:
           echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
           echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
 
+      - id: move-custom-files-to-backup
+        name: Move custom files to backup
+        run: |
+          mkdir -p ./backup/csharp-netcore/src/It.FattureInCloud.Sdk/Filter
+          mv ./generated/csharp-netcore/src/It.FattureInCloud.Sdk/Filter ./backup/backup/csharp-netcore/src/It.FattureInCloud.Sdk/
+
       - id: delete-old-files
         name: Delete old files
         run: |
@@ -111,6 +117,11 @@ jobs:
           USER_AGENT="$APP_NAME/${{ env.sdk_version }}/csharp-SDK"
           
           openapi-generator-cli generate -i ./openapi.yaml -g csharp-netcore -o generated/csharp-netcore/ -t ./templates/csharp-netcore --additional-properties=useDateTimeOffset=true,conditionalSerialization=true,packageName=${PACKAGE_NAME},packageAuthors=${PACKAGE_AUTHORS},packageCompany=${PACKAGE_COMPANY},packageTitle=${PACKAGE_TITLE},packageVersion=${SDK_VERSION},targetFramework=${TARGET_FRAMEWORK},testTargetFramework=${TEST_TARGET_FRAMEWORK},multiTarget=true,licenseId=MIT --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT}
+
+      - id: move-custom-files-to-repo
+        name: Move custom files to repo
+        run: |
+          mv ./backup/csharp-netcore/src/It.FattureInCloud.Sdk/Filter ./generated/csharp-netcore/src/It.FattureInCloud.Sdk/
 
       - id: create-pr
         name: Create Pull Request
