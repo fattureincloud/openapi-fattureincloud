@@ -152,6 +152,24 @@ properties:
       [Only for client]
       E-invoices code.
     nullable: true
+  has_intent_declaration:
+    type: boolean
+    description: |-
+      [Only for client]
+      Has intent declaration.
+  intent_declaration_protocol_number:
+    type: string
+    format: date
+    description: |-
+      [Only for client]
+      Intent declaration protocol number.
+    nullable: true
+  intent_declaration_protocol_date:
+    type: string
+    description: |-
+      [Only for client]
+      Intent declaration protocol date.
+    nullable: true
   created_at:
     type: string
     nullable: true
