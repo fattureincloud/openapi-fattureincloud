@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.0.15 (2022-04-20)
+
+
+### Bug Fixes
+
+* added intent declaration fields ([#299](https://github.com/fattureincloud/openapi-fattureincloud/issues/299)) ([6d7afec](https://github.com/fattureincloud/openapi-fattureincloud/commit/6d7afec7f0d76f353ac54dbe9d0374cae1fdc049))
+
 ### 2.0.14 (2022-03-16)
 
 
