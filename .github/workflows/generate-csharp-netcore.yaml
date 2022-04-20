@@ -90,7 +90,7 @@ jobs:
         name: Move custom files to backup
         run: |
           mkdir -p ./backup/csharp-netcore/src/It.FattureInCloud.Sdk/Filter
-          mv ./generated/csharp-netcore/src/It.FattureInCloud.Sdk/Filter ./backup/backup/csharp-netcore/src/It.FattureInCloud.Sdk/
+          mv ./generated/csharp-netcore/src/It.FattureInCloud.Sdk/Filter ./backup/csharp-netcore/src/It.FattureInCloud.Sdk/
 
       - id: delete-old-files
         name: Delete old files
