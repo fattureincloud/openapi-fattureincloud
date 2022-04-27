@@ -141,7 +141,7 @@ jobs:
 
           USER_AGENT="$APP_NAME/${{ env.sdk_version }}/Java-SDK"
 
-          openapi-generator-cli generate -i ./openapi.yaml -g java -o ./generated/java/ -t ./templates/java --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=$ADDITIONAL_PROPERTIES
+          openapi-generator-cli generate -i ./openapi.yaml -g java -o ./generated/java/ -t ./templates/openapi-generator/java --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=$ADDITIONAL_PROPERTIES
       
       - id: move-custom-files-to-repo
         name: Move custom files to repo

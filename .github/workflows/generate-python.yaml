@@ -115,7 +115,7 @@ jobs:
 
           USER_AGENT="$APP_NAME/${{ env.sdk_version }}/Python-SDK"
 
-          openapi-generator-cli generate -i ./openapi.yaml -g python -o ./generated/python/ -t ./templates/python --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=packageVersion=${SDK_VERSION},packageName=${PACKAGE_NAME},packageUrl=${PACKAGE_URL},projectName=${PROJECT_NAME},infoName=${INFO_NAME}
+          openapi-generator-cli generate -i ./openapi.yaml -g python -o ./generated/python/ -t ./templates/openapi-generator/python --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=packageVersion=${SDK_VERSION},packageName=${PACKAGE_NAME},packageUrl=${PACKAGE_URL},projectName=${PROJECT_NAME},infoName=${INFO_NAME}
 
       - id: move-custom-files-to-repo
         name: Move custom files to repo
