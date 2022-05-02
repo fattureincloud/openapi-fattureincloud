@@ -113,7 +113,7 @@ jobs:
 
           USER_AGENT="$INVOKER_PACKAGE/${{ env.sdk_version }}/PHP-SDK"
 
-          openapi-generator-cli generate -i ./openapi.yaml -g php -o ./generated/php/ -t ./templates/php --package-name=${PACKAGE_NAME} --invoker-package=${INVOKER_PACKAGE} --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=composerPackageName=${COMPOSER_PACKAGE_NAME}
+          openapi-generator-cli generate -i ./openapi.yaml -g php -o ./generated/php/ -t ./templates/openapi-generator/php --package-name=${PACKAGE_NAME} --invoker-package=${INVOKER_PACKAGE} --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=composerPackageName=${COMPOSER_PACKAGE_NAME}
 
           node ./scripts/postprocess-php.js clean './generated/php/lib/' './generated/php/test/'
 
