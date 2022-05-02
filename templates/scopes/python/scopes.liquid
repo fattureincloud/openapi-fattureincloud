@@ -1,0 +1,7 @@
+from enum import Enum
+
+class Scope(Enum):
+{% for scope in scopes %}
+    # {{ scope.comment }}
+    {{ scope.name }} = '{{ scope.str }}' 
+{% endfor %}
