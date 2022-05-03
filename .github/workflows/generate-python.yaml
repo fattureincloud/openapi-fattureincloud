@@ -134,7 +134,7 @@ jobs:
       - id: generate-additional-files
         name: Generate Additional files
         run: |
-          node ./scripts/generate-scopes.js
+          node ./scripts/generate-scopes.js python
           
       - id: format
         name: Format files

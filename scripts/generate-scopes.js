@@ -3,8 +3,15 @@ const yaml = require('js-yaml')
 const fs = require('fs')
 const path = require('path')
 
+const lang = process.argv[2]
+
+const languagesPaths = {
+    'python': './generated/python/fattureincloud_python_sdk/oauth2/scopes.py',
+    'csharp-netcore': './generated/csharp-netcore/fattureincloud-csharp-sdk/src/It.FattureInCloud.Sdk/Oauth2/Scope.cs'
+}
+
 var engine = new Liquid({
-    root: path.resolve(__dirname, '../templates/scopes/python'), 
+    root: path.resolve(__dirname, `../templates/scopes/${lang}`), 
     extname: '.liquid'
 });
 
@@ -36,7 +43,7 @@ function main() {
     engine
         .renderFile("scopes", collection)  
         .then((c) => {
-            fs.writeFileSync('./generated/python/fattureincloud_python_sdk/oauth2/scopes.py', c, 'utf8')
+            fs.writeFileSync(languagesPaths[lang], c, 'utf8')
         })
 }
 
