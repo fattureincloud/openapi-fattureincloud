@@ -45,6 +45,12 @@ jobs:
           distribution: 'adopt'
           java-version: '8'
 
+      - id: setup-dotnet
+        name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '2.1.x'
+
       - id: setup-libraries
         name: Install libraries
         run: |
@@ -90,7 +96,9 @@ jobs:
         name: Move custom files to backup
         run: |
           mkdir -p ./backup/csharp-netcore/src/It.FattureInCloud.Sdk/Filter
+          mkdir -p ./backup/csharp-netcore/src/It.FattureInCloud.Sdk/Oauth2
           mv ./generated/csharp-netcore/src/It.FattureInCloud.Sdk/Filter ./backup/csharp-netcore/src/It.FattureInCloud.Sdk/
+          mv ./generated/csharp-netcore/src/It.FattureInCloud.Sdk/Oauth2 ./backup/csharp-netcore/src/It.FattureInCloud.Sdk/
 
       - id: delete-old-files
         name: Delete old files
@@ -122,6 +130,20 @@ jobs:
         name: Move custom files to repo
         run: |
           mv ./backup/csharp-netcore/src/It.FattureInCloud.Sdk/Filter ./generated/csharp-netcore/src/It.FattureInCloud.Sdk/
+          mv ./backup/csharp-netcore/src/It.FattureInCloud.Sdk/Oauth2 ./generated/csharp-netcore/src/It.FattureInCloud.Sdk/
+
+      - id: generate-additional-files
+        name: Generate Additional files
+        run: |
+          node ./scripts/generate-scopes.js csharp-netcore
+
+      - id: lint-code
+        name: Lint Code Base
+        run: |
+          cd ./generated/csharp-netcore
+          dotnet new tool-manifest
+          dotnet tool install JetBrains.ReSharper.GlobalTools
+          dotnet jb cleanupcode It.FattureInCloud.Sdk.sln
 
       - id: create-pr
         name: Create Pull Request
