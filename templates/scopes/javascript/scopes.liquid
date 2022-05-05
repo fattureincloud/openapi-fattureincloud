@@ -1,0 +1,13 @@
+/**
+ * The Scope oauth module.
+ * @module oauth/Scope
+ */
+export default class Scope {
+    {% for scope in scopes %}
+    /**
+     * {{ scope.comment }}
+     * @member {String} {{ scope.name }}
+     */
+    static {{ scope.name }} = '{{ scope.str }}'
+    {% endfor %}
+}
