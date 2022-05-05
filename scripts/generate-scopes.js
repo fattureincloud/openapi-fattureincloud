@@ -8,7 +8,8 @@ const lang = process.argv[2]
 const languagesPaths = {
     'csharp-netcore': './generated/csharp-netcore/fattureincloud-csharp-sdk/src/It.FattureInCloud.Sdk/Oauth2/Scope.cs',
     'java': './generated/java/src/main/java/it/fattureincloud/sdk/auth/Scope.java',
-    'python': './generated/python/fattureincloud_python_sdk/oauth2/scopes.py'
+    'python': './generated/python/fattureincloud_python_sdk/oauth2/scopes.py',
+    'typescript-axios': './generated/typescript-axios/src/oauth2/scope.ts'
 }
 
 var engine = new Liquid({
