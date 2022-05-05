@@ -36,9 +36,11 @@ dependencies {
     implementation 'io.swagger.parser.v3:swagger-parser-v3:2.0.23'
     {{/dynamicOperations}}
     implementation 'jakarta.annotation:jakarta.annotation-api:1.3.5'
+    implementation "io.vavr:vavr:0.10.4"
     testImplementation(platform('org.junit:junit-bom:5.8.2'))
     testImplementation('org.junit.jupiter:junit-jupiter:5.8.2')
     testImplementation 'org.mockito:mockito-core:4.5.1'
+    testImplementation 'com.squareup.okhttp3:mockwebserver:4.9.3'
 }
 
 publishing {

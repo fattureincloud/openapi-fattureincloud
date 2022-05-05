@@ -17,6 +17,7 @@ lazy val root = (project in file(".")).
       {{#openApiNullable}}
       "org.openapitools" % "jackson-databind-nullable" % "0.2.2",
       {{/openApiNullable}}
+      "io.vavr" % "vavr" % "0.10.4",
       {{#joda}}
       "joda-time" % "joda-time" % "2.9.9" % "compile",
       {{/joda}}
@@ -29,5 +30,6 @@ lazy val root = (project in file(".")).
       "jakarta.annotation" % "jakarta.annotation-api" % "1.3.5" % "compile",
       "junit" % "junit" % "4.13.1" % "test",
       "com.novocode" % "junit-interface" % "0.10" % "test"
+      "com.squareup.okhttp3" % "mockwebserver" % "4.9.3" % "test"
     )
   )
