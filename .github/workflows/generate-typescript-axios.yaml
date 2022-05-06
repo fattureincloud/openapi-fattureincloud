@@ -138,7 +138,7 @@ jobs:
         name: Lint Code Base
         run: |
           cd ./generated/typescript-axios/fattureincloud-ts-sdk
-          npx eslint --fix ./
+          npx eslint --fix ./src
 
       - id: create-pr
         name: Create Pull Request
