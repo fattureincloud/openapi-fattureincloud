@@ -137,8 +137,8 @@ jobs:
       - id: lint-code
         name: Lint Code Base
         run: |
-          cd ./generated/javascript/fattureincloud-js-sdk
-          npx eslint --fix ./src
+          cd ./generated/typescript-axios/fattureincloud-ts-sdk
+          npx eslint --fix ./
 
       - id: create-pr
         name: Create Pull Request
