@@ -90,7 +90,9 @@ jobs:
         name: Move custom files to backup
         run: |
           mkdir -p ./backup/javascript/src/filter
+          mkdir -p ./backup/javascript/src/oauth2
           mv ./generated/javascript/src/filter ./backup/javascript/src/
+          mv ./generated/javascript/src/oauth2 ./backup/javascript/src/
 
       - id: delete-old-files
         name: Delete old files
@@ -120,6 +122,18 @@ jobs:
         name: Move custom files to repo
         run: |
           mv ./backup/javascript/src/filter ./generated/javascript/src/
+          mv ./backup/javascript/src/oauth2 ./generated/javascript/oauth2/
+
+      - id: generate-additional-files
+        name: Generate Additional files
+        run: |
+          node ./scripts/generate-scopes.js javascript
+
+      - id: lint-code
+        name: Lint Code Base
+        run: |
+          cd ./generated/javascript/fattureincloud-js-sdk
+          npx eslint --fix ./src
 
       - id: create-pr
         name: Create Pull Request
