@@ -9,7 +9,8 @@ const languagesPaths = {
     'csharp-netcore': './generated/csharp-netcore/fattureincloud-csharp-sdk/src/It.FattureInCloud.Sdk/Oauth2/Scope.cs',
     'java': './generated/java/src/main/java/it/fattureincloud/sdk/auth/Scope.java',
     'javascript': './generated/javascript/fattureincloud-js-sdk/src/oauth2/Scope.js',
-    'python': './generated/python/fattureincloud_python_sdk/oauth2/scopes.py'
+    'python': './generated/python/fattureincloud_python_sdk/oauth2/scopes.py',
+    'ruby': './scopes.rb'
 }
 
 var engine = new Liquid({

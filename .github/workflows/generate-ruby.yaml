@@ -45,6 +45,12 @@ jobs:
           distribution: 'adopt'
           java-version: '8'
 
+      - id: setup-ruby
+        name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.0
+
       - id: setup-libraries
         name: Install libraries
         run: |
@@ -90,7 +96,9 @@ jobs:
         name: Move custom files to backup
         run: |
           mkdir -p ./backup/ruby/lib/fattureincloud_ruby_sdk/filter
+          mkdir -p ./backup/ruby/lib/fattureincloud_ruby_sdk/oauth2
           mv ./generated/ruby/lib/fattureincloud_ruby_sdk/filter ./backup/ruby/lib/fattureincloud_ruby_sdk/
+          mv ./generated/ruby/lib/fattureincloud_ruby_sdk/oauth2 ./backup/ruby/lib/fattureincloud_ruby_sdk/
 
       - id: delete-old-files
         name: Delete old files
@@ -124,6 +132,18 @@ jobs:
         name: Move custom files to repo
         run: |
           mv ./backup/ruby/lib/fattureincloud_ruby_sdk/filter ./generated/ruby/lib/fattureincloud_ruby_sdk/
+          mv ./backup/ruby/lib/fattureincloud_ruby_sdk/oauth2 ./generated/ruby/lib/fattureincloud_ruby_sdk/
+
+      - id: generate-additional-files
+        name: Generate Additional files
+        run: |
+          node ./scripts/generate-scopes.js ruby
+
+      - id: lint-code
+        name: Lint Code Base
+        run: |
+          cd ./generated/ruby/fattureincloud_ruby_sdk
+          bundle exec rubocop -a
 
       - id: create-pr
         name: Create Pull Request
