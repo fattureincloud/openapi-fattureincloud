@@ -10,7 +10,7 @@ const languagesPaths = {
     'java': './generated/java/src/main/java/it/fattureincloud/sdk/auth/Scope.java',
     'javascript': './generated/javascript/fattureincloud-js-sdk/src/oauth2/Scope.js',
     'python': './generated/python/fattureincloud_python_sdk/oauth2/scopes.py',
-    'ruby': './scopes.rb'
+    'ruby': './generated/ruby/lib/fattureincloud_ruby_sdk/oauth2/scope.rb'
 }
 
 var engine = new Liquid({
