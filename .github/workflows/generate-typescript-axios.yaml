@@ -89,7 +89,9 @@ jobs:
         name: Move custom files to backup
         run: |
           mkdir -p ./backup/typescript-axios/src/filter
+          mkdir -p ./backup/typescript-axios/src/oauth2
           mv ./generated/typescript-axios/src/filter ./backup/typescript-axios/src/
+          mv ./generated/typescript-axios/src/oauth2 ./backup/typescript-axios/src/
 
       - id: delete-old-files
         name: Delete old files
@@ -125,6 +127,19 @@ jobs:
         name: Move custom files to repo
         run: |
           mv ./backup/typescript-axios/src/filter ./generated/typescript-axios/src/
+          mv ./backup/typescript-axios/src/oauth2 ./generated/typescript-axios/src/
+
+      - id: generate-additional-files
+        name: Generate Additional files
+        run: |
+          node ./scripts/generate-scopes.js typescript-axios
+
+      - id: lint-code
+        name: Lint Code Base
+        run: |
+          cd ./generated/typescript-axios/fattureincloud-ts-sdk
+          npm install
+          npx eslint --fix ./
 
       - id: create-pr
         name: Create Pull Request

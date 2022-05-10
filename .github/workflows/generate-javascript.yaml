@@ -134,7 +134,7 @@ jobs:
         run: |
           cd ./generated/javascript/fattureincloud-js-sdk
           npm install
-          npx eslint --fix ./src
+          npx eslint --fix ./
 
       - id: create-pr
         name: Create Pull Request
