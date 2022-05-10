@@ -99,6 +99,8 @@ function enrichFile(filePath, detailsPath) {
             })
         })
 
+        doc = addReceiveTokenInParam(doc)
+
         fs.writeFileSync(filePath, yaml.dump(doc))
         console.log("Done")
     } catch (e) {
@@ -129,6 +131,18 @@ function enrichProperty(doc, path, schema) {
         doc = applyUpdates(doc, propertyPath, update)
     })
     return doc
+}
+
+// Applies the following JSONata transformation: 
+// $ ~> | components.securitySchemes.OAuth2AuthenticationCodeFlow | {"x-receive-token-in": "request-body"} |
+// It is necessary to select the proper option on RapiDOC TryIt
+function addReceiveTokenInParam(doc) {
+    path = 'components.securitySchemes.OAuth2AuthenticationCodeFlow'
+    value = '{"x-receive-token-in": "request-body"}'
+    var transformation = `$ ~> | ${path} | ${value} | `
+    var expression = jsonata(transformation);
+    var result = expression.evaluate(doc);
+    return result
 }
 
 // This function uses JSONata's transform operator to apply modifies to the selected path

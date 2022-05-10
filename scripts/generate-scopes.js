@@ -6,11 +6,12 @@ const path = require('path')
 const lang = process.argv[2]
 
 const languagesPaths = {
-    'csharp-netcore': './generated/csharp-netcore/fattureincloud-csharp-sdk/src/It.FattureInCloud.Sdk/Oauth2/Scope.cs',
+    'csharp-netcore': './generated/csharp-netcore/src/It.FattureInCloud.Sdk/Oauth2/Scope.cs',
     'java': './generated/java/src/main/java/it/fattureincloud/sdk/auth/Scope.java',
-    'javascript': './generated/javascript/fattureincloud-js-sdk/src/oauth2/Scope.js',
+    'javascript': './generated/javascript/src/oauth2/Scope.js',
     'python': './generated/python/fattureincloud_python_sdk/oauth2/scopes.py',
-    'ruby': './generated/ruby/lib/fattureincloud_ruby_sdk/oauth2/scope.rb'
+    'ruby': './generated/ruby/lib/fattureincloud_ruby_sdk/oauth2/scope.rb',
+    'typescript-axios': './generated/typescript-axios/src/oauth2/scope.ts'
 }
 
 var engine = new Liquid({
