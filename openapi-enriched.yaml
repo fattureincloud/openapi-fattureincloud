@@ -11129,6 +11129,7 @@ components:
   securitySchemes:
     OAuth2AuthenticationCodeFlow:
       type: oauth2
+      x-receive-token-in: request-body
       flows:
         authorizationCode:
           tokenUrl: https://api-v2.fattureincloud.it/oauth/token

@@ -133,6 +133,7 @@ jobs:
         name: Lint Code Base
         run: |
           cd ./generated/javascript/fattureincloud-js-sdk
+          npm install
           npx eslint --fix ./
 
       - id: create-pr
