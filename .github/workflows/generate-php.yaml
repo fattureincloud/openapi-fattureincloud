@@ -51,6 +51,13 @@ jobs:
         with:
           php-version: 7.4
 
+      - id: setup-composer
+        name: Setup Composer
+        run: |
+          php -v
+          wget -O composer-setup.php https://getcomposer.org/installer
+          sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
       - id: setup-libraries
         name: Install libraries
         run: |
