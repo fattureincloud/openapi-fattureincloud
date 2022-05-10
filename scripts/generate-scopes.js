@@ -11,6 +11,7 @@ const languagesPaths = {
     'javascript': './generated/javascript/src/oauth2/Scope.js',
     'python': './generated/python/fattureincloud_python_sdk/oauth2/scopes.py',
     'php': './generated/php/lib/OAuth2/Scope.php',
+    'ruby': './generated/ruby/lib/fattureincloud_ruby_sdk/oauth2/scope.rb',
     'typescript-axios': './generated/typescript-axios/src/oauth2/scope.ts'
 }
 
