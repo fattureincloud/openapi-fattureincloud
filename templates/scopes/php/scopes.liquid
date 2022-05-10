@@ -1,0 +1,24 @@
+<?php
+
+namespace FattureInCloud\OAuth2;
+
+class Scope
+{
+{% for scope in scopes %}
+    // {{ scope.comment }}
+    const {{ scope.name }} = "{{ scope.str }}";
+{% endfor %}
+
+    /**
+     * Gets allowable values of the enum
+     * @return string[]
+     */
+    public static function getAllowableEnumValues()
+    {
+        return [
+{% for scope in scopes %}
+            self::{{ scope.name }},
+{% endfor %}
+        ];
+    }
+}
