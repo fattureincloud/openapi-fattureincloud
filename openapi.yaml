@@ -2901,8 +2901,8 @@ components:
             issued_documents.quotes:a: Write permission to the issued Quotes
             issued_documents.proformas:a: Write permission to the issued Proformas
             issued_documents.delivery_notes:a: Write permission to the issued Delivery Notes
-            received_documents:r: Read permission to the issued Received Documents
-            received_documents:a: Write permission to the issued Received Documents
+            received_documents:r: Read permission to the Received Documents
+            received_documents:a: Write permission to the Received Documents
             stock:r: Read permission to the Stock movements
             stock:a: Write permission to the Stock movements
             receipts:r: Read permission to the Receipts
