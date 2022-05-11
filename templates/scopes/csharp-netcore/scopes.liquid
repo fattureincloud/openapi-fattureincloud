@@ -1,0 +1,37 @@
+namespace It.FattureInCloud.Sdk.OauthHelper
+{
+    /// <summary>
+    /// Scope enum
+    /// </summary>
+    public enum Scope
+    {
+    {% for scope in scopes %}
+        /// <summary>{{ scope.comment }}</summary>
+        {{ scope.name }},
+    {% endfor %}
+    }
+
+    /// <summary>
+    /// Scope Extensions Class
+    /// </summary>
+    public class ScopeExtensions
+    {
+        /// <summary>
+        /// Returns the Scope value.
+        /// </summary>
+        /// <param name="scope">Scope</param>
+        public static string GetScopeValue(Scope scope)
+        {
+            string stringScope = string.Empty;
+            switch (scope.ToString())
+            {
+            {% for scope in scopes %}
+                case "{{ scope.name }}":
+                    stringScope = "{{ scope.str }}";
+                    break;
+            {% endfor %}
+            }
+        return stringScope;
+        }
+    }
+}

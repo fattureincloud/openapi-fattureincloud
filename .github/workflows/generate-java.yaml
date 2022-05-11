@@ -93,6 +93,13 @@ jobs:
           mkdir -p ./backup/java/src/main/java/it/fattureincloud/sdk/
           mv ./generated/java/src/main/java/it/fattureincloud/sdk/filter ./backup/java/src/main/java/it/fattureincloud/sdk/filter
 
+          mkdir -p ./backup/java/src/main/java/it/fattureincloud/sdk/auth/
+          mv ./generated/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeError.java ./backup/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeError.java
+          mv ./generated/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeManager.java ./backup/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeManager.java
+          mv ./generated/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeParams.java ./backup/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeParams.java
+          mv ./generated/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeResponse.java ./backup/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeResponse.java
+          mv ./generated/java/src/main/java/it/fattureincloud/sdk/auth/Scope.java ./backup/java/src/main/java/it/fattureincloud/sdk/auth/Scope.java
+
       - id: delete-old-files
         name: Delete old files
         run: |
@@ -141,12 +148,23 @@ jobs:
 
           USER_AGENT="$APP_NAME/${{ env.sdk_version }}/Java-SDK"
 
-          openapi-generator-cli generate -i ./openapi.yaml -g java -o ./generated/java/ -t ./templates/java --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=$ADDITIONAL_PROPERTIES
+          openapi-generator-cli generate -i ./openapi.yaml -g java -o ./generated/java/ -t ./templates/openapi-generator/java --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=$ADDITIONAL_PROPERTIES
       
       - id: move-custom-files-to-repo
         name: Move custom files to repo
         run: |
           mv ./backup/java/src/main/java/it/fattureincloud/sdk/filter ./generated/java/src/main/java/it/fattureincloud/sdk/filter
+
+          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeError.java ./generated/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeError.java
+          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeManager.java ./generated/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeManager.java
+          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeParams.java ./generated/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeParams.java
+          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeResponse.java ./generated/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeResponse.java
+          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth/Scope.java ./generated/java/src/main/java/it/fattureincloud/sdk/auth/Scope.java
+
+      - id: generate-additional-files
+        name: Generate Additional files
+        run: |
+          node ./scripts/generate-scopes.js java
 
       - id: download-linter
         name: Download Java Linter

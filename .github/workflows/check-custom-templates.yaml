@@ -46,16 +46,16 @@ jobs:
       - id: retrieve-templates
         name: Retrieve templates
         run: |
-          openapi-generator-cli author template -g ${{ matrix.sdk }} -o templates-temp/${{ matrix.sdk }}
-          for entry in "templates-temp/${{ matrix.sdk }}"/*; do
-            FILE="${entry/templates-temp/templates}"
+          openapi-generator-cli author template -g ${{ matrix.sdk }} -o templates-temp/openapi-generator/${{ matrix.sdk }}
+          for entry in "templates-temp/openapi-generator/${{ matrix.sdk }}"/*; do
+            FILE="${entry/templates-temp/openapi-generator/templates}"
             if test -f "$FILE"; then
               echo "Moving $entry to $FILE"
               mv $entry $FILE
             fi
           done
-          rm -rf templates-temp/${{ matrix.sdk }}
-          cd templates/${{ matrix.sdk }}
+          rm -rf templates-temp/openapi-generator/${{ matrix.sdk }}
+          cd templates/openapi-generator/${{ matrix.sdk }}
           git add .
         
 

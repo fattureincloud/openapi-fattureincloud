@@ -1,0 +1,9 @@
+module FattureInCloud_Ruby_Sdk
+  # The Scope class represents the scope enum.
+  class Scope
+{% for scope in scopes %}
+    # {{ scope.comment }}
+    {{ scope.name }} = '{{ scope.str }}'.freeze
+{% endfor %}
+  end
+end

@@ -45,6 +45,19 @@ jobs:
           distribution: 'adopt'
           java-version: '8'
 
+      - id: setup-php
+        name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+
+      - id: setup-composer
+        name: Setup Composer
+        run: |
+          php -v
+          wget -O composer-setup.php https://getcomposer.org/installer
+          sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
       - id: setup-libraries
         name: Install libraries
         run: |
@@ -90,7 +103,9 @@ jobs:
         name: Move custom files to backup
         run: |
           mkdir -p ./backup/php/lib/Filter
+          mkdir -p ./backup/php/lib/OAuth2
           mv ./generated/php/lib/Filter ./backup/php/lib/
+          mv ./generated/php/lib/OAuth2 ./backup/php/lib/
 
       - id: delete-old-files
         name: Delete old files
@@ -113,7 +128,7 @@ jobs:
 
           USER_AGENT="$INVOKER_PACKAGE/${{ env.sdk_version }}/PHP-SDK"
 
-          openapi-generator-cli generate -i ./openapi.yaml -g php -o ./generated/php/ -t ./templates/php --package-name=${PACKAGE_NAME} --invoker-package=${INVOKER_PACKAGE} --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=composerPackageName=${COMPOSER_PACKAGE_NAME}
+          openapi-generator-cli generate -i ./openapi.yaml -g php -o ./generated/php/ -t ./templates/openapi-generator/php --package-name=${PACKAGE_NAME} --invoker-package=${INVOKER_PACKAGE} --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=composerPackageName=${COMPOSER_PACKAGE_NAME}
 
           node ./scripts/postprocess-php.js clean './generated/php/lib/' './generated/php/test/'
 
@@ -121,6 +136,19 @@ jobs:
         name: Move custom files to repo
         run: |
           mv ./backup/php/lib/Filter ./generated/php/lib/Filter
+          mv ./backup/php/lib/OAuth2 ./generated/php/lib/OAuth2
+
+      - id: generate-additional-files
+        name: Generate Additional files
+        run: |
+          node ./scripts/generate-scopes.js php
+
+      - id: lint-code
+        name: Lint Code Base
+        run: |
+          cd ./generated/php/
+          composer install
+          ./vendor/bin/php-cs-fixer fix ./  --allow-risky=yes
 
       - id: create-pr
         name: Create Pull Request

@@ -90,7 +90,9 @@ jobs:
         name: Move custom files to backup
         run: |
           mkdir -p ./backup/javascript/src/filter
+          mkdir -p ./backup/javascript/src/oauth2
           mv ./generated/javascript/src/filter ./backup/javascript/src/
+          mv ./generated/javascript/src/oauth2 ./backup/javascript/src/
 
       - id: delete-old-files
         name: Delete old files
@@ -114,12 +116,25 @@ jobs:
 
           USER_AGENT="$APP_NAME/${{ env.sdk_version }}/JavaScript-SDK"
 
-          openapi-generator-cli generate -i ./openapi.yaml -g javascript -o ./generated/javascript/ -t ./templates/javascript --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=projectVersion=$SDK_VERSION,projectName=$PROJECT_NAME,projectDescription=$PROJECT_DESCRIPTION,moduleName=$MODULE_NAME,usePromises=true
+          openapi-generator-cli generate -i ./openapi.yaml -g javascript -o ./generated/javascript/ -t ./templates/openapi-generator/javascript --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=projectVersion=$SDK_VERSION,projectName=$PROJECT_NAME,projectDescription=$PROJECT_DESCRIPTION,moduleName=$MODULE_NAME,usePromises=true
 
       - id: move-custom-files-to-repo
         name: Move custom files to repo
         run: |
           mv ./backup/javascript/src/filter ./generated/javascript/src/
+          mv ./backup/javascript/src/oauth2 ./generated/javascript/oauth2/
+
+      - id: generate-additional-files
+        name: Generate Additional files
+        run: |
+          node ./scripts/generate-scopes.js javascript
+
+      - id: lint-code
+        name: Lint Code Base
+        run: |
+          cd ./generated/javascript/fattureincloud-js-sdk
+          npm install
+          npx eslint --fix ./
 
       - id: create-pr
         name: Create Pull Request

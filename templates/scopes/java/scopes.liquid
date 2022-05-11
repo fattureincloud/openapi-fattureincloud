@@ -1,0 +1,18 @@
+package it.fattureincloud.sdk.auth;
+
+public enum Scope {
+{% for scope in scopes %}
+    // {{ scope.comment }}
+    {{ scope.name }}("{{ scope.str }}"){% if forloop.last == true %};{% else %},{% endif %}
+{% endfor %}
+
+    private String scope;
+
+    Scope(String scope) {
+        this.scope = scope;
+    }
+
+    public String getScope() {
+        return scope;
+    }
+}
