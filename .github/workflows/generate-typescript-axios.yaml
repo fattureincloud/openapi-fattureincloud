@@ -137,7 +137,7 @@ jobs:
       - id: lint-code
         name: Lint Code Base
         run: |
-          cd ./generated/typescript-axios/fattureincloud-ts-sdk
+          cd ./generated/typescript-axios
           npm install
           npx eslint --fix ./
 
