@@ -157,6 +157,7 @@ properties:
     description: |-
       [Only for client]
       Has intent declaration.
+    nullable: true
   intent_declaration_protocol_number:
     type: string
     format: date
