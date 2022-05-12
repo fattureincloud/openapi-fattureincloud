@@ -138,6 +138,7 @@ properties:
   has_intent_declaration:
     type: boolean
     description: Has intent declaration.
+    nullable: true
   intent_declaration_protocol_number:
     type: string
     format: date
