@@ -141,7 +141,7 @@ jobs:
         name: Lint Code Base
         run: |
           cd ./generated/csharp-netcore
-          dotnet new classlib
+          dotnet new tool-manifest
           dotnet tool install JetBrains.ReSharper.GlobalTools
           dotnet jb cleanupcode It.FattureInCloud.Sdk.sln
 
