@@ -50,24 +50,6 @@ import Scope from './oauth2/Scope';
 * @version {{projectVersion}}
 */{{/emitJSDoc}}
 export {
-    {{=< >=}}
-    <#emitJSDoc>/**
-     * The ApiClient constructor.
-     * @property {module:<#invokerPackage><invokerPackage>/</invokerPackage>ApiClient}
-     */</emitJSDoc>
-    ApiClient<#models>,
-
-    <#emitJSDoc>/**
-     * The <importPath> model constructor.
-     * @property {module:<#invokerPackage><invokerPackage>/</invokerPackage><#modelPackage><modelPackage>/</modelPackage><importPath>}
-     */</emitJSDoc>
-    <importPath></models><#apiInfo><#apis>,
-
-    <#emitJSDoc>/**
-    * The <importPath> service constructor.
-    * @property {module:<#invokerPackage><invokerPackage>/</invokerPackage><#apiPackage><apiPackage>/</apiPackage><importPath>}
-    */</emitJSDoc>
-    <importPath></apis></apiInfo>
 
     /**
     * The Condition service constructor.
@@ -127,6 +109,25 @@ export {
     * The OAuth2AuthorizationCodeParams service constructor.
     * @property {module:api/OAuth2AuthorizationCodeParams}
     */
-    OAuth2AuthorizationCodeParams
+    OAuth2AuthorizationCodeParams,
+
+    {{=< >=}}
+    <#emitJSDoc>/**
+     * The ApiClient constructor.
+     * @property {module:<#invokerPackage><invokerPackage>/</invokerPackage>ApiClient}
+     */</emitJSDoc>
+    ApiClient<#models>,
+
+    <#emitJSDoc>/**
+     * The <importPath> model constructor.
+     * @property {module:<#invokerPackage><invokerPackage>/</invokerPackage><#modelPackage><modelPackage>/</modelPackage><importPath>}
+     */</emitJSDoc>
+    <importPath></models><#apiInfo><#apis>,
+
+    <#emitJSDoc>/**
+    * The <importPath> service constructor.
+    * @property {module:<#invokerPackage><invokerPackage>/</invokerPackage><#apiPackage><apiPackage>/</apiPackage><importPath>}
+    */</emitJSDoc>
+    <importPath></apis></apiInfo>
 
 };<={{ }}=>
