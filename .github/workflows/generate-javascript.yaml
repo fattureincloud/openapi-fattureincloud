@@ -122,7 +122,7 @@ jobs:
         name: Move custom files to repo
         run: |
           mv ./backup/javascript/src/filter ./generated/javascript/src/
-          mv ./backup/javascript/src/oauth2 ./generated/javascript/oauth2/
+          mv ./backup/javascript/src/oauth2 ./generated/javascript/src/
 
       - id: generate-additional-files
         name: Generate Additional files
