@@ -49,7 +49,7 @@ jobs:
         name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: '2.1.x'
+          dotnet-version: '3.1.x'
 
       - id: setup-libraries
         name: Install libraries
@@ -141,7 +141,7 @@ jobs:
         name: Lint Code Base
         run: |
           cd ./generated/csharp-netcore
-          dotnet new classlib
+          dotnet new tool-manifest
           dotnet tool install JetBrains.ReSharper.GlobalTools
           dotnet jb cleanupcode It.FattureInCloud.Sdk.sln
 

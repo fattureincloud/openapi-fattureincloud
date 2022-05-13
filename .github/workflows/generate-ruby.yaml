@@ -143,6 +143,7 @@ jobs:
         name: Lint Code Base
         run: |
           cd ./generated/ruby
+          bundle install
           bundle exec rubocop -a
 
       - id: create-pr
