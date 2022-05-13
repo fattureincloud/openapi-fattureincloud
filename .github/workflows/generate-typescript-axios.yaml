@@ -59,7 +59,7 @@ jobs:
           yarn
 
       - id: bump-typescript-sdk-version
-        name: Bump C# SDK
+        name: Bump TypeScript SDK
         env:
           OPENAPI_VERSION: ${{ github.event.client_payload.version }}
         run: |
