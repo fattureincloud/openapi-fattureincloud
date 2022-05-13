@@ -123,7 +123,7 @@ jobs:
         run: |
           mv ./backup/javascript/src/filter ./generated/javascript/src/
           mv ./backup/javascript/src/oauth2 ./generated/javascript/src/
-          ls ./backup/javascript/src/oauth2
+          ls ./generated/javascript/src/oauth2
 
       - id: generate-additional-files
         name: Generate Additional files
