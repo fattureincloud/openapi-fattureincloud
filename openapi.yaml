@@ -574,13 +574,13 @@ paths:
       description: Lists the issued documents.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - issued_documents.invoice:r
-            - issued_documents.credit_note:r
-            - issued_documents.receipt:r
-            - issued_documents.order:r
-            - issued_documents.quote:r
-            - issued_documents.proforma:r
-            - issued_documents.delivery_note:r
+            - issued_documents.invoices:r
+            - issued_documents.credit_notes:r
+            - issued_documents.receipts:r
+            - issued_documents.orders:r
+            - issued_documents.quotes:r
+            - issued_documents.proformas:r
+            - issued_documents.delivery_notes:r
       parameters:
         - $ref: '#/components/parameters/issued_document_type'
         - $ref: '#/components/parameters/fields'
@@ -602,13 +602,13 @@ paths:
       description: Creates a new document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - issued_documents.invoice:a
-            - issued_documents.credit_note:a
-            - issued_documents.receipt:a
-            - issued_documents.order:a
-            - issued_documents.quote:a
-            - issued_documents.proforma:a
-            - issued_documents.delivery_note:a
+            - issued_documents.invoices:a
+            - issued_documents.credit_notes:a
+            - issued_documents.receipts:a
+            - issued_documents.orders:a
+            - issued_documents.quotes:a
+            - issued_documents.proformas:a
+            - issued_documents.delivery_notes:a
       parameters: []
       requestBody:
         content:
@@ -695,13 +695,13 @@ paths:
         Gets the specified document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - issued_documents.invoice:r
-            - issued_documents.credit_note:r
-            - issued_documents.receipt:r
-            - issued_documents.order:r
-            - issued_documents.quote:r
-            - issued_documents.proforma:r
-            - issued_documents.delivery_note:r
+            - issued_documents.invoices:r
+            - issued_documents.credit_notes:r
+            - issued_documents.receipts:r
+            - issued_documents.orders:r
+            - issued_documents.quotes:r
+            - issued_documents.proformas:r
+            - issued_documents.delivery_notes:r
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -718,13 +718,13 @@ paths:
       description: Modifies the specified document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - issued_documents.invoice:a
-            - issued_documents.credit_note:a
-            - issued_documents.receipt:a
-            - issued_documents.order:a
-            - issued_documents.quote:a
-            - issued_documents.proforma:a
-            - issued_documents.delivery_note:a
+            - issued_documents.invoices:a
+            - issued_documents.credit_notes:a
+            - issued_documents.receipts:a
+            - issued_documents.orders:a
+            - issued_documents.quotes:a
+            - issued_documents.proformas:a
+            - issued_documents.delivery_notes:a
       parameters: []
       requestBody:
         content:
@@ -804,13 +804,13 @@ paths:
       description: Deletes the specified document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - issued_documents.invoice:a
-            - issued_documents.credit_note:a
-            - issued_documents.receipt:a
-            - issued_documents.order:a
-            - issued_documents.quote:a
-            - issued_documents.proforma:a
-            - issued_documents.delivery_note:a
+            - issued_documents.invoices:a
+            - issued_documents.credit_notes:a
+            - issued_documents.receipts:a
+            - issued_documents.orders:a
+            - issued_documents.quotes:a
+            - issued_documents.proformas:a
+            - issued_documents.delivery_notes:a
       parameters: []
       tags:
         - Issued Documents
@@ -1047,13 +1047,13 @@ paths:
       description: Gets the pre-compiled email details.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - issued_documents.invoice:r
-            - issued_documents.credit_note:r
-            - issued_documents.receipt:r
-            - issued_documents.order:r
-            - issued_documents.quote:r
-            - issued_documents.proforma:r
-            - issued_documents.delivery_note:r
+            - issued_documents.invoices:r
+            - issued_documents.credit_notes:r
+            - issued_documents.receipts:r
+            - issued_documents.orders:r
+            - issued_documents.quotes:r
+            - issued_documents.proformas:r
+            - issued_documents.delivery_notes:r
       parameters: []
     post:
       summary: Schedule Email
@@ -1068,13 +1068,13 @@ paths:
       description: Schedules the sending of a document by email.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - issued_documents.invoice:r
-            - issued_documents.credit_note:r
-            - issued_documents.receipt:r
-            - issued_documents.order:r
-            - issued_documents.quote:r
-            - issued_documents.proforma:r
-            - issued_documents.delivery_note:r
+            - issued_documents.invoices:r
+            - issued_documents.credit_notes:r
+            - issued_documents.receipts:r
+            - issued_documents.orders:r
+            - issued_documents.quotes:r
+            - issued_documents.proformas:r
+            - issued_documents.delivery_notes:r
       tags:
         - Issued Documents
       parameters: []
