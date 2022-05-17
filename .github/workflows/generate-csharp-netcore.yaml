@@ -51,7 +51,7 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '3.1.x'
-
+          
       - id: setup-dotnet-manually
         if: ${{ env.ACT }}
         name: Setup dotnet manually
@@ -61,7 +61,7 @@ jobs:
           sudo apt update 
           sudo apt --assume-yes install apt-transport-https 
           sudo apt --assume-yes install dotnet-sdk-3.1
-
+          
       - id: setup-homebrew
         name: Set up Homebrew
         uses: Homebrew/actions/setup-homebrew@master
