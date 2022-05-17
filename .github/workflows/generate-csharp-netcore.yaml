@@ -5,7 +5,7 @@ on:
 
 jobs:
   generate-csharp-sdk:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     env:
       GIT_REPO_ID: fattureincloud-csharp-sdk
       GIT_USER_ID: fattureincloud
@@ -61,17 +61,15 @@ jobs:
           sudo apt update 
           sudo apt --assume-yes install apt-transport-https 
           sudo apt --assume-yes install dotnet-sdk-3.1
-          
-      - id: setup-homebrew
-        name: Set up Homebrew
-        uses: Homebrew/actions/setup-homebrew@master
 
       - id: setup-libraries
         name: Install libraries
         run: |
           npm install -g yarn
           yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli standard-version
-          brew install yq
+          sudo add-apt-repository ppa:rmescandon/yq -y
+          sudo apt update
+          sudo apt install yq -y
           cd ./scripts/
           yarn
           cd ../generated/csharp-netcore/scripts
@@ -154,9 +152,8 @@ jobs:
         name: Lint Code Base
         run: |
           cd ./generated/csharp-netcore
-          dotnet new tool-manifest
-          dotnet tool install JetBrains.ReSharper.GlobalTools
-          dotnet jb cleanupcode It.FattureInCloud.Sdk.sln
+          dotnet tool install -g dotnet-format
+          dotnet format
 
       - id: create-pr
         name: Create Pull Request
