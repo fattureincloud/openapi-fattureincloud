@@ -48,7 +48,10 @@ jobs:
         run: |
           openapi-generator-cli author template -g ${{ matrix.sdk }} -o templates-temp/openapi-generator/${{ matrix.sdk }}
           for entry in "templates-temp/openapi-generator/${{ matrix.sdk }}"/*; do
-            FILE="${entry/templates-temp/openapi-generator/templates}"
+            echo "Found template $entry"
+            FILE="${entry/templates-temp/templates}"
+
+            echo "Checking if $FILE exists..."
             if test -f "$FILE"; then
               echo "Moving $entry to $FILE"
               mv $entry $FILE
