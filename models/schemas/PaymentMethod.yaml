@@ -1,4 +1,5 @@
 type: object
+title: PaymentMethod
 properties:
   id:
     type: integer
@@ -24,14 +25,7 @@ properties:
     nullable: true
     description: Method details rows
     items:
-      type: object
-      properties:
-        title:
-          type: string
-          description: Details title.
-        description:
-          type: string
-          description: Details description.
+      $ref: ./PaymentMethodDetails.yaml
   bank_iban:
     type: string
     description: Bank iban
@@ -48,4 +42,3 @@ properties:
     type: string
     description: E-invoice payment method
     nullable: true
-title: PaymentMethod
