@@ -11127,6 +11127,9 @@ paths:
 components:
   schemas: {}
   securitySchemes:
+    ManualAuth:            
+      type: http
+      scheme: bearer
     OAuth2AuthenticationCodeFlow:
       type: oauth2
       x-receive-token-in: request-body

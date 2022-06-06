@@ -100,6 +100,7 @@ function enrichFile(filePath, detailsPath) {
         })
 
         doc = addReceiveTokenInParam(doc)
+        doc = addManualAuthMethod(doc)
 
         fs.writeFileSync(filePath, yaml.dump(doc))
         console.log("Done")
@@ -139,6 +140,18 @@ function enrichProperty(doc, path, schema) {
 function addReceiveTokenInParam(doc) {
     path = 'components.securitySchemes.OAuth2AuthenticationCodeFlow'
     value = '{"x-receive-token-in": "request-body"}'
+    var transformation = `$ ~> | ${path} | ${value} | `
+    var expression = jsonata(transformation);
+    var result = expression.evaluate(doc);
+    return result
+}
+
+// Applies the following JSONata transformation: 
+// $ ~> | components.securitySchemes | {"ManualAuth": {"type": "http", "scheme": "bearer"}} |
+// It is necessary to add the manual auth to RapiDOC TryIt
+function addManualAuthMethod(doc) {
+    path = 'components.securitySchemes'
+    value = '{"ManualAuth": {"type": "http", "scheme": "bearer"}}'
     var transformation = `$ ~> | ${path} | ${value} | `
     var expression = jsonata(transformation);
     var result = expression.evaluate(doc);
