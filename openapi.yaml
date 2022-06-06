@@ -2997,6 +2997,8 @@ components:
           - order
           - work_report
           - supplier_order
+          - self_own_invoice
+          - self_supplier_invoice
       description: The type of the issued document.
     per_page:
       name: per_page
