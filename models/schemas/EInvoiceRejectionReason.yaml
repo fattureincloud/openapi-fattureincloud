@@ -19,6 +19,6 @@ properties:
     nullable: true
   date:
     type: string
-    format: date
+    format: date-time
     description: Rejection date.
     nullable: true
