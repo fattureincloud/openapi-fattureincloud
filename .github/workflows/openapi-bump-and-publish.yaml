@@ -148,12 +148,10 @@ jobs:
 
       - id: readme-upload
         name: Upload to Readme.io
-        uses: readmeio/github-readme-sync@v2
         if: ${{ !env.ACT }}
+        uses: readmeio/rdme@7.2.0
         with:
-          readme-oas-key: "${{ env.oas_key }}"
-          oas-file-path: './openapi-enriched.yaml'
-          api-version: "${{ env.api_version }}"
+          rdme: openapi ./openapi-enriched.yaml --key=${{ secrets.README_API_KEY }} --id=$VERSION_ID
 
       - id: check-git
         name: Check GIT
