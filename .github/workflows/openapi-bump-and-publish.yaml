@@ -119,7 +119,7 @@ jobs:
           VERSION_ID=$(yq e '.version_id' ./res.yaml)
           API_VERSION=$(yq e '.api_version' ./res.yaml)
           echo "api_version=$API_VERSION" >> $GITHUB_ENV
-          echo "oas_key=${{ secrets.README_API_KEY }}:$VERSION_ID" >> $GITHUB_ENV
+          echo "oas_key=${{ secrets.README_API_KEY }}" >> $GITHUB_ENV
           rm ./res.yaml
 
       - id: enrich-spec
@@ -148,12 +148,10 @@ jobs:
 
       - id: readme-upload
         name: Upload to Readme.io
-        uses: readmeio/github-readme-sync@v2
         if: ${{ !env.ACT }}
+        uses: readmeio/rdme@7.2.0
         with:
-          readme-oas-key: "${{ env.oas_key }}"
-          oas-file-path: './openapi-enriched.yaml'
-          api-version: "${{ env.api_version }}"
+          rdme: openapi ./openapi-enriched.yaml --key="${{ env.oas_key }}" --id="${{ env.api_version }}"
 
       - id: check-git
         name: Check GIT
