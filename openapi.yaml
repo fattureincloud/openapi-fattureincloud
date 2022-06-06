@@ -2989,12 +2989,14 @@ components:
         type: string
         enum:
           - invoice
-          - credit_note
-          - receipt
-          - order
           - quote
           - proforma
+          - receipt
           - delivery_note
+          - credit_note
+          - order
+          - work_report
+          - supplier_order
       description: The type of the issued document.
     per_page:
       name: per_page
