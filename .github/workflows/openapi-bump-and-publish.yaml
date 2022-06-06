@@ -151,7 +151,7 @@ jobs:
         if: ${{ !env.ACT }}
         uses: readmeio/rdme@7.2.0
         with:
-          rdme: openapi ./openapi-enriched.yaml --key=${{ env.oas_key }} --id=${{ env.api_version }}
+          rdme: openapi ./openapi-enriched.yaml --key=${{ secrets.README_API_KEY }} --id=$VERSION_ID
 
       - id: check-git
         name: Check GIT
