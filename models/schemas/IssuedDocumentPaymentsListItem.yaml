@@ -34,7 +34,7 @@ properties:
     type: object
     nullable: true
     description: Advanced raw attributes for e-invoices.
-  payment_tems:
+  payment_terms:
     type: object
     properties:
       days:
