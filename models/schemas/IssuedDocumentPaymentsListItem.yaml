@@ -34,3 +34,17 @@ properties:
     type: object
     nullable: true
     description: Advanced raw attributes for e-invoices.
+  payment_tems:
+    type: object
+    properties:
+      days:
+        type: integer
+        nullable: true
+        description: The number of days by which the payment must be made.
+      type:
+        type: string
+        nullable: true
+        description: Payment terms type.
+        enum:
+          - standard
+          - end_of_month
