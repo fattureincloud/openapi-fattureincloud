@@ -122,15 +122,6 @@ public class JSON {
             .registerTypeAdapter(LocalDate.class, localDateTypeAdapter)
             {{/jsr310}}
             .registerTypeAdapter(byte[].class, byteArrayAdapter)
-            {{#models}}
-            {{#model}}
-            {{^isEnum}}
-            {{^hasChildren}}
-            .registerTypeAdapterFactory(new {{modelPackage}}.{{{classname}}}.CustomTypeAdapterFactory())
-            {{/hasChildren}}
-            {{/isEnum}}
-            {{/model}}
-            {{/models}}
             .create();
     }
 
