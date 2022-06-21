@@ -1,0 +1,45 @@
+name: Trigger Openapi Spec Enrichment
+on: [ workflow_dispatch ]
+
+jobs:
+  trigger-postman:
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout
+        name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+
+      - id: init-git
+        name: Init GIT
+        run: |
+          git config --global user.email "info@fattureincloud.it"
+          git config --global user.name "fattureincloud-bot"
+          
+      - id: setup-node
+        name: Setup Node.js
+        uses: actions/setup-node@v2
+
+      - id: enrich-spec
+        name: Enrich OpenAPI Spec
+        run: |
+
+          echo "Resolving OpenAPI Specification to a single file..."
+          swagger-merger -i ./openapi.yaml -o ./openapi-enriched.yaml
+
+          echo "Enriching OpenAPI Specification..."
+          node ./scripts/enrich.js ./details.yaml ./openapi-enriched.yaml
+
+      - id: create-pr
+        name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          path: "."
+          branch: "enriched-spec-${{ env.date_ts }}"
+          token: "${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}"
+          delete-branch: true
+          base: master
+          commit-message: "chore: openapi spec enrichment"
+          title: "OpenAPI spec enrichment"
+          body: ""
