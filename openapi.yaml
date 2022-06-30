@@ -1192,6 +1192,8 @@ paths:
           $ref: '#/components/responses/GetEInvoiceRejectionReasonResponse'
       operationId: getEInvoiceRejectionReason
       description: Get e-invoice rejection reason
+      security:
+        - OAuth2AuthenticationCodeFlow: []
   /c/{company_id}/received_documents:
     parameters:
       - $ref: '#/components/parameters/company_id'

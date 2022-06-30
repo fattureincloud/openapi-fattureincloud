@@ -101,6 +101,7 @@ function enrichFile(filePath, detailsPath) {
 
         doc = addReceiveTokenInParam(doc)
         doc = addManualAuthMethod(doc)
+        doc = addManualAuthMethodToEndpoints(doc)
 
         fs.writeFileSync(filePath, yaml.dump(doc))
         console.log("Done")
@@ -156,6 +157,35 @@ function addManualAuthMethod(doc) {
     var expression = jsonata(transformation);
     var result = expression.evaluate(doc);
     return result
+}
+
+function addManualAuthMethodToEndpoints(doc) {
+    var paths = doc['paths']
+    var endpoints = Object.keys(paths)
+
+    endpoints.forEach((endpointKey, _) => {
+        var endpoint = paths[endpointKey]
+        const verbs = Object.keys(endpoint)
+
+        // uses this to filter 'params'
+        const verbsOfInterest = ['get', 'post', 'put', 'delete']
+
+        const filteredVerbs = Object.keys(endpoint)
+            .filter(verbKey => verbsOfInterest.includes(verbKey))
+
+            filteredVerbs.forEach((verbKey, _) => {
+
+            console.log(`${endpointKey} | ${verbKey} | `)
+            var arr = doc['paths'][endpointKey][verbKey]['security']
+            console.log(arr)
+            var value = {}
+            value['ManualAuth'] = []
+           
+            arr.push(value)
+            doc['paths'][endpointKey][verbKey]['security'] = arr
+        })
+    })
+    return doc
 }
 
 // This function uses JSONata's transform operator to apply modifies to the selected path
