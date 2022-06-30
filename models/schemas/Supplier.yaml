@@ -90,6 +90,10 @@ properties:
     type: string
     description: Supplier extra notes.
     nullable: true
+  bank_iban:
+    type: string
+    description: Supplier bank IBAN.
+    nullable: true
   created_at:
     type: string
     nullable: true

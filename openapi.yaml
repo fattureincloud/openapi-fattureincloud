@@ -2199,7 +2199,12 @@ paths:
   /c/{company_id}/cashbook/{document_id}:
     parameters:
       - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/document_id'
+      - schema:
+          type: string
+        name: document_id
+        in: path
+        required: true
+        description: The ID of the document.
     get:
       summary: Get Cashbook Entry
       tags:
@@ -2989,12 +2994,16 @@ components:
         type: string
         enum:
           - invoice
-          - credit_note
-          - receipt
-          - order
           - quote
           - proforma
+          - receipt
           - delivery_note
+          - credit_note
+          - order
+          - work_report
+          - supplier_order
+          - self_own_invoice
+          - self_supplier_invoice
       description: The type of the issued document.
     per_page:
       name: per_page
