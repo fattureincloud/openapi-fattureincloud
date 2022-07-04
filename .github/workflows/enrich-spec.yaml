@@ -26,6 +26,8 @@ jobs:
         run: |
           npm install -g yarn
           yarn global add swagger-merger
+          cd ./scripts/
+          yarn
 
       - id: enrich-spec
         name: Enrich OpenAPI Spec
