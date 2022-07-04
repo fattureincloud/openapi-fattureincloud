@@ -16,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.0.11
+  version: 2.0.18
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -107,6 +107,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
+        - $ref: '#/components/parameters/q'
     post:
       summary: Create Client
       operationId: createClient
@@ -253,9 +254,9 @@ paths:
                           description: Determine if the vat type is disabled.
                       title: VatType
                       description: ''
+                      nullable: true
                       required:
                         - value
-                      nullable: true
                     default_payment_terms:
                       type: integer
                       example: 30
@@ -269,6 +270,7 @@ paths:
                       description: Default payment terms.
                     default_payment_method:
                       type: object
+                      title: PaymentMethod
                       properties:
                         id:
                           type: integer
@@ -322,22 +324,25 @@ paths:
                               type: boolean
                               description: Determine if the payment method is virtual.
                           title: PaymentAccount
+                          nullable: true
                           required:
                             - name
-                          nullable: true
                         details:
                           maxItems: 5
                           type: array
                           description: Method details rows
                           items:
+                            title: PaymentMethodDetails
                             type: object
                             properties:
                               title:
                                 type: string
                                 description: Details title.
+                                nullable: true
                               description:
                                 type: string
                                 description: Details description.
+                                nullable: true
                           nullable: true
                         bank_iban:
                           type: string
@@ -353,8 +358,7 @@ paths:
                           nullable: true
                         ei_payment_method:
                           type: string
-                          description: EInvoice payment method
-                      title: PaymentMethod
+                          description: E-invoice payment method
                       required:
                         - name
                       nullable: true
@@ -383,6 +387,16 @@ paths:
                     default_discount:
                       type: number
                       description: Default discount.
+                    has_intent_declaration:
+                      type: boolean
+                      description: Has intent declaration.
+                    intent_declaration_protocol_number:
+                      type: string
+                      format: date
+                      description: Intent declaration protocol number.
+                    intent_declaration_protocol_date:
+                      type: string
+                      description: Intent declaration protocol date.
                     created_at:
                       type: string
                       nullable: true
@@ -605,9 +619,9 @@ paths:
                           description: Determine if the vat type is disabled.
                       title: VatType
                       description: ''
+                      nullable: true
                       required:
                         - value
-                      nullable: true
                     default_payment_terms:
                       type: integer
                       example: 30
@@ -621,6 +635,7 @@ paths:
                       description: Default payment terms.
                     default_payment_method:
                       type: object
+                      title: PaymentMethod
                       properties:
                         id:
                           type: integer
@@ -674,22 +689,25 @@ paths:
                               type: boolean
                               description: Determine if the payment method is virtual.
                           title: PaymentAccount
+                          nullable: true
                           required:
                             - name
-                          nullable: true
                         details:
                           maxItems: 5
                           type: array
                           description: Method details rows
                           items:
+                            title: PaymentMethodDetails
                             type: object
                             properties:
                               title:
                                 type: string
                                 description: Details title.
+                                nullable: true
                               description:
                                 type: string
                                 description: Details description.
+                                nullable: true
                           nullable: true
                         bank_iban:
                           type: string
@@ -705,8 +723,7 @@ paths:
                           nullable: true
                         ei_payment_method:
                           type: string
-                          description: EInvoice payment method
-                      title: PaymentMethod
+                          description: E-invoice payment method
                       required:
                         - name
                       nullable: true
@@ -735,6 +752,16 @@ paths:
                     default_discount:
                       type: number
                       description: Default discount.
+                    has_intent_declaration:
+                      type: boolean
+                      description: Has intent declaration.
+                    intent_declaration_protocol_number:
+                      type: string
+                      format: date
+                      description: Intent declaration protocol number.
+                    intent_declaration_protocol_date:
+                      type: string
+                      description: Intent declaration protocol date.
                     created_at:
                       type: string
                       nullable: true
@@ -824,6 +851,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
+        - $ref: '#/components/parameters/q'
       tags:
         - Suppliers
     post:
@@ -928,6 +956,9 @@ paths:
                     notes:
                       type: string
                       description: Supplier extra notes.
+                    bank_iban:
+                      type: string
+                      description: Supplier bank IBAN.
                     created_at:
                       type: string
                       nullable: true
@@ -1094,6 +1125,9 @@ paths:
                     notes:
                       type: string
                       description: Supplier extra notes.
+                    bank_iban:
+                      type: string
+                      description: Supplier bank IBAN.
                     created_at:
                       type: string
                       nullable: true
@@ -1174,6 +1208,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
+        - $ref: '#/components/parameters/q'
     post:
       summary: Create Product
       operationId: createProduct
@@ -1267,9 +1302,9 @@ paths:
                           description: Determine if the vat type is disabled.
                       title: VatType
                       description: ''
+                      nullable: true
                       required:
                         - value
-                      nullable: true
                     net_cost:
                       type: number
                       description: Net cost of the product (used for received documents).
@@ -1454,9 +1489,9 @@ paths:
                           description: Determine if the vat type is disabled.
                       title: VatType
                       description: ''
+                      nullable: true
                       required:
                         - value
-                      nullable: true
                     net_cost:
                       type: number
                       description: Net cost of the product (used for received documents).
@@ -1560,13 +1595,13 @@ paths:
       description: Lists the issued documents.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - issued_documents.invoice:r
-            - issued_documents.credit_note:r
-            - issued_documents.receipt:r
-            - issued_documents.order:r
-            - issued_documents.quote:r
-            - issued_documents.proforma:r
-            - issued_documents.delivery_note:r
+            - issued_documents.invoices:r
+            - issued_documents.credit_notes:r
+            - issued_documents.receipts:r
+            - issued_documents.orders:r
+            - issued_documents.quotes:r
+            - issued_documents.proformas:r
+            - issued_documents.delivery_notes:r
         - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/issued_document_type'
@@ -1575,6 +1610,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
+        - $ref: '#/components/parameters/q'
     post:
       summary: Create Issued Document
       operationId: createIssuedDocument
@@ -1588,13 +1624,13 @@ paths:
       description: Creates a new document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - issued_documents.invoice:a
-            - issued_documents.credit_note:a
-            - issued_documents.receipt:a
-            - issued_documents.order:a
-            - issued_documents.quote:a
-            - issued_documents.proforma:a
-            - issued_documents.delivery_note:a
+            - issued_documents.invoices:a
+            - issued_documents.credit_notes:a
+            - issued_documents.receipts:a
+            - issued_documents.orders:a
+            - issued_documents.quotes:a
+            - issued_documents.proformas:a
+            - issued_documents.delivery_notes:a
         - ManualAuth: []
       parameters: []
       requestBody:
@@ -1742,9 +1778,9 @@ paths:
                           description: |-
                             [Only for client]
                             Default vat.
+                          nullable: true
                           required:
                             - value
-                          nullable: true
                         default_payment_terms:
                           type: integer
                           example: 30
@@ -1765,6 +1801,7 @@ paths:
                           nullable: true
                         default_payment_method:
                           type: object
+                          title: PaymentMethod
                           properties:
                             id:
                               type: integer
@@ -1820,22 +1857,25 @@ paths:
                                   type: boolean
                                   description: Determine if the payment method is virtual.
                               title: PaymentAccount
+                              nullable: true
                               required:
                                 - name
-                              nullable: true
                             details:
                               maxItems: 5
                               type: array
                               description: Method details rows
                               items:
+                                title: PaymentMethodDetails
                                 type: object
                                 properties:
                                   title:
                                     type: string
                                     description: Details title.
+                                    nullable: true
                                   description:
                                     type: string
                                     description: Details description.
+                                    nullable: true
                               nullable: true
                             bank_iban:
                               type: string
@@ -1851,8 +1891,7 @@ paths:
                               nullable: true
                             ei_payment_method:
                               type: string
-                              description: EInvoice payment method
-                          title: PaymentMethod
+                              description: E-invoice payment method
                           description: |-
                             [Only for client]
                             Default payment method.
@@ -1888,14 +1927,30 @@ paths:
                           description: |-
                             [Only for client]
                             Use e-invoices.
-                          default: false
                           nullable: true
+                          default: false
                         ei_code:
                           type: string
                           description: |-
                             [Only for client]
                             E-invoices code.
                           nullable: true
+                        has_intent_declaration:
+                          type: boolean
+                          description: |-
+                            [Only for client]
+                            Has intent declaration.
+                        intent_declaration_protocol_number:
+                          type: string
+                          format: date
+                          description: |-
+                            [Only for client]
+                            Intent declaration protocol number.
+                        intent_declaration_protocol_date:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Intent declaration protocol date.
                         created_at:
                           type: string
                           nullable: true
@@ -1917,6 +1972,8 @@ paths:
                         - order
                         - work_report
                         - supplier_order
+                        - self_own_invoice
+                        - self_supplier_invoice
                       description: Issued document type.
                     number:
                       type: integer
@@ -2069,6 +2126,7 @@ paths:
                         [0 if not present]
                     payment_method:
                       type: object
+                      title: PaymentMethod
                       properties:
                         id:
                           type: integer
@@ -2122,22 +2180,25 @@ paths:
                               type: boolean
                               description: Determine if the payment method is virtual.
                           title: PaymentAccount
+                          nullable: true
                           required:
                             - name
-                          nullable: true
                         details:
                           maxItems: 5
                           type: array
                           description: Method details rows
                           items:
+                            title: PaymentMethodDetails
                             type: object
                             properties:
                               title:
                                 type: string
                                 description: Details title.
+                                nullable: true
                               description:
                                 type: string
                                 description: Details description.
+                                nullable: true
                           nullable: true
                         bank_iban:
                           type: string
@@ -2153,8 +2214,7 @@ paths:
                           nullable: true
                         ei_payment_method:
                           type: string
-                          description: EInvoice payment method
-                      title: PaymentMethod
+                          description: E-invoice payment method
                       required:
                         - name
                     use_split_payment:
@@ -2246,23 +2306,23 @@ paths:
                       nullable: true
                     ei_cassa_type:
                       type: string
-                      description: Einvoice cassa type
+                      description: E-invoice cassa type
                       nullable: true
                     ei_cassa2_type:
                       type: string
-                      description: Einvoice cassa2 type
+                      description: E-invoice cassa2 type
                       nullable: true
                     ei_withholding_tax_causal:
                       type: string
-                      description: Einvoice withholding tax causal
+                      description: E-invoice withholding tax causal
                       nullable: true
                     ei_other_withholding_tax_type:
                       type: string
-                      description: Einvoice other withholding tax type
+                      description: E-invoice other withholding tax type
                       nullable: true
                     ei_other_withholding_tax_causal:
                       type: string
-                      description: Einvoice other withholding tax causal
+                      description: E-invoice other withholding tax causal
                       nullable: true
                     items_list:
                       type: array
@@ -2474,6 +2534,22 @@ paths:
                             type: object
                             nullable: true
                             description: Advanced raw attributes for e-invoices.
+                          payment_terms:
+                            type: object
+                            properties:
+                              days:
+                                type: integer
+                                nullable: true
+                                description: >-
+                                  The number of days by which the payment must
+                                  be made.
+                              type:
+                                type: string
+                                nullable: true
+                                description: Payment terms type.
+                                enum:
+                                  - standard
+                                  - end_of_month
                       nullable: true
                     template:
                       type: object
@@ -2749,6 +2825,7 @@ paths:
                           * `attempt` - We are trying to send the invoice, please wait up to 2 hours
                           * `missing` - The invoice is missing
                           * `not_sent` - The invoice has yet to be sent
+                          * `sent` - The invoice was sent
                           * `pending` - The checks for the digital signature and sending are in progress
                           * `processing` - The SDI is delivering the invoice to the customer
                           * `error` - An error occurred while handling the invoice, please try to resend it or contact support
@@ -2761,6 +2838,7 @@ paths:
                         - attempt
                         - missing
                         - not_sent
+                        - sent
                         - pending
                         - processing
                         - error
@@ -2858,13 +2936,13 @@ paths:
         Gets the specified document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - issued_documents.invoice:r
-            - issued_documents.credit_note:r
-            - issued_documents.receipt:r
-            - issued_documents.order:r
-            - issued_documents.quote:r
-            - issued_documents.proforma:r
-            - issued_documents.delivery_note:r
+            - issued_documents.invoices:r
+            - issued_documents.credit_notes:r
+            - issued_documents.receipts:r
+            - issued_documents.orders:r
+            - issued_documents.quotes:r
+            - issued_documents.proformas:r
+            - issued_documents.delivery_notes:r
         - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/fields'
@@ -2882,13 +2960,13 @@ paths:
       description: Modifies the specified document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - issued_documents.invoice:a
-            - issued_documents.credit_note:a
-            - issued_documents.receipt:a
-            - issued_documents.order:a
-            - issued_documents.quote:a
-            - issued_documents.proforma:a
-            - issued_documents.delivery_note:a
+            - issued_documents.invoices:a
+            - issued_documents.credit_notes:a
+            - issued_documents.receipts:a
+            - issued_documents.orders:a
+            - issued_documents.quotes:a
+            - issued_documents.proformas:a
+            - issued_documents.delivery_notes:a
         - ManualAuth: []
       parameters: []
       requestBody:
@@ -3037,9 +3115,9 @@ paths:
                           description: |-
                             [Only for client]
                             Default vat.
+                          nullable: true
                           required:
                             - value
-                          nullable: true
                         default_payment_terms:
                           type: integer
                           example: 30
@@ -3060,6 +3138,7 @@ paths:
                           nullable: true
                         default_payment_method:
                           type: object
+                          title: PaymentMethod
                           properties:
                             id:
                               type: integer
@@ -3115,22 +3194,25 @@ paths:
                                   type: boolean
                                   description: Determine if the payment method is virtual.
                               title: PaymentAccount
+                              nullable: true
                               required:
                                 - name
-                              nullable: true
                             details:
                               maxItems: 5
                               type: array
                               description: Method details rows
                               items:
+                                title: PaymentMethodDetails
                                 type: object
                                 properties:
                                   title:
                                     type: string
                                     description: Details title.
+                                    nullable: true
                                   description:
                                     type: string
                                     description: Details description.
+                                    nullable: true
                               nullable: true
                             bank_iban:
                               type: string
@@ -3146,8 +3228,7 @@ paths:
                               nullable: true
                             ei_payment_method:
                               type: string
-                              description: EInvoice payment method
-                          title: PaymentMethod
+                              description: E-invoice payment method
                           description: |-
                             [Only for client]
                             Default payment method.
@@ -3183,14 +3264,30 @@ paths:
                           description: |-
                             [Only for client]
                             Use e-invoices.
-                          default: false
                           nullable: true
+                          default: false
                         ei_code:
                           type: string
                           description: |-
                             [Only for client]
                             E-invoices code.
                           nullable: true
+                        has_intent_declaration:
+                          type: boolean
+                          description: |-
+                            [Only for client]
+                            Has intent declaration.
+                        intent_declaration_protocol_number:
+                          type: string
+                          format: date
+                          description: |-
+                            [Only for client]
+                            Intent declaration protocol number.
+                        intent_declaration_protocol_date:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Intent declaration protocol date.
                         created_at:
                           type: string
                           nullable: true
@@ -3212,6 +3309,8 @@ paths:
                         - order
                         - work_report
                         - supplier_order
+                        - self_own_invoice
+                        - self_supplier_invoice
                       description: Issued document type.
                     number:
                       type: integer
@@ -3364,6 +3463,7 @@ paths:
                         [0 if not present]
                     payment_method:
                       type: object
+                      title: PaymentMethod
                       properties:
                         id:
                           type: integer
@@ -3417,22 +3517,25 @@ paths:
                               type: boolean
                               description: Determine if the payment method is virtual.
                           title: PaymentAccount
+                          nullable: true
                           required:
                             - name
-                          nullable: true
                         details:
                           maxItems: 5
                           type: array
                           description: Method details rows
                           items:
+                            title: PaymentMethodDetails
                             type: object
                             properties:
                               title:
                                 type: string
                                 description: Details title.
+                                nullable: true
                               description:
                                 type: string
                                 description: Details description.
+                                nullable: true
                           nullable: true
                         bank_iban:
                           type: string
@@ -3448,8 +3551,7 @@ paths:
                           nullable: true
                         ei_payment_method:
                           type: string
-                          description: EInvoice payment method
-                      title: PaymentMethod
+                          description: E-invoice payment method
                       required:
                         - name
                     use_split_payment:
@@ -3541,23 +3643,23 @@ paths:
                       nullable: true
                     ei_cassa_type:
                       type: string
-                      description: Einvoice cassa type
+                      description: E-invoice cassa type
                       nullable: true
                     ei_cassa2_type:
                       type: string
-                      description: Einvoice cassa2 type
+                      description: E-invoice cassa2 type
                       nullable: true
                     ei_withholding_tax_causal:
                       type: string
-                      description: Einvoice withholding tax causal
+                      description: E-invoice withholding tax causal
                       nullable: true
                     ei_other_withholding_tax_type:
                       type: string
-                      description: Einvoice other withholding tax type
+                      description: E-invoice other withholding tax type
                       nullable: true
                     ei_other_withholding_tax_causal:
                       type: string
-                      description: Einvoice other withholding tax causal
+                      description: E-invoice other withholding tax causal
                       nullable: true
                     items_list:
                       type: array
@@ -3769,6 +3871,22 @@ paths:
                             type: object
                             nullable: true
                             description: Advanced raw attributes for e-invoices.
+                          payment_terms:
+                            type: object
+                            properties:
+                              days:
+                                type: integer
+                                nullable: true
+                                description: >-
+                                  The number of days by which the payment must
+                                  be made.
+                              type:
+                                type: string
+                                nullable: true
+                                description: Payment terms type.
+                                enum:
+                                  - standard
+                                  - end_of_month
                       nullable: true
                     template:
                       type: object
@@ -4044,6 +4162,7 @@ paths:
                           * `attempt` - We are trying to send the invoice, please wait up to 2 hours
                           * `missing` - The invoice is missing
                           * `not_sent` - The invoice has yet to be sent
+                          * `sent` - The invoice was sent
                           * `pending` - The checks for the digital signature and sending are in progress
                           * `processing` - The SDI is delivering the invoice to the customer
                           * `error` - An error occurred while handling the invoice, please try to resend it or contact support
@@ -4056,6 +4175,7 @@ paths:
                         - attempt
                         - missing
                         - not_sent
+                        - sent
                         - pending
                         - processing
                         - error
@@ -4064,19 +4184,15 @@ paths:
                         - accepted
                         - rejected
                         - no_response
-                option:
+                options:
+                  title: IssuedDocumentOptions
                   type: object
                   properties:
-                    entity_search_fields:
-                      type: string
-                      example: entity.id,tax_code,vat_number,code
-                    entity_autocomplete:
+                    fix_payments:
                       type: boolean
-                    entity_create:
-                      type: boolean
-                    entity_update:
-                      type: string
-                  title: EntityOptions
+                      description: >-
+                        Fixes your last payment amount to match your document
+                        total
             examples:
               example-1:
                 value:
@@ -4150,13 +4266,13 @@ paths:
       description: Deletes the specified document.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - issued_documents.invoice:a
-            - issued_documents.credit_note:a
-            - issued_documents.receipt:a
-            - issued_documents.order:a
-            - issued_documents.quote:a
-            - issued_documents.proforma:a
-            - issued_documents.delivery_note:a
+            - issued_documents.invoices:a
+            - issued_documents.credit_notes:a
+            - issued_documents.receipts:a
+            - issued_documents.orders:a
+            - issued_documents.quotes:a
+            - issued_documents.proformas:a
+            - issued_documents.delivery_notes:a
         - ManualAuth: []
       parameters: []
       tags:
@@ -4324,9 +4440,9 @@ paths:
                           description: |-
                             [Only for client]
                             Default vat.
+                          nullable: true
                           required:
                             - value
-                          nullable: true
                         default_payment_terms:
                           type: integer
                           example: 30
@@ -4347,6 +4463,7 @@ paths:
                           nullable: true
                         default_payment_method:
                           type: object
+                          title: PaymentMethod
                           properties:
                             id:
                               type: integer
@@ -4402,22 +4519,25 @@ paths:
                                   type: boolean
                                   description: Determine if the payment method is virtual.
                               title: PaymentAccount
+                              nullable: true
                               required:
                                 - name
-                              nullable: true
                             details:
                               maxItems: 5
                               type: array
                               description: Method details rows
                               items:
+                                title: PaymentMethodDetails
                                 type: object
                                 properties:
                                   title:
                                     type: string
                                     description: Details title.
+                                    nullable: true
                                   description:
                                     type: string
                                     description: Details description.
+                                    nullable: true
                               nullable: true
                             bank_iban:
                               type: string
@@ -4433,8 +4553,7 @@ paths:
                               nullable: true
                             ei_payment_method:
                               type: string
-                              description: EInvoice payment method
-                          title: PaymentMethod
+                              description: E-invoice payment method
                           description: |-
                             [Only for client]
                             Default payment method.
@@ -4470,14 +4589,30 @@ paths:
                           description: |-
                             [Only for client]
                             Use e-invoices.
-                          default: false
                           nullable: true
+                          default: false
                         ei_code:
                           type: string
                           description: |-
                             [Only for client]
                             E-invoices code.
                           nullable: true
+                        has_intent_declaration:
+                          type: boolean
+                          description: |-
+                            [Only for client]
+                            Has intent declaration.
+                        intent_declaration_protocol_number:
+                          type: string
+                          format: date
+                          description: |-
+                            [Only for client]
+                            Intent declaration protocol number.
+                        intent_declaration_protocol_date:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Intent declaration protocol date.
                         created_at:
                           type: string
                           nullable: true
@@ -4499,6 +4634,8 @@ paths:
                         - order
                         - work_report
                         - supplier_order
+                        - self_own_invoice
+                        - self_supplier_invoice
                       description: Issued document type.
                     number:
                       type: integer
@@ -4651,6 +4788,7 @@ paths:
                         [0 if not present]
                     payment_method:
                       type: object
+                      title: PaymentMethod
                       properties:
                         id:
                           type: integer
@@ -4704,22 +4842,25 @@ paths:
                               type: boolean
                               description: Determine if the payment method is virtual.
                           title: PaymentAccount
+                          nullable: true
                           required:
                             - name
-                          nullable: true
                         details:
                           maxItems: 5
                           type: array
                           description: Method details rows
                           items:
+                            title: PaymentMethodDetails
                             type: object
                             properties:
                               title:
                                 type: string
                                 description: Details title.
+                                nullable: true
                               description:
                                 type: string
                                 description: Details description.
+                                nullable: true
                           nullable: true
                         bank_iban:
                           type: string
@@ -4735,8 +4876,7 @@ paths:
                           nullable: true
                         ei_payment_method:
                           type: string
-                          description: EInvoice payment method
-                      title: PaymentMethod
+                          description: E-invoice payment method
                       required:
                         - name
                     use_split_payment:
@@ -4828,23 +4968,23 @@ paths:
                       nullable: true
                     ei_cassa_type:
                       type: string
-                      description: Einvoice cassa type
+                      description: E-invoice cassa type
                       nullable: true
                     ei_cassa2_type:
                       type: string
-                      description: Einvoice cassa2 type
+                      description: E-invoice cassa2 type
                       nullable: true
                     ei_withholding_tax_causal:
                       type: string
-                      description: Einvoice withholding tax causal
+                      description: E-invoice withholding tax causal
                       nullable: true
                     ei_other_withholding_tax_type:
                       type: string
-                      description: Einvoice other withholding tax type
+                      description: E-invoice other withholding tax type
                       nullable: true
                     ei_other_withholding_tax_causal:
                       type: string
-                      description: Einvoice other withholding tax causal
+                      description: E-invoice other withholding tax causal
                       nullable: true
                     items_list:
                       type: array
@@ -5056,6 +5196,22 @@ paths:
                             type: object
                             nullable: true
                             description: Advanced raw attributes for e-invoices.
+                          payment_terms:
+                            type: object
+                            properties:
+                              days:
+                                type: integer
+                                nullable: true
+                                description: >-
+                                  The number of days by which the payment must
+                                  be made.
+                              type:
+                                type: string
+                                nullable: true
+                                description: Payment terms type.
+                                enum:
+                                  - standard
+                                  - end_of_month
                       nullable: true
                     template:
                       type: object
@@ -5331,6 +5487,7 @@ paths:
                           * `attempt` - We are trying to send the invoice, please wait up to 2 hours
                           * `missing` - The invoice is missing
                           * `not_sent` - The invoice has yet to be sent
+                          * `sent` - The invoice was sent
                           * `pending` - The checks for the digital signature and sending are in progress
                           * `processing` - The SDI is delivering the invoice to the customer
                           * `error` - An error occurred while handling the invoice, please try to resend it or contact support
@@ -5343,6 +5500,7 @@ paths:
                         - attempt
                         - missing
                         - not_sent
+                        - sent
                         - pending
                         - processing
                         - error
@@ -5616,9 +5774,9 @@ paths:
                           description: |-
                             [Only for client]
                             Default vat.
+                          nullable: true
                           required:
                             - value
-                          nullable: true
                         default_payment_terms:
                           type: integer
                           example: 30
@@ -5639,6 +5797,7 @@ paths:
                           nullable: true
                         default_payment_method:
                           type: object
+                          title: PaymentMethod
                           properties:
                             id:
                               type: integer
@@ -5694,22 +5853,25 @@ paths:
                                   type: boolean
                                   description: Determine if the payment method is virtual.
                               title: PaymentAccount
+                              nullable: true
                               required:
                                 - name
-                              nullable: true
                             details:
                               maxItems: 5
                               type: array
                               description: Method details rows
                               items:
+                                title: PaymentMethodDetails
                                 type: object
                                 properties:
                                   title:
                                     type: string
                                     description: Details title.
+                                    nullable: true
                                   description:
                                     type: string
                                     description: Details description.
+                                    nullable: true
                               nullable: true
                             bank_iban:
                               type: string
@@ -5725,8 +5887,7 @@ paths:
                               nullable: true
                             ei_payment_method:
                               type: string
-                              description: EInvoice payment method
-                          title: PaymentMethod
+                              description: E-invoice payment method
                           description: |-
                             [Only for client]
                             Default payment method.
@@ -5762,14 +5923,30 @@ paths:
                           description: |-
                             [Only for client]
                             Use e-invoices.
-                          default: false
                           nullable: true
+                          default: false
                         ei_code:
                           type: string
                           description: |-
                             [Only for client]
                             E-invoices code.
                           nullable: true
+                        has_intent_declaration:
+                          type: boolean
+                          description: |-
+                            [Only for client]
+                            Has intent declaration.
+                        intent_declaration_protocol_number:
+                          type: string
+                          format: date
+                          description: |-
+                            [Only for client]
+                            Intent declaration protocol number.
+                        intent_declaration_protocol_date:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Intent declaration protocol date.
                         created_at:
                           type: string
                           nullable: true
@@ -5791,6 +5968,8 @@ paths:
                         - order
                         - work_report
                         - supplier_order
+                        - self_own_invoice
+                        - self_supplier_invoice
                       description: Issued document type.
                     number:
                       type: integer
@@ -5943,6 +6122,7 @@ paths:
                         [0 if not present]
                     payment_method:
                       type: object
+                      title: PaymentMethod
                       properties:
                         id:
                           type: integer
@@ -5996,22 +6176,25 @@ paths:
                               type: boolean
                               description: Determine if the payment method is virtual.
                           title: PaymentAccount
+                          nullable: true
                           required:
                             - name
-                          nullable: true
                         details:
                           maxItems: 5
                           type: array
                           description: Method details rows
                           items:
+                            title: PaymentMethodDetails
                             type: object
                             properties:
                               title:
                                 type: string
                                 description: Details title.
+                                nullable: true
                               description:
                                 type: string
                                 description: Details description.
+                                nullable: true
                           nullable: true
                         bank_iban:
                           type: string
@@ -6027,8 +6210,7 @@ paths:
                           nullable: true
                         ei_payment_method:
                           type: string
-                          description: EInvoice payment method
-                      title: PaymentMethod
+                          description: E-invoice payment method
                       required:
                         - name
                     use_split_payment:
@@ -6120,23 +6302,23 @@ paths:
                       nullable: true
                     ei_cassa_type:
                       type: string
-                      description: Einvoice cassa type
+                      description: E-invoice cassa type
                       nullable: true
                     ei_cassa2_type:
                       type: string
-                      description: Einvoice cassa2 type
+                      description: E-invoice cassa2 type
                       nullable: true
                     ei_withholding_tax_causal:
                       type: string
-                      description: Einvoice withholding tax causal
+                      description: E-invoice withholding tax causal
                       nullable: true
                     ei_other_withholding_tax_type:
                       type: string
-                      description: Einvoice other withholding tax type
+                      description: E-invoice other withholding tax type
                       nullable: true
                     ei_other_withholding_tax_causal:
                       type: string
-                      description: Einvoice other withholding tax causal
+                      description: E-invoice other withholding tax causal
                       nullable: true
                     items_list:
                       type: array
@@ -6348,6 +6530,22 @@ paths:
                             type: object
                             nullable: true
                             description: Advanced raw attributes for e-invoices.
+                          payment_terms:
+                            type: object
+                            properties:
+                              days:
+                                type: integer
+                                nullable: true
+                                description: >-
+                                  The number of days by which the payment must
+                                  be made.
+                              type:
+                                type: string
+                                nullable: true
+                                description: Payment terms type.
+                                enum:
+                                  - standard
+                                  - end_of_month
                       nullable: true
                     template:
                       type: object
@@ -6623,6 +6821,7 @@ paths:
                           * `attempt` - We are trying to send the invoice, please wait up to 2 hours
                           * `missing` - The invoice is missing
                           * `not_sent` - The invoice has yet to be sent
+                          * `sent` - The invoice was sent
                           * `pending` - The checks for the digital signature and sending are in progress
                           * `processing` - The SDI is delivering the invoice to the customer
                           * `error` - An error occurred while handling the invoice, please try to resend it or contact support
@@ -6635,6 +6834,7 @@ paths:
                         - attempt
                         - missing
                         - not_sent
+                        - sent
                         - pending
                         - processing
                         - error
@@ -6746,13 +6946,13 @@ paths:
       description: Gets the pre-compiled email details.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - issued_documents.invoice:r
-            - issued_documents.credit_note:r
-            - issued_documents.receipt:r
-            - issued_documents.order:r
-            - issued_documents.quote:r
-            - issued_documents.proforma:r
-            - issued_documents.delivery_note:r
+            - issued_documents.invoices:r
+            - issued_documents.credit_notes:r
+            - issued_documents.receipts:r
+            - issued_documents.orders:r
+            - issued_documents.quotes:r
+            - issued_documents.proformas:r
+            - issued_documents.delivery_notes:r
         - ManualAuth: []
       parameters: []
     post:
@@ -6768,13 +6968,13 @@ paths:
       description: Schedules the sending of a document by email.
       security:
         - OAuth2AuthenticationCodeFlow:
-            - issued_documents.invoice:r
-            - issued_documents.credit_note:r
-            - issued_documents.receipt:r
-            - issued_documents.order:r
-            - issued_documents.quote:r
-            - issued_documents.proforma:r
-            - issued_documents.delivery_note:r
+            - issued_documents.invoices:r
+            - issued_documents.credit_notes:r
+            - issued_documents.receipts:r
+            - issued_documents.orders:r
+            - issued_documents.quotes:r
+            - issued_documents.proformas:r
+            - issued_documents.delivery_notes:r
         - ManualAuth: []
       tags:
         - Issued Documents
@@ -6923,7 +7123,7 @@ paths:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
     get:
-      summary: Verify e-invoice xml
+      summary: Verify e-invoice XML
       tags:
         - Issued e-invoices
       responses:
@@ -6937,7 +7137,7 @@ paths:
           $ref: '#/components/responses/VerifyEInvoiceXmlErrorResponse'
       operationId: verifyEInvoiceXml
       description: >-
-        Verifies the e-invoice xml format. Checks if all of the mandatory fields
+        Verifies the e-invoice XML format. Checks if all of the mandatory fields
         are filled and compliant to the right format.
       security:
         - OAuth2AuthenticationCodeFlow: []
@@ -6970,14 +7170,14 @@ paths:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
     get:
-      summary: Get EInvoice rejection reason
+      summary: Get e-invoice rejection reason
       tags:
         - Issued e-invoices
       responses:
         '200':
           $ref: '#/components/responses/GetEInvoiceRejectionReasonResponse'
       operationId: getEInvoiceRejectionReason
-      description: Get EInvoice rejection reason
+      description: Get e-invoice rejection reason
       security:
         - OAuth2AuthenticationCodeFlow: []
         - ManualAuth: []
@@ -7007,6 +7207,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
+        - $ref: '#/components/parameters/q'
     post:
       summary: Create Received Document
       operationId: createReceivedDocument
@@ -8629,6 +8830,7 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
         - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/q'
     post:
       summary: Create Receipt
       operationId: createReceipt
@@ -8733,9 +8935,9 @@ paths:
                           type: boolean
                           description: Determine if the payment method is virtual.
                       title: PaymentAccount
+                      nullable: true
                       required:
                         - name
-                      nullable: true
                     items_list:
                       type: array
                       items:
@@ -8976,9 +9178,9 @@ paths:
                           type: boolean
                           description: Determine if the payment method is virtual.
                       title: PaymentAccount
+                      nullable: true
                       required:
                         - name
-                      nullable: true
                     items_list:
                       type: array
                       items:
@@ -9181,6 +9383,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
+        - $ref: '#/components/parameters/q'
     post:
       summary: Create F24
       operationId: createF24
@@ -9260,9 +9463,9 @@ paths:
                           type: boolean
                           description: Determine if the payment method is virtual.
                       title: PaymentAccount
+                      nullable: true
                       required:
                         - name
-                      nullable: true
                     amount:
                       type: number
                       description: Taxes amount.
@@ -9409,9 +9612,9 @@ paths:
                           type: boolean
                           description: Determine if the payment method is virtual.
                       title: PaymentAccount
+                      nullable: true
                       required:
                         - name
-                      nullable: true
                     amount:
                       type: number
                       description: Taxes amount.
@@ -9564,6 +9767,7 @@ paths:
         - $ref: '#/components/parameters/sort'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
+        - $ref: '#/components/parameters/q'
     post:
       summary: Create Archive Document
       operationId: createArchiveDocument
@@ -9969,9 +10173,9 @@ paths:
                           type: boolean
                           description: Determine if the payment method is virtual.
                       title: PaymentAccount
+                      nullable: true
                       required:
                         - name
-                      nullable: true
                     amount_out:
                       type: number
                       description: |-
@@ -10012,9 +10216,9 @@ paths:
                           type: boolean
                           description: Determine if the payment method is virtual.
                       title: PaymentAccount
+                      nullable: true
                       required:
                         - name
-                      nullable: true
                   required:
                     - id
                     - date
@@ -10039,7 +10243,12 @@ paths:
   /c/{company_id}/cashbook/{document_id}:
     parameters:
       - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/document_id'
+      - schema:
+          type: string
+        name: document_id
+        in: path
+        required: true
+        description: The ID of the document.
     get:
       summary: Get Cashbook Entry
       tags:
@@ -10174,9 +10383,9 @@ paths:
                           type: boolean
                           description: Determine if the payment method is virtual.
                       title: PaymentAccount
+                      nullable: true
                       required:
                         - name
-                      nullable: true
                     amount_out:
                       type: number
                       description: |-
@@ -10217,9 +10426,9 @@ paths:
                           type: boolean
                           description: Determine if the payment method is virtual.
                       title: PaymentAccount
+                      nullable: true
                       required:
                         - name
-                      nullable: true
                   required:
                     - id
                     - date
@@ -10264,6 +10473,22 @@ paths:
         '401':
           description: Unauthorized
       operationId: listCountries
+      description: Lists the supported countries.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
+      parameters: []
+  /info/detailed_countries:
+    get:
+      summary: List Detailed Countries
+      tags:
+        - Info
+      responses:
+        '200':
+          $ref: '#/components/responses/ListDetailedCountriesResponse'
+        '401':
+          description: Unauthorized
+      operationId: listDetailedCountries
       description: Lists the supported countries.
       security:
         - OAuth2AuthenticationCodeFlow: []
@@ -10590,6 +10815,7 @@ paths:
               properties:
                 data:
                   type: object
+                  title: PaymentMethod
                   properties:
                     id:
                       type: integer
@@ -10643,22 +10869,25 @@ paths:
                           type: boolean
                           description: Determine if the payment method is virtual.
                       title: PaymentAccount
+                      nullable: true
                       required:
                         - name
-                      nullable: true
                     details:
                       maxItems: 5
                       type: array
                       description: Method details rows
                       items:
+                        title: PaymentMethodDetails
                         type: object
                         properties:
                           title:
                             type: string
                             description: Details title.
+                            nullable: true
                           description:
                             type: string
                             description: Details description.
+                            nullable: true
                       nullable: true
                     bank_iban:
                       type: string
@@ -10674,8 +10903,7 @@ paths:
                       nullable: true
                     ei_payment_method:
                       type: string
-                      description: EInvoice payment method
-                  title: PaymentMethod
+                      description: E-invoice payment method
                   required:
                     - name
             examples:
@@ -10738,6 +10966,7 @@ paths:
               properties:
                 data:
                   type: object
+                  title: PaymentMethod
                   properties:
                     id:
                       type: integer
@@ -10791,22 +11020,25 @@ paths:
                           type: boolean
                           description: Determine if the payment method is virtual.
                       title: PaymentAccount
+                      nullable: true
                       required:
                         - name
-                      nullable: true
                     details:
                       maxItems: 5
                       type: array
                       description: Method details rows
                       items:
+                        title: PaymentMethodDetails
                         type: object
                         properties:
                           title:
                             type: string
                             description: Details title.
+                            nullable: true
                           description:
                             type: string
                             description: Details description.
+                            nullable: true
                       nullable: true
                     bank_iban:
                       type: string
@@ -10822,8 +11054,7 @@ paths:
                       nullable: true
                     ei_payment_method:
                       type: string
-                      description: EInvoice payment method
-                  title: PaymentMethod
+                      description: E-invoice payment method
                   required:
                     - name
             examples:
@@ -10911,9 +11142,9 @@ paths:
                       type: boolean
                       description: Determine if the payment method is virtual.
                   title: PaymentAccount
+                  nullable: true
                   required:
                     - name
-                  nullable: true
             examples:
               example-1:
                 value:
@@ -11002,9 +11233,9 @@ paths:
                       type: boolean
                       description: Determine if the payment method is virtual.
                   title: PaymentAccount
+                  nullable: true
                   required:
                     - name
-                  nullable: true
             examples:
               example-1:
                 value:
@@ -11094,9 +11325,9 @@ paths:
                       description: Determine if the vat type is disabled.
                   title: VatType
                   description: ''
+                  nullable: true
                   required:
                     - value
-                  nullable: true
             examples:
               example-1:
                 value:
@@ -11193,9 +11424,9 @@ paths:
                       description: Determine if the vat type is disabled.
                   title: VatType
                   description: ''
+                  nullable: true
                   required:
                     - value
-                  nullable: true
             examples:
               example-1:
                 value:
@@ -11225,9 +11456,6 @@ paths:
 components:
   schemas: {}
   securitySchemes:
-    ManualAuth:
-      type: http
-      scheme: bearer
     OAuth2AuthenticationCodeFlow:
       type: oauth2
       x-receive-token-in: request-body
@@ -11236,42 +11464,45 @@ components:
           tokenUrl: https://api-v2.fattureincloud.it/oauth/token
           refreshUrl: https://api-v2.fattureincloud.it/oauth/token
           scopes:
-            entity.clients:r: ''
-            entity.clients:a: ''
-            entity.suppliers:r: ''
-            entity.suppliers:a: ''
-            products:r: ''
-            products:a: ''
-            issued_documents.invoice:r: ''
-            issued_documents.credit_note:r: ''
-            issued_documents.receipt:r: ''
-            issued_documents.order:r: ''
-            issued_documents.quote:r: ''
-            issued_documents.proforma:r: ''
-            issued_documents.delivery_note:r: ''
-            issued_documents.invoice:a: ''
-            issued_documents.credit_note:a: ''
-            issued_documents.receipt:a: ''
-            issued_documents.order:a: ''
-            issued_documents.quote:a: ''
-            issued_documents.proforma:a: ''
-            issued_documents.delivery_note:a: ''
-            received_documents:r: ''
-            received_documents:a: ''
-            stock:r: ''
-            stock:a: ''
-            receipts:r: ''
-            receipts:a: ''
-            taxes:r: ''
-            taxes:a: ''
-            archive:r: ''
-            archive:a: ''
-            cashbook:r: ''
-            cashbook:a: ''
-            settings:r: ''
-            settings:a: ''
-            situation:r: ''
+            entity.clients:r: Read permission to the Clients registry
+            entity.clients:a: Write permission to the Clients registry
+            entity.suppliers:r: Read permission to the Suppliers registry
+            entity.suppliers:a: Write permission to the Suppliers registry
+            products:r: Read permission to the Products
+            products:a: Write permission to the Products
+            issued_documents.invoices:r: Read permission to the issued Invoices
+            issued_documents.credit_notes:r: Read permission to the issued Credit Notes
+            issued_documents.receipts:r: Read permission to the issued Receipts
+            issued_documents.orders:r: Read permission to the issued Orders
+            issued_documents.quotes:r: Read permission to the issued Quotes
+            issued_documents.proformas:r: Read permission to the issued Proformas
+            issued_documents.delivery_notes:r: Read permission to the issued Delivery Notes
+            issued_documents.invoices:a: Write permission to the issued Invoices
+            issued_documents.credit_notes:a: Write permission to the issued Credit Notes
+            issued_documents.receipts:a: Write permission to the issued issued Receipts
+            issued_documents.orders:a: Write permission to the issued Orders
+            issued_documents.quotes:a: Write permission to the issued Quotes
+            issued_documents.proformas:a: Write permission to the issued Proformas
+            issued_documents.delivery_notes:a: Write permission to the issued Delivery Notes
+            received_documents:r: Read permission to the Received Documents
+            received_documents:a: Write permission to the Received Documents
+            stock:r: Read permission to the Stock movements
+            stock:a: Write permission to the Stock movements
+            receipts:r: Read permission to the Receipts
+            receipts:a: Write permission to the Receipts
+            taxes:r: Read permission to the Taxes
+            taxes:a: Write permission to the Taxes
+            archive:r: Read permission to the Archive Documents
+            archive:a: Read permission to the Archive Documents
+            cashbook:r: Read permission to the Cashbook
+            cashbook:a: Write permission to the Cashbook
+            settings:r: Read permission to the Settings
+            settings:a: Write permission to the Settings
+            situation:r: Read permission to the company Situation
           authorizationUrl: https://api-v2.fattureincloud.it/oauth/authorize
+    ManualAuth:
+      type: http
+      scheme: bearer
   parameters:
     company_id:
       name: company_id
@@ -11344,12 +11575,16 @@ components:
         type: string
         enum:
           - invoice
-          - credit_note
-          - receipt
-          - order
           - quote
           - proforma
+          - receipt
           - delivery_note
+          - credit_note
+          - order
+          - work_report
+          - supplier_order
+          - self_own_invoice
+          - self_supplier_invoice
       description: The type of the issued document.
     per_page:
       name: per_page
@@ -11377,6 +11612,13 @@ components:
           - passive_credit_note
           - passive_delivery_note
       description: The type of the received document.
+    q:
+      name: q
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Query for filtering the results.
     include_attachment:
       name: include_attachment
       in: query
@@ -12426,6 +12668,7 @@ components:
                     nullable: true
                   default_payment_method:
                     type: object
+                    title: PaymentMethod
                     properties:
                       id:
                         type: integer
@@ -12494,14 +12737,17 @@ components:
                         nullable: true
                         description: Method details rows
                         items:
+                          title: PaymentMethodDetails
                           type: object
                           properties:
                             title:
                               type: string
                               description: Details title.
+                              nullable: true
                             description:
                               type: string
                               description: Details description.
+                              nullable: true
                       bank_iban:
                         type: string
                         description: Bank iban
@@ -12516,9 +12762,8 @@ components:
                         nullable: true
                       ei_payment_method:
                         type: string
-                        description: EInvoice payment method
+                        description: E-invoice payment method
                         nullable: true
-                    title: PaymentMethod
                     nullable: true
                   bank_name:
                     type: string
@@ -12551,6 +12796,19 @@ components:
                   default_discount:
                     type: number
                     description: Default discount.
+                    nullable: true
+                  has_intent_declaration:
+                    type: boolean
+                    description: Has intent declaration.
+                    nullable: true
+                  intent_declaration_protocol_number:
+                    type: string
+                    format: date
+                    description: Intent declaration protocol number.
+                    nullable: true
+                  intent_declaration_protocol_date:
+                    type: string
+                    description: Intent declaration protocol date.
                     nullable: true
                   created_at:
                     type: string
@@ -12834,6 +13092,7 @@ components:
                           nullable: true
                         default_payment_method:
                           type: object
+                          title: PaymentMethod
                           properties:
                             id:
                               type: integer
@@ -12904,14 +13163,17 @@ components:
                               nullable: true
                               description: Method details rows
                               items:
+                                title: PaymentMethodDetails
                                 type: object
                                 properties:
                                   title:
                                     type: string
                                     description: Details title.
+                                    nullable: true
                                   description:
                                     type: string
                                     description: Details description.
+                                    nullable: true
                             bank_iban:
                               type: string
                               description: Bank iban
@@ -12926,9 +13188,8 @@ components:
                               nullable: true
                             ei_payment_method:
                               type: string
-                              description: EInvoice payment method
+                              description: E-invoice payment method
                               nullable: true
-                          title: PaymentMethod
                           nullable: true
                         bank_name:
                           type: string
@@ -12961,6 +13222,19 @@ components:
                         default_discount:
                           type: number
                           description: Default discount.
+                          nullable: true
+                        has_intent_declaration:
+                          type: boolean
+                          description: Has intent declaration.
+                          nullable: true
+                        intent_declaration_protocol_number:
+                          type: string
+                          format: date
+                          description: Intent declaration protocol number.
+                          nullable: true
+                        intent_declaration_protocol_date:
+                          type: string
+                          description: Intent declaration protocol date.
                           nullable: true
                         created_at:
                           type: string
@@ -13030,8 +13304,8 @@ components:
                     country: Italia
                     email: info@mariorossi.it
                     certified_email: info@pec.mariorossi.it
-                    phone: 12345678
-                    fax: 12345678
+                    phone: '012345678'
+                    fax: '012345678'
                     notes: ''
                     created_at: '2021-04-29 08:53:07'
                     default_payment_terms: 0
@@ -13224,6 +13498,10 @@ components:
                           type: string
                           description: Supplier extra notes.
                           nullable: true
+                        bank_iban:
+                          type: string
+                          description: Supplier bank IBAN.
+                          nullable: true
                         created_at:
                           type: string
                           nullable: true
@@ -13285,8 +13563,8 @@ components:
                     country: Italia
                     email: maria.grossi@example.com
                     certified_email: maria.grossi@pec.example.com
-                    phone: 987654321
-                    fax: 98765432
+                    phone: '0987654321'
+                    fax: '098765432'
                     notes: ''
                     created_at: '2021-15-09'
                     updated_at: '2021-15-09'
@@ -13398,6 +13676,10 @@ components:
                   notes:
                     type: string
                     description: Supplier extra notes.
+                    nullable: true
+                  bank_iban:
+                    type: string
+                    description: Supplier bank IBAN.
                     nullable: true
                   created_at:
                     type: string
@@ -13606,6 +13888,7 @@ components:
                     nullable: true
                   default_payment_method:
                     type: object
+                    title: PaymentMethod
                     properties:
                       id:
                         type: integer
@@ -13674,14 +13957,17 @@ components:
                         nullable: true
                         description: Method details rows
                         items:
+                          title: PaymentMethodDetails
                           type: object
                           properties:
                             title:
                               type: string
                               description: Details title.
+                              nullable: true
                             description:
                               type: string
                               description: Details description.
+                              nullable: true
                       bank_iban:
                         type: string
                         description: Bank iban
@@ -13696,9 +13982,8 @@ components:
                         nullable: true
                       ei_payment_method:
                         type: string
-                        description: EInvoice payment method
+                        description: E-invoice payment method
                         nullable: true
-                    title: PaymentMethod
                     nullable: true
                   bank_name:
                     type: string
@@ -13731,6 +14016,19 @@ components:
                   default_discount:
                     type: number
                     description: Default discount.
+                    nullable: true
+                  has_intent_declaration:
+                    type: boolean
+                    description: Has intent declaration.
+                    nullable: true
+                  intent_declaration_protocol_number:
+                    type: string
+                    format: date
+                    description: Intent declaration protocol number.
+                    nullable: true
+                  intent_declaration_protocol_date:
+                    type: string
+                    description: Intent declaration protocol date.
                     nullable: true
                   created_at:
                     type: string
@@ -13949,6 +14247,7 @@ components:
                     nullable: true
                   default_payment_method:
                     type: object
+                    title: PaymentMethod
                     properties:
                       id:
                         type: integer
@@ -14017,14 +14316,17 @@ components:
                         nullable: true
                         description: Method details rows
                         items:
+                          title: PaymentMethodDetails
                           type: object
                           properties:
                             title:
                               type: string
                               description: Details title.
+                              nullable: true
                             description:
                               type: string
                               description: Details description.
+                              nullable: true
                       bank_iban:
                         type: string
                         description: Bank iban
@@ -14039,9 +14341,8 @@ components:
                         nullable: true
                       ei_payment_method:
                         type: string
-                        description: EInvoice payment method
+                        description: E-invoice payment method
                         nullable: true
-                    title: PaymentMethod
                     nullable: true
                   bank_name:
                     type: string
@@ -14074,6 +14375,19 @@ components:
                   default_discount:
                     type: number
                     description: Default discount.
+                    nullable: true
+                  has_intent_declaration:
+                    type: boolean
+                    description: Has intent declaration.
+                    nullable: true
+                  intent_declaration_protocol_number:
+                    type: string
+                    format: date
+                    description: Intent declaration protocol number.
+                    nullable: true
+                  intent_declaration_protocol_date:
+                    type: string
+                    description: Intent declaration protocol date.
                     nullable: true
                   created_at:
                     type: string
@@ -14228,6 +14542,10 @@ components:
                     type: string
                     description: Supplier extra notes.
                     nullable: true
+                  bank_iban:
+                    type: string
+                    description: Supplier bank IBAN.
+                    nullable: true
                   created_at:
                     type: string
                     nullable: true
@@ -14370,6 +14688,10 @@ components:
                   notes:
                     type: string
                     description: Supplier extra notes.
+                    nullable: true
+                  bank_iban:
+                    type: string
+                    description: Supplier bank IBAN.
                     nullable: true
                   created_at:
                     type: string
@@ -15393,6 +15715,7 @@ components:
                               nullable: true
                             default_payment_method:
                               type: object
+                              title: PaymentMethod
                               properties:
                                 id:
                                   type: integer
@@ -15465,14 +15788,17 @@ components:
                                   nullable: true
                                   description: Method details rows
                                   items:
+                                    title: PaymentMethodDetails
                                     type: object
                                     properties:
                                       title:
                                         type: string
                                         description: Details title.
+                                        nullable: true
                                       description:
                                         type: string
                                         description: Details description.
+                                        nullable: true
                                 bank_iban:
                                   type: string
                                   description: Bank iban
@@ -15487,9 +15813,8 @@ components:
                                   nullable: true
                                 ei_payment_method:
                                   type: string
-                                  description: EInvoice payment method
+                                  description: E-invoice payment method
                                   nullable: true
-                              title: PaymentMethod
                               description: |-
                                 [Only for client]
                                 Default payment method.
@@ -15530,6 +15855,25 @@ components:
                                 [Only for client]
                                 E-invoices code.
                               nullable: true
+                            has_intent_declaration:
+                              type: boolean
+                              description: |-
+                                [Only for client]
+                                Has intent declaration.
+                              nullable: true
+                            intent_declaration_protocol_number:
+                              type: string
+                              format: date
+                              description: |-
+                                [Only for client]
+                                Intent declaration protocol number.
+                              nullable: true
+                            intent_declaration_protocol_date:
+                              type: string
+                              description: |-
+                                [Only for client]
+                                Intent declaration protocol date.
+                              nullable: true
                             created_at:
                               type: string
                               nullable: true
@@ -15550,6 +15894,8 @@ components:
                             - order
                             - work_report
                             - supplier_order
+                            - self_own_invoice
+                            - self_supplier_invoice
                           description: Issued document type.
                           nullable: true
                         number:
@@ -15716,6 +16062,7 @@ components:
                           nullable: true
                         payment_method:
                           type: object
+                          title: PaymentMethod
                           properties:
                             id:
                               type: integer
@@ -15786,14 +16133,17 @@ components:
                               nullable: true
                               description: Method details rows
                               items:
+                                title: PaymentMethodDetails
                                 type: object
                                 properties:
                                   title:
                                     type: string
                                     description: Details title.
+                                    nullable: true
                                   description:
                                     type: string
                                     description: Details description.
+                                    nullable: true
                             bank_iban:
                               type: string
                               description: Bank iban
@@ -15808,9 +16158,8 @@ components:
                               nullable: true
                             ei_payment_method:
                               type: string
-                              description: EInvoice payment method
+                              description: E-invoice payment method
                               nullable: true
-                          title: PaymentMethod
                           nullable: true
                         use_split_payment:
                           type: boolean
@@ -15902,23 +16251,23 @@ components:
                         ei_cassa_type:
                           type: string
                           nullable: true
-                          description: Einvoice cassa type
+                          description: E-invoice cassa type
                         ei_cassa2_type:
                           type: string
                           nullable: true
-                          description: Einvoice cassa2 type
+                          description: E-invoice cassa2 type
                         ei_withholding_tax_causal:
                           type: string
                           nullable: true
-                          description: Einvoice withholding tax causal
+                          description: E-invoice withholding tax causal
                         ei_other_withholding_tax_type:
                           type: string
                           nullable: true
-                          description: Einvoice other withholding tax type
+                          description: E-invoice other withholding tax type
                         ei_other_withholding_tax_causal:
                           type: string
                           nullable: true
-                          description: Einvoice other withholding tax causal
+                          description: E-invoice other withholding tax causal
                         items_list:
                           type: array
                           nullable: true
@@ -16134,6 +16483,22 @@ components:
                                 type: object
                                 nullable: true
                                 description: Advanced raw attributes for e-invoices.
+                              payment_terms:
+                                type: object
+                                properties:
+                                  days:
+                                    type: integer
+                                    nullable: true
+                                    description: >-
+                                      The number of days by which the payment
+                                      must be made.
+                                  type:
+                                    type: string
+                                    nullable: true
+                                    description: Payment terms type.
+                                    enum:
+                                      - standard
+                                      - end_of_month
                         template:
                           type: object
                           properties:
@@ -16439,6 +16804,7 @@ components:
                               * `attempt` - We are trying to send the invoice, please wait up to 2 hours
                               * `missing` - The invoice is missing
                               * `not_sent` - The invoice has yet to be sent
+                              * `sent` - The invoice was sent
                               * `pending` - The checks for the digital signature and sending are in progress
                               * `processing` - The SDI is delivering the invoice to the customer
                               * `error` - An error occurred while handling the invoice, please try to resend it or contact support
@@ -16451,6 +16817,7 @@ components:
                             - attempt
                             - missing
                             - not_sent
+                            - sent
                             - pending
                             - processing
                             - error
@@ -16724,6 +17091,7 @@ components:
                         nullable: true
                       default_payment_method:
                         type: object
+                        title: PaymentMethod
                         properties:
                           id:
                             type: integer
@@ -16792,14 +17160,17 @@ components:
                             nullable: true
                             description: Method details rows
                             items:
+                              title: PaymentMethodDetails
                               type: object
                               properties:
                                 title:
                                   type: string
                                   description: Details title.
+                                  nullable: true
                                 description:
                                   type: string
                                   description: Details description.
+                                  nullable: true
                           bank_iban:
                             type: string
                             description: Bank iban
@@ -16814,9 +17185,8 @@ components:
                             nullable: true
                           ei_payment_method:
                             type: string
-                            description: EInvoice payment method
+                            description: E-invoice payment method
                             nullable: true
-                        title: PaymentMethod
                         description: |-
                           [Only for client]
                           Default payment method.
@@ -16857,6 +17227,25 @@ components:
                           [Only for client]
                           E-invoices code.
                         nullable: true
+                      has_intent_declaration:
+                        type: boolean
+                        description: |-
+                          [Only for client]
+                          Has intent declaration.
+                        nullable: true
+                      intent_declaration_protocol_number:
+                        type: string
+                        format: date
+                        description: |-
+                          [Only for client]
+                          Intent declaration protocol number.
+                        nullable: true
+                      intent_declaration_protocol_date:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Intent declaration protocol date.
+                        nullable: true
                       created_at:
                         type: string
                         nullable: true
@@ -16877,6 +17266,8 @@ components:
                       - order
                       - work_report
                       - supplier_order
+                      - self_own_invoice
+                      - self_supplier_invoice
                     description: Issued document type.
                     nullable: true
                   number:
@@ -17035,6 +17426,7 @@ components:
                     nullable: true
                   payment_method:
                     type: object
+                    title: PaymentMethod
                     properties:
                       id:
                         type: integer
@@ -17103,14 +17495,17 @@ components:
                         nullable: true
                         description: Method details rows
                         items:
+                          title: PaymentMethodDetails
                           type: object
                           properties:
                             title:
                               type: string
                               description: Details title.
+                              nullable: true
                             description:
                               type: string
                               description: Details description.
+                              nullable: true
                       bank_iban:
                         type: string
                         description: Bank iban
@@ -17125,9 +17520,8 @@ components:
                         nullable: true
                       ei_payment_method:
                         type: string
-                        description: EInvoice payment method
+                        description: E-invoice payment method
                         nullable: true
-                    title: PaymentMethod
                     nullable: true
                   use_split_payment:
                     type: boolean
@@ -17217,23 +17611,23 @@ components:
                   ei_cassa_type:
                     type: string
                     nullable: true
-                    description: Einvoice cassa type
+                    description: E-invoice cassa type
                   ei_cassa2_type:
                     type: string
                     nullable: true
-                    description: Einvoice cassa2 type
+                    description: E-invoice cassa2 type
                   ei_withholding_tax_causal:
                     type: string
                     nullable: true
-                    description: Einvoice withholding tax causal
+                    description: E-invoice withholding tax causal
                   ei_other_withholding_tax_type:
                     type: string
                     nullable: true
-                    description: Einvoice other withholding tax type
+                    description: E-invoice other withholding tax type
                   ei_other_withholding_tax_causal:
                     type: string
                     nullable: true
-                    description: Einvoice other withholding tax causal
+                    description: E-invoice other withholding tax causal
                   items_list:
                     type: array
                     nullable: true
@@ -17445,6 +17839,22 @@ components:
                           type: object
                           nullable: true
                           description: Advanced raw attributes for e-invoices.
+                        payment_terms:
+                          type: object
+                          properties:
+                            days:
+                              type: integer
+                              nullable: true
+                              description: >-
+                                The number of days by which the payment must be
+                                made.
+                            type:
+                              type: string
+                              nullable: true
+                              description: Payment terms type.
+                              enum:
+                                - standard
+                                - end_of_month
                   template:
                     type: object
                     properties:
@@ -17749,6 +18159,7 @@ components:
                         * `attempt` - We are trying to send the invoice, please wait up to 2 hours
                         * `missing` - The invoice is missing
                         * `not_sent` - The invoice has yet to be sent
+                        * `sent` - The invoice was sent
                         * `pending` - The checks for the digital signature and sending are in progress
                         * `processing` - The SDI is delivering the invoice to the customer
                         * `error` - An error occurred while handling the invoice, please try to resend it or contact support
@@ -17761,6 +18172,7 @@ components:
                       - attempt
                       - missing
                       - not_sent
+                      - sent
                       - pending
                       - processing
                       - error
@@ -18081,6 +18493,7 @@ components:
                         nullable: true
                       default_payment_method:
                         type: object
+                        title: PaymentMethod
                         properties:
                           id:
                             type: integer
@@ -18149,14 +18562,17 @@ components:
                             nullable: true
                             description: Method details rows
                             items:
+                              title: PaymentMethodDetails
                               type: object
                               properties:
                                 title:
                                   type: string
                                   description: Details title.
+                                  nullable: true
                                 description:
                                   type: string
                                   description: Details description.
+                                  nullable: true
                           bank_iban:
                             type: string
                             description: Bank iban
@@ -18171,9 +18587,8 @@ components:
                             nullable: true
                           ei_payment_method:
                             type: string
-                            description: EInvoice payment method
+                            description: E-invoice payment method
                             nullable: true
-                        title: PaymentMethod
                         description: |-
                           [Only for client]
                           Default payment method.
@@ -18214,6 +18629,25 @@ components:
                           [Only for client]
                           E-invoices code.
                         nullable: true
+                      has_intent_declaration:
+                        type: boolean
+                        description: |-
+                          [Only for client]
+                          Has intent declaration.
+                        nullable: true
+                      intent_declaration_protocol_number:
+                        type: string
+                        format: date
+                        description: |-
+                          [Only for client]
+                          Intent declaration protocol number.
+                        nullable: true
+                      intent_declaration_protocol_date:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Intent declaration protocol date.
+                        nullable: true
                       created_at:
                         type: string
                         nullable: true
@@ -18234,6 +18668,8 @@ components:
                       - order
                       - work_report
                       - supplier_order
+                      - self_own_invoice
+                      - self_supplier_invoice
                     description: Issued document type.
                     nullable: true
                   number:
@@ -18392,6 +18828,7 @@ components:
                     nullable: true
                   payment_method:
                     type: object
+                    title: PaymentMethod
                     properties:
                       id:
                         type: integer
@@ -18460,14 +18897,17 @@ components:
                         nullable: true
                         description: Method details rows
                         items:
+                          title: PaymentMethodDetails
                           type: object
                           properties:
                             title:
                               type: string
                               description: Details title.
+                              nullable: true
                             description:
                               type: string
                               description: Details description.
+                              nullable: true
                       bank_iban:
                         type: string
                         description: Bank iban
@@ -18482,9 +18922,8 @@ components:
                         nullable: true
                       ei_payment_method:
                         type: string
-                        description: EInvoice payment method
+                        description: E-invoice payment method
                         nullable: true
-                    title: PaymentMethod
                     nullable: true
                   use_split_payment:
                     type: boolean
@@ -18574,23 +19013,23 @@ components:
                   ei_cassa_type:
                     type: string
                     nullable: true
-                    description: Einvoice cassa type
+                    description: E-invoice cassa type
                   ei_cassa2_type:
                     type: string
                     nullable: true
-                    description: Einvoice cassa2 type
+                    description: E-invoice cassa2 type
                   ei_withholding_tax_causal:
                     type: string
                     nullable: true
-                    description: Einvoice withholding tax causal
+                    description: E-invoice withholding tax causal
                   ei_other_withholding_tax_type:
                     type: string
                     nullable: true
-                    description: Einvoice other withholding tax type
+                    description: E-invoice other withholding tax type
                   ei_other_withholding_tax_causal:
                     type: string
                     nullable: true
-                    description: Einvoice other withholding tax causal
+                    description: E-invoice other withholding tax causal
                   items_list:
                     type: array
                     nullable: true
@@ -18802,6 +19241,22 @@ components:
                           type: object
                           nullable: true
                           description: Advanced raw attributes for e-invoices.
+                        payment_terms:
+                          type: object
+                          properties:
+                            days:
+                              type: integer
+                              nullable: true
+                              description: >-
+                                The number of days by which the payment must be
+                                made.
+                            type:
+                              type: string
+                              nullable: true
+                              description: Payment terms type.
+                              enum:
+                                - standard
+                                - end_of_month
                   template:
                     type: object
                     properties:
@@ -19106,6 +19561,7 @@ components:
                         * `attempt` - We are trying to send the invoice, please wait up to 2 hours
                         * `missing` - The invoice is missing
                         * `not_sent` - The invoice has yet to be sent
+                        * `sent` - The invoice was sent
                         * `pending` - The checks for the digital signature and sending are in progress
                         * `processing` - The SDI is delivering the invoice to the customer
                         * `error` - An error occurred while handling the invoice, please try to resend it or contact support
@@ -19118,6 +19574,7 @@ components:
                       - attempt
                       - missing
                       - not_sent
+                      - sent
                       - pending
                       - processing
                       - error
@@ -19438,6 +19895,7 @@ components:
                         nullable: true
                       default_payment_method:
                         type: object
+                        title: PaymentMethod
                         properties:
                           id:
                             type: integer
@@ -19506,14 +19964,17 @@ components:
                             nullable: true
                             description: Method details rows
                             items:
+                              title: PaymentMethodDetails
                               type: object
                               properties:
                                 title:
                                   type: string
                                   description: Details title.
+                                  nullable: true
                                 description:
                                   type: string
                                   description: Details description.
+                                  nullable: true
                           bank_iban:
                             type: string
                             description: Bank iban
@@ -19528,9 +19989,8 @@ components:
                             nullable: true
                           ei_payment_method:
                             type: string
-                            description: EInvoice payment method
+                            description: E-invoice payment method
                             nullable: true
-                        title: PaymentMethod
                         description: |-
                           [Only for client]
                           Default payment method.
@@ -19571,6 +20031,25 @@ components:
                           [Only for client]
                           E-invoices code.
                         nullable: true
+                      has_intent_declaration:
+                        type: boolean
+                        description: |-
+                          [Only for client]
+                          Has intent declaration.
+                        nullable: true
+                      intent_declaration_protocol_number:
+                        type: string
+                        format: date
+                        description: |-
+                          [Only for client]
+                          Intent declaration protocol number.
+                        nullable: true
+                      intent_declaration_protocol_date:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Intent declaration protocol date.
+                        nullable: true
                       created_at:
                         type: string
                         nullable: true
@@ -19591,6 +20070,8 @@ components:
                       - order
                       - work_report
                       - supplier_order
+                      - self_own_invoice
+                      - self_supplier_invoice
                     description: Issued document type.
                     nullable: true
                   number:
@@ -19749,6 +20230,7 @@ components:
                     nullable: true
                   payment_method:
                     type: object
+                    title: PaymentMethod
                     properties:
                       id:
                         type: integer
@@ -19817,14 +20299,17 @@ components:
                         nullable: true
                         description: Method details rows
                         items:
+                          title: PaymentMethodDetails
                           type: object
                           properties:
                             title:
                               type: string
                               description: Details title.
+                              nullable: true
                             description:
                               type: string
                               description: Details description.
+                              nullable: true
                       bank_iban:
                         type: string
                         description: Bank iban
@@ -19839,9 +20324,8 @@ components:
                         nullable: true
                       ei_payment_method:
                         type: string
-                        description: EInvoice payment method
+                        description: E-invoice payment method
                         nullable: true
-                    title: PaymentMethod
                     nullable: true
                   use_split_payment:
                     type: boolean
@@ -19931,23 +20415,23 @@ components:
                   ei_cassa_type:
                     type: string
                     nullable: true
-                    description: Einvoice cassa type
+                    description: E-invoice cassa type
                   ei_cassa2_type:
                     type: string
                     nullable: true
-                    description: Einvoice cassa2 type
+                    description: E-invoice cassa2 type
                   ei_withholding_tax_causal:
                     type: string
                     nullable: true
-                    description: Einvoice withholding tax causal
+                    description: E-invoice withholding tax causal
                   ei_other_withholding_tax_type:
                     type: string
                     nullable: true
-                    description: Einvoice other withholding tax type
+                    description: E-invoice other withholding tax type
                   ei_other_withholding_tax_causal:
                     type: string
                     nullable: true
-                    description: Einvoice other withholding tax causal
+                    description: E-invoice other withholding tax causal
                   items_list:
                     type: array
                     nullable: true
@@ -20159,6 +20643,22 @@ components:
                           type: object
                           nullable: true
                           description: Advanced raw attributes for e-invoices.
+                        payment_terms:
+                          type: object
+                          properties:
+                            days:
+                              type: integer
+                              nullable: true
+                              description: >-
+                                The number of days by which the payment must be
+                                made.
+                            type:
+                              type: string
+                              nullable: true
+                              description: Payment terms type.
+                              enum:
+                                - standard
+                                - end_of_month
                   template:
                     type: object
                     properties:
@@ -20463,6 +20963,7 @@ components:
                         * `attempt` - We are trying to send the invoice, please wait up to 2 hours
                         * `missing` - The invoice is missing
                         * `not_sent` - The invoice has yet to be sent
+                        * `sent` - The invoice was sent
                         * `pending` - The checks for the digital signature and sending are in progress
                         * `processing` - The SDI is delivering the invoice to the customer
                         * `error` - An error occurred while handling the invoice, please try to resend it or contact support
@@ -20475,6 +20976,7 @@ components:
                       - attempt
                       - missing
                       - not_sent
+                      - sent
                       - pending
                       - processing
                       - error
@@ -20962,6 +21464,7 @@ components:
                         nullable: true
                       payment_method:
                         type: object
+                        title: PaymentMethod
                         properties:
                           id:
                             type: integer
@@ -21030,14 +21533,17 @@ components:
                             nullable: true
                             description: Method details rows
                             items:
+                              title: PaymentMethodDetails
                               type: object
                               properties:
                                 title:
                                   type: string
                                   description: Details title.
+                                  nullable: true
                                 description:
                                   type: string
                                   description: Details description.
+                                  nullable: true
                           bank_iban:
                             type: string
                             description: Bank iban
@@ -21052,9 +21558,8 @@ components:
                             nullable: true
                           ei_payment_method:
                             type: string
-                            description: EInvoice payment method
+                            description: E-invoice payment method
                             nullable: true
-                        title: PaymentMethod
                         nullable: true
                     nullable: true
                   extra_data_default_values:
@@ -21235,6 +21740,7 @@ components:
                     description: Payment methods list.
                     items:
                       type: object
+                      title: PaymentMethod
                       properties:
                         id:
                           type: integer
@@ -21303,14 +21809,17 @@ components:
                           nullable: true
                           description: Method details rows
                           items:
+                            title: PaymentMethodDetails
                             type: object
                             properties:
                               title:
                                 type: string
                                 description: Details title.
+                                nullable: true
                               description:
                                 type: string
                                 description: Details description.
+                                nullable: true
                         bank_iban:
                           type: string
                           description: Bank iban
@@ -21325,9 +21834,8 @@ components:
                           nullable: true
                         ei_payment_method:
                           type: string
-                          description: EInvoice payment method
+                          description: E-invoice payment method
                           nullable: true
-                      title: PaymentMethod
                     nullable: true
                   payment_accounts_list:
                     type: array
@@ -29304,6 +29812,7 @@ components:
                 type: array
                 items:
                   type: object
+                  title: PaymentMethod
                   properties:
                     id:
                       type: integer
@@ -29372,14 +29881,17 @@ components:
                       nullable: true
                       description: Method details rows
                       items:
+                        title: PaymentMethodDetails
                         type: object
                         properties:
                           title:
                             type: string
                             description: Details title.
+                            nullable: true
                           description:
                             type: string
                             description: Details description.
+                            nullable: true
                     bank_iban:
                       type: string
                       description: Bank iban
@@ -29394,9 +29906,8 @@ components:
                       nullable: true
                     ei_payment_method:
                       type: string
-                      description: EInvoice payment method
+                      description: E-invoice payment method
                       nullable: true
-                  title: PaymentMethod
                 nullable: true
           examples:
             example-1:
@@ -29617,6 +30128,7 @@ components:
             properties:
               data:
                 type: object
+                title: PaymentMethod
                 properties:
                   id:
                     type: integer
@@ -29685,14 +30197,17 @@ components:
                     nullable: true
                     description: Method details rows
                     items:
+                      title: PaymentMethodDetails
                       type: object
                       properties:
                         title:
                           type: string
                           description: Details title.
+                          nullable: true
                         description:
                           type: string
                           description: Details description.
+                          nullable: true
                   bank_iban:
                     type: string
                     description: Bank iban
@@ -29707,9 +30222,8 @@ components:
                     nullable: true
                   ei_payment_method:
                     type: string
-                    description: EInvoice payment method
+                    description: E-invoice payment method
                     nullable: true
-                title: PaymentMethod
                 nullable: true
           examples:
             example-1:
@@ -29735,6 +30249,7 @@ components:
             properties:
               data:
                 type: object
+                title: PaymentMethod
                 properties:
                   id:
                     type: integer
@@ -29803,14 +30318,17 @@ components:
                     nullable: true
                     description: Method details rows
                     items:
+                      title: PaymentMethodDetails
                       type: object
                       properties:
                         title:
                           type: string
                           description: Details title.
+                          nullable: true
                         description:
                           type: string
                           description: Details description.
+                          nullable: true
                   bank_iban:
                     type: string
                     description: Bank iban
@@ -29825,9 +30343,8 @@ components:
                     nullable: true
                   ei_payment_method:
                     type: string
-                    description: EInvoice payment method
+                    description: E-invoice payment method
                     nullable: true
-                title: PaymentMethod
                 nullable: true
           examples:
             example-1:
@@ -29853,6 +30370,7 @@ components:
             properties:
               data:
                 type: object
+                title: PaymentMethod
                 properties:
                   id:
                     type: integer
@@ -29921,14 +30439,17 @@ components:
                     nullable: true
                     description: Method details rows
                     items:
+                      title: PaymentMethodDetails
                       type: object
                       properties:
                         title:
                           type: string
                           description: Details title.
+                          nullable: true
                         description:
                           type: string
                           description: Details description.
+                          nullable: true
                   bank_iban:
                     type: string
                     description: Bank iban
@@ -29943,9 +30464,8 @@ components:
                     nullable: true
                   ei_payment_method:
                     type: string
-                    description: EInvoice payment method
+                    description: E-invoice payment method
                     nullable: true
-                title: PaymentMethod
                 nullable: true
           examples:
             example-1:
@@ -30371,7 +30891,7 @@ components:
                     nullable: true
                   ei_status:
                     type: string
-                    description: EInvoice status.
+                    description: E-invoice status.
                     nullable: true
                   solution:
                     type: string
@@ -30383,9 +30903,60 @@ components:
                     nullable: true
                   date:
                     type: string
-                    format: date
+                    format: date-time
                     description: Rejection date.
                     nullable: true
                 nullable: true
+    ListDetailedCountriesResponse:
+      description: List of detailed countries
+      content:
+        application/json:
+          schema:
+            title: ListDetailedCountriesResponse
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  title: DetailedCountry
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      nullable: true
+                      description: Country name.
+                    settings_name:
+                      type: string
+                      nullable: true
+                    iso:
+                      type: string
+                      nullable: true
+                      description: Country iso.
+                    fiscal_iso:
+                      type: string
+                      nullable: true
+                    uic:
+                      type: string
+                      nullable: true
+                      description: Country uic.
+          examples:
+            example-1:
+              value:
+                data:
+                  - name: Italia
+                    settings_name: Italia
+                    iso: IT
+                    fiscal_iso: IT
+                    uic: '086'
+                  - name: Afghanistan
+                    settings_name: Afghanistan
+                    iso: AF
+                    fiscal_iso: AF
+                    uic: '002'
+                  - name: Albania
+                    settings_name: Albania
+                    iso: AL
+                    fiscal_iso: AL
+                    uic: '087'
 security:
   - OAuth2AuthenticationCodeFlow: []
