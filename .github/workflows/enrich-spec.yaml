@@ -46,7 +46,7 @@ jobs:
           branch: "enriched-spec-${{ env.date_ts }}"
           token: "${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}"
           delete-branch: true
-          base: master
+          base: develop
           commit-message: "chore: openapi spec enrichment"
           title: "OpenAPI spec enrichment"
           body: ""
