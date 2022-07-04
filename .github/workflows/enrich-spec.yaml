@@ -2,7 +2,7 @@ name: Trigger Openapi Spec Enrichment
 on: [ workflow_dispatch ]
 
 jobs:
-  trigger-postman:
+  enrich-openapi:
     runs-on: ubuntu-latest
     steps:
       - id: checkout
@@ -21,10 +21,15 @@ jobs:
         name: Setup Node.js
         uses: actions/setup-node@v2
 
+      - id: setup-libraries
+        name: Install libraries
+        run: |
+          npm install -g yarn
+          yarn global add swagger-merger
+
       - id: enrich-spec
         name: Enrich OpenAPI Spec
         run: |
-
           echo "Resolving OpenAPI Specification to a single file..."
           swagger-merger -i ./openapi.yaml -o ./openapi-enriched.yaml
 
