@@ -2877,6 +2877,63 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - settings:a
+  /c/{company_id}/channels:
+    parameters:
+      - name: company_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          example: '12345'
+        description: The ID of the company.
+    get:
+      summary: List Channels
+      tags:
+        - Webhooks
+      responses:
+        '200':
+          $ref: '#/components/responses/ListWebhooksChannelsResponse'
+      operationId: listWebhooksChannels
+      description: List active webhooks channels.
+    post:
+      summary: Register Webhooks Channels
+      responses:
+        '200':
+          $ref: '#/components/responses/RegisterWebhooksChannelsResponse'
+      operationId: registerWebhooksChannels
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/RegisterWebhooksChannelRequest.yaml
+            examples:
+              example-1:
+                value:
+                  data:
+                    url: http://www.test.com
+                    event_types:
+                      - entities:create
+                      - issued_documents:create
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+      description: Register some webhooks channels.
+      tags:
+        - Webhooks
+    delete:
+      summary: ''
+      operationId: deleteWebhooksChannels
+      responses:
+        '200':
+          description: OK
+      description: Delete some webhooks channels
+      parameters:
+        - schema:
+            type: array
+          in: query
+          name: ids
+          description: The IDs of the webhooks channels to delete
 components:
   schemas: {}
   securitySchemes:
@@ -8304,5 +8361,35 @@ components:
                     iso: AL
                     fiscal_iso: AL
                     uic: '087'
+    RegisterWebhooksChannelsResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/RegisterWebhooksChannelResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 12344
+                  url: www.testurl.com/endpoint
+                  expiration_time: null
+                  event_type: issued_documents:create
+    ListWebhooksChannelsResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ListWebhooksChannelsResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  - id: 12345
+                    url: www.testurl.com/endpoint
+                    event_type: issued_documents:create
+                  - id: 12346
+                    url: www.testurl.com/endpoint
+                    event_type: issued_documents:update
 security:
   - OAuth2AuthenticationCodeFlow: []

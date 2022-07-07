@@ -1,0 +1,9 @@
+title: WebhooksChannelRegistration
+type: object
+properties:
+  id:
+    type: number
+    description: Unique identifier
+  url:
+    type: string
+    description: Webhooks callback uri.

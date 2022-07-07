@@ -1,0 +1,12 @@
+title: ListWebhooksChannelsResponse
+type: object
+properties:
+  data:
+    type: array
+    items:
+      allOf:
+        - $ref: ../schemas/WebhooksChannelRegistration.yaml
+        - type: object
+          properties:
+            event_type:
+              $ref: ../enums/EventType.yaml
