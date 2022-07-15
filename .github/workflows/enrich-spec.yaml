@@ -38,6 +38,12 @@ jobs:
           echo "Enriching OpenAPI Specification..."
           node ./scripts/enrich.js ./details.yaml ./openapi-enriched.yaml
 
+      - id: validate-enriched-spec
+        name: Validate enriched specification
+        run: |
+          swagger-cli validate openapi-enriched.yaml
+          openapi-generator-cli validate -i ./openapi-enriched.yaml
+
       - id: create-pr
         name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
