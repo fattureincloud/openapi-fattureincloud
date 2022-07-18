@@ -1,0 +1,26 @@
+name: Trigger Openapi Spec Enrichment
+on: [ workflow_dispatch ]
+
+jobs:
+  trigger-enrichment:
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout
+        name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+
+      - id: setup-libraries
+        name: Install libraries
+        run: |
+          sudo add-apt-repository ppa:rmescandon/yq -y
+          sudo apt update
+          sudo apt install yq -y
+
+      - id: trigger-event
+        name: Trigger Event
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+          event-type: enrich-spec
