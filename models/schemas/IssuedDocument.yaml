@@ -488,6 +488,8 @@ properties:
         * `accepted` - The customer accepted the invoice
         * `rejected` - The customer rejected the invoice, so it must be corrected
         * `no_response` - A response has not yet been received whithin the deadline, contact the customer to ascertain the status of the invoice
+        * `manual_accepted` - The customer accepted the invoice
+        * `manual_rejected` - The customer rejected the invoice
     enum:
       - attempt
       - missing
@@ -501,4 +503,6 @@ properties:
       - accepted
       - rejected
       - no_response
+      - manual_accepted
+      - manual_rejected
     nullable: true
