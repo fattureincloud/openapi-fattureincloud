@@ -16,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.0.18
+  version: 2.0.19
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -2834,6 +2834,8 @@ paths:
                           * `accepted` - The customer accepted the invoice
                           * `rejected` - The customer rejected the invoice, so it must be corrected
                           * `no_response` - A response has not yet been received whithin the deadline, contact the customer to ascertain the status of the invoice
+                          * `manual_accepted` - The customer accepted the invoice
+                          * `manual_rejected` - The customer rejected the invoice
                       enum:
                         - attempt
                         - missing
@@ -2847,6 +2849,8 @@ paths:
                         - accepted
                         - rejected
                         - no_response
+                        - manual_accepted
+                        - manual_rejected
                 options:
                   title: IssuedDocumentOptions
                   type: object
@@ -4171,6 +4175,8 @@ paths:
                           * `accepted` - The customer accepted the invoice
                           * `rejected` - The customer rejected the invoice, so it must be corrected
                           * `no_response` - A response has not yet been received whithin the deadline, contact the customer to ascertain the status of the invoice
+                          * `manual_accepted` - The customer accepted the invoice
+                          * `manual_rejected` - The customer rejected the invoice
                       enum:
                         - attempt
                         - missing
@@ -4184,6 +4190,8 @@ paths:
                         - accepted
                         - rejected
                         - no_response
+                        - manual_accepted
+                        - manual_rejected
                 options:
                   title: IssuedDocumentOptions
                   type: object
@@ -5496,6 +5504,8 @@ paths:
                           * `accepted` - The customer accepted the invoice
                           * `rejected` - The customer rejected the invoice, so it must be corrected
                           * `no_response` - A response has not yet been received whithin the deadline, contact the customer to ascertain the status of the invoice
+                          * `manual_accepted` - The customer accepted the invoice
+                          * `manual_rejected` - The customer rejected the invoice
                       enum:
                         - attempt
                         - missing
@@ -5509,6 +5519,8 @@ paths:
                         - accepted
                         - rejected
                         - no_response
+                        - manual_accepted
+                        - manual_rejected
             examples:
               example-1:
                 value:
@@ -6830,6 +6842,8 @@ paths:
                           * `accepted` - The customer accepted the invoice
                           * `rejected` - The customer rejected the invoice, so it must be corrected
                           * `no_response` - A response has not yet been received whithin the deadline, contact the customer to ascertain the status of the invoice
+                          * `manual_accepted` - The customer accepted the invoice
+                          * `manual_rejected` - The customer rejected the invoice
                       enum:
                         - attempt
                         - missing
@@ -6843,6 +6857,8 @@ paths:
                         - accepted
                         - rejected
                         - no_response
+                        - manual_accepted
+                        - manual_rejected
             examples:
               example-1:
                 value:
@@ -16813,6 +16829,8 @@ components:
                               * `accepted` - The customer accepted the invoice
                               * `rejected` - The customer rejected the invoice, so it must be corrected
                               * `no_response` - A response has not yet been received whithin the deadline, contact the customer to ascertain the status of the invoice
+                              * `manual_accepted` - The customer accepted the invoice
+                              * `manual_rejected` - The customer rejected the invoice
                           enum:
                             - attempt
                             - missing
@@ -16826,6 +16844,8 @@ components:
                             - accepted
                             - rejected
                             - no_response
+                            - manual_accepted
+                            - manual_rejected
                           nullable: true
                     nullable: true
           examples:
@@ -18168,6 +18188,8 @@ components:
                         * `accepted` - The customer accepted the invoice
                         * `rejected` - The customer rejected the invoice, so it must be corrected
                         * `no_response` - A response has not yet been received whithin the deadline, contact the customer to ascertain the status of the invoice
+                        * `manual_accepted` - The customer accepted the invoice
+                        * `manual_rejected` - The customer rejected the invoice
                     enum:
                       - attempt
                       - missing
@@ -18181,6 +18203,8 @@ components:
                       - accepted
                       - rejected
                       - no_response
+                      - manual_accepted
+                      - manual_rejected
                     nullable: true
                 nullable: true
           examples:
@@ -19570,6 +19594,8 @@ components:
                         * `accepted` - The customer accepted the invoice
                         * `rejected` - The customer rejected the invoice, so it must be corrected
                         * `no_response` - A response has not yet been received whithin the deadline, contact the customer to ascertain the status of the invoice
+                        * `manual_accepted` - The customer accepted the invoice
+                        * `manual_rejected` - The customer rejected the invoice
                     enum:
                       - attempt
                       - missing
@@ -19583,6 +19609,8 @@ components:
                       - accepted
                       - rejected
                       - no_response
+                      - manual_accepted
+                      - manual_rejected
                     nullable: true
                 nullable: true
           examples:
@@ -20972,6 +21000,8 @@ components:
                         * `accepted` - The customer accepted the invoice
                         * `rejected` - The customer rejected the invoice, so it must be corrected
                         * `no_response` - A response has not yet been received whithin the deadline, contact the customer to ascertain the status of the invoice
+                        * `manual_accepted` - The customer accepted the invoice
+                        * `manual_rejected` - The customer rejected the invoice
                     enum:
                       - attempt
                       - missing
@@ -20985,6 +21015,8 @@ components:
                       - accepted
                       - rejected
                       - no_response
+                      - manual_accepted
+                      - manual_rejected
                     nullable: true
                 nullable: true
           examples:
