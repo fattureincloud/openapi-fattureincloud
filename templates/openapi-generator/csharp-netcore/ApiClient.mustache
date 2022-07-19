@@ -513,7 +513,7 @@ namespace {{packageName}}.Client
             {
                 response.Data = (T)(object)response.RawBytes;
             }
-            else if (response.StatusCode == HttpStatusCode.OK)
+            else if (typeof(T).Name == "String")
             {
                 response.Data = (T)(object)response.Content;
             }
@@ -639,7 +639,7 @@ namespace {{packageName}}.Client
             {
                 response.Data = (T)(object)response.RawBytes;
             }
-            else if (response.StatusCode == HttpStatusCode.OK)
+            else if (typeof(T).Name == "String")
             {
                 response.Data = (T)(object)response.Content;
             }
