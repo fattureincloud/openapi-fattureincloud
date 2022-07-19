@@ -42,5 +42,5 @@ properties:
         nullable: true
         description: The number of days by which the payment must be made.
       type:
-        $ref: ../enums/DefaultPaymentTermsType.yaml
+        $ref: ../enums/PaymentTermsType.yaml
         nullable: true
