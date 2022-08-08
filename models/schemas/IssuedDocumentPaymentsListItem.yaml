@@ -42,9 +42,4 @@ properties:
         nullable: true
         description: The number of days by which the payment must be made.
       type:
-        type: string
-        nullable: true
-        description: Payment terms type.
-        enum:
-          - standard
-          - end_of_month
+        $ref: ../enums/DefaultPaymentTermsType.yaml
