@@ -1,0 +1,8 @@
+title: TransformIssuedDocumentResponse
+x-stoplight:
+  id: lrrpa3cp0br1m
+type: object
+properties:
+  data:
+    $ref: ../schemas/IssuedDocument.yaml
+    nullable: true
