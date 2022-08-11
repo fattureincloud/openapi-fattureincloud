@@ -141,11 +141,11 @@ properties:
     nullable: true
   intent_declaration_protocol_number:
     type: string
-    format: date
     description: Intent declaration protocol number.
     nullable: true
   intent_declaration_protocol_date:
     type: string
+    format: date
     description: Intent declaration protocol date.
     nullable: true
   created_at:
