@@ -98,7 +98,7 @@ properties:
     example: 30
     nullable: true
   default_payment_terms_type:
-    $ref: ../enums/DefaultPaymentTermsType.yaml
+    $ref: ../enums/PaymentTermsType.yaml
     nullable: true
   default_payment_method:
     $ref: ./PaymentMethod.yaml
