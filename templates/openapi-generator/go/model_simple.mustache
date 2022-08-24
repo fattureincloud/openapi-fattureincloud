@@ -40,22 +40,6 @@ func New{{classname}}({{#requiredVars}}{{nameInCamelCase}} {{dataType}}{{^-last}
 {{#required}}
 	this.{{name}} = {{nameInCamelCase}}
 {{/required}}
-{{^required}}
-{{#defaultValue}}
-{{^vendorExtensions.x-golang-is-container}}
-{{^isReadOnly}}
-{{#isNullable}}
-	var {{nameInCamelCase}} {{{datatypeWithEnum}}} = {{{.}}}
-	this.{{name}} = *New{{{dataType}}}(&{{nameInCamelCase}})
-{{/isNullable}}
-{{^isNullable}}
-	var {{nameInCamelCase}} {{{dataType}}} = {{{.}}}
-	this.{{name}} = &{{nameInCamelCase}}
-{{/isNullable}}
-{{/isReadOnly}}
-{{/vendorExtensions.x-golang-is-container}}
-{{/defaultValue}}
-{{/required}}
 {{/allVars}}
 	return &this
 }
@@ -71,11 +55,11 @@ func New{{classname}}WithDefaults() *{{classname}} {
 {{^isReadOnly}}
 {{#isNullable}}
 {{!we use datatypeWithEnum here, since it will represent the non-nullable name of the datatype, e.g. int64 for NullableInt64}}
-	var {{nameInCamelCase}} {{{datatypeWithEnum}}} = {{{.}}}
+	var {{nameInCamelCase}} {{{datatypeWithEnum}}} = {{{datatypeWithEnum}}}s.{{{.}}}
 	this.{{name}} = *New{{{dataType}}}(&{{nameInCamelCase}})
 {{/isNullable}}
 {{^isNullable}}
-	var {{nameInCamelCase}} {{{dataType}}} = {{{.}}}
+	var {{nameInCamelCase}} {{{dataType}}} = {{{dataType}}}s.{{{.}}}
 	this.{{name}} = {{^required}}&{{/required}}{{nameInCamelCase}}
 {{/isNullable}}
 {{/isReadOnly}}
@@ -142,7 +126,7 @@ func (o *{{classname}}) Get{{name}}Ok() ({{^isArray}}{{^isFreeFormObject}}*{{/is
 {{#deprecated}}
 // Deprecated
 {{/deprecated}}
-func (o *{{classname}}) Set{{name}}(v {{vendorExtensions.x-go-base-type}}) {
+func (o *{{classname}}) Set{{name}}(v {{vendorExtensions.x-go-base-type}}) *{{classname}} {
 {{#isNullable}}
 {{#vendorExtensions.x-golang-is-container}}
 	o.{{name}} = v
@@ -154,6 +138,7 @@ func (o *{{classname}}) Set{{name}}(v {{vendorExtensions.x-go-base-type}}) {
 {{^isNullable}}
 	o.{{name}} = v
 {{/isNullable}}
+	return o
 }
 
 {{/required}}
@@ -218,7 +203,7 @@ func (o *{{classname}}) Has{{name}}() bool {
 {{#deprecated}}
 // Deprecated
 {{/deprecated}}
-func (o *{{classname}}) Set{{name}}(v {{vendorExtensions.x-go-base-type}}) {
+func (o *{{classname}}) Set{{name}}(v {{vendorExtensions.x-go-base-type}}) *{{classname}} {
 {{#isNullable}}
 {{#vendorExtensions.x-golang-is-container}}
 	o.{{name}} = v
@@ -230,12 +215,14 @@ func (o *{{classname}}) Set{{name}}(v {{vendorExtensions.x-go-base-type}}) {
 {{^isNullable}}
 	o.{{name}} = {{^isArray}}{{^isFreeFormObject}}&{{/isFreeFormObject}}{{/isArray}}v
 {{/isNullable}}
+	return o
 }
 {{#isNullable}}
 {{^vendorExtensions.x-golang-is-container}}
 // Set{{name}}Nil sets the value for {{name}} to be an explicit nil
-func (o *{{classname}}) Set{{name}}Nil() {
+func (o *{{classname}}) Set{{name}}Nil() *{{classname}} {
 	o.{{name}}.Set(nil)
+	return o
 }
 
 // Unset{{name}} ensures that no value is present for {{name}}, not even an explicit nil
