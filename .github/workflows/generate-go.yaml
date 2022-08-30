@@ -127,6 +127,7 @@ jobs:
           mv utils.go ./model
           cd model
           sed -i '' 's/package fattureincloud/package model/g' *
+          sed -i '' 's/Statuss/Statuses/g' *
           cd ..
           rm -rf api
           mkdir api
