@@ -127,3 +127,9 @@ properties:
     type: string
     nullable: true
     description: Uploaded attachement token.
+  created_at:
+    type: string
+    nullable: true
+  updated_at:
+    type: string
+    nullable: true
