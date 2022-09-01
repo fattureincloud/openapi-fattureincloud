@@ -33,7 +33,7 @@ $apiInstance = new {{invokerPackage}}\Api\{{classname}}(
     $config{{/hasAuthMethods}}
 );
 {{^vendorExtensions.x-group-parameters}}
-{{#allParams}}${{paramName}} = {{#isPrimitiveType}}{{{example}}}{{/isPrimitiveType}}{{^isPrimitiveType}}new {{{dataType}}}{{/isPrimitiveType}}; // {{{dataType}}}{{#description}} | {{{.}}}{{/description}}
+{{#allParams}}${{paramName}} = {{{example}}}; // {{{dataType}}}{{#description}} | {{{.}}}{{/description}}
 {{/allParams}}
 {{/vendorExtensions.x-group-parameters}}
 {{#vendorExtensions.x-group-parameters}}
