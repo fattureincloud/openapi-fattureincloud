@@ -1,23 +1,3 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import {{invokerPackage}}.JSON;
-
 /**
  * {{description}}{{^description}}{{classname}}{{/description}}{{#isDeprecated}}
  * @deprecated{{/isDeprecated}}
@@ -265,7 +245,6 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
   {{/isReadOnly}}
 
   {{/vars}}
-{{>libraries/okhttp-gson/additional_properties}}
 
   @Override
   public boolean equals(Object o) {
@@ -281,8 +260,7 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
     }{{#hasVars}}
     {{classname}} {{classVarName}} = ({{classname}}) o;
     return {{#vars}}{{#vendorExtensions.x-is-jackson-optional-nullable}}equalsNullable(this.{{name}}, {{classVarName}}.{{name}}){{/vendorExtensions.x-is-jackson-optional-nullable}}{{^vendorExtensions.x-is-jackson-optional-nullable}}{{#isByteArray}}Arrays{{/isByteArray}}{{^isByteArray}}Objects{{/isByteArray}}.equals(this.{{name}}, {{classVarName}}.{{name}}){{/vendorExtensions.x-is-jackson-optional-nullable}}{{^-last}} &&
-        {{/-last}}{{/vars}}{{#isAdditionalPropertiesTrue}}&&
-        Objects.equals(this.additionalProperties, {{classVarName}}.additionalProperties){{/isAdditionalPropertiesTrue}}{{#parent}} &&
+        {{/-last}}{{/vars}}{{#parent}} &&
         super.equals(o){{/parent}};{{/hasVars}}{{^hasVars}}
     return {{#parent}}super.equals(o){{/parent}}{{^parent}}true{{/parent}};{{/hasVars}}
   {{/useReflectionEqualsHashCode}}
@@ -298,7 +276,7 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
     return HashCodeBuilder.reflectionHashCode(this);
   {{/useReflectionEqualsHashCode}}
   {{^useReflectionEqualsHashCode}}
-    return Objects.hash({{#vars}}{{#vendorExtensions.x-is-jackson-optional-nullable}}hashCodeNullable({{name}}){{/vendorExtensions.x-is-jackson-optional-nullable}}{{^vendorExtensions.x-is-jackson-optional-nullable}}{{^isByteArray}}{{name}}{{/isByteArray}}{{#isByteArray}}Arrays.hashCode({{name}}){{/isByteArray}}{{/vendorExtensions.x-is-jackson-optional-nullable}}{{^-last}}, {{/-last}}{{/vars}}{{#parent}}{{#hasVars}}, {{/hasVars}}super.hashCode(){{/parent}}{{#isAdditionalPropertiesTrue}}{{#hasVars}}, {{/hasVars}}{{^hasVars}}{{#parent}}, {{/parent}}{{/hasVars}}additionalProperties{{/isAdditionalPropertiesTrue}});
+    return Objects.hash({{#vars}}{{#vendorExtensions.x-is-jackson-optional-nullable}}hashCodeNullable({{name}}){{/vendorExtensions.x-is-jackson-optional-nullable}}{{^vendorExtensions.x-is-jackson-optional-nullable}}{{^isByteArray}}{{name}}{{/isByteArray}}{{#isByteArray}}Arrays.hashCode({{name}}){{/isByteArray}}{{/vendorExtensions.x-is-jackson-optional-nullable}}{{^-last}}, {{/-last}}{{/vars}}{{#parent}}{{#hasVars}}, {{/hasVars}}super.hashCode(){{/parent}});
   {{/useReflectionEqualsHashCode}}
   }{{#vendorExtensions.x-jackson-optional-nullable-helpers}}
 
@@ -319,9 +297,6 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
     {{#vars}}
     sb.append("    {{name}}: ").append(toIndentedString({{name}})).append("\n");
     {{/vars}}
-{{#isAdditionalPropertiesTrue}}
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
-{{/isAdditionalPropertiesTrue}}
     sb.append("}");
     return sb.toString();
   }
@@ -396,226 +371,4 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
     }
   };
 {{/parcelableModel}}
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    {{#allVars}}
-    openapiFields.add("{{baseName}}");
-    {{/allVars}}
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    {{#requiredVars}}
-    openapiRequiredFields.add("{{baseName}}");
-    {{/requiredVars}}
-  }
-
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to {{classname}}
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if ({{classname}}.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
-          throw new IllegalArgumentException(String.format("The required field(s) %s in {{{classname}}} is not found in the empty JSON string", {{classname}}.openapiRequiredFields.toString()));
-        }
-      }
-      {{^hasChildren}}
-      {{^isAdditionalPropertiesTrue}}
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!{{classname}}.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `{{classname}}` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-      {{/isAdditionalPropertiesTrue}}
-      {{#requiredVars}}
-      {{#-first}}
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : {{classname}}.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      {{/-first}}
-      {{/requiredVars}}
-      {{/hasChildren}}
-      {{^discriminator}}
-      {{#vars}}
-      {{#isArray}}
-      {{#items.isModel}}
-      JsonArray jsonArray{{name}} = jsonObj.getAsJsonArray("{{{baseName}}}");
-      {{#isRequired}}
-      // ensure the json data is an array
-      if (!jsonObj.get("{{{baseName}}}").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `{{{baseName}}}` to be an array in the JSON string but got `%s`", jsonObj.get("{{{baseName}}}").toString()));
-      }
-
-      // validate the required field `{{{baseName}}}` (array)
-      for (int i = 0; i < jsonArray{{name}}.size(); i++) {
-        {{{items.dataType}}}.validateJsonObject(jsonArray{{name}}.get(i).getAsJsonObject());
-      };
-      {{/isRequired}}
-      {{^isRequired}}
-      if (jsonArray{{name}} != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("{{{baseName}}}").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `{{{baseName}}}` to be an array in the JSON string but got `%s`", jsonObj.get("{{{baseName}}}").toString()));
-        }
-
-        // validate the optional field `{{{baseName}}}` (array)
-        for (int i = 0; i < jsonArray{{name}}.size(); i++) {
-          {{{items.dataType}}}.validateJsonObject(jsonArray{{name}}.get(i).getAsJsonObject());
-        };
-      }
-      {{/isRequired}}
-      {{/items.isModel}}
-      {{^items.isModel}}
-      // ensure the json data is an array
-      if ({{^isRequired}}jsonObj.get("{{{baseName}}}") != null && {{/isRequired}}!jsonObj.get("{{{baseName}}}").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `{{{baseName}}}` to be an array in the JSON string but got `%s`", jsonObj.get("{{{baseName}}}").toString()));
-      }
-      {{/items.isModel}}
-      {{/isArray}}
-      {{^isContainer}}
-      {{#isString}}
-      if (({{^isRequired}}jsonObj.get("{{{baseName}}}") != null && !jsonObj.get("{{{baseName}}}").isJsonNull()) && {{/isRequired}}!jsonObj.get("{{{baseName}}}").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `{{{baseName}}}` to be a primitive type in the JSON string but got `%s`", jsonObj.get("{{{baseName}}}").toString()));
-      }
-      {{/isString}}
-      {{#isModel}}
-      {{#isRequired}}
-      // validate the required field `{{{baseName}}}`
-      {{{dataType}}}.validateJsonObject(jsonObj.getAsJsonObject("{{{baseName}}}"));
-      {{/isRequired}}
-      {{^isRequired}}
-      // validate the optional field `{{{baseName}}}`
-      if (({{^isRequired}}jsonObj.get("{{{baseName}}}") != null && !jsonObj.get("{{{baseName}}}").isJsonNull()) && {{/isRequired}}!jsonObj.get("{{{baseName}}}").isJsonPrimitive()) {
-        {{{dataType}}}.validateJsonObject(jsonObj.getAsJsonObject("{{{baseName}}}"));
-      }
-      {{/isRequired}}
-      {{/isModel}}
-      {{/isContainer}}
-      {{/vars}}
-      {{/discriminator}}
-      {{#hasChildren}}
-      {{#discriminator}}
-
-      String discriminatorValue = jsonObj.get("{{{propertyBaseName}}}").getAsString();
-      switch (discriminatorValue) {
-      {{#mappedModels}}
-        case "{{mappingName}}":
-          {{modelName}}.validateJsonObject(jsonObj);
-          break;
-      {{/mappedModels}}
-        default: 
-          throw new IllegalArgumentException(String.format("The value of the `{{{propertyBaseName}}}` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));
-      }
-      {{/discriminator}}
-      {{/hasChildren}}
-  }
-
-{{^hasChildren}}
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!{{classname}}.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes '{{classname}}' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<{{classname}}> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get({{classname}}.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<{{classname}}>() {
-           @Override
-           public void write(JsonWriter out, {{classname}} value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             {{#isAdditionalPropertiesTrue}}
-             obj.remove("additionalProperties");
-             // serialize additonal properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
-             {{/isAdditionalPropertiesTrue}}
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public {{classname}} read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             {{#isAdditionalPropertiesTrue}}
-             // store additional fields in the deserialized instance
-             {{classname}} instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
-             {{/isAdditionalPropertiesTrue}}
-             {{^isAdditionalPropertiesTrue}}
-             return thisAdapter.fromJsonTree(jsonObj);
-             {{/isAdditionalPropertiesTrue}}
-           }
-
-       }.nullSafe();
-    }
-  }
-{{/hasChildren}}
-
- /**
-  * Create an instance of {{classname}} given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of {{classname}}
-  * @throws IOException if the JSON string is invalid with respect to {{classname}}
-  */
-  public static {{{classname}}} fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, {{{classname}}}.class);
-  }
-
- /**
-  * Convert an instance of {{classname}} to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
