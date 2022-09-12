@@ -360,7 +360,7 @@ namespace {{packageName}}.Client
                         request.RequestFormat = DataFormat.Json;
                     }
 
-                    request.AddParameter("application/json; charset=utf-8", JsonConvert.SerializeObject(options.Data), ParameterType.RequestBody);
+                    request.AddJsonBody(options.Data);
                 }
             }
 
@@ -513,10 +513,6 @@ namespace {{packageName}}.Client
             {
                 response.Data = (T)(object)response.RawBytes;
             }
-            else if (typeof(T).Name == "String")
-            {
-                response.Data = (T)(object)response.Content;
-            }
 
             InterceptResponse(req, response);
 
@@ -638,10 +634,6 @@ namespace {{packageName}}.Client
             else if (typeof(T).Name == "Byte[]") // for byte response
             {
                 response.Data = (T)(object)response.RawBytes;
-            }
-            else if (typeof(T).Name == "String")
-            {
-                response.Data = (T)(object)response.Content;
             }
 
             InterceptResponse(req, response);
