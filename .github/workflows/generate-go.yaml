@@ -143,16 +143,6 @@ jobs:
           mv ./backup/go/filter ./generated/go/
           mv ./backup/go/oauth2 ./generated/go/
 
-      # - id: generate-additional-files
-      #   name: Generate Additional files
-      #   run: |
-      #     node ./scripts/generate-scopes.js go
-
-      # - id: lint-code
-      #   name: Lint Code Base
-      #   run: |
-      #     cd ./generated/go
-
       - id: create-pr
         name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
