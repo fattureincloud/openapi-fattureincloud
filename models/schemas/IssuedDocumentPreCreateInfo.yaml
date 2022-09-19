@@ -124,3 +124,10 @@ properties:
     items:
       $ref: ./VatType.yaml
     nullable: true
+  languages_list:
+    type: array
+    description: Languages list.
+    items:
+      $ref: ./Language.yaml
+    nullable: true
+    
