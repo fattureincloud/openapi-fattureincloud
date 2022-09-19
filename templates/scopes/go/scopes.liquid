@@ -1,0 +1,10 @@
+package oauth
+
+type Scope string
+
+// List of Scopes
+var Scopes = struct { {% for scope in scopes %}
+    {{ scope.name }} Scope{% endfor %}
+}{ {% for scope in scopes %}
+    {{ scope.name }}: "{{ scope.str }}",{% endfor %}
+}

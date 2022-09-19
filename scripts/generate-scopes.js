@@ -12,7 +12,8 @@ const languagesPaths = {
     'python': './generated/python/fattureincloud_python_sdk/oauth2/scopes.py',
     'php': './generated/php/lib/OAuth2/Scope.php',
     'ruby': './generated/ruby/lib/fattureincloud_ruby_sdk/oauth2/scope.rb',
-    'typescript-axios': './generated/typescript-axios/src/oauth2/scope.ts'
+    'typescript-axios': './generated/typescript-axios/src/oauth2/scope.ts',
+    'go': './generated/go/oauth2/scope.go',
 }
 
 var engine = new Liquid({
