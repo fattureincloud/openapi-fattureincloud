@@ -16,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.0.19
+  version: 2.0.20
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -261,13 +261,13 @@ paths:
                       type: integer
                       example: 30
                     default_payment_terms_type:
-                      title: DefaultPaymentTermsType
+                      title: PaymentTermsType
                       type: string
                       default: standard
                       enum:
                         - standard
                         - end_of_month
-                      description: Default payment terms.
+                      description: Payment terms Type.
                     default_payment_method:
                       type: object
                       title: PaymentMethod
@@ -392,10 +392,10 @@ paths:
                       description: Has intent declaration.
                     intent_declaration_protocol_number:
                       type: string
-                      format: date
                       description: Intent declaration protocol number.
                     intent_declaration_protocol_date:
                       type: string
+                      format: date
                       description: Intent declaration protocol date.
                     created_at:
                       type: string
@@ -626,13 +626,13 @@ paths:
                       type: integer
                       example: 30
                     default_payment_terms_type:
-                      title: DefaultPaymentTermsType
+                      title: PaymentTermsType
                       type: string
                       default: standard
                       enum:
                         - standard
                         - end_of_month
-                      description: Default payment terms.
+                      description: Payment terms Type.
                     default_payment_method:
                       type: object
                       title: PaymentMethod
@@ -757,10 +757,10 @@ paths:
                       description: Has intent declaration.
                     intent_declaration_protocol_number:
                       type: string
-                      format: date
                       description: Intent declaration protocol number.
                     intent_declaration_protocol_date:
                       type: string
+                      format: date
                       description: Intent declaration protocol date.
                     created_at:
                       type: string
@@ -1789,7 +1789,7 @@ paths:
                             Default payment terms.
                           nullable: true
                         default_payment_terms_type:
-                          title: DefaultPaymentTermsType
+                          title: PaymentTermsType
                           type: string
                           default: standard
                           enum:
@@ -1942,12 +1942,12 @@ paths:
                             Has intent declaration.
                         intent_declaration_protocol_number:
                           type: string
-                          format: date
                           description: |-
                             [Only for client]
                             Intent declaration protocol number.
                         intent_declaration_protocol_date:
                           type: string
+                          format: date
                           description: |-
                             [Only for client]
                             Intent declaration protocol date.
@@ -2544,12 +2544,14 @@ paths:
                                   The number of days by which the payment must
                                   be made.
                               type:
+                                title: PaymentTermsType
                                 type: string
-                                nullable: true
-                                description: Payment terms type.
+                                default: standard
                                 enum:
                                   - standard
                                   - end_of_month
+                                description: Payment terms Type.
+                                nullable: true
                       nullable: true
                     template:
                       type: object
@@ -3130,7 +3132,7 @@ paths:
                             Default payment terms.
                           nullable: true
                         default_payment_terms_type:
-                          title: DefaultPaymentTermsType
+                          title: PaymentTermsType
                           type: string
                           default: standard
                           enum:
@@ -3283,12 +3285,12 @@ paths:
                             Has intent declaration.
                         intent_declaration_protocol_number:
                           type: string
-                          format: date
                           description: |-
                             [Only for client]
                             Intent declaration protocol number.
                         intent_declaration_protocol_date:
                           type: string
+                          format: date
                           description: |-
                             [Only for client]
                             Intent declaration protocol date.
@@ -3885,12 +3887,14 @@ paths:
                                   The number of days by which the payment must
                                   be made.
                               type:
+                                title: PaymentTermsType
                                 type: string
-                                nullable: true
-                                description: Payment terms type.
+                                default: standard
                                 enum:
                                   - standard
                                   - end_of_month
+                                description: Payment terms Type.
+                                nullable: true
                       nullable: true
                     template:
                       type: object
@@ -4459,7 +4463,7 @@ paths:
                             Default payment terms.
                           nullable: true
                         default_payment_terms_type:
-                          title: DefaultPaymentTermsType
+                          title: PaymentTermsType
                           type: string
                           default: standard
                           enum:
@@ -4612,12 +4616,12 @@ paths:
                             Has intent declaration.
                         intent_declaration_protocol_number:
                           type: string
-                          format: date
                           description: |-
                             [Only for client]
                             Intent declaration protocol number.
                         intent_declaration_protocol_date:
                           type: string
+                          format: date
                           description: |-
                             [Only for client]
                             Intent declaration protocol date.
@@ -5214,12 +5218,14 @@ paths:
                                   The number of days by which the payment must
                                   be made.
                               type:
+                                title: PaymentTermsType
                                 type: string
-                                nullable: true
-                                description: Payment terms type.
+                                default: standard
                                 enum:
                                   - standard
                                   - end_of_month
+                                description: Payment terms Type.
+                                nullable: true
                       nullable: true
                     template:
                       type: object
@@ -5797,7 +5803,7 @@ paths:
                             Default payment terms.
                           nullable: true
                         default_payment_terms_type:
-                          title: DefaultPaymentTermsType
+                          title: PaymentTermsType
                           type: string
                           default: standard
                           enum:
@@ -5950,12 +5956,12 @@ paths:
                             Has intent declaration.
                         intent_declaration_protocol_number:
                           type: string
-                          format: date
                           description: |-
                             [Only for client]
                             Intent declaration protocol number.
                         intent_declaration_protocol_date:
                           type: string
+                          format: date
                           description: |-
                             [Only for client]
                             Intent declaration protocol date.
@@ -6552,12 +6558,14 @@ paths:
                                   The number of days by which the payment must
                                   be made.
                               type:
+                                title: PaymentTermsType
                                 type: string
-                                nullable: true
-                                description: Payment terms type.
+                                default: standard
                                 enum:
                                   - standard
                                   - end_of_month
+                                description: Payment terms Type.
+                                nullable: true
                       nullable: true
                     template:
                       type: object
@@ -7556,6 +7564,10 @@ paths:
                       type: string
                       description: Uploaded attachement token.
                       nullable: true
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
                   required:
                     - entity
             examples:
@@ -7956,6 +7968,10 @@ paths:
                       type: string
                       description: Uploaded attachement token.
                       nullable: true
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
                   required:
                     - entity
               description: ''
@@ -8354,6 +8370,10 @@ paths:
                       type: string
                       description: Uploaded attachement token.
                       nullable: true
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
                   required:
                     - entity
             examples:
@@ -8725,6 +8745,10 @@ paths:
                       type: string
                       description: Uploaded attachement token.
                       nullable: true
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
                   required:
                     - entity
               description: ''
@@ -12674,13 +12698,13 @@ components:
                     example: 30
                     nullable: true
                   default_payment_terms_type:
-                    title: DefaultPaymentTermsType
+                    title: PaymentTermsType
                     type: string
                     default: standard
                     enum:
                       - standard
                       - end_of_month
-                    description: Default payment terms.
+                    description: Payment terms Type.
                     nullable: true
                   default_payment_method:
                     type: object
@@ -12819,11 +12843,11 @@ components:
                     nullable: true
                   intent_declaration_protocol_number:
                     type: string
-                    format: date
                     description: Intent declaration protocol number.
                     nullable: true
                   intent_declaration_protocol_date:
                     type: string
+                    format: date
                     description: Intent declaration protocol date.
                     nullable: true
                   created_at:
@@ -13098,13 +13122,13 @@ components:
                           example: 30
                           nullable: true
                         default_payment_terms_type:
-                          title: DefaultPaymentTermsType
+                          title: PaymentTermsType
                           type: string
                           default: standard
                           enum:
                             - standard
                             - end_of_month
-                          description: Default payment terms.
+                          description: Payment terms Type.
                           nullable: true
                         default_payment_method:
                           type: object
@@ -13245,11 +13269,11 @@ components:
                           nullable: true
                         intent_declaration_protocol_number:
                           type: string
-                          format: date
                           description: Intent declaration protocol number.
                           nullable: true
                         intent_declaration_protocol_date:
                           type: string
+                          format: date
                           description: Intent declaration protocol date.
                           nullable: true
                         created_at:
@@ -13894,13 +13918,13 @@ components:
                     example: 30
                     nullable: true
                   default_payment_terms_type:
-                    title: DefaultPaymentTermsType
+                    title: PaymentTermsType
                     type: string
                     default: standard
                     enum:
                       - standard
                       - end_of_month
-                    description: Default payment terms.
+                    description: Payment terms Type.
                     nullable: true
                   default_payment_method:
                     type: object
@@ -14039,11 +14063,11 @@ components:
                     nullable: true
                   intent_declaration_protocol_number:
                     type: string
-                    format: date
                     description: Intent declaration protocol number.
                     nullable: true
                   intent_declaration_protocol_date:
                     type: string
+                    format: date
                     description: Intent declaration protocol date.
                     nullable: true
                   created_at:
@@ -14253,13 +14277,13 @@ components:
                     example: 30
                     nullable: true
                   default_payment_terms_type:
-                    title: DefaultPaymentTermsType
+                    title: PaymentTermsType
                     type: string
                     default: standard
                     enum:
                       - standard
                       - end_of_month
-                    description: Default payment terms.
+                    description: Payment terms Type.
                     nullable: true
                   default_payment_method:
                     type: object
@@ -14398,11 +14422,11 @@ components:
                     nullable: true
                   intent_declaration_protocol_number:
                     type: string
-                    format: date
                     description: Intent declaration protocol number.
                     nullable: true
                   intent_declaration_protocol_date:
                     type: string
+                    format: date
                     description: Intent declaration protocol date.
                     nullable: true
                   created_at:
@@ -15719,7 +15743,7 @@ components:
                                 Default payment terms.
                               nullable: true
                             default_payment_terms_type:
-                              title: DefaultPaymentTermsType
+                              title: PaymentTermsType
                               type: string
                               default: standard
                               enum:
@@ -15879,13 +15903,13 @@ components:
                               nullable: true
                             intent_declaration_protocol_number:
                               type: string
-                              format: date
                               description: |-
                                 [Only for client]
                                 Intent declaration protocol number.
                               nullable: true
                             intent_declaration_protocol_date:
                               type: string
+                              format: date
                               description: |-
                                 [Only for client]
                                 Intent declaration protocol date.
@@ -16509,12 +16533,14 @@ components:
                                       The number of days by which the payment
                                       must be made.
                                   type:
+                                    title: PaymentTermsType
                                     type: string
-                                    nullable: true
-                                    description: Payment terms type.
+                                    default: standard
                                     enum:
                                       - standard
                                       - end_of_month
+                                    description: Payment terms Type.
+                                    nullable: true
                         template:
                           type: object
                           properties:
@@ -17099,7 +17125,7 @@ components:
                           Default payment terms.
                         nullable: true
                       default_payment_terms_type:
-                        title: DefaultPaymentTermsType
+                        title: PaymentTermsType
                         type: string
                         default: standard
                         enum:
@@ -17255,13 +17281,13 @@ components:
                         nullable: true
                       intent_declaration_protocol_number:
                         type: string
-                        format: date
                         description: |-
                           [Only for client]
                           Intent declaration protocol number.
                         nullable: true
                       intent_declaration_protocol_date:
                         type: string
+                        format: date
                         description: |-
                           [Only for client]
                           Intent declaration protocol date.
@@ -17869,12 +17895,14 @@ components:
                                 The number of days by which the payment must be
                                 made.
                             type:
+                              title: PaymentTermsType
                               type: string
-                              nullable: true
-                              description: Payment terms type.
+                              default: standard
                               enum:
                                 - standard
                                 - end_of_month
+                              description: Payment terms Type.
+                              nullable: true
                   template:
                     type: object
                     properties:
@@ -18505,7 +18533,7 @@ components:
                           Default payment terms.
                         nullable: true
                       default_payment_terms_type:
-                        title: DefaultPaymentTermsType
+                        title: PaymentTermsType
                         type: string
                         default: standard
                         enum:
@@ -18661,13 +18689,13 @@ components:
                         nullable: true
                       intent_declaration_protocol_number:
                         type: string
-                        format: date
                         description: |-
                           [Only for client]
                           Intent declaration protocol number.
                         nullable: true
                       intent_declaration_protocol_date:
                         type: string
+                        format: date
                         description: |-
                           [Only for client]
                           Intent declaration protocol date.
@@ -19275,12 +19303,14 @@ components:
                                 The number of days by which the payment must be
                                 made.
                             type:
+                              title: PaymentTermsType
                               type: string
-                              nullable: true
-                              description: Payment terms type.
+                              default: standard
                               enum:
                                 - standard
                                 - end_of_month
+                              description: Payment terms Type.
+                              nullable: true
                   template:
                     type: object
                     properties:
@@ -19911,7 +19941,7 @@ components:
                           Default payment terms.
                         nullable: true
                       default_payment_terms_type:
-                        title: DefaultPaymentTermsType
+                        title: PaymentTermsType
                         type: string
                         default: standard
                         enum:
@@ -20067,13 +20097,13 @@ components:
                         nullable: true
                       intent_declaration_protocol_number:
                         type: string
-                        format: date
                         description: |-
                           [Only for client]
                           Intent declaration protocol number.
                         nullable: true
                       intent_declaration_protocol_date:
                         type: string
+                        format: date
                         description: |-
                           [Only for client]
                           Intent declaration protocol date.
@@ -20681,12 +20711,14 @@ components:
                                 The number of days by which the payment must be
                                 made.
                             type:
+                              title: PaymentTermsType
                               type: string
-                              nullable: true
-                              description: Payment terms type.
+                              default: standard
                               enum:
                                 - standard
                                 - end_of_month
+                              description: Payment terms Type.
+                              nullable: true
                   template:
                     type: object
                     properties:
@@ -21967,6 +21999,22 @@ components:
                           nullable: true
                       title: VatType
                       description: ''
+                    nullable: true
+                  languages_list:
+                    type: array
+                    description: Languages list.
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          description: Language code.
+                          nullable: true
+                        name:
+                          type: string
+                          description: Language extended name.
+                          nullable: true
+                      title: Language
                     nullable: true
                 nullable: true
           examples:
@@ -24314,6 +24362,12 @@ components:
                           type: string
                           nullable: true
                           description: Uploaded attachement token.
+                        created_at:
+                          type: string
+                          nullable: true
+                        updated_at:
+                          type: string
+                          nullable: true
                     nullable: true
             description: ''
           examples:
@@ -24753,6 +24807,12 @@ components:
                     type: string
                     nullable: true
                     description: Uploaded attachement token.
+                  created_at:
+                    type: string
+                    nullable: true
+                  updated_at:
+                    type: string
+                    nullable: true
                 nullable: true
             description: ''
           examples:
@@ -25137,6 +25197,12 @@ components:
                     type: string
                     nullable: true
                     description: Uploaded attachement token.
+                  created_at:
+                    type: string
+                    nullable: true
+                  updated_at:
+                    type: string
+                    nullable: true
                 nullable: true
             description: ''
           examples:
@@ -25521,6 +25587,12 @@ components:
                     type: string
                     nullable: true
                     description: Uploaded attachement token.
+                  created_at:
+                    type: string
+                    nullable: true
+                  updated_at:
+                    type: string
+                    nullable: true
                 nullable: true
             description: ''
           examples:
