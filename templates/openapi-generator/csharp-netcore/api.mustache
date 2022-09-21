@@ -7,8 +7,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Mime;
 using {{packageName}}.Client;
-{{#hasOAuthMethods}}using {{packageName}}.Client.Auth;
-{{/hasOAuthMethods}}
 {{#hasImport}}using {{packageName}}.{{modelPackage}};
 {{/hasImport}}
 
@@ -440,21 +438,9 @@ namespace {{packageName}}.{{apiPackage}}
             {{/isBasicBearer}}
             {{#isOAuth}}
             // oauth required
-            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
-                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
-                {
-                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
-                }
-                {{#hasOAuthMethods}}
-                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
-                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
-                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
-                         this.Configuration.OAuthFlow != null)
-                {
-                    localVarRequestOptions.OAuth = true;
-                }
-                {{/hasOAuthMethods}}
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
             }
             {{/isOAuth}}
             {{#isHttpSignature}}
@@ -683,21 +669,9 @@ namespace {{packageName}}.{{apiPackage}}
             {{/isBasic}}
             {{#isOAuth}}
             // oauth required
-            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
-                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
-                {
-                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
-                }
-                {{#hasOAuthMethods}}
-                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
-                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
-                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
-                         this.Configuration.OAuthFlow != null)
-                {
-                    localVarRequestOptions.OAuth = true;
-                }
-                {{/hasOAuthMethods}}
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
             }
             {{/isOAuth}}
             {{#isHttpSignature}}
