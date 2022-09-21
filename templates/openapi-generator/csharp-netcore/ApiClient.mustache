@@ -25,9 +25,6 @@ using RestSharpMethod = RestSharp.Method;
 {{#supportsRetry}}
 using Polly;
 {{/supportsRetry}}
-{{#hasOAuthMethods}}
-using {{packageName}}.Client.Auth;
-{{/hasOAuthMethods}}
 
 namespace {{packageName}}.Client
 {
@@ -460,22 +457,6 @@ namespace {{packageName}}.Client
             RestClient client = new RestClient(clientOptions)
                 .UseSerializer(() => new CustomJsonCodec(SerializerSettings, configuration));
 
-            {{#hasOAuthMethods}}
-            if (!string.IsNullOrEmpty(configuration.OAuthTokenUrl) &&
-                !string.IsNullOrEmpty(configuration.OAuthClientId) &&
-                !string.IsNullOrEmpty(configuration.OAuthClientSecret) &&
-                configuration.OAuthFlow != null)
-            {
-                client = client.UseAuthenticator(new OAuthAuthenticator(
-                    configuration.OAuthTokenUrl,
-                    configuration.OAuthClientId,
-                    configuration.OAuthClientSecret,
-                    configuration.OAuthFlow,
-                    SerializerSettings,
-                    configuration));
-            }
-
-            {{/hasOAuthMethods}}
             InterceptRequest(req);
 
             RestResponse<T> response;
@@ -572,22 +553,6 @@ namespace {{packageName}}.Client
             RestClient client = new RestClient(clientOptions)
                 .UseSerializer(() => new CustomJsonCodec(SerializerSettings, configuration));
 
-            {{#hasOAuthMethods}}
-            if (!string.IsNullOrEmpty(configuration.OAuthTokenUrl) &&
-                !string.IsNullOrEmpty(configuration.OAuthClientId) &&
-                !string.IsNullOrEmpty(configuration.OAuthClientSecret) &&
-                configuration.OAuthFlow != null)
-            {
-                client = client.UseAuthenticator(new OAuthAuthenticator(
-                    configuration.OAuthTokenUrl,
-                    configuration.OAuthClientId,
-                    configuration.OAuthClientSecret,
-                    configuration.OAuthFlow,
-                    SerializerSettings,
-                    configuration));
-            }
-
-            {{/hasOAuthMethods}}
             InterceptRequest(req);
 
             RestResponse<T> response;
