@@ -2901,6 +2901,9 @@ components:
             issued_documents.quotes:r: Read permission to the issued Quotes
             issued_documents.proformas:r: Read permission to the issued Proformas
             issued_documents.delivery_notes:r: Read permission to the issued Delivery Notes
+            issued_documents.work_reports:r: Read permission to the issued Work Reports
+            issued_documents.supplier_orders:r: Read permission to the issued Supplier Orders
+            issued_documents.self_invoices:r: Read permission to the issued Self Invoices
             issued_documents.invoices:a: Write permission to the issued Invoices
             issued_documents.credit_notes:a: Write permission to the issued Credit Notes
             issued_documents.receipts:a: Write permission to the issued issued Receipts
@@ -2908,6 +2911,9 @@ components:
             issued_documents.quotes:a: Write permission to the issued Quotes
             issued_documents.proformas:a: Write permission to the issued Proformas
             issued_documents.delivery_notes:a: Write permission to the issued Delivery Notes
+            issued_documents.work_reports:a: Write permission to the issued Work Reports
+            issued_documents.supplier_orders:a: Write permission to the issued Supplier Orders
+            issued_documents.self_invoices:a: Write permission to the issued Self Invoices
             received_documents:r: Read permission to the Received Documents
             received_documents:a: Write permission to the Received Documents
             stock:r: Read permission to the Stock movements

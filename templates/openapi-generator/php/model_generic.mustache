@@ -36,7 +36,7 @@ class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^par
      *
      * @var boolean[]
      */
-    protected static array $openAPINullables = [
+    protected static $openAPINullables = [
         {{#vars}}'{{name}}' => {{#isNullable}}true{{/isNullable}}{{^isNullable}}false{{/isNullable}}{{^-last}},
             {{/-last}}{{/vars}}
     ];
@@ -46,7 +46,7 @@ class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^par
      *
      * @var boolean[]
      */
-    protected array $openAPINullablesSetToNull = [];
+    protected $openAPINullablesSetToNull = [];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -86,6 +86,19 @@ class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^par
     private function getOpenAPINullablesSetToNull(): array
     {
         return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets openAPINullablesSetToNull
+     *
+     * @param boolean[] $openAPINullablesSetToNull Array of nullable field names deliberately set to null
+     *
+     * @return self
+     */
+    private function setOpenAPINullablesSetToNull($openAPINullablesSetToNull)
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+        return $this;
     }
 
     /**
