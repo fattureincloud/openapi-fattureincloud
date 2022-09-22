@@ -126,8 +126,8 @@ jobs:
           mv model*.go ./model
           mv utils.go ./model
           cd model
-          sed 's/package fattureincloud/package model/g' *
-          sed 's/Statuss/Statuses/g' *
+          sed -i 's/package fattureincloud/package model/g' *
+          sed -i 's/Statuss/Statuses/g' *
           cd ..
           rm -rf api
           mkdir api
@@ -135,7 +135,7 @@ jobs:
           mv client.go ./api
           mv configuration.go ./api
           cd api
-          sed 's/package fattureincloud/package api/g' *
+          sed -i 's/package fattureincloud/package api/g' *
       
       - id: move-custom-files-to-repo
         name: Move custom files to repo
