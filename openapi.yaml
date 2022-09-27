@@ -2879,7 +2879,7 @@ paths:
             - settings:a
   /c/{company_id}/issued_documents/transform:
     get:
-      summary: Transform document
+      summary: Transform issued document
       tags:
         - Issued Documents
       responses:
@@ -2920,14 +2920,14 @@ paths:
       - $ref: '#/components/parameters/company_id'
   /c/{company_id}/issued_documents/join:
     get:
-      summary: Transform document
+      summary: Join issued documents
       tags:
         - Issued Documents
       responses:
         '200':
           $ref: '#/components/responses/JoinIssuedDocumentsResponse'
-      operationId: transformIssuedDocument
-      description: Transforms the document.
+      operationId: joinIssuedDocuments
+      description: Joins issued documents.
       parameters:
         - schema:
             type: string
