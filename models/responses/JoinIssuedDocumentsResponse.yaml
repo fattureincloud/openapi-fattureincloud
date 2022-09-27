@@ -1,4 +1,4 @@
-title: TransformIssuedDocumentResponse
+title: JoinIssuedDocumentsResponse
 type: object
 properties:
   data:
