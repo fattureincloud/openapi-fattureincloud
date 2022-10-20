@@ -58,6 +58,12 @@ jobs:
           cd ../generated/typescript-axios/scripts
           yarn
 
+      # To remove when the fix is out
+      # https://github.com/OpenAPITools/openapi-generator/issues/13413
+      - id: downgrade-openapi-generator
+        name: Set openapi generator to 6.0.1
+        run: openapi-generator-cli version-manager set 6.0.1
+
       - id: bump-typescript-sdk-version
         name: Bump TypeScript SDK
         env:
@@ -136,6 +142,7 @@ jobs:
 
       - id: lint-code
         name: Lint Code Base
+        continue-on-error: true
         run: |
           cd ./generated/typescript-axios
           npm install

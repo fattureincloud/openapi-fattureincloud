@@ -1,4 +1,4 @@
-name: Bump and Publish OpenAPI to Readme
+name: Bump and Publish OpenAPI
 on: [workflow_dispatch]
 # on:
 #   push:
@@ -126,7 +126,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        event: ['enrich-openapi', 'generate-php', 'generate-javascript', 'generate-csharp-netcore', 'generate-java', 'generate-ruby', 'generate-postman', 'generate-python', 'generate-typescript-axios']
+        event: ['enrich-spec', 'generate-php', 'generate-javascript', 'generate-csharp-netcore', 'generate-java', 'generate-ruby', 'generate-postman', 'generate-python', 'generate-typescript-axios', 'generate-go']
     needs: bump-openapi-version
     steps: 
       - id: trigger-event

@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        sdk: ['php', 'javascript', 'csharp-netcore', 'ruby', 'java', 'python', 'typescript-axios']
+        sdk: ['php', 'javascript', 'csharp-netcore', 'ruby', 'java', 'python', 'typescript-axios', 'go']
 
     steps: 
 

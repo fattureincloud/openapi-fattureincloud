@@ -3,7 +3,7 @@ info:
   title: Fatture in Cloud API v2 - API Reference
   description: >-
     Connect your software with Fatture in Cloud, the invoicing platform chosen
-    by more than 400.000 businesses in Italy. 
+    by more than 500.000 businesses in Italy. 
 
 
     The Fatture in Cloud API is based on REST, and makes possible to interact
@@ -16,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.0.19
+  version: 2.0.20
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -2917,6 +2917,9 @@ components:
             issued_documents.quotes:r: Read permission to the issued Quotes
             issued_documents.proformas:r: Read permission to the issued Proformas
             issued_documents.delivery_notes:r: Read permission to the issued Delivery Notes
+            issued_documents.work_reports:r: Read permission to the issued Work Reports
+            issued_documents.supplier_orders:r: Read permission to the issued Supplier Orders
+            issued_documents.self_invoices:r: Read permission to the issued Self Invoices
             issued_documents.invoices:a: Write permission to the issued Invoices
             issued_documents.credit_notes:a: Write permission to the issued Credit Notes
             issued_documents.receipts:a: Write permission to the issued issued Receipts
@@ -2924,6 +2927,9 @@ components:
             issued_documents.quotes:a: Write permission to the issued Quotes
             issued_documents.proformas:a: Write permission to the issued Proformas
             issued_documents.delivery_notes:a: Write permission to the issued Delivery Notes
+            issued_documents.work_reports:a: Write permission to the issued Work Reports
+            issued_documents.supplier_orders:a: Write permission to the issued Supplier Orders
+            issued_documents.self_invoices:a: Write permission to the issued Self Invoices
             received_documents:r: Read permission to the Received Documents
             received_documents:a: Write permission to the Received Documents
             stock:r: Read permission to the Stock movements
