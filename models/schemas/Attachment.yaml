@@ -11,4 +11,3 @@ properties:
     type: string
     description: 'Valid format: .png, .jpg, .gif, .pdf, .zip, .xls, .xlsx, .doc, .docx'
     format: binary
-    nullable: true
