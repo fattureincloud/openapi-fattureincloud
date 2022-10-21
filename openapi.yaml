@@ -2877,6 +2877,22 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - settings:a
+  /c/{company_id}/emails:
+    parameters:
+      - schema:
+          type: string
+        name: company_id
+        in: path
+        required: true
+    get:
+      summary: List emails
+      tags:
+        - Emails
+      responses:
+        '200':
+          $ref: '#/components/responses/ListEmailsResponse'
+      operationId: listEmails
+      description: List Emails.
 components:
   schemas: {}
   securitySchemes:
@@ -8310,5 +8326,58 @@ components:
                     iso: AL
                     fiscal_iso: AL
                     uic: '087'
+    ListEmailsResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ListEmailsResponse.yaml
+          examples:
+            example-1:
+              value:
+                current_page: 1
+                data:
+                  - id: 1
+                    status: sent
+                    sent_date: '2022-07-17 13:53:12'
+                    errors_count: 0
+                    error_log: ''
+                    from_email: test@mail.it
+                    from_name: Test mail
+                    to_email: mail@test.it
+                    to_name: Mario
+                    subject: Test
+                    content: Test send email
+                    copy_to: ''
+                    recipient_status: unknown
+                    recipient_date: null
+                    kind: Fatture
+                    attachments: []
+                  - id: 2
+                    status: sent
+                    sent_date: '2022-07-18 13:53:12'
+                    errors_count: 0
+                    error_log: ''
+                    from_email: test@mail.it
+                    from_name: Test mail
+                    to_email: mail@test.it
+                    to_name: Maria
+                    subject: Test
+                    content: Test send email
+                    copy_to: ''
+                    recipient_status: unknown
+                    recipient_date: null
+                    kind: Fatture
+                    attachments: []
+                first_page_url: emails?page=1
+                from: 1
+                last_page: 1
+                last_page_url: emails?page=1
+                next_page_url: null
+                path: emails
+                per_page: 50
+                prev_page_url: null
+                to: 2
+                total: 2
 security:
   - OAuth2AuthenticationCodeFlow: []
