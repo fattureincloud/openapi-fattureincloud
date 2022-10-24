@@ -1,0 +1,4 @@
+title: ListEmailsResponse
+allOf:
+  - $ref: ./pagination/Pagination.yaml
+  - $ref: ./pagination/ListEmailsResponsePage.yaml

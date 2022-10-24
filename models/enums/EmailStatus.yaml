@@ -1,0 +1,7 @@
+type: string
+title: EmailStatus
+description: Email status.
+enum:
+  - sending
+  - pending
+  - sent
