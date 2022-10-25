@@ -1,0 +1,16 @@
+title: WebhooksSubscriptionRegistration
+type: object
+properties:
+  id:
+    type: string
+    description: Unique identifier
+  sink:
+    type: string
+    nullable: true
+    description: Webhooks callback uri.
+  types:
+    type: array
+    nullable: true
+    description: Webhooks events types.
+    items:
+      $ref: ../enums/EventType.yaml

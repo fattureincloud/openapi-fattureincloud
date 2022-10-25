@@ -2877,7 +2877,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - settings:a
-  /c/{company_id}/channels:
+  /c/{company_id}/subscriptions:
     parameters:
       - name: company_id
         in: path
@@ -2887,53 +2887,54 @@ paths:
           example: '12345'
         description: The ID of the company.
     get:
-      summary: List Channels
+      summary: List Subscriptions
       tags:
         - Webhooks
       responses:
         '200':
-          $ref: '#/components/responses/ListWebhooksChannelsResponse'
-      operationId: listWebhooksChannels
-      description: List active webhooks channels.
+          $ref: '#/components/responses/ListWebhooksSubscriptionsResponse'
+      operationId: listWebhooksSubscriptions
+      description: List active webhooks subscriptions.
     post:
-      summary: Register Webhooks Channels
+      summary: Register Webhooks Subscriptions
       responses:
         '200':
-          $ref: '#/components/responses/RegisterWebhooksChannelsResponse'
-      operationId: registerWebhooksChannels
+          $ref: '#/components/responses/RegisterWebhooksSubscriptionsResponse'
+      operationId: registerWebhooksSubscriptions
       requestBody:
         content:
           application/json:
             schema:
-              $ref: ./models/requests/RegisterWebhooksChannelRequest.yaml
+              $ref: ./models/requests/RegisterWebhooksSubscriptionRequest.yaml
             examples:
               example-1:
                 value:
                   data:
-                    url: http://www.test.com
-                    event_types:
-                      - entities:create
-                      - issued_documents:create
+                    sink: http://www.test.com
+                    types:
+                      - it.fattureincloud.entities.create
+                      - it.fattureincloud.issued_documents.create
           application/xml:
             schema:
               type: object
               properties: {}
-      description: Register some webhooks channels.
+        description: ''
+      description: Register some webhooks Subscriptions.
       tags:
         - Webhooks
     delete:
       summary: ''
-      operationId: deleteWebhooksChannels
+      operationId: deleteWebhooksSubscriptions
       responses:
         '200':
           description: OK
-      description: Delete some webhooks channels
+      description: Delete some webhooks subscriptions
       parameters:
         - schema:
             type: array
           in: query
           name: ids
-          description: The IDs of the webhooks channels to delete
+          description: The IDs of the webhooks subscriptions to delete
 components:
   schemas: {}
   securitySchemes:
@@ -8361,35 +8362,38 @@ components:
                     iso: AL
                     fiscal_iso: AL
                     uic: '087'
-    RegisterWebhooksChannelsResponse:
+    RegisterWebhooksSubscriptionsResponse:
       description: Example response
       content:
         application/json:
           schema:
-            $ref: ./models/responses/RegisterWebhooksChannelResponse.yaml
+            $ref: ./models/responses/RegisterWebhooksSubscriptionResponse.yaml
           examples:
             example-1:
               value:
                 data:
-                  id: 12344
-                  url: www.testurl.com/endpoint
-                  expiration_time: null
-                  event_type: issued_documents:create
-    ListWebhooksChannelsResponse:
+                  sink: http://www.test.com
+                  types:
+                    - it.fattureincloud.entities.create
+                    - it.fattureincloud.issued_documents.create
+    ListWebhooksSubscriptionsResponse:
       description: Example response
       content:
         application/json:
           schema:
-            $ref: ./models/responses/ListWebhooksChannelsResponse.yaml
+            $ref: ./models/responses/ListWebhooksSubscriptionsResponse.yaml
           examples:
             example-1:
               value:
                 data:
-                  - id: 12345
-                    url: www.testurl.com/endpoint
-                    event_type: issued_documents:create
-                  - id: 12346
-                    url: www.testurl.com/endpoint
-                    event_type: issued_documents:update
+                  - id: SUB12345
+                    sink: www.testurl.com/endpoint
+                    types:
+                      - it.fattureincloud.issued_documents.create
+                      - it.fattureincloud.issued_documents.update
+                  - id: SUB12346
+                    sink: www.testurl.com/endpoint2
+                    types:
+                      - it.fattureincloud.issued_documents.delete
 security:
   - OAuth2AuthenticationCodeFlow: []
