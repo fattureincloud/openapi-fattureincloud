@@ -67,8 +67,6 @@
             hash[_deserialize(k_type, k)] = _deserialize(v_type, v)
           end
         end
-      when :Hash
-        value
       else # model
         # models (e.g. Pet) or oneOf
         klass = {{moduleName}}.const_get(type)
