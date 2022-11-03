@@ -24,7 +24,7 @@ with {{{packageName}}}.ApiClient(configuration) as api_client:
 
     try:
     {{#if summary}}    # {{{summary}}}
-    {{/if}}    {{#if returnType}}api_response = {{/if}}api_instance.{{{operationId}}}({{#each allParams}}{{#if required}}{{paramName}}{{/if}}{{#unless required}}{{paramName}}={{paramName}}{{/unless}}{{#if hasMore}}, {{/if}}{{/each}}){{#if returnType}}
+    {{/if}}    {{#if returnType}}api_response = {{/if}}api_instance.{{{operationId}}}({{#each allParams}}{{#if required}}{{paramName}}{{#if hasMore}}, {{/if}}{{/if}}{{#unless required}}{{paramName}}={{paramName}}{{/unless}}{{#if hasMore}}, {{/if}}{{/each}}){{#if returnType}}
         pprint(api_response){{/if}}
     except {{{packageName}}}.ApiException as e:
         print("Exception when calling {{classname}}->{{operationId}}: %s\n" % e)
