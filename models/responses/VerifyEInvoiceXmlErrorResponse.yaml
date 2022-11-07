@@ -3,6 +3,7 @@ type: object
 properties:
   error:
     type: object
+    nullable: true
     properties:
       message:
         type: string
@@ -10,13 +11,18 @@ properties:
       validation_result:
         type: object
         nullable: true
-    nullable: true
+        properties:
+          xml_errors:
+            type: array
+            nullable: true
+            items:
+              type: string
   extra:
     type: object
+    nullable: true
     properties:
       errors:
         type: array
+        nullable: true
         items:
           type: string
-        nullable: true
-    nullable: true

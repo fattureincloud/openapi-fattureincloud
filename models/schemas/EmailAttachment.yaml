@@ -1,0 +1,9 @@
+title: EmailAttachment
+type: object
+properties:
+  filename:
+    type: string
+    description: Email attachment filename.
+  url:
+    type: string
+    description: Email attachment url.

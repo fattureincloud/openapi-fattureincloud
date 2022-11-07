@@ -1,0 +1,7 @@
+type: string
+title: EmailRecipientStatus
+description: Email recipient status.
+enum:
+  - unknown
+  - document_opened
+  - email_opened
