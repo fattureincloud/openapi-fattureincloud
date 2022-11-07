@@ -858,7 +858,6 @@ paths:
                     amount_cassa: 0
                     amount_withholding_tax: 0
                     amount_other_withholding_tax: 0
-                    permanent_token: 6pzguy12h45rn9yqwertp43t7ec90vr
                     h_margins: 15
                     v_margins: 16
                     show_payment_method: false
@@ -3919,7 +3918,6 @@ components:
                   amount_cassa: 0
                   amount_withholding_tax: 0
                   amount_other_withholding_tax: 0
-                  permanent_token: 6pzguy12h45rn9yqwertp43t7ec90vr
                   h_margins: 15
                   v_margins: 16
                   show_payment_method: false
@@ -4043,7 +4041,6 @@ components:
                   amount_cassa: 0
                   amount_withholding_tax: 0
                   amount_other_withholding_tax: 0
-                  permanent_token: 6pzguy12h45rn9yqwertp43t7ec90vr
                   h_margins: 15
                   v_margins: 16
                   show_payment_method: false
@@ -4167,7 +4164,6 @@ components:
                   amount_cassa: 0
                   amount_withholding_tax: 0
                   amount_other_withholding_tax: 0
-                  permanent_token: 6pzguy12h45rn9yqwertp43t7ec90vr
                   h_margins: 15
                   v_margins: 16
                   show_payment_method: false
