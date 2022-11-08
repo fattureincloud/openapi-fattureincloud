@@ -506,3 +506,9 @@ properties:
       - manual_accepted
       - manual_rejected
     nullable: true
+  created_at:
+    type: string
+    nullable: true
+  updated_at:
+    type: string
+    nullable: true
