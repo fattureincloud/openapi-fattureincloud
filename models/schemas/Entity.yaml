@@ -69,6 +69,11 @@ properties:
     example: Italia
     description: Country
     nullable: true
+  country_iso:
+    type: string
+    example: Italia
+    description: Country Iso
+    nullable: true
   email:
     type: string
     example: mario.rossi@example.it

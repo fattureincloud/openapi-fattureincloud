@@ -27,17 +27,17 @@ jobs:
       - id: checkout
         if: ${{ env.status == 'execute' }}
         name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - id: setup-node
         if: ${{ env.status == 'execute' }}
         name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
 
       - id: setup-java
         if: ${{ env.status == 'execute' }}
         name: Setup Java
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
           distribution: 'adopt'
           java-version: '8'
