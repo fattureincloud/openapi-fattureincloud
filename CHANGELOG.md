@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.0.21 (2022-11-14)
+
+
+### Improvements
+
+* added join and transform methods ([#543](https://github.com/fattureincloud/openapi-fattureincloud/issues/543)) ([3094125](https://github.com/fattureincloud/openapi-fattureincloud/commit/3094125277bef3b26846074bffe90006010c1cd2))
+
 ### [2.0.20](https://github.com/fattureincloud/openapi-fattureincloud/compare/v2.0.19...v2.0.20) (2022-09-21)
 
 
