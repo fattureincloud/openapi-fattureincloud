@@ -2886,6 +2886,8 @@ paths:
           $ref: '#/components/responses/TransformIssuedDocumentResponse'
       operationId: transformIssuedDocument
       description: Transforms the document.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
       parameters:
         - schema:
             type: string
@@ -2927,6 +2929,8 @@ paths:
           $ref: '#/components/responses/JoinIssuedDocumentsResponse'
       operationId: joinIssuedDocuments
       description: Joins issued documents.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
       parameters:
         - schema:
             type: string
@@ -2975,6 +2979,8 @@ paths:
           $ref: '#/components/responses/ListEmailsResponse'
       operationId: listEmails
       description: List Emails.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
 components:
   schemas: {}
   securitySchemes:
