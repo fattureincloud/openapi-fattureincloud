@@ -2890,7 +2890,7 @@ paths:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
         - schema:
-            type: string
+            type: number
           in: query
           name: original_document_id
           required: true
