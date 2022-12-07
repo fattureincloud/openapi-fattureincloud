@@ -17,6 +17,7 @@ properties:
   attachment_url:
     type: string
     description: >-
+      [Temporary]
       [Read Only]
 
       Absolute url of the attached file. Authomatically set if a valid
