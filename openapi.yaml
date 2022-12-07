@@ -2890,7 +2890,7 @@ paths:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
         - schema:
-            type: string
+            type: number
           in: query
           name: original_document_id
           required: true
@@ -2965,11 +2965,7 @@ paths:
         description: The ID of the company.
   /c/{company_id}/emails:
     parameters:
-      - schema:
-          type: string
-        name: company_id
-        in: path
-        required: true
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: List emails
       tags:
