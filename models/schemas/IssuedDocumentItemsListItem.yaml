@@ -63,7 +63,7 @@ properties:
   discount_highlight:
     type: boolean
     nullable: true
-  in_ddt:
+  in_dn:
     type: boolean
     nullable: true
   stock:

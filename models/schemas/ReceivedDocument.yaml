@@ -112,14 +112,20 @@ properties:
   attachment_url:
     type: string
     description: |-
+      [Temporary]
       [Read Only]
-      Attachment url.
+      
+      Public url of the attached file. Authomatically set if a valid attachment
+      token is passed via POST /received_documents or PUT
+      /received_documents/{documentId}.
     readOnly: true
     nullable: true
   attachment_preview_url:
     type: string
     description: |-
+      [Temporary]
       [Read Only]
+      
       Attachment preview url.
     readOnly: true
     nullable: true
