@@ -16,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.0.22
+  version: 2.0.24
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -2444,7 +2444,7 @@ paths:
                           discount_highlight:
                             type: boolean
                             nullable: true
-                          in_ddt:
+                          in_dn:
                             type: boolean
                             nullable: true
                           stock:
@@ -2800,11 +2800,26 @@ paths:
                       nullable: true
                     url:
                       type: string
-                      description: Public url of the document PDF file.
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the document PDF file.
+                    dn_url:
+                      type: string
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the attached delivery note PDF file.
+                    ai_url:
+                      type: string
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the accompanying invoice PDF file.
                     attachment_url:
                       type: string
                       description: >-
-                        [Read Only]
+                        [Temporary] [Read Only]
 
                         Public url of the attached file. Authomatically set if a
                         valid attachment token is passed via POST
@@ -3809,7 +3824,7 @@ paths:
                           discount_highlight:
                             type: boolean
                             nullable: true
-                          in_ddt:
+                          in_dn:
                             type: boolean
                             nullable: true
                           stock:
@@ -4165,11 +4180,26 @@ paths:
                       nullable: true
                     url:
                       type: string
-                      description: Public url of the document PDF file.
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the document PDF file.
+                    dn_url:
+                      type: string
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the attached delivery note PDF file.
+                    ai_url:
+                      type: string
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the accompanying invoice PDF file.
                     attachment_url:
                       type: string
                       description: >-
-                        [Read Only]
+                        [Temporary] [Read Only]
 
                         Public url of the attached file. Authomatically set if a
                         valid attachment token is passed via POST
@@ -5162,7 +5192,7 @@ paths:
                           discount_highlight:
                             type: boolean
                             nullable: true
-                          in_ddt:
+                          in_dn:
                             type: boolean
                             nullable: true
                           stock:
@@ -5518,11 +5548,26 @@ paths:
                       nullable: true
                     url:
                       type: string
-                      description: Public url of the document PDF file.
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the document PDF file.
+                    dn_url:
+                      type: string
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the attached delivery note PDF file.
+                    ai_url:
+                      type: string
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the accompanying invoice PDF file.
                     attachment_url:
                       type: string
                       description: >-
-                        [Read Only]
+                        [Temporary] [Read Only]
 
                         Public url of the attached file. Authomatically set if a
                         valid attachment token is passed via POST
@@ -6509,7 +6554,7 @@ paths:
                           discount_highlight:
                             type: boolean
                             nullable: true
-                          in_ddt:
+                          in_dn:
                             type: boolean
                             nullable: true
                           stock:
@@ -6865,11 +6910,26 @@ paths:
                       nullable: true
                     url:
                       type: string
-                      description: Public url of the document PDF file.
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the document PDF file.
+                    dn_url:
+                      type: string
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the attached delivery note PDF file.
+                    ai_url:
+                      type: string
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the accompanying invoice PDF file.
                     attachment_url:
                       type: string
                       description: >-
-                        [Read Only]
+                        [Temporary] [Read Only]
 
                         Public url of the attached file. Authomatically set if a
                         valid attachment token is passed via POST
@@ -7609,14 +7669,25 @@ paths:
                             title: PaymentAccount
                     attachment_url:
                       type: string
-                      description: |-
+                      description: >-
+                        [Temporary]
+
                         [Read Only]
-                        Attachment url.
+
+
+                        Public url of the attached file. Authomatically set if a
+                        valid attachment
+
+                        token is passed via POST /received_documents or PUT
+
+                        /received_documents/{documentId}.
                       readOnly: true
                     attachment_preview_url:
                       type: string
                       description: |-
+                        [Temporary]
                         [Read Only]
+
                         Attachment preview url.
                       readOnly: true
                     attachment_token:
@@ -8013,14 +8084,25 @@ paths:
                             title: PaymentAccount
                     attachment_url:
                       type: string
-                      description: |-
+                      description: >-
+                        [Temporary]
+
                         [Read Only]
-                        Attachment url.
+
+
+                        Public url of the attached file. Authomatically set if a
+                        valid attachment
+
+                        token is passed via POST /received_documents or PUT
+
+                        /received_documents/{documentId}.
                       readOnly: true
                     attachment_preview_url:
                       type: string
                       description: |-
+                        [Temporary]
                         [Read Only]
+
                         Attachment preview url.
                       readOnly: true
                     attachment_token:
@@ -8415,14 +8497,25 @@ paths:
                             title: PaymentAccount
                     attachment_url:
                       type: string
-                      description: |-
+                      description: >-
+                        [Temporary]
+
                         [Read Only]
-                        Attachment url.
+
+
+                        Public url of the attached file. Authomatically set if a
+                        valid attachment
+
+                        token is passed via POST /received_documents or PUT
+
+                        /received_documents/{documentId}.
                       readOnly: true
                     attachment_preview_url:
                       type: string
                       description: |-
+                        [Temporary]
                         [Read Only]
+
                         Attachment preview url.
                       readOnly: true
                     attachment_token:
@@ -8790,14 +8883,25 @@ paths:
                             title: PaymentAccount
                     attachment_url:
                       type: string
-                      description: |-
+                      description: >-
+                        [Temporary]
+
                         [Read Only]
-                        Attachment url.
+
+
+                        Public url of the attached file. Authomatically set if a
+                        valid attachment
+
+                        token is passed via POST /received_documents or PUT
+
+                        /received_documents/{documentId}.
                       readOnly: true
                     attachment_preview_url:
                       type: string
                       description: |-
+                        [Temporary]
                         [Read Only]
+
                         Attachment preview url.
                       readOnly: true
                     attachment_token:
@@ -9572,7 +9676,7 @@ paths:
                     attachment_url:
                       type: string
                       description: >-
-                        [Read Only]
+                        [Temporary] [Read Only]
 
                         Absolute url of the attached file. Authomatically set if
                         a valid attachment token is passed via POST /taxes or
@@ -9721,7 +9825,7 @@ paths:
                     attachment_url:
                       type: string
                       description: >-
-                        [Read Only]
+                        [Temporary] [Read Only]
 
                         Absolute url of the attached file. Authomatically set if
                         a valid attachment token is passed via POST /taxes or
@@ -9909,7 +10013,7 @@ paths:
                     attachment_url:
                       type: string
                       description: >-
-                        [Read Only]
+                        [Temporary] [Read Only]
 
                         Absolute url of the attached file. Authomatically set if
                         a valid attachment token is passed via POST /archive or
@@ -10008,7 +10112,7 @@ paths:
                     attachment_url:
                       type: string
                       description: >-
-                        [Read Only]
+                        [Temporary] [Read Only]
 
                         Absolute url of the attached file. Authomatically set if
                         a valid attachment token is passed via POST /archive or
@@ -11567,7 +11671,7 @@ paths:
         - ManualAuth: []
       parameters:
         - schema:
-            type: string
+            type: integer
           in: query
           name: original_document_id
           required: true
@@ -11643,11 +11747,7 @@ paths:
         description: The ID of the company.
   /c/{company_id}/emails:
     parameters:
-      - schema:
-          type: string
-        name: company_id
-        in: path
-        required: true
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: List emails
       tags:
@@ -16605,7 +16705,7 @@ components:
                               discount_highlight:
                                 type: boolean
                                 nullable: true
-                              in_ddt:
+                              in_dn:
                                 type: boolean
                                 nullable: true
                               stock:
@@ -16990,12 +17090,29 @@ components:
                           format: date
                         url:
                           type: string
-                          description: Public url of the document PDF file.
+                          description: |-
+                            [Temporary] [Read Only]
+                             
+                            Public url of the document PDF file.
+                          nullable: true
+                        dn_url:
+                          type: string
+                          description: |-
+                            [Temporary] [Read Only]
+                             
+                            Public url of the attached delivery note PDF file.
+                          nullable: true
+                        ai_url:
+                          type: string
+                          description: |-
+                            [Temporary] [Read Only]
+                             
+                            Public url of the accompanying invoice PDF file.
                           nullable: true
                         attachment_url:
                           type: string
                           description: >-
-                            [Read Only]
+                            [Temporary] [Read Only]
 
                             Public url of the attached file. Authomatically set
                             if a valid attachment token is passed via POST
@@ -17980,7 +18097,7 @@ components:
                         discount_highlight:
                           type: boolean
                           nullable: true
-                        in_ddt:
+                        in_dn:
                           type: boolean
                           nullable: true
                         stock:
@@ -18363,12 +18480,29 @@ components:
                     format: date
                   url:
                     type: string
-                    description: Public url of the document PDF file.
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the document PDF file.
+                    nullable: true
+                  dn_url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the attached delivery note PDF file.
+                    nullable: true
+                  ai_url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the accompanying invoice PDF file.
                     nullable: true
                   attachment_url:
                     type: string
                     description: >-
-                      [Read Only]
+                      [Temporary] [Read Only]
 
                       Public url of the attached file. Authomatically set if a
                       valid attachment token is passed via POST
@@ -19398,7 +19532,7 @@ components:
                         discount_highlight:
                           type: boolean
                           nullable: true
-                        in_ddt:
+                        in_dn:
                           type: boolean
                           nullable: true
                         stock:
@@ -19781,12 +19915,29 @@ components:
                     format: date
                   url:
                     type: string
-                    description: Public url of the document PDF file.
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the document PDF file.
+                    nullable: true
+                  dn_url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the attached delivery note PDF file.
+                    nullable: true
+                  ai_url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the accompanying invoice PDF file.
                     nullable: true
                   attachment_url:
                     type: string
                     description: >-
-                      [Read Only]
+                      [Temporary] [Read Only]
 
                       Public url of the attached file. Authomatically set if a
                       valid attachment token is passed via POST
@@ -20816,7 +20967,7 @@ components:
                         discount_highlight:
                           type: boolean
                           nullable: true
-                        in_ddt:
+                        in_dn:
                           type: boolean
                           nullable: true
                         stock:
@@ -21199,12 +21350,29 @@ components:
                     format: date
                   url:
                     type: string
-                    description: Public url of the document PDF file.
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the document PDF file.
+                    nullable: true
+                  dn_url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the attached delivery note PDF file.
+                    nullable: true
+                  ai_url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the accompanying invoice PDF file.
                     nullable: true
                   attachment_url:
                     type: string
                     description: >-
-                      [Read Only]
+                      [Temporary] [Read Only]
 
                       Public url of the attached file. Authomatically set if a
                       valid attachment token is passed via POST
@@ -24566,15 +24734,26 @@ components:
                           nullable: true
                         attachment_url:
                           type: string
-                          description: |-
+                          description: >-
+                            [Temporary]
+
                             [Read Only]
-                            Attachment url.
+
+
+                            Public url of the attached file. Authomatically set
+                            if a valid attachment
+
+                            token is passed via POST /received_documents or PUT
+
+                            /received_documents/{documentId}.
                           readOnly: true
                           nullable: true
                         attachment_preview_url:
                           type: string
                           description: |-
+                            [Temporary]
                             [Read Only]
+
                             Attachment preview url.
                           readOnly: true
                           nullable: true
@@ -25011,15 +25190,26 @@ components:
                     nullable: true
                   attachment_url:
                     type: string
-                    description: |-
+                    description: >-
+                      [Temporary]
+
                       [Read Only]
-                      Attachment url.
+
+
+                      Public url of the attached file. Authomatically set if a
+                      valid attachment
+
+                      token is passed via POST /received_documents or PUT
+
+                      /received_documents/{documentId}.
                     readOnly: true
                     nullable: true
                   attachment_preview_url:
                     type: string
                     description: |-
+                      [Temporary]
                       [Read Only]
+
                       Attachment preview url.
                     readOnly: true
                     nullable: true
@@ -25401,15 +25591,26 @@ components:
                     nullable: true
                   attachment_url:
                     type: string
-                    description: |-
+                    description: >-
+                      [Temporary]
+
                       [Read Only]
-                      Attachment url.
+
+
+                      Public url of the attached file. Authomatically set if a
+                      valid attachment
+
+                      token is passed via POST /received_documents or PUT
+
+                      /received_documents/{documentId}.
                     readOnly: true
                     nullable: true
                   attachment_preview_url:
                     type: string
                     description: |-
+                      [Temporary]
                       [Read Only]
+
                       Attachment preview url.
                     readOnly: true
                     nullable: true
@@ -25791,15 +25992,26 @@ components:
                     nullable: true
                   attachment_url:
                     type: string
-                    description: |-
+                    description: >-
+                      [Temporary]
+
                       [Read Only]
-                      Attachment url.
+
+
+                      Public url of the attached file. Authomatically set if a
+                      valid attachment
+
+                      token is passed via POST /received_documents or PUT
+
+                      /received_documents/{documentId}.
                     readOnly: true
                     nullable: true
                   attachment_preview_url:
                     type: string
                     description: |-
+                      [Temporary]
                       [Read Only]
+
                       Attachment preview url.
                     readOnly: true
                     nullable: true
@@ -28379,7 +28591,7 @@ components:
                         attachment_url:
                           type: string
                           description: >-
-                            [Read Only]
+                            [Temporary] [Read Only]
 
                             Absolute url of the attached file. Authomatically
                             set if a valid attachment token is passed via POST
@@ -28526,7 +28738,7 @@ components:
                   attachment_url:
                     type: string
                     description: >-
-                      [Read Only]
+                      [Temporary] [Read Only]
 
                       Absolute url of the attached file. Authomatically set if a
                       valid attachment token is passed via POST /taxes or PUT
@@ -28640,7 +28852,7 @@ components:
                   attachment_url:
                     type: string
                     description: >-
-                      [Read Only]
+                      [Temporary] [Read Only]
 
                       Absolute url of the attached file. Authomatically set if a
                       valid attachment token is passed via POST /taxes or PUT
@@ -28753,7 +28965,7 @@ components:
                   attachment_url:
                     type: string
                     description: >-
-                      [Read Only]
+                      [Temporary] [Read Only]
 
                       Absolute url of the attached file. Authomatically set if a
                       valid attachment token is passed via POST /taxes or PUT
@@ -28896,7 +29108,7 @@ components:
                         attachment_url:
                           type: string
                           description: >-
-                            [Read Only]
+                            [Temporary] [Read Only]
 
                             Absolute url of the attached file. Authomatically
                             set if a valid attachment token is passed via POST
@@ -28974,7 +29186,7 @@ components:
                   attachment_url:
                     type: string
                     description: >-
-                      [Read Only]
+                      [Temporary] [Read Only]
 
                       Absolute url of the attached file. Authomatically set if a
                       valid attachment token is passed via POST /archive or PUT
@@ -29035,7 +29247,7 @@ components:
                   attachment_url:
                     type: string
                     description: >-
-                      [Read Only]
+                      [Temporary] [Read Only]
 
                       Absolute url of the attached file. Authomatically set if a
                       valid attachment token is passed via POST /archive or PUT
@@ -29097,7 +29309,7 @@ components:
                   attachment_url:
                     type: string
                     description: >-
-                      [Read Only]
+                      [Temporary] [Read Only]
 
                       Absolute url of the attached file. Authomatically set if a
                       valid attachment token is passed via POST /archive or PUT
@@ -32133,7 +32345,7 @@ components:
                         discount_highlight:
                           type: boolean
                           nullable: true
-                        in_ddt:
+                        in_dn:
                           type: boolean
                           nullable: true
                         stock:
@@ -32516,12 +32728,29 @@ components:
                     format: date
                   url:
                     type: string
-                    description: Public url of the document PDF file.
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the document PDF file.
+                    nullable: true
+                  dn_url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the attached delivery note PDF file.
+                    nullable: true
+                  ai_url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the accompanying invoice PDF file.
                     nullable: true
                   attachment_url:
                     type: string
                     description: >-
-                      [Read Only]
+                      [Temporary] [Read Only]
 
                       Public url of the attached file. Authomatically set if a
                       valid attachment token is passed via POST
@@ -33584,7 +33813,7 @@ components:
                         discount_highlight:
                           type: boolean
                           nullable: true
-                        in_ddt:
+                        in_dn:
                           type: boolean
                           nullable: true
                         stock:
@@ -33967,12 +34196,29 @@ components:
                     format: date
                   url:
                     type: string
-                    description: Public url of the document PDF file.
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the document PDF file.
+                    nullable: true
+                  dn_url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the attached delivery note PDF file.
+                    nullable: true
+                  ai_url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the accompanying invoice PDF file.
                     nullable: true
                   attachment_url:
                     type: string
                     description: >-
-                      [Read Only]
+                      [Temporary] [Read Only]
 
                       Public url of the attached file. Authomatically set if a
                       valid attachment token is passed via POST
