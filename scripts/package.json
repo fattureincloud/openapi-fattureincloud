@@ -6,6 +6,7 @@
     "js-yaml": "^4.1.0",
     "jsonata": "^1.8.6",
     "liquidjs": "^9.37.0",
-    "semver": "^7.3.5"
+    "semver": "^7.3.5",
+    "@readme/httpsnippet": "^4.1.1"
   }
 }

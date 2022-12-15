@@ -21,57 +21,11 @@ function cleanFile(filePath) {
     try {
         var doc = yaml.load(fs.readFileSync(filePath, 'utf8'))
 
-        var paths = doc['paths']
-        var endpoints = Object.keys(paths)
-        endpoints.forEach((endpointKey, _) => {
-            var endpoint = paths[endpointKey]
-            const verbsOfInterest = ['post', 'put']
-
-            const filteredVerbs = Object.keys(endpoint)
-                .filter(verbKey => verbsOfInterest.includes(verbKey))
-
-            if (filteredVerbs.length > 0) {
-                filteredVerbs.forEach((verbKey, _) => {
-                    var content = endpoint[verbKey]['requestBody']['content']
-                    var contentTypes = Object.keys(content)
-                    contentTypes.forEach((contentType, _) => {
-                        var schema = content[contentType]['schema']
-                        schema = cleanProperty(schema)
-                        doc['paths'][endpointKey][verbKey]['requestBody']['content'][contentType]['schema'] = schema
-                    })
-                })
-            }
-        })
-
-        fs.writeFileSync(filePath, yaml.dump(doc))
+        fs.writeFileSync(filePath, yaml.dump(doc).replaceAll('nullable: true', ''))
         console.log("Done")
     } catch (e) {
         console.log(e)
     }
-}
-
-// For the passed property, remove nullable and apply to all the subproperties
-function cleanProperty(prop) {
-    if (Object.keys(prop).includes('properties')) {
-        var properties = prop['properties']
-        const keys = Object.keys(properties)
-
-        keys.forEach((key, index) => {
-
-            var property = properties[key]
-
-            const detailsToRemove = ['nullable']
-
-            var filtered = Object.fromEntries(Object.entries(property).filter(([k, v]) => !detailsToRemove.includes(k)));
-
-            if (Object.keys(filtered).includes('properties')) {
-                filtered = cleanProperty(filtered)
-            }
-            properties[key] = filtered
-        })
-        prop['properties'] = properties
-    }
-    return prop
 }
 
 // This functions adds the details from the details.yaml file to the cleaned file

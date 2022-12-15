@@ -34,6 +34,12 @@ jobs:
       - id: enrich-spec
         name: Enrich OpenAPI Spec
         run: |
+          echo "Adding code examples..."
+          node ./scripts/add-snippets.js ./openapi-enriched.yaml
+
+      - id: add-examples
+        name: Add Code Examples
+        run: |
           echo "Resolving OpenAPI Specification to a single file..."
           swagger-merger -i ./openapi.yaml -o ./openapi-enriched.yaml
 
