@@ -46,6 +46,14 @@ jobs:
           swagger-cli validate openapi-enriched.yaml
           openapi-generator-cli validate -i ./openapi-enriched.yaml
 
+      - id: upload-enriched-spec-s3
+        name: Upload enriched spec to s3
+        run: aws s3 sync ./openapi-enriched.yaml ${{ secrets.S3_PATH }}/openapi-enriched.yaml --acl public-read --cache-control no-cache
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+
       - id: create-pr
         name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
