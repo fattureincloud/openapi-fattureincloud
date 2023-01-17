@@ -447,11 +447,32 @@ properties:
     format: date
   url:
     type: string
-    description: Public url of the document PDF file.
+    description: >-
+      [Temporary]
+      [Read Only]
+       
+      Public url of the document PDF file.
+    nullable: true
+  dn_url:
+    type: string
+    description: >-
+      [Temporary]
+      [Read Only]
+       
+      Public url of the attached delivery note PDF file.
+    nullable: true
+  ai_url:
+    type: string
+    description: >-
+      [Temporary]
+      [Read Only]
+       
+      Public url of the accompanying invoice PDF file.
     nullable: true
   attachment_url:
     type: string
     description: >-
+      [Temporary]
       [Read Only]
 
       Public url of the attached file. Authomatically set if a valid attachment
@@ -505,4 +526,10 @@ properties:
       - no_response
       - manual_accepted
       - manual_rejected
+    nullable: true
+  created_at:
+    type: string
+    nullable: true
+  updated_at:
+    type: string
     nullable: true

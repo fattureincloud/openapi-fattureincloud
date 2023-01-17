@@ -1,0 +1,9 @@
+title: TransformIssuedDocumentResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/IssuedDocument.yaml
+    nullable: true
+  options:
+    $ref: ../schemas/IssuedDocumentOptions.yaml
+    nullable: true

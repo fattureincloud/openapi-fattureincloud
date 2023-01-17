@@ -16,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.0.20
+  version: 2.0.24
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -1715,6 +1715,10 @@ paths:
                           example: Italia
                           description: Country
                           default: Italia
+                        country_iso:
+                          type: string
+                          example: Italia
+                          description: Country Iso
                         email:
                           type: string
                           example: mario.rossi@example.it
@@ -2440,7 +2444,7 @@ paths:
                           discount_highlight:
                             type: boolean
                             nullable: true
-                          in_ddt:
+                          in_dn:
                             type: boolean
                             nullable: true
                           stock:
@@ -2796,11 +2800,26 @@ paths:
                       nullable: true
                     url:
                       type: string
-                      description: Public url of the document PDF file.
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the document PDF file.
+                    dn_url:
+                      type: string
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the attached delivery note PDF file.
+                    ai_url:
+                      type: string
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the accompanying invoice PDF file.
                     attachment_url:
                       type: string
                       description: >-
-                        [Read Only]
+                        [Temporary] [Read Only]
 
                         Public url of the attached file. Authomatically set if a
                         valid attachment token is passed via POST
@@ -2853,6 +2872,10 @@ paths:
                         - no_response
                         - manual_accepted
                         - manual_rejected
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
                 options:
                   title: IssuedDocumentOptions
                   type: object
@@ -2862,6 +2885,20 @@ paths:
                       description: >-
                         Fixes your last payment amount to match your document
                         total
+                    create_from:
+                      type: array
+                      description: Original documents ids [only for join/transform]
+                      items:
+                        type: string
+                    transform:
+                      type: boolean
+                      description: Tranform a document. [only for transform]
+                    keep_copy:
+                      type: boolean
+                      description: Keep original document [only for transform]
+                    join_type:
+                      type: string
+                      description: Join type [only for join]
             examples:
               example-1:
                 value:
@@ -3058,6 +3095,10 @@ paths:
                           example: Italia
                           description: Country
                           default: Italia
+                        country_iso:
+                          type: string
+                          example: Italia
+                          description: Country Iso
                         email:
                           type: string
                           example: mario.rossi@example.it
@@ -3783,7 +3824,7 @@ paths:
                           discount_highlight:
                             type: boolean
                             nullable: true
-                          in_ddt:
+                          in_dn:
                             type: boolean
                             nullable: true
                           stock:
@@ -4139,11 +4180,26 @@ paths:
                       nullable: true
                     url:
                       type: string
-                      description: Public url of the document PDF file.
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the document PDF file.
+                    dn_url:
+                      type: string
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the attached delivery note PDF file.
+                    ai_url:
+                      type: string
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the accompanying invoice PDF file.
                     attachment_url:
                       type: string
                       description: >-
-                        [Read Only]
+                        [Temporary] [Read Only]
 
                         Public url of the attached file. Authomatically set if a
                         valid attachment token is passed via POST
@@ -4196,6 +4252,10 @@ paths:
                         - no_response
                         - manual_accepted
                         - manual_rejected
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
                 options:
                   title: IssuedDocumentOptions
                   type: object
@@ -4205,6 +4265,20 @@ paths:
                       description: >-
                         Fixes your last payment amount to match your document
                         total
+                    create_from:
+                      type: array
+                      description: Original documents ids [only for join/transform]
+                      items:
+                        type: string
+                    transform:
+                      type: boolean
+                      description: Tranform a document. [only for transform]
+                    keep_copy:
+                      type: boolean
+                      description: Keep original document [only for transform]
+                    join_type:
+                      type: string
+                      description: Join type [only for join]
             examples:
               example-1:
                 value:
@@ -4389,6 +4463,10 @@ paths:
                           example: Italia
                           description: Country
                           default: Italia
+                        country_iso:
+                          type: string
+                          example: Italia
+                          description: Country Iso
                         email:
                           type: string
                           example: mario.rossi@example.it
@@ -5114,7 +5192,7 @@ paths:
                           discount_highlight:
                             type: boolean
                             nullable: true
-                          in_ddt:
+                          in_dn:
                             type: boolean
                             nullable: true
                           stock:
@@ -5470,11 +5548,26 @@ paths:
                       nullable: true
                     url:
                       type: string
-                      description: Public url of the document PDF file.
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the document PDF file.
+                    dn_url:
+                      type: string
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the attached delivery note PDF file.
+                    ai_url:
+                      type: string
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the accompanying invoice PDF file.
                     attachment_url:
                       type: string
                       description: >-
-                        [Read Only]
+                        [Temporary] [Read Only]
 
                         Public url of the attached file. Authomatically set if a
                         valid attachment token is passed via POST
@@ -5527,6 +5620,10 @@ paths:
                         - no_response
                         - manual_accepted
                         - manual_rejected
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
             examples:
               example-1:
                 value:
@@ -5549,7 +5646,6 @@ paths:
                     amount_cassa: 0
                     amount_withholding_tax: 0
                     amount_other_withholding_tax: 0
-                    permanent_token: 6pzguy12h45rn9yqwertp43t7ec90vr
                     h_margins: 15
                     v_margins: 16
                     show_payment_method: false
@@ -5729,6 +5825,10 @@ paths:
                           example: Italia
                           description: Country
                           default: Italia
+                        country_iso:
+                          type: string
+                          example: Italia
+                          description: Country Iso
                         email:
                           type: string
                           example: mario.rossi@example.it
@@ -6454,7 +6554,7 @@ paths:
                           discount_highlight:
                             type: boolean
                             nullable: true
-                          in_ddt:
+                          in_dn:
                             type: boolean
                             nullable: true
                           stock:
@@ -6810,11 +6910,26 @@ paths:
                       nullable: true
                     url:
                       type: string
-                      description: Public url of the document PDF file.
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the document PDF file.
+                    dn_url:
+                      type: string
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the attached delivery note PDF file.
+                    ai_url:
+                      type: string
+                      description: |-
+                        [Temporary] [Read Only]
+                         
+                        Public url of the accompanying invoice PDF file.
                     attachment_url:
                       type: string
                       description: >-
-                        [Read Only]
+                        [Temporary] [Read Only]
 
                         Public url of the attached file. Authomatically set if a
                         valid attachment token is passed via POST
@@ -6867,6 +6982,10 @@ paths:
                         - no_response
                         - manual_accepted
                         - manual_rejected
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
             examples:
               example-1:
                 value:
@@ -7550,14 +7669,25 @@ paths:
                             title: PaymentAccount
                     attachment_url:
                       type: string
-                      description: |-
+                      description: >-
+                        [Temporary]
+
                         [Read Only]
-                        Attachment url.
+
+
+                        Public url of the attached file. Authomatically set if a
+                        valid attachment
+
+                        token is passed via POST /received_documents or PUT
+
+                        /received_documents/{documentId}.
                       readOnly: true
                     attachment_preview_url:
                       type: string
                       description: |-
+                        [Temporary]
                         [Read Only]
+
                         Attachment preview url.
                       readOnly: true
                     attachment_token:
@@ -7954,14 +8084,25 @@ paths:
                             title: PaymentAccount
                     attachment_url:
                       type: string
-                      description: |-
+                      description: >-
+                        [Temporary]
+
                         [Read Only]
-                        Attachment url.
+
+
+                        Public url of the attached file. Authomatically set if a
+                        valid attachment
+
+                        token is passed via POST /received_documents or PUT
+
+                        /received_documents/{documentId}.
                       readOnly: true
                     attachment_preview_url:
                       type: string
                       description: |-
+                        [Temporary]
                         [Read Only]
+
                         Attachment preview url.
                       readOnly: true
                     attachment_token:
@@ -8356,14 +8497,25 @@ paths:
                             title: PaymentAccount
                     attachment_url:
                       type: string
-                      description: |-
+                      description: >-
+                        [Temporary]
+
                         [Read Only]
-                        Attachment url.
+
+
+                        Public url of the attached file. Authomatically set if a
+                        valid attachment
+
+                        token is passed via POST /received_documents or PUT
+
+                        /received_documents/{documentId}.
                       readOnly: true
                     attachment_preview_url:
                       type: string
                       description: |-
+                        [Temporary]
                         [Read Only]
+
                         Attachment preview url.
                       readOnly: true
                     attachment_token:
@@ -8731,14 +8883,25 @@ paths:
                             title: PaymentAccount
                     attachment_url:
                       type: string
-                      description: |-
+                      description: >-
+                        [Temporary]
+
                         [Read Only]
-                        Attachment url.
+
+
+                        Public url of the attached file. Authomatically set if a
+                        valid attachment
+
+                        token is passed via POST /received_documents or PUT
+
+                        /received_documents/{documentId}.
                       readOnly: true
                     attachment_preview_url:
                       type: string
                       description: |-
+                        [Temporary]
                         [Read Only]
+
                         Attachment preview url.
                       readOnly: true
                     attachment_token:
@@ -9513,7 +9676,7 @@ paths:
                     attachment_url:
                       type: string
                       description: >-
-                        [Read Only]
+                        [Temporary] [Read Only]
 
                         Absolute url of the attached file. Authomatically set if
                         a valid attachment token is passed via POST /taxes or
@@ -9662,7 +9825,7 @@ paths:
                     attachment_url:
                       type: string
                       description: >-
-                        [Read Only]
+                        [Temporary] [Read Only]
 
                         Absolute url of the attached file. Authomatically set if
                         a valid attachment token is passed via POST /taxes or
@@ -9850,7 +10013,7 @@ paths:
                     attachment_url:
                       type: string
                       description: >-
-                        [Read Only]
+                        [Temporary] [Read Only]
 
                         Absolute url of the attached file. Authomatically set if
                         a valid attachment token is passed via POST /archive or
@@ -9949,7 +10112,7 @@ paths:
                     attachment_url:
                       type: string
                       description: >-
-                        [Read Only]
+                        [Temporary] [Read Only]
 
                         Absolute url of the attached file. Authomatically set if
                         a valid attachment token is passed via POST /archive or
@@ -11493,6 +11656,110 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - settings:a
         - ManualAuth: []
+  /c/{company_id}/issued_documents/transform:
+    get:
+      summary: Transform issued document
+      tags:
+        - Issued Documents
+      responses:
+        '200':
+          $ref: '#/components/responses/TransformIssuedDocumentResponse'
+      operationId: transformIssuedDocument
+      description: Transforms the document.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: original_document_id
+          required: true
+          description: Original document id.
+        - schema:
+            type: string
+          in: query
+          name: new_type
+          description: New document type.
+          required: true
+        - schema:
+            type: integer
+            enum:
+              - 0
+              - 1
+          in: query
+          name: e_invoice
+          description: New document e_invoice.
+        - schema:
+            type: integer
+            enum:
+              - 0
+              - 1
+          in: query
+          name: transform_keep_copy
+          description: Keep the old document.
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+  /c/{company_id}/issued_documents/join:
+    get:
+      summary: Join issued documents
+      tags:
+        - Issued Documents
+      responses:
+        '200':
+          $ref: '#/components/responses/JoinIssuedDocumentsResponse'
+      operationId: joinIssuedDocuments
+      description: Joins issued documents.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
+      parameters:
+        - schema:
+            type: string
+            example: 1,2,3,4
+          in: query
+          name: ids
+          required: true
+          description: Ids of the documents.
+        - schema:
+            type: integer
+            enum:
+              - 0
+              - 1
+          in: query
+          name: group
+          description: Group items.
+        - schema:
+            type: integer
+            enum:
+              - 0
+              - 1
+          in: query
+          name: e_invoice
+          description: New document e_invoice.
+    parameters:
+      - name: company_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          example: '12345'
+        description: The ID of the company.
+  /c/{company_id}/emails:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+    get:
+      summary: List emails
+      tags:
+        - Emails
+      responses:
+        '200':
+          $ref: '#/components/responses/ListEmailsResponse'
+      operationId: listEmails
+      description: List Emails.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
 components:
   schemas: {}
   securitySchemes:
@@ -11517,6 +11784,9 @@ components:
             issued_documents.quotes:r: Read permission to the issued Quotes
             issued_documents.proformas:r: Read permission to the issued Proformas
             issued_documents.delivery_notes:r: Read permission to the issued Delivery Notes
+            issued_documents.work_reports:r: Read permission to the issued Work Reports
+            issued_documents.supplier_orders:r: Read permission to the issued Supplier Orders
+            issued_documents.self_invoices:r: Read permission to the issued Self Invoices
             issued_documents.invoices:a: Write permission to the issued Invoices
             issued_documents.credit_notes:a: Write permission to the issued Credit Notes
             issued_documents.receipts:a: Write permission to the issued issued Receipts
@@ -11524,6 +11794,9 @@ components:
             issued_documents.quotes:a: Write permission to the issued Quotes
             issued_documents.proformas:a: Write permission to the issued Proformas
             issued_documents.delivery_notes:a: Write permission to the issued Delivery Notes
+            issued_documents.work_reports:a: Write permission to the issued Work Reports
+            issued_documents.supplier_orders:a: Write permission to the issued Supplier Orders
+            issued_documents.self_invoices:a: Write permission to the issued Self Invoices
             received_documents:r: Read permission to the Received Documents
             received_documents:a: Write permission to the Received Documents
             stock:r: Read permission to the Stock movements
@@ -15658,6 +15931,11 @@ components:
                               example: Italia
                               description: Country
                               nullable: true
+                            country_iso:
+                              type: string
+                              example: Italia
+                              description: Country Iso
+                              nullable: true
                             email:
                               type: string
                               example: mario.rossi@example.it
@@ -16427,7 +16705,7 @@ components:
                               discount_highlight:
                                 type: boolean
                                 nullable: true
-                              in_ddt:
+                              in_dn:
                                 type: boolean
                                 nullable: true
                               stock:
@@ -16812,12 +17090,29 @@ components:
                           format: date
                         url:
                           type: string
-                          description: Public url of the document PDF file.
+                          description: |-
+                            [Temporary] [Read Only]
+                             
+                            Public url of the document PDF file.
+                          nullable: true
+                        dn_url:
+                          type: string
+                          description: |-
+                            [Temporary] [Read Only]
+                             
+                            Public url of the attached delivery note PDF file.
+                          nullable: true
+                        ai_url:
+                          type: string
+                          description: |-
+                            [Temporary] [Read Only]
+                             
+                            Public url of the accompanying invoice PDF file.
                           nullable: true
                         attachment_url:
                           type: string
                           description: >-
-                            [Read Only]
+                            [Temporary] [Read Only]
 
                             Public url of the attached file. Authomatically set
                             if a valid attachment token is passed via POST
@@ -16872,6 +17167,12 @@ components:
                             - no_response
                             - manual_accepted
                             - manual_rejected
+                          nullable: true
+                        created_at:
+                          type: string
+                          nullable: true
+                        updated_at:
+                          type: string
                           nullable: true
                     nullable: true
           examples:
@@ -17041,6 +17342,11 @@ components:
                         type: string
                         example: Italia
                         description: Country
+                        nullable: true
+                      country_iso:
+                        type: string
+                        example: Italia
+                        description: Country Iso
                         nullable: true
                       email:
                         type: string
@@ -17791,7 +18097,7 @@ components:
                         discount_highlight:
                           type: boolean
                           nullable: true
-                        in_ddt:
+                        in_dn:
                           type: boolean
                           nullable: true
                         stock:
@@ -18174,12 +18480,29 @@ components:
                     format: date
                   url:
                     type: string
-                    description: Public url of the document PDF file.
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the document PDF file.
+                    nullable: true
+                  dn_url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the attached delivery note PDF file.
+                    nullable: true
+                  ai_url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the accompanying invoice PDF file.
                     nullable: true
                   attachment_url:
                     type: string
                     description: >-
-                      [Read Only]
+                      [Temporary] [Read Only]
 
                       Public url of the attached file. Authomatically set if a
                       valid attachment token is passed via POST
@@ -18234,6 +18557,12 @@ components:
                       - manual_accepted
                       - manual_rejected
                     nullable: true
+                  created_at:
+                    type: string
+                    nullable: true
+                  updated_at:
+                    type: string
+                    nullable: true
                 nullable: true
           examples:
             example-1:
@@ -18266,7 +18595,6 @@ components:
                   amount_cassa: 0
                   amount_withholding_tax: 0
                   amount_other_withholding_tax: 0
-                  permanent_token: 6pzguy12h45rn9yqwertp43t7ec90vr
                   h_margins: 15
                   v_margins: 16
                   show_payment_method: false
@@ -18450,6 +18778,11 @@ components:
                         example: Italia
                         description: Country
                         nullable: true
+                      country_iso:
+                        type: string
+                        example: Italia
+                        description: Country Iso
+                        nullable: true
                       email:
                         type: string
                         example: mario.rossi@example.it
@@ -19199,7 +19532,7 @@ components:
                         discount_highlight:
                           type: boolean
                           nullable: true
-                        in_ddt:
+                        in_dn:
                           type: boolean
                           nullable: true
                         stock:
@@ -19582,12 +19915,29 @@ components:
                     format: date
                   url:
                     type: string
-                    description: Public url of the document PDF file.
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the document PDF file.
+                    nullable: true
+                  dn_url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the attached delivery note PDF file.
+                    nullable: true
+                  ai_url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the accompanying invoice PDF file.
                     nullable: true
                   attachment_url:
                     type: string
                     description: >-
-                      [Read Only]
+                      [Temporary] [Read Only]
 
                       Public url of the attached file. Authomatically set if a
                       valid attachment token is passed via POST
@@ -19642,6 +19992,12 @@ components:
                       - manual_accepted
                       - manual_rejected
                     nullable: true
+                  created_at:
+                    type: string
+                    nullable: true
+                  updated_at:
+                    type: string
+                    nullable: true
                 nullable: true
           examples:
             example-1:
@@ -19674,7 +20030,6 @@ components:
                   amount_cassa: 0
                   amount_withholding_tax: 0
                   amount_other_withholding_tax: 0
-                  permanent_token: 6pzguy12h45rn9yqwertp43t7ec90vr
                   h_margins: 15
                   v_margins: 16
                   show_payment_method: false
@@ -19858,6 +20213,11 @@ components:
                         example: Italia
                         description: Country
                         nullable: true
+                      country_iso:
+                        type: string
+                        example: Italia
+                        description: Country Iso
+                        nullable: true
                       email:
                         type: string
                         example: mario.rossi@example.it
@@ -20607,7 +20967,7 @@ components:
                         discount_highlight:
                           type: boolean
                           nullable: true
-                        in_ddt:
+                        in_dn:
                           type: boolean
                           nullable: true
                         stock:
@@ -20990,12 +21350,29 @@ components:
                     format: date
                   url:
                     type: string
-                    description: Public url of the document PDF file.
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the document PDF file.
+                    nullable: true
+                  dn_url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the attached delivery note PDF file.
+                    nullable: true
+                  ai_url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the accompanying invoice PDF file.
                     nullable: true
                   attachment_url:
                     type: string
                     description: >-
-                      [Read Only]
+                      [Temporary] [Read Only]
 
                       Public url of the attached file. Authomatically set if a
                       valid attachment token is passed via POST
@@ -21050,6 +21427,12 @@ components:
                       - manual_accepted
                       - manual_rejected
                     nullable: true
+                  created_at:
+                    type: string
+                    nullable: true
+                  updated_at:
+                    type: string
+                    nullable: true
                 nullable: true
           examples:
             example-1:
@@ -21082,7 +21465,6 @@ components:
                   amount_cassa: 0
                   amount_withholding_tax: 0
                   amount_other_withholding_tax: 0
-                  permanent_token: 6pzguy12h45rn9yqwertp43t7ec90vr
                   h_margins: 15
                   v_margins: 16
                   show_payment_method: false
@@ -23950,6 +24332,7 @@ components:
             properties:
               error:
                 type: object
+                nullable: true
                 properties:
                   message:
                     type: string
@@ -23957,16 +24340,21 @@ components:
                   validation_result:
                     type: object
                     nullable: true
-                nullable: true
+                    properties:
+                      xml_errors:
+                        type: array
+                        nullable: true
+                        items:
+                          type: string
               extra:
                 type: object
+                nullable: true
                 properties:
                   errors:
                     type: array
+                    nullable: true
                     items:
                       type: string
-                    nullable: true
-                nullable: true
     ListReceivedDocumentsResponse:
       description: Results list.
       content:
@@ -24346,15 +24734,26 @@ components:
                           nullable: true
                         attachment_url:
                           type: string
-                          description: |-
+                          description: >-
+                            [Temporary]
+
                             [Read Only]
-                            Attachment url.
+
+
+                            Public url of the attached file. Authomatically set
+                            if a valid attachment
+
+                            token is passed via POST /received_documents or PUT
+
+                            /received_documents/{documentId}.
                           readOnly: true
                           nullable: true
                         attachment_preview_url:
                           type: string
                           description: |-
+                            [Temporary]
                             [Read Only]
+
                             Attachment preview url.
                           readOnly: true
                           nullable: true
@@ -24791,15 +25190,26 @@ components:
                     nullable: true
                   attachment_url:
                     type: string
-                    description: |-
+                    description: >-
+                      [Temporary]
+
                       [Read Only]
-                      Attachment url.
+
+
+                      Public url of the attached file. Authomatically set if a
+                      valid attachment
+
+                      token is passed via POST /received_documents or PUT
+
+                      /received_documents/{documentId}.
                     readOnly: true
                     nullable: true
                   attachment_preview_url:
                     type: string
                     description: |-
+                      [Temporary]
                       [Read Only]
+
                       Attachment preview url.
                     readOnly: true
                     nullable: true
@@ -25181,15 +25591,26 @@ components:
                     nullable: true
                   attachment_url:
                     type: string
-                    description: |-
+                    description: >-
+                      [Temporary]
+
                       [Read Only]
-                      Attachment url.
+
+
+                      Public url of the attached file. Authomatically set if a
+                      valid attachment
+
+                      token is passed via POST /received_documents or PUT
+
+                      /received_documents/{documentId}.
                     readOnly: true
                     nullable: true
                   attachment_preview_url:
                     type: string
                     description: |-
+                      [Temporary]
                       [Read Only]
+
                       Attachment preview url.
                     readOnly: true
                     nullable: true
@@ -25571,15 +25992,26 @@ components:
                     nullable: true
                   attachment_url:
                     type: string
-                    description: |-
+                    description: >-
+                      [Temporary]
+
                       [Read Only]
-                      Attachment url.
+
+
+                      Public url of the attached file. Authomatically set if a
+                      valid attachment
+
+                      token is passed via POST /received_documents or PUT
+
+                      /received_documents/{documentId}.
                     readOnly: true
                     nullable: true
                   attachment_preview_url:
                     type: string
                     description: |-
+                      [Temporary]
                       [Read Only]
+
                       Attachment preview url.
                     readOnly: true
                     nullable: true
@@ -28159,7 +28591,7 @@ components:
                         attachment_url:
                           type: string
                           description: >-
-                            [Read Only]
+                            [Temporary] [Read Only]
 
                             Absolute url of the attached file. Authomatically
                             set if a valid attachment token is passed via POST
@@ -28306,7 +28738,7 @@ components:
                   attachment_url:
                     type: string
                     description: >-
-                      [Read Only]
+                      [Temporary] [Read Only]
 
                       Absolute url of the attached file. Authomatically set if a
                       valid attachment token is passed via POST /taxes or PUT
@@ -28420,7 +28852,7 @@ components:
                   attachment_url:
                     type: string
                     description: >-
-                      [Read Only]
+                      [Temporary] [Read Only]
 
                       Absolute url of the attached file. Authomatically set if a
                       valid attachment token is passed via POST /taxes or PUT
@@ -28533,7 +28965,7 @@ components:
                   attachment_url:
                     type: string
                     description: >-
-                      [Read Only]
+                      [Temporary] [Read Only]
 
                       Absolute url of the attached file. Authomatically set if a
                       valid attachment token is passed via POST /taxes or PUT
@@ -28676,7 +29108,7 @@ components:
                         attachment_url:
                           type: string
                           description: >-
-                            [Read Only]
+                            [Temporary] [Read Only]
 
                             Absolute url of the attached file. Authomatically
                             set if a valid attachment token is passed via POST
@@ -28754,7 +29186,7 @@ components:
                   attachment_url:
                     type: string
                     description: >-
-                      [Read Only]
+                      [Temporary] [Read Only]
 
                       Absolute url of the attached file. Authomatically set if a
                       valid attachment token is passed via POST /archive or PUT
@@ -28815,7 +29247,7 @@ components:
                   attachment_url:
                     type: string
                     description: >-
-                      [Read Only]
+                      [Temporary] [Read Only]
 
                       Absolute url of the attached file. Authomatically set if a
                       valid attachment token is passed via POST /archive or PUT
@@ -28877,7 +29309,7 @@ components:
                   attachment_url:
                     type: string
                     description: >-
-                      [Read Only]
+                      [Temporary] [Read Only]
 
                       Absolute url of the attached file. Authomatically set if a
                       valid attachment token is passed via POST /archive or PUT
@@ -31062,5 +31494,3125 @@ components:
                     iso: AL
                     fiscal_iso: AL
                     uic: '087'
+    TransformIssuedDocumentResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            title: TransformIssuedDocumentResponse
+            type: object
+            properties:
+              data:
+                title: IssuedDocument
+                type: object
+                description: ''
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of the document.
+                    nullable: true
+                  entity:
+                    title: Entity
+                    type: object
+                    description: ''
+                    properties:
+                      id:
+                        type: integer
+                        description: Unique identifier
+                        nullable: true
+                      code:
+                        type: string
+                        example: '123'
+                        description: Code.
+                        nullable: true
+                      name:
+                        type: string
+                        example: Rossi S.r.l.
+                        description: Name
+                        nullable: true
+                      type:
+                        title: EntityType
+                        type: string
+                        nullable: true
+                        default: null
+                        enum:
+                          - company
+                          - person
+                          - pa
+                          - condo
+                        description: Entity type.
+                      first_name:
+                        type: string
+                        description: First name.
+                        nullable: true
+                      last_name:
+                        type: string
+                        description: Last name.
+                        nullable: true
+                      contact_person:
+                        type: string
+                        nullable: true
+                      vat_number:
+                        type: string
+                        example: IT01234567890
+                        description: Vat number
+                        nullable: true
+                      tax_code:
+                        type: string
+                        example: RSSMRA44A12E890Q
+                        description: Tax code.
+                        nullable: true
+                      address_street:
+                        type: string
+                        example: Via dei tigli, 12
+                        description: Street address.
+                        nullable: true
+                      address_postal_code:
+                        type: string
+                        example: '24010'
+                        description: Postal code.
+                        nullable: true
+                      address_city:
+                        type: string
+                        example: Bergamo
+                        description: City.
+                        nullable: true
+                      address_province:
+                        type: string
+                        example: BG
+                        description: Province.
+                        nullable: true
+                      address_extra:
+                        type: string
+                        description: Address extra info.
+                        nullable: true
+                      country:
+                        type: string
+                        example: Italia
+                        description: Country
+                        nullable: true
+                      country_iso:
+                        type: string
+                        example: Italia
+                        description: Country Iso
+                        nullable: true
+                      email:
+                        type: string
+                        example: mario.rossi@example.it
+                        description: Email.
+                        nullable: true
+                      certified_email:
+                        type: string
+                        example: mario.rossi@pec.example.it
+                        description: Certified email.
+                        nullable: true
+                      phone:
+                        type: string
+                        description: Phone.
+                        nullable: true
+                      fax:
+                        type: string
+                        description: Fax.
+                        nullable: true
+                      notes:
+                        type: string
+                        description: Extra notes.
+                        nullable: true
+                      default_vat:
+                        type: object
+                        nullable: true
+                        properties:
+                          id:
+                            type: integer
+                            description: Unique identifier
+                            nullable: true
+                          value:
+                            type: number
+                            description: '[Read Only] Percentual value.'
+                            example: 22
+                            nullable: true
+                          description:
+                            type: string
+                            description: Short description.
+                            example: Non imponibile art. 123
+                            nullable: true
+                          notes:
+                            type: string
+                            description: Long description and notes shown in documents.
+                            example: >-
+                              IVA non imponibile ai sensi dell'articolo 123,
+                              comma 2
+                            nullable: true
+                          e_invoice:
+                            type: boolean
+                            description: Usable for e-invoices.
+                            nullable: true
+                          ei_type:
+                            type: string
+                            description: E-invoice type (natura).
+                            example: 2
+                            nullable: true
+                          ei_description:
+                            type: string
+                            description: E-invoice description.
+                            nullable: true
+                          editable:
+                            type: boolean
+                            description: |-
+                              [Read Only]
+                              Determine if this vat type is editable.
+                            readOnly: true
+                            nullable: true
+                          is_disabled:
+                            type: boolean
+                            description: Determine if the vat type is disabled.
+                            nullable: true
+                        title: VatType
+                        description: |-
+                          [Only for client]
+                          Default vat.
+                      default_payment_terms:
+                        type: integer
+                        example: 30
+                        description: |-
+                          [Only for client]
+                          Default payment terms.
+                        nullable: true
+                      default_payment_terms_type:
+                        title: PaymentTermsType
+                        type: string
+                        default: standard
+                        enum:
+                          - standard
+                          - end_of_month
+                        description: |-
+                          [Only for client]
+                          Default payment terms type.
+                        nullable: true
+                      default_payment_method:
+                        type: object
+                        title: PaymentMethod
+                        properties:
+                          id:
+                            type: integer
+                            nullable: true
+                            description: Unique identifier
+                          name:
+                            type: string
+                            description: Name of the payment method
+                            nullable: true
+                          type:
+                            title: PaymentMethodType
+                            type: string
+                            description: Method type.
+                            default: standard
+                            enum:
+                              - standard
+                              - riba
+                            nullable: true
+                          is_default:
+                            type: boolean
+                            description: Determines if this is the default payment method.
+                            nullable: true
+                          default_payment_account:
+                            type: object
+                            nullable: true
+                            description: ''
+                            properties:
+                              id:
+                                type: integer
+                                description: Unique identifier
+                                nullable: true
+                              name:
+                                type: string
+                                description: Payment account name.
+                                example: Conto Banca Intesa
+                                nullable: true
+                              type:
+                                title: PaymentAccountType
+                                type: string
+                                default: standard
+                                enum:
+                                  - standard
+                                  - bank
+                                description: Payment account type.
+                                nullable: true
+                              iban:
+                                type: string
+                                nullable: true
+                                description: Payment account iban.
+                              sia:
+                                type: string
+                                nullable: true
+                                description: Payment account sia.
+                              cuc:
+                                type: string
+                                description: Payment account cuc.
+                                nullable: true
+                              virtual:
+                                type: boolean
+                                description: Determine if the payment method is virtual.
+                                nullable: true
+                            title: PaymentAccount
+                          details:
+                            maxItems: 5
+                            type: array
+                            nullable: true
+                            description: Method details rows
+                            items:
+                              title: PaymentMethodDetails
+                              type: object
+                              properties:
+                                title:
+                                  type: string
+                                  description: Details title.
+                                  nullable: true
+                                description:
+                                  type: string
+                                  description: Details description.
+                                  nullable: true
+                          bank_iban:
+                            type: string
+                            description: Bank iban
+                            nullable: true
+                          bank_name:
+                            type: string
+                            description: Bank name
+                            nullable: true
+                          bank_beneficiary:
+                            type: string
+                            description: Bank beneficiary
+                            nullable: true
+                          ei_payment_method:
+                            type: string
+                            description: E-invoice payment method
+                            nullable: true
+                        description: |-
+                          [Only for client]
+                          Default payment method.
+                        nullable: true
+                      bank_name:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Bank name.
+                        nullable: true
+                      bank_iban:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Iban.
+                        nullable: true
+                      bank_swift_code:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Bank swift code.
+                        nullable: true
+                      shipping_address:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Shipping address.
+                        nullable: true
+                      e_invoice:
+                        type: boolean
+                        description: |-
+                          [Only for client]
+                          Use e-invoices.
+                        nullable: true
+                      ei_code:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          E-invoices code.
+                        nullable: true
+                      has_intent_declaration:
+                        type: boolean
+                        description: |-
+                          [Only for client]
+                          Has intent declaration.
+                        nullable: true
+                      intent_declaration_protocol_number:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Intent declaration protocol number.
+                        nullable: true
+                      intent_declaration_protocol_date:
+                        type: string
+                        format: date
+                        description: |-
+                          [Only for client]
+                          Intent declaration protocol date.
+                        nullable: true
+                      created_at:
+                        type: string
+                        nullable: true
+                      updated_at:
+                        type: string
+                        nullable: true
+                    nullable: true
+                  type:
+                    type: string
+                    default: invoice
+                    enum:
+                      - invoice
+                      - quote
+                      - proforma
+                      - receipt
+                      - delivery_note
+                      - credit_note
+                      - order
+                      - work_report
+                      - supplier_order
+                      - self_own_invoice
+                      - self_supplier_invoice
+                    description: Issued document type.
+                    nullable: true
+                  number:
+                    type: integer
+                    description: |-
+                      Number of the document
+                      [If not specified, next number is used]
+                    example: 1
+                    nullable: true
+                  numeration:
+                    type: string
+                    description: |-
+                      Numeration of the document
+                      [Not available if type=delivery_note]
+                    example: /A
+                    nullable: true
+                  date:
+                    type: string
+                    description: |-
+                      Date of the document
+                      [If not specified, today date is used]
+                    format: date
+                    nullable: true
+                  year:
+                    type: integer
+                    description: Invoice year.
+                    nullable: true
+                  currency:
+                    type: object
+                    description: ''
+                    properties:
+                      id:
+                        type: string
+                        description: Currency code.
+                        example: EUR
+                        nullable: true
+                      symbol:
+                        type: string
+                        description: Currency symbol.
+                        example: €
+                        nullable: true
+                      exchange_rate:
+                        type: string
+                        nullable: true
+                        description: Currency exchange rate (EUR to this).
+                        example: '1'
+                      html_symbol:
+                        type: string
+                        example: EUR
+                        description: Currency html code.
+                        nullable: true
+                    title: Currency
+                    nullable: true
+                  language:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        description: Language code.
+                        nullable: true
+                      name:
+                        type: string
+                        description: Language extended name.
+                        nullable: true
+                    title: Language
+                    nullable: true
+                  subject:
+                    type: string
+                    description: Issued document subject.
+                    nullable: true
+                  visible_subject:
+                    type: string
+                    description: Issued document visible subject.
+                    nullable: true
+                  rc_center:
+                    type: string
+                    description: Revenue center [or cost center if type=supplier_order].
+                    nullable: true
+                  notes:
+                    type: string
+                    description: Issued document extra notes.
+                    nullable: true
+                  rivalsa:
+                    type: number
+                    description: '"Rivalsa INPS" percentual value'
+                    nullable: true
+                  cassa:
+                    type: number
+                    description: '"Cassa previdenziale" percentual value'
+                    nullable: true
+                  amount_cassa:
+                    type: number
+                    description: |-
+                      [Read Only]
+                      Cassa amount.
+                    readOnly: true
+                    nullable: true
+                  cassa_taxable:
+                    type: number
+                    description: Cassa taxable percentage
+                    nullable: true
+                  amount_cassa_taxable:
+                    type: number
+                    nullable: true
+                    description: |-
+                      [Can be set only if cassa_taxable is NULL]
+                      Cassa2 taxable amount
+                  cassa2:
+                    type: number
+                    description: '"Cassa previdenziale 2" percentual value'
+                    nullable: true
+                  amount_cassa2:
+                    type: number
+                    nullable: true
+                    description: |-
+                      [Read Only]
+                      Cassa amount.
+                    readOnly: true
+                  cassa2_taxable:
+                    type: number
+                    description: Cassa2 taxable percentage
+                    nullable: true
+                  amount_cassa2_taxable:
+                    type: number
+                    nullable: true
+                    description: |-
+                      [Can be set only if cassa2_taxable is NULL]
+                      Cassa2 taxable amount
+                  global_cassa_taxable:
+                    type: number
+                    description: Global cassa taxable percentage
+                    nullable: true
+                  amount_global_cassa_taxable:
+                    type: number
+                    nullable: true
+                    description: |-
+                      [Can be set only if global_cassa_taxable is NULL]
+                      Global cassa taxable amount
+                  withholding_tax:
+                    type: number
+                    description: Withholding tax (ritenuta d'acconto) percentual value
+                    nullable: true
+                  withholding_tax_taxable:
+                    type: number
+                    description: Withholding tax taxable (imponibile) percentual value
+                    nullable: true
+                  other_withholding_tax:
+                    type: number
+                    description: Other withholding tax (altra ritenuta) percentual value
+                    nullable: true
+                  stamp_duty:
+                    type: number
+                    description: |-
+                      Stamp duty value
+                      [0 if not present]
+                    nullable: true
+                  payment_method:
+                    type: object
+                    title: PaymentMethod
+                    properties:
+                      id:
+                        type: integer
+                        nullable: true
+                        description: Unique identifier
+                      name:
+                        type: string
+                        description: Name of the payment method
+                        nullable: true
+                      type:
+                        title: PaymentMethodType
+                        type: string
+                        description: Method type.
+                        default: standard
+                        enum:
+                          - standard
+                          - riba
+                        nullable: true
+                      is_default:
+                        type: boolean
+                        description: Determines if this is the default payment method.
+                        nullable: true
+                      default_payment_account:
+                        type: object
+                        nullable: true
+                        description: ''
+                        properties:
+                          id:
+                            type: integer
+                            description: Unique identifier
+                            nullable: true
+                          name:
+                            type: string
+                            description: Payment account name.
+                            example: Conto Banca Intesa
+                            nullable: true
+                          type:
+                            title: PaymentAccountType
+                            type: string
+                            default: standard
+                            enum:
+                              - standard
+                              - bank
+                            description: Payment account type.
+                            nullable: true
+                          iban:
+                            type: string
+                            nullable: true
+                            description: Payment account iban.
+                          sia:
+                            type: string
+                            nullable: true
+                            description: Payment account sia.
+                          cuc:
+                            type: string
+                            description: Payment account cuc.
+                            nullable: true
+                          virtual:
+                            type: boolean
+                            description: Determine if the payment method is virtual.
+                            nullable: true
+                        title: PaymentAccount
+                      details:
+                        maxItems: 5
+                        type: array
+                        nullable: true
+                        description: Method details rows
+                        items:
+                          title: PaymentMethodDetails
+                          type: object
+                          properties:
+                            title:
+                              type: string
+                              description: Details title.
+                              nullable: true
+                            description:
+                              type: string
+                              description: Details description.
+                              nullable: true
+                      bank_iban:
+                        type: string
+                        description: Bank iban
+                        nullable: true
+                      bank_name:
+                        type: string
+                        description: Bank name
+                        nullable: true
+                      bank_beneficiary:
+                        type: string
+                        description: Bank beneficiary
+                        nullable: true
+                      ei_payment_method:
+                        type: string
+                        description: E-invoice payment method
+                        nullable: true
+                    nullable: true
+                  use_split_payment:
+                    type: boolean
+                    description: Use split payment
+                    nullable: true
+                  use_gross_prices:
+                    type: boolean
+                    description: Use gross prices
+                    nullable: true
+                  e_invoice:
+                    type: boolean
+                    description: Indicates if this is an e-invoice.
+                    nullable: true
+                  ei_data:
+                    type: object
+                    nullable: true
+                    description: |-
+                      E-invoice data.
+                      [Only if e_invoice=true]
+                    properties:
+                      vat_kind:
+                        title: VatKind
+                        type: string
+                        nullable: true
+                        description: Vat kind (esigibilità IVA).
+                        default: null
+                        enum:
+                          - null
+                          - I
+                          - D
+                          - S
+                      original_document_type:
+                        title: OriginalDocumentType
+                        type: string
+                        nullable: true
+                        description: Type of document followed by the the current invoice.
+                        default: ordine
+                        enum:
+                          - ordine
+                          - contratto
+                          - convenzione
+                      od_number:
+                        type: string
+                        nullable: true
+                        description: Original document number.
+                      od_date:
+                        type: string
+                        description: Original document date.
+                        format: date
+                        nullable: true
+                      cig:
+                        type: string
+                        nullable: true
+                        description: CIG.
+                      cup:
+                        type: string
+                        nullable: true
+                        description: CUP.
+                      payment_method:
+                        type: string
+                        nullable: true
+                        description: >-
+                          Payment method (see
+                          https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.1/Rappresentazione-tabellare-fattura-ordinaria.pdf
+                          for the accepted values of ModalitaPagamento).
+                      bank_name:
+                        type: string
+                        nullable: true
+                        description: Bank name.
+                      bank_iban:
+                        type: string
+                        nullable: true
+                        description: IBAN.
+                      bank_beneficiary:
+                        type: string
+                        nullable: true
+                        description: Bank beneficiary.
+                      invoice_number:
+                        type: string
+                        description: Invoice number.
+                        nullable: true
+                      invoice_date:
+                        type: string
+                        format: date
+                        description: Invoice date.
+                        nullable: true
+                  ei_cassa_type:
+                    type: string
+                    nullable: true
+                    description: E-invoice cassa type
+                  ei_cassa2_type:
+                    type: string
+                    nullable: true
+                    description: E-invoice cassa2 type
+                  ei_withholding_tax_causal:
+                    type: string
+                    nullable: true
+                    description: E-invoice withholding tax causal
+                  ei_other_withholding_tax_type:
+                    type: string
+                    nullable: true
+                    description: E-invoice other withholding tax type
+                  ei_other_withholding_tax_causal:
+                    type: string
+                    nullable: true
+                    description: E-invoice other withholding tax causal
+                  items_list:
+                    type: array
+                    nullable: true
+                    items:
+                      title: IssuedDocumentItemsListItem
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier.
+                          nullable: true
+                        product_id:
+                          type: integer
+                          nullable: true
+                          description: Unique identifier of the product.
+                          example: 1234
+                        code:
+                          type: string
+                          description: Product code.
+                          example: '239874892374982'
+                          nullable: true
+                        name:
+                          type: string
+                          description: Product name.
+                          example: Water bottle
+                          nullable: true
+                        category:
+                          type: string
+                          description: Product category
+                          nullable: true
+                        description:
+                          type: string
+                          description: Product description.
+                          nullable: true
+                        qty:
+                          type: number
+                          description: Items quantity,
+                          nullable: true
+                        measure:
+                          type: string
+                          description: Item measure.
+                          nullable: true
+                        net_price:
+                          type: number
+                          description: Net price.
+                          example: 1.23
+                          nullable: true
+                        gross_price:
+                          type: number
+                          nullable: true
+                          description: Gross price.
+                          example: 1.45
+                        vat:
+                          type: object
+                          nullable: true
+                          properties:
+                            id:
+                              type: integer
+                              description: Unique identifier
+                              nullable: true
+                            value:
+                              type: number
+                              description: '[Read Only] Percentual value.'
+                              example: 22
+                              nullable: true
+                            description:
+                              type: string
+                              description: Short description.
+                              example: Non imponibile art. 123
+                              nullable: true
+                            notes:
+                              type: string
+                              description: Long description and notes shown in documents.
+                              example: >-
+                                IVA non imponibile ai sensi dell'articolo 123,
+                                comma 2
+                              nullable: true
+                            e_invoice:
+                              type: boolean
+                              description: Usable for e-invoices.
+                              nullable: true
+                            ei_type:
+                              type: string
+                              description: E-invoice type (natura).
+                              example: 2
+                              nullable: true
+                            ei_description:
+                              type: string
+                              description: E-invoice description.
+                              nullable: true
+                            editable:
+                              type: boolean
+                              description: |-
+                                [Read Only]
+                                Determine if this vat type is editable.
+                              readOnly: true
+                              nullable: true
+                            is_disabled:
+                              type: boolean
+                              description: Determine if the vat type is disabled.
+                              nullable: true
+                          title: VatType
+                          description: ''
+                        not_taxable:
+                          type: boolean
+                          nullable: true
+                        apply_withholding_taxes:
+                          type: boolean
+                          description: Apply withholding taxes, rivalsa and cassa.
+                          nullable: true
+                        discount:
+                          type: number
+                          description: Discount percentual value.
+                          nullable: true
+                        discount_highlight:
+                          type: boolean
+                          nullable: true
+                        in_dn:
+                          type: boolean
+                          nullable: true
+                        stock:
+                          type: boolean
+                          nullable: true
+                        ei_raw:
+                          type: object
+                          description: Advanced raw attributes for e-invoices.
+                          nullable: true
+                  payments_list:
+                    type: array
+                    nullable: true
+                    items:
+                      title: IssuedDocumentPaymentsListItem
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier.
+                          nullable: true
+                        due_date:
+                          type: string
+                          description: Due date.
+                          format: date
+                          example: '2018-04-03'
+                          nullable: true
+                        amount:
+                          type: number
+                          description: Payment amount.
+                          example: 1.45
+                          nullable: true
+                        status:
+                          title: IssuedDocumentStatus
+                          type: string
+                          description: Payment status.
+                          default: not_paid
+                          enum:
+                            - not_paid
+                            - paid
+                            - reversed
+                          nullable: true
+                        payment_account:
+                          type: object
+                          nullable: true
+                          description: ''
+                          properties:
+                            id:
+                              type: integer
+                              description: Unique identifier
+                              nullable: true
+                            name:
+                              type: string
+                              description: Payment account name.
+                              example: Conto Banca Intesa
+                              nullable: true
+                            type:
+                              title: PaymentAccountType
+                              type: string
+                              default: standard
+                              enum:
+                                - standard
+                                - bank
+                              description: Payment account type.
+                              nullable: true
+                            iban:
+                              type: string
+                              nullable: true
+                              description: Payment account iban.
+                            sia:
+                              type: string
+                              nullable: true
+                              description: Payment account sia.
+                            cuc:
+                              type: string
+                              description: Payment account cuc.
+                              nullable: true
+                            virtual:
+                              type: boolean
+                              description: Determine if the payment method is virtual.
+                              nullable: true
+                          title: PaymentAccount
+                        paid_date:
+                          type: string
+                          description: |-
+                            Payment date.
+                            [Only if status is paid]
+                          format: date
+                          example: '2018-04-03'
+                          nullable: true
+                        ei_raw:
+                          type: object
+                          nullable: true
+                          description: Advanced raw attributes for e-invoices.
+                        payment_terms:
+                          type: object
+                          properties:
+                            days:
+                              type: integer
+                              nullable: true
+                              description: >-
+                                The number of days by which the payment must be
+                                made.
+                            type:
+                              title: PaymentTermsType
+                              type: string
+                              default: standard
+                              enum:
+                                - standard
+                                - end_of_month
+                              description: Payment terms Type.
+                              nullable: true
+                  template:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: Unique identifier.
+                        example: 123
+                        nullable: true
+                      name:
+                        type: string
+                        description: Template name.
+                        example: Light Smoke
+                        nullable: true
+                      type:
+                        type: string
+                        description: Template type.
+                        nullable: true
+                    title: DocumentTemplate
+                    nullable: true
+                  delivery_note_template:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: Unique identifier.
+                        example: 123
+                        nullable: true
+                      name:
+                        type: string
+                        description: Template name.
+                        example: Light Smoke
+                        nullable: true
+                      type:
+                        type: string
+                        description: Template type.
+                        nullable: true
+                    title: DocumentTemplate
+                    nullable: true
+                  acc_inv_template:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: Unique identifier.
+                        example: 123
+                        nullable: true
+                      name:
+                        type: string
+                        description: Template name.
+                        example: Light Smoke
+                        nullable: true
+                      type:
+                        type: string
+                        description: Template type.
+                        nullable: true
+                    title: DocumentTemplate
+                    nullable: true
+                  h_margins:
+                    type: integer
+                    description: Horizontal margins.
+                    nullable: true
+                  v_margins:
+                    type: integer
+                    description: Vertical margins.
+                    nullable: true
+                  show_payments:
+                    type: boolean
+                    description: >-
+                      Shows the expiration dates of the payments on the
+                      document.
+                    nullable: true
+                  show_payment_method:
+                    type: boolean
+                    description: Show the payment method details on the document.
+                    nullable: true
+                  show_totals:
+                    title: ShowTotalsMode
+                    type: string
+                    description: Totals mode.
+                    default: all
+                    enum:
+                      - none
+                      - nets
+                      - all
+                    nullable: true
+                  show_paypal_button:
+                    type: boolean
+                    description: Show paypal button
+                    nullable: true
+                  show_notification_button:
+                    type: boolean
+                    description: Show notification button
+                    nullable: true
+                  show_tspay_button:
+                    type: boolean
+                    description: Show ts pay button.
+                    nullable: true
+                  delivery_note:
+                    type: boolean
+                    nullable: true
+                  accompanying_invoice:
+                    type: boolean
+                    description: Attach an accompanying invoice.
+                    nullable: true
+                  dn_number:
+                    type: integer
+                    description: Number (for the attached delivery note).
+                    nullable: true
+                  dn_date:
+                    type: string
+                    description: Date (for the attached delivery note).
+                    format: date
+                    nullable: true
+                  dn_ai_packages_number:
+                    type: string
+                    nullable: true
+                    description: Number of packages (for the attached delivery note).
+                  dn_ai_weight:
+                    type: string
+                    nullable: true
+                    description: Weight (for the attached delivery note).
+                  dn_ai_causal:
+                    type: string
+                    nullable: true
+                    description: Causal (for the attached delivery note).
+                  dn_ai_destination:
+                    type: string
+                    nullable: true
+                    description: Destination (for the attached delivery note).
+                  dn_ai_transporter:
+                    type: string
+                    nullable: true
+                    description: Transporter (for the attached delivery note).
+                  dn_ai_notes:
+                    type: string
+                    nullable: true
+                    description: Notes (for the attached delivery note).
+                  is_marked:
+                    type: boolean
+                    description: This is true if the document is marked.
+                    nullable: true
+                  amount_net:
+                    type: number
+                    description: |-
+                      [Read Only]
+                      Total net amount (competenze).
+                    readOnly: true
+                    nullable: true
+                  amount_vat:
+                    type: number
+                    description: |-
+                      [Read Only]
+                      Total vat amount (IVA).
+                    readOnly: true
+                    nullable: true
+                  amount_gross:
+                    type: number
+                    description: |-
+                      [Read Only]
+                      Total gross amount (totale documento).
+                    readOnly: true
+                    nullable: true
+                  amount_due_discount:
+                    type: number
+                    description: Amount due discount
+                    nullable: true
+                  amount_rivalsa:
+                    type: number
+                    description: |-
+                      [Read Only]
+                      Rivalsa amount.
+                    readOnly: true
+                    nullable: true
+                  amount_rivalsa_taxable:
+                    type: number
+                    nullable: true
+                    description: Taxable rivalsa amount
+                  amount_withholding_tax:
+                    type: number
+                    description: |-
+                      [Read Only]
+                      Withholding tax amount (ritenuta d'acconto).
+                    readOnly: true
+                    nullable: true
+                  amount_withholding_tax_taxable:
+                    type: number
+                    nullable: true
+                    description: Taxable withholding tax amount
+                  amount_other_withholding_tax:
+                    type: number
+                    description: |-
+                      [Read Only]
+                      Other withholding tax amount (altra ritenuta).
+                    readOnly: true
+                    nullable: true
+                  amount_other_withholding_tax_taxable:
+                    type: number
+                    nullable: true
+                    description: Taxable other withholding tax amount
+                  amount_enasarco_taxable:
+                    type: number
+                    nullable: true
+                    description: Taxable enasarco amount
+                  extra_data:
+                    type: object
+                    nullable: true
+                    description: >-
+                      Extra data.
+
+                      TS fields follow the technical specifications provided by
+                      "Sistema Tessera Sanitaria".
+                    properties:
+                      show_sofort_button:
+                        type: boolean
+                        nullable: true
+                      multifatture_sent:
+                        type: integer
+                        nullable: true
+                      ts_communication:
+                        type: boolean
+                        nullable: true
+                      ts_flag_tipo_spesa:
+                        type: number
+                        description: >-
+                          1 => TK (Ticket di pronto soccorso); 2 => SR (Visita
+                          in intramoenia)
+                        nullable: true
+                      ts_pagamento_tracciato:
+                        type: boolean
+                        nullable: true
+                      ts_tipo_spesa:
+                        type: string
+                        description: >-
+                          Can be [ 'TK', 'FC', 'FV', 'SV', 'SP', 'AD', 'AS',
+                          'SR', 'CT', 'PI', 'IC', 'AA' ]. Refer to the technical
+                          specifications to learn more.
+                        nullable: true
+                      ts_opposizione:
+                        type: boolean
+                        nullable: true
+                      ts_status:
+                        type: integer
+                        nullable: true
+                      ts_file_id:
+                        type: string
+                        nullable: true
+                      ts_sent_date:
+                        type: string
+                        nullable: true
+                        format: date
+                      ts_full_amount:
+                        type: boolean
+                        nullable: true
+                      imported_by:
+                        type: string
+                        nullable: true
+                      ts_single_sending:
+                        type: boolean
+                        nullable: true
+                  seen_date:
+                    type: string
+                    nullable: true
+                    description: Date when the client/supplier has seen the document.
+                    format: date
+                  next_due_date:
+                    type: string
+                    nullable: true
+                    description: Date of the next not paid payment.
+                    format: date
+                  url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the document PDF file.
+                    nullable: true
+                  dn_url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the attached delivery note PDF file.
+                    nullable: true
+                  ai_url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the accompanying invoice PDF file.
+                    nullable: true
+                  attachment_url:
+                    type: string
+                    description: >-
+                      [Temporary] [Read Only]
+
+                      Public url of the attached file. Authomatically set if a
+                      valid attachment token is passed via POST
+                      /issued_documents or PUT /issued_documents/{documentId}.
+                    readOnly: true
+                    nullable: true
+                  attachment_token:
+                    type: string
+                    nullable: true
+                    description: >-
+                      [Write Only]
+
+                      Attachment token returned by POST
+                      /issued_documents/attachment. Used to attach the file
+                      already uploaded.
+                    writeOnly: true
+                  ei_raw:
+                    type: object
+                    nullable: true
+                    description: Advanced raw attributes for e-invoices.
+                  ei_status:
+                    type: string
+                    description: |
+                      [Read only] Status of the e-invoice.
+                        * `attempt` - We are trying to send the invoice, please wait up to 2 hours
+                        * `missing` - The invoice is missing
+                        * `not_sent` - The invoice has yet to be sent
+                        * `sent` - The invoice was sent
+                        * `pending` - The checks for the digital signature and sending are in progress
+                        * `processing` - The SDI is delivering the invoice to the customer
+                        * `error` - An error occurred while handling the invoice, please try to resend it or contact support
+                        * `discarded` - The invoice has been rejected by the SDI, so it must be corrected and re-sent
+                        * `not_delivered` - The SDI was unable to deliver the invoice
+                        * `accepted` - The customer accepted the invoice
+                        * `rejected` - The customer rejected the invoice, so it must be corrected
+                        * `no_response` - A response has not yet been received whithin the deadline, contact the customer to ascertain the status of the invoice
+                        * `manual_accepted` - The customer accepted the invoice
+                        * `manual_rejected` - The customer rejected the invoice
+                    enum:
+                      - attempt
+                      - missing
+                      - not_sent
+                      - sent
+                      - pending
+                      - processing
+                      - error
+                      - discarded
+                      - not_delivered
+                      - accepted
+                      - rejected
+                      - no_response
+                      - manual_accepted
+                      - manual_rejected
+                    nullable: true
+                  created_at:
+                    type: string
+                    nullable: true
+                  updated_at:
+                    type: string
+                    nullable: true
+                nullable: true
+              options:
+                title: IssuedDocumentOptions
+                type: object
+                properties:
+                  fix_payments:
+                    type: boolean
+                    description: >-
+                      Fixes your last payment amount to match your document
+                      total
+                    nullable: true
+                  create_from:
+                    type: array
+                    description: Original documents ids [only for join/transform]
+                    items:
+                      type: string
+                    nullable: true
+                  transform:
+                    type: boolean
+                    description: Tranform a document. [only for transform]
+                    nullable: true
+                  keep_copy:
+                    type: boolean
+                    description: Keep original document [only for transform]
+                    nullable: true
+                  join_type:
+                    type: string
+                    description: Join type [only for join]
+                    nullable: true
+                nullable: true
+          examples:
+            example-1:
+              value:
+                data:
+                  type: invoice
+                  year: 2022
+                  numeration: ''
+                  subject: ''
+                  visible_subject: ''
+                  rc_center: ''
+                  ei_cassa_type: null
+                  ei_withholding_tax_causal: null
+                  ei_other_withholding_tax_type: null
+                  ei_other_withholding_tax_causal: null
+                  stamp_duty: 0
+                  use_gross_prices: false
+                  e_invoice: false
+                  agyo_company_id: null
+                  agyo_id: null
+                  agyo_sent_at: null
+                  delivery_note: false
+                  accompanying_invoice: false
+                  amount_net: 68.18
+                  amount_vat: 6.82
+                  amount_gross: 75
+                  amount_due_discount: 0
+                  amount_rivalsa: 0
+                  amount_cassa: 0
+                  amount_withholding_tax: 0
+                  amount_other_withholding_tax: 0
+                  h_margins: 15
+                  v_margins: 16
+                  show_payment_method: false
+                  show_payments: true
+                  show_totals: all
+                  show_paypal_button: true
+                  show_notification_button: false
+                  is_marked: false
+                  created_at: '2022-08-13 09:30:20'
+                  updated_at: '2022-08-23 05:34:20'
+                  entity:
+                    id: 54321
+                    name: Mary Red S.r.L.
+                    vat_number: IT05432181211
+                    tax_code: IT05432181211
+                    address_street: Via Italia, 66
+                    address_postal_code: '20900'
+                    address_city: Milano
+                    address_province: MI
+                    address_extra: ''
+                    country: Italia
+                    certified_email: mary@pec.red.com
+                    ei_code: ABCXCR1
+                  date: '2021-08-20'
+                  number: 1
+                  currency:
+                    id: EUR
+                    exchange_rate: '1.00000'
+                    symbol: €
+                  language:
+                    code: it
+                    name: Italiano
+                  notes: ''
+                  rivalsa: 0
+                  cassa: 0
+                  withholding_tax: 0
+                  withholding_tax_taxable: 100
+                  other_withholding_tax: 0
+                  payment_method:
+                    id: 4
+                    name: Credit card
+                  use_split_payment: false
+                  merged_in: null
+                  original_document: null
+                  items_list:
+                    - product_id: 5432
+                      code: SG3
+                      name: Soggiorno
+                      measure: ''
+                      net_price: 68.18182
+                      category: ''
+                      id: 277876033
+                      gross_price: 75
+                      apply_withholding_taxes: true
+                      discount: 0
+                      discount_highlight: false
+                      in_dn: false
+                      qty: 1
+                      vat:
+                        id: 3
+                        value: 10
+                        description: ''
+                      stock: false
+                      description: ''
+                      not_taxable: false
+                  payments_list:
+                    - amount: 75
+                      due_date: '2020-08-23'
+                      paid_date: null
+                      id: 69078013
+                      payment_terms:
+                        days: 0
+                        type: standard
+                      status: not_paid
+                  attachment_url: kdijrnf893hnwkfk45f50f.pdf
+                  seen_date: null
+                  next_due_date: '2020-08-23'
+                  template:
+                    id: 2821
+                    name: Light Smoke
+                  extra_data: null
+                  url: y12h45rn9yf2mse0p43t7ec90vr.pdf
+                  locked: false
+                  has_ts_pay_pending_payment: false
+                  show_tspay_button: false
+                  pay_with_tspay_url: null
+                options:
+                  create_from:
+                    - '82112399'
+                  transform: true
+                  keep_copy: true
+    JoinIssuedDocumentsResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            title: JoinIssuedDocumentsResponse
+            type: object
+            properties:
+              data:
+                title: IssuedDocument
+                type: object
+                description: ''
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of the document.
+                    nullable: true
+                  entity:
+                    title: Entity
+                    type: object
+                    description: ''
+                    properties:
+                      id:
+                        type: integer
+                        description: Unique identifier
+                        nullable: true
+                      code:
+                        type: string
+                        example: '123'
+                        description: Code.
+                        nullable: true
+                      name:
+                        type: string
+                        example: Rossi S.r.l.
+                        description: Name
+                        nullable: true
+                      type:
+                        title: EntityType
+                        type: string
+                        nullable: true
+                        default: null
+                        enum:
+                          - company
+                          - person
+                          - pa
+                          - condo
+                        description: Entity type.
+                      first_name:
+                        type: string
+                        description: First name.
+                        nullable: true
+                      last_name:
+                        type: string
+                        description: Last name.
+                        nullable: true
+                      contact_person:
+                        type: string
+                        nullable: true
+                      vat_number:
+                        type: string
+                        example: IT01234567890
+                        description: Vat number
+                        nullable: true
+                      tax_code:
+                        type: string
+                        example: RSSMRA44A12E890Q
+                        description: Tax code.
+                        nullable: true
+                      address_street:
+                        type: string
+                        example: Via dei tigli, 12
+                        description: Street address.
+                        nullable: true
+                      address_postal_code:
+                        type: string
+                        example: '24010'
+                        description: Postal code.
+                        nullable: true
+                      address_city:
+                        type: string
+                        example: Bergamo
+                        description: City.
+                        nullable: true
+                      address_province:
+                        type: string
+                        example: BG
+                        description: Province.
+                        nullable: true
+                      address_extra:
+                        type: string
+                        description: Address extra info.
+                        nullable: true
+                      country:
+                        type: string
+                        example: Italia
+                        description: Country
+                        nullable: true
+                      country_iso:
+                        type: string
+                        example: Italia
+                        description: Country Iso
+                        nullable: true
+                      email:
+                        type: string
+                        example: mario.rossi@example.it
+                        description: Email.
+                        nullable: true
+                      certified_email:
+                        type: string
+                        example: mario.rossi@pec.example.it
+                        description: Certified email.
+                        nullable: true
+                      phone:
+                        type: string
+                        description: Phone.
+                        nullable: true
+                      fax:
+                        type: string
+                        description: Fax.
+                        nullable: true
+                      notes:
+                        type: string
+                        description: Extra notes.
+                        nullable: true
+                      default_vat:
+                        type: object
+                        nullable: true
+                        properties:
+                          id:
+                            type: integer
+                            description: Unique identifier
+                            nullable: true
+                          value:
+                            type: number
+                            description: '[Read Only] Percentual value.'
+                            example: 22
+                            nullable: true
+                          description:
+                            type: string
+                            description: Short description.
+                            example: Non imponibile art. 123
+                            nullable: true
+                          notes:
+                            type: string
+                            description: Long description and notes shown in documents.
+                            example: >-
+                              IVA non imponibile ai sensi dell'articolo 123,
+                              comma 2
+                            nullable: true
+                          e_invoice:
+                            type: boolean
+                            description: Usable for e-invoices.
+                            nullable: true
+                          ei_type:
+                            type: string
+                            description: E-invoice type (natura).
+                            example: 2
+                            nullable: true
+                          ei_description:
+                            type: string
+                            description: E-invoice description.
+                            nullable: true
+                          editable:
+                            type: boolean
+                            description: |-
+                              [Read Only]
+                              Determine if this vat type is editable.
+                            readOnly: true
+                            nullable: true
+                          is_disabled:
+                            type: boolean
+                            description: Determine if the vat type is disabled.
+                            nullable: true
+                        title: VatType
+                        description: |-
+                          [Only for client]
+                          Default vat.
+                      default_payment_terms:
+                        type: integer
+                        example: 30
+                        description: |-
+                          [Only for client]
+                          Default payment terms.
+                        nullable: true
+                      default_payment_terms_type:
+                        title: PaymentTermsType
+                        type: string
+                        default: standard
+                        enum:
+                          - standard
+                          - end_of_month
+                        description: |-
+                          [Only for client]
+                          Default payment terms type.
+                        nullable: true
+                      default_payment_method:
+                        type: object
+                        title: PaymentMethod
+                        properties:
+                          id:
+                            type: integer
+                            nullable: true
+                            description: Unique identifier
+                          name:
+                            type: string
+                            description: Name of the payment method
+                            nullable: true
+                          type:
+                            title: PaymentMethodType
+                            type: string
+                            description: Method type.
+                            default: standard
+                            enum:
+                              - standard
+                              - riba
+                            nullable: true
+                          is_default:
+                            type: boolean
+                            description: Determines if this is the default payment method.
+                            nullable: true
+                          default_payment_account:
+                            type: object
+                            nullable: true
+                            description: ''
+                            properties:
+                              id:
+                                type: integer
+                                description: Unique identifier
+                                nullable: true
+                              name:
+                                type: string
+                                description: Payment account name.
+                                example: Conto Banca Intesa
+                                nullable: true
+                              type:
+                                title: PaymentAccountType
+                                type: string
+                                default: standard
+                                enum:
+                                  - standard
+                                  - bank
+                                description: Payment account type.
+                                nullable: true
+                              iban:
+                                type: string
+                                nullable: true
+                                description: Payment account iban.
+                              sia:
+                                type: string
+                                nullable: true
+                                description: Payment account sia.
+                              cuc:
+                                type: string
+                                description: Payment account cuc.
+                                nullable: true
+                              virtual:
+                                type: boolean
+                                description: Determine if the payment method is virtual.
+                                nullable: true
+                            title: PaymentAccount
+                          details:
+                            maxItems: 5
+                            type: array
+                            nullable: true
+                            description: Method details rows
+                            items:
+                              title: PaymentMethodDetails
+                              type: object
+                              properties:
+                                title:
+                                  type: string
+                                  description: Details title.
+                                  nullable: true
+                                description:
+                                  type: string
+                                  description: Details description.
+                                  nullable: true
+                          bank_iban:
+                            type: string
+                            description: Bank iban
+                            nullable: true
+                          bank_name:
+                            type: string
+                            description: Bank name
+                            nullable: true
+                          bank_beneficiary:
+                            type: string
+                            description: Bank beneficiary
+                            nullable: true
+                          ei_payment_method:
+                            type: string
+                            description: E-invoice payment method
+                            nullable: true
+                        description: |-
+                          [Only for client]
+                          Default payment method.
+                        nullable: true
+                      bank_name:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Bank name.
+                        nullable: true
+                      bank_iban:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Iban.
+                        nullable: true
+                      bank_swift_code:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Bank swift code.
+                        nullable: true
+                      shipping_address:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Shipping address.
+                        nullable: true
+                      e_invoice:
+                        type: boolean
+                        description: |-
+                          [Only for client]
+                          Use e-invoices.
+                        nullable: true
+                      ei_code:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          E-invoices code.
+                        nullable: true
+                      has_intent_declaration:
+                        type: boolean
+                        description: |-
+                          [Only for client]
+                          Has intent declaration.
+                        nullable: true
+                      intent_declaration_protocol_number:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Intent declaration protocol number.
+                        nullable: true
+                      intent_declaration_protocol_date:
+                        type: string
+                        format: date
+                        description: |-
+                          [Only for client]
+                          Intent declaration protocol date.
+                        nullable: true
+                      created_at:
+                        type: string
+                        nullable: true
+                      updated_at:
+                        type: string
+                        nullable: true
+                    nullable: true
+                  type:
+                    type: string
+                    default: invoice
+                    enum:
+                      - invoice
+                      - quote
+                      - proforma
+                      - receipt
+                      - delivery_note
+                      - credit_note
+                      - order
+                      - work_report
+                      - supplier_order
+                      - self_own_invoice
+                      - self_supplier_invoice
+                    description: Issued document type.
+                    nullable: true
+                  number:
+                    type: integer
+                    description: |-
+                      Number of the document
+                      [If not specified, next number is used]
+                    example: 1
+                    nullable: true
+                  numeration:
+                    type: string
+                    description: |-
+                      Numeration of the document
+                      [Not available if type=delivery_note]
+                    example: /A
+                    nullable: true
+                  date:
+                    type: string
+                    description: |-
+                      Date of the document
+                      [If not specified, today date is used]
+                    format: date
+                    nullable: true
+                  year:
+                    type: integer
+                    description: Invoice year.
+                    nullable: true
+                  currency:
+                    type: object
+                    description: ''
+                    properties:
+                      id:
+                        type: string
+                        description: Currency code.
+                        example: EUR
+                        nullable: true
+                      symbol:
+                        type: string
+                        description: Currency symbol.
+                        example: €
+                        nullable: true
+                      exchange_rate:
+                        type: string
+                        nullable: true
+                        description: Currency exchange rate (EUR to this).
+                        example: '1'
+                      html_symbol:
+                        type: string
+                        example: EUR
+                        description: Currency html code.
+                        nullable: true
+                    title: Currency
+                    nullable: true
+                  language:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        description: Language code.
+                        nullable: true
+                      name:
+                        type: string
+                        description: Language extended name.
+                        nullable: true
+                    title: Language
+                    nullable: true
+                  subject:
+                    type: string
+                    description: Issued document subject.
+                    nullable: true
+                  visible_subject:
+                    type: string
+                    description: Issued document visible subject.
+                    nullable: true
+                  rc_center:
+                    type: string
+                    description: Revenue center [or cost center if type=supplier_order].
+                    nullable: true
+                  notes:
+                    type: string
+                    description: Issued document extra notes.
+                    nullable: true
+                  rivalsa:
+                    type: number
+                    description: '"Rivalsa INPS" percentual value'
+                    nullable: true
+                  cassa:
+                    type: number
+                    description: '"Cassa previdenziale" percentual value'
+                    nullable: true
+                  amount_cassa:
+                    type: number
+                    description: |-
+                      [Read Only]
+                      Cassa amount.
+                    readOnly: true
+                    nullable: true
+                  cassa_taxable:
+                    type: number
+                    description: Cassa taxable percentage
+                    nullable: true
+                  amount_cassa_taxable:
+                    type: number
+                    nullable: true
+                    description: |-
+                      [Can be set only if cassa_taxable is NULL]
+                      Cassa2 taxable amount
+                  cassa2:
+                    type: number
+                    description: '"Cassa previdenziale 2" percentual value'
+                    nullable: true
+                  amount_cassa2:
+                    type: number
+                    nullable: true
+                    description: |-
+                      [Read Only]
+                      Cassa amount.
+                    readOnly: true
+                  cassa2_taxable:
+                    type: number
+                    description: Cassa2 taxable percentage
+                    nullable: true
+                  amount_cassa2_taxable:
+                    type: number
+                    nullable: true
+                    description: |-
+                      [Can be set only if cassa2_taxable is NULL]
+                      Cassa2 taxable amount
+                  global_cassa_taxable:
+                    type: number
+                    description: Global cassa taxable percentage
+                    nullable: true
+                  amount_global_cassa_taxable:
+                    type: number
+                    nullable: true
+                    description: |-
+                      [Can be set only if global_cassa_taxable is NULL]
+                      Global cassa taxable amount
+                  withholding_tax:
+                    type: number
+                    description: Withholding tax (ritenuta d'acconto) percentual value
+                    nullable: true
+                  withholding_tax_taxable:
+                    type: number
+                    description: Withholding tax taxable (imponibile) percentual value
+                    nullable: true
+                  other_withholding_tax:
+                    type: number
+                    description: Other withholding tax (altra ritenuta) percentual value
+                    nullable: true
+                  stamp_duty:
+                    type: number
+                    description: |-
+                      Stamp duty value
+                      [0 if not present]
+                    nullable: true
+                  payment_method:
+                    type: object
+                    title: PaymentMethod
+                    properties:
+                      id:
+                        type: integer
+                        nullable: true
+                        description: Unique identifier
+                      name:
+                        type: string
+                        description: Name of the payment method
+                        nullable: true
+                      type:
+                        title: PaymentMethodType
+                        type: string
+                        description: Method type.
+                        default: standard
+                        enum:
+                          - standard
+                          - riba
+                        nullable: true
+                      is_default:
+                        type: boolean
+                        description: Determines if this is the default payment method.
+                        nullable: true
+                      default_payment_account:
+                        type: object
+                        nullable: true
+                        description: ''
+                        properties:
+                          id:
+                            type: integer
+                            description: Unique identifier
+                            nullable: true
+                          name:
+                            type: string
+                            description: Payment account name.
+                            example: Conto Banca Intesa
+                            nullable: true
+                          type:
+                            title: PaymentAccountType
+                            type: string
+                            default: standard
+                            enum:
+                              - standard
+                              - bank
+                            description: Payment account type.
+                            nullable: true
+                          iban:
+                            type: string
+                            nullable: true
+                            description: Payment account iban.
+                          sia:
+                            type: string
+                            nullable: true
+                            description: Payment account sia.
+                          cuc:
+                            type: string
+                            description: Payment account cuc.
+                            nullable: true
+                          virtual:
+                            type: boolean
+                            description: Determine if the payment method is virtual.
+                            nullable: true
+                        title: PaymentAccount
+                      details:
+                        maxItems: 5
+                        type: array
+                        nullable: true
+                        description: Method details rows
+                        items:
+                          title: PaymentMethodDetails
+                          type: object
+                          properties:
+                            title:
+                              type: string
+                              description: Details title.
+                              nullable: true
+                            description:
+                              type: string
+                              description: Details description.
+                              nullable: true
+                      bank_iban:
+                        type: string
+                        description: Bank iban
+                        nullable: true
+                      bank_name:
+                        type: string
+                        description: Bank name
+                        nullable: true
+                      bank_beneficiary:
+                        type: string
+                        description: Bank beneficiary
+                        nullable: true
+                      ei_payment_method:
+                        type: string
+                        description: E-invoice payment method
+                        nullable: true
+                    nullable: true
+                  use_split_payment:
+                    type: boolean
+                    description: Use split payment
+                    nullable: true
+                  use_gross_prices:
+                    type: boolean
+                    description: Use gross prices
+                    nullable: true
+                  e_invoice:
+                    type: boolean
+                    description: Indicates if this is an e-invoice.
+                    nullable: true
+                  ei_data:
+                    type: object
+                    nullable: true
+                    description: |-
+                      E-invoice data.
+                      [Only if e_invoice=true]
+                    properties:
+                      vat_kind:
+                        title: VatKind
+                        type: string
+                        nullable: true
+                        description: Vat kind (esigibilità IVA).
+                        default: null
+                        enum:
+                          - null
+                          - I
+                          - D
+                          - S
+                      original_document_type:
+                        title: OriginalDocumentType
+                        type: string
+                        nullable: true
+                        description: Type of document followed by the the current invoice.
+                        default: ordine
+                        enum:
+                          - ordine
+                          - contratto
+                          - convenzione
+                      od_number:
+                        type: string
+                        nullable: true
+                        description: Original document number.
+                      od_date:
+                        type: string
+                        description: Original document date.
+                        format: date
+                        nullable: true
+                      cig:
+                        type: string
+                        nullable: true
+                        description: CIG.
+                      cup:
+                        type: string
+                        nullable: true
+                        description: CUP.
+                      payment_method:
+                        type: string
+                        nullable: true
+                        description: >-
+                          Payment method (see
+                          https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.1/Rappresentazione-tabellare-fattura-ordinaria.pdf
+                          for the accepted values of ModalitaPagamento).
+                      bank_name:
+                        type: string
+                        nullable: true
+                        description: Bank name.
+                      bank_iban:
+                        type: string
+                        nullable: true
+                        description: IBAN.
+                      bank_beneficiary:
+                        type: string
+                        nullable: true
+                        description: Bank beneficiary.
+                      invoice_number:
+                        type: string
+                        description: Invoice number.
+                        nullable: true
+                      invoice_date:
+                        type: string
+                        format: date
+                        description: Invoice date.
+                        nullable: true
+                  ei_cassa_type:
+                    type: string
+                    nullable: true
+                    description: E-invoice cassa type
+                  ei_cassa2_type:
+                    type: string
+                    nullable: true
+                    description: E-invoice cassa2 type
+                  ei_withholding_tax_causal:
+                    type: string
+                    nullable: true
+                    description: E-invoice withholding tax causal
+                  ei_other_withholding_tax_type:
+                    type: string
+                    nullable: true
+                    description: E-invoice other withholding tax type
+                  ei_other_withholding_tax_causal:
+                    type: string
+                    nullable: true
+                    description: E-invoice other withholding tax causal
+                  items_list:
+                    type: array
+                    nullable: true
+                    items:
+                      title: IssuedDocumentItemsListItem
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier.
+                          nullable: true
+                        product_id:
+                          type: integer
+                          nullable: true
+                          description: Unique identifier of the product.
+                          example: 1234
+                        code:
+                          type: string
+                          description: Product code.
+                          example: '239874892374982'
+                          nullable: true
+                        name:
+                          type: string
+                          description: Product name.
+                          example: Water bottle
+                          nullable: true
+                        category:
+                          type: string
+                          description: Product category
+                          nullable: true
+                        description:
+                          type: string
+                          description: Product description.
+                          nullable: true
+                        qty:
+                          type: number
+                          description: Items quantity,
+                          nullable: true
+                        measure:
+                          type: string
+                          description: Item measure.
+                          nullable: true
+                        net_price:
+                          type: number
+                          description: Net price.
+                          example: 1.23
+                          nullable: true
+                        gross_price:
+                          type: number
+                          nullable: true
+                          description: Gross price.
+                          example: 1.45
+                        vat:
+                          type: object
+                          nullable: true
+                          properties:
+                            id:
+                              type: integer
+                              description: Unique identifier
+                              nullable: true
+                            value:
+                              type: number
+                              description: '[Read Only] Percentual value.'
+                              example: 22
+                              nullable: true
+                            description:
+                              type: string
+                              description: Short description.
+                              example: Non imponibile art. 123
+                              nullable: true
+                            notes:
+                              type: string
+                              description: Long description and notes shown in documents.
+                              example: >-
+                                IVA non imponibile ai sensi dell'articolo 123,
+                                comma 2
+                              nullable: true
+                            e_invoice:
+                              type: boolean
+                              description: Usable for e-invoices.
+                              nullable: true
+                            ei_type:
+                              type: string
+                              description: E-invoice type (natura).
+                              example: 2
+                              nullable: true
+                            ei_description:
+                              type: string
+                              description: E-invoice description.
+                              nullable: true
+                            editable:
+                              type: boolean
+                              description: |-
+                                [Read Only]
+                                Determine if this vat type is editable.
+                              readOnly: true
+                              nullable: true
+                            is_disabled:
+                              type: boolean
+                              description: Determine if the vat type is disabled.
+                              nullable: true
+                          title: VatType
+                          description: ''
+                        not_taxable:
+                          type: boolean
+                          nullable: true
+                        apply_withholding_taxes:
+                          type: boolean
+                          description: Apply withholding taxes, rivalsa and cassa.
+                          nullable: true
+                        discount:
+                          type: number
+                          description: Discount percentual value.
+                          nullable: true
+                        discount_highlight:
+                          type: boolean
+                          nullable: true
+                        in_dn:
+                          type: boolean
+                          nullable: true
+                        stock:
+                          type: boolean
+                          nullable: true
+                        ei_raw:
+                          type: object
+                          description: Advanced raw attributes for e-invoices.
+                          nullable: true
+                  payments_list:
+                    type: array
+                    nullable: true
+                    items:
+                      title: IssuedDocumentPaymentsListItem
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier.
+                          nullable: true
+                        due_date:
+                          type: string
+                          description: Due date.
+                          format: date
+                          example: '2018-04-03'
+                          nullable: true
+                        amount:
+                          type: number
+                          description: Payment amount.
+                          example: 1.45
+                          nullable: true
+                        status:
+                          title: IssuedDocumentStatus
+                          type: string
+                          description: Payment status.
+                          default: not_paid
+                          enum:
+                            - not_paid
+                            - paid
+                            - reversed
+                          nullable: true
+                        payment_account:
+                          type: object
+                          nullable: true
+                          description: ''
+                          properties:
+                            id:
+                              type: integer
+                              description: Unique identifier
+                              nullable: true
+                            name:
+                              type: string
+                              description: Payment account name.
+                              example: Conto Banca Intesa
+                              nullable: true
+                            type:
+                              title: PaymentAccountType
+                              type: string
+                              default: standard
+                              enum:
+                                - standard
+                                - bank
+                              description: Payment account type.
+                              nullable: true
+                            iban:
+                              type: string
+                              nullable: true
+                              description: Payment account iban.
+                            sia:
+                              type: string
+                              nullable: true
+                              description: Payment account sia.
+                            cuc:
+                              type: string
+                              description: Payment account cuc.
+                              nullable: true
+                            virtual:
+                              type: boolean
+                              description: Determine if the payment method is virtual.
+                              nullable: true
+                          title: PaymentAccount
+                        paid_date:
+                          type: string
+                          description: |-
+                            Payment date.
+                            [Only if status is paid]
+                          format: date
+                          example: '2018-04-03'
+                          nullable: true
+                        ei_raw:
+                          type: object
+                          nullable: true
+                          description: Advanced raw attributes for e-invoices.
+                        payment_terms:
+                          type: object
+                          properties:
+                            days:
+                              type: integer
+                              nullable: true
+                              description: >-
+                                The number of days by which the payment must be
+                                made.
+                            type:
+                              title: PaymentTermsType
+                              type: string
+                              default: standard
+                              enum:
+                                - standard
+                                - end_of_month
+                              description: Payment terms Type.
+                              nullable: true
+                  template:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: Unique identifier.
+                        example: 123
+                        nullable: true
+                      name:
+                        type: string
+                        description: Template name.
+                        example: Light Smoke
+                        nullable: true
+                      type:
+                        type: string
+                        description: Template type.
+                        nullable: true
+                    title: DocumentTemplate
+                    nullable: true
+                  delivery_note_template:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: Unique identifier.
+                        example: 123
+                        nullable: true
+                      name:
+                        type: string
+                        description: Template name.
+                        example: Light Smoke
+                        nullable: true
+                      type:
+                        type: string
+                        description: Template type.
+                        nullable: true
+                    title: DocumentTemplate
+                    nullable: true
+                  acc_inv_template:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: Unique identifier.
+                        example: 123
+                        nullable: true
+                      name:
+                        type: string
+                        description: Template name.
+                        example: Light Smoke
+                        nullable: true
+                      type:
+                        type: string
+                        description: Template type.
+                        nullable: true
+                    title: DocumentTemplate
+                    nullable: true
+                  h_margins:
+                    type: integer
+                    description: Horizontal margins.
+                    nullable: true
+                  v_margins:
+                    type: integer
+                    description: Vertical margins.
+                    nullable: true
+                  show_payments:
+                    type: boolean
+                    description: >-
+                      Shows the expiration dates of the payments on the
+                      document.
+                    nullable: true
+                  show_payment_method:
+                    type: boolean
+                    description: Show the payment method details on the document.
+                    nullable: true
+                  show_totals:
+                    title: ShowTotalsMode
+                    type: string
+                    description: Totals mode.
+                    default: all
+                    enum:
+                      - none
+                      - nets
+                      - all
+                    nullable: true
+                  show_paypal_button:
+                    type: boolean
+                    description: Show paypal button
+                    nullable: true
+                  show_notification_button:
+                    type: boolean
+                    description: Show notification button
+                    nullable: true
+                  show_tspay_button:
+                    type: boolean
+                    description: Show ts pay button.
+                    nullable: true
+                  delivery_note:
+                    type: boolean
+                    nullable: true
+                  accompanying_invoice:
+                    type: boolean
+                    description: Attach an accompanying invoice.
+                    nullable: true
+                  dn_number:
+                    type: integer
+                    description: Number (for the attached delivery note).
+                    nullable: true
+                  dn_date:
+                    type: string
+                    description: Date (for the attached delivery note).
+                    format: date
+                    nullable: true
+                  dn_ai_packages_number:
+                    type: string
+                    nullable: true
+                    description: Number of packages (for the attached delivery note).
+                  dn_ai_weight:
+                    type: string
+                    nullable: true
+                    description: Weight (for the attached delivery note).
+                  dn_ai_causal:
+                    type: string
+                    nullable: true
+                    description: Causal (for the attached delivery note).
+                  dn_ai_destination:
+                    type: string
+                    nullable: true
+                    description: Destination (for the attached delivery note).
+                  dn_ai_transporter:
+                    type: string
+                    nullable: true
+                    description: Transporter (for the attached delivery note).
+                  dn_ai_notes:
+                    type: string
+                    nullable: true
+                    description: Notes (for the attached delivery note).
+                  is_marked:
+                    type: boolean
+                    description: This is true if the document is marked.
+                    nullable: true
+                  amount_net:
+                    type: number
+                    description: |-
+                      [Read Only]
+                      Total net amount (competenze).
+                    readOnly: true
+                    nullable: true
+                  amount_vat:
+                    type: number
+                    description: |-
+                      [Read Only]
+                      Total vat amount (IVA).
+                    readOnly: true
+                    nullable: true
+                  amount_gross:
+                    type: number
+                    description: |-
+                      [Read Only]
+                      Total gross amount (totale documento).
+                    readOnly: true
+                    nullable: true
+                  amount_due_discount:
+                    type: number
+                    description: Amount due discount
+                    nullable: true
+                  amount_rivalsa:
+                    type: number
+                    description: |-
+                      [Read Only]
+                      Rivalsa amount.
+                    readOnly: true
+                    nullable: true
+                  amount_rivalsa_taxable:
+                    type: number
+                    nullable: true
+                    description: Taxable rivalsa amount
+                  amount_withholding_tax:
+                    type: number
+                    description: |-
+                      [Read Only]
+                      Withholding tax amount (ritenuta d'acconto).
+                    readOnly: true
+                    nullable: true
+                  amount_withholding_tax_taxable:
+                    type: number
+                    nullable: true
+                    description: Taxable withholding tax amount
+                  amount_other_withholding_tax:
+                    type: number
+                    description: |-
+                      [Read Only]
+                      Other withholding tax amount (altra ritenuta).
+                    readOnly: true
+                    nullable: true
+                  amount_other_withholding_tax_taxable:
+                    type: number
+                    nullable: true
+                    description: Taxable other withholding tax amount
+                  amount_enasarco_taxable:
+                    type: number
+                    nullable: true
+                    description: Taxable enasarco amount
+                  extra_data:
+                    type: object
+                    nullable: true
+                    description: >-
+                      Extra data.
+
+                      TS fields follow the technical specifications provided by
+                      "Sistema Tessera Sanitaria".
+                    properties:
+                      show_sofort_button:
+                        type: boolean
+                        nullable: true
+                      multifatture_sent:
+                        type: integer
+                        nullable: true
+                      ts_communication:
+                        type: boolean
+                        nullable: true
+                      ts_flag_tipo_spesa:
+                        type: number
+                        description: >-
+                          1 => TK (Ticket di pronto soccorso); 2 => SR (Visita
+                          in intramoenia)
+                        nullable: true
+                      ts_pagamento_tracciato:
+                        type: boolean
+                        nullable: true
+                      ts_tipo_spesa:
+                        type: string
+                        description: >-
+                          Can be [ 'TK', 'FC', 'FV', 'SV', 'SP', 'AD', 'AS',
+                          'SR', 'CT', 'PI', 'IC', 'AA' ]. Refer to the technical
+                          specifications to learn more.
+                        nullable: true
+                      ts_opposizione:
+                        type: boolean
+                        nullable: true
+                      ts_status:
+                        type: integer
+                        nullable: true
+                      ts_file_id:
+                        type: string
+                        nullable: true
+                      ts_sent_date:
+                        type: string
+                        nullable: true
+                        format: date
+                      ts_full_amount:
+                        type: boolean
+                        nullable: true
+                      imported_by:
+                        type: string
+                        nullable: true
+                      ts_single_sending:
+                        type: boolean
+                        nullable: true
+                  seen_date:
+                    type: string
+                    nullable: true
+                    description: Date when the client/supplier has seen the document.
+                    format: date
+                  next_due_date:
+                    type: string
+                    nullable: true
+                    description: Date of the next not paid payment.
+                    format: date
+                  url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the document PDF file.
+                    nullable: true
+                  dn_url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the attached delivery note PDF file.
+                    nullable: true
+                  ai_url:
+                    type: string
+                    description: |-
+                      [Temporary] [Read Only]
+                       
+                      Public url of the accompanying invoice PDF file.
+                    nullable: true
+                  attachment_url:
+                    type: string
+                    description: >-
+                      [Temporary] [Read Only]
+
+                      Public url of the attached file. Authomatically set if a
+                      valid attachment token is passed via POST
+                      /issued_documents or PUT /issued_documents/{documentId}.
+                    readOnly: true
+                    nullable: true
+                  attachment_token:
+                    type: string
+                    nullable: true
+                    description: >-
+                      [Write Only]
+
+                      Attachment token returned by POST
+                      /issued_documents/attachment. Used to attach the file
+                      already uploaded.
+                    writeOnly: true
+                  ei_raw:
+                    type: object
+                    nullable: true
+                    description: Advanced raw attributes for e-invoices.
+                  ei_status:
+                    type: string
+                    description: |
+                      [Read only] Status of the e-invoice.
+                        * `attempt` - We are trying to send the invoice, please wait up to 2 hours
+                        * `missing` - The invoice is missing
+                        * `not_sent` - The invoice has yet to be sent
+                        * `sent` - The invoice was sent
+                        * `pending` - The checks for the digital signature and sending are in progress
+                        * `processing` - The SDI is delivering the invoice to the customer
+                        * `error` - An error occurred while handling the invoice, please try to resend it or contact support
+                        * `discarded` - The invoice has been rejected by the SDI, so it must be corrected and re-sent
+                        * `not_delivered` - The SDI was unable to deliver the invoice
+                        * `accepted` - The customer accepted the invoice
+                        * `rejected` - The customer rejected the invoice, so it must be corrected
+                        * `no_response` - A response has not yet been received whithin the deadline, contact the customer to ascertain the status of the invoice
+                        * `manual_accepted` - The customer accepted the invoice
+                        * `manual_rejected` - The customer rejected the invoice
+                    enum:
+                      - attempt
+                      - missing
+                      - not_sent
+                      - sent
+                      - pending
+                      - processing
+                      - error
+                      - discarded
+                      - not_delivered
+                      - accepted
+                      - rejected
+                      - no_response
+                      - manual_accepted
+                      - manual_rejected
+                    nullable: true
+                  created_at:
+                    type: string
+                    nullable: true
+                  updated_at:
+                    type: string
+                    nullable: true
+                nullable: true
+              options:
+                title: IssuedDocumentOptions
+                type: object
+                properties:
+                  fix_payments:
+                    type: boolean
+                    description: >-
+                      Fixes your last payment amount to match your document
+                      total
+                    nullable: true
+                  create_from:
+                    type: array
+                    description: Original documents ids [only for join/transform]
+                    items:
+                      type: string
+                    nullable: true
+                  transform:
+                    type: boolean
+                    description: Tranform a document. [only for transform]
+                    nullable: true
+                  keep_copy:
+                    type: boolean
+                    description: Keep original document [only for transform]
+                    nullable: true
+                  join_type:
+                    type: string
+                    description: Join type [only for join]
+                    nullable: true
+                nullable: true
+          examples:
+            example-1:
+              value:
+                data:
+                  type: invoice
+                  year: 2022
+                  numeration: ''
+                  subject: ''
+                  visible_subject: ''
+                  rc_center: ''
+                  ei_cassa_type: null
+                  ei_withholding_tax_causal: null
+                  ei_other_withholding_tax_type: null
+                  ei_other_withholding_tax_causal: null
+                  stamp_duty: 0
+                  use_gross_prices: false
+                  e_invoice: false
+                  agyo_company_id: null
+                  agyo_id: null
+                  agyo_sent_at: null
+                  delivery_note: false
+                  accompanying_invoice: false
+                  amount_net: 68.18
+                  amount_vat: 6.82
+                  amount_gross: 75
+                  amount_due_discount: 0
+                  amount_rivalsa: 0
+                  amount_cassa: 0
+                  amount_withholding_tax: 0
+                  amount_other_withholding_tax: 0
+                  h_margins: 15
+                  v_margins: 16
+                  show_payment_method: false
+                  show_payments: true
+                  show_totals: all
+                  show_paypal_button: true
+                  show_notification_button: false
+                  is_marked: false
+                  created_at: '2022-08-13 09:30:20'
+                  updated_at: '2022-08-23 05:34:20'
+                  entity:
+                    id: 54321
+                    name: Mary Red S.r.L.
+                    vat_number: IT05432181211
+                    tax_code: IT05432181211
+                    address_street: Via Italia, 66
+                    address_postal_code: '20900'
+                    address_city: Milano
+                    address_province: MI
+                    address_extra: ''
+                    country: Italia
+                    certified_email: mary@pec.red.com
+                    ei_code: ABCXCR1
+                  date: '2021-08-20'
+                  number: 1
+                  currency:
+                    id: EUR
+                    exchange_rate: '1.00000'
+                    symbol: €
+                  language:
+                    code: it
+                    name: Italiano
+                  notes: ''
+                  rivalsa: 0
+                  cassa: 0
+                  withholding_tax: 0
+                  withholding_tax_taxable: 100
+                  other_withholding_tax: 0
+                  payment_method:
+                    id: 4
+                    name: Credit card
+                  use_split_payment: false
+                  merged_in: null
+                  original_document: null
+                  items_list:
+                    - product_id: 5432
+                      code: SG3
+                      name: Soggiorno
+                      measure: ''
+                      net_price: 68.18182
+                      category: ''
+                      id: 277876033
+                      gross_price: 75
+                      apply_withholding_taxes: true
+                      discount: 0
+                      discount_highlight: false
+                      in_dn: false
+                      qty: 1
+                      vat:
+                        id: 3
+                        value: 10
+                        description: ''
+                      stock: false
+                      description: ''
+                      not_taxable: false
+                  payments_list:
+                    - amount: 75
+                      due_date: '2020-08-23'
+                      paid_date: null
+                      id: 69078013
+                      payment_terms:
+                        days: 0
+                        type: standard
+                      status: not_paid
+                  attachment_url: kdijrnf893hnwkfk45f50f.pdf
+                  seen_date: null
+                  next_due_date: '2020-08-23'
+                  template:
+                    id: 2821
+                    name: Light Smoke
+                  extra_data: null
+                  url: y12h45rn9yf2mse0p43t7ec90vr.pdf
+                  locked: false
+                  has_ts_pay_pending_payment: false
+                  show_tspay_button: false
+                  pay_with_tspay_url: null
+                options:
+                  create_from:
+                    - '82112399'
+                    - '82112400'
+    ListEmailsResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            title: ListEmailsResponse
+            allOf:
+              - title: Pagination
+                type: object
+                description: ''
+                properties:
+                  current_page:
+                    type: integer
+                    description: Current page number.
+                    nullable: true
+                  first_page_url:
+                    type: string
+                    format: uri
+                    description: First page url.
+                    nullable: true
+                  from:
+                    type: integer
+                    nullable: true
+                    description: First result of the page.
+                  last_page:
+                    type: integer
+                    description: Last page number.
+                    nullable: true
+                  last_page_url:
+                    type: string
+                    format: uri
+                    description: Last page url.
+                    nullable: true
+                  next_page_url:
+                    type: string
+                    format: uri
+                    nullable: true
+                    description: Next page url
+                  path:
+                    type: string
+                    format: uri
+                    description: Request path.
+                    nullable: true
+                  per_page:
+                    type: integer
+                    description: Number of result per page.
+                    nullable: true
+                  prev_page_url:
+                    type: string
+                    format: uri
+                    nullable: true
+                    description: Previous page url.
+                  to:
+                    type: integer
+                    nullable: true
+                    description: Last result of the page.
+                  total:
+                    type: integer
+                    description: Total number of results
+                    nullable: true
+              - title: ListEmailsResponsePage
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      title: Email
+                      type: object
+                      description: ''
+                      properties:
+                        id:
+                          type: integer
+                          description: Email unique identifier.
+                        status:
+                          type: string
+                          title: EmailStatus
+                          description: Email status.
+                          enum:
+                            - sending
+                            - pending
+                            - sent
+                        sent_date:
+                          type: string
+                          format: date-time
+                          description: Email sent date.
+                        errors_count:
+                          type: integer
+                          description: Errors count.
+                        error_log:
+                          type: string
+                          description: Error log.
+                        from_email:
+                          type: string
+                          description: Sender email.
+                        from_name:
+                          type: string
+                          description: Sender name.
+                        to_email:
+                          type: string
+                          description: Recipient email.
+                        to_name:
+                          type: string
+                          description: Receipient email.
+                        subject:
+                          type: string
+                          description: Email subject.
+                        content:
+                          type: string
+                          description: Email content.
+                        copy_to:
+                          type: string
+                        recipient_status:
+                          type: string
+                          title: EmailRecipientStatus
+                          description: Email recipient status.
+                          enum:
+                            - unknown
+                            - document_opened
+                            - email_opened
+                        recipient_date:
+                          type: string
+                          format: date-time
+                        kind:
+                          type: string
+                          description: Email kind.
+                        attachments:
+                          type: array
+                          description: Email attachments.
+                          items:
+                            title: EmailAttachment
+                            type: object
+                            properties:
+                              filename:
+                                type: string
+                                description: Email attachment filename.
+                              url:
+                                type: string
+                                description: Email attachment url.
+          examples:
+            example-1:
+              value:
+                current_page: 1
+                data:
+                  - id: 1
+                    status: sent
+                    sent_date: '2022-07-17 13:53:12'
+                    errors_count: 0
+                    error_log: ''
+                    from_email: test@mail.it
+                    from_name: Test mail
+                    to_email: mail@test.it
+                    to_name: Mario
+                    subject: Test
+                    content: Test send email
+                    copy_to: ''
+                    recipient_status: unknown
+                    recipient_date: null
+                    kind: Fatture
+                    attachments: []
+                  - id: 2
+                    status: sent
+                    sent_date: '2022-07-18 13:53:12'
+                    errors_count: 0
+                    error_log: ''
+                    from_email: test@mail.it
+                    from_name: Test mail
+                    to_email: mail@test.it
+                    to_name: Maria
+                    subject: Test
+                    content: Test send email
+                    copy_to: ''
+                    recipient_status: unknown
+                    recipient_date: null
+                    kind: Fatture
+                    attachments: []
+                first_page_url: emails?page=1
+                from: 1
+                last_page: 1
+                last_page_url: emails?page=1
+                next_page_url: null
+                path: emails
+                per_page: 50
+                prev_page_url: null
+                to: 2
+                total: 2
 security:
   - OAuth2AuthenticationCodeFlow: []
