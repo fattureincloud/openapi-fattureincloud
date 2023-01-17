@@ -145,7 +145,7 @@ export const {{classname}}AxiosParamCreator = function (configuration?: Configur
             {{/isArray}}
             {{^isArray}}
             {{! `val == null` covers for both `null` and `undefined`}}
-            if ({{paramName}} != null) {{
+            if ({{paramName}} != null) {
                 {{#isString}}
                 localVarHeaderParameter['{{baseName}}'] = String({{paramName}});
                 {{/isString}}
