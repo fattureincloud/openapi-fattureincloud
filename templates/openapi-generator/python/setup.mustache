@@ -33,22 +33,26 @@ REQUIRES = [
     "aenum"
 ]
 
+def readme():
+    with open('README.md') as f:
+        return f.read()
+        
+file = readme()
+
 setup(
     name=NAME,
     version=VERSION,
-    description="{{appName}}",
+    description="Python SDK for the Fatture in Cloud API",
     author="{{infoName}}{{^infoName}}OpenAPI Generator community{{/infoName}}",
     author_email="{{infoEmail}}{{^infoEmail}}team@openapitools.org{{/infoEmail}}",
     url="{{packageUrl}}",
-    keywords=["OpenAPI", "OpenAPI-Generator", "{{{appName}}}"],
+    keywords=["fattureincloud", "fatture in cloud", "fatture", "fic", "fattureincloud sdk", "fatture in cloud sdk"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     {{#licenseInfo}}license="{{.}}",
     {{/licenseInfo}}long_description_content_type='text/markdown',
-    long_description="""\
-    {{appDescription}}  # noqa: E501
-    """
+    long_description=file
 )
 {{/-last}}
 {{/apis}}
