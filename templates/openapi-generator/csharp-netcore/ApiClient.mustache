@@ -25,6 +25,9 @@ using RestSharpMethod = RestSharp.Method;
 {{#supportsRetry}}
 using Polly;
 {{/supportsRetry}}
+{{#hasOAuthMethods}}
+using {{packageName}}.Client.Auth;
+{{/hasOAuthMethods}}
 
 namespace {{packageName}}.Client
 {
@@ -364,7 +367,7 @@ namespace {{packageName}}.Client
                         request.RequestFormat = DataFormat.Json;
                     }
 
-                    request.AddParameter("application/json", JsonConvert.SerializeObject(options.Data), ParameterType.RequestBody);
+                    request.AddJsonBody(options.Data);
                 }
             }
 
@@ -457,6 +460,22 @@ namespace {{packageName}}.Client
             RestClient client = new RestClient(clientOptions)
                 .UseSerializer(() => new CustomJsonCodec(SerializerSettings, configuration));
 
+            {{#hasOAuthMethods}}
+            if (!string.IsNullOrEmpty(configuration.OAuthTokenUrl) &&
+                !string.IsNullOrEmpty(configuration.OAuthClientId) &&
+                !string.IsNullOrEmpty(configuration.OAuthClientSecret) &&
+                configuration.OAuthFlow != null)
+            {
+                client = client.UseAuthenticator(new OAuthAuthenticator(
+                    configuration.OAuthTokenUrl,
+                    configuration.OAuthClientId,
+                    configuration.OAuthClientSecret,
+                    configuration.OAuthFlow,
+                    SerializerSettings,
+                    configuration));
+            }
+
+            {{/hasOAuthMethods}}
             InterceptRequest(req);
 
             RestResponse<T> response;
@@ -541,7 +560,7 @@ namespace {{packageName}}.Client
         private async Task<ApiResponse<T>> ExecAsync<T>(RestRequest req, RequestOptions options, IReadableConfiguration configuration, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var baseUrl = configuration.GetOperationServerUrl(options.Operation, options.OperationIndex) ?? _baseUrl;
-            
+
             var clientOptions = new RestClientOptions(baseUrl)
             {
                 ClientCertificates = configuration.ClientCertificates,
@@ -553,6 +572,22 @@ namespace {{packageName}}.Client
             RestClient client = new RestClient(clientOptions)
                 .UseSerializer(() => new CustomJsonCodec(SerializerSettings, configuration));
 
+            {{#hasOAuthMethods}}
+            if (!string.IsNullOrEmpty(configuration.OAuthTokenUrl) &&
+                !string.IsNullOrEmpty(configuration.OAuthClientId) &&
+                !string.IsNullOrEmpty(configuration.OAuthClientSecret) &&
+                configuration.OAuthFlow != null)
+            {
+                client = client.UseAuthenticator(new OAuthAuthenticator(
+                    configuration.OAuthTokenUrl,
+                    configuration.OAuthClientId,
+                    configuration.OAuthClientSecret,
+                    configuration.OAuthFlow,
+                    SerializerSettings,
+                    configuration));
+            }
+
+            {{/hasOAuthMethods}}
             InterceptRequest(req);
 
             RestResponse<T> response;
@@ -587,10 +622,6 @@ namespace {{packageName}}.Client
             else if (typeof(T).Name == "Byte[]") // for byte response
             {
                 response.Data = (T)(object)response.RawBytes;
-            }
-            else if (typeof(T).Name == "String")
-            {
-                response.Data = (T)(object)response.Content;
             }
 
             InterceptResponse(req, response);
