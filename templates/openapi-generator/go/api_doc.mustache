@@ -27,14 +27,12 @@ package main
 
 import (
     "context"
-    "encoding/json"
     "fmt"
     "os"
 {{#vendorExtensions.x-go-import}}
 {{{vendorExtensions.x-go-import}}}
 {{/vendorExtensions.x-go-import}}
-    {{goImportAlias}}api "{{gitHost}}/{{gitUserId}}/{{gitRepoId}}{{#isGoSubmodule}}/{{packageName}}{{/isGoSubmodule}}/v2/api"
-    {{goImportAlias}} "{{gitHost}}/{{gitUserId}}/{{gitRepoId}}{{#isGoSubmodule}}/{{packageName}}{{/isGoSubmodule}}/v2/model"
+    {{goImportAlias}} "./openapi"
 )
 
 func main() {
@@ -42,17 +40,16 @@ func main() {
     {{paramName}} := {{{vendorExtensions.x-go-example}}} // {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
     {{/allParams}}
 
-    auth := context.WithValue(context.Background(), {{goImportAlias}}api.ContextAccessToken, "ACCESS_TOKEN")
-    configuration := {{goImportAlias}}api.NewConfiguration()
-    apiClient := {{goImportAlias}}api.NewAPIClient(configuration)
-    resp, r, err := apiClient.{{classname}}.{{operationId}}(auth{{#pathParams}}, {{paramName}}{{/pathParams}}){{#allParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/allParams}}.Execute()
+    configuration := {{goImportAlias}}.NewConfiguration()
+    apiClient := {{goImportAlias}}.NewAPIClient(configuration)
+    resp, r, err := apiClient.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}){{#allParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/allParams}}.Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `{{classname}}.{{operationId}}``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     {{#returnType}}
     // response from `{{operationId}}`: {{{.}}}
-    json.NewEncoder(os.Stdout).Encode(resp)
+    fmt.Fprintf(os.Stdout, "Response from `{{classname}}.{{operationId}}`: %v\n", resp)
     {{/returnType}}
 }
 ```

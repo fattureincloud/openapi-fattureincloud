@@ -10,7 +10,6 @@ import (
 	"net/url"
 {{#imports}}	"{{import}}"
 {{/imports}}
-	. "github.com/fattureincloud/fattureincloud-go-sdk/v2/model"
 )
 
 {{#generateInterfaces}}
@@ -386,8 +385,8 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 				newErr.error = err.Error()
 				return {{#returnType}}localVarReturnValue, {{/returnType}}localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			{{^-last}}
 			return {{#returnType}}localVarReturnValue, {{/returnType}}localVarHTTPResponse, newErr
 			{{/-last}}
