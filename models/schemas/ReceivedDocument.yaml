@@ -129,6 +129,10 @@ properties:
       Attachment preview url.
     readOnly: true
     nullable: true
+  auto_calculate:
+    type: boolean
+    description: If set to false total items amount and total payments amount can be different.
+    nullable: true
   attachment_token:
     type: string
     nullable: true
