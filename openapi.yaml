@@ -589,6 +589,14 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
         - $ref: '#/components/parameters/q'
+        - schema:
+            type: integer
+            enum:
+              - 0
+              - 1
+          in: query
+          name: inclusive
+          description: (Only for type = delivery_notes) Include invoices delivery notes.
     post:
       summary: Create Issued Document
       operationId: createIssuedDocument
