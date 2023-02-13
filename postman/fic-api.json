@@ -1,7 +1,7 @@
 {
     "item": [
         {
-            "id": "b4a58dc4-7886-4672-9c4e-80c1cad5f615",
+            "id": "b7bba786-aa58-4ec5-8d59-c2be0420cdd6",
             "name": "Archive",
             "description": {
                 "content": "",
@@ -9,7 +9,7 @@
             },
             "item": [
                 {
-                    "id": "cb1fc91d-c75a-4186-af89-6ffe001abf36",
+                    "id": "0e9af5e5-c0a0-4f60-834f-6365e150c836",
                     "name": "List Archive Documents",
                     "request": {
                         "name": "List Archive Documents",
@@ -109,7 +109,7 @@
                     },
                     "response": [
                         {
-                            "id": "374c5773-d5a2-4a53-b6cc-94e7dcdea5fb",
+                            "id": "e7f042f0-208d-4fba-99e5-d3af2a0dd32d",
                             "name": "Results list.",
                             "originalRequest": {
                                 "url": {
@@ -173,7 +173,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "4dddc877-08b8-4900-9795-78338b6030f4",
+                            "id": "ab73f290-922c-4580-82d3-ee8a49b8a509",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -237,7 +237,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "bec000a6-9442-4491-9a2e-6cafb8dd8806",
+                            "id": "7e0d33f1-d760-40c8-881d-321b5fa48ef3",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -307,7 +307,7 @@
                     }
                 },
                 {
-                    "id": "c4778cdf-67e7-4e9a-b844-797ae232a38a",
+                    "id": "4f9ae68f-f49c-4f7b-8f8c-d4a3919de397",
                     "name": "Create Archive Document",
                     "request": {
                         "name": "Create Archive Document",
@@ -383,7 +383,7 @@
                     },
                     "response": [
                         {
-                            "id": "83f7f30b-9e27-4287-91ac-4b6e07c0a5d3",
+                            "id": "ad9dfe34-a0f1-4773-a4f2-5e055674926f",
                             "name": "The Archive Document.",
                             "originalRequest": {
                                 "url": {
@@ -430,7 +430,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "36a7089c-a8e9-4bc1-b132-06bb00ac803a",
+                            "id": "8058a2f3-9022-484b-9526-13381e67bde2",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -477,7 +477,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "db0aad6f-282e-4d2c-a504-2ccbaeaa08a8",
+                            "id": "d78c9ecf-8b64-4759-9d4e-2d757f157232",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -530,7 +530,7 @@
                     }
                 },
                 {
-                    "id": "e52acd1a-5ecb-489b-a379-42275e6296b0",
+                    "id": "ff7af061-f6c1-420b-a665-b0088e928cb3",
                     "name": "Get Archive Document",
                     "request": {
                         "name": "Get Archive Document",
@@ -614,7 +614,7 @@
                     },
                     "response": [
                         {
-                            "id": "e456a8f4-0970-4b47-bc33-d80617b5d499",
+                            "id": "0f00cc24-d341-4498-bcbc-a6486cfb836c",
                             "name": "Archive Document Details",
                             "originalRequest": {
                                 "url": {
@@ -670,7 +670,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "d4a50844-c787-4794-99b3-0089e226f430",
+                            "id": "5e17c714-1547-4831-8529-21a143d50547",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -726,7 +726,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "b26337ad-5174-40ab-8560-f5fe42359bf2",
+                            "id": "73b1d58d-203f-47cc-a413-61adc51c44fc",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -788,7 +788,7 @@
                     }
                 },
                 {
-                    "id": "c428e30c-6672-4343-b681-b36aed28dc2a",
+                    "id": "24bb9f6b-80d1-498c-8cca-978c01a6e706",
                     "name": "Modify Archive Document",
                     "request": {
                         "name": "Modify Archive Document",
@@ -872,7 +872,7 @@
                     },
                     "response": [
                         {
-                            "id": "ab5e8dd8-3c04-43dd-95db-55cfc51e0015",
+                            "id": "61abdaf3-e371-4e56-9756-39507f12887b",
                             "name": "The modified Archived Document",
                             "originalRequest": {
                                 "url": {
@@ -927,7 +927,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "23ad92c4-431c-48d3-b54e-86ad0a785ab8",
+                            "id": "626f9590-71c4-4fc2-86c0-1a0f545c6401",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -982,7 +982,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "58dedeef-5743-410e-8fed-f9e17d4e7ba8",
+                            "id": "9e3fc869-51a8-4b41-bdc6-603845ce2c11",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -1043,7 +1043,7 @@
                     }
                 },
                 {
-                    "id": "5cce1629-b9c5-4b41-bc5d-00515e161a20",
+                    "id": "62366ed4-626e-4bd5-bbec-f8aaf4942320",
                     "name": "Delete Archive Document",
                     "request": {
                         "name": "Delete Archive Document",
@@ -1108,7 +1108,7 @@
                     },
                     "response": [
                         {
-                            "id": "235bb459-805a-430a-a4e0-225ee5c2bf2a",
+                            "id": "2f5f5069-fa83-4261-9893-68a880fe42a1",
                             "name": "Document removed.",
                             "originalRequest": {
                                 "url": {
@@ -1155,7 +1155,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "e103b561-7fa6-49a6-8321-aca101db000d",
+                            "id": "2d6e01be-fad5-429f-9ced-d8165c13da70",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -1202,7 +1202,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "59d92522-2d66-4899-83a0-eb11b015df78",
+                            "id": "86ea8ddb-a7e5-47d9-a242-f89727db9cda",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -1255,7 +1255,7 @@
                     }
                 },
                 {
-                    "id": "0e932638-6e9b-460d-85a9-bfcae4fc0635",
+                    "id": "d705624b-a9e1-432e-8823-1f1e24d96e31",
                     "name": "Upload Archive Document Attachment",
                     "request": {
                         "name": "Upload Archive Document Attachment",
@@ -1339,7 +1339,7 @@
                     },
                     "response": [
                         {
-                            "id": "3e0ef44d-ccdf-43ba-8311-b2134d24681a",
+                            "id": "9d1a2404-542d-4e70-a18d-33419da5fb02",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -1400,7 +1400,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "de0e9140-5075-448d-bb01-8a7a44d1a088",
+                            "id": "c5653524-ed17-4a73-907b-a7eeeabee9a0",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -1461,7 +1461,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "920b2080-ff75-44a6-baaf-1ff752cae4ab",
+                            "id": "5f2416fb-2464-48f8-83ff-86548cc5dba8",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -1531,7 +1531,7 @@
             "event": []
         },
         {
-            "id": "b1536d62-1428-473a-b725-7c76277fc167",
+            "id": "dcd377d7-f660-41cf-b70f-0933c9d7020b",
             "name": "Cashbook",
             "description": {
                 "content": "",
@@ -1539,7 +1539,7 @@
             },
             "item": [
                 {
-                    "id": "806205d6-8f10-403c-822c-c10d15edfa2e",
+                    "id": "26b53017-08ac-45ee-bc58-88969d619b86",
                     "name": "List Cashbook Entries",
                     "request": {
                         "name": "List Cashbook Entries",
@@ -1633,7 +1633,7 @@
                     },
                     "response": [
                         {
-                            "id": "1516dd23-4cf2-42f6-81f3-050f5608b6fc",
+                            "id": "f099f2d5-b9ae-4de3-9abc-3eab3ca79aa8",
                             "name": "Results list.",
                             "originalRequest": {
                                 "url": {
@@ -1693,7 +1693,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "b0e4dfa0-91a3-4ea2-aeaf-e18d346a6577",
+                            "id": "c9559b47-ad5d-43bd-adc1-43565a90f14b",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -1753,7 +1753,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "a7c57ed3-51b9-45e4-9049-1070b98dd18d",
+                            "id": "f9d06bd8-276e-4770-8910-782d81f88a9c",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -1819,7 +1819,7 @@
                     }
                 },
                 {
-                    "id": "a4851dbc-a00e-46e0-9124-3df10d77c84f",
+                    "id": "0d45e655-6441-4343-bf36-950d408f53db",
                     "name": "Create Cashbook Entry",
                     "request": {
                         "name": "Create Cashbook Entry",
@@ -1895,7 +1895,7 @@
                     },
                     "response": [
                         {
-                            "id": "f1cb7527-ba5f-438b-8917-868b1507b6a5",
+                            "id": "4a341a08-e5a6-4caf-9134-27cb27322c9c",
                             "name": "The created Cashbook Entry.",
                             "originalRequest": {
                                 "url": {
@@ -1942,7 +1942,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "d276dd57-fe39-4771-82ee-f0b717ec77dd",
+                            "id": "d42d6956-c6fa-4918-92d0-862951395488",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -1989,7 +1989,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "30412d14-2b8b-4fba-8e33-b2b531f76c17",
+                            "id": "820b571e-0cd9-4a6e-b6c8-4f92dcce0d59",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -2042,7 +2042,7 @@
                     }
                 },
                 {
-                    "id": "235b0328-9871-48c0-a98d-8c908d40137a",
+                    "id": "2224643f-b061-4d87-8a9e-c2262fa3863a",
                     "name": "Get Cashbook Entry",
                     "request": {
                         "name": "Get Cashbook Entry",
@@ -2126,7 +2126,7 @@
                     },
                     "response": [
                         {
-                            "id": "a443dd42-19bf-4429-be31-b25ae05eb3fb",
+                            "id": "2f5897d8-03ea-4c42-a078-e13024a37172",
                             "name": "Cashbook Entry.",
                             "originalRequest": {
                                 "url": {
@@ -2177,12 +2177,12 @@
                                     "value": "application/json"
                                 }
                             ],
-                            "body": "{\n  \"data\": {\n    \"id\": \"amet ut\",\n    \"date\": \"2009-07-08\",\n    \"description\": \"dolor sit velit\",\n    \"kind\": \"received_document\",\n    \"type\": \"out\",\n    \"entity_name\": \"nostrud officia sit id\",\n    \"document\": {\n      \"id\": -50750305,\n      \"type\": \"cupidatat est esse\",\n      \"path\": \"labore ipsum pariatur\"\n    },\n    \"amount_in\": -90180260.28639676,\n    \"payment_account_in\": {\n      \"id\": 72987391,\n      \"name\": \"Conto Banca Intesa\",\n      \"type\": \"standard\",\n      \"iban\": \"elit magna voluptate amet\",\n      \"sia\": \"ipsum incididunt sit cupidatat\",\n      \"cuc\": \"in\",\n      \"virtual\": true\n    },\n    \"amount_out\": -8970106.616110355,\n    \"payment_account_out\": {\n      \"id\": -78328328,\n      \"name\": \"Conto Banca Intesa\",\n      \"type\": \"standard\",\n      \"iban\": \"quis in\",\n      \"sia\": \"fugiat sed ea\",\n      \"cuc\": \"adipisicing laborum\",\n      \"virtual\": false\n    }\n  }\n}",
+                            "body": "{\n  \"data\": {\n    \"id\": \"veniam adipis\",\n    \"date\": \"2012-12-27\",\n    \"description\": \"culpa\",\n    \"kind\": \"receipt\",\n    \"type\": \"in\",\n    \"entity_name\": \"est Duis veniam\",\n    \"document\": {\n      \"id\": 11439264,\n      \"type\": \"dolore\",\n      \"path\": \"aliquip adipisicing\"\n    },\n    \"amount_in\": -55466009.20148346,\n    \"payment_account_in\": {\n      \"id\": -5401774,\n      \"name\": \"Conto Banca Intesa\",\n      \"type\": \"standard\",\n      \"iban\": \"sint\",\n      \"sia\": \"culpa proident\",\n      \"cuc\": \"cupidata\",\n      \"virtual\": true\n    },\n    \"amount_out\": 90091198.83499146,\n    \"payment_account_out\": {\n      \"id\": 87117480,\n      \"name\": \"Conto Banca Intesa\",\n      \"type\": \"standard\",\n      \"iban\": \"nisi dolor pariatur amet\",\n      \"sia\": \"Lorem veniam\",\n      \"cuc\": \"ut irure in sint\",\n      \"virtual\": false\n    }\n  }\n}",
                             "cookie": [],
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "e6680186-d0b2-4fa5-92ce-95a1b741ffd5",
+                            "id": "a2288a30-3619-4cf5-90ad-805eecbc35f6",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -2238,7 +2238,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "ba61f1d8-d76a-4d4f-a236-65c2f22c474d",
+                            "id": "1f9de674-890a-446f-82a0-108811d336d8",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -2300,7 +2300,7 @@
                     }
                 },
                 {
-                    "id": "815d93fa-0371-41a0-84db-b1b3dd37d20e",
+                    "id": "13aea9fe-6cda-41fc-985f-7da63201e65b",
                     "name": "Modify Cashbook Entry",
                     "request": {
                         "name": "Modify Cashbook Entry",
@@ -2384,7 +2384,7 @@
                     },
                     "response": [
                         {
-                            "id": "4bfc36bc-4642-480c-9a12-74f40182a623",
+                            "id": "d046c446-4a85-4d36-8dea-9f33fe85c5a0",
                             "name": "The modified Cashbook Entry",
                             "originalRequest": {
                                 "url": {
@@ -2434,12 +2434,12 @@
                                     "value": "application/json"
                                 }
                             ],
-                            "body": "{\n  \"data\": {\n    \"id\": \"fugiat nisi\",\n    \"date\": \"1965-10-19\",\n    \"description\": \"velit\",\n    \"kind\": \"receipt\",\n    \"type\": \"in\",\n    \"entity_name\": \"magna sit est\",\n    \"document\": {\n      \"id\": 34927218,\n      \"type\": \"ess\",\n      \"path\": \"Excepteur mollit\"\n    },\n    \"amount_in\": 73524434.61615047,\n    \"payment_account_in\": {\n      \"id\": -17951123,\n      \"name\": \"Conto Banca Intesa\",\n      \"type\": \"standard\",\n      \"iban\": \"irure culpa\",\n      \"sia\": \"dolore\",\n      \"cuc\": \"sit Excepteur irure Duis\",\n      \"virtual\": false\n    },\n    \"amount_out\": -99361447.16368376,\n    \"payment_account_out\": {\n      \"id\": -56823330,\n      \"name\": \"Conto Banca Intesa\",\n      \"type\": \"standard\",\n      \"iban\": \"in do ad\",\n      \"sia\": \"irure id adipisicing in\",\n      \"cuc\": \"nulla exercitation ad do cillum\",\n      \"virtual\": true\n    }\n  }\n}",
+                            "body": "{\n  \"data\": {\n    \"id\": \"minim mollit\",\n    \"date\": \"2007-12-11\",\n    \"description\": \"dolore\",\n    \"kind\": \"received_document\",\n    \"type\": \"in\",\n    \"entity_name\": \"voluptate Duis\",\n    \"document\": {\n      \"id\": 89282153,\n      \"type\": \"exercitation Duis enim\",\n      \"path\": \"consectetur nulla eu\"\n    },\n    \"amount_in\": -13725317.563352093,\n    \"payment_account_in\": {\n      \"id\": -50776028,\n      \"name\": \"Conto Banca Intesa\",\n      \"type\": \"standard\",\n      \"iban\": \"mollit Excepteur\",\n      \"sia\": \"ullamco aute mag\",\n      \"cuc\": \"qui fugiat\",\n      \"virtual\": true\n    },\n    \"amount_out\": 76525739.31648287,\n    \"payment_account_out\": {\n      \"id\": -72021362,\n      \"name\": \"Conto Banca Intesa\",\n      \"type\": \"standard\",\n      \"iban\": \"laborum\",\n      \"sia\": \"Lorem et amet sunt\",\n      \"cuc\": \"ea ex Duis ad\",\n      \"virtual\": true\n    }\n  }\n}",
                             "cookie": [],
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "1498860e-d0cf-4a3d-b9a0-d39e22fdb5e4",
+                            "id": "13c7c75a-cf9b-4086-85fb-beb6f6f45784",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -2494,7 +2494,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "0d279774-eca6-4120-af8b-19747c1c36ac",
+                            "id": "77ed8b01-3b5a-4131-a578-8ca4f634d97f",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -2555,7 +2555,7 @@
                     }
                 },
                 {
-                    "id": "b583e357-18f8-4bdf-820f-08ef6c7785ba",
+                    "id": "b2cc4ff8-90f1-42cc-b413-59db04556662",
                     "name": "Delete Cashbook Entry",
                     "request": {
                         "name": "Delete Cashbook Entry",
@@ -2620,7 +2620,7 @@
                     },
                     "response": [
                         {
-                            "id": "a85f963d-97c4-4482-8841-2a9ffc1c56ba",
+                            "id": "1798a8e3-4ec9-40e5-9f41-0ddf2416c6a0",
                             "name": "Document removed.",
                             "originalRequest": {
                                 "url": {
@@ -2667,7 +2667,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "e7a1f745-edcf-4885-aa86-ae60e7cd9a45",
+                            "id": "fef885a2-ba78-4ab8-a9b0-a59529d7a279",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -2714,7 +2714,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "efa9d058-bed7-4647-9efe-76e45a8a7207",
+                            "id": "a0609ba6-32d0-404b-818b-82129102b4ad",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -2770,7 +2770,7 @@
             "event": []
         },
         {
-            "id": "4dc654c2-1fd7-4184-837e-5d38dc35f249",
+            "id": "dfddfdce-2743-4b58-b294-c08da04f2a1d",
             "name": "Clients",
             "description": {
                 "content": "",
@@ -2778,7 +2778,7 @@
             },
             "item": [
                 {
-                    "id": "91d5ad2c-939a-4d71-8163-d6039cbf6740",
+                    "id": "9729f5c5-e2a5-4ae2-9af2-e41bf2d4bb8c",
                     "name": "List Clients",
                     "request": {
                         "name": "List Clients",
@@ -2879,7 +2879,7 @@
                     },
                     "response": [
                         {
-                            "id": "0d5783d3-51b8-479f-8295-f0fbcdef8ca2",
+                            "id": "976c8106-18f2-4c34-95b8-7a145789cde4",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -2944,7 +2944,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "29c95e70-383e-4a65-8085-295de753a6d7",
+                            "id": "a735457d-2856-4cfc-a7cd-bd17fe6a0888",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -3015,7 +3015,7 @@
                     }
                 },
                 {
-                    "id": "befc97d9-2d0b-445a-9394-3787e639242d",
+                    "id": "a45c764f-81df-4611-b1c6-e46a6beefe00",
                     "name": "Create Client",
                     "request": {
                         "name": "Create Client",
@@ -3092,7 +3092,7 @@
                     },
                     "response": [
                         {
-                            "id": "6fcbaee8-903c-4c68-87dd-c37b327454f1",
+                            "id": "e7cbc181-8885-4310-8da3-d6be26e01481",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -3146,7 +3146,7 @@
                     }
                 },
                 {
-                    "id": "06c52a27-e9c1-4eba-943d-b92aa549117e",
+                    "id": "b5920163-2c53-42da-996a-3d490c406c7d",
                     "name": "Get Client",
                     "request": {
                         "name": "Get Client",
@@ -3231,7 +3231,7 @@
                     },
                     "response": [
                         {
-                            "id": "72d095ea-1132-4f11-b9a2-4e6a52e3a069",
+                            "id": "b1379934-ac83-4466-8415-60ff60866510",
                             "name": "Client Details.",
                             "originalRequest": {
                                 "url": {
@@ -3288,7 +3288,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "744f88b3-251e-4cc3-b214-b14306089249",
+                            "id": "255fac90-9692-409b-ad64-2208beae6637",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -3345,7 +3345,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "3b930139-e515-409e-95c8-12dabca7a34e",
+                            "id": "771198a5-0c47-40e2-8ef5-fda59be483f4",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -3408,7 +3408,7 @@
                     }
                 },
                 {
-                    "id": "6fea7bba-5632-4248-9d0f-8d7ef34e7ae0",
+                    "id": "79bf5d51-e66d-4beb-9ef2-4923fbbe5cc4",
                     "name": "Modify Client",
                     "request": {
                         "name": "Modify Client",
@@ -3493,7 +3493,7 @@
                     },
                     "response": [
                         {
-                            "id": "8501c300-9ced-45c0-bb57-18eb27281d7e",
+                            "id": "5ef5ec15-b358-4bf9-82cc-c5a8d640c672",
                             "name": "Client modified.",
                             "originalRequest": {
                                 "url": {
@@ -3549,7 +3549,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "69f8220e-c80b-4da2-9898-3bea880ea67e",
+                            "id": "dd62db25-fe88-431c-85e5-d9a74bd07db5",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -3605,7 +3605,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "b7cd1314-cc78-4323-a996-cba0d30a06d9",
+                            "id": "3f7fa1ab-e373-4100-958c-4654d029ee17",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -3667,7 +3667,7 @@
                     }
                 },
                 {
-                    "id": "1d55d10e-0638-4d0c-81c5-164323e433ac",
+                    "id": "cf43e887-ceab-4487-b180-db4c995ffce6",
                     "name": "Delete Client",
                     "request": {
                         "name": "Delete Client",
@@ -3733,7 +3733,7 @@
                     },
                     "response": [
                         {
-                            "id": "c9dc8a48-2cf0-4f11-a17a-1a54a88ba24e",
+                            "id": "61a1d778-f277-4f25-b694-167e4db22523",
                             "name": "Entity Removed",
                             "originalRequest": {
                                 "url": {
@@ -3781,7 +3781,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "7a7c8846-16da-4b81-9c62-388475b87e88",
+                            "id": "15fd4264-9aee-4a1a-a979-02c443da8849",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -3829,7 +3829,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "8ecb72b8-2cbb-4ba3-80b9-8bd3c84144e2",
+                            "id": "dd584b58-d1fe-4c9f-aa1f-8716f23808f2",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -3886,7 +3886,7 @@
             "event": []
         },
         {
-            "id": "cb9e41ac-c82d-493a-b9f7-7a249a951e3d",
+            "id": "dc649e92-5272-4057-a32d-7c6cd4c0a1c0",
             "name": "Companies",
             "description": {
                 "content": "",
@@ -3894,7 +3894,7 @@
             },
             "item": [
                 {
-                    "id": "f1dea2bc-274b-4773-a00b-56c8b69ec36e",
+                    "id": "7c9d18a2-4963-427b-9618-5a9a30703fec",
                     "name": "Get Company Info",
                     "request": {
                         "name": "Get Company Info",
@@ -3958,7 +3958,7 @@
                     },
                     "response": [
                         {
-                            "id": "68c1bbb9-91ce-4064-bd07-002716529c61",
+                            "id": "4c7b20ef-ecd2-4b63-bcd4-44ffd276566b",
                             "name": "Company info.",
                             "originalRequest": {
                                 "url": {
@@ -3998,7 +3998,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "825f6045-c887-4c95-93f1-a30aebcb7a3f",
+                            "id": "54630114-1cf7-424e-85f0-53a312145f37",
                             "name": "Unauthorized.",
                             "originalRequest": {
                                 "url": {
@@ -4047,7 +4047,7 @@
             "event": []
         },
         {
-            "id": "d828d7ce-436d-4961-ac56-c5bd22039ed7",
+            "id": "114bd3dd-ef12-4296-99dd-2e852f8284fb",
             "name": "Info",
             "description": {
                 "content": "",
@@ -4055,7 +4055,7 @@
             },
             "item": [
                 {
-                    "id": "8c10a0fe-77b8-4c5c-aa28-4c74b557fdc4",
+                    "id": "4837ea55-1a7f-4451-b553-7f94925454e8",
                     "name": "List Countries",
                     "request": {
                         "name": "List Countries",
@@ -4109,7 +4109,7 @@
                     },
                     "response": [
                         {
-                            "id": "2e4d82b2-d9b0-4936-9ba6-a65ae5b7a5f1",
+                            "id": "3f42c5e1-e6bd-4b51-bded-eb915cc50571",
                             "name": "List of countries",
                             "originalRequest": {
                                 "url": {
@@ -4139,7 +4139,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "27729e9a-86f9-4762-bc23-c2e85de8d935",
+                            "id": "1183fff7-7033-47ad-a4eb-22603975b04c",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -4175,7 +4175,7 @@
                     }
                 },
                 {
-                    "id": "c5144124-60be-49ea-a3d3-6bd8c9600594",
+                    "id": "631a665e-ab67-499b-b9ee-3470d02af303",
                     "name": "List Detailed Countries",
                     "request": {
                         "name": "List Detailed Countries",
@@ -4229,7 +4229,7 @@
                     },
                     "response": [
                         {
-                            "id": "b82a0c13-76ee-48b9-8958-f1770d4d1377",
+                            "id": "3aea9731-94be-4641-bf24-e2ce6666c967",
                             "name": "List of detailed countries",
                             "originalRequest": {
                                 "url": {
@@ -4259,7 +4259,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "81151fe3-1229-4571-acf4-e200fa51ab59",
+                            "id": "e6fe999d-85dc-49e9-b0d8-afc5acf21925",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -4295,7 +4295,7 @@
                     }
                 },
                 {
-                    "id": "4063fa1a-7b50-4b04-9263-4dd97f184979",
+                    "id": "134b5e4e-98a0-4fd4-bde6-da818f303164",
                     "name": "List Cities",
                     "request": {
                         "name": "List Cities",
@@ -4362,7 +4362,7 @@
                     },
                     "response": [
                         {
-                            "id": "f05fbf43-b37e-49b2-82a0-52595f3eb33a",
+                            "id": "aca78ac8-44b1-4aa7-846f-f02f126c0345",
                             "name": "Cities List.",
                             "originalRequest": {
                                 "url": {
@@ -4407,7 +4407,7 @@
                     }
                 },
                 {
-                    "id": "f560d47a-8195-4d65-9ec9-43f400af1092",
+                    "id": "71024669-2e26-4d18-a70a-3b6b3da0c57d",
                     "name": "List Languages",
                     "request": {
                         "name": "List Languages",
@@ -4461,7 +4461,7 @@
                     },
                     "response": [
                         {
-                            "id": "3ae6d8eb-0931-43a4-8c73-b2b64b75d120",
+                            "id": "07eb4fb7-2d4d-44ef-89fe-1f1c023938bb",
                             "name": "LanguagesList",
                             "originalRequest": {
                                 "url": {
@@ -4491,7 +4491,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "9818a450-9e93-4f71-a649-7f9a8cf0c00b",
+                            "id": "4fde1257-6787-4408-978a-d43bf9a19000",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -4527,7 +4527,7 @@
                     }
                 },
                 {
-                    "id": "6c7c5323-2612-4495-8f6d-87b99552e2c2",
+                    "id": "f2a15722-238f-4d23-a0b6-ae93353136e9",
                     "name": "List Templates",
                     "request": {
                         "name": "List Templates",
@@ -4594,7 +4594,7 @@
                     },
                     "response": [
                         {
-                            "id": "0c182d27-9abd-4a38-8a4c-bd845349c4fa",
+                            "id": "01a5bd3d-1f13-4a60-809d-db4a10805ea8",
                             "name": "Templates list.",
                             "originalRequest": {
                                 "url": {
@@ -4633,7 +4633,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "a04e577a-25db-448e-a07b-a695327d16f8",
+                            "id": "c2be7102-cedf-4dd8-8737-3053d24c77a8",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -4678,7 +4678,7 @@
                     }
                 },
                 {
-                    "id": "2763bd64-062d-49a0-956f-cc74cabbd51c",
+                    "id": "ba2c0081-bda1-4dee-8685-04d12b6ca666",
                     "name": "List Currencies",
                     "request": {
                         "name": "List Currencies",
@@ -4732,7 +4732,7 @@
                     },
                     "response": [
                         {
-                            "id": "ec3dbdf6-f528-4df4-91df-b0cbd602b9b9",
+                            "id": "af59d41e-df80-4bab-afc7-6b2463b594f0",
                             "name": "Currencies List.",
                             "originalRequest": {
                                 "url": {
@@ -4762,7 +4762,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "ba790e44-5dff-49b9-86a1-bd3cebe29f40",
+                            "id": "da4c737b-6b07-472d-b7f5-46359270d067",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -4798,7 +4798,7 @@
                     }
                 },
                 {
-                    "id": "5f358eca-3440-47b0-8e47-dbb8eb153fa4",
+                    "id": "935fcfac-b9cc-44a5-8f0c-469fd0c20041",
                     "name": "List Units of Measure",
                     "request": {
                         "name": "List Units of Measure",
@@ -4852,7 +4852,7 @@
                     },
                     "response": [
                         {
-                            "id": "60f4fcb3-39ab-41d7-b046-3e400e7db4f1",
+                            "id": "9a78525d-1d23-44e2-95c6-37f50c16ac92",
                             "name": "Units of measure.",
                             "originalRequest": {
                                 "url": {
@@ -4882,7 +4882,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "ad0b0d19-2d5f-4fb0-a9cc-fdb7431994c9",
+                            "id": "93ac9083-8824-41b4-a436-23bc8e139bce",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -4918,7 +4918,7 @@
                     }
                 },
                 {
-                    "id": "4f95edcc-2606-4ce9-a7d2-2c6b8d79eab3",
+                    "id": "a972a89b-4527-4b18-b449-c70a40a1be2d",
                     "name": "List Delivery Notes Default Causals",
                     "request": {
                         "name": "List Delivery Notes Default Causals",
@@ -4972,7 +4972,7 @@
                     },
                     "response": [
                         {
-                            "id": "5e0a850d-5470-4d44-95c6-16ec2238cce8",
+                            "id": "d3b6024b-37b7-42f8-837b-7cdfef330b75",
                             "name": "List of Delivery Notes Default Causals",
                             "originalRequest": {
                                 "url": {
@@ -5002,7 +5002,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "e425bc89-030b-4c95-8141-38920f3ac1f9",
+                            "id": "dec7bb80-3e37-4bb9-827f-685ff368a583",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -5038,7 +5038,7 @@
                     }
                 },
                 {
-                    "id": "a0bbe616-a26b-40c3-874d-be94527a66df",
+                    "id": "1001aeb4-f00e-450a-be07-41e58cfbb1b3",
                     "name": "List Vat Types",
                     "request": {
                         "name": "List Vat Types",
@@ -5109,7 +5109,7 @@
                     },
                     "response": [
                         {
-                            "id": "38f83161-ee6a-4651-84c2-1d5c169b3ecb",
+                            "id": "6fa4450f-0cb7-441f-bba7-a3edda362b39",
                             "name": "List of Vat Types.",
                             "originalRequest": {
                                 "url": {
@@ -5154,7 +5154,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "aa92ed92-9b05-403e-9440-06ef8cd85a83",
+                            "id": "86392950-1e13-4ea0-8f42-966f5005479d",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -5199,7 +5199,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "c5ee662d-9987-4172-91bf-ed3f65ed2f80",
+                            "id": "16ef02cc-cd86-425e-b087-866c7c3ae630",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -5250,7 +5250,7 @@
                     }
                 },
                 {
-                    "id": "8655085e-1484-4dce-ac4e-076f5134c5c8",
+                    "id": "8fcb29d3-68c1-4075-a2b5-a8541686eec9",
                     "name": "List Payment Methods",
                     "request": {
                         "name": "List Payment Methods",
@@ -5333,7 +5333,7 @@
                     },
                     "response": [
                         {
-                            "id": "cbe1882e-2b0a-4af9-b832-a8f16b7ceca8",
+                            "id": "db26979c-acb4-49c6-ae09-b7c423764b48",
                             "name": "Payment methods list.",
                             "originalRequest": {
                                 "url": {
@@ -5386,7 +5386,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "e6e8323e-5e4b-42fc-bd43-74ebf28c8de2",
+                            "id": "0e79e6f7-6363-4a7d-ba78-d87afb6f53cd",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -5439,7 +5439,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "a30487bc-8891-4379-beac-4dbfa2795e63",
+                            "id": "f44a1b25-7db2-445f-895b-375890338f52",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -5498,7 +5498,7 @@
                     }
                 },
                 {
-                    "id": "5ac51288-f6c6-4125-992e-c2e5914d2181",
+                    "id": "1821be19-d7cf-4fa5-bcce-cb10072e94df",
                     "name": "List Payment Accounts",
                     "request": {
                         "name": "List Payment Accounts",
@@ -5581,7 +5581,7 @@
                     },
                     "response": [
                         {
-                            "id": "16409541-f71c-4ff0-ba02-79c18a71c708",
+                            "id": "3785e126-670d-4219-ba43-2d771dc36cf6",
                             "name": "Payment accounts list.",
                             "originalRequest": {
                                 "url": {
@@ -5634,7 +5634,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "56f9e209-ba3f-41b8-9a9c-456e80e6b61e",
+                            "id": "959e5c90-14f1-467e-b1cd-78b8f562973d",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -5687,7 +5687,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "7f5e6743-6781-4a7a-a786-d67d752b9198",
+                            "id": "d5f6f1f5-b368-4b2e-8f9e-0ffc71a87b43",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -5746,7 +5746,7 @@
                     }
                 },
                 {
-                    "id": "27be912b-703b-41ca-802e-7c615b1fbc65",
+                    "id": "caa7dc9d-b97a-4535-954d-ed8d5791daf5",
                     "name": "List Revenue Centers",
                     "request": {
                         "name": "List Revenue Centers",
@@ -5810,7 +5810,7 @@
                     },
                     "response": [
                         {
-                            "id": "87f3dbdc-61ce-4cd9-90dc-0e54ad787b3a",
+                            "id": "5648ed0c-c2bb-40cd-95ce-32a4950d49e7",
                             "name": "List of Revenue Centers",
                             "originalRequest": {
                                 "url": {
@@ -5850,7 +5850,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "281058c8-fa79-425f-bf32-0f9eefe9ab58",
+                            "id": "b3a63dc4-7244-4b69-ab98-d540bb635d1b",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -5890,7 +5890,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "b7148bc1-97a2-423b-8325-216f67a9f8b8",
+                            "id": "9ccaed11-27f9-4e03-8895-fc92600f0a87",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -5936,7 +5936,7 @@
                     }
                 },
                 {
-                    "id": "3ae2d9a4-ad04-40a5-b81c-a502971bae68",
+                    "id": "12b23c52-a48e-4ff3-95e8-ccdc44e28009",
                     "name": "List Cost Centers",
                     "request": {
                         "name": "List Cost Centers",
@@ -6000,7 +6000,7 @@
                     },
                     "response": [
                         {
-                            "id": "c81664c3-27b3-4b6e-819a-40a867d00ce3",
+                            "id": "37a97dc3-7584-4db9-885c-11d9a448e8b2",
                             "name": "List of Cost Centers",
                             "originalRequest": {
                                 "url": {
@@ -6040,7 +6040,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "8e4ebaa6-bb5f-4f71-bba2-66969c1bf703",
+                            "id": "4148fc1a-fd0f-4a22-b366-0054a70e7f46",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -6080,7 +6080,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "2132d1f0-2e64-4571-be5e-8803279bcd92",
+                            "id": "02fe18c1-2e72-4e85-931c-6fc6807a7fc2",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -6126,7 +6126,7 @@
                     }
                 },
                 {
-                    "id": "220c15cf-3166-40cc-972f-548eb3c2d3ae",
+                    "id": "e55e5d36-ea50-4450-87dc-eb9abe557f82",
                     "name": "List Product Categories",
                     "request": {
                         "name": "List Product Categories",
@@ -6197,7 +6197,7 @@
                     },
                     "response": [
                         {
-                            "id": "a4c78873-40bf-4de2-8a96-498f612adf5a",
+                            "id": "4467603c-d7ca-46e7-adda-a0644ebca074",
                             "name": "Product Categories List",
                             "originalRequest": {
                                 "url": {
@@ -6242,7 +6242,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "02cb5cf8-7f8b-4a39-8452-da3be00db1da",
+                            "id": "c3856d95-0f80-4f83-bbfc-7dade207a3f4",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -6287,7 +6287,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "09172f8d-2ecc-4a21-96a2-ab0d2df97c38",
+                            "id": "82f934e9-f273-4ce0-af10-e9e1c0d72f59",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -6338,7 +6338,7 @@
                     }
                 },
                 {
-                    "id": "a7c3e261-9e5a-4408-8943-dc9e40042ff7",
+                    "id": "4e6130b9-e230-4807-bc81-6dd38af0323d",
                     "name": "List Received Document Categories",
                     "request": {
                         "name": "List Received Document Categories",
@@ -6402,7 +6402,7 @@
                     },
                     "response": [
                         {
-                            "id": "02b2d2b4-ec6d-446a-a92f-d7cdec05d171",
+                            "id": "3037e45b-d349-40a8-8e94-ece530d5669d",
                             "name": "Received Document Categories List",
                             "originalRequest": {
                                 "url": {
@@ -6448,7 +6448,7 @@
                     }
                 },
                 {
-                    "id": "e6ec51fa-5d0b-4dd5-b651-dc39698ebaac",
+                    "id": "47f1a904-b40a-41a9-bc48-5da21a016eca",
                     "name": "List Archive Categories",
                     "request": {
                         "name": "List Archive Categories",
@@ -6512,7 +6512,7 @@
                     },
                     "response": [
                         {
-                            "id": "f48faf80-de97-4b76-8947-5347db7018d7",
+                            "id": "1f80b677-bde0-481d-a21d-d9546df960e2",
                             "name": "Archive Categories list.",
                             "originalRequest": {
                                 "url": {
@@ -6552,7 +6552,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "a8059170-7e64-40fe-a215-69508f3daa39",
+                            "id": "30ba2a39-a635-45e1-9408-7f208f706727",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -6592,7 +6592,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "93450ed3-b4c9-4ddc-80af-b3a8a3d86947",
+                            "id": "ae37c715-d421-41ef-b1a9-87a1410af561",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -6641,7 +6641,7 @@
             "event": []
         },
         {
-            "id": "eb3997cc-d11b-44bc-92a5-85fab8310c13",
+            "id": "02c16b2d-64d2-476d-8d3d-c1077ba9368d",
             "name": "Issued Documents",
             "description": {
                 "content": "",
@@ -6649,7 +6649,7 @@
             },
             "item": [
                 {
-                    "id": "6576d380-7757-4269-ae53-a06036fba62c",
+                    "id": "2d025407-4587-4587-95a1-b59bcc296460",
                     "name": "List Issued Documents",
                     "request": {
                         "name": "List Issued Documents",
@@ -6708,6 +6708,12 @@
                                     "key": "q",
                                     "value": "<string>",
                                     "description": "Query for filtering the results."
+                                },
+                                {
+                                    "disabled": false,
+                                    "key": "inclusive",
+                                    "value": "<integer>",
+                                    "description": "(Only for type = delivery_notes) Include invoices delivery notes."
                                 }
                             ],
                             "variable": [
@@ -6755,7 +6761,7 @@
                     },
                     "response": [
                         {
-                            "id": "37e29817-946b-431e-a7de-f76d47b88450",
+                            "id": "9d2d80bb-81aa-4e26-acf5-47108b15d345",
                             "name": "Results list.",
                             "originalRequest": {
                                 "url": {
@@ -6795,6 +6801,10 @@
                                         {
                                             "key": "q",
                                             "value": "<string>"
+                                        },
+                                        {
+                                            "key": "inclusive",
+                                            "value": "<integer>"
                                         }
                                     ],
                                     "variable": [
@@ -6823,7 +6833,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "5aa63011-a2d1-4f34-9c58-4f9fc2900bc4",
+                            "id": "c0907274-8e64-4ce9-9a3a-3579473226d6",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -6863,6 +6873,10 @@
                                         {
                                             "key": "q",
                                             "value": "<string>"
+                                        },
+                                        {
+                                            "key": "inclusive",
+                                            "value": "<integer>"
                                         }
                                     ],
                                     "variable": [
@@ -6891,7 +6905,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "e39d90c6-64f8-492e-b47f-92f70bbbdef7",
+                            "id": "6a43fcf4-6f42-4cec-9ccf-499c26d3745d",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -6931,6 +6945,10 @@
                                         {
                                             "key": "q",
                                             "value": "<string>"
+                                        },
+                                        {
+                                            "key": "inclusive",
+                                            "value": "<integer>"
                                         }
                                     ],
                                     "variable": [
@@ -6965,7 +6983,7 @@
                     }
                 },
                 {
-                    "id": "387b3364-aced-4c52-9adf-186c7c8a2ec7",
+                    "id": "01e4a505-5a3e-4e4a-b387-589aea02bd4e",
                     "name": "Create Issued Document",
                     "request": {
                         "name": "Create Issued Document",
@@ -7041,7 +7059,7 @@
                     },
                     "response": [
                         {
-                            "id": "c7409141-5a74-45e8-a7f0-1aa9117ad176",
+                            "id": "f555bc44-f50a-4323-8264-0bdaf33a35e9",
                             "name": "Document created.",
                             "originalRequest": {
                                 "url": {
@@ -7088,7 +7106,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "b959051a-2465-457e-815e-50936ac36677",
+                            "id": "ed49c216-4150-400d-94a1-4572eb070e31",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -7141,7 +7159,7 @@
                     }
                 },
                 {
-                    "id": "fa535a9a-a53b-4f87-a7b0-94d0db9d0810",
+                    "id": "f4f94200-6b30-4251-a7e9-a1693232d6f6",
                     "name": "Get Issued Document",
                     "request": {
                         "name": "Get Issued Document",
@@ -7225,7 +7243,7 @@
                     },
                     "response": [
                         {
-                            "id": "4b96075d-8739-4766-8c1b-9e544ad2771a",
+                            "id": "c8590d31-672b-4e4c-9c78-975cc687bccc",
                             "name": "Document Details.",
                             "originalRequest": {
                                 "url": {
@@ -7281,7 +7299,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "cb3da37d-f41e-4ab2-bde3-80580562abea",
+                            "id": "71423f30-87f8-45d7-abe4-4ff6724bcbbc",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -7337,7 +7355,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "e7d79867-c3b4-416f-bba7-c59157caf8c0",
+                            "id": "27eff5f0-2d3f-4633-b7a1-2f1f320d3746",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -7399,7 +7417,7 @@
                     }
                 },
                 {
-                    "id": "db2407f6-79c6-4691-ad52-7412da524bee",
+                    "id": "b8b0d65d-371e-4629-9164-4431b433280e",
                     "name": "Modify Issued Document",
                     "request": {
                         "name": "Modify Issued Document",
@@ -7483,7 +7501,7 @@
                     },
                     "response": [
                         {
-                            "id": "dade4e2b-b1bb-4db4-a9f1-aeac89119260",
+                            "id": "b96f7085-1db0-489a-b9eb-74b857e0e1ad",
                             "name": "Document edited",
                             "originalRequest": {
                                 "url": {
@@ -7538,7 +7556,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "51b0ab84-47ff-4e00-bfe2-2b8a31bb6bf3",
+                            "id": "c3ba2ed4-0695-4b9a-ab65-6023ef6e43e3",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -7593,7 +7611,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "bcbd47c4-0842-4b0a-9ef1-a55b76a11f11",
+                            "id": "e9d03a7f-d012-4264-9c9d-c3113899a7d8",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -7654,7 +7672,7 @@
                     }
                 },
                 {
-                    "id": "5d67845f-329d-4ec9-9769-5ed2f0c8b855",
+                    "id": "7e76588e-4229-45fe-bd15-af7d33aa2893",
                     "name": "Delete Issued Document",
                     "request": {
                         "name": "Delete Issued Document",
@@ -7719,7 +7737,7 @@
                     },
                     "response": [
                         {
-                            "id": "02a9a9c2-ee91-480d-8409-43a6924de14c",
+                            "id": "b0e19870-cab0-42e6-b8af-bf8f53fb18e4",
                             "name": "Document removed",
                             "originalRequest": {
                                 "url": {
@@ -7766,7 +7784,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "9044342d-9905-4914-b789-dbf0a38421da",
+                            "id": "609daf71-be78-4f72-9f76-69ffd267f571",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -7813,7 +7831,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "f4d95fa9-5caa-4ede-8725-d172ebffb0ba",
+                            "id": "77e280ca-3c9a-48ee-93d9-3e69314dab25",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -7866,7 +7884,7 @@
                     }
                 },
                 {
-                    "id": "477e1c9b-d64f-4a70-a4f1-bcdfab16a3db",
+                    "id": "d12d2058-7f02-4aa8-b4ee-e9829bfe9ba8",
                     "name": "Get New Issued Document Totals",
                     "request": {
                         "name": "Get New Issued Document Totals",
@@ -7943,7 +7961,7 @@
                     },
                     "response": [
                         {
-                            "id": "31a0ebe2-f27a-4747-8144-9c5a5e0491e8",
+                            "id": "6f8fb2cc-b714-4ef9-864d-7e07d5972f0b",
                             "name": "Totals.",
                             "originalRequest": {
                                 "url": {
@@ -7991,7 +8009,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "58401378-6902-407e-8725-42a98c99ebc2",
+                            "id": "dd3d6ab6-97fa-4b6f-9f9d-984720a0be03",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -8045,7 +8063,7 @@
                     }
                 },
                 {
-                    "id": "a090c088-deee-452d-9785-6f3d75671d43",
+                    "id": "cec10b71-c46f-4446-93b8-e6fe6df746fd",
                     "name": "Get Existing Issued Document Totals",
                     "request": {
                         "name": "Get Existing Issued Document Totals",
@@ -8130,7 +8148,7 @@
                     },
                     "response": [
                         {
-                            "id": "2d77ed55-f3f2-4033-ab77-f44038243b59",
+                            "id": "9ac8acff-24e3-4298-a796-43d72d90e588",
                             "name": "Totals.",
                             "originalRequest": {
                                 "url": {
@@ -8186,7 +8204,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "a335edc3-c84d-40bd-a16d-8f41d927557d",
+                            "id": "92317bc0-e320-431a-be3c-1119c96bafe5",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -8242,7 +8260,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "49facbb0-1ef1-43d1-880e-95e9abe53840",
+                            "id": "9c79bac9-97be-4978-886a-0f44b4ac2be8",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -8304,7 +8322,7 @@
                     }
                 },
                 {
-                    "id": "802e2e2d-a8a7-44dc-9f14-df402249c1a6",
+                    "id": "aca91939-56ae-46ab-9577-cb3892a1a0c2",
                     "name": "Upload Issued Document Attachment",
                     "request": {
                         "name": "Upload Issued Document Attachment",
@@ -8388,7 +8406,7 @@
                     },
                     "response": [
                         {
-                            "id": "88c80f40-1e57-4787-99a6-fb7162465192",
+                            "id": "8cfe8a5d-7703-447e-84a0-c6865ed95252",
                             "name": "Attachment Token.",
                             "originalRequest": {
                                 "url": {
@@ -8449,7 +8467,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "901b1664-8ff7-4a2f-82e8-e719c227a1d2",
+                            "id": "f0e8632e-ad1c-4c5f-8c32-d78998184868",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -8516,7 +8534,7 @@
                     }
                 },
                 {
-                    "id": "685a3f75-219a-4b26-84d6-0559de34df94",
+                    "id": "4a95e0b6-ada2-4d96-82f4-9f9dd76892f5",
                     "name": "Delete Issued Document Attachment",
                     "request": {
                         "name": "Delete Issued Document Attachment",
@@ -8582,7 +8600,7 @@
                     },
                     "response": [
                         {
-                            "id": "7fea474c-0f69-43de-8e74-7ad25ef06e94",
+                            "id": "666de57e-c967-4ff4-b76d-8c1675f2916e",
                             "name": "File removed.",
                             "originalRequest": {
                                 "url": {
@@ -8630,7 +8648,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "92add147-d001-47c3-9d78-b2cf19c72c87",
+                            "id": "6941d827-0f4d-499c-b884-50c963d1a428",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -8678,7 +8696,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "c8e745d6-7736-4374-9467-0c6374a7f30a",
+                            "id": "4cef1127-66c2-4082-8499-225a8707749e",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -8732,7 +8750,7 @@
                     }
                 },
                 {
-                    "id": "34423fc6-57f0-45de-96cd-86e29db951c1",
+                    "id": "fb6552ba-958a-42dc-94ab-050b2ac010e5",
                     "name": "Get Issued Document Pre-create info",
                     "request": {
                         "name": "Get Issued Document Pre-create info",
@@ -8803,7 +8821,7 @@
                     },
                     "response": [
                         {
-                            "id": "bcd6c0c2-4a16-4dce-80d2-1890ed988a9d",
+                            "id": "b6db2d62-3d0d-443f-a660-5a44568ccb73",
                             "name": "Pre-create info.",
                             "originalRequest": {
                                 "url": {
@@ -8854,7 +8872,7 @@
                     }
                 },
                 {
-                    "id": "bfb34f21-8298-4d9b-9b2f-3d725ad2468d",
+                    "id": "334138af-0ee2-45a3-87bc-34749acd7170",
                     "name": "Get Email Data",
                     "request": {
                         "name": "Get Email Data",
@@ -8926,7 +8944,7 @@
                     },
                     "response": [
                         {
-                            "id": "f2f64296-a184-433c-9b20-ebbfeb028c54",
+                            "id": "85012606-7e45-4e9c-96a5-b357abd3833f",
                             "name": "EmailData",
                             "originalRequest": {
                                 "url": {
@@ -8980,7 +8998,7 @@
                     }
                 },
                 {
-                    "id": "2d5707cb-7740-40e4-9304-ab80d01ac444",
+                    "id": "c2860b2a-ae3b-49ec-9bce-44fee1e1e4f0",
                     "name": "Schedule Email",
                     "request": {
                         "name": "Schedule Email",
@@ -9061,7 +9079,7 @@
                     },
                     "response": [
                         {
-                            "id": "6f961c6f-a3cf-41ad-9f47-fec821ebdf33",
+                            "id": "9534931f-c6ac-4acf-aa94-58afb2d57fcc",
                             "name": "OK",
                             "originalRequest": {
                                 "url": {
@@ -9117,7 +9135,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "2efeb011-3a3d-4b1b-aefb-af4cabebc8ea",
+                            "id": "5d7e2c00-1b9f-48ca-9db7-5e21756ab025",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -9173,7 +9191,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "7e6a78ea-547d-4280-b29d-d0254ec42831",
+                            "id": "fabec1ed-d445-4e4e-bbfc-459822b74d18",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -9235,7 +9253,7 @@
                     }
                 },
                 {
-                    "id": "eab6e5fd-7133-464d-9b72-35dc22045eb2",
+                    "id": "a64bbe84-1632-4beb-947c-62d28d5a9bf1",
                     "name": "Transform issued document",
                     "request": {
                         "name": "Transform issued document",
@@ -9324,7 +9342,7 @@
                     },
                     "response": [
                         {
-                            "id": "e7d8a476-9625-464c-9362-1e4743b8246f",
+                            "id": "4bf24367-94c1-4a51-99f9-0e72e69d8958",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -9387,7 +9405,7 @@
                     }
                 },
                 {
-                    "id": "9896a931-94ef-4067-a6c3-2efe9faad894",
+                    "id": "6e208073-82cd-4497-bd76-7513fc3a9b1a",
                     "name": "Join issued documents",
                     "request": {
                         "name": "Join issued documents",
@@ -9470,7 +9488,7 @@
                     },
                     "response": [
                         {
-                            "id": "31d0a60c-13ae-4dde-ae16-c3ba598da697",
+                            "id": "c142c407-9c18-4495-b578-d9c6158d21d0",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -9532,7 +9550,7 @@
             "event": []
         },
         {
-            "id": "024f6103-b996-4ff5-8d7d-3cc5d40d3152",
+            "id": "e58908e5-7da4-4d1d-ba26-e422a542cb55",
             "name": "Issued e-invoices",
             "description": {
                 "content": "",
@@ -9540,7 +9558,7 @@
             },
             "item": [
                 {
-                    "id": "dbda3e6a-467c-468f-9b0c-d3e3e8303028",
+                    "id": "8fa8ca83-ba8c-4af5-984e-2b7ff9fd9200",
                     "name": "Send the e-invoice",
                     "request": {
                         "name": "Send the e-invoice",
@@ -9616,7 +9634,7 @@
                         },
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"data\": {\n    \"cassa_type\": \"<string>\",\n    \"withholding_tax_causal\": \"<string>\"\n  }\n}",
+                            "raw": "{\n  \"data\": {\n    \"cassa_type\": \"<string>\",\n    \"withholding_tax_causal\": \"<string>\"\n  },\n  \"options\": {\n    \"dry_run\": \"<boolean>\"\n  }\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -9626,7 +9644,7 @@
                     },
                     "response": [
                         {
-                            "id": "1f4741a8-61b4-4fd5-8922-c67b8d1b39d6",
+                            "id": "4e5d1e10-f332-404a-80eb-e14755f599d7",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -9683,7 +9701,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "37609cb2-e355-486c-9c31-1432c67aa000",
+                            "id": "82bdf057-f773-4353-aa16-0b5feeaed29e",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -9740,7 +9758,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "5e7fa9c0-f636-45f2-b7df-06ab831c1381",
+                            "id": "482c206c-31ac-4edb-b1aa-636da1efe737",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -9803,7 +9821,7 @@
                     }
                 },
                 {
-                    "id": "2197e044-fe87-42f1-8c1b-e7b7122c27ce",
+                    "id": "c1e97e90-3049-4c45-8179-80c5783593ed",
                     "name": "Verify e-invoice XML",
                     "request": {
                         "name": "Verify e-invoice XML",
@@ -9876,7 +9894,7 @@
                     },
                     "response": [
                         {
-                            "id": "33aa6a94-7c56-4a8e-860f-69aeee7bc733",
+                            "id": "13a613ab-fd84-485f-97bc-b9460a8532e7",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -9925,7 +9943,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "1227aa83-a283-41a2-9fa3-9370fd5f075f",
+                            "id": "ea0ffc9e-2b1c-4f03-979d-2cbeb5b5783e",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -9974,7 +9992,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "bcc59624-899d-4e6d-9c24-6dddb7b90218",
+                            "id": "49102727-1cb3-4f43-8deb-902d3642189f",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -10023,7 +10041,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "a5eeb10f-46be-4a3c-896f-3f5132637b0e",
+                            "id": "b97f8f6e-3b0d-4164-b3d5-cd50e003b3b3",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -10067,7 +10085,7 @@
                                     "value": "application/json"
                                 }
                             ],
-                            "body": "{\n  \"error\": {\n    \"message\": \"sunt aute nisi\",\n    \"validation_result\": {\n      \"xml_errors\": [\n        \"consequat in veniam\",\n        \"ullamco ut\"\n      ]\n    }\n  },\n  \"extra\": {\n    \"errors\": [\n      \"aliquip cillum\",\n      \"in ame\"\n    ]\n  }\n}",
+                            "body": "{\n  \"error\": {\n    \"message\": \"anim\",\n    \"validation_result\": {\n      \"xml_errors\": [\n        \"Duis culpa non\",\n        \"Ex\"\n      ]\n    }\n  },\n  \"extra\": {\n    \"errors\": [\n      \"reprehenderit deserunt aliqua\",\n      \"amet ut mollit quis elit\"\n    ]\n  }\n}",
                             "cookie": [],
                             "_postman_previewlanguage": "json"
                         }
@@ -10078,7 +10096,7 @@
                     }
                 },
                 {
-                    "id": "a76313e6-9810-4e15-9a8e-3abeba8478dc",
+                    "id": "e11b1743-9352-4a69-a71d-c9464320f459",
                     "name": "Get e-invoice XML",
                     "request": {
                         "name": "Get e-invoice XML",
@@ -10158,7 +10176,7 @@
                     },
                     "response": [
                         {
-                            "id": "c33fc2ae-0723-4a8c-992f-6990bf7be609",
+                            "id": "5b344ad4-1174-4f49-925f-5792509281cf",
                             "originalRequest": {
                                 "url": {
                                     "path": [
@@ -10211,7 +10229,7 @@
                             "_postman_previewlanguage": "xml"
                         },
                         {
-                            "id": "3be8b518-7340-43c1-b769-32dca1f59448",
+                            "id": "9e0308b1-e043-4ed3-a79e-cfe7c8e77a3c",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -10265,7 +10283,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "b68a74a6-82b5-4343-9117-3682e058c57b",
+                            "id": "e5f4e2a2-326b-4cd1-b5fd-2c31abfe54f0",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -10325,7 +10343,7 @@
                     }
                 },
                 {
-                    "id": "ba0e8f4d-40b6-4f33-9725-3f80debe53b3",
+                    "id": "42c7ecd6-9451-47ca-983d-f217dbe7d639",
                     "name": "Get e-invoice rejection reason",
                     "request": {
                         "name": "Get e-invoice rejection reason",
@@ -10398,7 +10416,7 @@
                     },
                     "response": [
                         {
-                            "id": "3b2ba4e9-71e1-4f15-964f-aa4f376452d9",
+                            "id": "8de67a5e-b43f-4f1d-9f4f-ffe7f72905af",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -10442,7 +10460,7 @@
                                     "value": "application/json"
                                 }
                             ],
-                            "body": "{\n  \"data\": {\n    \"reason\": \"nulla ut sed\",\n    \"ei_status\": \"exercitation\",\n    \"solution\": \"ut adipisicing\",\n    \"code\": \"reprehenderit mollit laborum magna\",\n    \"date\": \"1984-02-28T14:54:39.723Z\"\n  }\n}",
+                            "body": "{\n  \"data\": {\n    \"reason\": \"Ut nostrud\",\n    \"ei_status\": \"Excepteur esse aute occaecat non\",\n    \"solution\": \"tempor ut occaecat minim\",\n    \"code\": \"laborum officia\",\n    \"date\": \"1997-03-28T23:49:24.863Z\"\n  }\n}",
                             "cookie": [],
                             "_postman_previewlanguage": "json"
                         }
@@ -10456,7 +10474,7 @@
             "event": []
         },
         {
-            "id": "fead9b53-c7e0-4bd0-bd38-00aa36af8ee6",
+            "id": "d6942e15-fb82-4cc6-85cc-4dbcb913fe8a",
             "name": "Products",
             "description": {
                 "content": "",
@@ -10464,7 +10482,7 @@
             },
             "item": [
                 {
-                    "id": "f41ed848-e3f7-4310-97f3-ef729e61518d",
+                    "id": "dcc26eed-647b-4387-98ba-714868dbc4c0",
                     "name": "List Products",
                     "request": {
                         "name": "List Products",
@@ -10564,7 +10582,7 @@
                     },
                     "response": [
                         {
-                            "id": "e9b9940e-9bf2-448d-8b54-d2b91336d27c",
+                            "id": "970d8d15-e5f7-4016-8a09-df463fedc61b",
                             "name": "Products List.",
                             "originalRequest": {
                                 "url": {
@@ -10628,7 +10646,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "f39d1a94-1166-42f3-9efe-d0a81cba1ddb",
+                            "id": "63952e43-e920-4e24-972c-436db01cbe68",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -10698,7 +10716,7 @@
                     }
                 },
                 {
-                    "id": "4f822fa1-56fd-4e3a-8f90-0d0069fbf597",
+                    "id": "dc730080-a4fe-4c65-a650-7aa4c68931ca",
                     "name": "Create Product",
                     "request": {
                         "name": "Create Product",
@@ -10774,7 +10792,7 @@
                     },
                     "response": [
                         {
-                            "id": "2afc134d-35e7-44e3-9bfa-ad04e3e986dd",
+                            "id": "69e2ec63-14a6-4080-8e8b-c9cef7f91da1",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -10827,7 +10845,7 @@
                     }
                 },
                 {
-                    "id": "be143349-001b-40c4-9d14-296e0e796577",
+                    "id": "52a47123-0264-4641-bca0-4ae5284e60a6",
                     "name": "Get Product",
                     "request": {
                         "name": "Get Product",
@@ -10911,7 +10929,7 @@
                     },
                     "response": [
                         {
-                            "id": "1aafa9a8-b74e-429e-97f3-3f01e0f234ec",
+                            "id": "cda2f141-ff42-460a-bbed-14d8660d39aa",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -10967,7 +10985,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "5a1d8f5a-9ad5-43a6-8578-b1f8c328b4db",
+                            "id": "a9c4ffd6-5905-482e-aac1-5380f822229c",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -11023,7 +11041,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "bba707c7-a03a-46d8-bfc9-513b836df16d",
+                            "id": "4073989d-e0b0-43db-aa46-b89923987b77",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -11085,7 +11103,7 @@
                     }
                 },
                 {
-                    "id": "68454221-5e7d-4c43-8e40-3fb03c7428b0",
+                    "id": "ef545174-0e45-41e3-bcec-1f365be4afe2",
                     "name": "Modify Product",
                     "request": {
                         "name": "Modify Product",
@@ -11169,7 +11187,7 @@
                     },
                     "response": [
                         {
-                            "id": "f4e3f229-3817-4917-a3a9-d2fe26e2b64e",
+                            "id": "b029b894-dc0a-49bd-bed6-ab81670a1ee9",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -11224,7 +11242,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "4cb8cfa2-6bf1-4e3f-9ac0-11b3372873da",
+                            "id": "75185f00-479e-4877-a3e0-816897fb54c4",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -11279,7 +11297,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "10bcb5a4-cbe9-4b13-b059-be1817111ca4",
+                            "id": "0f9dc0e3-5f79-4fbb-8d4f-4756a4be2fae",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -11340,7 +11358,7 @@
                     }
                 },
                 {
-                    "id": "c0d4fca3-91a5-4a3a-b07f-29a75be8d972",
+                    "id": "ae99a1fb-2c97-48ea-a583-3d499dbb40d2",
                     "name": "Delete Product",
                     "request": {
                         "name": "Delete Product",
@@ -11405,7 +11423,7 @@
                     },
                     "response": [
                         {
-                            "id": "49bad868-4dfa-4552-84db-d093ce6ec835",
+                            "id": "a7064da1-2caa-4345-a99d-a787c29ce3ca",
                             "name": "Product removed.",
                             "originalRequest": {
                                 "url": {
@@ -11452,7 +11470,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "68bba824-c2de-4c75-acff-56d0f25d221d",
+                            "id": "1566a7ac-8612-4f4f-ab4d-a6cb63c9bbe4",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -11499,7 +11517,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "155614eb-e5c7-46c0-803b-2c3257f06a0e",
+                            "id": "11491c14-517d-4924-8103-5452abd32b8f",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -11555,7 +11573,7 @@
             "event": []
         },
         {
-            "id": "d3585cb8-4ed8-46c8-86d1-2eb2c2f0e8b2",
+            "id": "e0da2ce4-03e2-4101-83ef-a5f2afb0a732",
             "name": "Receipts",
             "description": {
                 "content": "",
@@ -11563,7 +11581,7 @@
             },
             "item": [
                 {
-                    "id": "ad786d62-8dd7-4b5a-ad20-76ed9a3160ca",
+                    "id": "a67b1a36-b219-4252-a88c-18eb8ed96511",
                     "name": "List Receipts",
                     "request": {
                         "name": "List Receipts",
@@ -11663,7 +11681,7 @@
                     },
                     "response": [
                         {
-                            "id": "4a63fefc-626e-477e-98dc-4d46274e7b9c",
+                            "id": "7ca036bc-09f8-4468-8af3-61c7ccee4f12",
                             "name": "Receipts list.",
                             "originalRequest": {
                                 "url": {
@@ -11727,7 +11745,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "f46999a0-27af-4497-85cb-f6ba4d0b39f4",
+                            "id": "5d325fe8-8706-450a-be19-e20472d26160",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -11797,7 +11815,7 @@
                     }
                 },
                 {
-                    "id": "e52d700b-0c60-4747-a4ba-7861b1c45775",
+                    "id": "69069c9f-8095-4712-a723-446adc81b3cb",
                     "name": "Create Receipt",
                     "request": {
                         "name": "Create Receipt",
@@ -11873,7 +11891,7 @@
                     },
                     "response": [
                         {
-                            "id": "7fecb881-2b84-43db-9610-4bfe70468cb9",
+                            "id": "0b1e9690-4946-4860-9aa8-acd6da068f63",
                             "name": "Created Receipt.",
                             "originalRequest": {
                                 "url": {
@@ -11920,7 +11938,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "ace69423-d0e3-442b-9374-93108e256ac0",
+                            "id": "5390be2a-ee74-4900-bdb6-9d25b6f57d24",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -11973,7 +11991,7 @@
                     }
                 },
                 {
-                    "id": "7c27ead9-6f0d-4751-bced-e8e9ec99e476",
+                    "id": "2a80016d-64d2-4c3b-a7be-8c2a6976835d",
                     "name": "Get Receipt",
                     "request": {
                         "name": "Get Receipt",
@@ -12057,7 +12075,7 @@
                     },
                     "response": [
                         {
-                            "id": "27b0a13a-af5e-4a2c-9c27-94985110f5f9",
+                            "id": "58f04447-dd5a-4ad1-9ad6-a98f1baabcea",
                             "name": "Receipt Details.",
                             "originalRequest": {
                                 "url": {
@@ -12113,7 +12131,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "4eb2c33c-708c-4051-bd42-4b169886c7b4",
+                            "id": "75ead4af-5feb-43e6-9410-eea8e7ffa10f",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -12169,7 +12187,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "ee34d646-24b8-4494-9932-c8b1f2175f54",
+                            "id": "042a68eb-988b-4979-aa28-82f030ff2be8",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -12231,7 +12249,7 @@
                     }
                 },
                 {
-                    "id": "62f79684-800b-4a15-ae1f-79bde695e791",
+                    "id": "6651e9aa-1079-4300-a451-d6efe1b1d15c",
                     "name": "Modify Receipt",
                     "request": {
                         "name": "Modify Receipt",
@@ -12315,7 +12333,7 @@
                     },
                     "response": [
                         {
-                            "id": "b1e0c0e2-38a6-43ef-a548-74a8e48c5433",
+                            "id": "0c0dff73-4f6e-4c33-9747-008ee344b017",
                             "name": "Modified receipt.",
                             "originalRequest": {
                                 "url": {
@@ -12370,7 +12388,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "b404f547-7dcf-4374-acba-a27ea72ef453",
+                            "id": "9e6364d9-4315-426f-873b-0a09d53a1666",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -12425,7 +12443,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "6745e83d-7cce-4dd9-8391-d55e2ac6e828",
+                            "id": "29207834-ddba-4ae8-b799-22a3c5102e76",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -12486,7 +12504,7 @@
                     }
                 },
                 {
-                    "id": "723a4b02-bd81-405f-9f48-5aea41fec439",
+                    "id": "49b304c1-be5e-42b5-bb54-24052c1f6df0",
                     "name": "Delete Receipt",
                     "request": {
                         "name": "Delete Receipt",
@@ -12551,7 +12569,7 @@
                     },
                     "response": [
                         {
-                            "id": "400b6be0-2f4c-4253-a7bc-0cbb14bc199c",
+                            "id": "ff05948c-e2c5-4a6c-91e3-2316842c3766",
                             "name": "Document removed.",
                             "originalRequest": {
                                 "url": {
@@ -12598,7 +12616,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "858f6bfd-9cf9-4b42-baed-aa490fca2af7",
+                            "id": "40855caa-7f90-4f62-a586-8928bdecba23",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -12645,7 +12663,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "fbb03ee5-2afa-4057-a31a-720072dcfa27",
+                            "id": "60e10df8-b1e9-4ac9-b392-26a88f75ed5e",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -12698,7 +12716,7 @@
                     }
                 },
                 {
-                    "id": "006335ec-e028-4329-b9aa-c02196c2f695",
+                    "id": "0d46427c-ea67-47ac-b709-c5b5d1243934",
                     "name": "Get Receipt Pre-Create Info",
                     "request": {
                         "name": "Get Receipt Pre-Create Info",
@@ -12762,7 +12780,7 @@
                     },
                     "response": [
                         {
-                            "id": "cfbf8cb4-521f-4410-bd9d-320034daa610",
+                            "id": "2976d7f9-52f1-44c9-b677-72ce034171f8",
                             "name": "Pre-create info.",
                             "originalRequest": {
                                 "url": {
@@ -12802,7 +12820,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "28301d46-cacf-42b7-a1ef-cc7fa4c3241e",
+                            "id": "db0d04c9-cb88-446f-864e-cb0d0359cdd3",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -12842,7 +12860,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "ac03c3b9-ff51-4ff4-b306-29a4a8d39b73",
+                            "id": "d65bfa50-95f4-4e7f-a3db-4b28ba494f7d",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -12888,7 +12906,7 @@
                     }
                 },
                 {
-                    "id": "6a1fd15e-1990-4e83-a8dc-7cffa28237b7",
+                    "id": "23bf09d7-c883-4cf0-a010-575e797a09e6",
                     "name": "Get Receipts Monthly Totals",
                     "request": {
                         "name": "Get Receipts Monthly Totals",
@@ -12965,7 +12983,7 @@
                     },
                     "response": [
                         {
-                            "id": "bdf18a09-f0f3-4e64-8948-73812bf01bc4",
+                            "id": "4b65880c-b83a-4457-a23e-3fe35acd2de1",
                             "name": "Monthly Totals.",
                             "originalRequest": {
                                 "url": {
@@ -13014,7 +13032,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "82607af9-fba2-4ac7-9055-93fd5a263752",
+                            "id": "fa9b8f2c-8b10-4584-ab1d-a0180db85131",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -13063,7 +13081,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "58aecfb1-4092-4be6-999a-965832df8261",
+                            "id": "c21dbdd8-7e95-4559-8e12-c56283616a9a",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -13121,7 +13139,7 @@
             "event": []
         },
         {
-            "id": "88bdcf3c-be7e-4540-a182-8c86c196f30e",
+            "id": "e7d22947-39eb-4c00-95a3-e0150ed47804",
             "name": "Received Documents",
             "description": {
                 "content": "",
@@ -13129,7 +13147,7 @@
             },
             "item": [
                 {
-                    "id": "1d3ed65c-636a-46d1-a761-6c2aeef32a82",
+                    "id": "517b7706-06fd-48d8-a135-8f408c5384f1",
                     "name": "List Received Documents",
                     "request": {
                         "name": "List Received Documents",
@@ -13235,7 +13253,7 @@
                     },
                     "response": [
                         {
-                            "id": "3b789a0c-d8c1-4fdb-bcd5-de9fb67905ca",
+                            "id": "16e5c893-c427-43de-9856-4f63ad4bb9f3",
                             "name": "Results list.",
                             "originalRequest": {
                                 "url": {
@@ -13303,7 +13321,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "baf705c8-534e-4adb-84fe-13940d2080e8",
+                            "id": "e7e4af1f-2804-4c4c-8703-0fa08a9e8ebb",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -13377,7 +13395,7 @@
                     }
                 },
                 {
-                    "id": "b46738ac-54d2-4b4a-9b68-0cc2b51c7eaf",
+                    "id": "4921dfb1-f241-4aba-b7ed-feaf909e9e53",
                     "name": "Create Received Document",
                     "request": {
                         "name": "Create Received Document",
@@ -13443,7 +13461,7 @@
                         },
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"pending_id\": \"<integer>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"type\": \"expense\",\n    \"entity\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    },\n    \"date\": \"<date>\",\n    \"category\": \"<string>\",\n    \"description\": \"<string>\",\n    \"amount_net\": \"<number>\",\n    \"amount_vat\": \"<number>\",\n    \"amount_withholding_tax\": \"<number>\",\n    \"amount_other_withholding_tax\": \"<number>\",\n    \"amortization\": \"<number>\",\n    \"rc_center\": \"<string>\",\n    \"invoice_number\": \"<string>\",\n    \"is_marked\": \"<boolean>\",\n    \"is_detailed\": \"<boolean>\",\n    \"e_invoice\": \"<boolean>\",\n    \"currency\": {\n      \"id\": \"<string>\",\n      \"symbol\": \"<string>\",\n      \"exchange_rate\": \"<string>\",\n      \"html_symbol\": \"<string>\"\n    },\n    \"tax_deductibility\": \"<number>\",\n    \"vat_deductibility\": \"<number>\",\n    \"items_list\": [\n      {\n        \"id\": \"<integer>\",\n        \"product_id\": \"<integer>\",\n        \"code\": \"<string>\",\n        \"name\": \"<string>\",\n        \"measure\": \"<string>\",\n        \"net_price\": \"<number>\",\n        \"category\": \"<string>\",\n        \"qty\": \"<number>\",\n        \"vat\": {\n          \"id\": \"<integer>\",\n          \"value\": \"<number>\",\n          \"description\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"e_invoice\": \"<boolean>\",\n          \"ei_type\": \"<string>\",\n          \"ei_description\": \"<string>\",\n          \"is_disabled\": \"<boolean>\"\n        },\n        \"stock\": \"<number>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"product_id\": \"<integer>\",\n        \"code\": \"<string>\",\n        \"name\": \"<string>\",\n        \"measure\": \"<string>\",\n        \"net_price\": \"<number>\",\n        \"category\": \"<string>\",\n        \"qty\": \"<number>\",\n        \"vat\": {\n          \"id\": \"<integer>\",\n          \"value\": \"<number>\",\n          \"description\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"e_invoice\": \"<boolean>\",\n          \"ei_type\": \"<string>\",\n          \"ei_description\": \"<string>\",\n          \"is_disabled\": \"<boolean>\"\n        },\n        \"stock\": \"<number>\"\n      }\n    ],\n    \"payments_list\": [\n      {\n        \"id\": \"<integer>\",\n        \"amount\": \"<number>\",\n        \"due_date\": \"<date>\",\n        \"paid_date\": \"<date>\",\n        \"payment_terms\": {\n          \"days\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"status\": \"<string>\",\n        \"payment_account\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"type\": \"standard\",\n          \"iban\": \"<string>\",\n          \"sia\": \"<string>\",\n          \"cuc\": \"<string>\",\n          \"virtual\": \"<boolean>\"\n        }\n      },\n      {\n        \"id\": \"<integer>\",\n        \"amount\": \"<number>\",\n        \"due_date\": \"<date>\",\n        \"paid_date\": \"<date>\",\n        \"payment_terms\": {\n          \"days\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"status\": \"<string>\",\n        \"payment_account\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"type\": \"standard\",\n          \"iban\": \"<string>\",\n          \"sia\": \"<string>\",\n          \"cuc\": \"<string>\",\n          \"virtual\": \"<boolean>\"\n        }\n      }\n    ],\n    \"attachment_token\": \"<string>\",\n    \"created_at\": \"<string>\",\n    \"updated_at\": \"<string>\"\n  }\n}",
+                            "raw": "{\n  \"pending_id\": \"<integer>\",\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"type\": \"expense\",\n    \"entity\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    },\n    \"date\": \"<date>\",\n    \"category\": \"<string>\",\n    \"description\": \"<string>\",\n    \"amount_net\": \"<number>\",\n    \"amount_vat\": \"<number>\",\n    \"amount_withholding_tax\": \"<number>\",\n    \"amount_other_withholding_tax\": \"<number>\",\n    \"amortization\": \"<number>\",\n    \"rc_center\": \"<string>\",\n    \"invoice_number\": \"<string>\",\n    \"is_marked\": \"<boolean>\",\n    \"is_detailed\": \"<boolean>\",\n    \"e_invoice\": \"<boolean>\",\n    \"currency\": {\n      \"id\": \"<string>\",\n      \"symbol\": \"<string>\",\n      \"exchange_rate\": \"<string>\",\n      \"html_symbol\": \"<string>\"\n    },\n    \"tax_deductibility\": \"<number>\",\n    \"vat_deductibility\": \"<number>\",\n    \"items_list\": [\n      {\n        \"id\": \"<integer>\",\n        \"product_id\": \"<integer>\",\n        \"code\": \"<string>\",\n        \"name\": \"<string>\",\n        \"measure\": \"<string>\",\n        \"net_price\": \"<number>\",\n        \"category\": \"<string>\",\n        \"qty\": \"<number>\",\n        \"vat\": {\n          \"id\": \"<integer>\",\n          \"value\": \"<number>\",\n          \"description\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"e_invoice\": \"<boolean>\",\n          \"ei_type\": \"<string>\",\n          \"ei_description\": \"<string>\",\n          \"is_disabled\": \"<boolean>\"\n        },\n        \"stock\": \"<number>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"product_id\": \"<integer>\",\n        \"code\": \"<string>\",\n        \"name\": \"<string>\",\n        \"measure\": \"<string>\",\n        \"net_price\": \"<number>\",\n        \"category\": \"<string>\",\n        \"qty\": \"<number>\",\n        \"vat\": {\n          \"id\": \"<integer>\",\n          \"value\": \"<number>\",\n          \"description\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"e_invoice\": \"<boolean>\",\n          \"ei_type\": \"<string>\",\n          \"ei_description\": \"<string>\",\n          \"is_disabled\": \"<boolean>\"\n        },\n        \"stock\": \"<number>\"\n      }\n    ],\n    \"payments_list\": [\n      {\n        \"id\": \"<integer>\",\n        \"amount\": \"<number>\",\n        \"due_date\": \"<date>\",\n        \"paid_date\": \"<date>\",\n        \"payment_terms\": {\n          \"days\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"status\": \"<string>\",\n        \"payment_account\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"type\": \"standard\",\n          \"iban\": \"<string>\",\n          \"sia\": \"<string>\",\n          \"cuc\": \"<string>\",\n          \"virtual\": \"<boolean>\"\n        }\n      },\n      {\n        \"id\": \"<integer>\",\n        \"amount\": \"<number>\",\n        \"due_date\": \"<date>\",\n        \"paid_date\": \"<date>\",\n        \"payment_terms\": {\n          \"days\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"status\": \"<string>\",\n        \"payment_account\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"type\": \"standard\",\n          \"iban\": \"<string>\",\n          \"sia\": \"<string>\",\n          \"cuc\": \"<string>\",\n          \"virtual\": \"<boolean>\"\n        }\n      }\n    ],\n    \"auto_calculate\": \"<boolean>\",\n    \"attachment_token\": \"<string>\",\n    \"created_at\": \"<string>\",\n    \"updated_at\": \"<string>\"\n  }\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -13453,7 +13471,7 @@
                     },
                     "response": [
                         {
-                            "id": "9942b01e-87c0-4260-a362-bbdf9fa2a8a5",
+                            "id": "2ea54248-0f82-4f45-b741-445a3c470a82",
                             "name": "Document created.",
                             "originalRequest": {
                                 "url": {
@@ -13506,7 +13524,7 @@
                     }
                 },
                 {
-                    "id": "bb45ad34-5a59-4b90-b201-8bca617cda1b",
+                    "id": "643af426-f905-4743-a3ef-d5e9c79a085a",
                     "name": "Get Received Document",
                     "request": {
                         "name": "Get Received Document",
@@ -13590,7 +13608,7 @@
                     },
                     "response": [
                         {
-                            "id": "d7000d87-ee7b-4662-9199-09055d2a2c65",
+                            "id": "b43a5620-891d-4e46-9c70-9dd7e366268f",
                             "name": "Document details.",
                             "originalRequest": {
                                 "url": {
@@ -13646,7 +13664,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "c0df9827-2507-4505-b99e-9a4f2fb2d8ce",
+                            "id": "158e6434-ecfa-4f9f-a2f4-f7224c989e36",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -13702,7 +13720,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "9d661ee5-71eb-4385-9123-ee1cc350587c",
+                            "id": "47f30b8c-1977-470a-8c73-0de95df6d86b",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -13764,7 +13782,7 @@
                     }
                 },
                 {
-                    "id": "5339621b-fe98-4d15-9655-1fb6d4c77e5a",
+                    "id": "2d6a15fe-80ba-4c22-baba-2c18d72a0bf4",
                     "name": "Modify Received Document",
                     "request": {
                         "name": "Modify Received Document",
@@ -13838,7 +13856,7 @@
                         },
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"type\": \"expense\",\n    \"entity\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    },\n    \"date\": \"<date>\",\n    \"category\": \"<string>\",\n    \"description\": \"<string>\",\n    \"amount_net\": \"<number>\",\n    \"amount_vat\": \"<number>\",\n    \"amount_withholding_tax\": \"<number>\",\n    \"amount_other_withholding_tax\": \"<number>\",\n    \"amortization\": \"<number>\",\n    \"rc_center\": \"<string>\",\n    \"invoice_number\": \"<string>\",\n    \"is_marked\": \"<boolean>\",\n    \"is_detailed\": \"<boolean>\",\n    \"e_invoice\": \"<boolean>\",\n    \"currency\": {\n      \"id\": \"<string>\",\n      \"symbol\": \"<string>\",\n      \"exchange_rate\": \"<string>\",\n      \"html_symbol\": \"<string>\"\n    },\n    \"tax_deductibility\": \"<number>\",\n    \"vat_deductibility\": \"<number>\",\n    \"items_list\": [\n      {\n        \"id\": \"<integer>\",\n        \"product_id\": \"<integer>\",\n        \"code\": \"<string>\",\n        \"name\": \"<string>\",\n        \"measure\": \"<string>\",\n        \"net_price\": \"<number>\",\n        \"category\": \"<string>\",\n        \"qty\": \"<number>\",\n        \"vat\": {\n          \"id\": \"<integer>\",\n          \"value\": \"<number>\",\n          \"description\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"e_invoice\": \"<boolean>\",\n          \"ei_type\": \"<string>\",\n          \"ei_description\": \"<string>\",\n          \"is_disabled\": \"<boolean>\"\n        },\n        \"stock\": \"<number>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"product_id\": \"<integer>\",\n        \"code\": \"<string>\",\n        \"name\": \"<string>\",\n        \"measure\": \"<string>\",\n        \"net_price\": \"<number>\",\n        \"category\": \"<string>\",\n        \"qty\": \"<number>\",\n        \"vat\": {\n          \"id\": \"<integer>\",\n          \"value\": \"<number>\",\n          \"description\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"e_invoice\": \"<boolean>\",\n          \"ei_type\": \"<string>\",\n          \"ei_description\": \"<string>\",\n          \"is_disabled\": \"<boolean>\"\n        },\n        \"stock\": \"<number>\"\n      }\n    ],\n    \"payments_list\": [\n      {\n        \"id\": \"<integer>\",\n        \"amount\": \"<number>\",\n        \"due_date\": \"<date>\",\n        \"paid_date\": \"<date>\",\n        \"payment_terms\": {\n          \"days\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"status\": \"<string>\",\n        \"payment_account\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"type\": \"standard\",\n          \"iban\": \"<string>\",\n          \"sia\": \"<string>\",\n          \"cuc\": \"<string>\",\n          \"virtual\": \"<boolean>\"\n        }\n      },\n      {\n        \"id\": \"<integer>\",\n        \"amount\": \"<number>\",\n        \"due_date\": \"<date>\",\n        \"paid_date\": \"<date>\",\n        \"payment_terms\": {\n          \"days\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"status\": \"<string>\",\n        \"payment_account\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"type\": \"standard\",\n          \"iban\": \"<string>\",\n          \"sia\": \"<string>\",\n          \"cuc\": \"<string>\",\n          \"virtual\": \"<boolean>\"\n        }\n      }\n    ],\n    \"attachment_token\": \"<string>\",\n    \"created_at\": \"<string>\",\n    \"updated_at\": \"<string>\"\n  }\n}",
+                            "raw": "{\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"type\": \"expense\",\n    \"entity\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    },\n    \"date\": \"<date>\",\n    \"category\": \"<string>\",\n    \"description\": \"<string>\",\n    \"amount_net\": \"<number>\",\n    \"amount_vat\": \"<number>\",\n    \"amount_withholding_tax\": \"<number>\",\n    \"amount_other_withholding_tax\": \"<number>\",\n    \"amortization\": \"<number>\",\n    \"rc_center\": \"<string>\",\n    \"invoice_number\": \"<string>\",\n    \"is_marked\": \"<boolean>\",\n    \"is_detailed\": \"<boolean>\",\n    \"e_invoice\": \"<boolean>\",\n    \"currency\": {\n      \"id\": \"<string>\",\n      \"symbol\": \"<string>\",\n      \"exchange_rate\": \"<string>\",\n      \"html_symbol\": \"<string>\"\n    },\n    \"tax_deductibility\": \"<number>\",\n    \"vat_deductibility\": \"<number>\",\n    \"items_list\": [\n      {\n        \"id\": \"<integer>\",\n        \"product_id\": \"<integer>\",\n        \"code\": \"<string>\",\n        \"name\": \"<string>\",\n        \"measure\": \"<string>\",\n        \"net_price\": \"<number>\",\n        \"category\": \"<string>\",\n        \"qty\": \"<number>\",\n        \"vat\": {\n          \"id\": \"<integer>\",\n          \"value\": \"<number>\",\n          \"description\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"e_invoice\": \"<boolean>\",\n          \"ei_type\": \"<string>\",\n          \"ei_description\": \"<string>\",\n          \"is_disabled\": \"<boolean>\"\n        },\n        \"stock\": \"<number>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"product_id\": \"<integer>\",\n        \"code\": \"<string>\",\n        \"name\": \"<string>\",\n        \"measure\": \"<string>\",\n        \"net_price\": \"<number>\",\n        \"category\": \"<string>\",\n        \"qty\": \"<number>\",\n        \"vat\": {\n          \"id\": \"<integer>\",\n          \"value\": \"<number>\",\n          \"description\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"e_invoice\": \"<boolean>\",\n          \"ei_type\": \"<string>\",\n          \"ei_description\": \"<string>\",\n          \"is_disabled\": \"<boolean>\"\n        },\n        \"stock\": \"<number>\"\n      }\n    ],\n    \"payments_list\": [\n      {\n        \"id\": \"<integer>\",\n        \"amount\": \"<number>\",\n        \"due_date\": \"<date>\",\n        \"paid_date\": \"<date>\",\n        \"payment_terms\": {\n          \"days\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"status\": \"<string>\",\n        \"payment_account\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"type\": \"standard\",\n          \"iban\": \"<string>\",\n          \"sia\": \"<string>\",\n          \"cuc\": \"<string>\",\n          \"virtual\": \"<boolean>\"\n        }\n      },\n      {\n        \"id\": \"<integer>\",\n        \"amount\": \"<number>\",\n        \"due_date\": \"<date>\",\n        \"paid_date\": \"<date>\",\n        \"payment_terms\": {\n          \"days\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"status\": \"<string>\",\n        \"payment_account\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"type\": \"standard\",\n          \"iban\": \"<string>\",\n          \"sia\": \"<string>\",\n          \"cuc\": \"<string>\",\n          \"virtual\": \"<boolean>\"\n        }\n      }\n    ],\n    \"auto_calculate\": \"<boolean>\",\n    \"attachment_token\": \"<string>\",\n    \"created_at\": \"<string>\",\n    \"updated_at\": \"<string>\"\n  }\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -13848,7 +13866,7 @@
                     },
                     "response": [
                         {
-                            "id": "389387c8-508f-4780-9523-a3cb2460ae20",
+                            "id": "e02b994d-d570-4e88-aa07-713989d8ce22",
                             "name": "Modified document.",
                             "originalRequest": {
                                 "url": {
@@ -13903,7 +13921,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "b7c0c4ea-6a0a-4850-94fc-604e28eee842",
+                            "id": "eb960f3d-dd0e-4269-8c2a-739b108204f1",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -13958,7 +13976,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "6c58c8b0-2d45-4c2c-8002-b0d583d9101d",
+                            "id": "f29b60bb-d63d-4633-8381-a91d288aed87",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -14019,7 +14037,7 @@
                     }
                 },
                 {
-                    "id": "cdb61d35-5183-4bdf-84d9-e3dcd013bd52",
+                    "id": "31f0536a-c5b1-44c8-b11d-5cc47419aba2",
                     "name": "Delete Received Document",
                     "request": {
                         "name": "Delete Received Document",
@@ -14084,7 +14102,7 @@
                     },
                     "response": [
                         {
-                            "id": "59cb6307-4670-4cfc-80d9-404bbd72b6dc",
+                            "id": "575cb9fb-2bcb-4216-b218-c55356c25288",
                             "name": "Document removed.",
                             "originalRequest": {
                                 "url": {
@@ -14131,7 +14149,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "2af79949-2418-46b7-a15f-fe9b93886f02",
+                            "id": "7621763a-3827-4bff-bb11-9ac7ab7875d0",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -14178,7 +14196,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "46e3bd55-6773-468a-8435-2c3c4fd06776",
+                            "id": "861d65f9-f3dc-4cbc-919d-275b5cafeb28",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -14231,7 +14249,7 @@
                     }
                 },
                 {
-                    "id": "82f2644d-ea04-4c01-8811-2935d01e56b9",
+                    "id": "89f621d7-e3ee-4b3b-ac23-f9b00fd50af2",
                     "name": "Get New Received Document Totals",
                     "request": {
                         "name": "Get New Received Document Totals",
@@ -14298,7 +14316,7 @@
                         },
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"type\": \"expense\",\n    \"entity\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    },\n    \"date\": \"<date>\",\n    \"category\": \"<string>\",\n    \"description\": \"<string>\",\n    \"amount_net\": \"<number>\",\n    \"amount_vat\": \"<number>\",\n    \"amount_withholding_tax\": \"<number>\",\n    \"amount_other_withholding_tax\": \"<number>\",\n    \"amortization\": \"<number>\",\n    \"rc_center\": \"<string>\",\n    \"invoice_number\": \"<string>\",\n    \"is_marked\": \"<boolean>\",\n    \"is_detailed\": \"<boolean>\",\n    \"e_invoice\": \"<boolean>\",\n    \"currency\": {\n      \"id\": \"<string>\",\n      \"symbol\": \"<string>\",\n      \"exchange_rate\": \"<string>\",\n      \"html_symbol\": \"<string>\"\n    },\n    \"tax_deductibility\": \"<number>\",\n    \"vat_deductibility\": \"<number>\",\n    \"items_list\": [\n      {\n        \"id\": \"<integer>\",\n        \"product_id\": \"<integer>\",\n        \"code\": \"<string>\",\n        \"name\": \"<string>\",\n        \"measure\": \"<string>\",\n        \"net_price\": \"<number>\",\n        \"category\": \"<string>\",\n        \"qty\": \"<number>\",\n        \"vat\": {\n          \"id\": \"<integer>\",\n          \"value\": \"<number>\",\n          \"description\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"e_invoice\": \"<boolean>\",\n          \"ei_type\": \"<string>\",\n          \"ei_description\": \"<string>\",\n          \"is_disabled\": \"<boolean>\"\n        },\n        \"stock\": \"<number>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"product_id\": \"<integer>\",\n        \"code\": \"<string>\",\n        \"name\": \"<string>\",\n        \"measure\": \"<string>\",\n        \"net_price\": \"<number>\",\n        \"category\": \"<string>\",\n        \"qty\": \"<number>\",\n        \"vat\": {\n          \"id\": \"<integer>\",\n          \"value\": \"<number>\",\n          \"description\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"e_invoice\": \"<boolean>\",\n          \"ei_type\": \"<string>\",\n          \"ei_description\": \"<string>\",\n          \"is_disabled\": \"<boolean>\"\n        },\n        \"stock\": \"<number>\"\n      }\n    ],\n    \"payments_list\": [\n      {\n        \"id\": \"<integer>\",\n        \"amount\": \"<number>\",\n        \"due_date\": \"<date>\",\n        \"paid_date\": \"<date>\",\n        \"payment_terms\": {\n          \"days\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"status\": \"<string>\",\n        \"payment_account\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"type\": \"standard\",\n          \"iban\": \"<string>\",\n          \"sia\": \"<string>\",\n          \"cuc\": \"<string>\",\n          \"virtual\": \"<boolean>\"\n        }\n      },\n      {\n        \"id\": \"<integer>\",\n        \"amount\": \"<number>\",\n        \"due_date\": \"<date>\",\n        \"paid_date\": \"<date>\",\n        \"payment_terms\": {\n          \"days\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"status\": \"<string>\",\n        \"payment_account\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"type\": \"standard\",\n          \"iban\": \"<string>\",\n          \"sia\": \"<string>\",\n          \"cuc\": \"<string>\",\n          \"virtual\": \"<boolean>\"\n        }\n      }\n    ],\n    \"attachment_token\": \"<string>\",\n    \"created_at\": \"<string>\",\n    \"updated_at\": \"<string>\"\n  }\n}",
+                            "raw": "{\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"type\": \"expense\",\n    \"entity\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    },\n    \"date\": \"<date>\",\n    \"category\": \"<string>\",\n    \"description\": \"<string>\",\n    \"amount_net\": \"<number>\",\n    \"amount_vat\": \"<number>\",\n    \"amount_withholding_tax\": \"<number>\",\n    \"amount_other_withholding_tax\": \"<number>\",\n    \"amortization\": \"<number>\",\n    \"rc_center\": \"<string>\",\n    \"invoice_number\": \"<string>\",\n    \"is_marked\": \"<boolean>\",\n    \"is_detailed\": \"<boolean>\",\n    \"e_invoice\": \"<boolean>\",\n    \"currency\": {\n      \"id\": \"<string>\",\n      \"symbol\": \"<string>\",\n      \"exchange_rate\": \"<string>\",\n      \"html_symbol\": \"<string>\"\n    },\n    \"tax_deductibility\": \"<number>\",\n    \"vat_deductibility\": \"<number>\",\n    \"items_list\": [\n      {\n        \"id\": \"<integer>\",\n        \"product_id\": \"<integer>\",\n        \"code\": \"<string>\",\n        \"name\": \"<string>\",\n        \"measure\": \"<string>\",\n        \"net_price\": \"<number>\",\n        \"category\": \"<string>\",\n        \"qty\": \"<number>\",\n        \"vat\": {\n          \"id\": \"<integer>\",\n          \"value\": \"<number>\",\n          \"description\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"e_invoice\": \"<boolean>\",\n          \"ei_type\": \"<string>\",\n          \"ei_description\": \"<string>\",\n          \"is_disabled\": \"<boolean>\"\n        },\n        \"stock\": \"<number>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"product_id\": \"<integer>\",\n        \"code\": \"<string>\",\n        \"name\": \"<string>\",\n        \"measure\": \"<string>\",\n        \"net_price\": \"<number>\",\n        \"category\": \"<string>\",\n        \"qty\": \"<number>\",\n        \"vat\": {\n          \"id\": \"<integer>\",\n          \"value\": \"<number>\",\n          \"description\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"e_invoice\": \"<boolean>\",\n          \"ei_type\": \"<string>\",\n          \"ei_description\": \"<string>\",\n          \"is_disabled\": \"<boolean>\"\n        },\n        \"stock\": \"<number>\"\n      }\n    ],\n    \"payments_list\": [\n      {\n        \"id\": \"<integer>\",\n        \"amount\": \"<number>\",\n        \"due_date\": \"<date>\",\n        \"paid_date\": \"<date>\",\n        \"payment_terms\": {\n          \"days\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"status\": \"<string>\",\n        \"payment_account\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"type\": \"standard\",\n          \"iban\": \"<string>\",\n          \"sia\": \"<string>\",\n          \"cuc\": \"<string>\",\n          \"virtual\": \"<boolean>\"\n        }\n      },\n      {\n        \"id\": \"<integer>\",\n        \"amount\": \"<number>\",\n        \"due_date\": \"<date>\",\n        \"paid_date\": \"<date>\",\n        \"payment_terms\": {\n          \"days\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"status\": \"<string>\",\n        \"payment_account\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"type\": \"standard\",\n          \"iban\": \"<string>\",\n          \"sia\": \"<string>\",\n          \"cuc\": \"<string>\",\n          \"virtual\": \"<boolean>\"\n        }\n      }\n    ],\n    \"auto_calculate\": \"<boolean>\",\n    \"attachment_token\": \"<string>\",\n    \"created_at\": \"<string>\",\n    \"updated_at\": \"<string>\"\n  }\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -14308,7 +14326,7 @@
                     },
                     "response": [
                         {
-                            "id": "2b0562ec-0189-4b5c-aac8-7485e37e3a40",
+                            "id": "801e91a9-d2ac-491d-bee9-fd86e60353d9",
                             "name": "Document Totals.",
                             "originalRequest": {
                                 "url": {
@@ -14356,7 +14374,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "40fcb6aa-7e9d-4432-9069-ec2eb1c3140f",
+                            "id": "5ee7d840-13e0-4a4b-ae01-ef0b77a2e088",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -14404,7 +14422,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "ad1e9864-b2f4-4e7a-a7fd-48a9f87ceebe",
+                            "id": "a5d5305c-ac1c-4561-9164-a99036558649",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -14458,7 +14476,7 @@
                     }
                 },
                 {
-                    "id": "19366dfa-2131-4ef0-927d-7c96fd448035",
+                    "id": "ce09496c-564a-4ebb-befc-64170df5e75a",
                     "name": "Get Existing Received Document Totals",
                     "request": {
                         "name": "Get Existing Received Document Totals",
@@ -14533,7 +14551,7 @@
                         },
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"type\": \"expense\",\n    \"entity\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    },\n    \"date\": \"<date>\",\n    \"category\": \"<string>\",\n    \"description\": \"<string>\",\n    \"amount_net\": \"<number>\",\n    \"amount_vat\": \"<number>\",\n    \"amount_withholding_tax\": \"<number>\",\n    \"amount_other_withholding_tax\": \"<number>\",\n    \"amortization\": \"<number>\",\n    \"rc_center\": \"<string>\",\n    \"invoice_number\": \"<string>\",\n    \"is_marked\": \"<boolean>\",\n    \"is_detailed\": \"<boolean>\",\n    \"e_invoice\": \"<boolean>\",\n    \"currency\": {\n      \"id\": \"<string>\",\n      \"symbol\": \"<string>\",\n      \"exchange_rate\": \"<string>\",\n      \"html_symbol\": \"<string>\"\n    },\n    \"tax_deductibility\": \"<number>\",\n    \"vat_deductibility\": \"<number>\",\n    \"items_list\": [\n      {\n        \"id\": \"<integer>\",\n        \"product_id\": \"<integer>\",\n        \"code\": \"<string>\",\n        \"name\": \"<string>\",\n        \"measure\": \"<string>\",\n        \"net_price\": \"<number>\",\n        \"category\": \"<string>\",\n        \"qty\": \"<number>\",\n        \"vat\": {\n          \"id\": \"<integer>\",\n          \"value\": \"<number>\",\n          \"description\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"e_invoice\": \"<boolean>\",\n          \"ei_type\": \"<string>\",\n          \"ei_description\": \"<string>\",\n          \"is_disabled\": \"<boolean>\"\n        },\n        \"stock\": \"<number>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"product_id\": \"<integer>\",\n        \"code\": \"<string>\",\n        \"name\": \"<string>\",\n        \"measure\": \"<string>\",\n        \"net_price\": \"<number>\",\n        \"category\": \"<string>\",\n        \"qty\": \"<number>\",\n        \"vat\": {\n          \"id\": \"<integer>\",\n          \"value\": \"<number>\",\n          \"description\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"e_invoice\": \"<boolean>\",\n          \"ei_type\": \"<string>\",\n          \"ei_description\": \"<string>\",\n          \"is_disabled\": \"<boolean>\"\n        },\n        \"stock\": \"<number>\"\n      }\n    ],\n    \"payments_list\": [\n      {\n        \"id\": \"<integer>\",\n        \"amount\": \"<number>\",\n        \"due_date\": \"<date>\",\n        \"paid_date\": \"<date>\",\n        \"payment_terms\": {\n          \"days\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"status\": \"<string>\",\n        \"payment_account\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"type\": \"standard\",\n          \"iban\": \"<string>\",\n          \"sia\": \"<string>\",\n          \"cuc\": \"<string>\",\n          \"virtual\": \"<boolean>\"\n        }\n      },\n      {\n        \"id\": \"<integer>\",\n        \"amount\": \"<number>\",\n        \"due_date\": \"<date>\",\n        \"paid_date\": \"<date>\",\n        \"payment_terms\": {\n          \"days\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"status\": \"<string>\",\n        \"payment_account\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"type\": \"standard\",\n          \"iban\": \"<string>\",\n          \"sia\": \"<string>\",\n          \"cuc\": \"<string>\",\n          \"virtual\": \"<boolean>\"\n        }\n      }\n    ],\n    \"attachment_token\": \"<string>\",\n    \"created_at\": \"<string>\",\n    \"updated_at\": \"<string>\"\n  }\n}",
+                            "raw": "{\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"type\": \"expense\",\n    \"entity\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    },\n    \"date\": \"<date>\",\n    \"category\": \"<string>\",\n    \"description\": \"<string>\",\n    \"amount_net\": \"<number>\",\n    \"amount_vat\": \"<number>\",\n    \"amount_withholding_tax\": \"<number>\",\n    \"amount_other_withholding_tax\": \"<number>\",\n    \"amortization\": \"<number>\",\n    \"rc_center\": \"<string>\",\n    \"invoice_number\": \"<string>\",\n    \"is_marked\": \"<boolean>\",\n    \"is_detailed\": \"<boolean>\",\n    \"e_invoice\": \"<boolean>\",\n    \"currency\": {\n      \"id\": \"<string>\",\n      \"symbol\": \"<string>\",\n      \"exchange_rate\": \"<string>\",\n      \"html_symbol\": \"<string>\"\n    },\n    \"tax_deductibility\": \"<number>\",\n    \"vat_deductibility\": \"<number>\",\n    \"items_list\": [\n      {\n        \"id\": \"<integer>\",\n        \"product_id\": \"<integer>\",\n        \"code\": \"<string>\",\n        \"name\": \"<string>\",\n        \"measure\": \"<string>\",\n        \"net_price\": \"<number>\",\n        \"category\": \"<string>\",\n        \"qty\": \"<number>\",\n        \"vat\": {\n          \"id\": \"<integer>\",\n          \"value\": \"<number>\",\n          \"description\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"e_invoice\": \"<boolean>\",\n          \"ei_type\": \"<string>\",\n          \"ei_description\": \"<string>\",\n          \"is_disabled\": \"<boolean>\"\n        },\n        \"stock\": \"<number>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"product_id\": \"<integer>\",\n        \"code\": \"<string>\",\n        \"name\": \"<string>\",\n        \"measure\": \"<string>\",\n        \"net_price\": \"<number>\",\n        \"category\": \"<string>\",\n        \"qty\": \"<number>\",\n        \"vat\": {\n          \"id\": \"<integer>\",\n          \"value\": \"<number>\",\n          \"description\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"e_invoice\": \"<boolean>\",\n          \"ei_type\": \"<string>\",\n          \"ei_description\": \"<string>\",\n          \"is_disabled\": \"<boolean>\"\n        },\n        \"stock\": \"<number>\"\n      }\n    ],\n    \"payments_list\": [\n      {\n        \"id\": \"<integer>\",\n        \"amount\": \"<number>\",\n        \"due_date\": \"<date>\",\n        \"paid_date\": \"<date>\",\n        \"payment_terms\": {\n          \"days\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"status\": \"<string>\",\n        \"payment_account\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"type\": \"standard\",\n          \"iban\": \"<string>\",\n          \"sia\": \"<string>\",\n          \"cuc\": \"<string>\",\n          \"virtual\": \"<boolean>\"\n        }\n      },\n      {\n        \"id\": \"<integer>\",\n        \"amount\": \"<number>\",\n        \"due_date\": \"<date>\",\n        \"paid_date\": \"<date>\",\n        \"payment_terms\": {\n          \"days\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"status\": \"<string>\",\n        \"payment_account\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"type\": \"standard\",\n          \"iban\": \"<string>\",\n          \"sia\": \"<string>\",\n          \"cuc\": \"<string>\",\n          \"virtual\": \"<boolean>\"\n        }\n      }\n    ],\n    \"auto_calculate\": \"<boolean>\",\n    \"attachment_token\": \"<string>\",\n    \"created_at\": \"<string>\",\n    \"updated_at\": \"<string>\"\n  }\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -14543,7 +14561,7 @@
                     },
                     "response": [
                         {
-                            "id": "421a00a0-c723-4802-8757-ab49a303d0c5",
+                            "id": "2d3d1301-16f7-4abc-9d85-212b9b6750e4",
                             "name": "Document Totals.",
                             "originalRequest": {
                                 "url": {
@@ -14605,7 +14623,7 @@
                     }
                 },
                 {
-                    "id": "68c157f4-8215-473e-98dd-32480f924c99",
+                    "id": "b520716b-882d-43cc-b3e9-c4b4b9e30d80",
                     "name": "Upload Received Document Attachment",
                     "request": {
                         "name": "Upload Received Document Attachment",
@@ -14689,7 +14707,7 @@
                     },
                     "response": [
                         {
-                            "id": "9bf41ac8-233b-4b43-bce1-90a4aca2425e",
+                            "id": "9f72e6c7-af2c-4c36-8882-b6e02a095efd",
                             "name": "Attachment Token.",
                             "originalRequest": {
                                 "url": {
@@ -14750,7 +14768,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "85d27baa-7abe-4c59-8408-8572bb45a01c",
+                            "id": "925d4232-4693-429c-8d64-64dcb54cb548",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -14817,7 +14835,7 @@
                     }
                 },
                 {
-                    "id": "6f09c0a9-e68d-4055-92c0-65037f3a2d3e",
+                    "id": "fc57cc3f-29a9-4f1c-a0f7-a93d70668c83",
                     "name": "Delete Received Document Attachment",
                     "request": {
                         "name": "Delete Received Document Attachment",
@@ -14883,7 +14901,7 @@
                     },
                     "response": [
                         {
-                            "id": "242ef06b-3a2e-4cdb-a139-706c1f124dc8",
+                            "id": "1e708641-dafc-4116-b72c-46444568b66b",
                             "name": "File removed",
                             "originalRequest": {
                                 "url": {
@@ -14931,7 +14949,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "5edfdb77-b122-4a82-949a-7cfda9ffcd8d",
+                            "id": "d528d9b7-adcf-4a23-a3dd-f9776700dd9c",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -14979,7 +14997,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "73a2a82c-3ed0-4ef7-b03e-ce21fe68632e",
+                            "id": "e209b740-ee44-4565-a386-249f1bc4e897",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -15033,7 +15051,7 @@
                     }
                 },
                 {
-                    "id": "332e067c-1ec0-4289-baf7-3f4e74ee5ce7",
+                    "id": "ccbf59f5-5140-4e52-8ddf-673d0d821ba7",
                     "name": "Get Received Document Pre-Create Info",
                     "request": {
                         "name": "Get Received Document Pre-Create Info",
@@ -15104,7 +15122,7 @@
                     },
                     "response": [
                         {
-                            "id": "07eccc4b-a814-43f4-9045-25f551a69e88",
+                            "id": "ccd620c8-52c1-4c99-a3d5-385f58e94321",
                             "name": "Pre-create info",
                             "originalRequest": {
                                 "url": {
@@ -15158,7 +15176,7 @@
             "event": []
         },
         {
-            "id": "67c673f2-cee0-4756-90c9-491396dbfad4",
+            "id": "44e6fd9d-1a08-4e33-ac0e-24627a0b44e0",
             "name": "Suppliers",
             "description": {
                 "content": "",
@@ -15166,7 +15184,7 @@
             },
             "item": [
                 {
-                    "id": "dad3a41c-641f-4f46-9461-d301eb8a7850",
+                    "id": "acd9ee60-b5b1-420f-b0f6-d5b5ee73b26d",
                     "name": "List Suppliers",
                     "request": {
                         "name": "List Suppliers",
@@ -15267,7 +15285,7 @@
                     },
                     "response": [
                         {
-                            "id": "72da7c58-7ca4-4c5e-a154-b81f1b45d75a",
+                            "id": "d81a89cc-80a5-497c-addf-ea2c65be9671",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -15332,7 +15350,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "8a742164-404d-4be0-b58e-2c31ccbd32d8",
+                            "id": "c32cec47-40cb-47bb-9a36-9f7393ff17f7",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -15403,7 +15421,7 @@
                     }
                 },
                 {
-                    "id": "7b95d36f-931e-4ae3-a889-64e4a55b392d",
+                    "id": "08efeb7f-c819-4f14-8785-9512926fac97",
                     "name": "Create Supplier",
                     "request": {
                         "name": "Create Supplier",
@@ -15480,7 +15498,7 @@
                     },
                     "response": [
                         {
-                            "id": "60f648e6-c13e-47fc-8f4c-054bef3c0de5",
+                            "id": "7dff2b24-8740-43a6-a92e-287b918b1b0a",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -15534,7 +15552,7 @@
                     }
                 },
                 {
-                    "id": "587bf0b2-eed8-47d5-a33e-27428c276518",
+                    "id": "b2f919f3-dfb5-46c4-89fe-3dbd6acb715b",
                     "name": "Get Supplier",
                     "request": {
                         "name": "Get Supplier",
@@ -15619,7 +15637,7 @@
                     },
                     "response": [
                         {
-                            "id": "b621fa6d-351c-478f-9770-e7ab3e20ba1a",
+                            "id": "74cf70bb-8a13-4ce2-8e45-7afd15f4c349",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -15676,7 +15694,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "da93d346-6270-43e6-89b6-cb14cef5ab8c",
+                            "id": "0856767a-187e-46f0-99c2-ebf5ca6cd2fd",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -15733,7 +15751,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "c11c0d4e-3129-4b53-9eb3-b6cdaf1accec",
+                            "id": "26677eb8-b553-4634-9dd3-04f0ca60e8a1",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -15796,7 +15814,7 @@
                     }
                 },
                 {
-                    "id": "efa0624c-fd06-4659-88df-7dba2c152636",
+                    "id": "6af8b629-ce9c-4af1-8e96-d96a50a226d2",
                     "name": "Modify Supplier",
                     "request": {
                         "name": "Modify Supplier",
@@ -15881,7 +15899,7 @@
                     },
                     "response": [
                         {
-                            "id": "f356ec54-3e92-40d5-a82a-5a02c2cf5820",
+                            "id": "0e2a1e64-9c9d-4931-9991-09ed5e3f572c",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -15937,7 +15955,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "40ce02a1-f4f4-4953-9fee-1537bc5edb92",
+                            "id": "d45678b2-e0a2-4c00-a946-f25e2079cdeb",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -15993,7 +16011,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "71534f5e-5c79-40da-92ec-f93c3e84f08b",
+                            "id": "5e1d0f12-690f-48f0-b87d-19b5f32d07dc",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -16055,7 +16073,7 @@
                     }
                 },
                 {
-                    "id": "a3d9701d-ac1b-445e-9b61-a2c8349610de",
+                    "id": "b9817939-3aa9-4068-b95e-9fe2bd583523",
                     "name": "Delete Supplier",
                     "request": {
                         "name": "Delete Supplier",
@@ -16121,7 +16139,7 @@
                     },
                     "response": [
                         {
-                            "id": "6c4e720e-c04a-46b5-bd37-462b44af1292",
+                            "id": "9675f326-7483-4cf5-bb7e-f9755591ecdc",
                             "name": "Entity Removed",
                             "originalRequest": {
                                 "url": {
@@ -16169,7 +16187,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "e0ad3d90-ff51-4a23-ba26-b3a48910075b",
+                            "id": "cbd24664-dd54-4e69-960b-8924ad7976a9",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -16217,7 +16235,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "819feb43-6524-47c1-aab1-4a0ade17a526",
+                            "id": "7e52a202-06b2-4ae7-a9cf-c0b3acb1f25f",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -16274,7 +16292,7 @@
             "event": []
         },
         {
-            "id": "700bf0f8-1277-4412-903f-9ae60c69bd46",
+            "id": "adb4f95d-24b5-47c2-8290-221a06ded5c8",
             "name": "Taxes",
             "description": {
                 "content": "",
@@ -16282,7 +16300,7 @@
             },
             "item": [
                 {
-                    "id": "52135e82-d130-4a7a-b88f-8c8466e7ddd3",
+                    "id": "95bb7b03-c8a3-435d-a438-621ef8914726",
                     "name": "List F24",
                     "request": {
                         "name": "List F24",
@@ -16382,7 +16400,7 @@
                     },
                     "response": [
                         {
-                            "id": "7af68a22-f128-4108-8aeb-e40024c782ca",
+                            "id": "68dbb6ea-3eea-44d0-9214-7df46b4e6fb6",
                             "name": "Results list.",
                             "originalRequest": {
                                 "url": {
@@ -16446,7 +16464,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "af15707f-67db-41dd-9a81-24805fa34572",
+                            "id": "cded7ba0-1418-454b-98fa-508e38f54407",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -16516,7 +16534,7 @@
                     }
                 },
                 {
-                    "id": "0381df9c-cc88-4726-a64c-0c5205ff1958",
+                    "id": "7ead8950-d6ed-4c01-9589-b9d5c1240702",
                     "name": "Create F24",
                     "request": {
                         "name": "Create F24",
@@ -16592,7 +16610,7 @@
                     },
                     "response": [
                         {
-                            "id": "36dc0401-2094-45e8-96ff-e49b19cc38a0",
+                            "id": "27e38461-ebb8-4191-9a71-f4e64c443d14",
                             "name": "The created F24",
                             "originalRequest": {
                                 "url": {
@@ -16639,7 +16657,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "c8fb3ae8-36da-45ee-b73c-83bb0d521134",
+                            "id": "13486f74-283d-4045-a4ac-1a4142f8fa26",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -16686,7 +16704,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "14362bd5-eeb9-4fbb-b788-e6668a490dae",
+                            "id": "6b4c2066-e8b1-48cf-ad0a-cd2fc3a05d3f",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -16739,7 +16757,7 @@
                     }
                 },
                 {
-                    "id": "0b01ff08-900f-4a05-80e8-79234991a2b3",
+                    "id": "582378f3-6165-4d63-a4a8-3e667bd3b751",
                     "name": "Get F24",
                     "request": {
                         "name": "Get F24",
@@ -16823,7 +16841,7 @@
                     },
                     "response": [
                         {
-                            "id": "a4b694d9-e50f-4129-8d9b-b96a4ec51691",
+                            "id": "c19841eb-1108-4734-bb40-bc3cf5465fe3",
                             "name": "The F24",
                             "originalRequest": {
                                 "url": {
@@ -16879,7 +16897,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "8f2a48b5-9f9c-4a60-90cd-ecab970579fb",
+                            "id": "68650c0d-e6f1-40c2-aa5f-a9f04b718e6d",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -16935,7 +16953,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "c0296de5-b090-4366-96a3-07881dc70102",
+                            "id": "6f4369d4-3ba2-4763-a64e-5a368b07a1ed",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -16997,7 +17015,7 @@
                     }
                 },
                 {
-                    "id": "8a43ffb6-6603-482b-8df3-97b08030b714",
+                    "id": "5bc2c3c1-4afd-43a5-a005-b38ea5469a71",
                     "name": "Modify F24",
                     "request": {
                         "name": "Modify F24",
@@ -17081,7 +17099,7 @@
                     },
                     "response": [
                         {
-                            "id": "968690cb-8a36-4d3b-8726-37e79bdd0a02",
+                            "id": "bd05cef6-6d2f-4a3c-916e-65039b7ce4a8",
                             "name": "The modified F24",
                             "originalRequest": {
                                 "url": {
@@ -17136,7 +17154,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "36a80349-dee4-471d-8488-f3dc044752f6",
+                            "id": "e8e76c14-260d-4f6f-8742-41984228ccf9",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -17191,7 +17209,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "7e0b4e88-3066-4819-bc04-b6abdccdd5f0",
+                            "id": "bed16598-ccb3-4f91-ad86-9be4b2767c93",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -17252,7 +17270,7 @@
                     }
                 },
                 {
-                    "id": "7681ad28-ab31-4cb3-9be9-215532cda054",
+                    "id": "62f6a474-b7d6-4bf0-b56f-18b941ecd5de",
                     "name": "Delete F24",
                     "request": {
                         "name": "Delete F24",
@@ -17317,7 +17335,7 @@
                     },
                     "response": [
                         {
-                            "id": "d6f5ed20-0941-479c-97ff-113e65ce9e79",
+                            "id": "8a4cdfaf-7884-43e2-93f0-08a5b60b7f4d",
                             "name": "Document removed.",
                             "originalRequest": {
                                 "url": {
@@ -17364,7 +17382,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "16cd5a2f-5cba-4724-ad5c-46c1432b6d9e",
+                            "id": "a0b0af80-fb25-4c23-a036-b0de373ddae2",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -17411,7 +17429,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "68eed887-2dd3-40b1-a8c0-6a1e64dcfed7",
+                            "id": "3f8f649e-1337-43f0-b3fb-766f0d455f3b",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -17464,7 +17482,7 @@
                     }
                 },
                 {
-                    "id": "724e334a-ff1c-427d-b60d-bb38062ee50b",
+                    "id": "447354dc-515c-4531-ab0b-eb435a65f6c1",
                     "name": "Upload F24 Attachment",
                     "request": {
                         "name": "Upload F24 Attachment",
@@ -17548,7 +17566,7 @@
                     },
                     "response": [
                         {
-                            "id": "4cd07120-a0eb-4b51-a598-afa8e92d84bd",
+                            "id": "843c3fe0-706a-48b6-8afb-ee3c4de6df99",
                             "name": "Attachment Token.",
                             "originalRequest": {
                                 "url": {
@@ -17615,7 +17633,7 @@
                     }
                 },
                 {
-                    "id": "a20e03b1-42e7-455d-b8b6-9d6a57299afb",
+                    "id": "024b7728-47f4-42e6-b53f-7f8563006f92",
                     "name": "Delete F24 Attachment",
                     "request": {
                         "name": "Delete F24 Attachment",
@@ -17681,7 +17699,7 @@
                     },
                     "response": [
                         {
-                            "id": "8ace331f-0f01-41d2-89fb-3b696e934f77",
+                            "id": "a9112412-58d1-4b81-a766-8b9096f5612a",
                             "name": "File Removed.",
                             "originalRequest": {
                                 "url": {
@@ -17729,7 +17747,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "d303560c-961f-4ab4-aa46-ffc832914e6b",
+                            "id": "417d8a97-59da-4234-a4ee-29afb82796ac",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -17777,7 +17795,7 @@
                             "_postman_previewlanguage": "text"
                         },
                         {
-                            "id": "f0bfd1ac-6b6b-4f5d-8624-65377036cbef",
+                            "id": "b2371216-a7cc-49ab-8e9c-52b52a9f8b3a",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -17834,7 +17852,7 @@
             "event": []
         },
         {
-            "id": "d297682f-dfc5-4ace-b50f-a636cd407e15",
+            "id": "1b38300a-f59b-454e-8a44-cbe8e7ba98d0",
             "name": "User",
             "description": {
                 "content": "",
@@ -17842,7 +17860,7 @@
             },
             "item": [
                 {
-                    "id": "eca5cdae-d222-4b66-95e2-16e49a9a326f",
+                    "id": "c1ea40aa-c990-48f3-92d2-883c093cbcc0",
                     "name": "Get User Info",
                     "request": {
                         "name": "Get User Info",
@@ -17896,7 +17914,7 @@
                     },
                     "response": [
                         {
-                            "id": "2f898730-8a43-487a-8ec2-5cf0bc947971",
+                            "id": "bbdbc310-b490-4bb7-bbe7-5042c3d9e055",
                             "originalRequest": {
                                 "url": {
                                     "path": [
@@ -17925,7 +17943,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "1f98e3a9-9214-4249-a7f8-b85e4017911f",
+                            "id": "927aba6d-6af2-41aa-8dd0-f154f69fc088",
                             "name": "Unauthorized.",
                             "originalRequest": {
                                 "url": {
@@ -17961,7 +17979,7 @@
                     }
                 },
                 {
-                    "id": "2761433a-3744-4375-937d-7aa3c964bbe5",
+                    "id": "dd3d9e4c-8ad1-431c-8281-b5158eb9b697",
                     "name": "List User Companies",
                     "request": {
                         "name": "List User Companies",
@@ -18015,7 +18033,7 @@
                     },
                     "response": [
                         {
-                            "id": "5dd3be44-7786-4dd1-85fd-753cceb861e4",
+                            "id": "db1013e7-6c02-4bc1-9474-9f2c9a0a7ff6",
                             "name": "User Companies.",
                             "originalRequest": {
                                 "url": {
@@ -18045,7 +18063,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "729537a9-b755-4205-8b67-f9b5365f7580",
+                            "id": "00cafb33-6430-45d0-9bcf-de707b3d7708",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -18084,7 +18102,7 @@
             "event": []
         },
         {
-            "id": "9d38494a-59b6-462e-9aa4-c259ef8f6a58",
+            "id": "f3717e84-7980-4685-9497-34f821fc19aa",
             "name": "Settings",
             "description": {
                 "content": "",
@@ -18092,7 +18110,7 @@
             },
             "item": [
                 {
-                    "id": "dce59153-c723-4137-a0a6-863d9b04375e",
+                    "id": "2db4a923-96bd-4122-a34a-8344ccc24682",
                     "name": "Create Payment Method",
                     "request": {
                         "name": "Create Payment Method",
@@ -18169,7 +18187,7 @@
                     },
                     "response": [
                         {
-                            "id": "36faff93-f2e3-413a-963c-22d62764c4e3",
+                            "id": "0ca45690-bbc3-4cbe-8eaf-67f94410efa9",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -18223,7 +18241,7 @@
                     }
                 },
                 {
-                    "id": "d36cb203-e1e9-4fff-8388-4abfcdb38f08",
+                    "id": "fe3639d1-1616-4a8a-bdb0-fc73027818e4",
                     "name": "Get Payment Method",
                     "request": {
                         "name": "Get Payment Method",
@@ -18308,7 +18326,7 @@
                     },
                     "response": [
                         {
-                            "id": "ee907829-0b15-451e-bdd2-2ce533bad46d",
+                            "id": "a96d93ca-2c68-493a-b3cc-fc608709a753",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -18371,7 +18389,7 @@
                     }
                 },
                 {
-                    "id": "59d3399e-b5e2-48b1-a4a1-7de456b01e03",
+                    "id": "4b8326c6-3678-4a83-8e16-d10a06cc4eec",
                     "name": "Modify Payment Method",
                     "request": {
                         "name": "Modify Payment Method",
@@ -18456,7 +18474,7 @@
                     },
                     "response": [
                         {
-                            "id": "65aaf688-b80c-4e4c-b6ea-f6aa420171f5",
+                            "id": "9ba90e3f-de70-41a6-8a8e-6450fb318e7e",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -18518,7 +18536,7 @@
                     }
                 },
                 {
-                    "id": "3d88b476-fa59-417b-a40b-1263c4a5721c",
+                    "id": "52e00f50-ea1c-4a0d-add1-0b2a015d4582",
                     "name": "Delete Payment Method",
                     "request": {
                         "name": "Delete Payment Method",
@@ -18584,7 +18602,7 @@
                     },
                     "response": [
                         {
-                            "id": "0fdb7ea7-6bf3-4634-8d12-c1b67024eb21",
+                            "id": "fb182045-dd90-4bc2-bf06-c1672caea0a3",
                             "name": "OK",
                             "originalRequest": {
                                 "url": {
@@ -18638,7 +18656,7 @@
                     }
                 },
                 {
-                    "id": "6fb235a7-625c-4956-acd5-8c8b4c333d0c",
+                    "id": "07c7c31f-5d9c-41d2-9d7d-e3ef4123d264",
                     "name": "Create Payment Account",
                     "request": {
                         "name": "Create Payment Account",
@@ -18715,7 +18733,7 @@
                     },
                     "response": [
                         {
-                            "id": "7d506480-02f4-4216-a319-9692382b62e6",
+                            "id": "8fd497b3-85e4-4c0f-ae05-06f16f727d16",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -18769,7 +18787,7 @@
                     }
                 },
                 {
-                    "id": "57669836-dad0-4c1f-8caf-e92665aa02a2",
+                    "id": "42cca866-16c8-4d48-a0a0-d2e27a0e55ed",
                     "name": "Get Payment Account",
                     "request": {
                         "name": "Get Payment Account",
@@ -18854,7 +18872,7 @@
                     },
                     "response": [
                         {
-                            "id": "145a77bc-96b0-4c77-b91e-e9696d3559f1",
+                            "id": "5812f2b7-155b-4939-a56b-6740020a8c0c",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -18917,7 +18935,7 @@
                     }
                 },
                 {
-                    "id": "26d70860-a358-4fe2-ac67-051ef266d0cc",
+                    "id": "3fbabded-8508-49a1-928d-5097d7006814",
                     "name": "Modify Payment Account",
                     "request": {
                         "name": "Modify Payment Account",
@@ -19002,7 +19020,7 @@
                     },
                     "response": [
                         {
-                            "id": "a96ab711-7a64-4a65-a0f7-3c1deabd37e0",
+                            "id": "23d155d3-a8b2-428a-9106-816c2a32bf35",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -19064,7 +19082,7 @@
                     }
                 },
                 {
-                    "id": "9a3eb567-31b8-498c-9a93-e26e8aca8707",
+                    "id": "e747deea-2565-4c55-94f8-a3629c8184e0",
                     "name": "Delete Payment Account",
                     "request": {
                         "name": "Delete Payment Account",
@@ -19130,7 +19148,7 @@
                     },
                     "response": [
                         {
-                            "id": "f879c5ef-051d-4e72-a45e-7bb5ae6038e9",
+                            "id": "addf7055-97a8-476e-a15a-c1881922548f",
                             "name": "OK",
                             "originalRequest": {
                                 "url": {
@@ -19184,7 +19202,7 @@
                     }
                 },
                 {
-                    "id": "7201d3fb-a56e-468e-91cf-d6e5067dcee8",
+                    "id": "6a545b72-6df9-4b4f-898d-24e40974c60c",
                     "name": "Create Vat Type",
                     "request": {
                         "name": "Create Vat Type",
@@ -19261,7 +19279,7 @@
                     },
                     "response": [
                         {
-                            "id": "3b59efb4-d10f-44a4-8984-69530c251061",
+                            "id": "37d23728-b974-477e-a126-0fc83b7943a4",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -19315,7 +19333,7 @@
                     }
                 },
                 {
-                    "id": "ef76a5d8-b611-4239-b722-acfca1af4d31",
+                    "id": "94d3cc33-821e-4390-9fe1-3977d896d21c",
                     "name": "Get Vat Type",
                     "request": {
                         "name": "Get Vat Type",
@@ -19387,7 +19405,7 @@
                     },
                     "response": [
                         {
-                            "id": "a6b07b3c-2ef9-4851-9caa-1fe64a890734",
+                            "id": "f4ac3ed2-937b-44f8-9090-06aa20d52ac5",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -19441,7 +19459,7 @@
                     }
                 },
                 {
-                    "id": "f721c9d9-0c25-4258-ae1d-9d61aa65474a",
+                    "id": "eb9b5b3c-7b2d-4c8b-b436-fef7eba5b21c",
                     "name": "Modify Vat Type",
                     "request": {
                         "name": "Modify Vat Type",
@@ -19526,7 +19544,7 @@
                     },
                     "response": [
                         {
-                            "id": "7fe00964-99da-4ecd-ab70-5170ca5010b9",
+                            "id": "4604d988-a309-4d5c-bde3-fffccf417e8d",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -19588,7 +19606,7 @@
                     }
                 },
                 {
-                    "id": "c14e10a4-af33-421e-a72c-a4c4f7db0f02",
+                    "id": "e8c96a47-2254-4f0e-bc92-7f159a3cad48",
                     "name": "Delete Vat Type",
                     "request": {
                         "name": "Delete Vat Type",
@@ -19654,7 +19672,7 @@
                     },
                     "response": [
                         {
-                            "id": "33084c6b-3cb3-410b-bd3a-6d37a4dc3b80",
+                            "id": "de7f71e7-4bb5-40a5-b6b3-86b1e9c4b7c9",
                             "name": "OK",
                             "originalRequest": {
                                 "url": {
@@ -19711,7 +19729,7 @@
             "event": []
         },
         {
-            "id": "82048b1c-c70e-481f-b855-766787a4e523",
+            "id": "f74d9057-7522-488e-ab56-c4285fdadf28",
             "name": "Emails",
             "description": {
                 "content": "",
@@ -19719,7 +19737,7 @@
             },
             "item": [
                 {
-                    "id": "5593a1ff-9764-4db9-833a-3ef80dfb4f37",
+                    "id": "4bd3e7cc-9a5c-49ab-b859-0abe48a1af88",
                     "name": "List emails",
                     "request": {
                         "name": "List emails",
@@ -19782,7 +19800,7 @@
                     },
                     "response": [
                         {
-                            "id": "b9aac484-dcdc-428b-80b1-2cbcdf5538ec",
+                            "id": "6a26d948-2f7e-4b21-b82d-db14f2918836",
                             "name": "Example response",
                             "originalRequest": {
                                 "url": {
@@ -19864,7 +19882,7 @@
         ]
     },
     "info": {
-        "_postman_id": "7cad42e9-d182-4c61-b218-0f3979a012ec",
+        "_postman_id": "fd7d19ba-bf00-4227-a99c-02096ac1c272",
         "name": "Fatture in Cloud API v2 - API Reference",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": {
