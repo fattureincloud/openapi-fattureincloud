@@ -126,7 +126,7 @@ jobs:
 
           USER_AGENT="$APP_NAME/${{ env.sdk_version }}/Ruby-SDK"
 
-          openapi-generator-cli generate -i ./openapi.yaml -g ruby -o ./generated/ruby/ -t ./templates/openapi-generator/ruby --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=gemVersion=${SDK_VERSION},gemAuthor=${GEM_AUTHOR},gemAuthorEmail=${GEM_AUTHOR_EMAIL},gemDescription=${GEM_DESCRIPTION},gemSummary=${GEM_DESCRIPTION},gemHomepage=${GEM_HOMEPAGE},gemLicense=${GEM_LICENSE},gemName=${GEM_NAME},gemSummary=${GEM_SUMMARY},moduleName=${MODULE_NAME},gemRequiredRubyVersion=\>\=${MINIMUM_VERSION}
+          openapi-generator-cli generate -i ./openapi.yaml -g ruby -o ./generated/ruby/ -t ./templates/openapi-generator/ruby --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=gemVersion=${SDK_VERSION},gemAuthor=${GEM_AUTHOR},gemAuthorEmail=${GEM_AUTHOR_EMAIL},gemDescription=${GEM_DESCRIPTION},gemSummary=${GEM_DESCRIPTION},gemHomepage=${GEM_HOMEPAGE},gemLicense=${GEM_LICENSE},gemName=${GEM_NAME},gemSummary=${GEM_SUMMARY},moduleName=${MODULE_NAME},gemRequiredRubyVersion=${MINIMUM_VERSION}
 
 
       
