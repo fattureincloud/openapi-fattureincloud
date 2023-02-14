@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.0.26 (2023-02-13)
+
+
+### Improvements
+
+* added param to list all ddts ([#604](https://github.com/fattureincloud/openapi-fattureincloud/issues/604)) ([8055b6a](https://github.com/fattureincloud/openapi-fattureincloud/commit/8055b6a5d1293e53f39ef8da7fd990c6a8ca6c52))
+
 ### 2.0.25 (2023-02-06)
 
 ### 2.0.24 (2022-12-13)
