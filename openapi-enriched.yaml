@@ -16,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.0.24
+  version: 2.0.26
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -1611,6 +1611,14 @@ paths:
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/per_page'
         - $ref: '#/components/parameters/q'
+        - schema:
+            type: integer
+            enum:
+              - 0
+              - 1
+          in: query
+          name: inclusive
+          description: (Only for type = delivery_notes) Include invoices delivery notes.
     post:
       summary: Create Issued Document
       operationId: createIssuedDocument
@@ -7253,6 +7261,14 @@ paths:
                       description: >-
                         Value of CausalePagamento used (optional, override the
                         company default value).
+                options:
+                  type: object
+                  properties:
+                    dry_run:
+                      type: boolean
+                      description: >-
+                        If set to true the e-invoice will not be sent to the
+                        SDI.
             examples:
               example-1:
                 value:
@@ -7690,6 +7706,11 @@ paths:
 
                         Attachment preview url.
                       readOnly: true
+                    auto_calculate:
+                      type: boolean
+                      description: >-
+                        If set to false total items amount and total payments
+                        amount can be different.
                     attachment_token:
                       type: string
                       description: Uploaded attachement token.
@@ -8105,6 +8126,11 @@ paths:
 
                         Attachment preview url.
                       readOnly: true
+                    auto_calculate:
+                      type: boolean
+                      description: >-
+                        If set to false total items amount and total payments
+                        amount can be different.
                     attachment_token:
                       type: string
                       description: Uploaded attachement token.
@@ -8518,6 +8544,11 @@ paths:
 
                         Attachment preview url.
                       readOnly: true
+                    auto_calculate:
+                      type: boolean
+                      description: >-
+                        If set to false total items amount and total payments
+                        amount can be different.
                     attachment_token:
                       type: string
                       description: Uploaded attachement token.
@@ -8904,6 +8935,11 @@ paths:
 
                         Attachment preview url.
                       readOnly: true
+                    auto_calculate:
+                      type: boolean
+                      description: >-
+                        If set to false total items amount and total payments
+                        amount can be different.
                     attachment_token:
                       type: string
                       description: Uploaded attachement token.
@@ -24757,6 +24793,12 @@ components:
                             Attachment preview url.
                           readOnly: true
                           nullable: true
+                        auto_calculate:
+                          type: boolean
+                          description: >-
+                            If set to false total items amount and total
+                            payments amount can be different.
+                          nullable: true
                         attachment_token:
                           type: string
                           nullable: true
@@ -25213,6 +25255,12 @@ components:
                       Attachment preview url.
                     readOnly: true
                     nullable: true
+                  auto_calculate:
+                    type: boolean
+                    description: >-
+                      If set to false total items amount and total payments
+                      amount can be different.
+                    nullable: true
                   attachment_token:
                     type: string
                     nullable: true
@@ -25614,6 +25662,12 @@ components:
                       Attachment preview url.
                     readOnly: true
                     nullable: true
+                  auto_calculate:
+                    type: boolean
+                    description: >-
+                      If set to false total items amount and total payments
+                      amount can be different.
+                    nullable: true
                   attachment_token:
                     type: string
                     nullable: true
@@ -26014,6 +26068,12 @@ components:
 
                       Attachment preview url.
                     readOnly: true
+                    nullable: true
+                  auto_calculate:
+                    type: boolean
+                    description: >-
+                      If set to false total items amount and total payments
+                      amount can be different.
                     nullable: true
                   attachment_token:
                     type: string
