@@ -1,0 +1,8 @@
+title: ListStockMovementsResponsePage
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: ../../schemas/StockMovement.yaml
+    nullable: true

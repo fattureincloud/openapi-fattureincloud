@@ -1,0 +1,47 @@
+type: object
+x-examples:
+  Example 1:
+    id: 12
+    client_name: Avv. Maria Rossi
+    type: invoice
+    expense_id: null
+    expense_item_id: null
+    invoice_id: 12345
+    invoice_item_id: 654321
+    stock_in: 0
+    stock_out: 20
+    cost: 25
+    price: 30
+    description: Invoice 321
+    date: '2023-03-30'
+    description_link: invoices-view-12345
+properties:
+  id:
+    type: integer
+  client_name:
+    type: string
+  type:
+    type: string
+  expense_id:
+    type: integer
+  expense_item_id:
+    type: integer
+  invoice_id:
+    type: integer
+  invoice_item_id:
+    type: integer
+  stock_in:
+    type: integer
+  stock_out:
+    type: integer
+  cost:
+    type: number
+  price:
+    type: number
+  description:
+    type: string
+  date:
+    type: string
+    format: date
+  description_link:
+    type: string

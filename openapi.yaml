@@ -2985,6 +2985,93 @@ paths:
       description: List Emails.
       security:
         - OAuth2AuthenticationCodeFlow: []
+  /c/{company_id}/products/{product_id}/stock_movements:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/product_id'
+    get:
+      summary: List Stock Movements
+      tags:
+        - Products
+      responses:
+        '200':
+          $ref: '#/components/responses/ListStockMovementsResponse'
+      operationId: listStockMovements
+      description: Lists the stock movements.
+    post:
+      summary: createStockMovement
+      tags:
+        - Products
+      responses:
+        '200':
+          $ref: '#/components/responses/CreateStockMovementResponse'
+      operationId: createStockMovement
+      description: Create a stock movement.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/CreateStockMovementRequest.yaml
+            examples:
+              Example 1:
+                value:
+                  data:
+                    client_name: Manuele
+                    stock_in: 10
+                    stock_out: 0
+                    cost: 25
+                    price: 30
+                    description: Manual load 13
+                    date: '2023-03-30'
+  /c/{company_id}/products/{product_id}/stock_movements/{stock_movement_id}:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/product_id'
+      - $ref: '#/components/parameters/stock_movement_id'
+    get:
+      summary: Get Stock Movement
+      tags:
+        - Products
+      responses:
+        '200':
+          $ref: '#/components/responses/GetStockMovementResponse'
+      operationId: getStockMovement
+      description: Gets the specified stock movement.
+    put:
+      summary: Modify a Stock Movement.
+      tags:
+        - Products
+      responses:
+        '200':
+          $ref: '#/components/responses/ModifyStockMovementResponse'
+      operationId: modifyStockMovement
+      description: Modifies the specified stock movement.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/ModifyStockMovementRequest.yaml
+            examples:
+              Example 1:
+                value:
+                  data:
+                    client_name: Manuele
+                    stock_in: 10
+                    stock_out: 0
+                    cost: 25
+                    price: 30
+                    description: Manual load 13
+                    date: '2023-03-30'
+        description: ''
+    delete:
+      summary: Delete a Stock Movement.
+      tags:
+        - Products
+      responses:
+        '200':
+          description: OK
+      operationId: deleteStockMovement
+      description: Deletes the specified stock movement.
 components:
   schemas: {}
   securitySchemes:
@@ -3161,6 +3248,13 @@ components:
       schema:
         type: boolean
       description: Include the attachment to the XML e-invoice.
+    stock_movement_id:
+      name: stock_movement_id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: The ID of the stock movement.
   responses:
     GetUserInfoResponse:
       description: ''
@@ -3368,7 +3462,7 @@ components:
                   fic_payment_subject: client
                   dic_payment_subject: client
     CreateClientResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -3416,7 +3510,7 @@ components:
                     id: 386092
                     name: Credit card
     ListClientsResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -3510,7 +3604,7 @@ components:
                 to: 50
                 total: 8
     ListSuppliersResponse:
-      description: Example response
+      description: List of Suppliers
       content:
         application/json:
           schema:
@@ -3574,7 +3668,7 @@ components:
                     created_at: '2021-15-09'
                     updated_at: '2021-15-09'
     CreateSupplierResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -3690,7 +3784,7 @@ components:
                     description: ''
                     is_disabled: false
     GetSupplierResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -3722,7 +3816,7 @@ components:
                   created_at: '2021-15-08'
                   updated_at: '2021-15-08'
     ModifySupplierResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -3809,7 +3903,7 @@ components:
                 to: 55
                 total: 55
     CreateProductResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -3836,7 +3930,7 @@ components:
                     notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
                     is_disabled: false
     GetProductResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -3867,7 +3961,7 @@ components:
                   stock_initial: 123
                   stock_current: 123
     ModifyProductResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -6197,7 +6291,7 @@ components:
                   attachment_exists: false
                   accompanying_invoice_exists: false
     SendEInvoiceResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -6209,7 +6303,7 @@ components:
                   name: CARICATO
                   date: '2021-08-23 10:38:03'
     VerifyEInvoiceXmlResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -6220,7 +6314,7 @@ components:
                 data:
                   success: true
     VerifyEInvoiceXmlErrorResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -8203,7 +8297,7 @@ components:
                   - Estratti conto bancari
                   - Estratti conto carte di credito
     UploadArchiveAttachmentResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -8214,7 +8308,7 @@ components:
                 data:
                   attachment_token: YmMyNWYxYzIwMTU3N212ABCDZjZiMzg5OWY0ODNkZDQveXl5LmRvYw
     CreatePaymentMethodResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -8234,7 +8328,7 @@ components:
                     id: 12345
                     name: conto banca SP
     GetPaymentMethodResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -8254,7 +8348,7 @@ components:
                     id: 12345
                     name: conto banca SP
     ModifyPaymentMethodResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -8274,7 +8368,7 @@ components:
                     id: 12345
                     name: conto banca SP
     CreatePaymentAccountResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -8290,7 +8384,7 @@ components:
                   sia: T1234
                   virtual: false
     GetPaymentAccountResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -8306,7 +8400,7 @@ components:
                   sia: T1234
                   virtual: false
     ModifyPaymentAccountResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -8322,7 +8416,7 @@ components:
                   sia: T1234
                   virtual: false
     CreateVatTypeResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -8341,7 +8435,7 @@ components:
                   editable: true
                   is_disabled: true
     GetVatTypeResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -8360,7 +8454,7 @@ components:
                   editable: true
                   is_disabled: true
     ModifyVatTypeResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -8385,7 +8479,7 @@ components:
           schema:
             $ref: ./models/responses/GetEInvoiceXmlResponse.yaml
     GetEInvoiceRejectionReasonResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -8416,7 +8510,7 @@ components:
                     fiscal_iso: AL
                     uic: '087'
     TransformIssuedDocumentResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -8543,7 +8637,7 @@ components:
                   transform: true
                   keep_copy: true
     JoinIssuedDocumentsResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -8669,7 +8763,7 @@ components:
                     - '82112399'
                     - '82112400'
     ListEmailsResponse:
-      description: Example response
+      description: ''
       content:
         application/json:
           schema:
@@ -8721,5 +8815,129 @@ components:
                 prev_page_url: null
                 to: 2
                 total: 2
+    ListStockMovementsResponse:
+      description: List of Stock Movements
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ListStockMovementsResponse.yaml
+          examples:
+            Example 1:
+              value:
+                first_page_url: page=1
+                from: 1
+                last_page: 2
+                last_page_url: page=2
+                next_page_url: page=2
+                path: /entities/suppliers
+                per_page: 50
+                prev_page_url: null
+                to: 55
+                total: 55
+                data:
+                  - id: null
+                    client_name: Avv. Maria Rossi
+                    type: expense
+                    expense_id: 12345
+                    expense_item_id: 54321
+                    invoice_id: null
+                    invoice_item_id: null
+                    stock_in: 20
+                    stock_out: 0
+                    cost: 25
+                    price: 30
+                    description: Expense - Avv. Maria Rossi
+                    date: '2023-03-30'
+                    description_link: expenses-view-12345
+                  - id: null
+                    client_name: Aluba
+                    type: invoice
+                    expense_id: null
+                    expense_item_id: null
+                    invoice_id: 123456
+                    invoice_item_id: 654321
+                    stock_in: 0
+                    stock_out: 10
+                    cost: 25
+                    price: 30
+                    description: Invoice 543
+                    date: '2023-03-30'
+                    description_link: invoices-view-89144425
+                  - id: 12
+                    client_name: Manuele
+                    type: manual
+                    expense_id: null
+                    expense_item_id: null
+                    invoice_id: null
+                    invoice_item_id: null
+                    stock_in: 50
+                    stock_out: 0
+                    cost: 25
+                    price: 30
+                    description: Manual load 12
+                    date: '2023-03-30'
+    CreateStockMovementResponse:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/CreateStockMovementResponse.yaml
+          examples:
+            Example 1:
+              value:
+                data:
+                  id: 12
+                  date: '2023-03-30'
+                  stock_in: 10
+                  stock_out: 0
+                  cost: 25
+                  price: 30
+                  description: Manual load 13
+    GetStockMovementResponse:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetStockMovementResponse.yaml
+          examples:
+            Example 1:
+              value:
+                data:
+                  id: 12
+                  client_name: Manuele
+                  type: manual
+                  expense_id: null
+                  expense_item_id: null
+                  invoice_id: null
+                  invoice_item_id: null
+                  stock_in: 50
+                  stock_out: 0
+                  cost: 25
+                  price: 30
+                  description: Manual load 12
+                  date: '2023-03-30'
+    ModifyStockMovementResponse:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ModifyStockMovementResponse.yaml
+          examples:
+            Example 1:
+              value:
+                data:
+                  id: 12
+                  client_name: Manuele
+                  type: manual
+                  expense_id: null
+                  expense_item_id: null
+                  invoice_id: null
+                  invoice_item_id: null
+                  stock_in: 50
+                  stock_out: 0
+                  cost: 25
+                  price: 30
+                  description: Manual load 12
+                  date: '2023-03-30'
 security:
   - OAuth2AuthenticationCodeFlow: []

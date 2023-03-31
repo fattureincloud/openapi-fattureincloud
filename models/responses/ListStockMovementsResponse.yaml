@@ -1,0 +1,4 @@
+title: ListStockMovementsResponse
+allOf:
+  - $ref: ./pagination/Pagination.yaml
+  - $ref: ./pagination/ListStockMovementsResponsePage.yaml

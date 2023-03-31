@@ -1,0 +1,7 @@
+title: ModifyStockMovementResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/StockMovement.yaml
+    nullable: true
+description: ''

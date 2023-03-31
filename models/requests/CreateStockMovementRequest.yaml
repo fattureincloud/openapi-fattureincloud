@@ -1,0 +1,6 @@
+title: CreateStockMovementRequest
+type: object
+properties:
+  data:
+    $ref: ../schemas/StockMovement.yaml
+    nullable: true
