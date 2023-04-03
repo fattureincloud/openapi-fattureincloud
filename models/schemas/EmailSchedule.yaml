@@ -19,7 +19,9 @@ properties:
     nullable: true
   body:
     type: string
-    description: Email body
+    description: >- 
+      Email body
+      [max size 50KiB]
     nullable: true
   include:
     type: object
