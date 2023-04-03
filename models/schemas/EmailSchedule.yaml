@@ -21,7 +21,7 @@ properties:
     type: string
     description: >- 
       Email body
-      [HTML encoded]
+      [HTML Escaped]
       [max size 50KiB]
     nullable: true
   include:
