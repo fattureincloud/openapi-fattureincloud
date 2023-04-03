@@ -3,11 +3,13 @@
     "declaration": true,
     "target": "{{#supportsES6}}ES6{{/supportsES6}}{{^supportsES6}}ES5{{/supportsES6}}",
     "module": "commonjs",
-    "moduleResolution": "node",
     "esModuleInterop": true,
     "noImplicitAny": true,
     "outDir": "dist",
     "rootDir": ".",
+    {{#supportsES6}}
+    "moduleResolution": "node",
+    {{/supportsES6}}
     {{^supportsES6}}
     "lib": [
       "es6",

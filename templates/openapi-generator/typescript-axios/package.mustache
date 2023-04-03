@@ -13,13 +13,17 @@
   "license": "MIT",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
+{{#supportsES6}}
+  "module": "./dist/esm/index.js",
+  "sideEffects": false,
+{{/supportsES6}}
   "scripts": {
-    "build": "tsc --outDir dist/",
+    "build": "tsc {{#supportsES6}}&& tsc -p tsconfig.esm.json{{/supportsES6}}",
     "prepare": "npm run build",
     "test": "mocha -r ts-node/register 'test/**/*.ts'"
   },
   "dependencies": {
-    "axios": "^0.26.1",
+    "axios": "^0.27.2"
     "form-data": "^4.0.0"
   },
   "devDependencies": {
