@@ -9,16 +9,7 @@ properties:
     $ref: ../enums/ReceivedDocumentType.yaml
     nullable: true
   entity:
-    type: object
-    properties:
-      id:
-        type: integer
-        nullable: true
-        description: Entity unique identifier.
-      name:
-        type: string
-        description: Entity name.
-        nullable: true
+    $ref: ./Entity.yaml
     nullable: true
   date:
     type: string
