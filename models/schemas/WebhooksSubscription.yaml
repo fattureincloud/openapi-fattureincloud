@@ -1,4 +1,4 @@
-title: WebhooksSubscriptionRegistration
+title: WebhooksSubscription
 type: object
 properties:
   id:

@@ -4,4 +4,4 @@ properties:
   data:
     type: array
     items:
-      $ref: ../schemas/WebhooksSubscriptionRegistration.yaml
+      $ref: ../schemas/WebhooksSubscription.yaml

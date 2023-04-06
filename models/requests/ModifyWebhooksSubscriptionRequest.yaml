@@ -1,0 +1,5 @@
+title: ModifyWebhooksSubscriptionRequest
+type: object
+properties:
+  data:
+    $ref: ../schemas/WebhooksSubscription.yaml

@@ -2989,7 +2989,7 @@ paths:
         - OAuth2AuthenticationCodeFlow: []
   /c/{company_id}/subscriptions:
     get:
-      summary: List Subscriptions
+      summary: List Webhooks Subscriptions
       tags:
         - Webhooks
       responses:
@@ -2998,16 +2998,16 @@ paths:
       operationId: listWebhooksSubscriptions
       description: List active webhooks subscriptions.
     post:
-      summary: Register Webhooks Subscriptions
+      summary: Create a Webhook Subscription
       responses:
         '200':
-          $ref: '#/components/responses/RegisterWebhooksSubscriptionsResponse'
-      operationId: registerWebhooksSubscriptions
+          $ref: '#/components/responses/CreateWebhooksSubscriptionResponse'
+      operationId: CreateWebhooksSubscription
       requestBody:
         content:
           application/json:
             schema:
-              $ref: ./models/requests/RegisterWebhooksSubscriptionRequest.yaml
+              $ref: ./models/requests/CreateWebhooksSubscriptionRequest.yaml
             examples:
               example-1:
                 value:
@@ -3016,27 +3016,46 @@ paths:
                     types:
                       - it.fattureincloud.entities.create
                       - it.fattureincloud.issued_documents.create
-          application/xml:
-            schema:
-              type: object
-              properties: {}
         description: ''
       description: Register some webhooks Subscriptions.
       tags:
         - Webhooks
+  /c/{company_id}/subscriptions/{subscription_id}:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/subscription_id'
+    get:
+      summary: Get Webhooks Subscription
+      tags:
+        - Webhooks
+      responses:
+        '200':
+          $ref: '#/components/responses/GetWebhooksSubscriptionResponse'
+      operationId: getWebhooksSubscription
+      description: Get a webhooks subscription.
+    put:
+      summary: Modify Webhooks Subscription
+      tags:
+        - Webhooks
+      responses:
+        '200':
+          $ref: '#/components/responses/ModifyWebhooksSubscriptionResponse'
+      operationId: modifyWebhooksSubscription
+      description: Edit a webhooks subscription.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/ModifyWebhooksSubscriptionRequest.yaml
     delete:
-      summary: ''
-      operationId: deleteWebhooksSubscriptions
+      summary: Delete Webhooks Subscription
+      tags:
+        - Webhooks
       responses:
         '200':
           description: OK
-      description: Delete some webhooks subscriptions
-      parameters:
-        - schema:
-            type: array
-          in: query
-          name: ids
-          description: The IDs of the webhooks subscriptions to delete
+      operationId: deleteWebhooksSubscription
+      description: Delete a webhooks subscription.
 components:
   schemas: {}
   securitySchemes:
@@ -3213,6 +3232,13 @@ components:
       schema:
         type: boolean
       description: Include the attachment to the XML e-invoice.
+    subscription_id:
+      name: subscription_id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: The ID of the subscription.
   responses:
     GetUserInfoResponse:
       description: ''
@@ -8773,12 +8799,12 @@ components:
                 prev_page_url: null
                 to: 2
                 total: 2
-    RegisterWebhooksSubscriptionsResponse:
+    CreateWebhooksSubscriptionResponse:
       description: Example response
       content:
         application/json:
           schema:
-            $ref: ./models/responses/RegisterWebhooksSubscriptionResponse.yaml
+            $ref: ./models/responses/CreateWebhooksSubscriptionResponse.yaml
           examples:
             example-1:
               value:
@@ -8787,6 +8813,9 @@ components:
                   types:
                     - it.fattureincloud.entities.create
                     - it.fattureincloud.issued_documents.create
+                warnings: >-
+                  The 'it.fattureincloud.entities.clients.delete' event is
+                  already registered for this application
     ListWebhooksSubscriptionsResponse:
       description: Example response
       content:
@@ -8806,5 +8835,36 @@ components:
                     sink: www.testurl.com/endpoint2
                     types:
                       - it.fattureincloud.issued_documents.delete
+    GetWebhooksSubscriptionResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetWebhooksSubscriptionResponse.yaml
+          examples:
+            Example 1:
+              value:
+                data:
+                  id: SUB12345
+                  sink: http://www.test.com
+                  types:
+                    - it.fattureincloud.issued_documents.invoices.create
+    ModifyWebhooksSubscriptionResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ModifyWebhooksSubscriptionResponse.yaml
+          examples:
+            Example 1:
+              value:
+                data:
+                  sink: http://www.test.com
+                  types:
+                    - it.fattureincloud.entities.create
+                    - it.fattureincloud.issued_documents.create
+                warnings: >-
+                  The 'it.fattureincloud.entities.clients.delete' event is
+                  already registered for this application
 security:
   - OAuth2AuthenticationCodeFlow: []

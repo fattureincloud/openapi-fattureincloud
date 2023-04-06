@@ -1,5 +1,0 @@
-title: RegisterWebhooksSubscriptionsRequest
-type: object
-properties:
-  data:
-    $ref: ../schemas/WebhooksSubscriptionRegistration.yaml
