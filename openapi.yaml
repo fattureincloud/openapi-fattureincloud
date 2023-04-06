@@ -8827,12 +8827,12 @@ components:
               value:
                 data:
                   - id: SUB12345
-                    sink: www.testurl.com/endpoint
+                    sink: https://www.testurl.com/endpoint
                     types:
                       - it.fattureincloud.issued_documents.create
                       - it.fattureincloud.issued_documents.update
                   - id: SUB12346
-                    sink: www.testurl.com/endpoint2
+                    sink: https://www.testurl.com/endpoint2
                     types:
                       - it.fattureincloud.issued_documents.delete
     GetWebhooksSubscriptionResponse:
@@ -8845,8 +8845,8 @@ components:
             Example 1:
               value:
                 data:
-                  id: SUB12345
-                  sink: http://www.test.com
+                  id: SUB123
+                  sink: https://test.url
                   types:
                     - it.fattureincloud.issued_documents.invoices.create
     ModifyWebhooksSubscriptionResponse:
@@ -8859,6 +8859,7 @@ components:
             Example 1:
               value:
                 data:
+                  id: SUB12345
                   sink: http://www.test.com
                   types:
                     - it.fattureincloud.entities.create
