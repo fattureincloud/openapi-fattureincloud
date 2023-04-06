@@ -98,7 +98,7 @@ properties:
     example: 30
     nullable: true
   default_payment_terms_type:
-    $ref: ../enums/DefaultPaymentTermsType.yaml
+    $ref: ../enums/PaymentTermsType.yaml
     nullable: true
   default_payment_method:
     $ref: ./PaymentMethod.yaml
@@ -141,11 +141,11 @@ properties:
     nullable: true
   intent_declaration_protocol_number:
     type: string
-    format: date
     description: Intent declaration protocol number.
     nullable: true
   intent_declaration_protocol_date:
     type: string
+    format: date
     description: Intent declaration protocol date.
     nullable: true
   created_at:

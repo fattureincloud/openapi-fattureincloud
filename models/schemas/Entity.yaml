@@ -69,6 +69,11 @@ properties:
     example: Italia
     description: Country
     nullable: true
+  country_iso:
+    type: string
+    example: Italia
+    description: Country Iso
+    nullable: true
   email:
     type: string
     example: mario.rossi@example.it
@@ -105,7 +110,7 @@ properties:
       Default payment terms.
     nullable: true
   default_payment_terms_type:
-    $ref: ../enums/DefaultPaymentTermsType.yaml
+    $ref: ../enums/PaymentTermsType.yaml
     description: |-
       [Only for client]
       Default payment terms type.
@@ -160,13 +165,13 @@ properties:
     nullable: true
   intent_declaration_protocol_number:
     type: string
-    format: date
     description: |-
       [Only for client]
       Intent declaration protocol number.
     nullable: true
   intent_declaration_protocol_date:
     type: string
+    format: date
     description: |-
       [Only for client]
       Intent declaration protocol date.

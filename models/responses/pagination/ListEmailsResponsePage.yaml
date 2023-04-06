@@ -1,0 +1,7 @@
+title: ListEmailsResponsePage
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: ../../schemas/Email.yaml

@@ -1,0 +1,162 @@
+name: Generate Go SDK
+on:
+  repository_dispatch:
+    types: [generate-go]
+
+jobs:
+  generate-go-sdk:
+    runs-on: ubuntu-latest
+    env:
+      GIT_REPO_ID: fattureincloud-go-sdk
+      GIT_USER_ID: fattureincloud
+    steps: 
+
+      - id: checkout
+        name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+      
+      - id: checkout-go
+        name: Checkout Go repo
+        env:
+          GIT_REPO_PATH: '${{ env.GIT_USER_ID }}/${{ env.GIT_REPO_ID }}'
+        uses: actions/checkout@v3
+        with:
+          path: ./generated/go
+          ref: master
+          repository: ${{ env.GIT_REPO_PATH }}
+          token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+
+      - id: init-git
+        name: Init GIT
+        run: |
+          git config --global user.email "info@fattureincloud.it"
+          git config --global user.name "fattureincloud-bot"
+
+      - id: setup-node
+        name: Setup Node.js
+        uses: actions/setup-node@v3
+
+      - id: setup-java
+        name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'adopt'
+          java-version: '8'
+
+      - id: setup-libraries
+        name: Install libraries
+        run: |
+          npm install -g yarn
+          yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli standard-version
+          sudo add-apt-repository ppa:rmescandon/yq -y
+          sudo apt update
+          sudo apt install yq -y
+          cd ./scripts/
+          yarn
+          cd ../generated/go/scripts
+          yarn
+
+      - id: bump-go-sdk-version
+        name: Bump Go SDK
+        env:
+          OPENAPI_VERSION: ${{ github.event.client_payload.version }}
+        run: |
+
+          echo "openapi_version=$OPENAPI_VERSION"
+
+          BUMP_TYPE=$(node ./scripts/sdk-version-checker.js ./generated/go/sdk-version.yaml $OPENAPI_VERSION)
+
+          cd ./generated/go
+
+          if [ "$BUMP_TYPE" == "patch" ];then
+            echo 'Bumping the SDK patch version...'
+            standard-version --skip.tag --skip.changelog --skip.commit --release-as patch
+          elif [ "$BUMP_TYPE" == "openapi" ];then
+            echo 'Using the openapi version...'
+            standard-version --skip.tag --skip.changelog --skip.commit --release-as $OPENAPI_VERSION
+          else
+            echo "Something bad happened - impossible to bump Go SDK version. value=$BUMP_TYPE"
+          fi
+
+          SDK_VERSION=$(yq e '.info.version' ./sdk-version.yaml)
+
+
+          echo "sdk_version=$SDK_VERSION" >> $GITHUB_ENV
+          echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
+
+      - id: move-custom-files-to-backup
+        name: Move custom files to backup
+        run: |
+          mkdir -p ./backup/go/filter
+          mkdir -p ./backup/go/oauth2
+          mv ./generated/go/filter ./backup/go/
+          mv ./generated/go/oauth2 ./backup/go/
+
+      - id: delete-old-files
+        name: Delete old files
+        run: |
+          rm -rf ./generated/go/api
+          rm -rf ./generated/go/model
+          rm -rf ./generated/go/docs
+
+      - id: generate-go-sdk
+        name: Generate Go SDK
+        env:
+          PACKAGE_NAME: "fattureincloud"
+          APP_NAME: "FattureInCloud"
+
+        run: |
+          SDK_VERSION=${{ env.sdk_version }}
+          echo "${{ env.sdk_version }}"
+          
+          RELEASE_NOTE="\"bumping version to $SDK_VERSION\""
+
+          USER_AGENT="$APP_NAME/${{ env.sdk_version }}/Go-SDK"
+
+          openapi-generator-cli generate -i ./openapi.yaml -g go -o ./generated/go/ -t ./templates/openapi-generator/go --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=packageVersion=${SDK_VERSION},packageName=${PACKAGE_NAME},goImportAlias=${PACKAGE_NAME}
+      
+      - id: fix-sdk
+        name: Fix SDK
+        run: |
+          cd generated/go
+          rm -rf model
+          mkdir model
+          mv model*.go ./model
+          mv utils.go ./model
+          cd model
+          sed -i 's/package fattureincloud/package model/g' *
+          sed -i 's/Statuss/Statuses/g' *
+          cd ..
+          rm -rf api
+          mkdir api
+          mv api*.go ./api
+          mv client.go ./api
+          mv configuration.go ./api
+          cd api
+          sed -i 's/package fattureincloud/package api/g' *
+      
+      - id: move-custom-files-to-repo
+        name: Move custom files to repo
+        run: |
+          mv ./backup/go/filter ./generated/go/
+          mv ./backup/go/oauth2 ./generated/go/
+
+      - id: generate-additional-files
+        name: Generate Additional files
+        run: |
+          node ./scripts/generate-scopes.js go
+
+      - id: create-pr
+        name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          path: ./generated/go
+          branch: "devel-${{ env.sdk_version }}"
+          token: "${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}"
+          delete-branch: true
+          base: master
+          commit-message: "chore: bumping version to ${{ env.sdk_version }}"
+          title: "Updating SDK to ${{ env.sdk_version }}"
+          body: "New SDK verson ${{ env.sdk_version }} generated by Github Action from OpenAPI Spec ${{ env.openapi_version }}"   

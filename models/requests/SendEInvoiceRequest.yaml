@@ -17,3 +17,11 @@ properties:
           value).
         nullable: true
     nullable: true
+  options:
+    type: object
+    properties:
+      dry_run:
+        type: boolean
+        description: If set to true the e-invoice will not be sent to the SDI.
+        nullable: true
+    nullable: true

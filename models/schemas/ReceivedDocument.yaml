@@ -112,18 +112,34 @@ properties:
   attachment_url:
     type: string
     description: |-
+      [Temporary]
       [Read Only]
-      Attachment url.
+      
+      Public url of the attached file. Authomatically set if a valid attachment
+      token is passed via POST /received_documents or PUT
+      /received_documents/{documentId}.
     readOnly: true
     nullable: true
   attachment_preview_url:
     type: string
     description: |-
+      [Temporary]
       [Read Only]
+      
       Attachment preview url.
     readOnly: true
+    nullable: true
+  auto_calculate:
+    type: boolean
+    description: If set to false total items amount and total payments amount can be different.
     nullable: true
   attachment_token:
     type: string
     nullable: true
     description: Uploaded attachement token.
+  created_at:
+    type: string
+    nullable: true
+  updated_at:
+    type: string
+    nullable: true

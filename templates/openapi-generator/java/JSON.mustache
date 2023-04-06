@@ -110,19 +110,19 @@ public class JSON {
     }
 
     {
-        gson = createGson()
-            .registerTypeAdapter(Date.class, dateTypeAdapter)
-            .registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter)
-            {{#joda}}
-            .registerTypeAdapter(DateTime.class, dateTimeTypeAdapter)
-            .registerTypeAdapter(LocalDate.class, localDateTypeAdapter)
-            {{/joda}}
-            {{#jsr310}}
-            .registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter)
-            .registerTypeAdapter(LocalDate.class, localDateTypeAdapter)
-            {{/jsr310}}
-            .registerTypeAdapter(byte[].class, byteArrayAdapter)
-            .create();
+        GsonBuilder gsonBuilder = createGson();
+        gsonBuilder.registerTypeAdapter(Date.class, dateTypeAdapter);
+        gsonBuilder.registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter);
+        {{#joda}}
+        gsonBuilder.registerTypeAdapter(DateTime.class, dateTimeTypeAdapter);
+        gsonBuilder.registerTypeAdapter(LocalDate.class, localDateTypeAdapter);
+        {{/joda}}
+        {{#jsr310}}
+        gsonBuilder.registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter);
+        gsonBuilder.registerTypeAdapter(LocalDate.class, localDateTypeAdapter);
+        {{/jsr310}}
+        gsonBuilder.registerTypeAdapter(byte[].class, byteArrayAdapter);
+        gson = gsonBuilder.create();
     }
 
     /**
