@@ -3,6 +3,7 @@ type: object
 properties:
   id:
     type: string
+    nullable: true
     description: Unique identifier
   sink:
     type: string
