@@ -8,6 +8,10 @@ properties:
     type: string
     nullable: true
     description: Webhooks callback uri.
+  verified:
+    type: boolean
+    nullable: true
+    description: '[Read Only] True if the webhooks subscription has been verified.'
   types:
     type: array
     nullable: true
