@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.0.27 (2023-04-18)
+
+
+### Changes to models
+
+* added webhooks methods ([#656](https://github.com/fattureincloud/openapi-fattureincloud/issues/656)) ([e9121a6](https://github.com/fattureincloud/openapi-fattureincloud/commit/e9121a60f5996bfb6e7447beee8b0c8b441d929f))
+
 ### 2.0.26 (2023-02-13)
 
 
