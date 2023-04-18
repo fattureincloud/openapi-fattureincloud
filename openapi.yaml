@@ -3239,7 +3239,8 @@ components:
       in: path
       required: true
       schema:
-        type: integer
+        type: string
+        example: SUB123
       description: The ID of the subscription.
   responses:
     GetUserInfoResponse:
