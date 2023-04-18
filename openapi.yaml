@@ -2884,14 +2884,6 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - settings:a
-      parameters:
-        - name: company_id
-          in: path
-          required: true
-          schema:
-            type: integer
-            example: '12345'
-          description: The ID of the company.
   /c/{company_id}/issued_documents/transform:
     get:
       summary: Transform issued document
