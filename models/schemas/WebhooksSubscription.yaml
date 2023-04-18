@@ -1,0 +1,21 @@
+title: WebhooksSubscription
+type: object
+properties:
+  id:
+    type: string
+    nullable: true
+    description: Unique identifier
+  sink:
+    type: string
+    nullable: true
+    description: Webhooks callback uri.
+  verified:
+    type: boolean
+    nullable: true
+    description: '[Read Only] True if the webhooks subscription has been verified.'
+  types:
+    type: array
+    nullable: true
+    description: Webhooks events types.
+    items:
+      $ref: ../enums/EventType.yaml

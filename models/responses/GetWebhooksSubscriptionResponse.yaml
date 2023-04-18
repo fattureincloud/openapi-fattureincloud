@@ -1,0 +1,5 @@
+title: GetWebhooksSubscriptionResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/WebhooksSubscription.yaml

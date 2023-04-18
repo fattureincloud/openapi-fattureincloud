@@ -105,7 +105,7 @@ properties:
     description: |-
       [Temporary]
       [Read Only]
-      
+
       Public url of the attached file. Authomatically set if a valid attachment
       token is passed via POST /received_documents or PUT
       /received_documents/{documentId}.
@@ -116,13 +116,15 @@ properties:
     description: |-
       [Temporary]
       [Read Only]
-      
+
       Attachment preview url.
     readOnly: true
     nullable: true
   auto_calculate:
     type: boolean
-    description: If set to false total items amount and total payments amount can be different.
+    description: >-
+      If set to false total items amount and total payments amount can be
+      different.
     nullable: true
   attachment_token:
     type: string
