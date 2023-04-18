@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        sdk: ['php', 'javascript', 'csharp-netcore', 'ruby', 'java', 'python', 'typescript-axios', 'go']
+        sdk: ['php', 'javascript', 'csharp-netcore', 'ruby', 'java', 'python-nextgen', 'typescript-axios', 'go']
 
     steps: 
 
@@ -49,7 +49,11 @@ jobs:
           openapi-generator-cli author template -g ${{ matrix.sdk }} -o templates-temp/openapi-generator/${{ matrix.sdk }}
           for entry in "templates-temp/openapi-generator/${{ matrix.sdk }}"/*; do
             echo "Found template $entry"
-            FILE="${entry/templates-temp/templates}"
+            if [${{ matrix.sdk }} == 'java']; then
+              FILE="${entry/templates-temp/templates/libraries/okhttp-gson}"
+            else
+              FILE="${entry/templates-temp/templates}"
+            fi
 
             echo "Checking if $FILE exists..."
             if test -f "$FILE"; then

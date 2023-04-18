@@ -22,11 +22,13 @@ Here you can find the list of the currently supported SDKs:
 | Language | Package |
 |---|---|
 | C# | [![NuGet](https://img.shields.io/nuget/v/It.FattureInCloud.Sdk?color=7b2f85)](https://www.nuget.org/packages/It.FattureInCloud.Sdk) |
+| Go | [![Go Packages](https://img.shields.io/github/v/release/fattureincloud/fattureincloud-go-sdk?color=007d9c&label=go%20packages)](https://pkg.go.dev/github.com/fattureincloud/fattureincloud-go-sdk/v2) |
 | Java | [![Maven Central](https://img.shields.io/maven-central/v/it.fattureincloud/fattureincloud-java-sdk?color=b07219)](https://search.maven.org/artifact/it.fattureincloud/fattureincloud-java-sdk) |
 | JavaScript | [![NPM](https://img.shields.io/npm/v/@fattureincloud/fattureincloud-js-sdk?color=ffeb42)](https://www.npmjs.com/package/@fattureincloud/fattureincloud-js-sdk) |
 | PHP | [![Packagist](https://img.shields.io/packagist/v/fattureincloud/fattureincloud-php-sdk?color=8892be)](https://packagist.org/packages/fattureincloud/fattureincloud-php-sdk) |
 | Python | [![PyPI](https://img.shields.io/pypi/v/fattureincloud-python-sdk?color=16c0f8)](https://pypi.org/project/fattureincloud-python-sdk/) |
 | Ruby | [![Ruby Gems](https://img.shields.io/gem/v/fattureincloud_ruby_sdk?color=c22815)](https://rubygems.org/gems/fattureincloud_ruby_sdk) |
+| TypeScript | [![NPM](https://img.shields.io/npm/v/@fattureincloud/fattureincloud-ts-sdk?color=3075c1)](https://www.npmjs.com/package/@fattureincloud/fattureincloud-ts-sdk) |
 
 Our SDKs are generated from the OpenAPI specification using the [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator); if we don't support your favorite language yet you can try to generate an SDK on your own! &#128515;
 

@@ -1,0 +1,11 @@
+title: CreateWebhooksSubscriptionResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/WebhooksSubscription.yaml
+  warnings:
+    type: array
+    nullable: true
+    description: Webhooks registration warnings
+    items:
+      type: string

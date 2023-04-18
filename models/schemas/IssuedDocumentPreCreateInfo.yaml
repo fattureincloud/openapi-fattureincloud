@@ -130,4 +130,3 @@ properties:
     items:
       $ref: ./Language.yaml
     nullable: true
-    

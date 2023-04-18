@@ -121,7 +121,7 @@ namespace {{packageName}}.Client
         public Configuration()
         {
             Proxy = null;
-            UserAgent = WebUtility.UrlEncode("{{httpUserAgent}}{{^httpUserAgent}}OpenAPI-Generator/{{packageVersion}}/csharp{{/httpUserAgent}}");
+            UserAgent = "{{httpUserAgent}}{{^httpUserAgent}}OpenAPI-Generator/{{packageVersion}}/csharp{{/httpUserAgent}}";
             BasePath = "{{{basePath}}}";
             DefaultHeaders = new {{^net35}}Concurrent{{/net35}}Dictionary<string, string>();
             ApiKey = new {{^net35}}Concurrent{{/net35}}Dictionary<string, string>();
@@ -143,7 +143,7 @@ namespace {{packageName}}.Client
                                 {
                                     "{{{name}}}", new Dictionary<string, object> {
                                         {"description", "{{{description}}}{{^description}}No description provided{{/description}}"},
-                                        {"default_value", "{{{defaultValue}}}"},
+                                        {"default_value", {{#isString}}{{^isEnum}}@{{/isEnum}}{{/isString}}"{{{defaultValue}}}"},
                                         {{#enumValues}}
                                         {{#-first}}
                                         {
