@@ -22,8 +22,7 @@ import (
 	"strings"
 	"time"
 	"unicode/utf8"
-	. "github.com/fattureincloud/fattureincloud-go-sdk/v2/model"
-	
+
 	{{#hasOAuthMethods}}
 	"golang.org/x/oauth2"
 	{{/hasOAuthMethods}}
@@ -153,7 +152,8 @@ func parameterValueToString( obj interface{}, key string ) string {
 
 // parameterAddToHeaderOrQuery adds the provided object to the request header or url query
 // supporting deep object syntax
-func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix string, obj interface{}, collectionType string) {	var v = reflect.ValueOf(obj)
+func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix string, obj interface{}, collectionType string) {
+	var v = reflect.ValueOf(obj)
 	var value = ""
 	if v == reflect.ValueOf(nil) {
 		value = "null"
