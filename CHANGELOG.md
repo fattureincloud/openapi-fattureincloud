@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.0.27 (2023-05-04)
+
+
+### Improvements
+
+* added auth params to webhooks methods ([#666](https://github.com/fattureincloud/openapi-fattureincloud/issues/666)) ([a7d995a](https://github.com/fattureincloud/openapi-fattureincloud/commit/a7d995a55dbd8cf88b153d97a50e7eaa43cf1898))
+
 ### 2.0.26 (2023-02-13)
 
 

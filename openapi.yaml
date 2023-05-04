@@ -16,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.0.26
+  version: 2.0.27
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -3059,7 +3059,7 @@ paths:
       operationId: deleteWebhooksSubscription
       description: Delete a webhooks subscription.
       security:
-          - OAuth2AuthenticationCodeFlow: []
+        - OAuth2AuthenticationCodeFlow: []
 components:
   schemas: {}
   securitySchemes:
