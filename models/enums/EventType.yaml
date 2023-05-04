@@ -10,7 +10,7 @@ enum:
   - it.fattureincloud.issued_documents.quotes.delete
   - it.fattureincloud.issued_documents.proformas.create
   - it.fattureincloud.issued_documents.proformas.update
-  - it.fattureincloud.issued_documents.proformas.create
+  - it.fattureincloud.issued_documents.proformas.delete
   - it.fattureincloud.issued_documents.receipts.create
   - it.fattureincloud.issued_documents.receipts.update
   - it.fattureincloud.issued_documents.receipts.delete
