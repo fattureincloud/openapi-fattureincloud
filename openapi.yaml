@@ -2989,6 +2989,8 @@ paths:
           $ref: '#/components/responses/ListWebhooksSubscriptionsResponse'
       operationId: listWebhooksSubscriptions
       description: List active webhooks subscriptions.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
     post:
       summary: Create a Webhook Subscription
       responses:
@@ -3010,6 +3012,8 @@ paths:
                       - it.fattureincloud.issued_documents.create
         description: ''
       description: Register some webhooks Subscriptions.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
       tags:
         - Webhooks
     parameters:
@@ -3027,6 +3031,8 @@ paths:
           $ref: '#/components/responses/GetWebhooksSubscriptionResponse'
       operationId: getWebhooksSubscription
       description: Get a webhooks subscription.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
     put:
       summary: Modify Webhooks Subscription
       tags:
@@ -3041,6 +3047,8 @@ paths:
           application/json:
             schema:
               $ref: ./models/requests/ModifyWebhooksSubscriptionRequest.yaml
+      security:
+        - OAuth2AuthenticationCodeFlow: []
     delete:
       summary: Delete Webhooks Subscription
       tags:
@@ -3050,6 +3058,8 @@ paths:
           description: OK
       operationId: deleteWebhooksSubscription
       description: Delete a webhooks subscription.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
 components:
   schemas: {}
   securitySchemes:
