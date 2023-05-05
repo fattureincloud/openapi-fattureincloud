@@ -40,14 +40,15 @@ jobs:
             if [ '${{ env.pusher_name }}' == '${{ env.BOT_NAME }}' ]; 
             then 
               echo "WORKFLOW MUST BE SKIPPED!"
-              echo "::set-output name=status::stop"; 
+              echo "status=stop" >>$GITHUB_OUTPUT
             else 
               echo "EXECUTING..."
-              echo "::set-output name=status::execute"; 
+              echo "status=execute" >>$GITHUB_OUTPUT
+
             fi
           else
             echo "LOCAL ENV, SKIPPING FILTER..."
-            echo "::set-output name=status::execute"; 
+            echo "status=execute" >>$GITHUB_OUTPUT
           fi
 
   bump-openapi-version:
@@ -105,7 +106,8 @@ jobs:
           standard-version
           BUMP_VER=$(yq e '.info.version' ./openapi.yaml)
           echo "New version: $BUMP_VER"
-          echo "::set-output name=version::$BUMP_VER";
+          echo "version=$BUMP_VER" >>$GITHUB_OUTPUT
+
 
       - id: check-git
         name: Check GIT
@@ -131,7 +133,7 @@ jobs:
     steps: 
       - id: trigger-event
         name: Trigger Event
-        uses: peter-evans/repository-dispatch@v1
+        uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
           event-type: ${{ matrix.event }}

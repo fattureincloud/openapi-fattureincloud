@@ -20,7 +20,7 @@ jobs:
 
       - id: trigger-event
         name: Trigger Event
-        uses: peter-evans/repository-dispatch@v1
+        uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
           event-type: enrich-spec
