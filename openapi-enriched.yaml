@@ -16,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.0.26
+  version: 2.0.27
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -7155,7 +7155,7 @@ paths:
                       description: Email subject
                     body:
                       type: string
-                      description: Email body
+                      description: Email body [HTML Escaped] [max size 50KiB]
                     include:
                       type: object
                       properties:
@@ -7412,15 +7412,287 @@ paths:
                         - passive_delivery_note
                       description: Received document type.
                     entity:
+                      title: Entity
                       type: object
+                      description: ''
                       properties:
                         id:
                           type: integer
-                          description: Entity unique identifier.
+                          description: Unique identifier
                           nullable: true
+                        code:
+                          type: string
+                          example: '123'
+                          description: Code.
                         name:
                           type: string
-                          description: Entity name.
+                          example: Rossi S.r.l.
+                          description: Name
+                        type:
+                          title: EntityType
+                          type: string
+                          default: null
+                          enum:
+                            - company
+                            - person
+                            - pa
+                            - condo
+                          description: Entity type.
+                        first_name:
+                          type: string
+                          description: First name.
+                        last_name:
+                          type: string
+                          description: Last name.
+                        contact_person:
+                          type: string
+                        vat_number:
+                          type: string
+                          example: IT01234567890
+                          description: Vat number
+                        tax_code:
+                          type: string
+                          example: RSSMRA44A12E890Q
+                          description: Tax code.
+                        address_street:
+                          type: string
+                          example: Via dei tigli, 12
+                          description: Street address.
+                        address_postal_code:
+                          type: string
+                          example: '24010'
+                          description: Postal code.
+                        address_city:
+                          type: string
+                          example: Bergamo
+                          description: City.
+                        address_province:
+                          type: string
+                          example: BG
+                          description: Province.
+                        address_extra:
+                          type: string
+                          description: Address extra info.
+                        country:
+                          type: string
+                          example: Italia
+                          description: Country
+                        country_iso:
+                          type: string
+                          example: Italia
+                          description: Country Iso
+                        email:
+                          type: string
+                          example: mario.rossi@example.it
+                          description: Email.
+                        certified_email:
+                          type: string
+                          example: mario.rossi@pec.example.it
+                          description: Certified email.
+                        phone:
+                          type: string
+                          description: Phone.
+                        fax:
+                          type: string
+                          description: Fax.
+                        notes:
+                          type: string
+                          description: Extra notes.
+                        default_vat:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              description: Unique identifier
+                            value:
+                              type: number
+                              description: '[Read Only] Percentual value.'
+                              example: 22
+                            description:
+                              type: string
+                              description: Short description.
+                              example: Non imponibile art. 123
+                            notes:
+                              type: string
+                              description: Long description and notes shown in documents.
+                              example: >-
+                                IVA non imponibile ai sensi dell'articolo 123,
+                                comma 2
+                            e_invoice:
+                              type: boolean
+                              description: Usable for e-invoices.
+                            ei_type:
+                              type: string
+                              description: E-invoice type (natura).
+                              example: 2
+                            ei_description:
+                              type: string
+                              description: E-invoice description.
+                            editable:
+                              type: boolean
+                              description: |-
+                                [Read Only]
+                                Determine if this vat type is editable.
+                              readOnly: true
+                            is_disabled:
+                              type: boolean
+                              description: Determine if the vat type is disabled.
+                          title: VatType
+                          description: |-
+                            [Only for client]
+                            Default vat.
+                        default_payment_terms:
+                          type: integer
+                          example: 30
+                          description: |-
+                            [Only for client]
+                            Default payment terms.
+                        default_payment_terms_type:
+                          title: PaymentTermsType
+                          type: string
+                          default: standard
+                          enum:
+                            - standard
+                            - end_of_month
+                          description: |-
+                            [Only for client]
+                            Default payment terms type.
+                        default_payment_method:
+                          type: object
+                          title: PaymentMethod
+                          properties:
+                            id:
+                              type: integer
+                              description: Unique identifier
+                            name:
+                              type: string
+                              description: Name of the payment method
+                            type:
+                              title: PaymentMethodType
+                              type: string
+                              description: Method type.
+                              default: standard
+                              enum:
+                                - standard
+                                - riba
+                            is_default:
+                              type: boolean
+                              description: >-
+                                Determines if this is the default payment
+                                method.
+                            default_payment_account:
+                              type: object
+                              description: ''
+                              properties:
+                                id:
+                                  type: integer
+                                  description: Unique identifier
+                                name:
+                                  type: string
+                                  description: Payment account name.
+                                  example: Conto Banca Intesa
+                                type:
+                                  title: PaymentAccountType
+                                  type: string
+                                  default: standard
+                                  enum:
+                                    - standard
+                                    - bank
+                                  description: Payment account type.
+                                iban:
+                                  type: string
+                                  description: Payment account iban.
+                                sia:
+                                  type: string
+                                  description: Payment account sia.
+                                cuc:
+                                  type: string
+                                  description: Payment account cuc.
+                                virtual:
+                                  type: boolean
+                                  description: Determine if the payment method is virtual.
+                              title: PaymentAccount
+                            details:
+                              maxItems: 5
+                              type: array
+                              description: Method details rows
+                              items:
+                                title: PaymentMethodDetails
+                                type: object
+                                properties:
+                                  title:
+                                    type: string
+                                    description: Details title.
+                                    nullable: true
+                                  description:
+                                    type: string
+                                    description: Details description.
+                                    nullable: true
+                            bank_iban:
+                              type: string
+                              description: Bank iban
+                            bank_name:
+                              type: string
+                              description: Bank name
+                            bank_beneficiary:
+                              type: string
+                              description: Bank beneficiary
+                            ei_payment_method:
+                              type: string
+                              description: E-invoice payment method
+                          description: |-
+                            [Only for client]
+                            Default payment method.
+                        bank_name:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Bank name.
+                        bank_iban:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Iban.
+                        bank_swift_code:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Bank swift code.
+                        shipping_address:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Shipping address.
+                        e_invoice:
+                          type: boolean
+                          description: |-
+                            [Only for client]
+                            Use e-invoices.
+                        ei_code:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            E-invoices code.
+                        has_intent_declaration:
+                          type: boolean
+                          description: |-
+                            [Only for client]
+                            Has intent declaration.
+                        intent_declaration_protocol_number:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Intent declaration protocol number.
+                        intent_declaration_protocol_date:
+                          type: string
+                          format: date
+                          description: |-
+                            [Only for client]
+                            Intent declaration protocol date.
+                        created_at:
+                          type: string
+                        updated_at:
+                          type: string
                     date:
                       type: string
                       description: >-
@@ -7832,15 +8104,287 @@ paths:
                         - passive_delivery_note
                       description: Received document type.
                     entity:
+                      title: Entity
                       type: object
+                      description: ''
                       properties:
                         id:
                           type: integer
-                          description: Entity unique identifier.
+                          description: Unique identifier
                           nullable: true
+                        code:
+                          type: string
+                          example: '123'
+                          description: Code.
                         name:
                           type: string
-                          description: Entity name.
+                          example: Rossi S.r.l.
+                          description: Name
+                        type:
+                          title: EntityType
+                          type: string
+                          default: null
+                          enum:
+                            - company
+                            - person
+                            - pa
+                            - condo
+                          description: Entity type.
+                        first_name:
+                          type: string
+                          description: First name.
+                        last_name:
+                          type: string
+                          description: Last name.
+                        contact_person:
+                          type: string
+                        vat_number:
+                          type: string
+                          example: IT01234567890
+                          description: Vat number
+                        tax_code:
+                          type: string
+                          example: RSSMRA44A12E890Q
+                          description: Tax code.
+                        address_street:
+                          type: string
+                          example: Via dei tigli, 12
+                          description: Street address.
+                        address_postal_code:
+                          type: string
+                          example: '24010'
+                          description: Postal code.
+                        address_city:
+                          type: string
+                          example: Bergamo
+                          description: City.
+                        address_province:
+                          type: string
+                          example: BG
+                          description: Province.
+                        address_extra:
+                          type: string
+                          description: Address extra info.
+                        country:
+                          type: string
+                          example: Italia
+                          description: Country
+                        country_iso:
+                          type: string
+                          example: Italia
+                          description: Country Iso
+                        email:
+                          type: string
+                          example: mario.rossi@example.it
+                          description: Email.
+                        certified_email:
+                          type: string
+                          example: mario.rossi@pec.example.it
+                          description: Certified email.
+                        phone:
+                          type: string
+                          description: Phone.
+                        fax:
+                          type: string
+                          description: Fax.
+                        notes:
+                          type: string
+                          description: Extra notes.
+                        default_vat:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              description: Unique identifier
+                            value:
+                              type: number
+                              description: '[Read Only] Percentual value.'
+                              example: 22
+                            description:
+                              type: string
+                              description: Short description.
+                              example: Non imponibile art. 123
+                            notes:
+                              type: string
+                              description: Long description and notes shown in documents.
+                              example: >-
+                                IVA non imponibile ai sensi dell'articolo 123,
+                                comma 2
+                            e_invoice:
+                              type: boolean
+                              description: Usable for e-invoices.
+                            ei_type:
+                              type: string
+                              description: E-invoice type (natura).
+                              example: 2
+                            ei_description:
+                              type: string
+                              description: E-invoice description.
+                            editable:
+                              type: boolean
+                              description: |-
+                                [Read Only]
+                                Determine if this vat type is editable.
+                              readOnly: true
+                            is_disabled:
+                              type: boolean
+                              description: Determine if the vat type is disabled.
+                          title: VatType
+                          description: |-
+                            [Only for client]
+                            Default vat.
+                        default_payment_terms:
+                          type: integer
+                          example: 30
+                          description: |-
+                            [Only for client]
+                            Default payment terms.
+                        default_payment_terms_type:
+                          title: PaymentTermsType
+                          type: string
+                          default: standard
+                          enum:
+                            - standard
+                            - end_of_month
+                          description: |-
+                            [Only for client]
+                            Default payment terms type.
+                        default_payment_method:
+                          type: object
+                          title: PaymentMethod
+                          properties:
+                            id:
+                              type: integer
+                              description: Unique identifier
+                            name:
+                              type: string
+                              description: Name of the payment method
+                            type:
+                              title: PaymentMethodType
+                              type: string
+                              description: Method type.
+                              default: standard
+                              enum:
+                                - standard
+                                - riba
+                            is_default:
+                              type: boolean
+                              description: >-
+                                Determines if this is the default payment
+                                method.
+                            default_payment_account:
+                              type: object
+                              description: ''
+                              properties:
+                                id:
+                                  type: integer
+                                  description: Unique identifier
+                                name:
+                                  type: string
+                                  description: Payment account name.
+                                  example: Conto Banca Intesa
+                                type:
+                                  title: PaymentAccountType
+                                  type: string
+                                  default: standard
+                                  enum:
+                                    - standard
+                                    - bank
+                                  description: Payment account type.
+                                iban:
+                                  type: string
+                                  description: Payment account iban.
+                                sia:
+                                  type: string
+                                  description: Payment account sia.
+                                cuc:
+                                  type: string
+                                  description: Payment account cuc.
+                                virtual:
+                                  type: boolean
+                                  description: Determine if the payment method is virtual.
+                              title: PaymentAccount
+                            details:
+                              maxItems: 5
+                              type: array
+                              description: Method details rows
+                              items:
+                                title: PaymentMethodDetails
+                                type: object
+                                properties:
+                                  title:
+                                    type: string
+                                    description: Details title.
+                                    nullable: true
+                                  description:
+                                    type: string
+                                    description: Details description.
+                                    nullable: true
+                            bank_iban:
+                              type: string
+                              description: Bank iban
+                            bank_name:
+                              type: string
+                              description: Bank name
+                            bank_beneficiary:
+                              type: string
+                              description: Bank beneficiary
+                            ei_payment_method:
+                              type: string
+                              description: E-invoice payment method
+                          description: |-
+                            [Only for client]
+                            Default payment method.
+                        bank_name:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Bank name.
+                        bank_iban:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Iban.
+                        bank_swift_code:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Bank swift code.
+                        shipping_address:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Shipping address.
+                        e_invoice:
+                          type: boolean
+                          description: |-
+                            [Only for client]
+                            Use e-invoices.
+                        ei_code:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            E-invoices code.
+                        has_intent_declaration:
+                          type: boolean
+                          description: |-
+                            [Only for client]
+                            Has intent declaration.
+                        intent_declaration_protocol_number:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Intent declaration protocol number.
+                        intent_declaration_protocol_date:
+                          type: string
+                          format: date
+                          description: |-
+                            [Only for client]
+                            Intent declaration protocol date.
+                        created_at:
+                          type: string
+                        updated_at:
+                          type: string
                     date:
                       type: string
                       description: >-
@@ -8250,15 +8794,287 @@ paths:
                         - passive_delivery_note
                       description: Received document type.
                     entity:
+                      title: Entity
                       type: object
+                      description: ''
                       properties:
                         id:
                           type: integer
-                          description: Entity unique identifier.
+                          description: Unique identifier
                           nullable: true
+                        code:
+                          type: string
+                          example: '123'
+                          description: Code.
                         name:
                           type: string
-                          description: Entity name.
+                          example: Rossi S.r.l.
+                          description: Name
+                        type:
+                          title: EntityType
+                          type: string
+                          default: null
+                          enum:
+                            - company
+                            - person
+                            - pa
+                            - condo
+                          description: Entity type.
+                        first_name:
+                          type: string
+                          description: First name.
+                        last_name:
+                          type: string
+                          description: Last name.
+                        contact_person:
+                          type: string
+                        vat_number:
+                          type: string
+                          example: IT01234567890
+                          description: Vat number
+                        tax_code:
+                          type: string
+                          example: RSSMRA44A12E890Q
+                          description: Tax code.
+                        address_street:
+                          type: string
+                          example: Via dei tigli, 12
+                          description: Street address.
+                        address_postal_code:
+                          type: string
+                          example: '24010'
+                          description: Postal code.
+                        address_city:
+                          type: string
+                          example: Bergamo
+                          description: City.
+                        address_province:
+                          type: string
+                          example: BG
+                          description: Province.
+                        address_extra:
+                          type: string
+                          description: Address extra info.
+                        country:
+                          type: string
+                          example: Italia
+                          description: Country
+                        country_iso:
+                          type: string
+                          example: Italia
+                          description: Country Iso
+                        email:
+                          type: string
+                          example: mario.rossi@example.it
+                          description: Email.
+                        certified_email:
+                          type: string
+                          example: mario.rossi@pec.example.it
+                          description: Certified email.
+                        phone:
+                          type: string
+                          description: Phone.
+                        fax:
+                          type: string
+                          description: Fax.
+                        notes:
+                          type: string
+                          description: Extra notes.
+                        default_vat:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              description: Unique identifier
+                            value:
+                              type: number
+                              description: '[Read Only] Percentual value.'
+                              example: 22
+                            description:
+                              type: string
+                              description: Short description.
+                              example: Non imponibile art. 123
+                            notes:
+                              type: string
+                              description: Long description and notes shown in documents.
+                              example: >-
+                                IVA non imponibile ai sensi dell'articolo 123,
+                                comma 2
+                            e_invoice:
+                              type: boolean
+                              description: Usable for e-invoices.
+                            ei_type:
+                              type: string
+                              description: E-invoice type (natura).
+                              example: 2
+                            ei_description:
+                              type: string
+                              description: E-invoice description.
+                            editable:
+                              type: boolean
+                              description: |-
+                                [Read Only]
+                                Determine if this vat type is editable.
+                              readOnly: true
+                            is_disabled:
+                              type: boolean
+                              description: Determine if the vat type is disabled.
+                          title: VatType
+                          description: |-
+                            [Only for client]
+                            Default vat.
+                        default_payment_terms:
+                          type: integer
+                          example: 30
+                          description: |-
+                            [Only for client]
+                            Default payment terms.
+                        default_payment_terms_type:
+                          title: PaymentTermsType
+                          type: string
+                          default: standard
+                          enum:
+                            - standard
+                            - end_of_month
+                          description: |-
+                            [Only for client]
+                            Default payment terms type.
+                        default_payment_method:
+                          type: object
+                          title: PaymentMethod
+                          properties:
+                            id:
+                              type: integer
+                              description: Unique identifier
+                            name:
+                              type: string
+                              description: Name of the payment method
+                            type:
+                              title: PaymentMethodType
+                              type: string
+                              description: Method type.
+                              default: standard
+                              enum:
+                                - standard
+                                - riba
+                            is_default:
+                              type: boolean
+                              description: >-
+                                Determines if this is the default payment
+                                method.
+                            default_payment_account:
+                              type: object
+                              description: ''
+                              properties:
+                                id:
+                                  type: integer
+                                  description: Unique identifier
+                                name:
+                                  type: string
+                                  description: Payment account name.
+                                  example: Conto Banca Intesa
+                                type:
+                                  title: PaymentAccountType
+                                  type: string
+                                  default: standard
+                                  enum:
+                                    - standard
+                                    - bank
+                                  description: Payment account type.
+                                iban:
+                                  type: string
+                                  description: Payment account iban.
+                                sia:
+                                  type: string
+                                  description: Payment account sia.
+                                cuc:
+                                  type: string
+                                  description: Payment account cuc.
+                                virtual:
+                                  type: boolean
+                                  description: Determine if the payment method is virtual.
+                              title: PaymentAccount
+                            details:
+                              maxItems: 5
+                              type: array
+                              description: Method details rows
+                              items:
+                                title: PaymentMethodDetails
+                                type: object
+                                properties:
+                                  title:
+                                    type: string
+                                    description: Details title.
+                                    nullable: true
+                                  description:
+                                    type: string
+                                    description: Details description.
+                                    nullable: true
+                            bank_iban:
+                              type: string
+                              description: Bank iban
+                            bank_name:
+                              type: string
+                              description: Bank name
+                            bank_beneficiary:
+                              type: string
+                              description: Bank beneficiary
+                            ei_payment_method:
+                              type: string
+                              description: E-invoice payment method
+                          description: |-
+                            [Only for client]
+                            Default payment method.
+                        bank_name:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Bank name.
+                        bank_iban:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Iban.
+                        bank_swift_code:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Bank swift code.
+                        shipping_address:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Shipping address.
+                        e_invoice:
+                          type: boolean
+                          description: |-
+                            [Only for client]
+                            Use e-invoices.
+                        ei_code:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            E-invoices code.
+                        has_intent_declaration:
+                          type: boolean
+                          description: |-
+                            [Only for client]
+                            Has intent declaration.
+                        intent_declaration_protocol_number:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Intent declaration protocol number.
+                        intent_declaration_protocol_date:
+                          type: string
+                          format: date
+                          description: |-
+                            [Only for client]
+                            Intent declaration protocol date.
+                        created_at:
+                          type: string
+                        updated_at:
+                          type: string
                     date:
                       type: string
                       description: >-
@@ -8641,15 +9457,287 @@ paths:
                         - passive_delivery_note
                       description: Received document type.
                     entity:
+                      title: Entity
                       type: object
+                      description: ''
                       properties:
                         id:
                           type: integer
-                          description: Entity unique identifier.
+                          description: Unique identifier
                           nullable: true
+                        code:
+                          type: string
+                          example: '123'
+                          description: Code.
                         name:
                           type: string
-                          description: Entity name.
+                          example: Rossi S.r.l.
+                          description: Name
+                        type:
+                          title: EntityType
+                          type: string
+                          default: null
+                          enum:
+                            - company
+                            - person
+                            - pa
+                            - condo
+                          description: Entity type.
+                        first_name:
+                          type: string
+                          description: First name.
+                        last_name:
+                          type: string
+                          description: Last name.
+                        contact_person:
+                          type: string
+                        vat_number:
+                          type: string
+                          example: IT01234567890
+                          description: Vat number
+                        tax_code:
+                          type: string
+                          example: RSSMRA44A12E890Q
+                          description: Tax code.
+                        address_street:
+                          type: string
+                          example: Via dei tigli, 12
+                          description: Street address.
+                        address_postal_code:
+                          type: string
+                          example: '24010'
+                          description: Postal code.
+                        address_city:
+                          type: string
+                          example: Bergamo
+                          description: City.
+                        address_province:
+                          type: string
+                          example: BG
+                          description: Province.
+                        address_extra:
+                          type: string
+                          description: Address extra info.
+                        country:
+                          type: string
+                          example: Italia
+                          description: Country
+                        country_iso:
+                          type: string
+                          example: Italia
+                          description: Country Iso
+                        email:
+                          type: string
+                          example: mario.rossi@example.it
+                          description: Email.
+                        certified_email:
+                          type: string
+                          example: mario.rossi@pec.example.it
+                          description: Certified email.
+                        phone:
+                          type: string
+                          description: Phone.
+                        fax:
+                          type: string
+                          description: Fax.
+                        notes:
+                          type: string
+                          description: Extra notes.
+                        default_vat:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              description: Unique identifier
+                            value:
+                              type: number
+                              description: '[Read Only] Percentual value.'
+                              example: 22
+                            description:
+                              type: string
+                              description: Short description.
+                              example: Non imponibile art. 123
+                            notes:
+                              type: string
+                              description: Long description and notes shown in documents.
+                              example: >-
+                                IVA non imponibile ai sensi dell'articolo 123,
+                                comma 2
+                            e_invoice:
+                              type: boolean
+                              description: Usable for e-invoices.
+                            ei_type:
+                              type: string
+                              description: E-invoice type (natura).
+                              example: 2
+                            ei_description:
+                              type: string
+                              description: E-invoice description.
+                            editable:
+                              type: boolean
+                              description: |-
+                                [Read Only]
+                                Determine if this vat type is editable.
+                              readOnly: true
+                            is_disabled:
+                              type: boolean
+                              description: Determine if the vat type is disabled.
+                          title: VatType
+                          description: |-
+                            [Only for client]
+                            Default vat.
+                        default_payment_terms:
+                          type: integer
+                          example: 30
+                          description: |-
+                            [Only for client]
+                            Default payment terms.
+                        default_payment_terms_type:
+                          title: PaymentTermsType
+                          type: string
+                          default: standard
+                          enum:
+                            - standard
+                            - end_of_month
+                          description: |-
+                            [Only for client]
+                            Default payment terms type.
+                        default_payment_method:
+                          type: object
+                          title: PaymentMethod
+                          properties:
+                            id:
+                              type: integer
+                              description: Unique identifier
+                            name:
+                              type: string
+                              description: Name of the payment method
+                            type:
+                              title: PaymentMethodType
+                              type: string
+                              description: Method type.
+                              default: standard
+                              enum:
+                                - standard
+                                - riba
+                            is_default:
+                              type: boolean
+                              description: >-
+                                Determines if this is the default payment
+                                method.
+                            default_payment_account:
+                              type: object
+                              description: ''
+                              properties:
+                                id:
+                                  type: integer
+                                  description: Unique identifier
+                                name:
+                                  type: string
+                                  description: Payment account name.
+                                  example: Conto Banca Intesa
+                                type:
+                                  title: PaymentAccountType
+                                  type: string
+                                  default: standard
+                                  enum:
+                                    - standard
+                                    - bank
+                                  description: Payment account type.
+                                iban:
+                                  type: string
+                                  description: Payment account iban.
+                                sia:
+                                  type: string
+                                  description: Payment account sia.
+                                cuc:
+                                  type: string
+                                  description: Payment account cuc.
+                                virtual:
+                                  type: boolean
+                                  description: Determine if the payment method is virtual.
+                              title: PaymentAccount
+                            details:
+                              maxItems: 5
+                              type: array
+                              description: Method details rows
+                              items:
+                                title: PaymentMethodDetails
+                                type: object
+                                properties:
+                                  title:
+                                    type: string
+                                    description: Details title.
+                                    nullable: true
+                                  description:
+                                    type: string
+                                    description: Details description.
+                                    nullable: true
+                            bank_iban:
+                              type: string
+                              description: Bank iban
+                            bank_name:
+                              type: string
+                              description: Bank name
+                            bank_beneficiary:
+                              type: string
+                              description: Bank beneficiary
+                            ei_payment_method:
+                              type: string
+                              description: E-invoice payment method
+                          description: |-
+                            [Only for client]
+                            Default payment method.
+                        bank_name:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Bank name.
+                        bank_iban:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Iban.
+                        bank_swift_code:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Bank swift code.
+                        shipping_address:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Shipping address.
+                        e_invoice:
+                          type: boolean
+                          description: |-
+                            [Only for client]
+                            Use e-invoices.
+                        ei_code:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            E-invoices code.
+                        has_intent_declaration:
+                          type: boolean
+                          description: |-
+                            [Only for client]
+                            Has intent declaration.
+                        intent_declaration_protocol_number:
+                          type: string
+                          description: |-
+                            [Only for client]
+                            Intent declaration protocol number.
+                        intent_declaration_protocol_date:
+                          type: string
+                          format: date
+                          description: |-
+                            [Only for client]
+                            Intent declaration protocol date.
+                        created_at:
+                          type: string
+                        updated_at:
+                          type: string
                     date:
                       type: string
                       description: >-
@@ -11774,13 +12862,7 @@ paths:
           name: e_invoice
           description: New document e_invoice.
     parameters:
-      - name: company_id
-        in: path
-        required: true
-        schema:
-          type: integer
-          example: '12345'
-        description: The ID of the company.
+      - $ref: '#/components/parameters/company_id'
   /c/{company_id}/emails:
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -11793,6 +12875,290 @@ paths:
           $ref: '#/components/responses/ListEmailsResponse'
       operationId: listEmails
       description: List Emails.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
+  /c/{company_id}/subscriptions:
+    get:
+      summary: List Webhooks Subscriptions
+      tags:
+        - Webhooks
+      responses:
+        '200':
+          $ref: '#/components/responses/ListWebhooksSubscriptionsResponse'
+      operationId: listWebhooksSubscriptions
+      description: List active webhooks subscriptions.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
+    post:
+      summary: Create a Webhook Subscription
+      responses:
+        '200':
+          $ref: '#/components/responses/CreateWebhooksSubscriptionResponse'
+      operationId: CreateWebhooksSubscription
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: CreateWebhooksSubscriptionRequest
+              type: object
+              properties:
+                data:
+                  title: WebhooksSubscription
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: Unique identifier
+                    sink:
+                      type: string
+                      description: Webhooks callback uri.
+                    verified:
+                      type: boolean
+                      description: >-
+                        [Read Only] True if the webhooks subscription has been
+                        verified.
+                    types:
+                      type: array
+                      description: Webhooks events types.
+                      items:
+                        type: string
+                        title: EventType
+                        description: Event type.
+                        enum:
+                          - it.fattureincloud.issued_documents.invoices.create
+                          - it.fattureincloud.issued_documents.invoices.update
+                          - it.fattureincloud.issued_documents.invoices.delete
+                          - it.fattureincloud.issued_documents.quotes.create
+                          - it.fattureincloud.issued_documents.quotes.update
+                          - it.fattureincloud.issued_documents.quotes.delete
+                          - it.fattureincloud.issued_documents.proformas.create
+                          - it.fattureincloud.issued_documents.proformas.update
+                          - it.fattureincloud.issued_documents.proformas.delete
+                          - it.fattureincloud.issued_documents.receipts.create
+                          - it.fattureincloud.issued_documents.receipts.update
+                          - it.fattureincloud.issued_documents.receipts.delete
+                          - >-
+                            it.fattureincloud.issued_documents.delivery_notes.create
+                          - >-
+                            it.fattureincloud.issued_documents.delivery_notes.update
+                          - >-
+                            it.fattureincloud.issued_documents.delivery_notes.delete
+                          - >-
+                            it.fattureincloud.issued_documents.credit_notes.create
+                          - >-
+                            it.fattureincloud.issued_documents.credit_notes.update
+                          - >-
+                            it.fattureincloud.issued_documents.credit_notes.delete
+                          - it.fattureincloud.issued_documents.orders.create
+                          - it.fattureincloud.issued_documents.orders.update
+                          - it.fattureincloud.issued_documents.orders.delete
+                          - >-
+                            it.fattureincloud.issued_documents.work_reports.create
+                          - >-
+                            it.fattureincloud.issued_documents.work_reports.update
+                          - >-
+                            it.fattureincloud.issued_documents.work_reports.delete
+                          - >-
+                            it.fattureincloud.issued_documents.supplier_orders.create
+                          - >-
+                            it.fattureincloud.issued_documents.supplier_orders.update
+                          - >-
+                            it.fattureincloud.issued_documents.supplier_orders.delete
+                          - >-
+                            it.fattureincloud.issued_documents.self_invoices.create
+                          - >-
+                            it.fattureincloud.issued_documents.self_invoices.update
+                          - >-
+                            it.fattureincloud.issued_documents.self_invoices.delete
+                          - it.fattureincloud.issued_documents.all.create
+                          - it.fattureincloud.issued_documents.all.update
+                          - it.fattureincloud.issued_documents.all.delete
+                          - it.fattureincloud.received_documents.create
+                          - it.fattureincloud.received_documents.update
+                          - it.fattureincloud.received_documents.delete
+                          - it.fattureincloud.receipts.create
+                          - it.fattureincloud.receipts.update
+                          - it.fattureincloud.receipts.delete
+                          - it.fattureincloud.taxes.create
+                          - it.fattureincloud.taxes.update
+                          - it.fattureincloud.taxes.delete
+                          - it.fattureincloud.cashbook.create
+                          - it.fattureincloud.cashbook.update
+                          - it.fattureincloud.cashbook.delete
+                          - it.fattureincloud.products.create
+                          - it.fattureincloud.products.update
+                          - it.fattureincloud.products.delete
+                          - it.fattureincloud.entities.clients.create
+                          - it.fattureincloud.entities.clients.update
+                          - it.fattureincloud.entities.clients.delete
+                          - it.fattureincloud.entities.suppliers.create
+                          - it.fattureincloud.entities.suppliers.update
+                          - it.fattureincloud.entities.suppliers.delete
+                          - it.fattureincloud.entities.all.create
+                          - it.fattureincloud.entities.all.update
+                          - it.fattureincloud.entities.all.delete
+                          - it.fattureincloud.issued_documents.e_invoices
+                          - it.fattureincloud.received_documents.e_invoices
+            examples:
+              example-1:
+                value:
+                  data:
+                    sink: http://www.test.com
+                    types:
+                      - it.fattureincloud.entities.create
+                      - it.fattureincloud.issued_documents.create
+        description: ''
+      description: Register some webhooks Subscriptions.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
+      tags:
+        - Webhooks
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+  /c/{company_id}/subscriptions/{subscription_id}:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/subscription_id'
+    get:
+      summary: Get Webhooks Subscription
+      tags:
+        - Webhooks
+      responses:
+        '200':
+          $ref: '#/components/responses/GetWebhooksSubscriptionResponse'
+      operationId: getWebhooksSubscription
+      description: Get a webhooks subscription.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
+    put:
+      summary: Modify Webhooks Subscription
+      tags:
+        - Webhooks
+      responses:
+        '200':
+          $ref: '#/components/responses/ModifyWebhooksSubscriptionResponse'
+      operationId: modifyWebhooksSubscription
+      description: Edit a webhooks subscription.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: ModifyWebhooksSubscriptionRequest
+              type: object
+              properties:
+                data:
+                  title: WebhooksSubscription
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: Unique identifier
+                    sink:
+                      type: string
+                      description: Webhooks callback uri.
+                    verified:
+                      type: boolean
+                      description: >-
+                        [Read Only] True if the webhooks subscription has been
+                        verified.
+                    types:
+                      type: array
+                      description: Webhooks events types.
+                      items:
+                        type: string
+                        title: EventType
+                        description: Event type.
+                        enum:
+                          - it.fattureincloud.issued_documents.invoices.create
+                          - it.fattureincloud.issued_documents.invoices.update
+                          - it.fattureincloud.issued_documents.invoices.delete
+                          - it.fattureincloud.issued_documents.quotes.create
+                          - it.fattureincloud.issued_documents.quotes.update
+                          - it.fattureincloud.issued_documents.quotes.delete
+                          - it.fattureincloud.issued_documents.proformas.create
+                          - it.fattureincloud.issued_documents.proformas.update
+                          - it.fattureincloud.issued_documents.proformas.delete
+                          - it.fattureincloud.issued_documents.receipts.create
+                          - it.fattureincloud.issued_documents.receipts.update
+                          - it.fattureincloud.issued_documents.receipts.delete
+                          - >-
+                            it.fattureincloud.issued_documents.delivery_notes.create
+                          - >-
+                            it.fattureincloud.issued_documents.delivery_notes.update
+                          - >-
+                            it.fattureincloud.issued_documents.delivery_notes.delete
+                          - >-
+                            it.fattureincloud.issued_documents.credit_notes.create
+                          - >-
+                            it.fattureincloud.issued_documents.credit_notes.update
+                          - >-
+                            it.fattureincloud.issued_documents.credit_notes.delete
+                          - it.fattureincloud.issued_documents.orders.create
+                          - it.fattureincloud.issued_documents.orders.update
+                          - it.fattureincloud.issued_documents.orders.delete
+                          - >-
+                            it.fattureincloud.issued_documents.work_reports.create
+                          - >-
+                            it.fattureincloud.issued_documents.work_reports.update
+                          - >-
+                            it.fattureincloud.issued_documents.work_reports.delete
+                          - >-
+                            it.fattureincloud.issued_documents.supplier_orders.create
+                          - >-
+                            it.fattureincloud.issued_documents.supplier_orders.update
+                          - >-
+                            it.fattureincloud.issued_documents.supplier_orders.delete
+                          - >-
+                            it.fattureincloud.issued_documents.self_invoices.create
+                          - >-
+                            it.fattureincloud.issued_documents.self_invoices.update
+                          - >-
+                            it.fattureincloud.issued_documents.self_invoices.delete
+                          - it.fattureincloud.issued_documents.all.create
+                          - it.fattureincloud.issued_documents.all.update
+                          - it.fattureincloud.issued_documents.all.delete
+                          - it.fattureincloud.received_documents.create
+                          - it.fattureincloud.received_documents.update
+                          - it.fattureincloud.received_documents.delete
+                          - it.fattureincloud.receipts.create
+                          - it.fattureincloud.receipts.update
+                          - it.fattureincloud.receipts.delete
+                          - it.fattureincloud.taxes.create
+                          - it.fattureincloud.taxes.update
+                          - it.fattureincloud.taxes.delete
+                          - it.fattureincloud.cashbook.create
+                          - it.fattureincloud.cashbook.update
+                          - it.fattureincloud.cashbook.delete
+                          - it.fattureincloud.products.create
+                          - it.fattureincloud.products.update
+                          - it.fattureincloud.products.delete
+                          - it.fattureincloud.entities.clients.create
+                          - it.fattureincloud.entities.clients.update
+                          - it.fattureincloud.entities.clients.delete
+                          - it.fattureincloud.entities.suppliers.create
+                          - it.fattureincloud.entities.suppliers.update
+                          - it.fattureincloud.entities.suppliers.delete
+                          - it.fattureincloud.entities.all.create
+                          - it.fattureincloud.entities.all.update
+                          - it.fattureincloud.entities.all.delete
+                          - it.fattureincloud.issued_documents.e_invoices
+                          - it.fattureincloud.received_documents.e_invoices
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
+    delete:
+      summary: Delete Webhooks Subscription
+      tags:
+        - Webhooks
+      responses:
+        '200':
+          description: OK
+      operationId: deleteWebhooksSubscription
+      description: Delete a webhooks subscription.
       security:
         - OAuth2AuthenticationCodeFlow: []
         - ManualAuth: []
@@ -11942,6 +13308,8 @@ components:
       schema:
         type: integer
         default: 5
+        minimum: 1
+        maximum: 100
       description: The size of the page.
     document_id:
       name: document_id
@@ -11975,6 +13343,14 @@ components:
       schema:
         type: boolean
       description: Include the attachment to the XML e-invoice.
+    subscription_id:
+      name: subscription_id
+      in: path
+      required: true
+      schema:
+        type: string
+        example: SUB123
+      description: The ID of the subscription.
   responses:
     GetUserInfoResponse:
       description: ''
@@ -24475,15 +25851,351 @@ components:
                           description: Received document type.
                           nullable: true
                         entity:
+                          title: Entity
                           type: object
+                          description: ''
                           properties:
                             id:
                               type: integer
+                              description: Unique identifier
                               nullable: true
-                              description: Entity unique identifier.
+                            code:
+                              type: string
+                              example: '123'
+                              description: Code.
+                              nullable: true
                             name:
                               type: string
-                              description: Entity name.
+                              example: Rossi S.r.l.
+                              description: Name
+                              nullable: true
+                            type:
+                              title: EntityType
+                              type: string
+                              nullable: true
+                              default: null
+                              enum:
+                                - company
+                                - person
+                                - pa
+                                - condo
+                              description: Entity type.
+                            first_name:
+                              type: string
+                              description: First name.
+                              nullable: true
+                            last_name:
+                              type: string
+                              description: Last name.
+                              nullable: true
+                            contact_person:
+                              type: string
+                              nullable: true
+                            vat_number:
+                              type: string
+                              example: IT01234567890
+                              description: Vat number
+                              nullable: true
+                            tax_code:
+                              type: string
+                              example: RSSMRA44A12E890Q
+                              description: Tax code.
+                              nullable: true
+                            address_street:
+                              type: string
+                              example: Via dei tigli, 12
+                              description: Street address.
+                              nullable: true
+                            address_postal_code:
+                              type: string
+                              example: '24010'
+                              description: Postal code.
+                              nullable: true
+                            address_city:
+                              type: string
+                              example: Bergamo
+                              description: City.
+                              nullable: true
+                            address_province:
+                              type: string
+                              example: BG
+                              description: Province.
+                              nullable: true
+                            address_extra:
+                              type: string
+                              description: Address extra info.
+                              nullable: true
+                            country:
+                              type: string
+                              example: Italia
+                              description: Country
+                              nullable: true
+                            country_iso:
+                              type: string
+                              example: Italia
+                              description: Country Iso
+                              nullable: true
+                            email:
+                              type: string
+                              example: mario.rossi@example.it
+                              description: Email.
+                              nullable: true
+                            certified_email:
+                              type: string
+                              example: mario.rossi@pec.example.it
+                              description: Certified email.
+                              nullable: true
+                            phone:
+                              type: string
+                              description: Phone.
+                              nullable: true
+                            fax:
+                              type: string
+                              description: Fax.
+                              nullable: true
+                            notes:
+                              type: string
+                              description: Extra notes.
+                              nullable: true
+                            default_vat:
+                              type: object
+                              nullable: true
+                              properties:
+                                id:
+                                  type: integer
+                                  description: Unique identifier
+                                  nullable: true
+                                value:
+                                  type: number
+                                  description: '[Read Only] Percentual value.'
+                                  example: 22
+                                  nullable: true
+                                description:
+                                  type: string
+                                  description: Short description.
+                                  example: Non imponibile art. 123
+                                  nullable: true
+                                notes:
+                                  type: string
+                                  description: >-
+                                    Long description and notes shown in
+                                    documents.
+                                  example: >-
+                                    IVA non imponibile ai sensi dell'articolo
+                                    123, comma 2
+                                  nullable: true
+                                e_invoice:
+                                  type: boolean
+                                  description: Usable for e-invoices.
+                                  nullable: true
+                                ei_type:
+                                  type: string
+                                  description: E-invoice type (natura).
+                                  example: 2
+                                  nullable: true
+                                ei_description:
+                                  type: string
+                                  description: E-invoice description.
+                                  nullable: true
+                                editable:
+                                  type: boolean
+                                  description: |-
+                                    [Read Only]
+                                    Determine if this vat type is editable.
+                                  readOnly: true
+                                  nullable: true
+                                is_disabled:
+                                  type: boolean
+                                  description: Determine if the vat type is disabled.
+                                  nullable: true
+                              title: VatType
+                              description: |-
+                                [Only for client]
+                                Default vat.
+                            default_payment_terms:
+                              type: integer
+                              example: 30
+                              description: |-
+                                [Only for client]
+                                Default payment terms.
+                              nullable: true
+                            default_payment_terms_type:
+                              title: PaymentTermsType
+                              type: string
+                              default: standard
+                              enum:
+                                - standard
+                                - end_of_month
+                              description: |-
+                                [Only for client]
+                                Default payment terms type.
+                              nullable: true
+                            default_payment_method:
+                              type: object
+                              title: PaymentMethod
+                              properties:
+                                id:
+                                  type: integer
+                                  nullable: true
+                                  description: Unique identifier
+                                name:
+                                  type: string
+                                  description: Name of the payment method
+                                  nullable: true
+                                type:
+                                  title: PaymentMethodType
+                                  type: string
+                                  description: Method type.
+                                  default: standard
+                                  enum:
+                                    - standard
+                                    - riba
+                                  nullable: true
+                                is_default:
+                                  type: boolean
+                                  description: >-
+                                    Determines if this is the default payment
+                                    method.
+                                  nullable: true
+                                default_payment_account:
+                                  type: object
+                                  nullable: true
+                                  description: ''
+                                  properties:
+                                    id:
+                                      type: integer
+                                      description: Unique identifier
+                                      nullable: true
+                                    name:
+                                      type: string
+                                      description: Payment account name.
+                                      example: Conto Banca Intesa
+                                      nullable: true
+                                    type:
+                                      title: PaymentAccountType
+                                      type: string
+                                      default: standard
+                                      enum:
+                                        - standard
+                                        - bank
+                                      description: Payment account type.
+                                      nullable: true
+                                    iban:
+                                      type: string
+                                      nullable: true
+                                      description: Payment account iban.
+                                    sia:
+                                      type: string
+                                      nullable: true
+                                      description: Payment account sia.
+                                    cuc:
+                                      type: string
+                                      description: Payment account cuc.
+                                      nullable: true
+                                    virtual:
+                                      type: boolean
+                                      description: >-
+                                        Determine if the payment method is
+                                        virtual.
+                                      nullable: true
+                                  title: PaymentAccount
+                                details:
+                                  maxItems: 5
+                                  type: array
+                                  nullable: true
+                                  description: Method details rows
+                                  items:
+                                    title: PaymentMethodDetails
+                                    type: object
+                                    properties:
+                                      title:
+                                        type: string
+                                        description: Details title.
+                                        nullable: true
+                                      description:
+                                        type: string
+                                        description: Details description.
+                                        nullable: true
+                                bank_iban:
+                                  type: string
+                                  description: Bank iban
+                                  nullable: true
+                                bank_name:
+                                  type: string
+                                  description: Bank name
+                                  nullable: true
+                                bank_beneficiary:
+                                  type: string
+                                  description: Bank beneficiary
+                                  nullable: true
+                                ei_payment_method:
+                                  type: string
+                                  description: E-invoice payment method
+                                  nullable: true
+                              description: |-
+                                [Only for client]
+                                Default payment method.
+                              nullable: true
+                            bank_name:
+                              type: string
+                              description: |-
+                                [Only for client]
+                                Bank name.
+                              nullable: true
+                            bank_iban:
+                              type: string
+                              description: |-
+                                [Only for client]
+                                Iban.
+                              nullable: true
+                            bank_swift_code:
+                              type: string
+                              description: |-
+                                [Only for client]
+                                Bank swift code.
+                              nullable: true
+                            shipping_address:
+                              type: string
+                              description: |-
+                                [Only for client]
+                                Shipping address.
+                              nullable: true
+                            e_invoice:
+                              type: boolean
+                              description: |-
+                                [Only for client]
+                                Use e-invoices.
+                              nullable: true
+                            ei_code:
+                              type: string
+                              description: |-
+                                [Only for client]
+                                E-invoices code.
+                              nullable: true
+                            has_intent_declaration:
+                              type: boolean
+                              description: |-
+                                [Only for client]
+                                Has intent declaration.
+                              nullable: true
+                            intent_declaration_protocol_number:
+                              type: string
+                              description: |-
+                                [Only for client]
+                                Intent declaration protocol number.
+                              nullable: true
+                            intent_declaration_protocol_date:
+                              type: string
+                              format: date
+                              description: |-
+                                [Only for client]
+                                Intent declaration protocol date.
+                              nullable: true
+                            created_at:
+                              type: string
+                              nullable: true
+                            updated_at:
+                              type: string
                               nullable: true
                           nullable: true
                         date:
@@ -24941,15 +26653,345 @@ components:
                     description: Received document type.
                     nullable: true
                   entity:
+                    title: Entity
                     type: object
+                    description: ''
                     properties:
                       id:
                         type: integer
+                        description: Unique identifier
                         nullable: true
-                        description: Entity unique identifier.
+                      code:
+                        type: string
+                        example: '123'
+                        description: Code.
+                        nullable: true
                       name:
                         type: string
-                        description: Entity name.
+                        example: Rossi S.r.l.
+                        description: Name
+                        nullable: true
+                      type:
+                        title: EntityType
+                        type: string
+                        nullable: true
+                        default: null
+                        enum:
+                          - company
+                          - person
+                          - pa
+                          - condo
+                        description: Entity type.
+                      first_name:
+                        type: string
+                        description: First name.
+                        nullable: true
+                      last_name:
+                        type: string
+                        description: Last name.
+                        nullable: true
+                      contact_person:
+                        type: string
+                        nullable: true
+                      vat_number:
+                        type: string
+                        example: IT01234567890
+                        description: Vat number
+                        nullable: true
+                      tax_code:
+                        type: string
+                        example: RSSMRA44A12E890Q
+                        description: Tax code.
+                        nullable: true
+                      address_street:
+                        type: string
+                        example: Via dei tigli, 12
+                        description: Street address.
+                        nullable: true
+                      address_postal_code:
+                        type: string
+                        example: '24010'
+                        description: Postal code.
+                        nullable: true
+                      address_city:
+                        type: string
+                        example: Bergamo
+                        description: City.
+                        nullable: true
+                      address_province:
+                        type: string
+                        example: BG
+                        description: Province.
+                        nullable: true
+                      address_extra:
+                        type: string
+                        description: Address extra info.
+                        nullable: true
+                      country:
+                        type: string
+                        example: Italia
+                        description: Country
+                        nullable: true
+                      country_iso:
+                        type: string
+                        example: Italia
+                        description: Country Iso
+                        nullable: true
+                      email:
+                        type: string
+                        example: mario.rossi@example.it
+                        description: Email.
+                        nullable: true
+                      certified_email:
+                        type: string
+                        example: mario.rossi@pec.example.it
+                        description: Certified email.
+                        nullable: true
+                      phone:
+                        type: string
+                        description: Phone.
+                        nullable: true
+                      fax:
+                        type: string
+                        description: Fax.
+                        nullable: true
+                      notes:
+                        type: string
+                        description: Extra notes.
+                        nullable: true
+                      default_vat:
+                        type: object
+                        nullable: true
+                        properties:
+                          id:
+                            type: integer
+                            description: Unique identifier
+                            nullable: true
+                          value:
+                            type: number
+                            description: '[Read Only] Percentual value.'
+                            example: 22
+                            nullable: true
+                          description:
+                            type: string
+                            description: Short description.
+                            example: Non imponibile art. 123
+                            nullable: true
+                          notes:
+                            type: string
+                            description: Long description and notes shown in documents.
+                            example: >-
+                              IVA non imponibile ai sensi dell'articolo 123,
+                              comma 2
+                            nullable: true
+                          e_invoice:
+                            type: boolean
+                            description: Usable for e-invoices.
+                            nullable: true
+                          ei_type:
+                            type: string
+                            description: E-invoice type (natura).
+                            example: 2
+                            nullable: true
+                          ei_description:
+                            type: string
+                            description: E-invoice description.
+                            nullable: true
+                          editable:
+                            type: boolean
+                            description: |-
+                              [Read Only]
+                              Determine if this vat type is editable.
+                            readOnly: true
+                            nullable: true
+                          is_disabled:
+                            type: boolean
+                            description: Determine if the vat type is disabled.
+                            nullable: true
+                        title: VatType
+                        description: |-
+                          [Only for client]
+                          Default vat.
+                      default_payment_terms:
+                        type: integer
+                        example: 30
+                        description: |-
+                          [Only for client]
+                          Default payment terms.
+                        nullable: true
+                      default_payment_terms_type:
+                        title: PaymentTermsType
+                        type: string
+                        default: standard
+                        enum:
+                          - standard
+                          - end_of_month
+                        description: |-
+                          [Only for client]
+                          Default payment terms type.
+                        nullable: true
+                      default_payment_method:
+                        type: object
+                        title: PaymentMethod
+                        properties:
+                          id:
+                            type: integer
+                            nullable: true
+                            description: Unique identifier
+                          name:
+                            type: string
+                            description: Name of the payment method
+                            nullable: true
+                          type:
+                            title: PaymentMethodType
+                            type: string
+                            description: Method type.
+                            default: standard
+                            enum:
+                              - standard
+                              - riba
+                            nullable: true
+                          is_default:
+                            type: boolean
+                            description: Determines if this is the default payment method.
+                            nullable: true
+                          default_payment_account:
+                            type: object
+                            nullable: true
+                            description: ''
+                            properties:
+                              id:
+                                type: integer
+                                description: Unique identifier
+                                nullable: true
+                              name:
+                                type: string
+                                description: Payment account name.
+                                example: Conto Banca Intesa
+                                nullable: true
+                              type:
+                                title: PaymentAccountType
+                                type: string
+                                default: standard
+                                enum:
+                                  - standard
+                                  - bank
+                                description: Payment account type.
+                                nullable: true
+                              iban:
+                                type: string
+                                nullable: true
+                                description: Payment account iban.
+                              sia:
+                                type: string
+                                nullable: true
+                                description: Payment account sia.
+                              cuc:
+                                type: string
+                                description: Payment account cuc.
+                                nullable: true
+                              virtual:
+                                type: boolean
+                                description: Determine if the payment method is virtual.
+                                nullable: true
+                            title: PaymentAccount
+                          details:
+                            maxItems: 5
+                            type: array
+                            nullable: true
+                            description: Method details rows
+                            items:
+                              title: PaymentMethodDetails
+                              type: object
+                              properties:
+                                title:
+                                  type: string
+                                  description: Details title.
+                                  nullable: true
+                                description:
+                                  type: string
+                                  description: Details description.
+                                  nullable: true
+                          bank_iban:
+                            type: string
+                            description: Bank iban
+                            nullable: true
+                          bank_name:
+                            type: string
+                            description: Bank name
+                            nullable: true
+                          bank_beneficiary:
+                            type: string
+                            description: Bank beneficiary
+                            nullable: true
+                          ei_payment_method:
+                            type: string
+                            description: E-invoice payment method
+                            nullable: true
+                        description: |-
+                          [Only for client]
+                          Default payment method.
+                        nullable: true
+                      bank_name:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Bank name.
+                        nullable: true
+                      bank_iban:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Iban.
+                        nullable: true
+                      bank_swift_code:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Bank swift code.
+                        nullable: true
+                      shipping_address:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Shipping address.
+                        nullable: true
+                      e_invoice:
+                        type: boolean
+                        description: |-
+                          [Only for client]
+                          Use e-invoices.
+                        nullable: true
+                      ei_code:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          E-invoices code.
+                        nullable: true
+                      has_intent_declaration:
+                        type: boolean
+                        description: |-
+                          [Only for client]
+                          Has intent declaration.
+                        nullable: true
+                      intent_declaration_protocol_number:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Intent declaration protocol number.
+                        nullable: true
+                      intent_declaration_protocol_date:
+                        type: string
+                        format: date
+                        description: |-
+                          [Only for client]
+                          Intent declaration protocol date.
+                        nullable: true
+                      created_at:
+                        type: string
+                        nullable: true
+                      updated_at:
+                        type: string
                         nullable: true
                     nullable: true
                   date:
@@ -25348,15 +27390,345 @@ components:
                     description: Received document type.
                     nullable: true
                   entity:
+                    title: Entity
                     type: object
+                    description: ''
                     properties:
                       id:
                         type: integer
+                        description: Unique identifier
                         nullable: true
-                        description: Entity unique identifier.
+                      code:
+                        type: string
+                        example: '123'
+                        description: Code.
+                        nullable: true
                       name:
                         type: string
-                        description: Entity name.
+                        example: Rossi S.r.l.
+                        description: Name
+                        nullable: true
+                      type:
+                        title: EntityType
+                        type: string
+                        nullable: true
+                        default: null
+                        enum:
+                          - company
+                          - person
+                          - pa
+                          - condo
+                        description: Entity type.
+                      first_name:
+                        type: string
+                        description: First name.
+                        nullable: true
+                      last_name:
+                        type: string
+                        description: Last name.
+                        nullable: true
+                      contact_person:
+                        type: string
+                        nullable: true
+                      vat_number:
+                        type: string
+                        example: IT01234567890
+                        description: Vat number
+                        nullable: true
+                      tax_code:
+                        type: string
+                        example: RSSMRA44A12E890Q
+                        description: Tax code.
+                        nullable: true
+                      address_street:
+                        type: string
+                        example: Via dei tigli, 12
+                        description: Street address.
+                        nullable: true
+                      address_postal_code:
+                        type: string
+                        example: '24010'
+                        description: Postal code.
+                        nullable: true
+                      address_city:
+                        type: string
+                        example: Bergamo
+                        description: City.
+                        nullable: true
+                      address_province:
+                        type: string
+                        example: BG
+                        description: Province.
+                        nullable: true
+                      address_extra:
+                        type: string
+                        description: Address extra info.
+                        nullable: true
+                      country:
+                        type: string
+                        example: Italia
+                        description: Country
+                        nullable: true
+                      country_iso:
+                        type: string
+                        example: Italia
+                        description: Country Iso
+                        nullable: true
+                      email:
+                        type: string
+                        example: mario.rossi@example.it
+                        description: Email.
+                        nullable: true
+                      certified_email:
+                        type: string
+                        example: mario.rossi@pec.example.it
+                        description: Certified email.
+                        nullable: true
+                      phone:
+                        type: string
+                        description: Phone.
+                        nullable: true
+                      fax:
+                        type: string
+                        description: Fax.
+                        nullable: true
+                      notes:
+                        type: string
+                        description: Extra notes.
+                        nullable: true
+                      default_vat:
+                        type: object
+                        nullable: true
+                        properties:
+                          id:
+                            type: integer
+                            description: Unique identifier
+                            nullable: true
+                          value:
+                            type: number
+                            description: '[Read Only] Percentual value.'
+                            example: 22
+                            nullable: true
+                          description:
+                            type: string
+                            description: Short description.
+                            example: Non imponibile art. 123
+                            nullable: true
+                          notes:
+                            type: string
+                            description: Long description and notes shown in documents.
+                            example: >-
+                              IVA non imponibile ai sensi dell'articolo 123,
+                              comma 2
+                            nullable: true
+                          e_invoice:
+                            type: boolean
+                            description: Usable for e-invoices.
+                            nullable: true
+                          ei_type:
+                            type: string
+                            description: E-invoice type (natura).
+                            example: 2
+                            nullable: true
+                          ei_description:
+                            type: string
+                            description: E-invoice description.
+                            nullable: true
+                          editable:
+                            type: boolean
+                            description: |-
+                              [Read Only]
+                              Determine if this vat type is editable.
+                            readOnly: true
+                            nullable: true
+                          is_disabled:
+                            type: boolean
+                            description: Determine if the vat type is disabled.
+                            nullable: true
+                        title: VatType
+                        description: |-
+                          [Only for client]
+                          Default vat.
+                      default_payment_terms:
+                        type: integer
+                        example: 30
+                        description: |-
+                          [Only for client]
+                          Default payment terms.
+                        nullable: true
+                      default_payment_terms_type:
+                        title: PaymentTermsType
+                        type: string
+                        default: standard
+                        enum:
+                          - standard
+                          - end_of_month
+                        description: |-
+                          [Only for client]
+                          Default payment terms type.
+                        nullable: true
+                      default_payment_method:
+                        type: object
+                        title: PaymentMethod
+                        properties:
+                          id:
+                            type: integer
+                            nullable: true
+                            description: Unique identifier
+                          name:
+                            type: string
+                            description: Name of the payment method
+                            nullable: true
+                          type:
+                            title: PaymentMethodType
+                            type: string
+                            description: Method type.
+                            default: standard
+                            enum:
+                              - standard
+                              - riba
+                            nullable: true
+                          is_default:
+                            type: boolean
+                            description: Determines if this is the default payment method.
+                            nullable: true
+                          default_payment_account:
+                            type: object
+                            nullable: true
+                            description: ''
+                            properties:
+                              id:
+                                type: integer
+                                description: Unique identifier
+                                nullable: true
+                              name:
+                                type: string
+                                description: Payment account name.
+                                example: Conto Banca Intesa
+                                nullable: true
+                              type:
+                                title: PaymentAccountType
+                                type: string
+                                default: standard
+                                enum:
+                                  - standard
+                                  - bank
+                                description: Payment account type.
+                                nullable: true
+                              iban:
+                                type: string
+                                nullable: true
+                                description: Payment account iban.
+                              sia:
+                                type: string
+                                nullable: true
+                                description: Payment account sia.
+                              cuc:
+                                type: string
+                                description: Payment account cuc.
+                                nullable: true
+                              virtual:
+                                type: boolean
+                                description: Determine if the payment method is virtual.
+                                nullable: true
+                            title: PaymentAccount
+                          details:
+                            maxItems: 5
+                            type: array
+                            nullable: true
+                            description: Method details rows
+                            items:
+                              title: PaymentMethodDetails
+                              type: object
+                              properties:
+                                title:
+                                  type: string
+                                  description: Details title.
+                                  nullable: true
+                                description:
+                                  type: string
+                                  description: Details description.
+                                  nullable: true
+                          bank_iban:
+                            type: string
+                            description: Bank iban
+                            nullable: true
+                          bank_name:
+                            type: string
+                            description: Bank name
+                            nullable: true
+                          bank_beneficiary:
+                            type: string
+                            description: Bank beneficiary
+                            nullable: true
+                          ei_payment_method:
+                            type: string
+                            description: E-invoice payment method
+                            nullable: true
+                        description: |-
+                          [Only for client]
+                          Default payment method.
+                        nullable: true
+                      bank_name:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Bank name.
+                        nullable: true
+                      bank_iban:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Iban.
+                        nullable: true
+                      bank_swift_code:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Bank swift code.
+                        nullable: true
+                      shipping_address:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Shipping address.
+                        nullable: true
+                      e_invoice:
+                        type: boolean
+                        description: |-
+                          [Only for client]
+                          Use e-invoices.
+                        nullable: true
+                      ei_code:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          E-invoices code.
+                        nullable: true
+                      has_intent_declaration:
+                        type: boolean
+                        description: |-
+                          [Only for client]
+                          Has intent declaration.
+                        nullable: true
+                      intent_declaration_protocol_number:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Intent declaration protocol number.
+                        nullable: true
+                      intent_declaration_protocol_date:
+                        type: string
+                        format: date
+                        description: |-
+                          [Only for client]
+                          Intent declaration protocol date.
+                        nullable: true
+                      created_at:
+                        type: string
+                        nullable: true
+                      updated_at:
+                        type: string
                         nullable: true
                     nullable: true
                   date:
@@ -25755,15 +28127,345 @@ components:
                     description: Received document type.
                     nullable: true
                   entity:
+                    title: Entity
                     type: object
+                    description: ''
                     properties:
                       id:
                         type: integer
+                        description: Unique identifier
                         nullable: true
-                        description: Entity unique identifier.
+                      code:
+                        type: string
+                        example: '123'
+                        description: Code.
+                        nullable: true
                       name:
                         type: string
-                        description: Entity name.
+                        example: Rossi S.r.l.
+                        description: Name
+                        nullable: true
+                      type:
+                        title: EntityType
+                        type: string
+                        nullable: true
+                        default: null
+                        enum:
+                          - company
+                          - person
+                          - pa
+                          - condo
+                        description: Entity type.
+                      first_name:
+                        type: string
+                        description: First name.
+                        nullable: true
+                      last_name:
+                        type: string
+                        description: Last name.
+                        nullable: true
+                      contact_person:
+                        type: string
+                        nullable: true
+                      vat_number:
+                        type: string
+                        example: IT01234567890
+                        description: Vat number
+                        nullable: true
+                      tax_code:
+                        type: string
+                        example: RSSMRA44A12E890Q
+                        description: Tax code.
+                        nullable: true
+                      address_street:
+                        type: string
+                        example: Via dei tigli, 12
+                        description: Street address.
+                        nullable: true
+                      address_postal_code:
+                        type: string
+                        example: '24010'
+                        description: Postal code.
+                        nullable: true
+                      address_city:
+                        type: string
+                        example: Bergamo
+                        description: City.
+                        nullable: true
+                      address_province:
+                        type: string
+                        example: BG
+                        description: Province.
+                        nullable: true
+                      address_extra:
+                        type: string
+                        description: Address extra info.
+                        nullable: true
+                      country:
+                        type: string
+                        example: Italia
+                        description: Country
+                        nullable: true
+                      country_iso:
+                        type: string
+                        example: Italia
+                        description: Country Iso
+                        nullable: true
+                      email:
+                        type: string
+                        example: mario.rossi@example.it
+                        description: Email.
+                        nullable: true
+                      certified_email:
+                        type: string
+                        example: mario.rossi@pec.example.it
+                        description: Certified email.
+                        nullable: true
+                      phone:
+                        type: string
+                        description: Phone.
+                        nullable: true
+                      fax:
+                        type: string
+                        description: Fax.
+                        nullable: true
+                      notes:
+                        type: string
+                        description: Extra notes.
+                        nullable: true
+                      default_vat:
+                        type: object
+                        nullable: true
+                        properties:
+                          id:
+                            type: integer
+                            description: Unique identifier
+                            nullable: true
+                          value:
+                            type: number
+                            description: '[Read Only] Percentual value.'
+                            example: 22
+                            nullable: true
+                          description:
+                            type: string
+                            description: Short description.
+                            example: Non imponibile art. 123
+                            nullable: true
+                          notes:
+                            type: string
+                            description: Long description and notes shown in documents.
+                            example: >-
+                              IVA non imponibile ai sensi dell'articolo 123,
+                              comma 2
+                            nullable: true
+                          e_invoice:
+                            type: boolean
+                            description: Usable for e-invoices.
+                            nullable: true
+                          ei_type:
+                            type: string
+                            description: E-invoice type (natura).
+                            example: 2
+                            nullable: true
+                          ei_description:
+                            type: string
+                            description: E-invoice description.
+                            nullable: true
+                          editable:
+                            type: boolean
+                            description: |-
+                              [Read Only]
+                              Determine if this vat type is editable.
+                            readOnly: true
+                            nullable: true
+                          is_disabled:
+                            type: boolean
+                            description: Determine if the vat type is disabled.
+                            nullable: true
+                        title: VatType
+                        description: |-
+                          [Only for client]
+                          Default vat.
+                      default_payment_terms:
+                        type: integer
+                        example: 30
+                        description: |-
+                          [Only for client]
+                          Default payment terms.
+                        nullable: true
+                      default_payment_terms_type:
+                        title: PaymentTermsType
+                        type: string
+                        default: standard
+                        enum:
+                          - standard
+                          - end_of_month
+                        description: |-
+                          [Only for client]
+                          Default payment terms type.
+                        nullable: true
+                      default_payment_method:
+                        type: object
+                        title: PaymentMethod
+                        properties:
+                          id:
+                            type: integer
+                            nullable: true
+                            description: Unique identifier
+                          name:
+                            type: string
+                            description: Name of the payment method
+                            nullable: true
+                          type:
+                            title: PaymentMethodType
+                            type: string
+                            description: Method type.
+                            default: standard
+                            enum:
+                              - standard
+                              - riba
+                            nullable: true
+                          is_default:
+                            type: boolean
+                            description: Determines if this is the default payment method.
+                            nullable: true
+                          default_payment_account:
+                            type: object
+                            nullable: true
+                            description: ''
+                            properties:
+                              id:
+                                type: integer
+                                description: Unique identifier
+                                nullable: true
+                              name:
+                                type: string
+                                description: Payment account name.
+                                example: Conto Banca Intesa
+                                nullable: true
+                              type:
+                                title: PaymentAccountType
+                                type: string
+                                default: standard
+                                enum:
+                                  - standard
+                                  - bank
+                                description: Payment account type.
+                                nullable: true
+                              iban:
+                                type: string
+                                nullable: true
+                                description: Payment account iban.
+                              sia:
+                                type: string
+                                nullable: true
+                                description: Payment account sia.
+                              cuc:
+                                type: string
+                                description: Payment account cuc.
+                                nullable: true
+                              virtual:
+                                type: boolean
+                                description: Determine if the payment method is virtual.
+                                nullable: true
+                            title: PaymentAccount
+                          details:
+                            maxItems: 5
+                            type: array
+                            nullable: true
+                            description: Method details rows
+                            items:
+                              title: PaymentMethodDetails
+                              type: object
+                              properties:
+                                title:
+                                  type: string
+                                  description: Details title.
+                                  nullable: true
+                                description:
+                                  type: string
+                                  description: Details description.
+                                  nullable: true
+                          bank_iban:
+                            type: string
+                            description: Bank iban
+                            nullable: true
+                          bank_name:
+                            type: string
+                            description: Bank name
+                            nullable: true
+                          bank_beneficiary:
+                            type: string
+                            description: Bank beneficiary
+                            nullable: true
+                          ei_payment_method:
+                            type: string
+                            description: E-invoice payment method
+                            nullable: true
+                        description: |-
+                          [Only for client]
+                          Default payment method.
+                        nullable: true
+                      bank_name:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Bank name.
+                        nullable: true
+                      bank_iban:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Iban.
+                        nullable: true
+                      bank_swift_code:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Bank swift code.
+                        nullable: true
+                      shipping_address:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Shipping address.
+                        nullable: true
+                      e_invoice:
+                        type: boolean
+                        description: |-
+                          [Only for client]
+                          Use e-invoices.
+                        nullable: true
+                      ei_code:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          E-invoices code.
+                        nullable: true
+                      has_intent_declaration:
+                        type: boolean
+                        description: |-
+                          [Only for client]
+                          Has intent declaration.
+                        nullable: true
+                      intent_declaration_protocol_number:
+                        type: string
+                        description: |-
+                          [Only for client]
+                          Intent declaration protocol number.
+                        nullable: true
+                      intent_declaration_protocol_date:
+                        type: string
+                        format: date
+                        description: |-
+                          [Only for client]
+                          Intent declaration protocol date.
+                        nullable: true
+                      created_at:
+                        type: string
+                        nullable: true
+                      updated_at:
+                        type: string
                         nullable: true
                     nullable: true
                   date:
@@ -34674,5 +37376,487 @@ components:
                 prev_page_url: null
                 to: 2
                 total: 2
+    CreateWebhooksSubscriptionResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            title: CreateWebhooksSubscriptionResponse
+            type: object
+            properties:
+              data:
+                title: WebhooksSubscription
+                type: object
+                properties:
+                  id:
+                    type: string
+                    nullable: true
+                    description: Unique identifier
+                  sink:
+                    type: string
+                    nullable: true
+                    description: Webhooks callback uri.
+                  verified:
+                    type: boolean
+                    nullable: true
+                    description: >-
+                      [Read Only] True if the webhooks subscription has been
+                      verified.
+                  types:
+                    type: array
+                    nullable: true
+                    description: Webhooks events types.
+                    items:
+                      type: string
+                      title: EventType
+                      description: Event type.
+                      enum:
+                        - it.fattureincloud.issued_documents.invoices.create
+                        - it.fattureincloud.issued_documents.invoices.update
+                        - it.fattureincloud.issued_documents.invoices.delete
+                        - it.fattureincloud.issued_documents.quotes.create
+                        - it.fattureincloud.issued_documents.quotes.update
+                        - it.fattureincloud.issued_documents.quotes.delete
+                        - it.fattureincloud.issued_documents.proformas.create
+                        - it.fattureincloud.issued_documents.proformas.update
+                        - it.fattureincloud.issued_documents.proformas.delete
+                        - it.fattureincloud.issued_documents.receipts.create
+                        - it.fattureincloud.issued_documents.receipts.update
+                        - it.fattureincloud.issued_documents.receipts.delete
+                        - >-
+                          it.fattureincloud.issued_documents.delivery_notes.create
+                        - >-
+                          it.fattureincloud.issued_documents.delivery_notes.update
+                        - >-
+                          it.fattureincloud.issued_documents.delivery_notes.delete
+                        - it.fattureincloud.issued_documents.credit_notes.create
+                        - it.fattureincloud.issued_documents.credit_notes.update
+                        - it.fattureincloud.issued_documents.credit_notes.delete
+                        - it.fattureincloud.issued_documents.orders.create
+                        - it.fattureincloud.issued_documents.orders.update
+                        - it.fattureincloud.issued_documents.orders.delete
+                        - it.fattureincloud.issued_documents.work_reports.create
+                        - it.fattureincloud.issued_documents.work_reports.update
+                        - it.fattureincloud.issued_documents.work_reports.delete
+                        - >-
+                          it.fattureincloud.issued_documents.supplier_orders.create
+                        - >-
+                          it.fattureincloud.issued_documents.supplier_orders.update
+                        - >-
+                          it.fattureincloud.issued_documents.supplier_orders.delete
+                        - >-
+                          it.fattureincloud.issued_documents.self_invoices.create
+                        - >-
+                          it.fattureincloud.issued_documents.self_invoices.update
+                        - >-
+                          it.fattureincloud.issued_documents.self_invoices.delete
+                        - it.fattureincloud.issued_documents.all.create
+                        - it.fattureincloud.issued_documents.all.update
+                        - it.fattureincloud.issued_documents.all.delete
+                        - it.fattureincloud.received_documents.create
+                        - it.fattureincloud.received_documents.update
+                        - it.fattureincloud.received_documents.delete
+                        - it.fattureincloud.receipts.create
+                        - it.fattureincloud.receipts.update
+                        - it.fattureincloud.receipts.delete
+                        - it.fattureincloud.taxes.create
+                        - it.fattureincloud.taxes.update
+                        - it.fattureincloud.taxes.delete
+                        - it.fattureincloud.cashbook.create
+                        - it.fattureincloud.cashbook.update
+                        - it.fattureincloud.cashbook.delete
+                        - it.fattureincloud.products.create
+                        - it.fattureincloud.products.update
+                        - it.fattureincloud.products.delete
+                        - it.fattureincloud.entities.clients.create
+                        - it.fattureincloud.entities.clients.update
+                        - it.fattureincloud.entities.clients.delete
+                        - it.fattureincloud.entities.suppliers.create
+                        - it.fattureincloud.entities.suppliers.update
+                        - it.fattureincloud.entities.suppliers.delete
+                        - it.fattureincloud.entities.all.create
+                        - it.fattureincloud.entities.all.update
+                        - it.fattureincloud.entities.all.delete
+                        - it.fattureincloud.issued_documents.e_invoices
+                        - it.fattureincloud.received_documents.e_invoices
+              warnings:
+                type: array
+                nullable: true
+                description: Webhooks registration warnings
+                items:
+                  type: string
+          examples:
+            example-1:
+              value:
+                data:
+                  id: SUB123
+                  sink: http://www.test.com
+                  verified: true
+                  types:
+                    - it.fattureincloud.entities.create
+                    - it.fattureincloud.issued_documents.create
+                warnings: >-
+                  The 'it.fattureincloud.entities.clients.delete' event is
+                  already registered for this application
+    ListWebhooksSubscriptionsResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            title: ListWebhooksSubscriptionsResponse
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  title: WebhooksSubscription
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      nullable: true
+                      description: Unique identifier
+                    sink:
+                      type: string
+                      nullable: true
+                      description: Webhooks callback uri.
+                    verified:
+                      type: boolean
+                      nullable: true
+                      description: >-
+                        [Read Only] True if the webhooks subscription has been
+                        verified.
+                    types:
+                      type: array
+                      nullable: true
+                      description: Webhooks events types.
+                      items:
+                        type: string
+                        title: EventType
+                        description: Event type.
+                        enum:
+                          - it.fattureincloud.issued_documents.invoices.create
+                          - it.fattureincloud.issued_documents.invoices.update
+                          - it.fattureincloud.issued_documents.invoices.delete
+                          - it.fattureincloud.issued_documents.quotes.create
+                          - it.fattureincloud.issued_documents.quotes.update
+                          - it.fattureincloud.issued_documents.quotes.delete
+                          - it.fattureincloud.issued_documents.proformas.create
+                          - it.fattureincloud.issued_documents.proformas.update
+                          - it.fattureincloud.issued_documents.proformas.delete
+                          - it.fattureincloud.issued_documents.receipts.create
+                          - it.fattureincloud.issued_documents.receipts.update
+                          - it.fattureincloud.issued_documents.receipts.delete
+                          - >-
+                            it.fattureincloud.issued_documents.delivery_notes.create
+                          - >-
+                            it.fattureincloud.issued_documents.delivery_notes.update
+                          - >-
+                            it.fattureincloud.issued_documents.delivery_notes.delete
+                          - >-
+                            it.fattureincloud.issued_documents.credit_notes.create
+                          - >-
+                            it.fattureincloud.issued_documents.credit_notes.update
+                          - >-
+                            it.fattureincloud.issued_documents.credit_notes.delete
+                          - it.fattureincloud.issued_documents.orders.create
+                          - it.fattureincloud.issued_documents.orders.update
+                          - it.fattureincloud.issued_documents.orders.delete
+                          - >-
+                            it.fattureincloud.issued_documents.work_reports.create
+                          - >-
+                            it.fattureincloud.issued_documents.work_reports.update
+                          - >-
+                            it.fattureincloud.issued_documents.work_reports.delete
+                          - >-
+                            it.fattureincloud.issued_documents.supplier_orders.create
+                          - >-
+                            it.fattureincloud.issued_documents.supplier_orders.update
+                          - >-
+                            it.fattureincloud.issued_documents.supplier_orders.delete
+                          - >-
+                            it.fattureincloud.issued_documents.self_invoices.create
+                          - >-
+                            it.fattureincloud.issued_documents.self_invoices.update
+                          - >-
+                            it.fattureincloud.issued_documents.self_invoices.delete
+                          - it.fattureincloud.issued_documents.all.create
+                          - it.fattureincloud.issued_documents.all.update
+                          - it.fattureincloud.issued_documents.all.delete
+                          - it.fattureincloud.received_documents.create
+                          - it.fattureincloud.received_documents.update
+                          - it.fattureincloud.received_documents.delete
+                          - it.fattureincloud.receipts.create
+                          - it.fattureincloud.receipts.update
+                          - it.fattureincloud.receipts.delete
+                          - it.fattureincloud.taxes.create
+                          - it.fattureincloud.taxes.update
+                          - it.fattureincloud.taxes.delete
+                          - it.fattureincloud.cashbook.create
+                          - it.fattureincloud.cashbook.update
+                          - it.fattureincloud.cashbook.delete
+                          - it.fattureincloud.products.create
+                          - it.fattureincloud.products.update
+                          - it.fattureincloud.products.delete
+                          - it.fattureincloud.entities.clients.create
+                          - it.fattureincloud.entities.clients.update
+                          - it.fattureincloud.entities.clients.delete
+                          - it.fattureincloud.entities.suppliers.create
+                          - it.fattureincloud.entities.suppliers.update
+                          - it.fattureincloud.entities.suppliers.delete
+                          - it.fattureincloud.entities.all.create
+                          - it.fattureincloud.entities.all.update
+                          - it.fattureincloud.entities.all.delete
+                          - it.fattureincloud.issued_documents.e_invoices
+                          - it.fattureincloud.received_documents.e_invoices
+          examples:
+            example-1:
+              value:
+                data:
+                  - id: SUB12345
+                    sink: https://www.testurl.com/endpoint
+                    verified: true
+                    types:
+                      - it.fattureincloud.issued_documents.create
+                      - it.fattureincloud.issued_documents.update
+                  - id: SUB12346
+                    sink: https://www.testurl.com/endpoint2
+                    verified: true
+                    types:
+                      - it.fattureincloud.issued_documents.delete
+    GetWebhooksSubscriptionResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            title: GetWebhooksSubscriptionResponse
+            type: object
+            properties:
+              data:
+                title: WebhooksSubscription
+                type: object
+                properties:
+                  id:
+                    type: string
+                    nullable: true
+                    description: Unique identifier
+                  sink:
+                    type: string
+                    nullable: true
+                    description: Webhooks callback uri.
+                  verified:
+                    type: boolean
+                    nullable: true
+                    description: >-
+                      [Read Only] True if the webhooks subscription has been
+                      verified.
+                  types:
+                    type: array
+                    nullable: true
+                    description: Webhooks events types.
+                    items:
+                      type: string
+                      title: EventType
+                      description: Event type.
+                      enum:
+                        - it.fattureincloud.issued_documents.invoices.create
+                        - it.fattureincloud.issued_documents.invoices.update
+                        - it.fattureincloud.issued_documents.invoices.delete
+                        - it.fattureincloud.issued_documents.quotes.create
+                        - it.fattureincloud.issued_documents.quotes.update
+                        - it.fattureincloud.issued_documents.quotes.delete
+                        - it.fattureincloud.issued_documents.proformas.create
+                        - it.fattureincloud.issued_documents.proformas.update
+                        - it.fattureincloud.issued_documents.proformas.delete
+                        - it.fattureincloud.issued_documents.receipts.create
+                        - it.fattureincloud.issued_documents.receipts.update
+                        - it.fattureincloud.issued_documents.receipts.delete
+                        - >-
+                          it.fattureincloud.issued_documents.delivery_notes.create
+                        - >-
+                          it.fattureincloud.issued_documents.delivery_notes.update
+                        - >-
+                          it.fattureincloud.issued_documents.delivery_notes.delete
+                        - it.fattureincloud.issued_documents.credit_notes.create
+                        - it.fattureincloud.issued_documents.credit_notes.update
+                        - it.fattureincloud.issued_documents.credit_notes.delete
+                        - it.fattureincloud.issued_documents.orders.create
+                        - it.fattureincloud.issued_documents.orders.update
+                        - it.fattureincloud.issued_documents.orders.delete
+                        - it.fattureincloud.issued_documents.work_reports.create
+                        - it.fattureincloud.issued_documents.work_reports.update
+                        - it.fattureincloud.issued_documents.work_reports.delete
+                        - >-
+                          it.fattureincloud.issued_documents.supplier_orders.create
+                        - >-
+                          it.fattureincloud.issued_documents.supplier_orders.update
+                        - >-
+                          it.fattureincloud.issued_documents.supplier_orders.delete
+                        - >-
+                          it.fattureincloud.issued_documents.self_invoices.create
+                        - >-
+                          it.fattureincloud.issued_documents.self_invoices.update
+                        - >-
+                          it.fattureincloud.issued_documents.self_invoices.delete
+                        - it.fattureincloud.issued_documents.all.create
+                        - it.fattureincloud.issued_documents.all.update
+                        - it.fattureincloud.issued_documents.all.delete
+                        - it.fattureincloud.received_documents.create
+                        - it.fattureincloud.received_documents.update
+                        - it.fattureincloud.received_documents.delete
+                        - it.fattureincloud.receipts.create
+                        - it.fattureincloud.receipts.update
+                        - it.fattureincloud.receipts.delete
+                        - it.fattureincloud.taxes.create
+                        - it.fattureincloud.taxes.update
+                        - it.fattureincloud.taxes.delete
+                        - it.fattureincloud.cashbook.create
+                        - it.fattureincloud.cashbook.update
+                        - it.fattureincloud.cashbook.delete
+                        - it.fattureincloud.products.create
+                        - it.fattureincloud.products.update
+                        - it.fattureincloud.products.delete
+                        - it.fattureincloud.entities.clients.create
+                        - it.fattureincloud.entities.clients.update
+                        - it.fattureincloud.entities.clients.delete
+                        - it.fattureincloud.entities.suppliers.create
+                        - it.fattureincloud.entities.suppliers.update
+                        - it.fattureincloud.entities.suppliers.delete
+                        - it.fattureincloud.entities.all.create
+                        - it.fattureincloud.entities.all.update
+                        - it.fattureincloud.entities.all.delete
+                        - it.fattureincloud.issued_documents.e_invoices
+                        - it.fattureincloud.received_documents.e_invoices
+          examples:
+            Example 1:
+              value:
+                data:
+                  id: SUB123
+                  sink: https://test.url
+                  verified: true
+                  types:
+                    - it.fattureincloud.issued_documents.invoices.create
+    ModifyWebhooksSubscriptionResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            title: CreateWebhooksSubscriptionRequest
+            type: object
+            properties:
+              data:
+                title: WebhooksSubscription
+                type: object
+                properties:
+                  id:
+                    type: string
+                    nullable: true
+                    description: Unique identifier
+                  sink:
+                    type: string
+                    nullable: true
+                    description: Webhooks callback uri.
+                  verified:
+                    type: boolean
+                    nullable: true
+                    description: >-
+                      [Read Only] True if the webhooks subscription has been
+                      verified.
+                  types:
+                    type: array
+                    nullable: true
+                    description: Webhooks events types.
+                    items:
+                      type: string
+                      title: EventType
+                      description: Event type.
+                      enum:
+                        - it.fattureincloud.issued_documents.invoices.create
+                        - it.fattureincloud.issued_documents.invoices.update
+                        - it.fattureincloud.issued_documents.invoices.delete
+                        - it.fattureincloud.issued_documents.quotes.create
+                        - it.fattureincloud.issued_documents.quotes.update
+                        - it.fattureincloud.issued_documents.quotes.delete
+                        - it.fattureincloud.issued_documents.proformas.create
+                        - it.fattureincloud.issued_documents.proformas.update
+                        - it.fattureincloud.issued_documents.proformas.delete
+                        - it.fattureincloud.issued_documents.receipts.create
+                        - it.fattureincloud.issued_documents.receipts.update
+                        - it.fattureincloud.issued_documents.receipts.delete
+                        - >-
+                          it.fattureincloud.issued_documents.delivery_notes.create
+                        - >-
+                          it.fattureincloud.issued_documents.delivery_notes.update
+                        - >-
+                          it.fattureincloud.issued_documents.delivery_notes.delete
+                        - it.fattureincloud.issued_documents.credit_notes.create
+                        - it.fattureincloud.issued_documents.credit_notes.update
+                        - it.fattureincloud.issued_documents.credit_notes.delete
+                        - it.fattureincloud.issued_documents.orders.create
+                        - it.fattureincloud.issued_documents.orders.update
+                        - it.fattureincloud.issued_documents.orders.delete
+                        - it.fattureincloud.issued_documents.work_reports.create
+                        - it.fattureincloud.issued_documents.work_reports.update
+                        - it.fattureincloud.issued_documents.work_reports.delete
+                        - >-
+                          it.fattureincloud.issued_documents.supplier_orders.create
+                        - >-
+                          it.fattureincloud.issued_documents.supplier_orders.update
+                        - >-
+                          it.fattureincloud.issued_documents.supplier_orders.delete
+                        - >-
+                          it.fattureincloud.issued_documents.self_invoices.create
+                        - >-
+                          it.fattureincloud.issued_documents.self_invoices.update
+                        - >-
+                          it.fattureincloud.issued_documents.self_invoices.delete
+                        - it.fattureincloud.issued_documents.all.create
+                        - it.fattureincloud.issued_documents.all.update
+                        - it.fattureincloud.issued_documents.all.delete
+                        - it.fattureincloud.received_documents.create
+                        - it.fattureincloud.received_documents.update
+                        - it.fattureincloud.received_documents.delete
+                        - it.fattureincloud.receipts.create
+                        - it.fattureincloud.receipts.update
+                        - it.fattureincloud.receipts.delete
+                        - it.fattureincloud.taxes.create
+                        - it.fattureincloud.taxes.update
+                        - it.fattureincloud.taxes.delete
+                        - it.fattureincloud.cashbook.create
+                        - it.fattureincloud.cashbook.update
+                        - it.fattureincloud.cashbook.delete
+                        - it.fattureincloud.products.create
+                        - it.fattureincloud.products.update
+                        - it.fattureincloud.products.delete
+                        - it.fattureincloud.entities.clients.create
+                        - it.fattureincloud.entities.clients.update
+                        - it.fattureincloud.entities.clients.delete
+                        - it.fattureincloud.entities.suppliers.create
+                        - it.fattureincloud.entities.suppliers.update
+                        - it.fattureincloud.entities.suppliers.delete
+                        - it.fattureincloud.entities.all.create
+                        - it.fattureincloud.entities.all.update
+                        - it.fattureincloud.entities.all.delete
+                        - it.fattureincloud.issued_documents.e_invoices
+                        - it.fattureincloud.received_documents.e_invoices
+              warnings:
+                type: array
+                nullable: true
+                description: Webhooks registration warnings
+                items:
+                  type: string
+          examples:
+            Example 1:
+              value:
+                data:
+                  id: SUB12345
+                  sink: http://www.test.com
+                  verified: true
+                  types:
+                    - it.fattureincloud.entities.create
+                    - it.fattureincloud.issued_documents.create
+                warnings: >-
+                  The 'it.fattureincloud.entities.clients.delete' event is
+                  already registered for this application
 security:
   - OAuth2AuthenticationCodeFlow: []
