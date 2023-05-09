@@ -19,10 +19,7 @@ properties:
     nullable: true
   body:
     type: string
-    description: >- 
-      Email body
-      [HTML Escaped]
-      [max size 50KiB]
+    description: Email body [HTML Escaped] [max size 50KiB]
     nullable: true
   include:
     type: object

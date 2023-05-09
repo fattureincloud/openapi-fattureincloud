@@ -4,49 +4,65 @@ description: ''
 properties:
   id:
     type: integer
+    nullable: true
     description: Email unique identifier.
   status:
     $ref: ../enums/EmailStatus.yaml
+    nullable: true
   sent_date:
     type: string
     format: date-time
+    nullable: true
     description: Email sent date.
   errors_count:
     type: integer
+    nullable: true
     description: Errors count.
   error_log:
     type: string
+    nullable: true
     description: Error log.
   from_email:
     type: string
+    nullable: true
     description: Sender email.
   from_name:
     type: string
+    nullable: true
     description: Sender name.
   to_email:
     type: string
+    nullable: true
     description: Recipient email.
   to_name:
     type: string
+    nullable: true
     description: Receipient email.
   subject:
     type: string
+    nullable: true
     description: Email subject.
   content:
     type: string
+    nullable: true
     description: Email content.
   copy_to:
     type: string
+    nullable: true
   recipient_status:
     $ref: ../enums/EmailRecipientStatus.yaml
+    nullable: true
   recipient_date:
     type: string
     format: date-time
+    nullable: true
   kind:
     type: string
+    nullable: true
     description: Email kind.
   attachments:
     type: array
+    nullable: true
     description: Email attachments.
     items:
       $ref: ./EmailAttachment.yaml

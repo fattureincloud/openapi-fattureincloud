@@ -3008,8 +3008,8 @@ paths:
                   data:
                     sink: http://www.test.com
                     types:
-                      - it.fattureincloud.entities.create
-                      - it.fattureincloud.issued_documents.create
+                      - it.fattureincloud.webhooks.entities.create
+                      - it.fattureincloud.webhooks.issued_documents.create
         description: ''
       description: Register some webhooks Subscriptions.
       security:
@@ -8820,10 +8820,10 @@ components:
                   sink: http://www.test.com
                   verified: true
                   types:
-                    - it.fattureincloud.entities.create
-                    - it.fattureincloud.issued_documents.create
+                    - it.fattureincloud.webhooks.entities.create
+                    - it.fattureincloud.webhooks.issued_documents.create
                 warnings: >-
-                  The 'it.fattureincloud.entities.clients.delete' event is
+                  The 'it.fattureincloud.webhooks.entities.clients.delete' event is
                   already registered for this application
     ListWebhooksSubscriptionsResponse:
       description: Example response
@@ -8839,13 +8839,13 @@ components:
                     sink: https://www.testurl.com/endpoint
                     verified: true
                     types:
-                      - it.fattureincloud.issued_documents.create
-                      - it.fattureincloud.issued_documents.update
+                      - it.fattureincloud.webhooks.issued_documents.create
+                      - it.fattureincloud.webhooks.issued_documents.update
                   - id: SUB12346
                     sink: https://www.testurl.com/endpoint2
                     verified: true
                     types:
-                      - it.fattureincloud.issued_documents.delete
+                      - it.fattureincloud.webhooks.issued_documents.delete
     GetWebhooksSubscriptionResponse:
       description: Example response
       content:
@@ -8860,7 +8860,7 @@ components:
                   sink: https://test.url
                   verified: true
                   types:
-                    - it.fattureincloud.issued_documents.invoices.create
+                    - it.fattureincloud.webhooks.issued_documents.invoices.create
     ModifyWebhooksSubscriptionResponse:
       description: Example response
       content:
@@ -8875,10 +8875,10 @@ components:
                   sink: http://www.test.com
                   verified: true
                   types:
-                    - it.fattureincloud.entities.create
-                    - it.fattureincloud.issued_documents.create
+                    - it.fattureincloud.webhooks.entities.create
+                    - it.fattureincloud.webhooks.issued_documents.create
                 warnings: >-
-                  The 'it.fattureincloud.entities.clients.delete' event is
+                  The 'it.fattureincloud.webhooks.entities.clients.delete' event is
                   already registered for this application
 security:
   - OAuth2AuthenticationCodeFlow: []
