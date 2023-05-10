@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.0.28 (2023-05-09)
+
+
+### Improvements
+
+* fixed event types ([#670](https://github.com/fattureincloud/openapi-fattureincloud/issues/670)) ([dd59fae](https://github.com/fattureincloud/openapi-fattureincloud/commit/dd59faedceccb546b0deb9a0458d949c6ae3239b)), closes [#602](https://github.com/fattureincloud/openapi-fattureincloud/issues/602) [#613](https://github.com/fattureincloud/openapi-fattureincloud/issues/613) [#605](https://github.com/fattureincloud/openapi-fattureincloud/issues/605) [#604](https://github.com/fattureincloud/openapi-fattureincloud/issues/604) [#616](https://github.com/fattureincloud/openapi-fattureincloud/issues/616) [#617](https://github.com/fattureincloud/openapi-fattureincloud/issues/617) [#619](https://github.com/fattureincloud/openapi-fattureincloud/issues/619) [#621](https://github.com/fattureincloud/openapi-fattureincloud/issues/621) [#622](https://github.com/fattureincloud/openapi-fattureincloud/issues/622) [#624](https://github.com/fattureincloud/openapi-fattureincloud/issues/624) [#625](https://github.com/fattureincloud/openapi-fattureincloud/issues/625) [#626](https://github.com/fattureincloud/openapi-fattureincloud/issues/626) [#634](https://github.com/fattureincloud/openapi-fattureincloud/issues/634) [#635](https://github.com/fattureincloud/openapi-fattureincloud/issues/635) [#636](https://github.com/fattureincloud/openapi-fattureincloud/issues/636) [#637](https://github.com/fattureincloud/openapi-fattureincloud/issues/637) [#655](https://github.com/fattureincloud/openapi-fattureincloud/issues/655) [#646](https://github.com/fattureincloud/openapi-fattureincloud/issues/646) [#654](https://github.com/fattureincloud/openapi-fattureincloud/issues/654) [#657](https://github.com/fattureincloud/openapi-fattureincloud/issues/657) [#660](https://github.com/fattureincloud/openapi-fattureincloud/issues/660) [#666](https://github.com/fattureincloud/openapi-fattureincloud/issues/666) [#671](https://github.com/fattureincloud/openapi-fattureincloud/issues/671) [#672](https://github.com/fattureincloud/openapi-fattureincloud/issues/672) [#673](https://github.com/fattureincloud/openapi-fattureincloud/issues/673)
 
 ### 2.0.27 (2023-05-04)
 
