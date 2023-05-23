@@ -1,0 +1,94 @@
+const _ = require('lodash')
+const utils = require('../utils/utils');
+{{#models}}
+{{#model}}
+{{#vars}}{{^isPrimitiveType}}const {{complexType}} = require('./{{complexType}}').fields;{{^allowableValues}}
+const {{complexType}}Mapping = require('./{{complexType}}').mapping;{{/allowableValues}}
+{{/isPrimitiveType}}{{/vars}}
+{{/model}}
+{{/models}}
+{{#models}}
+{{#model}}
+{{#isEnum}}
+module.exports = {
+    fields: {
+        label: '{{description}}',
+        choices: [
+            {{#allowableValues}}
+            {{#values}}
+            '{{.}}',
+            {{/values}}
+            {{/allowableValues}}
+        ],
+    }
+}
+{{/isEnum}}
+{{^isEnum}}
+module.exports = {
+    fields: (prefix = '') => {
+        let keyPrefix = ''
+        let labelPrefix = ''
+        if(prefix) {
+            keyPrefix = prefix + '.'
+        }
+        labelPrefix = keyPrefix.replaceAll('.', ' ')
+        return [
+            {{#vars}}
+            {{#isPrimitiveType}}
+            {
+                key: keyPrefix + '{{name}}',
+                label: labelPrefix + '{{description}}',
+                {{#isArray}}
+                list: true,
+                type: '{{#items}}{{baseType}}{{/items}}',
+                {{/isArray}}
+                {{^isArray}}
+                type: '{{#isInteger}}integer{{/isInteger}}{{^isInteger}}{{#isNumeric}}number{{/isNumeric}}{{/isInteger}}{{#isString}}string{{/isString}}{{#isBoolean}}boolean{{/isBoolean}}{{#isDateTime}}datetime{{/isDateTime}}{{#isDate}}datetime{{/isDate}}{{#isFile}}file{{/isFile}}',
+                {{/isArray}}
+                {{#isEnum}}
+                choices: [
+                    {{#_enum}}
+                    '{{.}}',
+                    {{/_enum}}
+                ],
+                {{/isEnum}}
+            },
+            {{/isPrimitiveType}}
+            {{^isPrimitiveType}}
+            {{#isArray}}
+            {
+                key: keyPrefix + '{{name}}',{{#items}}{{^isEnumRef}}
+                label: labelPrefix + '{{description}}',
+                children: {{complexType}}(keyPrefix + '{{name}}'), {{/isEnumRef}}{{#isEnumRef}}
+                list: true,
+                type: 'string',
+                ...{{complexType}},{{/isEnumRef}}{{/items}}
+            },
+            {{/isArray}}
+            {{^isArray}}
+            {{^allowableValues}}
+            ...{{complexType}}(keyPrefix + '{{name}}'),
+            {{/allowableValues}}
+            {{#allowableValues}}
+            {
+                key: keyPrefix + '{{name}}',
+                ...{{complexType}},
+            },
+            {{/allowableValues}}
+            {{/isArray}}
+            {{/isPrimitiveType}}
+            {{/vars}}
+        ]
+    },
+    mapping: (bundle, prefix = '') => {
+        let keyPrefix = prefix && `${prefix}.`
+        return {
+            {{#vars}}
+            '{{name}}': {{#isPrimitiveType}}bundle.inputData?.[keyPrefix + '{{name}}']{{/isPrimitiveType}}{{^isPrimitiveType}}{{^allowableValues}}{{^isArray}}utils.removeIfEmpty({{complexType}}Mapping(bundle, keyPrefix + '{{name}}')){{/isArray}}{{#isArray}}utils.removeKeyPrefixes(bundle.inputData?.[keyPrefix + '{{name}}']){{/isArray}}{{/allowableValues}}{{#allowableValues}}bundle.inputData?.[keyPrefix + '{{name}}']{{/allowableValues}}{{/isPrimitiveType}},
+            {{/vars}}
+        }
+    },
+}
+{{/isEnum}}
+{{/model}}
+{{/models}}
