@@ -1,7 +1,7 @@
 const authentication = require('./authentication');
 {{#apiInfo}}
 {{#apis}}
-const {{classname}} = require('.{{apiPackage}}/{{classname}}');
+const {{classname}} = require('./{{apiPackage}}/{{classname}}');
 {{/apis}}
 {{/apiInfo}}
 
@@ -10,7 +10,7 @@ module.exports = {
     platformVersion: require('zapier-platform-core').version,
     authentication: authentication,
     {{#apiInfo}}
-    searchOrCreates: {
+    creates: {
     {{#apis}}
     {{#operations}}
     {{#operation}}

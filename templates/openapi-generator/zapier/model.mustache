@@ -2,9 +2,9 @@ const _ = require('lodash')
 const utils = require('../utils/utils');
 {{#models}}
 {{#model}}
-{{#vars}}{{^isPrimitiveType}}const {{complexType}} = require('./{{complexType}}').fields;{{^allowableValues}}
+{{#vars}}{{^isPrimitiveType}}{{^isFreeFormObject}}const {{complexType}} = require('./{{complexType}}').fields;{{^allowableValues}}
 const {{complexType}}Mapping = require('./{{complexType}}').mapping;{{/allowableValues}}
-{{/isPrimitiveType}}{{/vars}}
+{{/isFreeFormObject}}{{/isPrimitiveType}}{{/vars}}
 {{/model}}
 {{/models}}
 {{#models}}
@@ -36,7 +36,7 @@ module.exports = {
             {{#vars}}
             {{#isPrimitiveType}}
             {
-                key: keyPrefix + '{{name}}',
+                key: keyPrefix + '{{baseName}}',
                 label: labelPrefix + '{{description}}',
                 {{#isArray}}
                 list: true,
@@ -57,9 +57,9 @@ module.exports = {
             {{^isPrimitiveType}}
             {{#isArray}}
             {
-                key: keyPrefix + '{{name}}',{{#items}}{{^isEnumRef}}
+                key: keyPrefix + '{{baseName}}',{{#items}}{{^isEnumRef}}
                 label: labelPrefix + '{{description}}',
-                children: {{complexType}}(keyPrefix + '{{name}}'), {{/isEnumRef}}{{#isEnumRef}}
+                children: {{complexType}}(keyPrefix + '{{baseName}}'), {{/isEnumRef}}{{#isEnumRef}}
                 list: true,
                 type: 'string',
                 ...{{complexType}},{{/isEnumRef}}{{/items}}
@@ -67,11 +67,20 @@ module.exports = {
             {{/isArray}}
             {{^isArray}}
             {{^allowableValues}}
-            ...{{complexType}}(keyPrefix + '{{name}}'),
+            {{#isFreeFormObject}}
+            {
+                key: keyPrefix + '{{baseName}}',
+                label: labelPrefix + '{{description}}',
+                dict: true,
+            },
+            {{/isFreeFormObject}}
+            {{^isFreeFormObject}}
+            ...{{complexType}}(keyPrefix + '{{baseName}}'),
+            {{/isFreeFormObject}}
             {{/allowableValues}}
             {{#allowableValues}}
             {
-                key: keyPrefix + '{{name}}',
+                key: keyPrefix + '{{baseName}}',
                 ...{{complexType}},
             },
             {{/allowableValues}}
@@ -84,7 +93,7 @@ module.exports = {
         let keyPrefix = prefix && `${prefix}.`
         return {
             {{#vars}}
-            '{{name}}': {{#isPrimitiveType}}bundle.inputData?.[keyPrefix + '{{name}}']{{/isPrimitiveType}}{{^isPrimitiveType}}{{^allowableValues}}{{^isArray}}utils.removeIfEmpty({{complexType}}Mapping(bundle, keyPrefix + '{{name}}')){{/isArray}}{{#isArray}}utils.removeKeyPrefixes(bundle.inputData?.[keyPrefix + '{{name}}']){{/isArray}}{{/allowableValues}}{{#allowableValues}}bundle.inputData?.[keyPrefix + '{{name}}']{{/allowableValues}}{{/isPrimitiveType}},
+            '{{baseName}}': {{#isPrimitiveType}}bundle.inputData?.[keyPrefix + '{{baseName}}']{{/isPrimitiveType}}{{^isPrimitiveType}}{{^allowableValues}}{{^isArray}}{{#isFreeFormObject}}bundle.inputData?.[keyPrefix + '{{baseName}}']{{/isFreeFormObject}}{{^isFreeFormObject}}utils.removeIfEmpty({{complexType}}Mapping(bundle, keyPrefix + '{{baseName}}')){{/isFreeFormObject}}{{/isArray}}{{#isArray}}utils.removeKeyPrefixes(bundle.inputData?.[keyPrefix + '{{baseName}}']){{/isArray}}{{/allowableValues}}{{#allowableValues}}bundle.inputData?.[keyPrefix + '{{baseName}}']{{/allowableValues}}{{/isPrimitiveType}},
             {{/vars}}
         }
     },

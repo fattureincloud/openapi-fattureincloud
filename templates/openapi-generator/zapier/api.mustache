@@ -31,7 +31,7 @@ module.exports = {
                 {{#allParams}}
                 {{#isPrimitiveType}}
                 {
-                    key: '{{paramName}}',
+                    key: '{{baseName}}',
                     label: '{{description}}',
                     type: '{{#isInteger}}integer{{/isInteger}}{{^isInteger}}{{#isNumeric}}number{{/isNumeric}}{{/isInteger}}{{#isString}}string{{/isString}}{{#isBoolean}}boolean{{/isBoolean}}{{#isDateTime}}datetime{{/isDateTime}}{{#isDate}}datetime{{/isDate}}{{#isFile}}file{{/isFile}}',
                     {{#isEnum}}
@@ -68,14 +68,14 @@ module.exports = {
                     params: {
                     {{#allParams}}
                     {{#isQueryParam}}
-                        '{{paramName}}': bundle.inputData?.['{{paramName}}'],
+                        '{{baseName}}': bundle.inputData?.['{{baseName}}'],
                     {{/isQueryParam}}
                     {{/allParams}}
                     },
                     body: {
                     {{#allParams}}
                     {{#isBodyParam}}
-                        {{#isPrimitiveType}}'{{paramName}}': bundle.inputData?.['{{paramName}}']{{/isPrimitiveType}}{{^isPrimitiveType}}...{{paramName}}Mapping(bundle){{/isPrimitiveType}},
+                        {{#isPrimitiveType}}'{{baseName}}': bundle.inputData?.['{{baseName}}']{{/isPrimitiveType}}{{^isPrimitiveType}}...{{baseName}}Mapping(bundle){{/isPrimitiveType}},
                     {{/isBodyParam}}
                     {{/allParams}}
                     },
