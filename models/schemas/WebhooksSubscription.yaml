@@ -19,3 +19,5 @@ properties:
     description: Webhooks events types.
     items:
       $ref: ../enums/EventType.yaml
+  config:
+    $ref: ./WebhooksSubscriptionConfig.yaml

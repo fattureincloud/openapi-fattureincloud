@@ -1,0 +1,6 @@
+title: WebhooksSubscriptionConfig
+type: object
+properties:
+  mapping:
+    $ref: ../enums/WebhooksSubscriptionMapping.yaml
+    description: Determines the webhook payload shape.
