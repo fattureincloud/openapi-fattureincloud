@@ -34,6 +34,9 @@ module.exports = {
                     key: '{{baseName}}',
                     label: '{{description}}',
                     type: '{{#isInteger}}integer{{/isInteger}}{{^isInteger}}{{#isNumeric}}number{{/isNumeric}}{{/isInteger}}{{#isString}}string{{/isString}}{{#isBoolean}}boolean{{/isBoolean}}{{#isDateTime}}datetime{{/isDateTime}}{{#isDate}}datetime{{/isDate}}{{#isFile}}file{{/isFile}}',
+                    {{#required}}
+                    required: true,
+                    {{/required}}
                     {{#isEnum}}
                     choices: [
                         {{#_enum}}
