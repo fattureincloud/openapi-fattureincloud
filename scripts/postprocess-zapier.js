@@ -1,7 +1,8 @@
 const fs = require('fs')
+const path = require("path");
 
-let path = process.argv[2]
-postProcessZapierFolder(path)
+let filePath = process.argv[2]
+postProcessZapierFolder(filePath)
 
 function postProcessZapierFolder(dir)
 {
@@ -37,6 +38,11 @@ function postProcessZapierFolder(dir)
           'label: labelPrefix + \'\',',
           ''
         )
+
+        if (path.basename(dir) == 'apis') {
+          // add triggers
+          result = addTriggers(result)
+        }
         
         // change extension
         let filename = file.replace('.md', '.js')
@@ -59,4 +65,20 @@ function postProcessZapierFolder(dir)
       })
     }
   })
+}
+
+const triggers = [
+  {key: 'company_id', trigger: 'listUserCompaniesTrigger.id.name'}
+]
+
+function addTriggers(file)
+{
+  triggers.forEach(trigger => {
+    file = file.replaceAll(
+      `key: '${trigger.key}',`,
+      `key: '${trigger.key}',
+                    dynamic: '${trigger.trigger}',`
+    )
+  });
+  return file
 }
