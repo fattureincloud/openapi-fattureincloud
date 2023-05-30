@@ -11,33 +11,30 @@ const {{complexType}}Mapping = require('./{{complexType}}').mapping;{{/allowable
 {{#model}}
 {{#isEnum}}
 module.exports = {
-    fields: {
-        label: '{{description}}',
-        choices: [
-            {{#allowableValues}}
-            {{#values}}
-            '{{.}}',
-            {{/values}}
-            {{/allowableValues}}
-        ],
+        fields: (key) => (
+            {
+                label: `{{#description}}{{.}} - {{/description}}[${key}]`,
+                choices: [
+                    {{#allowableValues}}
+                    {{#values}}
+                    '{{.}}',
+                    {{/values}}
+                    {{/allowableValues}}
+                ],
+            }
+        )
     }
-}
 {{/isEnum}}
 {{^isEnum}}
 module.exports = {
     fields: (prefix = '') => {
-        let keyPrefix = ''
-        let labelPrefix = ''
-        if(prefix) {
-            keyPrefix = prefix + '.'
-        }
-        labelPrefix = keyPrefix.replaceAll('.', ' ')
+        let keyPrefix = prefix && `${prefix}.`
         return [
             {{#vars}}
             {{#isPrimitiveType}}
             {
-                key: keyPrefix + '{{baseName}}',
-                label: labelPrefix + '{{description}}',
+                key: `${keyPrefix}{{baseName}}`,
+                label: `{{#description}}{{.}} - {{/description}}[${keyPrefix}{{baseName}}]`,
                 {{#isArray}}
                 list: true,
                 type: '{{#items}}{{baseType}}{{/items}}',
@@ -57,31 +54,31 @@ module.exports = {
             {{^isPrimitiveType}}
             {{#isArray}}
             {
-                key: keyPrefix + '{{baseName}}',{{#items}}{{^isEnumRef}}
-                label: labelPrefix + '{{description}}',
-                children: {{complexType}}(keyPrefix + '{{baseName}}'), {{/isEnumRef}}{{#isEnumRef}}
+                key: `${keyPrefix}{{baseName}}`,{{#items}}{{^isEnumRef}}
+                label: `${keyPrefix}{{baseName}}]`,
+                children: {{complexType}}(`${keyPrefix}{{baseName}}`), {{/isEnumRef}}{{#isEnumRef}}
                 list: true,
                 type: 'string',
-                ...{{complexType}},{{/isEnumRef}}{{/items}}
+                ...{{complexType}}(`${keyPrefix}{{baseName}}`),{{/isEnumRef}}{{/items}}
             },
             {{/isArray}}
             {{^isArray}}
             {{^allowableValues}}
             {{#isFreeFormObject}}
             {
-                key: keyPrefix + '{{baseName}}',
-                label: labelPrefix + '{{description}}',
+                key: `${keyPrefix}{{baseName}}`,
+                label: `{{#description}}{{.}} - {{/description}}[${keyPrefix}{{baseName}}]`,
                 dict: true,
             },
             {{/isFreeFormObject}}
             {{^isFreeFormObject}}
-            ...{{complexType}}(keyPrefix + '{{baseName}}'),
+            ...{{complexType}}(`${keyPrefix}{{baseName}}`),
             {{/isFreeFormObject}}
             {{/allowableValues}}
             {{#allowableValues}}
             {
-                key: keyPrefix + '{{baseName}}',
-                ...{{complexType}},
+                key: `${keyPrefix}{{baseName}}`,
+                ...{{complexType}}(`${keyPrefix}{{baseName}}`),
             },
             {{/allowableValues}}
             {{/isArray}}
@@ -93,7 +90,7 @@ module.exports = {
         let keyPrefix = prefix && `${prefix}.`
         return {
             {{#vars}}
-            '{{baseName}}': {{#isPrimitiveType}}bundle.inputData?.[keyPrefix + '{{baseName}}']{{/isPrimitiveType}}{{^isPrimitiveType}}{{^allowableValues}}{{^isArray}}{{#isFreeFormObject}}bundle.inputData?.[keyPrefix + '{{baseName}}']{{/isFreeFormObject}}{{^isFreeFormObject}}utils.removeIfEmpty({{complexType}}Mapping(bundle, keyPrefix + '{{baseName}}')){{/isFreeFormObject}}{{/isArray}}{{#isArray}}utils.removeKeyPrefixes(bundle.inputData?.[keyPrefix + '{{baseName}}']){{/isArray}}{{/allowableValues}}{{#allowableValues}}bundle.inputData?.[keyPrefix + '{{baseName}}']{{/allowableValues}}{{/isPrimitiveType}},
+            '{{baseName}}': {{#isPrimitiveType}}bundle.inputData?.[`${keyPrefix}{{baseName}}`]{{/isPrimitiveType}}{{^isPrimitiveType}}{{^allowableValues}}{{^isArray}}{{#isFreeFormObject}}bundle.inputData?.[`${keyPrefix}{{baseName}}`]{{/isFreeFormObject}}{{^isFreeFormObject}}utils.removeIfEmpty({{complexType}}Mapping(bundle, `${keyPrefix}{{baseName}}`)){{/isFreeFormObject}}{{/isArray}}{{#isArray}}utils.removeKeyPrefixes(bundle.inputData?.[`${keyPrefix}{{baseName}}`]){{/isArray}}{{/allowableValues}}{{#allowableValues}}bundle.inputData?.[`${keyPrefix}{{baseName}}`]{{/allowableValues}}{{/isPrimitiveType}},
             {{/vars}}
         }
     },
