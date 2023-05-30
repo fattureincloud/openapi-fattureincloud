@@ -46,7 +46,7 @@ function postProcessZapierFolder(dir)
         
         // change extension
         let filename = file.replace('.md', '.js')
-        if(file == 'README.md') filename = 'index.js'
+        if(file == 'README.md') filename = 'operations/actions.js'
   
         fs.writeFile(dir + filename, result, 'utf8', function (err) {
           if (err) {

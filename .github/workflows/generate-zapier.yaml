@@ -95,7 +95,7 @@ jobs:
         run: |
           rm -rf ./generated/zapier/apis
           rm -rf ./generated/zapier/models
-          rm -f ./generated/zapier/index.js
+          rm -f ./generated/zapier/actions.js
 
       - id: generate-zapier-integration
         name: Generate zapier integration

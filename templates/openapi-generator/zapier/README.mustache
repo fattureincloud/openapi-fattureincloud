@@ -1,23 +1,26 @@
-const authentication = require('./authentication');
 {{#apiInfo}}
 {{#apis}}
 const {{classname}} = require('./{{apiPackage}}/{{classname}}');
 {{/apis}}
 {{/apiInfo}}
+const { extractDataMiddleware } = require('../utils/utils');
 
-module.exports = {
-    version: require('./package.json').version,
-    platformVersion: require('zapier-platform-core').version,
-    authentication: authentication,
+const actions = {
     {{#apiInfo}}
-    creates: {
     {{#apis}}
     {{#operations}}
     {{#operation}}
-        [{{classname}}.{{operationId}}.key]: {{classname}}.{{operationId}},
+    [{{classname}}.{{operationId}}.key]: {{classname}}.{{operationId}},
     {{/operation}}
     {{/operations}}
     {{/apis}}
-    },
     {{/apiInfo}}
-};
+}
+
+const isSearchAction = key => key.startsWith('get') || key.startsWith('list')
+const hasASearchField = action => action.operation.inputFields.length > 0
+
+module.exports = {
+    searchActions: () => Object.entries(actions).reduce((actions, [key, value]) => isSearchAction(key) && hasASearchField(value) ? {...actions, [key]: extractDataMiddleware(value)} : actions, {}),
+    createActions: () => Object.entries(actions).reduce((actions, [key, value]) => !isSearchAction(key) ? {...actions, [key]: value} : actions, {}),
+}
