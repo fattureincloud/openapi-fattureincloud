@@ -17,7 +17,7 @@ const actions = {
     {{/apiInfo}}
 }
 
-const isSearchAction = key => key.startsWith('get') || key.startsWith('list')
+const isSearchAction = key => key.startsWith('get')
 const hasASearchField = action => action.operation.inputFields.length > 0
 
 module.exports = {
