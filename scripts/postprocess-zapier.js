@@ -29,16 +29,6 @@ function postProcessZapierFolder(dir)
           '_'
         )
 
-        // remove empty labels
-        result = result.replaceAll(
-          'label: \'\',',
-          ''
-        )
-        result = result.replaceAll(
-          'label: labelPrefix + \'\',',
-          ''
-        )
-
         if (path.basename(dir) == 'apis') {
           // add triggers
           result = addTriggers(result)
