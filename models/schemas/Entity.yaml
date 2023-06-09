@@ -121,25 +121,25 @@ properties:
     type: string
     description: |-
       [Only for client]
-      Bank name.
+      Client bank name
     nullable: true
   bank_iban:
     type: string
     description: |-
       [Only for client]
-      Iban.
+      Client bank iban
     nullable: true
   bank_swift_code:
     type: string
     description: |-
       [Only for client]
-      Bank swift code.
+      Client bank swift code
     nullable: true
   shipping_address:
     type: string
     description: |-
       [Only for client]
-      Shipping address.
+      Client Shipping address
     nullable: true
   e_invoice:
     type: boolean
@@ -163,14 +163,14 @@ properties:
     type: string
     description: |-
       [Only for client]
-      Intent declaration protocol number.
+      Client intent declaration protocol number
     nullable: true
   intent_declaration_protocol_date:
     type: string
     format: date
     description: |-
       [Only for client]
-      Intent declaration protocol date.
+      Client intent declaration protocol date
     nullable: true
   created_at:
     type: string
