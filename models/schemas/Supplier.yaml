@@ -1,103 +1,104 @@
 type: object
-description: ''
+title: Supplier
 properties:
   id:
     type: integer
-    description: Unique identifier
+    description: Supplier id
     nullable: true
   code:
     type: string
     example: '123'
-    description: Supplier code.
+    description: Supplier code
     nullable: true
   name:
     type: string
     example: Rossi S.r.l.
-    description: Supplier name.
+    description: Supplier name
     nullable: true
   type:
     $ref: ../enums/SupplierType.yaml
-    nullable: true
   first_name:
     type: string
-    description: Supplier first name.
+    description: Supplier first name
     nullable: true
   last_name:
     type: string
-    description: Supplier last name.
+    description: Supplier last name
     nullable: true
   contact_person:
     type: string
     nullable: true
+    description: Supplier contact person
   vat_number:
     type: string
     example: IT01234567890
-    description: Supplier vat number.
+    description: Supplier vat number
     nullable: true
   tax_code:
     type: string
     example: RSSMRA44A12E890Q
-    description: Supplier tax code.
+    description: Supplier tax code
     nullable: true
   address_street:
     type: string
     example: Via dei tigli, 12
-    description: Supplier street address.
+    description: Supplier street address
     nullable: true
   address_postal_code:
     type: string
     example: '24010'
-    description: Supplier postal code.
+    description: Supplier postal code
     nullable: true
   address_city:
     type: string
     example: Bergamo
-    description: Supplier city.
+    description: Supplier city
     nullable: true
   address_province:
     type: string
     example: BG
-    description: Supplier province.
+    description: Supplier province
     nullable: true
   address_extra:
     type: string
-    description: Supplier address extra info.
+    description: Supplier address extra info
     nullable: true
   country:
     type: string
     example: Italia
-    description: Supplier country.
+    description: Supplier country
     nullable: true
   email:
     type: string
     example: mario.rossi@example.it
-    description: Supplier email.
+    description: Supplier email
     nullable: true
   certified_email:
     type: string
     example: mario.rossi@pec.example.it
-    description: Supplier certified email.
+    description: Supplier certified email
     nullable: true
   phone:
     type: string
-    description: Supplier phone.
+    description: Supplier phone
     nullable: true
   fax:
     type: string
-    description: Supplier fax.
+    description: Supplier fax
     nullable: true
   notes:
     type: string
-    description: Supplier extra notes.
+    description: Supplier extra notes
     nullable: true
   bank_iban:
     type: string
-    description: Supplier bank IBAN.
+    description: Supplier bank IBAN
     nullable: true
   created_at:
     type: string
     nullable: true
+    description: Supplier creation date
   updated_at:
     type: string
     nullable: true
-title: Supplier
+    description: Supplier last update date

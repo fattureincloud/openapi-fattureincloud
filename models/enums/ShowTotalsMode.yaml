@@ -1,6 +1,6 @@
 title: ShowTotalsMode
 type: string
-description: Totals mode.
+description: Show totals mode
 default: all
 enum:
   - none

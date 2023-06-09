@@ -3,73 +3,76 @@ type: object
 properties:
   id:
     type: integer
-    description: Unique identifier.
+    description: Issued document item id
     nullable: true
   product_id:
     type: integer
     nullable: true
-    description: Unique identifier of the product.
+    description: Issued document item product id
     example: 1234
   code:
     type: string
-    description: Product code.
+    description: Issued document item product code
     example: '239874892374982'
     nullable: true
   name:
     type: string
-    description: Product name.
+    description: Issued document item product name
     example: Water bottle
     nullable: true
   category:
     type: string
-    description: Product category
+    description: Issued document item product category
     nullable: true
   description:
     type: string
-    description: Product description.
+    description: Issued document product description
     nullable: true
   qty:
     type: number
-    description: Items quantity,
+    description: Issued document item quantity
     nullable: true
   measure:
     type: string
-    description: Item measure.
+    description: Issued document item measure
     nullable: true
   net_price:
     type: number
-    description: Net price.
+    description: Issued document item net price
     example: 1.23
     nullable: true
   gross_price:
     type: number
     nullable: true
-    description: Gross price.
     example: 1.45
+    description: Issued document item gross price
   vat:
     $ref: ./VatType.yaml
-    nullable: true
   not_taxable:
     type: boolean
     nullable: true
+    description: Issued document item is not taxable
   apply_withholding_taxes:
     type: boolean
-    description: Apply withholding taxes, rivalsa and cassa.
+    description: Issued document item apply withholding taxes, rivalsa and cassa
     nullable: true
   discount:
     type: number
-    description: Discount percentual value.
+    description: Issued document item discount percentual value
     nullable: true
   discount_highlight:
     type: boolean
     nullable: true
+    description: Issued document item highlight discount
   in_dn:
     type: boolean
     nullable: true
+    description: Issued document item add in delivery note
   stock:
     type: boolean
     nullable: true
+    description: Issued document item move stock
   ei_raw:
     type: object
-    description: Advanced raw attributes for e-invoices.
+    description: Issued document advanced raw attributes for e-invoices
     nullable: true

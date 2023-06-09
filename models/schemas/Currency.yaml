@@ -1,24 +1,23 @@
 type: object
-description: ''
+title: Currency
 properties:
   id:
     type: string
-    description: Currency code.
+    description: Currency code
     example: EUR
     nullable: true
   symbol:
     type: string
-    description: Currency symbol.
+    description: Currency symbol
     example: €
     nullable: true
   exchange_rate:
     type: string
     nullable: true
-    description: Currency exchange rate (EUR to this).
+    description: Currency exchange rate (EUR to this)
     example: '1'
   html_symbol:
     type: string
     example: EUR
-    description: Currency html code.
+    description: Currency html code
     nullable: true
-title: Currency

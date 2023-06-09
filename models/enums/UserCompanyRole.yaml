@@ -1,6 +1,6 @@
 title: UserCompanyRole
 type: string
-description: Role of the user in this company.
+description: User company role
 enum:
   - master
   - subaccount

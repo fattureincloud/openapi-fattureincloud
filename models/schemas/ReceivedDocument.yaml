@@ -3,92 +3,91 @@ title: ReceivedDocument
 properties:
   id:
     type: integer
-    description: Unique identifier of the document.
     nullable: true
+    description: Received document id
   type:
     $ref: ../enums/ReceivedDocumentType.yaml
-    nullable: true
   entity:
     $ref: ./Entity.yaml
-    nullable: true
   date:
     type: string
-    description: Date of the document [If not specified, today date is used].
+    description: Received document date [defaults to today's date]
     format: date
     nullable: true
   category:
     type: string
     nullable: true
-    description: Document category.
+    description: Received document category
   description:
     type: string
-    description: Document description.
+    description: Received document description
     nullable: true
   amount_net:
     type: number
-    description: Total net amount.
+    description: Received document total net amount
     nullable: true
   amount_vat:
     type: number
-    description: Total vat amount.
+    description: Received document total vat amount
     nullable: true
   amount_withholding_tax:
     type: number
-    description: Withholding tax amount.
+    description: Received document withholding tax amount
     nullable: true
   amount_other_withholding_tax:
     type: number
-    description: Other withholding tax amount.
+    description: Received document other withholding tax amount
     nullable: true
   amount_gross:
     type: number
     description: |-
       [Read Only]
-      Total gross amount.
-    readOnly: true
+      Received document total gross amount
     nullable: true
+    readOnly: true
   amortization:
     type: number
-    description: Amortization value
+    description: Received document amortization value
     nullable: true
   rc_center:
     type: string
-    description: Revenue center.
+    description: Received document revenue center
     nullable: true
   invoice_number:
     type: string
-    description: Invoice number
+    description: Received document invoice number
     nullable: true
   is_marked:
     type: boolean
     nullable: true
+    description: Received document is marked
   is_detailed:
     type: boolean
     nullable: true
+    description: Received document has items
   e_invoice:
     type: boolean
     description: |-
       [Read Only]
-      Indicates if this is an e-invoice.
+      Received document is an e-invoice
     nullable: true
   next_due_date:
     type: string
     nullable: true
     description: |-
       [Read Only]
-      Next due date.
+      Received document date of the next not paid payment
     format: date
     readOnly: true
   currency:
     $ref: ./Currency.yaml
-    nullable: true
   tax_deductibility:
     type: number
-    description: Tax deducibility percentage.
+    description: Received document tax deducibility percentage
     nullable: true
   vat_deductibility:
     type: number
-    description: Vat deducibility percentage.
+    description: Received document vat deducibility percentage
     nullable: true
   items_list:
     type: array
@@ -97,42 +96,44 @@ properties:
       $ref: ./ReceivedDocumentItemsListItem.yaml
   payments_list:
     type: array
+    nullable: true
     items:
       $ref: ./ReceivedDocumentPaymentsListItem.yaml
-    nullable: true
   attachment_url:
     type: string
     description: |-
       [Temporary]
       [Read Only]
-
-      Public url of the attached file. Authomatically set if a valid attachment
-      token is passed via POST /received_documents or PUT
-      /received_documents/{documentId}.
-    readOnly: true
+      Received document url of the attached file
     nullable: true
+    readOnly: true
   attachment_preview_url:
     type: string
     description: |-
       [Temporary]
       [Read Only]
-
-      Attachment preview url.
-    readOnly: true
+      Received document url of the attachment preview
     nullable: true
+    readOnly: true
   auto_calculate:
     type: boolean
     description: >-
-      If set to false total items amount and total payments amount can be
-      different.
+      Received document total items amount and total payments amount can differ
+      if this field is set to false
     nullable: true
   attachment_token:
     type: string
     nullable: true
-    description: Uploaded attachement token.
+    description: >-
+      [Write Only]
+
+      Received document attachment token returned by POST
+      /received_documents/attachment
   created_at:
     type: string
     nullable: true
+    description: Received document creation date
   updated_at:
     type: string
     nullable: true
+    description: Received document last update date

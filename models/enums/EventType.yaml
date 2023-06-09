@@ -1,6 +1,6 @@
 type: string
 title: EventType
-description: Event type.
+description: Webhooks event type
 enum:
   - it.fattureincloud.webhooks.issued_documents.invoices.create
   - it.fattureincloud.webhooks.issued_documents.invoices.update

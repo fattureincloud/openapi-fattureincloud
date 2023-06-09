@@ -3,11 +3,11 @@ type: object
 properties:
   reason:
     type: string
-    description: Rejection reason.
+    description: E-invoice rejection reason
     nullable: true
   ei_status:
     type: string
-    description: E-invoice status.
+    description: E-invoice status
     nullable: true
   solution:
     type: string
@@ -15,10 +15,10 @@ properties:
     nullable: true
   code:
     type: string
-    description: Error code.
+    description: E-invoice rejection error code
     nullable: true
   date:
     type: string
     format: date-time
-    description: Rejection date.
+    description: E-invoice rejection date
     nullable: true

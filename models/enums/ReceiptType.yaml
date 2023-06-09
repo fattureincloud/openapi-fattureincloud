@@ -3,4 +3,4 @@ title: ReceiptType
 enum:
   - till_receipt
   - sales_receipt
-description: Receipt type.
+description: Receipt type

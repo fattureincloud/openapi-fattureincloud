@@ -3,67 +3,68 @@ title: IssuedDocumentTotals
 properties:
   amount_net:
     type: number
-    description: Total net amount.
+    description: Issued document total net amount
     nullable: true
   amount_rivalsa:
     type: number
-    description: Rivalsa amount.
+    description: Issued document rivalsa amount
     nullable: true
   amount_net_with_rivalsa:
     type: number
-    description: Net amount with rivalsa.
+    description: Issued document net amount with rivalsa
     nullable: true
   amount_cassa:
     type: number
-    description: Cassa amount.
+    description: Issued document cassa amount
     nullable: true
   taxable_amount:
     type: number
-    description: Taxable amount.
     nullable: true
+    description: Issued document taxable amount
   not_taxable_amount:
     type: number
-    description: Not taxable amount.
+    description: Issued document not taxable amount
     nullable: true
   amount_vat:
     type: number
-    description: Total vat amount.
+    description: Issued document total vat amount
     nullable: true
   amount_gross:
     type: number
-    description: Total grosas amount.
+    description: Issued document total gross amount
     nullable: true
   taxable_amount_withholding_tax:
     type: number
-    description: Taxable withholding tax amount.
+    description: Issued document Taxable withholding tax amount
     nullable: true
   amount_withholding_tax:
     type: number
-    description: Withholding tax amount.
+    description: Issued document withholding tax amount
     nullable: true
   taxable_amount_other_withholding_tax:
     type: number
-    description: Other withholding tax taxable amount.
+    description: Issued document other withholding tax taxable amount
     nullable: true
   amount_other_withholding_tax:
     type: number
-    description: Other withholding tax amount.
+    description: Issued document other withholding tax amount
     nullable: true
   stamp_duty:
     type: number
-    description: Stamp duty value [0 if not present].
+    description: Issued document stamp duty value [0 if not present].
     nullable: true
   amount_due:
     type: number
-    description: Total amount due.
+    description: Issued document total amount due
     nullable: true
   is_enasarco_maximal_exceeded:
     type: boolean
     nullable: true
+    description: Is enasarco maximal excedeed
   payments_sum:
     type: number
-    description: Payments sum.
+    description: Issued document payments sum
     nullable: true
   vat_list:
     $ref: ./VatList.yaml
-    nullable: true
+    description: Issued document vat list

@@ -1,14 +1,14 @@
 type: object
-description: ''
+title: Client
 properties:
   id:
     type: integer
-    description: Unique identifier
+    description: Client id
     nullable: true
   code:
     type: string
     example: '123'
-    description: Client code.
+    description: Client code
     nullable: true
   name:
     type: string
@@ -17,18 +17,18 @@ properties:
     nullable: true
   type:
     $ref: ../enums/ClientType.yaml
-    nullable: true
   first_name:
     type: string
-    description: Client first name.
+    description: Client first name
     nullable: true
   last_name:
     type: string
-    description: Client last name.
+    description: Client last name
     nullable: true
   contact_person:
     type: string
     nullable: true
+    description: Client contact person
   vat_number:
     type: string
     example: IT01234567890
@@ -37,31 +37,31 @@ properties:
   tax_code:
     type: string
     example: RSSMRA44A12E890Q
-    description: Client tax code.
+    description: Client tax code
     nullable: true
   address_street:
     type: string
     example: Via dei tigli, 12
-    description: Client street address.
+    description: Client address street
     nullable: true
   address_postal_code:
     type: string
     example: '24010'
-    description: Client postal code.
+    description: Client address postal code
     nullable: true
   address_city:
     type: string
     example: Bergamo
-    description: Client city.
+    description: Client address city
     nullable: true
   address_province:
     type: string
     example: BG
-    description: Client province.
+    description: Client address province
     nullable: true
   address_extra:
     type: string
-    description: Client address extra info.
+    description: Client address extra info
     nullable: true
   country:
     type: string
@@ -71,53 +71,51 @@ properties:
   email:
     type: string
     example: mario.rossi@example.it
-    description: Client email.
+    description: Client email
     nullable: true
   certified_email:
     type: string
     example: mario.rossi@pec.example.it
-    description: Client certified email.
+    description: Client certified email
     nullable: true
   phone:
     type: string
-    description: Client phone.
+    description: Client phone
     nullable: true
   fax:
     type: string
-    description: Client fax.
+    description: Client fax
     nullable: true
   notes:
     type: string
-    description: Extra notes.
+    description: Client extra
     nullable: true
   default_vat:
     $ref: ./VatType.yaml
-    nullable: true
   default_payment_terms:
     type: integer
     example: 30
     nullable: true
+    description: Client default payment terms
   default_payment_terms_type:
     $ref: ../enums/PaymentTermsType.yaml
-    nullable: true
   default_payment_method:
     $ref: ./PaymentMethod.yaml
-    nullable: true
   bank_name:
     type: string
-    description: Client bank name.
+    description: Client bank name
     nullable: true
   bank_iban:
     type: string
-    description: Client iban.
+    description: Client bank iban
     nullable: true
   bank_swift_code:
     type: string
-    description: Client bank swift code.
+    description: Client bank swift code
     nullable: true
   shipping_address:
     type: string
-    description: Client shipping address.
+    description: Client shipping address
     nullable: true
   e_invoice:
     type: boolean
@@ -125,33 +123,35 @@ properties:
     nullable: true
   ei_code:
     type: string
-    description: E-invoice code
+    description: |
+      Client e-invoice code
     nullable: true
   discount_highlight:
     type: boolean
-    description: Discount Highlight.
+    description: Highlight Discount
     nullable: true
   default_discount:
     type: number
-    description: Default discount.
+    description: Client default discount
     nullable: true
   has_intent_declaration:
     type: boolean
-    description: Has intent declaration.
+    description: Client has intent declaration
     nullable: true
   intent_declaration_protocol_number:
     type: string
-    description: Intent declaration protocol number.
+    description: Client intent declaration protocol number
     nullable: true
   intent_declaration_protocol_date:
     type: string
     format: date
-    description: Intent declaration protocol date.
+    description: Client intent declaration protocol date
     nullable: true
   created_at:
     type: string
     nullable: true
+    description: Client creation date
   updated_at:
     type: string
     nullable: true
-title: Client
+    description: Client last update date

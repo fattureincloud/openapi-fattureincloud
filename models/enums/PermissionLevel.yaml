@@ -5,4 +5,4 @@ enum:
   - read
   - write
   - detailed
-description: Level of the permission.
+description: Permission level
