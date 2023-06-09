@@ -13,7 +13,7 @@ const {{complexType}}Mapping = require('./{{complexType}}').mapping;{{/allowable
 module.exports = {
         fields: (key) => (
             {
-                label: `{{#description}}{{.}} - {{/description}}[${key}]`,
+                label: `{{#description}}{{{.}}} - {{/description}}[${key}]`,
                 choices: [
                     {{#allowableValues}}
                     {{#values}}
@@ -34,7 +34,7 @@ module.exports = {
             {{#isPrimitiveType}}
             {
                 key: `${keyPrefix}{{baseName}}`,
-                label: `{{#description}}{{.}} - {{/description}}[${keyPrefix}{{baseName}}]`,
+                label: `{{#description}}{{{.}}} - {{/description}}[${keyPrefix}{{baseName}}]`,
                 {{#isArray}}
                 list: true,
                 type: '{{#items}}{{baseType}}{{/items}}',
@@ -67,7 +67,7 @@ module.exports = {
             {{#isFreeFormObject}}
             {
                 key: `${keyPrefix}{{baseName}}`,
-                label: `{{#description}}{{.}} - {{/description}}[${keyPrefix}{{baseName}}]`,
+                label: `{{#description}}{{{.}}} - {{/description}}[${keyPrefix}{{baseName}}]`,
                 dict: true,
             },
             {{/isFreeFormObject}}
