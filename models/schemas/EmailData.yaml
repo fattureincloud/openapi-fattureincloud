@@ -7,7 +7,7 @@ properties:
     nullable: true
   default_sender_email:
     type: object
-    description: Default sender email. (Other emails can be found in `sender_emails_list`)
+    description: Default sender email. (Other emails can be found in **sender_emails_list**)
     nullable: true
     properties:
       id:

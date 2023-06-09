@@ -3,11 +3,11 @@ title: EmailSchedule
 properties:
   sender_id:
     type: integer
-    description: Email sender id [required if `sender_email` is not specified]
+    description: Email sender id [required if **sender_email** is not specified]
     nullable: true
   sender_email:
     type: string
-    description: Email sender address [required if `sender_id` is not specified]
+    description: Email sender address [required if **sender_id** is not specified]
     nullable: true
   recipient_email:
     type: string
@@ -47,5 +47,5 @@ properties:
     nullable: true
   send_copy:
     type: boolean
-    description: Send a copy of the email to the `cc_email` specified by `Get email data`
+    description: Send a copy of the email to the **cc_email** specified by **Get email data**
     nullable: true

@@ -489,11 +489,11 @@ properties:
         * **error** - An error occurred while handling the invoice, please try to resend it or contact support
         * **discarded** - The invoice has been rejected by the SDI, so it must be corrected and re-sent
         * **not_delivered** - The SDI was unable to deliver the invoice
-        * `accepted` - The customer accepted the invoice
-        * `rejected` - The customer rejected the invoice, so it must be corrected
-        * `no_response` - A response has not yet been received whithin the deadline, contact the customer to ascertain the status of the invoice
-        * `manual_accepted` - The customer accepted the invoice
-        * `manual_rejected` - The customer rejected the invoice
+        * **accepted** - The customer accepted the invoice
+        * **rejected** - The customer rejected the invoice, so it must be corrected
+        * **no_response** - A response has not yet been received whithin the deadline, contact the customer to ascertain the status of the invoice
+        * **manual_accepted** - The customer accepted the invoice
+        * **manual_rejected** - The customer rejected the invoice
     enum:
       - attempt
       - missing
