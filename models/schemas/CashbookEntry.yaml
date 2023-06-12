@@ -3,60 +3,60 @@ type: object
 properties:
   id:
     type: string
-    description: Cashbook unique identifier.
+    description: Cashbook id
     nullable: true
   date:
-    description: Cashbook date.
+    description: Cashbook date
     format: date
     type: string
     nullable: true
   description:
     type: string
-    description: Cashbook description.
+    description: Cashbook description
     nullable: true
   kind:
     $ref: ../enums/CashbookEntryKind.yaml
-    nullable: true
   type:
     $ref: ../enums/CashbookEntryType.yaml
-    nullable: true
   entity_name:
     type: string
-    description: Entity name.
+    description: Cashbook entity name
     nullable: true
   document:
     type: object
+    nullable: true
     properties:
       id:
         type: integer
-        description: Document unique identifier.
+        description: Cashbook related document id
         nullable: true
       type:
         type: string
-        description: Document type.
+        description: Cashbook related document type
         nullable: true
       path:
         type: string
-        description: Document path.
+        description: Cashbook related document path
         nullable: true
-    nullable: true
   amount_in:
     type: number
     description: |-
       [Only for cashbook entry in]
-      Total amount in.
+      Cashbook total amount in
     nullable: true
   payment_account_in:
     $ref: ./PaymentAccount.yaml
-    description: '[Only for cashbook entry in]'
-    nullable: true
+    description: |-
+      [Only for cashbook entry in]
+      Cashbook payment account in
   amount_out:
     type: number
     description: |-
       [Only for cashbook entry out]
-      Total amount out.
+      Cashbook total amount out
     nullable: true
   payment_account_out:
     $ref: ./PaymentAccount.yaml
-    description: '[Only for cashbook entry out]'
-    nullable: true
+    description: |-
+      [Only for cashbook entry out]
+      Cashbook payment account out

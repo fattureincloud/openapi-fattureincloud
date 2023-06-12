@@ -1,6 +1,6 @@
 title: IssuedDocumentStatus
 type: string
-description: Payment status.
+description: Issued document status
 default: not_paid
 enum:
   - not_paid

@@ -4,18 +4,20 @@ properties:
   name:
     type: string
     nullable: true
-    description: Country name.
+    description: Country name
   settings_name:
     type: string
     nullable: true
+    description: Country settings name
   iso:
     type: string
     nullable: true
-    description: Country iso.
+    description: Country iso code
   fiscal_iso:
     type: string
     nullable: true
+    description: Country fiscal iso code
   uic:
     type: string
     nullable: true
-    description: Country uic.
+    description: Country uic

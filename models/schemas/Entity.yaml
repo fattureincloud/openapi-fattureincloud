@@ -1,149 +1,145 @@
 title: Entity
 type: object
-description: ''
 properties:
   id:
     type: integer
-    description: Unique identifier
     nullable: true
+    description: Entity id
   code:
     type: string
     example: '123'
-    description: Code.
+    description: Entity code
     nullable: true
   name:
     type: string
     example: Rossi S.r.l.
-    description: Name
+    description: Entity name
     nullable: true
   type:
     $ref: ../enums/EntityType.yaml
-    nullable: true
   first_name:
     type: string
-    description: First name.
+    description: Entity first name
     nullable: true
   last_name:
     type: string
-    description: Last name.
+    description: Entity last name
     nullable: true
   contact_person:
     type: string
     nullable: true
+    description: Entity contact person
   vat_number:
     type: string
     example: IT01234567890
-    description: Vat number
+    description: Entity vat number
     nullable: true
   tax_code:
     type: string
     example: RSSMRA44A12E890Q
-    description: Tax code.
+    description: Entity tax code
     nullable: true
   address_street:
     type: string
     example: Via dei tigli, 12
-    description: Street address.
+    description: Entitity address street
     nullable: true
   address_postal_code:
     type: string
     example: '24010'
-    description: Postal code.
     nullable: true
+    description: Entity address postal code
   address_city:
     type: string
     example: Bergamo
-    description: City.
+    description: Entity address city
     nullable: true
   address_province:
     type: string
     example: BG
-    description: Province.
+    description: Entity address province
     nullable: true
   address_extra:
     type: string
-    description: Address extra info.
+    description: Entity address extra info
     nullable: true
   country:
     type: string
     example: Italia
-    description: Country
+    description: Entity country
     nullable: true
   country_iso:
     type: string
     example: Italia
-    description: Country Iso
+    description: Entity country iso code
     nullable: true
   email:
     type: string
     example: mario.rossi@example.it
-    description: Email.
+    description: Entity email
     nullable: true
   certified_email:
     type: string
     example: mario.rossi@pec.example.it
-    description: Certified email.
+    description: Entity certified email
     nullable: true
   phone:
     type: string
-    description: Phone.
     nullable: true
+    description: Entity phone
   fax:
     type: string
-    description: Fax.
     nullable: true
+    description: Entity fax
   notes:
     type: string
-    description: Extra notes.
-    nullable: true
-  default_vat:
-    $ref: ./VatType.yaml
-    description: |-
-      [Only for client]
-      Default vat.
+    description: Entity extra
     nullable: true
   default_payment_terms:
     type: integer
     example: 30
     description: |-
       [Only for client]
-      Default payment terms.
+      Client default payment terms
     nullable: true
+  default_vat:
+    $ref: ./VatType.yaml
+    description: |-
+      [Only for client]
+      Client default vat.
   default_payment_terms_type:
     $ref: ../enums/PaymentTermsType.yaml
     description: |-
       [Only for client]
-      Default payment terms type.
-    nullable: true
+      Client default payment terms type
   default_payment_method:
     $ref: ./PaymentMethod.yaml
     description: |-
       [Only for client]
-      Default payment method.
-    nullable: true
+      Client default payment method
   bank_name:
     type: string
     description: |-
       [Only for client]
-      Bank name.
+      Client bank name
     nullable: true
   bank_iban:
     type: string
     description: |-
       [Only for client]
-      Iban.
+      Client bank iban
     nullable: true
   bank_swift_code:
     type: string
     description: |-
       [Only for client]
-      Bank swift code.
+      Client bank swift code
     nullable: true
   shipping_address:
     type: string
     description: |-
       [Only for client]
-      Shipping address.
+      Client Shipping address
     nullable: true
   e_invoice:
     type: boolean
@@ -167,18 +163,20 @@ properties:
     type: string
     description: |-
       [Only for client]
-      Intent declaration protocol number.
+      Client intent declaration protocol number
     nullable: true
   intent_declaration_protocol_date:
     type: string
     format: date
     description: |-
       [Only for client]
-      Intent declaration protocol date.
+      Client intent declaration protocol date
     nullable: true
   created_at:
     type: string
     nullable: true
+    description: Entity creation date
   updated_at:
     type: string
     nullable: true
+    description: Entity last update date

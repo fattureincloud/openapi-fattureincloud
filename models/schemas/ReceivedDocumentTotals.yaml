@@ -1,32 +1,31 @@
 type: object
-description: ''
+title: ReceivedDocumentTotals
 properties:
   amount_net:
     type: number
-    description: Total net amount.
+    description: Received document total net amount
     nullable: true
   amount_vat:
     type: number
-    description: Total vat amount.
+    description: Received document total vat amount
     nullable: true
   amount_gross:
     type: number
-    description: Total gross amount.
+    description: Received document total gross amount
     nullable: true
   amount_withholding_tax:
     type: number
-    description: Total withholding tax amount.
+    description: Received document withholding tax amount
     nullable: true
   amount_other_withholding_tax:
     type: number
-    description: Total other withholding tax amount.
+    description: Received document other withholding tax amount
     nullable: true
   amount_due:
     type: number
-    description: Total amount due.
+    description: Received document total amount due
     nullable: true
   payments_sum:
     type: number
-    description: Payments sum.
+    description: Received document payments sum
     nullable: true
-title: ReceivedDocumentTotals

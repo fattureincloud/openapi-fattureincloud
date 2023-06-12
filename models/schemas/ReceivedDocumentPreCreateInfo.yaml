@@ -1,37 +1,35 @@
 type: object
-description: ''
 title: ReceivedDocumentPreCreateInfo
 properties:
   numerations:
     $ref: ./Numeration.yaml
-    nullable: true
   numerations_list:
     type: array
-    description: List of series used in the past.
+    description: Received document used numerations list
+    nullable: true
     items:
       type: string
-    nullable: true
   rc_centers_list:
     type: array
-    description: List of revenue centers used in the past.
+    description: Received documents used revenue centers list
+    nullable: true
     items:
       type: string
-    nullable: true
   payment_accounts_list:
     type: array
-    description: User payment accounts list.
+    description: Payment accounts list
+    nullable: true
     items:
       $ref: ./PaymentAccount.yaml
-    nullable: true
   categories_list:
     type: array
-    description: List of categories used in the past.
+    description: Received document categories list
+    nullable: true
     items:
       type: string
-    nullable: true
   vat_types_list:
     type: array
-    description: List of user vat types with the default 22%, 10%, 4% and 0% vats.
+    description: Vat types list
+    nullable: true
     items:
       $ref: ./VatType.yaml
-    nullable: true

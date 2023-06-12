@@ -1,13 +1,13 @@
-title: PaymentsListItem
+title: ReceivedDocumentPaymentsListItem
 type: object
 properties:
   id:
     type: integer
-    description: Unique identifier.
+    description: Received document payment id
     nullable: true
   amount:
     type: number
-    description: Amount of items.
+    description: Received document payment total amount
     nullable: true
   due_date:
     type: string
@@ -16,24 +16,24 @@ properties:
     nullable: true
   paid_date:
     type: string
-    description: Paid date
+    description: Received document payment paid date
     format: date
     nullable: true
   payment_terms:
     type: object
+    nullable: true
     properties:
       days:
         type: integer
-        description: Number of days.
+        description: >-
+          Received document payment number of days by which the payment must be
+          made
         nullable: true
       type:
-        type: string
-        nullable: true
-    nullable: true
+        $ref: ../enums/PaymentTermsType.yaml
   status:
     type: string
-    description: Payment status.
+    description: Received document payment status
     nullable: true
   payment_account:
     $ref: ./PaymentAccount.yaml
-    nullable: true

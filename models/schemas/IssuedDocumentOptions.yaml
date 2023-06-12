@@ -8,12 +8,12 @@ properties:
   create_from:
     type: array
     description: Original documents ids [only for join/transform]
+    nullable: true
     items:
       type: string
-    nullable: true
   transform:
     type: boolean
-    description: Tranform a document. [only for transform]
+    description: Tranform a document [only for transform]
     nullable: true
   keep_copy:
     type: boolean

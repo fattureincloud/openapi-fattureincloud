@@ -1,38 +1,38 @@
 type: object
-description: ''
+title: User
 properties:
   id:
     type: integer
     example: 12345
-    description: User identifier.
+    description: User id
     nullable: true
   name:
     type: string
     nullable: true
-    description: Full name of the user.
+    description: User full name
     example: Mario Rossi
   first_name:
     type: string
     nullable: true
     example: Mario
-    description: First name of the user.
+    description: User first name
   last_name:
     type: string
     nullable: true
     example: Rossi
-    description: Last name of the user.
+    description: User last name
   email:
     type: string
     nullable: true
     example: mario.rossi@example.com
-    description: Email of the user.
+    description: User email address
   hash:
     type: string
     example: 5add29e1234532a1bf2ed7b612043029
     nullable: true
+    description: User hash
   picture:
     type: string
     nullable: true
     example: picture.jpg
-    description: Picture of the user.
-title: User
+    description: User picture
