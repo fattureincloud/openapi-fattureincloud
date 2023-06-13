@@ -1,3 +1,4 @@
+const samples = require('../samples/{{classFilename}}.json');
 {{#operations}}
 {{#operation}}
 {{#allParams}}
@@ -88,7 +89,8 @@ module.exports = {
                     const results = response.json;
                     return results;
                 })
-            }
+            },
+            sample: {{#returnType}}{{^returnTypeIsPrimitive}}samples['{{returnType}}Sample']{{/returnTypeIsPrimitive}}{{#returnTypeIsPrimitive}}{ data: {} }{{/returnTypeIsPrimitive}}{{/returnType}}{{^returnType}}{ data: {} }{{/returnType}}
         }
     },
 {{/operation}}
