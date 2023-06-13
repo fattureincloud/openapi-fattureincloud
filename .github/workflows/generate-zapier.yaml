@@ -84,25 +84,23 @@ jobs:
           echo "integration_version=$INTEGRATION_VERSION" >> $GITHUB_ENV
           echo "openapi_version=$OPENAPI_VERSION" >> $GITHUB_ENV
 
-      - id: move-custom-files-to-backup
-        name: Move custom files to backup
-        run: |
-          mkdir -p ./backup/zapier/utils
-          mv ./generated/zapier/utils ./backup/zapier/utils/
-
       - id: delete-old-files
         name: Delete old files
         run: |
           rm -rf ./generated/zapier/apis
           rm -rf ./generated/zapier/models
-          rm -f ./generated/zapier/actions.js
+          rm -rf ./generated/zapier/samples
+          rm -f ./generated/zapier/operations/actions.js
 
       - id: generate-zapier-integration
         name: Generate zapier integration
         run: |
           openapi-generator-cli generate -i ./openapi.yaml -g markdown -o ./generated/zapier/ -t ./templates/openapi-generator/zapier --additional-properties=modelPackage=models,apiPackage=apis --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE}
+          openapi-generator-cli generate -i ./openapi.yaml -g markdown -o ./generated/zapier-samples/ -t ./templates/openapi-generator/zapier/samples --additional-properties=apiPackage=samples --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE}
 
           node ./scripts/postprocess-zapier.js './generated/zapier/'
+
+          mv ./generated/zapier-samples/samples ./generated/zapier/samples
 
       - id: create-pr
         name: Create Pull Request

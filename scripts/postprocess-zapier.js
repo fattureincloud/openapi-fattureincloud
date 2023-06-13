@@ -16,7 +16,11 @@ function postProcessZapierFolder(dir)
         if (err) {
           return console.log(err)
         }
-  
+        
+        // change extension
+        let filename = file.replace('.md', '.js')
+        if(file == 'README.md') filename = 'operations/actions.js'
+
         // remove duplicate imports 
         let result = data.replace(
           /(const [^;]+;\n)(?=(.*\n)*\1)/g,
@@ -34,9 +38,11 @@ function postProcessZapierFolder(dir)
           result = addTriggers(result)
         }
         
-        // change extension
-        let filename = file.replace('.md', '.js')
-        if(file == 'README.md') filename = 'operations/actions.js'
+        if (path.basename(dir) == 'samples') {
+          // fix samples
+          filename = filename.replace('.js', '.json')
+          result = fixSamples(result)
+        }
   
         fs.writeFile(dir + filename, result, 'utf8', function (err) {
           if (err) {
@@ -71,4 +77,13 @@ function addTriggers(file)
     )
   });
   return file
+}
+
+function fixSamples(file)
+{
+  file = file.substring(0, file.lastIndexOf(',')) + '}'
+  let sample = JSON.parse(file);
+  let fixedSample = Object.entries(sample).reduce((tempSample, [key, value]) => (tempSample[key] = value?.['content']?.['application/json']?.['examples']?.['example-1']?.['value'], tempSample), {})
+  
+  return file = JSON.stringify(fixedSample, null, 4)
 }
