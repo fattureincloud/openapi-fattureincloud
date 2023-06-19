@@ -8025,12 +8025,40 @@ components:
         application/json:
           schema:
             $ref: ./models/responses/GetCashbookEntryResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  date: '2021-08-24'
+                  amount_in: 122
+                  payment_account_in:
+                    id: 333
+                  description: Fattura n. 201/2021
+                  entity_name: Rossi S.r.l.
+                  kind: issued_document
+                  document:
+                    id: 54321
+                  type: in
     ModifyCashbookEntryResponse:
       description: The modified Cashbook Entry
       content:
         application/json:
           schema:
             $ref: ./models/responses/ModifyCashbookEntryResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  date: '2021-08-24'
+                  amount_in: 122
+                  payment_account_in:
+                    id: 333
+                  description: Fattura n. 201/2021
+                  entity_name: Rossi S.r.l.
+                  kind: issued_document
+                  document:
+                    id: 54321
+                  type: in
     ListCountriesResponse:
       description: List of countries
       content:
@@ -8475,6 +8503,18 @@ components:
         application/json:
           schema:
             $ref: ./models/responses/GetEInvoiceRejectionReasonResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  reason: >-
+                    La Partita IVA della tua azienda risulta sbagliata e/o
+                    cessata.
+                  ei_status: rejected
+                  solution: >-
+                    Puoi correggere la tua Partita IVA in: Impostazioni >
+                    Azienda > Informazioni di fatturazione.
+                  date: '2023-06-06'
     ListDetailedCountriesResponse:
       description: List of detailed countries
       content:
@@ -8853,7 +8893,7 @@ components:
           schema:
             $ref: ./models/responses/GetWebhooksSubscriptionResponse.yaml
           examples:
-            Example 1:
+            example-1:
               value:
                 data:
                   id: SUB123
@@ -8869,7 +8909,7 @@ components:
           schema:
             $ref: ./models/responses/ModifyWebhooksSubscriptionResponse.yaml
           examples:
-            Example 1:
+            example-1:
               value:
                 data:
                   id: SUB12345

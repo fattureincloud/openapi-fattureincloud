@@ -375,9 +375,8 @@ properties:
     type: object
     nullable: true
     description: >-
-      Issued document extra data
-      [TS fields follow the technical specifications provided by "Sistema
-      Tessera Sanitaria"]
+      Issued document extra data [TS fields follow the technical specifications
+      provided by "Sistema Tessera Sanitaria"]
     properties:
       show_sofort_button:
         type: boolean

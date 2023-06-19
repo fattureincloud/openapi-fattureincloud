@@ -47,5 +47,7 @@ properties:
     nullable: true
   send_copy:
     type: boolean
-    description: Send a copy of the email to the **cc_email** specified by **Get email data**
+    description: >-
+      Send a copy of the email to the **cc_email** specified by **Get email
+      data**
     nullable: true
