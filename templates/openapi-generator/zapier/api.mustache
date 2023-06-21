@@ -55,7 +55,7 @@ module.exports = {
             outputFields: [
                 {{#returnType}}
                 {{^returnTypeIsPrimitive}}
-                ...{{returnType}}(),
+                ...{{returnType}}('', false),
                 {{/returnTypeIsPrimitive}}
                 {{/returnType}}
             ],
