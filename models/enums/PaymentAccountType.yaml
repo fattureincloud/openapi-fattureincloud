@@ -4,4 +4,4 @@ default: standard
 enum:
   - standard
   - bank
-description: Payment account type.
+description: Payment account type

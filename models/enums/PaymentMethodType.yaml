@@ -1,6 +1,6 @@
 title: PaymentMethodType
 type: string
-description: Method type.
+description: Payment method type
 default: standard
 enum:
   - standard

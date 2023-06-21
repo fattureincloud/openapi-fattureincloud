@@ -12,4 +12,4 @@ enum:
   - supplier_order
   - self_own_invoice
   - self_supplier_invoice
-description: Issued document type.
+description: Issued document type

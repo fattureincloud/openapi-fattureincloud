@@ -3,13 +3,13 @@ type: object
 properties:
   postal_code:
     type: string
-    description: City postal code.
+    description: City postal code
     nullable: true
   city:
     type: string
-    description: City name.
+    description: City name
     nullable: true
   province:
     type: string
-    description: Province.
+    description: City province
     nullable: true

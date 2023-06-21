@@ -3,23 +3,21 @@ title: IssuedDocumentPreCreateInfo
 properties:
   numerations:
     $ref: ./Numeration.yaml
-    nullable: true
+    description: Issued document numerations
   dn_numerations:
     $ref: ./Numeration.yaml
-    nullable: true
+    description: Issued document delivery note numerations
   default_values:
     type: object
-    description: Default values for the document.
+    description: Issued document default values
+    nullable: true
     properties:
       default_template:
         $ref: ./DocumentTemplate.yaml
-        nullable: true
       dn_template:
         $ref: ./DocumentTemplate.yaml
-        nullable: true
       ai_template:
         $ref: ./DocumentTemplate.yaml
-        nullable: true
       notes:
         type: string
         description: Default notes.
@@ -50,10 +48,10 @@ properties:
         nullable: true
       payment_method:
         $ref: ./PaymentMethod.yaml
-        nullable: true
-    nullable: true
   extra_data_default_values:
     type: object
+    nullable: true
+    description: Issued document extra data default values
     properties:
       ts_communication:
         type: boolean
@@ -67,66 +65,64 @@ properties:
       ts_pagamento_tracciato:
         type: boolean
         nullable: true
-    nullable: true
   items_default_values:
     type: object
-    description: Default values for the document items.
+    nullable: true
+    description: Issued document items default values
     properties:
       vat:
         $ref: ./VatType.yaml
-        nullable: true
-    nullable: true
   countries_list:
     type: array
-    description: Countries list.
+    description: Countries list
+    nullable: true
     items:
       type: string
-    nullable: true
   currencies_list:
     type: array
-    description: Currencies list.
+    description: Currencies list
+    nullable: true
     items:
       $ref: ./Currency.yaml
-    nullable: true
   templates_list:
     type: array
-    description: Document templates list.
+    description: Document templates list
+    nullable: true
     items:
       $ref: ./DocumentTemplate.yaml
-    nullable: true
   dn_templates_list:
     type: array
-    description: Delivery note templates list.
+    description: Delivery note templates list
+    nullable: true
     items:
       $ref: ./DocumentTemplate.yaml
-    nullable: true
   ai_templates_list:
     type: array
-    description: Accompanying invoice templates list.
+    description: Accompanying invoice templates list
+    nullable: true
     items:
       $ref: ./DocumentTemplate.yaml
-    nullable: true
   payment_methods_list:
     type: array
-    description: Payment methods list.
+    description: Payment methods list
+    nullable: true
     items:
       $ref: ./PaymentMethod.yaml
-    nullable: true
   payment_accounts_list:
     type: array
-    description: Payment accounts list.
+    description: Payment accounts list
+    nullable: true
     items:
       $ref: ./PaymentAccount.yaml
-    nullable: true
   vat_types_list:
     type: array
-    description: Vat types list.
+    description: Vat types list
+    nullable: true
     items:
       $ref: ./VatType.yaml
-    nullable: true
   languages_list:
     type: array
-    description: Languages list.
+    description: Languages list
+    nullable: true
     items:
       $ref: ./Language.yaml
-    nullable: true

@@ -4,39 +4,37 @@ properties:
   id:
     type: integer
     nullable: true
-    description: Unique identifier
+    description: Payment method id
   name:
     type: string
-    description: Name of the payment method
+    description: Payment method name
     nullable: true
   type:
     $ref: ../enums/PaymentMethodType.yaml
-    nullable: true
   is_default:
     type: boolean
-    description: Determines if this is the default payment method.
     nullable: true
+    description: Payment method is default
   default_payment_account:
     $ref: ./PaymentAccount.yaml
-    nullable: true
   details:
     maxItems: 5
     type: array
     nullable: true
-    description: Method details rows
+    description: Payment method details
     items:
       $ref: ./PaymentMethodDetails.yaml
   bank_iban:
     type: string
-    description: Bank iban
+    description: Payment method bank iban
     nullable: true
   bank_name:
     type: string
-    description: Bank name
+    description: Payment method bank name
     nullable: true
   bank_beneficiary:
     type: string
-    description: Bank beneficiary
+    description: Payment method bank beneficiary
     nullable: true
   ei_payment_method:
     type: string
