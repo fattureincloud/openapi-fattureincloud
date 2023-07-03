@@ -4,6 +4,8 @@ properties:
   amount_net:
     type: number
     nullable: true
+    description: Vat item net amount
   amount_vat:
     type: number
     nullable: true
+    description: Vat item vat amount

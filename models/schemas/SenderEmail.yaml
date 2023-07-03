@@ -3,9 +3,9 @@ type: object
 properties:
   id:
     type: integer
-    description: Id
+    description: Sender email id
     nullable: true
   email:
     type: string
-    description: Email address
+    description: Sender email address
     nullable: true

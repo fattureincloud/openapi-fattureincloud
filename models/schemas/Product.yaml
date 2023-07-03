@@ -1,83 +1,80 @@
 type: object
+title: Product
 properties:
   id:
     type: integer
-    description: Unique identifier.
+    description: Product id
     nullable: true
   name:
     type: string
-    description: Product name.
+    description: Product name
     nullable: true
   code:
     type: string
     nullable: true
-    description: Product code.
+    description: Product code
   net_price:
     type: number
     nullable: true
-    description: >-
-      Net sale price (used if use_gross_price is false, otherwise it's competed
-      automatically).
+    description: Product net price
   gross_price:
     type: number
     nullable: true
-    description: >-
-      Gross sale price (used if use_gross_price is false, otherwise it's
-      competed automatically).
+    description: Product gross price
   use_gross_price:
     type: boolean
-    description: Determine which price to use for calculations.
+    description: Product uses gross prices
     nullable: true
   default_vat:
     $ref: ./VatType.yaml
-    nullable: true
   net_cost:
     type: number
     nullable: true
-    description: Net cost of the product (used for received documents).
+    description: Product net cost
   measure:
     type: string
     nullable: true
-    description: Unit of measure.
+    description: Product measure
   description:
     type: string
-    description: Product description.
+    description: Product description
     nullable: true
   category:
     type: string
-    description: Product category.
+    description: Product category
     nullable: true
   notes:
     type: string
     nullable: true
-    description: Extra notes.
+    description: Product extra notes
   in_stock:
     type: boolean
-    description: Determine if the product is in stock.
+    description: Product has stock
     nullable: true
   stock_initial:
     type: number
-    description: Product initial stock.
+    description: Product initial stock
     nullable: true
   stock_current:
     type: number
     description: |-
       [Read Only]
-      Product current stock.
-    readOnly: true
+      Product current stock
     nullable: true
+    readOnly: true
   average_cost:
     type: number
-    description: Product average cost.
+    description: Product average cost
     nullable: true
   average_price:
     type: number
-    description: Product average price.
+    description: Product average price
     nullable: true
   created_at:
     type: string
     nullable: true
+    description: Product creation date
   updated_at:
     type: string
     nullable: true
-title: Product
+    description: Product last update date

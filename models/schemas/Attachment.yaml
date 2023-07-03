@@ -1,13 +1,12 @@
 title: Attachment
 type: object
-description: ''
 properties:
   filename:
     type: string
-    description: Name of the file.
+    description: Attachment file name
     example: attachment.pdf
     nullable: true
   attachment:
     type: string
-    description: 'Valid format: .png, .jpg, .gif, .pdf, .zip, .xls, .xlsx, .doc, .docx'
+    description: Attachment file [.png, .jpg, .gif, .pdf, .zip, .xls, .xlsx, .doc, .docx]
     format: binary

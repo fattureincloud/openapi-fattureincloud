@@ -1,60 +1,65 @@
 type: object
-description: ''
+title: CompanyInfo
 properties:
   id:
     type: integer
-    description: Company unique identifier.
+    description: Company id
     example: 12345
     nullable: true
   name:
     type: string
-    description: Company name.
+    description: Company name
     example: Mario Rossi S.r.l.
     nullable: true
   email:
     type: string
-    description: Company email.
+    description: Company email
     example: mario@rossi-example.it
     nullable: true
   type:
     $ref: ../enums/CompanyType.yaml
-    nullable: true
   access_info:
     type: object
+    nullable: true
     properties:
       role:
         $ref: ../enums/UserCompanyRole.yaml
-        nullable: true
       permissions:
         $ref: ./Permissions.yaml
-        nullable: true
       through_accountant:
         type: boolean
         nullable: true
-    nullable: true
+        description: Company activated through accountant
   plan_info:
     type: object
+    nullable: true
+    description: Company plan info
     properties:
       limits:
         type: object
-        description: Limits for this company.
+        description: Company plan limits
+        nullable: true
         properties:
           clients:
             type: integer
             nullable: true
+            description: Company plan clients limits
           suppliers:
             type: integer
             nullable: true
+            description: Company plan suppliers limits
           products:
             type: integer
             nullable: true
+            description: Company plan products limits
           documents:
             type: integer
             nullable: true
-        nullable: true
+            description: Company plan documents limits
       functions:
         type: object
         description: Access to functions for this company.
+        nullable: true
         properties:
           archive:
             type: boolean
@@ -110,24 +115,19 @@ properties:
           ts_pay:
             type: boolean
             nullable: true
-        nullable: true
       functions_status:
         type: object
+        nullable: true
         properties:
           ts_digital:
             $ref: ./FunctionStatus.yaml
-            nullable: true
           ts_pay:
             $ref: ./FunctionStatus.yaml
-            nullable: true
-        nullable: true
-    nullable: true
   accountant_id:
     type: integer
     nullable: true
-    description: Accountant unique identifier.
+    description: Company accountant id
   is_accountant:
     type: boolean
-    description: Determine if the logged account is an accountant.
+    description: Is the logged account an accountant.
     nullable: true
-title: CompanyInfo

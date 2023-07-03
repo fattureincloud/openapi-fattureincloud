@@ -4,4 +4,4 @@ enum:
   - paid
   - not_paid
   - reversed
-description: Tax status.
+description: F24 status

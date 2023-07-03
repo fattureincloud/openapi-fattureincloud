@@ -3,9 +3,9 @@ type: object
 properties:
   title:
     type: string
-    description: Details title.
+    description: Payment method details title
     nullable: true
   description:
     type: string
-    description: Details description.
+    description: Payment method details description
     nullable: true
