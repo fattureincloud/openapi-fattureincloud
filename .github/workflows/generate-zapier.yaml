@@ -28,6 +28,15 @@ jobs:
           repository: ${{ env.GIT_REPO_PATH }}
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
 
+      - id: checkout-generator
+        name: Checkout generator repo
+        uses: actions/checkout@v3
+        with:
+          path: ./generator
+          ref: new-zapier-generator
+          repository: valmoz/openapi-generator
+          token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
+
       - id: init-git
         name: Init GIT
         run: |
@@ -43,7 +52,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'adopt'
-          java-version: '8'
+          java-version: '11'
 
       - id: setup-libraries
         name: Install libraries
@@ -61,7 +70,6 @@ jobs:
         env:
           OPENAPI_VERSION: ${{ github.event.client_payload.version }}
         run: |
-
           echo "openapi_version=$OPENAPI_VERSION"
 
           BUMP_TYPE=$(node ./scripts/sdk-version-checker.js ./generated/zapier/version.yaml $OPENAPI_VERSION)
@@ -92,15 +100,23 @@ jobs:
           rm -rf ./generated/zapier/samples
           rm -f ./generated/zapier/operations/actions.js
 
+      - id: build-generator
+        name: Build Openapi generator
+        run: cd ./generator && mvn clean package -DskipTests
+
       - id: generate-zapier-integration
         name: Generate zapier integration
+        env:
+          PACKAGE_NAME: "@fattureincloud/zapier"
         run: |
-          openapi-generator-cli generate -i ./openapi.yaml -g markdown -o ./generated/zapier/ -t ./templates/openapi-generator/zapier --additional-properties=modelPackage=models,apiPackage=apis --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE}
-          openapi-generator-cli generate -i ./openapi.yaml -g markdown -o ./generated/zapier-samples/ -t ./templates/openapi-generator/zapier/samples --additional-properties=apiPackage=samples --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE}
+          INTEGRATION_VERSION=${{ env.integration_version }}
+          echo "${{ env.integration_version }}"
+
+          RELEASE_NOTE="\"bumping version to $INTEGRATION_VERSION\""
+
+          java -jar ./generator/openapi-generator/modules/openapi-generator-cli/target/openapi-generator-cli.jar generate -i ./openapi.yaml -g zapier -o ./generated/zapier/ -t ./templates/openapi-generator/zapier --additional-properties=npmName=${PACKAGE_NAME},npmVersion=${INTEGRATION_VERSION},modelPackage=models,apiPackage=apis --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --release-note=${RELEASE_NOTE}
 
           node ./scripts/postprocess-zapier.js './generated/zapier/'
-
-          mv ./generated/zapier-samples/samples ./generated/zapier/samples
 
       - id: create-pr
         name: Create Pull Request
