@@ -35,6 +35,10 @@ const extractResourceAndOperation = (eventType) => ({
   eventOperation: eventType.substring(eventType.lastIndexOf('.') + 1)
 })
 const retrieveResourceOperations = (resource) => EventType.fields('').choices.filter(eventType => extractResourceAndOperation(eventType).resource == resource).map(et => ({type: extractResourceAndOperation(et).eventOperation, id: extractResourceAndOperation(et).eventOperation}))
+const overrideUserAgent = (request, z, bundle) => {
+    request.headers['user-agent'] = `FattureInCloud/${require('../package.json').version}/Zapier`
+    return request
+}
 
 module.exports = {
     replacePathParameters: replacePathParameters,
@@ -46,4 +50,5 @@ module.exports = {
     searchMiddleware: searchMiddleware,
     extractResourceAndOperation: extractResourceAndOperation,
     retrieveResourceOperations: retrieveResourceOperations,
+    overrideUserAgent: overrideUserAgent,
 }
