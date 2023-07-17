@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.0.29 (2023-07-17)
+
+
+### Bug Fixes
+
+* fixed go auth ([#698](https://github.com/fattureincloud/openapi-fattureincloud/issues/698)) ([e20f4c9](https://github.com/fattureincloud/openapi-fattureincloud/commit/e20f4c91702ddcba27e96159d6cafb7841b88b21))
+
 ### 2.0.28 (2023-05-09)
 
 

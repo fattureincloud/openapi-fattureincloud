@@ -16,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.0.28
+  version: 2.0.29
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -8863,8 +8863,8 @@ components:
                     - it.fattureincloud.webhooks.entities.create
                     - it.fattureincloud.webhooks.issued_documents.create
                 warnings: >-
-                  The 'it.fattureincloud.webhooks.entities.clients.delete' event is
-                  already registered for this application
+                  The 'it.fattureincloud.webhooks.entities.clients.delete' event
+                  is already registered for this application
     ListWebhooksSubscriptionsResponse:
       description: Example response
       content:
@@ -8900,7 +8900,8 @@ components:
                   sink: https://test.url
                   verified: true
                   types:
-                    - it.fattureincloud.webhooks.issued_documents.invoices.create
+                    - >-
+                      it.fattureincloud.webhooks.issued_documents.invoices.create
     ModifyWebhooksSubscriptionResponse:
       description: Example response
       content:
@@ -8918,7 +8919,7 @@ components:
                     - it.fattureincloud.webhooks.entities.create
                     - it.fattureincloud.webhooks.issued_documents.create
                 warnings: >-
-                  The 'it.fattureincloud.webhooks.entities.clients.delete' event is
-                  already registered for this application
+                  The 'it.fattureincloud.webhooks.entities.clients.delete' event
+                  is already registered for this application
 security:
   - OAuth2AuthenticationCodeFlow: []
