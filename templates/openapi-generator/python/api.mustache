@@ -205,7 +205,7 @@ class {{classname}}(object):
                 _query_params.append(('{{baseName}}', _params['{{paramName}}']))
             {{/isDate}}
             {{^isDate}}
-            _query_params.append(('{{baseName}}', _params['{{paramName}}']{{#isEnumRef}}.value{{/isEnumRef}}))
+            _query_params.append(('{{baseName}}', _params['{{paramName}}']{{#isEnumRef}}{{/isEnumRef}}))
             {{/isDate}}
             {{/isDateTime}}
             {{#isArray}}
