@@ -129,6 +129,10 @@ properties:
 
       Received document attachment token returned by POST
       /received_documents/attachment
+  locked:
+    type: boolean
+    nullable: true
+    description: Received Document can't be edited
   created_at:
     type: string
     nullable: true
