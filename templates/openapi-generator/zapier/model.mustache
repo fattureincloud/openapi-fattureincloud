@@ -36,7 +36,7 @@ module.exports = {
                 {{/isArray}}
                 {{^isArray}}
                 {{#isFreeFormObject}}
-                dict: true,
+                type: 'string',
                 {{/isFreeFormObject}}
                 {{^isFreeFormObject}}
                 type: '{{baseType}}',
@@ -83,7 +83,7 @@ module.exports = {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             {{#vars}}
-            '{{baseName}}': {{#isPrimitiveType}}bundle.inputData?.[`${keyPrefix}{{baseName}}`]{{/isPrimitiveType}}{{^isPrimitiveType}}{{^allowableValues}}{{^isArray}}utils.removeIfEmpty({{complexType}}.mapping(bundle, `${keyPrefix}{{baseName}}`)){{/isArray}}{{#isArray}}utils.removeKeyPrefixes(bundle.inputData?.[`${keyPrefix}{{baseName}}`], `${keyPrefix}{{baseName}}`){{/isArray}}{{/allowableValues}}{{#allowableValues}}bundle.inputData?.[`${keyPrefix}{{baseName}}`]{{/allowableValues}}{{/isPrimitiveType}},
+            '{{baseName}}': {{#isPrimitiveType}}{{#isFreeFormObject}}JSON.parse({{/isFreeFormObject}}bundle.inputData?.[`${keyPrefix}{{baseName}}`]{{#isFreeFormObject}}){{/isFreeFormObject}}{{/isPrimitiveType}}{{^isPrimitiveType}}{{^allowableValues}}{{^isArray}}utils.removeIfEmpty({{complexType}}.mapping(bundle, `${keyPrefix}{{baseName}}`)){{/isArray}}{{#isArray}}utils.removeKeyPrefixes(bundle.inputData?.[`${keyPrefix}{{baseName}}`], `${keyPrefix}{{baseName}}`){{/isArray}}{{/allowableValues}}{{#allowableValues}}bundle.inputData?.[`${keyPrefix}{{baseName}}`]{{/allowableValues}}{{/isPrimitiveType}},
             {{/vars}}
         }
     },
