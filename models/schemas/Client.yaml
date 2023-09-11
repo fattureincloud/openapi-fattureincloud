@@ -68,6 +68,11 @@ properties:
     example: Italia
     description: Client country
     nullable: true
+  country_iso:
+    type: string
+    example: Italia
+    description: Client country iso code
+    nullable: true
   email:
     type: string
     example: mario.rossi@example.it
