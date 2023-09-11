@@ -1,0 +1,6 @@
+title: WebhooksSubscriptionMapping
+type: string
+description: Webhooks Subscription mapping
+enum:
+  - binary
+  - structured

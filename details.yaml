@@ -1716,3 +1716,27 @@
             default: true
         required:
           - value
+/c/{company_id}/subscriptions:
+  post:
+    application/json:
+      data:
+        nullable: true
+        properties:
+          config:
+            nullable: true
+            properties:
+              mapping:
+                nullable: true
+                default: binary
+/c/{company_id}/subscriptions/{subscription_id}:
+  put:
+    application/json:
+      data:
+        nullable: true
+        properties:
+          config:
+            nullable: true
+            properties:
+              mapping:
+                nullable: true
+                default: binary
