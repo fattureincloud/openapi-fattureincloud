@@ -1,11 +1,11 @@
 type: object
+title: Language
 properties:
   code:
     type: string
-    description: Language code.
+    description: Language code
     nullable: true
   name:
     type: string
-    description: Language extended name.
+    description: Language extended name
     nullable: true
-title: Language

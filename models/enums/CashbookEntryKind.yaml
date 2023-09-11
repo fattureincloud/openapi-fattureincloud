@@ -6,4 +6,4 @@ enum:
   - received_document
   - tax
   - receipt
-description: Cashbook kind.
+description: Cashbook kind

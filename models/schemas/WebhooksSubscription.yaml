@@ -4,7 +4,7 @@ properties:
   id:
     type: string
     nullable: true
-    description: Unique identifier
+    description: Webhooks subscription id
   sink:
     type: string
     nullable: true

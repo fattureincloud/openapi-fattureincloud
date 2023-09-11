@@ -4,4 +4,4 @@ default: standard
 enum:
   - standard
   - end_of_month
-description: Payment terms Type.
+description: Payment terms type

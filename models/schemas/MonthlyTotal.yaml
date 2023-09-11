@@ -1,16 +1,15 @@
-description: ''
 type: object
 title: MonthlyTotal
 properties:
   net:
     type: number
-    description: Monthly total net amount.
+    description: Monthly total net amount
     nullable: true
   gross:
     type: number
-    description: Monthly total gross amount.
+    description: Monthly total gross amount
     nullable: true
   count:
     type: number
-    description: Monthly total receipt number.
+    description: Monthly total receipt number
     nullable: true

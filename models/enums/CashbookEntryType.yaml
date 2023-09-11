@@ -4,4 +4,4 @@ nullable: true
 enum:
   - in
   - out
-description: Cashbook type.
+description: Cashbook type
