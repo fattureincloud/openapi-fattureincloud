@@ -1027,7 +1027,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
-      summary: Get Issued Document Pre-create info
+      summary: Get Issued Document Pre-Create Info
       tags:
         - Issued Documents
       responses:
@@ -1115,7 +1115,7 @@ paths:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
     post:
-      summary: Send the e-invoice
+      summary: Send E-Invoice
       operationId: sendEInvoice
       responses:
         '200':
@@ -1146,7 +1146,7 @@ paths:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
     get:
-      summary: Verify e-invoice XML
+      summary: Verify E-Invoice XML
       tags:
         - Issued e-invoices
       responses:
@@ -1170,7 +1170,7 @@ paths:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
     get:
-      summary: Get e-invoice XML
+      summary: Get E-Invoice XML
       tags:
         - Issued e-invoices
       responses:
@@ -1191,7 +1191,7 @@ paths:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
     get:
-      summary: Get e-invoice rejection reason
+      summary: Get E-Invoice Rejection Reason
       tags:
         - Issued e-invoices
       responses:
@@ -2886,7 +2886,7 @@ paths:
             - settings:a
   /c/{company_id}/issued_documents/transform:
     get:
-      summary: Transform issued document
+      summary: Transform Issued Document
       tags:
         - Issued Documents
       responses:
@@ -2929,7 +2929,7 @@ paths:
       - $ref: '#/components/parameters/company_id'
   /c/{company_id}/issued_documents/join:
     get:
-      summary: Join issued documents
+      summary: Join Issued Documents
       tags:
         - Issued Documents
       responses:
@@ -2969,7 +2969,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
-      summary: List emails
+      summary: List Emails
       tags:
         - Emails
       responses:

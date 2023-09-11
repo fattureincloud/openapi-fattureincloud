@@ -509,6 +509,10 @@ properties:
       - manual_accepted
       - manual_rejected
     nullable: true
+  locked:
+    type: boolean
+    nullable: true
+    description: Issued Document can't be edited
   created_at:
     type: string
     nullable: true
