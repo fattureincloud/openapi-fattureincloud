@@ -50,6 +50,7 @@ enum:
   - it.fattureincloud.webhooks.products.create
   - it.fattureincloud.webhooks.products.update
   - it.fattureincloud.webhooks.products.delete
+  - it.fattureincloud.webhooks.products.stock_update
   - it.fattureincloud.webhooks.entities.clients.create
   - it.fattureincloud.webhooks.entities.clients.update
   - it.fattureincloud.webhooks.entities.clients.delete
@@ -59,5 +60,5 @@ enum:
   - it.fattureincloud.webhooks.entities.all.create
   - it.fattureincloud.webhooks.entities.all.update
   - it.fattureincloud.webhooks.entities.all.delete
-  - it.fattureincloud.webhooks.issued_documents.e_invoices
-  - it.fattureincloud.webhooks.received_documents.e_invoices
+  - it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
+  - it.fattureincloud.webhooks.received_documents.e_invoices.status_update
