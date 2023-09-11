@@ -37230,6 +37230,7 @@ components:
                             - sending
                             - pending
                             - sent
+                          nullable: true
                         sent_date:
                           type: string
                           format: date-time
@@ -37279,6 +37280,7 @@ components:
                             - unknown
                             - document_opened
                             - email_opened
+                          nullable: true
                         recipient_date:
                           type: string
                           format: date-time
