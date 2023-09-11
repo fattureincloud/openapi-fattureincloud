@@ -46,6 +46,12 @@ jobs:
           swagger-cli validate openapi-enriched.yaml
           openapi-generator-cli validate -i ./openapi-enriched.yaml
 
+      - id: get-timestamp
+        name: Get Current Timestamp
+        run: |
+          DATE=$(date '+%Y%m%d')
+          echo "date_ts=$DATE" >> $GITHUB_ENV
+          
       - id: create-pr
         name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
