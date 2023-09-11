@@ -3,4 +3,4 @@ type: object
 properties:
   mapping:
     $ref: ../enums/WebhooksSubscriptionMapping.yaml
-    description: Determines the webhook payload shape.
+    description: Determines the webhook payload shape
