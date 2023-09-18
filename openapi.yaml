@@ -2559,6 +2559,7 @@ paths:
               - received_documents
           in: query
           name: context
+          description: Categories resource type.
           required: true
   /c/{company_id}/info/received_document_categories:
     parameters:
