@@ -1,7 +1,7 @@
 name: Generate C# SDK
 on:
   repository_dispatch:
-    types: [generate-csharp-netcore]
+    types: [generate-csharp]
 
 jobs:
   generate-csharp-sdk:
@@ -23,7 +23,7 @@ jobs:
           GIT_REPO_PATH: '${{ env.GIT_USER_ID }}/${{ env.GIT_REPO_ID }}'
         uses: actions/checkout@v3
         with:
-          path: ./generated/csharp-netcore
+          path: ./generated/csharp
           ref: master
           repository: ${{ env.GIT_REPO_PATH }}
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
@@ -72,7 +72,7 @@ jobs:
           sudo apt install yq -y
           cd ./scripts/
           yarn
-          cd ../generated/csharp-netcore/scripts
+          cd ../generated/csharp/scripts
           yarn
 
       - id: bump-csharp-sdk-version
@@ -83,9 +83,9 @@ jobs:
 
           echo "openapi_version=$OPENAPI_VERSION"
 
-          BUMP_TYPE=$(node ./scripts/sdk-version-checker.js ./generated/csharp-netcore/sdk-version.yaml $OPENAPI_VERSION)
+          BUMP_TYPE=$(node ./scripts/sdk-version-checker.js ./generated/csharp/sdk-version.yaml $OPENAPI_VERSION)
 
-          cd ./generated/csharp-netcore
+          cd ./generated/csharp
 
           if [ "$BUMP_TYPE" == "patch" ];then
             echo 'Bumping the SDK patch version...'
@@ -106,16 +106,16 @@ jobs:
       - id: move-custom-files-to-backup
         name: Move custom files to backup
         run: |
-          mkdir -p ./backup/csharp-netcore/src/It.FattureInCloud.Sdk/Filter
-          mkdir -p ./backup/csharp-netcore/src/It.FattureInCloud.Sdk/Oauth2
-          mv ./generated/csharp-netcore/src/It.FattureInCloud.Sdk/Filter ./backup/csharp-netcore/src/It.FattureInCloud.Sdk/
-          mv ./generated/csharp-netcore/src/It.FattureInCloud.Sdk/Oauth2 ./backup/csharp-netcore/src/It.FattureInCloud.Sdk/
+          mkdir -p ./backup/csharp/src/It.FattureInCloud.Sdk/Filter
+          mkdir -p ./backup/csharp/src/It.FattureInCloud.Sdk/Oauth2
+          mv ./generated/csharp/src/It.FattureInCloud.Sdk/Filter ./backup/csharp/src/It.FattureInCloud.Sdk/
+          mv ./generated/csharp/src/It.FattureInCloud.Sdk/Oauth2 ./backup/csharp/src/It.FattureInCloud.Sdk/
 
       - id: delete-old-files
         name: Delete old files
         run: |
-          rm -rf ./generated/csharp-netcore/src/It.FattureInCloud.Sdk
-          rm -rf ./generated/csharp-netcore/docs
+          rm -rf ./generated/csharp/src/It.FattureInCloud.Sdk
+          rm -rf ./generated/csharp/docs
 
       - id: generate-csharp-sdk
         name: Generate C# SDK
@@ -135,23 +135,23 @@ jobs:
 
           USER_AGENT="$APP_NAME/${{ env.sdk_version }}/csharp-SDK"
           
-          openapi-generator-cli generate -i ./openapi.yaml -g csharp-netcore -o generated/csharp-netcore/ -t ./templates/openapi-generator/csharp-netcore --additional-properties=useDateTimeOffset=true,conditionalSerialization=true,packageName=${PACKAGE_NAME},packageAuthors=${PACKAGE_AUTHORS},packageCompany=${PACKAGE_COMPANY},packageTitle=${PACKAGE_TITLE},packageVersion=${SDK_VERSION},targetFramework=${TARGET_FRAMEWORK},testTargetFramework=${TEST_TARGET_FRAMEWORK},multiTarget=true,licenseId=MIT --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT}
+          openapi-generator-cli generate -i ./openapi.yaml -g csharp -o generated/csharp/ -t ./templates/openapi-generator/csharp --additional-properties=useDateTimeOffset=true,conditionalSerialization=true,packageName=${PACKAGE_NAME},packageAuthors=${PACKAGE_AUTHORS},packageCompany=${PACKAGE_COMPANY},packageTitle=${PACKAGE_TITLE},packageVersion=${SDK_VERSION},targetFramework=${TARGET_FRAMEWORK},testTargetFramework=${TEST_TARGET_FRAMEWORK},multiTarget=true,licenseId=MIT --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT}
 
       - id: move-custom-files-to-repo
         name: Move custom files to repo
         run: |
-          mv ./backup/csharp-netcore/src/It.FattureInCloud.Sdk/Filter ./generated/csharp-netcore/src/It.FattureInCloud.Sdk/
-          mv ./backup/csharp-netcore/src/It.FattureInCloud.Sdk/Oauth2 ./generated/csharp-netcore/src/It.FattureInCloud.Sdk/
+          mv ./backup/csharp/src/It.FattureInCloud.Sdk/Filter ./generated/csharp/src/It.FattureInCloud.Sdk/
+          mv ./backup/csharp/src/It.FattureInCloud.Sdk/Oauth2 ./generated/csharp/src/It.FattureInCloud.Sdk/
 
       - id: generate-additional-files
         name: Generate Additional files
         run: |
-          node ./scripts/generate-scopes.js csharp-netcore
+          node ./scripts/generate-scopes.js csharp
 
       - id: lint-code
         name: Lint Code Base
         run: |
-          cd ./generated/csharp-netcore
+          cd ./generated/csharp
           dotnet tool install -g dotnet-format
           dotnet format
 
@@ -159,7 +159,7 @@ jobs:
         name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          path: ./generated/csharp-netcore
+          path: ./generated/csharp
           branch: "devel-${{ env.sdk_version }}"
           token: "${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}"
           delete-branch: true
