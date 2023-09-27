@@ -49,7 +49,7 @@ jobs:
           openapi-generator-cli author template -g ${{ matrix.sdk }} -o templates-temp/openapi-generator/${{ matrix.sdk }}
           for entry in "templates-temp/openapi-generator/${{ matrix.sdk }}"/*; do
             echo "Found template $entry"
-            if ${{ matrix.sdk }} == 'java'; then
+            if ["${{ matrix.sdk }}" == "java"]; then
               FILE="${entry/templates-temp/templates/libraries/okhttp-gson}"
             else
               FILE="${entry/templates-temp/templates}"
