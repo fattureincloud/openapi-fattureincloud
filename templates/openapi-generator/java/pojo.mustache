@@ -8,6 +8,11 @@
 @ApiModel(description = "{{{.}}}")
 {{/description}}
 {{/swagger1AnnotationLibrary}}
+{{#swagger2AnnotationLibrary}}
+{{#description}}
+@Schema(description = "{{{.}}}")
+{{/description}}
+{{/swagger2AnnotationLibrary}}
 {{#jackson}}
 @JsonPropertyOrder({
 {{#vars}}
@@ -15,7 +20,9 @@
 {{/vars}}
 })
 {{#isClassnameSanitized}}
+{{^hasDiscriminatorWithNonEmptyMapping}}
 @JsonTypeName("{{name}}")
+{{/hasDiscriminatorWithNonEmptyMapping}}
 {{/isClassnameSanitized}}
 {{/jackson}}
 {{>additionalModelTypeAnnotations}}{{>generatedAnnotation}}{{#discriminator}}{{>typeInfoAnnotation}}{{/discriminator}}{{>xmlAnnotation}}
@@ -144,11 +151,9 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
     return this;
     {{/vendorExtensions.x-is-jackson-optional-nullable}}
     {{^vendorExtensions.x-is-jackson-optional-nullable}}
-    {{^required}}
     if (this.{{name}} == null) {
-      this.{{name}} = new ArrayList<>();
+      this.{{name}} = {{{defaultValue}}}{{^defaultValue}}new {{#uniqueItems}}LinkedHashSet{{/uniqueItems}}{{^uniqueItems}}ArrayList{{/uniqueItems}}<>(){{/defaultValue}};
     }
-    {{/required}}
     this.{{name}}.add({{name}}Item);
     return this;
     {{/vendorExtensions.x-is-jackson-optional-nullable}}
@@ -222,6 +227,9 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
 {{#swagger1AnnotationLibrary}}
   @ApiModelProperty({{#example}}example = "{{{.}}}", {{/example}}{{#required}}required = {{required}}, {{/required}}value = "{{{description}}}")
 {{/swagger1AnnotationLibrary}}
+{{#swagger2AnnotationLibrary}}
+  @Schema({{#example}}example = "{{{.}}}", {{/example}}requiredMode = {{#required}}Schema.RequiredMode.REQUIRED{{/required}}{{^required}}Schema.RequiredMode.NOT_REQUIRED{{/required}}, description = "{{{description}}}")
+{{/swagger2AnnotationLibrary}}
 {{#vendorExtensions.x-extra-annotation}}
   {{{vendorExtensions.x-extra-annotation}}}
 {{/vendorExtensions.x-extra-annotation}}
@@ -268,6 +276,8 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
     {{/vendorExtensions.x-is-jackson-optional-nullable}}
   }
   {{/isReadOnly}}
+
+  {{/vars}}
   {{#parent}}
   {{#allVars}}
   {{#isOverridden}}
@@ -285,8 +295,6 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
   {{/isOverridden}}
   {{/allVars}}
   {{/parent}}
-  {{/vars}}
-
   @Override
   public boolean equals(Object o) {
   {{#useReflectionEqualsHashCode}}
@@ -486,7 +494,7 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
     {{/isArray}}
     {{^isArray}}
     {{#isMap}}
-    {{#items.isPrimitiveType}}
+    {{^items.isModel}}
     if ({{getter}}() != null) {
       for (String _key : {{getter}}().keySet()) {
         try {
@@ -499,8 +507,8 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
         }
       }
     }
-    {{/items.isPrimitiveType}}
-    {{^items.isPrimitiveType}}
+    {{/items.isModel}}
+    {{#items.isModel}}
     if ({{getter}}() != null) {
       for (String _key : {{getter}}().keySet()) {
         if ({{getter}}().get(_key) != null) {
@@ -509,7 +517,7 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
         }
       }
     }
-    {{/items.isPrimitiveType}}
+    {{/items.isModel}}
     {{/isMap}}
     {{^isMap}}
     {{#isPrimitiveType}}
