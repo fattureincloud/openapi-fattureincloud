@@ -43,6 +43,22 @@ func New{{classname}}({{#requiredVars}}{{nameInCamelCase}} {{dataType}}{{^-last}
 {{#required}}
 	this.{{name}} = {{nameInCamelCase}}
 {{/required}}
+{{^required}}
+{{#defaultValue}}
+{{^vendorExtensions.x-golang-is-container}}
+{{^isReadOnly}}
+{{#isNullable}}
+	var {{nameInCamelCase}} {{{datatypeWithEnum}}} = {{{.}}}
+	this.{{name}} = *New{{{dataType}}}(&{{nameInCamelCase}})
+{{/isNullable}}
+{{^isNullable}}
+	var {{nameInCamelCase}} {{{dataType}}} = {{{.}}}
+	this.{{name}} = &{{nameInCamelCase}}
+{{/isNullable}}
+{{/isReadOnly}}
+{{/vendorExtensions.x-golang-is-container}}
+{{/defaultValue}}
+{{/required}}
 {{/allVars}}
 	return &this
 }
@@ -298,7 +314,6 @@ func (o {{classname}}) ToMap() (map[string]interface{}, error) {
 	{{/isNullable}}
 	{{! if argument is not nullable, don't set it if it is nil}}
 	{{^isNullable}}
-	{{^isReadOnly}}
 	{{#required}}
 	toSerialize["{{baseName}}"] = o.{{name}}
 	{{/required}}
@@ -307,10 +322,6 @@ func (o {{classname}}) ToMap() (map[string]interface{}, error) {
 		toSerialize["{{baseName}}"] = o.{{name}}
 	}
 	{{/required}}
-	{{/isReadOnly}}
-	{{#isReadOnly}}
-	// skip: {{baseName}} is readOnly
-	{{/isReadOnly}}
 	{{/isNullable}}
 	{{/vars}}
 	{{#isAdditionalPropertiesTrue}}
@@ -396,9 +407,13 @@ func (o *{{{classname}}}) UnmarshalJSON(bytes []byte) (err error) {
 {{#isMap}}
 	var{{{classname}}} := _{{{classname}}}{}
 
-	if err = json.Unmarshal(bytes, &var{{{classname}}}); err == nil {
-		*o = {{{classname}}}(var{{{classname}}})
+	err = json.Unmarshal(bytes, &var{{{classname}}})
+
+ 	if err != nil {
+ 		return err
 	}
+
+	*o = {{{classname}}}(var{{{classname}}})
 
 	additionalProperties := make(map[string]interface{})
 
@@ -415,9 +430,13 @@ func (o *{{{classname}}}) UnmarshalJSON(bytes []byte) (err error) {
 {{^parent}}
 	var{{{classname}}} := _{{{classname}}}{}
 
-	if err = json.Unmarshal(bytes, &var{{{classname}}}); err == nil {
-		*o = {{{classname}}}(var{{{classname}}})
-	}
+	err = json.Unmarshal(bytes, &var{{{classname}}})
+
+ 	if err != nil {
+ 		return err
+ 	}
+	
+ 	*o = {{{classname}}}(var{{{classname}}})
 
 	additionalProperties := make(map[string]interface{})
 
