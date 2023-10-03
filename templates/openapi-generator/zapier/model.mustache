@@ -83,7 +83,7 @@ module.exports = {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             {{#vars}}
-            '{{baseName}}': {{#isPrimitiveType}}{{#isFreeFormObject}}JSON.parse({{/isFreeFormObject}}bundle.inputData?.[`${keyPrefix}{{baseName}}`]{{#isFreeFormObject}}){{/isFreeFormObject}}{{/isPrimitiveType}}{{^isPrimitiveType}}{{^allowableValues}}{{^isArray}}utils.removeIfEmpty({{complexType}}.mapping(bundle, `${keyPrefix}{{baseName}}`)){{/isArray}}{{#isArray}}utils.removeKeyPrefixes(bundle.inputData?.[`${keyPrefix}{{baseName}}`], `${keyPrefix}{{baseName}}`){{/isArray}}{{/allowableValues}}{{#allowableValues}}bundle.inputData?.[`${keyPrefix}{{baseName}}`]{{/allowableValues}}{{/isPrimitiveType}},
+            '{{baseName}}': {{#isPrimitiveType}}{{#isFreeFormObject}}bundle.inputData?.[`${keyPrefix}{{baseName}}`] ? JSON.parse({{/isFreeFormObject}}bundle.inputData?.[`${keyPrefix}{{baseName}}`]{{#isFreeFormObject}}) : undefined{{/isFreeFormObject}}{{/isPrimitiveType}}{{^isPrimitiveType}}{{^allowableValues}}{{^isArray}}utils.removeIfEmpty({{complexType}}.mapping(bundle, `${keyPrefix}{{baseName}}`)){{/isArray}}{{#isArray}}utils.removeKeyPrefixes(bundle.inputData?.[`${keyPrefix}{{baseName}}`], `${keyPrefix}{{baseName}}`){{/isArray}}{{/allowableValues}}{{#allowableValues}}bundle.inputData?.[`${keyPrefix}{{baseName}}`]{{/allowableValues}}{{/isPrimitiveType}},
             {{/vars}}
         }
     },
