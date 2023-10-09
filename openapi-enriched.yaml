@@ -16,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.0.29
+  version: 2.0.30
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -194,6 +194,10 @@ paths:
                       example: Italia
                       description: Client country
                       default: Italia
+                    country_iso:
+                      type: string
+                      example: Italia
+                      description: Client country iso code
                     email:
                       type: string
                       example: mario.rossi@example.it
@@ -561,6 +565,10 @@ paths:
                       example: Italia
                       description: Client country
                       default: Italia
+                    country_iso:
+                      type: string
+                      example: Italia
+                      description: Client country iso code
                     email:
                       type: string
                       example: mario.rossi@example.it
@@ -944,6 +952,10 @@ paths:
                       example: Italia
                       description: Supplier country
                       default: Italia
+                    country_iso:
+                      type: string
+                      example: Italia
+                      description: Supplier country iso code
                     email:
                       type: string
                       example: mario.rossi@example.it
@@ -1115,6 +1127,10 @@ paths:
                       example: Italia
                       description: Supplier country
                       default: Italia
+                    country_iso:
+                      type: string
+                      example: Italia
+                      description: Supplier country iso code
                     email:
                       type: string
                       example: mario.rossi@example.it
@@ -2294,9 +2310,9 @@ paths:
                         payment_method:
                           type: string
                           description: >-
-                            E-invoice payment method [required for
-                            e-invoices](see
-                            https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf
+                            E-invoice payment method [required for e-invoices]
+                            (see
+                            [here](https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf)
                             for the accepted values of ModalitaPagamento)
                           nullable: true
                         bank_name:
@@ -2896,6 +2912,9 @@ paths:
                         - no_response
                         - manual_accepted
                         - manual_rejected
+                    locked:
+                      type: boolean
+                      description: Issued Document can't be edited
                     created_at:
                       type: string
                       description: Issued document creation date
@@ -3690,9 +3709,9 @@ paths:
                         payment_method:
                           type: string
                           description: >-
-                            E-invoice payment method [required for
-                            e-invoices](see
-                            https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf
+                            E-invoice payment method [required for e-invoices]
+                            (see
+                            [here](https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf)
                             for the accepted values of ModalitaPagamento)
                           nullable: true
                         bank_name:
@@ -4292,6 +4311,9 @@ paths:
                         - no_response
                         - manual_accepted
                         - manual_rejected
+                    locked:
+                      type: boolean
+                      description: Issued Document can't be edited
                     created_at:
                       type: string
                       description: Issued document creation date
@@ -5074,9 +5096,9 @@ paths:
                         payment_method:
                           type: string
                           description: >-
-                            E-invoice payment method [required for
-                            e-invoices](see
-                            https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf
+                            E-invoice payment method [required for e-invoices]
+                            (see
+                            [here](https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf)
                             for the accepted values of ModalitaPagamento)
                           nullable: true
                         bank_name:
@@ -5676,6 +5698,9 @@ paths:
                         - no_response
                         - manual_accepted
                         - manual_rejected
+                    locked:
+                      type: boolean
+                      description: Issued Document can't be edited
                     created_at:
                       type: string
                       description: Issued document creation date
@@ -6452,9 +6477,9 @@ paths:
                         payment_method:
                           type: string
                           description: >-
-                            E-invoice payment method [required for
-                            e-invoices](see
-                            https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf
+                            E-invoice payment method [required for e-invoices]
+                            (see
+                            [here](https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf)
                             for the accepted values of ModalitaPagamento)
                           nullable: true
                         bank_name:
@@ -7054,6 +7079,9 @@ paths:
                         - no_response
                         - manual_accepted
                         - manual_rejected
+                    locked:
+                      type: boolean
+                      description: Issued Document can't be edited
                     created_at:
                       type: string
                       description: Issued document creation date
@@ -7135,7 +7163,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
-      summary: Get Issued Document Pre-create info
+      summary: Get Issued Document Pre-Create Info
       tags:
         - Issued Documents
       responses:
@@ -7287,7 +7315,7 @@ paths:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
     post:
-      summary: Send the e-invoice
+      summary: Send E-Invoice
       operationId: sendEInvoice
       responses:
         '200':
@@ -7342,7 +7370,7 @@ paths:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
     get:
-      summary: Verify e-invoice XML
+      summary: Verify E-Invoice XML
       tags:
         - Issued e-invoices
       responses:
@@ -7367,7 +7395,7 @@ paths:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
     get:
-      summary: Get e-invoice XML
+      summary: Get E-Invoice XML
       tags:
         - Issued e-invoices
       responses:
@@ -7389,7 +7417,7 @@ paths:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
     get:
-      summary: Get e-invoice rejection reason
+      summary: Get E-Invoice Rejection Reason
       tags:
         - Issued e-invoices
       responses:
@@ -8046,6 +8074,9 @@ paths:
                         Received document attachment token returned by POST
                         /received_documents/attachment
                       nullable: true
+                    locked:
+                      type: boolean
+                      description: Received Document can't be edited
                     created_at:
                       type: string
                       description: Received document creation date
@@ -8739,6 +8770,9 @@ paths:
                         Received document attachment token returned by POST
                         /received_documents/attachment
                       nullable: true
+                    locked:
+                      type: boolean
+                      description: Received Document can't be edited
                     created_at:
                       type: string
                       description: Received document creation date
@@ -9430,6 +9464,9 @@ paths:
                         Received document attachment token returned by POST
                         /received_documents/attachment
                       nullable: true
+                    locked:
+                      type: boolean
+                      description: Received Document can't be edited
                     created_at:
                       type: string
                       description: Received document creation date
@@ -10094,6 +10131,9 @@ paths:
                         Received document attachment token returned by POST
                         /received_documents/attachment
                       nullable: true
+                    locked:
+                      type: boolean
+                      description: Received Document can't be edited
                     created_at:
                       type: string
                       description: Received document creation date
@@ -12133,6 +12173,7 @@ paths:
               - received_documents
           in: query
           name: context
+          description: Categories resource type.
           required: true
   /c/{company_id}/info/received_document_categories:
     parameters:
@@ -12829,7 +12870,7 @@ paths:
         - ManualAuth: []
   /c/{company_id}/issued_documents/transform:
     get:
-      summary: Transform issued document
+      summary: Transform Issued Document
       tags:
         - Issued Documents
       responses:
@@ -12873,7 +12914,7 @@ paths:
       - $ref: '#/components/parameters/company_id'
   /c/{company_id}/issued_documents/join:
     get:
-      summary: Join issued documents
+      summary: Join Issued Documents
       tags:
         - Issued Documents
       responses:
@@ -12914,7 +12955,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
-      summary: List emails
+      summary: List Emails
       tags:
         - Emails
       responses:
@@ -13055,6 +13096,7 @@ paths:
                           - it.fattureincloud.webhooks.products.create
                           - it.fattureincloud.webhooks.products.update
                           - it.fattureincloud.webhooks.products.delete
+                          - it.fattureincloud.webhooks.products.stock_update
                           - it.fattureincloud.webhooks.entities.clients.create
                           - it.fattureincloud.webhooks.entities.clients.update
                           - it.fattureincloud.webhooks.entities.clients.delete
@@ -13065,9 +13107,24 @@ paths:
                           - it.fattureincloud.webhooks.entities.all.update
                           - it.fattureincloud.webhooks.entities.all.delete
                           - >-
-                            it.fattureincloud.webhooks.issued_documents.e_invoices
+                            it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
                           - >-
-                            it.fattureincloud.webhooks.received_documents.e_invoices
+                            it.fattureincloud.webhooks.received_documents.e_invoices.status_update
+                    config:
+                      title: WebhooksSubscriptionConfig
+                      type: object
+                      properties:
+                        mapping:
+                          title: WebhooksSubscriptionMapping
+                          type: string
+                          description: Determines the webhook payload shape
+                          enum:
+                            - binary
+                            - structured
+                          nullable: true
+                          default: binary
+                      nullable: true
+                  nullable: true
             examples:
               example-1:
                 value:
@@ -13221,6 +13278,7 @@ paths:
                           - it.fattureincloud.webhooks.products.create
                           - it.fattureincloud.webhooks.products.update
                           - it.fattureincloud.webhooks.products.delete
+                          - it.fattureincloud.webhooks.products.stock_update
                           - it.fattureincloud.webhooks.entities.clients.create
                           - it.fattureincloud.webhooks.entities.clients.update
                           - it.fattureincloud.webhooks.entities.clients.delete
@@ -13231,9 +13289,24 @@ paths:
                           - it.fattureincloud.webhooks.entities.all.update
                           - it.fattureincloud.webhooks.entities.all.delete
                           - >-
-                            it.fattureincloud.webhooks.issued_documents.e_invoices
+                            it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
                           - >-
-                            it.fattureincloud.webhooks.received_documents.e_invoices
+                            it.fattureincloud.webhooks.received_documents.e_invoices.status_update
+                    config:
+                      title: WebhooksSubscriptionConfig
+                      type: object
+                      properties:
+                        mapping:
+                          title: WebhooksSubscriptionMapping
+                          type: string
+                          description: Determines the webhook payload shape
+                          enum:
+                            - binary
+                            - structured
+                          nullable: true
+                          default: binary
+                      nullable: true
+                  nullable: true
       security:
         - OAuth2AuthenticationCodeFlow: []
         - ManualAuth: []
@@ -14391,6 +14464,11 @@ components:
                     example: Italia
                     description: Client country
                     nullable: true
+                  country_iso:
+                    type: string
+                    example: Italia
+                    description: Client country iso code
+                    nullable: true
                   email:
                     type: string
                     example: mario.rossi@example.it
@@ -14810,6 +14888,11 @@ components:
                           type: string
                           example: Italia
                           description: Client country
+                          nullable: true
+                        country_iso:
+                          type: string
+                          example: Italia
+                          description: Client country iso code
                           nullable: true
                         email:
                           type: string
@@ -15279,6 +15362,11 @@ components:
                           example: Italia
                           description: Supplier country
                           nullable: true
+                        country_iso:
+                          type: string
+                          example: Italia
+                          description: Supplier country iso code
+                          nullable: true
                         email:
                           type: string
                           example: mario.rossi@example.it
@@ -15460,6 +15548,11 @@ components:
                     example: Italia
                     description: Supplier country
                     nullable: true
+                  country_iso:
+                    type: string
+                    example: Italia
+                    description: Supplier country iso code
+                    nullable: true
                   email:
                     type: string
                     example: mario.rossi@example.it
@@ -15608,6 +15701,11 @@ components:
                     type: string
                     example: Italia
                     description: Client country
+                    nullable: true
+                  country_iso:
+                    type: string
+                    example: Italia
+                    description: Client country iso code
                     nullable: true
                   email:
                     type: string
@@ -15966,6 +16064,11 @@ components:
                     example: Italia
                     description: Client country
                     nullable: true
+                  country_iso:
+                    type: string
+                    example: Italia
+                    description: Client country iso code
+                    nullable: true
                   email:
                     type: string
                     example: mario.rossi@example.it
@@ -16323,6 +16426,11 @@ components:
                     example: Italia
                     description: Supplier country
                     nullable: true
+                  country_iso:
+                    type: string
+                    example: Italia
+                    description: Supplier country iso code
+                    nullable: true
                   email:
                     type: string
                     example: mario.rossi@example.it
@@ -16471,6 +16579,11 @@ components:
                     type: string
                     example: Italia
                     description: Supplier country
+                    nullable: true
+                  country_iso:
+                    type: string
+                    example: Italia
+                    description: Supplier country iso code
                     nullable: true
                   email:
                     type: string
@@ -18003,8 +18116,8 @@ components:
                               nullable: true
                               description: >-
                                 E-invoice payment method [required for
-                                e-invoices](see
-                                https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf
+                                e-invoices] (see
+                                [here](https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf)
                                 for the accepted values of ModalitaPagamento)
                             bank_name:
                               type: string
@@ -18639,6 +18752,10 @@ components:
                             - manual_accepted
                             - manual_rejected
                           nullable: true
+                        locked:
+                          type: boolean
+                          nullable: true
+                          description: Issued Document can't be edited
                         created_at:
                           type: string
                           nullable: true
@@ -19404,8 +19521,9 @@ components:
                         type: string
                         nullable: true
                         description: >-
-                          E-invoice payment method [required for e-invoices](see
-                          https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf
+                          E-invoice payment method [required for e-invoices]
+                          (see
+                          [here](https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf)
                           for the accepted values of ModalitaPagamento)
                       bank_name:
                         type: string
@@ -20025,6 +20143,10 @@ components:
                       - manual_accepted
                       - manual_rejected
                     nullable: true
+                  locked:
+                    type: boolean
+                    nullable: true
+                    description: Issued Document can't be edited
                   created_at:
                     type: string
                     nullable: true
@@ -20836,8 +20958,9 @@ components:
                         type: string
                         nullable: true
                         description: >-
-                          E-invoice payment method [required for e-invoices](see
-                          https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf
+                          E-invoice payment method [required for e-invoices]
+                          (see
+                          [here](https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf)
                           for the accepted values of ModalitaPagamento)
                       bank_name:
                         type: string
@@ -21457,6 +21580,10 @@ components:
                       - manual_accepted
                       - manual_rejected
                     nullable: true
+                  locked:
+                    type: boolean
+                    nullable: true
+                    description: Issued Document can't be edited
                   created_at:
                     type: string
                     nullable: true
@@ -22268,8 +22395,9 @@ components:
                         type: string
                         nullable: true
                         description: >-
-                          E-invoice payment method [required for e-invoices](see
-                          https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf
+                          E-invoice payment method [required for e-invoices]
+                          (see
+                          [here](https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf)
                           for the accepted values of ModalitaPagamento)
                       bank_name:
                         type: string
@@ -22889,6 +23017,10 @@ components:
                       - manual_accepted
                       - manual_rejected
                     nullable: true
+                  locked:
+                    type: boolean
+                    nullable: true
+                    description: Issued Document can't be edited
                   created_at:
                     type: string
                     nullable: true
@@ -26533,6 +26665,10 @@ components:
 
                             Received document attachment token returned by POST
                             /received_documents/attachment
+                        locked:
+                          type: boolean
+                          nullable: true
+                          description: Received Document can't be edited
                         created_at:
                           type: string
                           nullable: true
@@ -27321,6 +27457,10 @@ components:
 
                       Received document attachment token returned by POST
                       /received_documents/attachment
+                  locked:
+                    type: boolean
+                    nullable: true
+                    description: Received Document can't be edited
                   created_at:
                     type: string
                     nullable: true
@@ -28054,6 +28194,10 @@ components:
 
                       Received document attachment token returned by POST
                       /received_documents/attachment
+                  locked:
+                    type: boolean
+                    nullable: true
+                    description: Received Document can't be edited
                   created_at:
                     type: string
                     nullable: true
@@ -28787,6 +28931,10 @@ components:
 
                       Received document attachment token returned by POST
                       /received_documents/attachment
+                  locked:
+                    type: boolean
+                    nullable: true
+                    description: Received Document can't be edited
                   created_at:
                     type: string
                     nullable: true
@@ -34905,8 +35053,9 @@ components:
                         type: string
                         nullable: true
                         description: >-
-                          E-invoice payment method [required for e-invoices](see
-                          https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf
+                          E-invoice payment method [required for e-invoices]
+                          (see
+                          [here](https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf)
                           for the accepted values of ModalitaPagamento)
                       bank_name:
                         type: string
@@ -35526,6 +35675,10 @@ components:
                       - manual_accepted
                       - manual_rejected
                     nullable: true
+                  locked:
+                    type: boolean
+                    nullable: true
+                    description: Issued Document can't be edited
                   created_at:
                     type: string
                     nullable: true
@@ -36370,8 +36523,9 @@ components:
                         type: string
                         nullable: true
                         description: >-
-                          E-invoice payment method [required for e-invoices](see
-                          https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf
+                          E-invoice payment method [required for e-invoices]
+                          (see
+                          [here](https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf)
                           for the accepted values of ModalitaPagamento)
                       bank_name:
                         type: string
@@ -36991,6 +37145,10 @@ components:
                       - manual_accepted
                       - manual_rejected
                     nullable: true
+                  locked:
+                    type: boolean
+                    nullable: true
+                    description: Issued Document can't be edited
                   created_at:
                     type: string
                     nullable: true
@@ -37230,7 +37388,6 @@ components:
                             - sending
                             - pending
                             - sent
-                          nullable: true
                         sent_date:
                           type: string
                           format: date-time
@@ -37280,7 +37437,6 @@ components:
                             - unknown
                             - document_opened
                             - email_opened
-                          nullable: true
                         recipient_date:
                           type: string
                           format: date-time
@@ -37464,6 +37620,7 @@ components:
                         - it.fattureincloud.webhooks.products.create
                         - it.fattureincloud.webhooks.products.update
                         - it.fattureincloud.webhooks.products.delete
+                        - it.fattureincloud.webhooks.products.stock_update
                         - it.fattureincloud.webhooks.entities.clients.create
                         - it.fattureincloud.webhooks.entities.clients.update
                         - it.fattureincloud.webhooks.entities.clients.delete
@@ -37473,9 +37630,21 @@ components:
                         - it.fattureincloud.webhooks.entities.all.create
                         - it.fattureincloud.webhooks.entities.all.update
                         - it.fattureincloud.webhooks.entities.all.delete
-                        - it.fattureincloud.webhooks.issued_documents.e_invoices
                         - >-
-                          it.fattureincloud.webhooks.received_documents.e_invoices
+                          it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
+                        - >-
+                          it.fattureincloud.webhooks.received_documents.e_invoices.status_update
+                  config:
+                    title: WebhooksSubscriptionConfig
+                    type: object
+                    properties:
+                      mapping:
+                        title: WebhooksSubscriptionMapping
+                        type: string
+                        description: Determines the webhook payload shape
+                        enum:
+                          - binary
+                          - structured
               warnings:
                 type: array
                 nullable: true
@@ -37613,6 +37782,7 @@ components:
                           - it.fattureincloud.webhooks.products.create
                           - it.fattureincloud.webhooks.products.update
                           - it.fattureincloud.webhooks.products.delete
+                          - it.fattureincloud.webhooks.products.stock_update
                           - it.fattureincloud.webhooks.entities.clients.create
                           - it.fattureincloud.webhooks.entities.clients.update
                           - it.fattureincloud.webhooks.entities.clients.delete
@@ -37623,9 +37793,20 @@ components:
                           - it.fattureincloud.webhooks.entities.all.update
                           - it.fattureincloud.webhooks.entities.all.delete
                           - >-
-                            it.fattureincloud.webhooks.issued_documents.e_invoices
+                            it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
                           - >-
-                            it.fattureincloud.webhooks.received_documents.e_invoices
+                            it.fattureincloud.webhooks.received_documents.e_invoices.status_update
+                    config:
+                      title: WebhooksSubscriptionConfig
+                      type: object
+                      properties:
+                        mapping:
+                          title: WebhooksSubscriptionMapping
+                          type: string
+                          description: Determines the webhook payload shape
+                          enum:
+                            - binary
+                            - structured
           examples:
             example-1:
               value:
@@ -37754,6 +37935,7 @@ components:
                         - it.fattureincloud.webhooks.products.create
                         - it.fattureincloud.webhooks.products.update
                         - it.fattureincloud.webhooks.products.delete
+                        - it.fattureincloud.webhooks.products.stock_update
                         - it.fattureincloud.webhooks.entities.clients.create
                         - it.fattureincloud.webhooks.entities.clients.update
                         - it.fattureincloud.webhooks.entities.clients.delete
@@ -37763,9 +37945,21 @@ components:
                         - it.fattureincloud.webhooks.entities.all.create
                         - it.fattureincloud.webhooks.entities.all.update
                         - it.fattureincloud.webhooks.entities.all.delete
-                        - it.fattureincloud.webhooks.issued_documents.e_invoices
                         - >-
-                          it.fattureincloud.webhooks.received_documents.e_invoices
+                          it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
+                        - >-
+                          it.fattureincloud.webhooks.received_documents.e_invoices.status_update
+                  config:
+                    title: WebhooksSubscriptionConfig
+                    type: object
+                    properties:
+                      mapping:
+                        title: WebhooksSubscriptionMapping
+                        type: string
+                        description: Determines the webhook payload shape
+                        enum:
+                          - binary
+                          - structured
           examples:
             example-1:
               value:
@@ -37889,6 +38083,7 @@ components:
                         - it.fattureincloud.webhooks.products.create
                         - it.fattureincloud.webhooks.products.update
                         - it.fattureincloud.webhooks.products.delete
+                        - it.fattureincloud.webhooks.products.stock_update
                         - it.fattureincloud.webhooks.entities.clients.create
                         - it.fattureincloud.webhooks.entities.clients.update
                         - it.fattureincloud.webhooks.entities.clients.delete
@@ -37898,9 +38093,21 @@ components:
                         - it.fattureincloud.webhooks.entities.all.create
                         - it.fattureincloud.webhooks.entities.all.update
                         - it.fattureincloud.webhooks.entities.all.delete
-                        - it.fattureincloud.webhooks.issued_documents.e_invoices
                         - >-
-                          it.fattureincloud.webhooks.received_documents.e_invoices
+                          it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
+                        - >-
+                          it.fattureincloud.webhooks.received_documents.e_invoices.status_update
+                  config:
+                    title: WebhooksSubscriptionConfig
+                    type: object
+                    properties:
+                      mapping:
+                        title: WebhooksSubscriptionMapping
+                        type: string
+                        description: Determines the webhook payload shape
+                        enum:
+                          - binary
+                          - structured
               warnings:
                 type: array
                 nullable: true

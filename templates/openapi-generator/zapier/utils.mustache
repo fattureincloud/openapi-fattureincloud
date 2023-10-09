@@ -2,7 +2,7 @@ const _ = require('lodash')
 const EventType = require('../models/EventType')
 
 const replacePathParameters = (url) => url.replace(/{([^{}]+)}/g, (keyExpr, key) => `{{bundle.inputData.${key}}}`)
-const removeKeyPrefixes = (objectsArray, currentPath) => objectsArray == undefined || typeof objectsArray[0] != 'object' ? objectsArray : objectsArray.map((obj) => Object.keys(obj).reduce((res, key) =>_.set(res, key.replace(`${currentPath}.`, ''), obj[key]), {}))
+const childMapping = (objectsArray, prefix, model) => objectsArray.map(object => model.mapping({inputData: object}, prefix))
 const removeIfEmpty = (obj) => _.isEmpty(JSON.parse(JSON.stringify(obj))) ? undefined : obj
 const buildKeyAndLabel = (prefix, isInput = true, isArrayChild = false) => {
     const keyPrefix = !_.isEmpty(prefix) && (!isArrayChild || isInput) ? `${prefix}${isInput ? '.' : '__'}` : prefix
@@ -39,10 +39,18 @@ const overrideUserAgent = (request, z, bundle) => {
     request.headers['user-agent'] = `FattureInCloud/${require('../package.json').version}/Zapier`
     return request
 }
+const jsonFieldToObject = (val, fieldname) => {
+    if (_.isEmpty(val)) return undefined
+    try {
+        return JSON.parse(val)
+    } catch(e) {
+        throw new Error(`The json provided in the ${fieldname} field is invalid\n`)
+    }
+}
 
 module.exports = {
     replacePathParameters: replacePathParameters,
-    removeKeyPrefixes: removeKeyPrefixes,
+    childMapping: childMapping,
     removeIfEmpty: removeIfEmpty,
     buildKeyAndLabel: buildKeyAndLabel,
     hasSearchRequisites: hasSearchRequisites,
@@ -51,4 +59,5 @@ module.exports = {
     extractResourceAndOperation: extractResourceAndOperation,
     retrieveResourceOperations: retrieveResourceOperations,
     overrideUserAgent: overrideUserAgent,
+    jsonFieldToObject: jsonFieldToObject,
 }
