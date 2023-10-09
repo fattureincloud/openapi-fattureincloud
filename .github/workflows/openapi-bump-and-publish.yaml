@@ -128,7 +128,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        event: ['enrich-spec', 'generate-php', 'generate-javascript', 'generate-csharp', 'generate-java', 'generate-ruby', 'generate-postman', 'generate-python', 'generate-typescript-axios', 'generate-go']
+        event: ['enrich-spec', 'generate-php', 'generate-javascript', 'generate-csharp', 'generate-java', 'generate-ruby', 'generate-postman', 'generate-python', 'generate-typescript-axios', 'generate-go', 'generate-zapier']
     needs: bump-openapi-version
     steps: 
       - id: trigger-event
