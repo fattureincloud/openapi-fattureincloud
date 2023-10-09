@@ -192,7 +192,8 @@ export const {{classname}}AxiosParamCreator = function (configuration?: Configur
             {{#consumes.0}}
             localVarHeaderParameter['Content-Type'] = '{{{mediaType}}}';
             {{/consumes.0}}
-
+            localVarHeaderParameter['User-Agent'] = 'FattureInCloud/{{{npmVersion}}}/TypeScript-SDK';
+    
     {{/bodyParam}}
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
