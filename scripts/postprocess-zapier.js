@@ -20,13 +20,13 @@ function postProcessZapierFolder(dir)
         if (path.basename(dir) == 'apis') {
           // add triggers
           data = addTriggers(data)
+          fs.writeFile(dir + file, data, 'utf8', function (err) {
+            if (err) {
+              return console.log(err)
+            }
+          })
         }
   
-        fs.writeFile(dir + file, data, 'utf8', function (err) {
-          if (err) {
-            return console.log(err)
-          }
-        })
       })
     }
   })
