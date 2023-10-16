@@ -54,6 +54,8 @@ jobs:
           sudo apt install yq -y
           cd ./scripts/
           yarn
+          cd ../generated/zapier/scripts
+          yarn
 
       - id: bump-zapier-integration-version
         name: Bump zapier version
