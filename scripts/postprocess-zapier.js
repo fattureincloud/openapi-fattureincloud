@@ -9,7 +9,7 @@ function postProcessZapierFolder(dir)
   files = fs.readdirSync(dir)
   
   files.forEach((file) => {
-    if (fs.statSync(dir + file).isDirectory()) {
+    if (!dir.startsWith('.') && fs.statSync(dir + file).isDirectory()) {
       postProcessZapierFolder(dir + file + '/')
     } else {
       fs.readFile(dir + file, 'utf8', function (err, data) {
