@@ -14,7 +14,7 @@ function postProcessZapierFolder(dir)
     } else {
       fs.readFile(dir + file, 'utf8', function (err, data) {
         if (err) {
-          return console.log(err)
+          return console.log(dir + file, err)
         }
         
         if (path.basename(dir) == 'apis') {
