@@ -2,7 +2,13 @@ const _ = require('lodash')
 const EventType = require('../models/EventType')
 
 const replacePathParameters = (url) => url.replace(/{([^{}]+)}/g, (keyExpr, key) => `{{bundle.inputData.${key}}}`)
-const childMapping = (objectsArray, prefix, model) => objectsArray.map(object => model.mapping({inputData: object}, prefix))
+const childMapping = (objectsArray, prefix, model) => {
+    if(_.isEmpty(objectsArray)) return undefined
+    if (typeof model.mapping === "function") { 
+        return objectsArray.map(object => model.mapping({inputData: object}, prefix))
+    }
+    return objectsArray
+}
 const removeIfEmpty = (obj) => _.isEmpty(JSON.parse(JSON.stringify(obj))) ? undefined : obj
 const buildKeyAndLabel = (prefix, isInput = true, isArrayChild = false) => {
     const keyPrefix = !_.isEmpty(prefix) && (!isArrayChild || isInput) ? `${prefix}${isInput ? '.' : '__'}` : prefix
