@@ -1,7 +1,7 @@
 {
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.21.4",
+    "axios": "^0.27.2",
     "glob": "^7.2.0",
     "js-yaml": "^4.1.0",
     "jsonata": "^1.8.6",
