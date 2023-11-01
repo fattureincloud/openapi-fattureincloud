@@ -67,9 +67,9 @@ class {{classname}}:
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
-                If one number provided, it will be total request
-                timeout. It can also be a pair (tuple) of
-                (connection, read) 
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -207,7 +207,7 @@ class {{classname}}:
                 _query_params.append(('{{baseName}}', _params['{{paramName}}']))
             {{/isDate}}
             {{^isDate}}
-            _query_params.append(('{{baseName}}', _params['{{paramName}}']{{#isEnumRef}}{{/isEnumRef}}))
+            _query_params.append(('{{baseName}}', _params['{{paramName}}']{{#isEnumRef}}.value{{/isEnumRef}}))
             {{/isDate}}
             {{/isDateTime}}
             {{#isArray}}

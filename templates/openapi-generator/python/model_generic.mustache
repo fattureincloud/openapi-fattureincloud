@@ -12,7 +12,7 @@ import json
 
 class {{classname}}({{#parent}}{{{.}}}{{/parent}}{{^parent}}BaseModel{{/parent}}):
     """
-    {{#description}}{{{description}}} # noqa: E501{{/description}}{{^description}}{{{classname}}}{{/description}}
+    {{#description}}{{{description}}}  # noqa: E501{{/description}}{{^description}}{{{classname}}}{{/description}}
     """
 {{#vars}}
     {{name}}: {{{vendorExtensions.x-py-typing}}}
@@ -141,7 +141,7 @@ class {{classname}}({{#parent}}{{{.}}}{{/parent}}{{^parent}}BaseModel{{/parent}}
             for _item in self.{{{name}}}:
                 if _item:
                     _items.append(
-                        [_inner_item.to_dict() for _inner_item in _item if _inner_item is not None]
+                         [_inner_item.to_dict() for _inner_item in _item if _inner_item is not None]
                     )
             _dict['{{{baseName}}}'] = _items
         {{/items.items.isPrimitiveType}}
@@ -204,6 +204,15 @@ class {{classname}}({{#parent}}{{{.}}}{{/parent}}{{^parent}}BaseModel{{/parent}}
                 _dict[_key] = _value
 
         {{/isAdditionalPropertiesTrue}}
+        {{#allVars}}
+        {{#isNullable}}
+        # set to None if {{{name}}} (nullable) is None
+        # and __fields_set__ contains the field
+        if self.{{name}} is None and "{{{name}}}" in self.__fields_set__:
+            _dict['{{{baseName}}}'] = None
+
+        {{/isNullable}}
+        {{/allVars}}
         return _dict
 
     @classmethod
@@ -328,7 +337,7 @@ class {{classname}}({{#parent}}{{{.}}}{{/parent}}{{^parent}}BaseModel{{/parent}}
             "{{{name}}}": obj.get("{{{baseName}}}") if obj.get("{{{baseName}}}") is not None else {{{defaultValue}}}{{^-last}},{{/-last}}
             {{/defaultValue}}
             {{^defaultValue}}
-            {{#isNumber}}"{{{name}}}": float(obj.get("{{{baseName}}}")) if obj.get("{{{baseName}}}") is not None else None{{^-last}},{{/-last}}{{/isNumber}}{{^isNumber}}"{{{name}}}": obj.get("{{{baseName}}}") if obj.get("{{{baseName}}}") is not None else None{{^-last}},{{/-last}}{{/isNumber}}
+            "{{{name}}}": obj.get("{{{baseName}}}"){{^-last}},{{/-last}}
             {{/defaultValue}}
             {{/isPrimitiveType}}
             {{/isContainer}}
