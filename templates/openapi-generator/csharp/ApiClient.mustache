@@ -25,6 +25,9 @@ using RestSharpMethod = RestSharp.Method;
 {{#supportsRetry}}
 using Polly;
 {{/supportsRetry}}
+{{#hasOAuthMethods}}
+using {{packageName}}.Client.Auth;
+{{/hasOAuthMethods}}
 
 namespace {{packageName}}.Client
 {
@@ -359,8 +362,7 @@ namespace {{packageName}}.Client
                         request.RequestFormat = DataFormat.Json;
                     }
 
-                    request.AddParameter("application/json", JsonConvert.SerializeObject(options.Data), ParameterType.RequestBody);
-                    request.AddHeader("User-Agent", configuration.UserAgent);
+                    request.AddJsonBody(options.Data);
                 }
             }
 
@@ -447,6 +449,7 @@ namespace {{packageName}}.Client
                 CookieContainer = cookies,
                 MaxTimeout = configuration.Timeout,
                 Proxy = configuration.Proxy,
+                UserAgent = configuration.UserAgent,
                 UseDefaultCredentials = configuration.UseDefaultCredentials,
                 RemoteCertificateValidationCallback = configuration.RemoteCertificateValidationCallback
             };
@@ -454,6 +457,22 @@ namespace {{packageName}}.Client
             using (RestClient client = new RestClient(clientOptions,
                 configureSerialization: serializerConfig => serializerConfig.UseSerializer(() => new CustomJsonCodec(SerializerSettings, configuration))))
             {
+                {{#hasOAuthMethods}}
+                if (!string.IsNullOrEmpty(configuration.OAuthTokenUrl) &&
+                    !string.IsNullOrEmpty(configuration.OAuthClientId) &&
+                    !string.IsNullOrEmpty(configuration.OAuthClientSecret) &&
+                    configuration.OAuthFlow != null)
+                {
+                    client.UseAuthenticator(new OAuthAuthenticator(
+                        configuration.OAuthTokenUrl,
+                        configuration.OAuthClientId,
+                        configuration.OAuthClientSecret,
+                        configuration.OAuthFlow,
+                        SerializerSettings,
+                        configuration));
+                }
+
+                {{/hasOAuthMethods}}
                 InterceptRequest(request);
 
                 RestResponse<T> response;
@@ -470,6 +489,7 @@ namespace {{packageName}}.Client
                 {
                     response = client.Execute<T>(request);
                 }
+
                 // if the response type is oneOf/anyOf, call FromJSON to deserialize the data
                 if (typeof({{{packageName}}}.{{modelPackage}}.AbstractOpenAPISchema).IsAssignableFrom(typeof(T)))
                 {
@@ -494,12 +514,15 @@ namespace {{packageName}}.Client
                 {
                     response.Data = (T)(object)response.Content;
                 }
+
                 InterceptResponse(request, response);
+
                 var result = ToApiResponse(response);
                 if (response.ErrorMessage != null)
                 {
                     result.ErrorText = response.ErrorMessage;
                 }
+
                 if (response.Cookies != null && response.Cookies.Count > 0)
                 {
                     if (result.Cookies == null) result.Cookies = new List<Cookie>();
@@ -522,6 +545,7 @@ namespace {{packageName}}.Client
                             Secure = restResponseCookie.Secure,
                             Version = restResponseCookie.Version
                         };
+
                         result.Cookies.Add(cookie);
                     }
                 }
@@ -539,12 +563,29 @@ namespace {{packageName}}.Client
                 ClientCertificates = configuration.ClientCertificates,
                 MaxTimeout = configuration.Timeout,
                 Proxy = configuration.Proxy,
+                UserAgent = configuration.UserAgent,
                 UseDefaultCredentials = configuration.UseDefaultCredentials
             };
 
             using (RestClient client = new RestClient(clientOptions,
                 configureSerialization: serializerConfig => serializerConfig.UseSerializer(() => new CustomJsonCodec(SerializerSettings, configuration))))
             {
+                {{#hasOAuthMethods}}
+                if (!string.IsNullOrEmpty(configuration.OAuthTokenUrl) &&
+                    !string.IsNullOrEmpty(configuration.OAuthClientId) &&
+                    !string.IsNullOrEmpty(configuration.OAuthClientSecret) &&
+                    configuration.OAuthFlow != null)
+                {
+                    client.UseAuthenticator(new OAuthAuthenticator(
+                        configuration.OAuthTokenUrl,
+                        configuration.OAuthClientId,
+                        configuration.OAuthClientSecret,
+                        configuration.OAuthFlow,
+                        SerializerSettings,
+                        configuration));
+                }
+
+                {{/hasOAuthMethods}}
                 InterceptRequest(request);
 
                 RestResponse<T> response;
@@ -565,6 +606,7 @@ namespace {{packageName}}.Client
             {{#supportsRetry}}
                 }
             {{/supportsRetry}}
+
                 // if the response type is oneOf/anyOf, call FromJSON to deserialize the data
                 if (typeof({{{packageName}}}.{{modelPackage}}.AbstractOpenAPISchema).IsAssignableFrom(typeof(T)))
                 {
@@ -578,12 +620,15 @@ namespace {{packageName}}.Client
                 {
                     response.Data = (T)(object)response.RawBytes;
                 }
+
                 InterceptResponse(request, response);
+
                 var result = ToApiResponse(response);
                 if (response.ErrorMessage != null)
                 {
                     result.ErrorText = response.ErrorMessage;
                 }
+
                 if (response.Cookies != null && response.Cookies.Count > 0)
                 {
                     if (result.Cookies == null) result.Cookies = new List<Cookie>();
@@ -606,6 +651,7 @@ namespace {{packageName}}.Client
                             Secure = restResponseCookie.Secure,
                             Version = restResponseCookie.Version
                         };
+
                         result.Cookies.Add(cookie);
                     }
                 }
