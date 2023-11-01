@@ -22,8 +22,7 @@ import (
 	"strings"
 	"time"
 	"unicode/utf8"
-	. "github.com/fattureincloud/fattureincloud-go-sdk/v2/model"
-	
+
 	{{#hasOAuthMethods}}
 	"golang.org/x/oauth2"
 	{{/hasOAuthMethods}}
@@ -522,6 +521,7 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 			return
 		}
 		_, err = f.Seek(0, io.SeekStart)
+		err = os.Remove(f.Name())
 		return
 	}
 	if f, ok := v.(**os.File); ok {
@@ -534,6 +534,7 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 			return
 		}
 		_, err = (*f).Seek(0, io.SeekStart)
+		err = os.Remove((*f).Name())
 		return
 	}
 	if xmlCheck.MatchString(contentType) {
@@ -611,10 +612,10 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 		err = json.NewEncoder(bodyBuf).Encode(body)
 	} else if xmlCheck.MatchString(contentType) {
 		var bs []byte
- 		bs, err = xml.Marshal(body)
- 		if err == nil {
- 			bodyBuf.Write(bs)
- 		}
+		bs, err = xml.Marshal(body)
+		if err == nil {
+			bodyBuf.Write(bs)
+		}
 	}
 
 	if err != nil {
@@ -735,12 +736,12 @@ func formatErrorMessage(status string, v interface{}) string {
 		if field != (reflect.Value{}) {
 			str = fmt.Sprintf("%s", field.Interface())
 		}
-		
+
 		field = metaValue.FieldByName("Detail")
 		if field != (reflect.Value{}) {
 			str = fmt.Sprintf("%s (%s)", str, field.Interface())
 		}
 	}
-	
+
 	return strings.TrimSpace(fmt.Sprintf("%s %s", status, str))
 }
