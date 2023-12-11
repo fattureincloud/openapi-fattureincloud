@@ -494,12 +494,15 @@ namespace {{packageName}}.Client
                 {
                     response.Data = (T)(object)response.Content;
                 }
+
                 InterceptResponse(request, response);
+
                 var result = ToApiResponse(response);
                 if (response.ErrorMessage != null)
                 {
                     result.ErrorText = response.ErrorMessage;
                 }
+
                 if (response.Cookies != null && response.Cookies.Count > 0)
                 {
                     if (result.Cookies == null) result.Cookies = new List<Cookie>();
@@ -522,6 +525,7 @@ namespace {{packageName}}.Client
                             Secure = restResponseCookie.Secure,
                             Version = restResponseCookie.Version
                         };
+
                         result.Cookies.Add(cookie);
                     }
                 }
@@ -565,6 +569,7 @@ namespace {{packageName}}.Client
             {{#supportsRetry}}
                 }
             {{/supportsRetry}}
+
                 // if the response type is oneOf/anyOf, call FromJSON to deserialize the data
                 if (typeof({{{packageName}}}.{{modelPackage}}.AbstractOpenAPISchema).IsAssignableFrom(typeof(T)))
                 {
@@ -578,12 +583,15 @@ namespace {{packageName}}.Client
                 {
                     response.Data = (T)(object)response.RawBytes;
                 }
+
                 InterceptResponse(request, response);
+
                 var result = ToApiResponse(response);
                 if (response.ErrorMessage != null)
                 {
                     result.ErrorText = response.ErrorMessage;
                 }
+
                 if (response.Cookies != null && response.Cookies.Count > 0)
                 {
                     if (result.Cookies == null) result.Cookies = new List<Cookie>();
@@ -606,6 +614,7 @@ namespace {{packageName}}.Client
                             Secure = restResponseCookie.Secure,
                             Version = restResponseCookie.Version
                         };
+
                         result.Cookies.Add(cookie);
                     }
                 }
