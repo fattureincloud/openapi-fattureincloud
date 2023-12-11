@@ -16,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.0.30
+  version: 2.0.31
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -13090,6 +13090,9 @@ paths:
                           - it.fattureincloud.webhooks.taxes.create
                           - it.fattureincloud.webhooks.taxes.update
                           - it.fattureincloud.webhooks.taxes.delete
+                          - it.fattureincloud.webhooks.archive_documents.create
+                          - it.fattureincloud.webhooks.archive_documents.update
+                          - it.fattureincloud.webhooks.archive_documents.delete
                           - it.fattureincloud.webhooks.cashbook.create
                           - it.fattureincloud.webhooks.cashbook.update
                           - it.fattureincloud.webhooks.cashbook.delete
@@ -13109,7 +13112,7 @@ paths:
                           - >-
                             it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
                           - >-
-                            it.fattureincloud.webhooks.received_documents.e_invoices.status_update
+                            it.fattureincloud.webhooks.received_documents.e_invoices.receive
                     config:
                       title: WebhooksSubscriptionConfig
                       type: object
@@ -13272,6 +13275,9 @@ paths:
                           - it.fattureincloud.webhooks.taxes.create
                           - it.fattureincloud.webhooks.taxes.update
                           - it.fattureincloud.webhooks.taxes.delete
+                          - it.fattureincloud.webhooks.archive_documents.create
+                          - it.fattureincloud.webhooks.archive_documents.update
+                          - it.fattureincloud.webhooks.archive_documents.delete
                           - it.fattureincloud.webhooks.cashbook.create
                           - it.fattureincloud.webhooks.cashbook.update
                           - it.fattureincloud.webhooks.cashbook.delete
@@ -13291,7 +13297,7 @@ paths:
                           - >-
                             it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
                           - >-
-                            it.fattureincloud.webhooks.received_documents.e_invoices.status_update
+                            it.fattureincloud.webhooks.received_documents.e_invoices.receive
                     config:
                       title: WebhooksSubscriptionConfig
                       type: object
@@ -37614,6 +37620,9 @@ components:
                         - it.fattureincloud.webhooks.taxes.create
                         - it.fattureincloud.webhooks.taxes.update
                         - it.fattureincloud.webhooks.taxes.delete
+                        - it.fattureincloud.webhooks.archive_documents.create
+                        - it.fattureincloud.webhooks.archive_documents.update
+                        - it.fattureincloud.webhooks.archive_documents.delete
                         - it.fattureincloud.webhooks.cashbook.create
                         - it.fattureincloud.webhooks.cashbook.update
                         - it.fattureincloud.webhooks.cashbook.delete
@@ -37633,7 +37642,7 @@ components:
                         - >-
                           it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
                         - >-
-                          it.fattureincloud.webhooks.received_documents.e_invoices.status_update
+                          it.fattureincloud.webhooks.received_documents.e_invoices.receive
                   config:
                     title: WebhooksSubscriptionConfig
                     type: object
@@ -37776,6 +37785,9 @@ components:
                           - it.fattureincloud.webhooks.taxes.create
                           - it.fattureincloud.webhooks.taxes.update
                           - it.fattureincloud.webhooks.taxes.delete
+                          - it.fattureincloud.webhooks.archive_documents.create
+                          - it.fattureincloud.webhooks.archive_documents.update
+                          - it.fattureincloud.webhooks.archive_documents.delete
                           - it.fattureincloud.webhooks.cashbook.create
                           - it.fattureincloud.webhooks.cashbook.update
                           - it.fattureincloud.webhooks.cashbook.delete
@@ -37795,7 +37807,7 @@ components:
                           - >-
                             it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
                           - >-
-                            it.fattureincloud.webhooks.received_documents.e_invoices.status_update
+                            it.fattureincloud.webhooks.received_documents.e_invoices.receive
                     config:
                       title: WebhooksSubscriptionConfig
                       type: object
@@ -37929,6 +37941,9 @@ components:
                         - it.fattureincloud.webhooks.taxes.create
                         - it.fattureincloud.webhooks.taxes.update
                         - it.fattureincloud.webhooks.taxes.delete
+                        - it.fattureincloud.webhooks.archive_documents.create
+                        - it.fattureincloud.webhooks.archive_documents.update
+                        - it.fattureincloud.webhooks.archive_documents.delete
                         - it.fattureincloud.webhooks.cashbook.create
                         - it.fattureincloud.webhooks.cashbook.update
                         - it.fattureincloud.webhooks.cashbook.delete
@@ -37948,7 +37963,7 @@ components:
                         - >-
                           it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
                         - >-
-                          it.fattureincloud.webhooks.received_documents.e_invoices.status_update
+                          it.fattureincloud.webhooks.received_documents.e_invoices.receive
                   config:
                     title: WebhooksSubscriptionConfig
                     type: object
@@ -38077,6 +38092,9 @@ components:
                         - it.fattureincloud.webhooks.taxes.create
                         - it.fattureincloud.webhooks.taxes.update
                         - it.fattureincloud.webhooks.taxes.delete
+                        - it.fattureincloud.webhooks.archive_documents.create
+                        - it.fattureincloud.webhooks.archive_documents.update
+                        - it.fattureincloud.webhooks.archive_documents.delete
                         - it.fattureincloud.webhooks.cashbook.create
                         - it.fattureincloud.webhooks.cashbook.update
                         - it.fattureincloud.webhooks.cashbook.delete
@@ -38096,7 +38114,7 @@ components:
                         - >-
                           it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
                         - >-
-                          it.fattureincloud.webhooks.received_documents.e_invoices.status_update
+                          it.fattureincloud.webhooks.received_documents.e_invoices.receive
                   config:
                     title: WebhooksSubscriptionConfig
                     type: object
