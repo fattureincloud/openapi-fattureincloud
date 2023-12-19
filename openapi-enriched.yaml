@@ -152,7 +152,6 @@ paths:
                         - pa
                         - condo
                       description: Client type
-                      nullable: true
                     first_name:
                       type: string
                       description: Client first name
@@ -258,7 +257,6 @@ paths:
                         is_disabled:
                           type: boolean
                           description: Is the vat type disabled
-                      nullable: true
                       required:
                         - value
                     default_payment_terms:
@@ -280,7 +278,6 @@ paths:
                         id:
                           type: integer
                           description: Payment method id
-                          nullable: true
                         name:
                           type: string
                           description: Payment method name
@@ -317,18 +314,15 @@ paths:
                             iban:
                               type: string
                               description: Payment account iban
-                              nullable: true
                             sia:
                               type: string
                               description: Payment account sia
-                              nullable: true
                             cuc:
                               type: string
                               description: Payment account cuc
                             virtual:
                               type: boolean
                               description: Payment method is virtual
-                          nullable: true
                           required:
                             - name
                         details:
@@ -347,25 +341,20 @@ paths:
                                 type: string
                                 description: Payment method details description
                                 nullable: true
-                          nullable: true
                         bank_iban:
                           type: string
                           description: Payment method bank iban
-                          nullable: true
                         bank_name:
                           type: string
                           description: Payment method bank name
-                          nullable: true
                         bank_beneficiary:
                           type: string
                           description: Payment method bank beneficiary
-                          nullable: true
                         ei_payment_method:
                           type: string
                           description: E-invoice payment method
                       required:
                         - name
-                      nullable: true
                     bank_name:
                       type: string
                       description: Client bank name
@@ -405,11 +394,9 @@ paths:
                     created_at:
                       type: string
                       description: Client creation date
-                      nullable: true
                     updated_at:
                       type: string
                       description: Client last update date
-                      nullable: true
                   required:
                     - name
             examples:
@@ -523,7 +510,6 @@ paths:
                         - pa
                         - condo
                       description: Client type
-                      nullable: true
                     first_name:
                       type: string
                       description: Client first name
@@ -629,7 +615,6 @@ paths:
                         is_disabled:
                           type: boolean
                           description: Is the vat type disabled
-                      nullable: true
                       required:
                         - value
                     default_payment_terms:
@@ -651,7 +636,6 @@ paths:
                         id:
                           type: integer
                           description: Payment method id
-                          nullable: true
                         name:
                           type: string
                           description: Payment method name
@@ -688,18 +672,15 @@ paths:
                             iban:
                               type: string
                               description: Payment account iban
-                              nullable: true
                             sia:
                               type: string
                               description: Payment account sia
-                              nullable: true
                             cuc:
                               type: string
                               description: Payment account cuc
                             virtual:
                               type: boolean
                               description: Payment method is virtual
-                          nullable: true
                           required:
                             - name
                         details:
@@ -718,25 +699,20 @@ paths:
                                 type: string
                                 description: Payment method details description
                                 nullable: true
-                          nullable: true
                         bank_iban:
                           type: string
                           description: Payment method bank iban
-                          nullable: true
                         bank_name:
                           type: string
                           description: Payment method bank name
-                          nullable: true
                         bank_beneficiary:
                           type: string
                           description: Payment method bank beneficiary
-                          nullable: true
                         ei_payment_method:
                           type: string
                           description: E-invoice payment method
                       required:
                         - name
-                      nullable: true
                     bank_name:
                       type: string
                       description: Client bank name
@@ -776,11 +752,9 @@ paths:
                     created_at:
                       type: string
                       description: Client creation date
-                      nullable: true
                     updated_at:
                       type: string
                       description: Client last update date
-                      nullable: true
                   required:
                     - name
               description: ''
@@ -910,7 +884,6 @@ paths:
                         - pa
                         - condo
                       description: Supplier type
-                      nullable: true
                     first_name:
                       type: string
                       description: Supplier first name
@@ -979,11 +952,9 @@ paths:
                     created_at:
                       type: string
                       description: Supplier creation date
-                      nullable: true
                     updated_at:
                       type: string
                       description: Supplier last update date
-                      nullable: true
                   required:
                     - name
             examples:
@@ -1085,7 +1056,6 @@ paths:
                         - pa
                         - condo
                       description: Supplier type
-                      nullable: true
                     first_name:
                       type: string
                       description: Supplier first name
@@ -1154,11 +1124,9 @@ paths:
                     created_at:
                       type: string
                       description: Supplier creation date
-                      nullable: true
                     updated_at:
                       type: string
                       description: Supplier last update date
-                      nullable: true
                   required:
                     - name
             examples:
@@ -1267,15 +1235,12 @@ paths:
                     code:
                       type: string
                       description: Product code
-                      nullable: true
                     net_price:
                       type: number
                       description: Product net price
-                      nullable: true
                     gross_price:
                       type: number
                       description: Product gross price
-                      nullable: true
                     use_gross_price:
                       type: boolean
                       description: Product uses gross prices
@@ -1322,28 +1287,23 @@ paths:
                         is_disabled:
                           type: boolean
                           description: Is the vat type disabled
-                      nullable: true
                       required:
                         - value
                     net_cost:
                       type: number
                       description: Product net cost
-                      nullable: true
                     measure:
                       type: string
                       description: Product measure
-                      nullable: true
                     description:
                       type: string
                       description: Product description
-                      nullable: true
                     category:
                       type: string
                       description: Product category
                     notes:
                       type: string
                       description: Product extra notes
-                      nullable: true
                     in_stock:
                       type: boolean
                       description: Product has stock
@@ -1365,11 +1325,9 @@ paths:
                     created_at:
                       type: string
                       description: Product creation date
-                      nullable: true
                     updated_at:
                       type: string
                       description: Product last update date
-                      nullable: true
                   required:
                     - name
             examples:
@@ -1451,15 +1409,12 @@ paths:
                     code:
                       type: string
                       description: Product code
-                      nullable: true
                     net_price:
                       type: number
                       description: Product net price
-                      nullable: true
                     gross_price:
                       type: number
                       description: Product gross price
-                      nullable: true
                     use_gross_price:
                       type: boolean
                       description: Product uses gross prices
@@ -1506,28 +1461,23 @@ paths:
                         is_disabled:
                           type: boolean
                           description: Is the vat type disabled
-                      nullable: true
                       required:
                         - value
                     net_cost:
                       type: number
                       description: Product net cost
-                      nullable: true
                     measure:
                       type: string
                       description: Product measure
-                      nullable: true
                     description:
                       type: string
                       description: Product description
-                      nullable: true
                     category:
                       type: string
                       description: Product category
                     notes:
                       type: string
                       description: Product extra notes
-                      nullable: true
                     in_stock:
                       type: boolean
                       description: Product has stock
@@ -1549,11 +1499,9 @@ paths:
                     created_at:
                       type: string
                       description: Product creation date
-                      nullable: true
                     updated_at:
                       type: string
                       description: Product last update date
-                      nullable: true
                   required:
                     - name
             examples:
@@ -1698,7 +1646,6 @@ paths:
                             - pa
                             - condo
                           description: Entity type
-                          nullable: true
                         first_name:
                           type: string
                           description: Entity first name
@@ -1767,7 +1714,6 @@ paths:
                           description: |-
                             [Only for client]
                             Client default payment terms
-                          nullable: true
                         default_vat:
                           type: object
                           title: VatType
@@ -1814,7 +1760,6 @@ paths:
                           description: |-
                             [Only for client]
                             Client default vat.
-                          nullable: true
                           required:
                             - value
                         default_payment_terms_type:
@@ -1827,7 +1772,6 @@ paths:
                           description: |-
                             [Only for client]
                             Client default payment terms type
-                          nullable: true
                         default_payment_method:
                           type: object
                           title: PaymentMethod
@@ -1835,7 +1779,6 @@ paths:
                             id:
                               type: integer
                               description: Payment method id
-                              nullable: true
                             name:
                               type: string
                               description: Payment method name
@@ -1872,18 +1815,15 @@ paths:
                                 iban:
                                   type: string
                                   description: Payment account iban
-                                  nullable: true
                                 sia:
                                   type: string
                                   description: Payment account sia
-                                  nullable: true
                                 cuc:
                                   type: string
                                   description: Payment account cuc
                                 virtual:
                                   type: boolean
                                   description: Payment method is virtual
-                              nullable: true
                               required:
                                 - name
                             details:
@@ -1902,19 +1842,15 @@ paths:
                                     type: string
                                     description: Payment method details description
                                     nullable: true
-                              nullable: true
                             bank_iban:
                               type: string
                               description: Payment method bank iban
-                              nullable: true
                             bank_name:
                               type: string
                               description: Payment method bank name
-                              nullable: true
                             bank_beneficiary:
                               type: string
                               description: Payment method bank beneficiary
-                              nullable: true
                             ei_payment_method:
                               type: string
                               description: E-invoice payment method
@@ -1923,44 +1859,37 @@ paths:
                             Client default payment method
                           required:
                             - name
-                          nullable: true
                         bank_name:
                           type: string
                           description: |-
                             [Only for client]
                             Client bank name
-                          nullable: true
                         bank_iban:
                           type: string
                           description: |-
                             [Only for client]
                             Client bank iban
-                          nullable: true
                         bank_swift_code:
                           type: string
                           description: |-
                             [Only for client]
                             Client bank swift code
-                          nullable: true
                         shipping_address:
                           type: string
                           description: |-
                             [Only for client]
                             Client Shipping address
-                          nullable: true
                         e_invoice:
                           type: boolean
                           description: |-
                             [Only for client]
                             Use e-invoices.
-                          nullable: true
                           default: false
                         ei_code:
                           type: string
                           description: |-
                             [Only for client]
                             E-invoices code.
-                          nullable: true
                         has_intent_declaration:
                           type: boolean
                           description: |-
@@ -1980,11 +1909,9 @@ paths:
                         created_at:
                           type: string
                           description: Entity creation date
-                          nullable: true
                         updated_at:
                           type: string
                           description: Entity last update date
-                          nullable: true
                       required:
                         - name
                     type:
@@ -2040,7 +1967,6 @@ paths:
                           type: string
                           description: Currency exchange rate (EUR to this)
                           example: '1'
-                          nullable: true
                         html_symbol:
                           type: string
                           example: EUR
@@ -2098,7 +2024,6 @@ paths:
                       description: |-
                         [Can be set only if cassa_taxable is NULL]
                         Issued document cassa taxable amount
-                      nullable: true
                     cassa2:
                       type: number
                       description: Issued document "Cassa previdenziale 2" percentual value
@@ -2110,7 +2035,6 @@ paths:
                         [Read Only]
                         Issued document cassa2 amount
                       readOnly: true
-                      nullable: true
                     cassa2_taxable:
                       type: number
                       description: Issued document cassa2 taxable percentage
@@ -2121,7 +2045,6 @@ paths:
                       description: |-
                         [Can be set only if cassa2_taxable is NULL]
                         Issued document cassa2 taxable amount
-                      nullable: true
                     global_cassa_taxable:
                       type: number
                       description: Issued document global cassa taxable percentage
@@ -2132,7 +2055,6 @@ paths:
                       description: |-
                         [Can be set only if global_cassa_taxable is NULL]
                         Issued document global cassa taxable amount
-                      nullable: true
                     withholding_tax:
                       type: number
                       description: >-
@@ -2166,7 +2088,6 @@ paths:
                         id:
                           type: integer
                           description: Payment method id
-                          nullable: true
                         name:
                           type: string
                           description: Payment method name
@@ -2203,18 +2124,15 @@ paths:
                             iban:
                               type: string
                               description: Payment account iban
-                              nullable: true
                             sia:
                               type: string
                               description: Payment account sia
-                              nullable: true
                             cuc:
                               type: string
                               description: Payment account cuc
                             virtual:
                               type: boolean
                               description: Payment method is virtual
-                          nullable: true
                           required:
                             - name
                         details:
@@ -2233,19 +2151,15 @@ paths:
                                 type: string
                                 description: Payment method details description
                                 nullable: true
-                          nullable: true
                         bank_iban:
                           type: string
                           description: Payment method bank iban
-                          nullable: true
                         bank_name:
                           type: string
                           description: Payment method bank name
-                          nullable: true
                         bank_beneficiary:
                           type: string
                           description: Payment method bank beneficiary
-                          nullable: true
                         ei_payment_method:
                           type: string
                           description: E-invoice payment method
@@ -2279,7 +2193,6 @@ paths:
                             - I
                             - D
                             - S
-                          nullable: true
                         original_document_type:
                           title: OriginalDocumentType
                           type: string
@@ -2289,24 +2202,19 @@ paths:
                             - ordine
                             - contratto
                             - convenzione
-                          nullable: true
                         od_number:
                           type: string
                           description: E-invoice original document number
-                          nullable: true
                         od_date:
                           type: string
                           description: E-invoice original document date
                           format: date
-                          nullable: true
                         cig:
                           type: string
                           description: E-invoice CIG
-                          nullable: true
                         cup:
                           type: string
                           description: E-invoice CUP
-                          nullable: true
                         payment_method:
                           type: string
                           description: >-
@@ -2314,49 +2222,37 @@ paths:
                             (see
                             [here](https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf)
                             for the accepted values of ModalitaPagamento)
-                          nullable: true
                         bank_name:
                           type: string
                           description: E-invoice bank name
-                          nullable: true
                         bank_iban:
                           type: string
                           description: E-invoice bank IBAN
-                          nullable: true
                         bank_beneficiary:
                           type: string
                           description: E-invoice bank beneficiary
-                          nullable: true
                         invoice_number:
                           type: string
                           description: E-invoice invoice number
-                          nullable: true
                         invoice_date:
                           type: string
                           format: date
                           description: E-invoice invoice date
-                          nullable: true
-                      nullable: true
                     ei_cassa_type:
                       type: string
                       description: E-invoice cassa type
-                      nullable: true
                     ei_cassa2_type:
                       type: string
                       description: E-invoice cassa2 type
-                      nullable: true
                     ei_withholding_tax_causal:
                       type: string
                       description: E-invoice withholding tax causal
-                      nullable: true
                     ei_other_withholding_tax_type:
                       type: string
                       description: E-invoice other withholding tax type
-                      nullable: true
                     ei_other_withholding_tax_causal:
                       type: string
                       description: E-invoice other withholding tax causal
-                      nullable: true
                     items_list:
                       type: array
                       items:
@@ -2490,7 +2386,6 @@ paths:
                               Issued document advanced raw attributes for
                               e-invoices
                             nullable: true
-                      nullable: true
                     payments_list:
                       type: array
                       items:
@@ -2590,7 +2485,6 @@ paths:
                                   - standard
                                   - end_of_month
                                 description: Payment terms type
-                      nullable: true
                     template:
                       type: object
                       title: DocumentTemplate
@@ -2670,7 +2564,6 @@ paths:
                     show_tspay_button:
                       type: boolean
                       description: Show ts pay button in the PDF
-                      nullable: true
                     delivery_note:
                       type: boolean
                       description: Issued document has delivery note
@@ -2690,27 +2583,21 @@ paths:
                       description: >-
                         Issued document attached delivery note number of
                         packages
-                      nullable: true
                     dn_ai_weight:
                       type: string
                       description: Issued document attached delivery note package weight
-                      nullable: true
                     dn_ai_causal:
                       type: string
                       description: Issued document attached delivery note causal
-                      nullable: true
                     dn_ai_destination:
                       type: string
                       description: Issued document attached delivery note destination
-                      nullable: true
                     dn_ai_transporter:
                       type: string
                       description: Issued document attached delivery note transporter
-                      nullable: true
                     dn_ai_notes:
                       type: string
                       description: Issued document attached delivery note notes
-                      nullable: true
                     is_marked:
                       type: boolean
                       description: Issued document is marked
@@ -2744,7 +2631,6 @@ paths:
                     amount_rivalsa_taxable:
                       type: number
                       description: Issued document taxable rivalsa amount
-                      nullable: true
                     amount_withholding_tax:
                       type: number
                       description: >-
@@ -2756,7 +2642,6 @@ paths:
                     amount_withholding_tax_taxable:
                       type: number
                       description: Issued document taxable withholding tax amount
-                      nullable: true
                     amount_other_withholding_tax:
                       type: number
                       description: >-
@@ -2768,11 +2653,9 @@ paths:
                     amount_other_withholding_tax_taxable:
                       type: number
                       description: Issued document taxable other withholding tax amount
-                      nullable: true
                     amount_enasarco_taxable:
                       type: number
                       description: Issued document taxable enasarco amount
-                      nullable: true
                     extra_data:
                       type: object
                       description: >-
@@ -2782,67 +2665,52 @@ paths:
                       properties:
                         show_sofort_button:
                           type: boolean
-                          nullable: true
                         multifatture_sent:
                           type: integer
-                          nullable: true
                         ts_communication:
                           type: boolean
                           description: Send issued document to "Sistema Tessera Sanitaria"
-                          nullable: true
                         ts_flag_tipo_spesa:
                           type: number
                           description: >-
                             Issued document ts "tipo spesa" [TK, FC, FV, SV,SP,
                             AD, AS, ECG, SR]
-                          nullable: true
                         ts_pagamento_tracciato:
                           type: boolean
                           description: Issued document ts traced payment
-                          nullable: true
                         ts_tipo_spesa:
                           type: string
                           description: >-
                             Can be [ 'TK', 'FC', 'FV', 'SV', 'SP', 'AD', 'AS',
                             'SR', 'CT', 'PI', 'IC', 'AA' ]. Refer to the
                             technical specifications to learn more.
-                          nullable: true
                         ts_opposizione:
                           type: boolean
                           description: Issued document ts "opposizione"
-                          nullable: true
                         ts_status:
                           type: integer
                           description: Issued document ts status
-                          nullable: true
                         ts_file_id:
                           type: string
                           description: Issued document ts file id
-                          nullable: true
                         ts_sent_date:
                           type: string
                           format: date
                           description: Issued document ts sent date
-                          nullable: true
                         ts_full_amount:
                           type: boolean
                           description: Issued document ts total amount
-                          nullable: true
                         imported_by:
                           type: string
                           description: Issued document imported by software
-                          nullable: true
-                      nullable: true
                     seen_date:
                       type: string
                       description: Issued document seen date
                       format: date
-                      nullable: true
                     next_due_date:
                       type: string
                       description: Issued document date of the next not paid payment
                       format: date
-                      nullable: true
                     url:
                       type: string
                       description: |-
@@ -2874,11 +2742,9 @@ paths:
                         Issued document attachment token returned by POST
                         /issued_documents/attachment
                       writeOnly: true
-                      nullable: true
                     ei_raw:
                       type: object
                       description: Issued document advanced raw attributes for e-invoices
-                      nullable: true
                     ei_status:
                       type: string
                       description: |
@@ -3097,7 +2963,6 @@ paths:
                             - pa
                             - condo
                           description: Entity type
-                          nullable: true
                         first_name:
                           type: string
                           description: Entity first name
@@ -3166,7 +3031,6 @@ paths:
                           description: |-
                             [Only for client]
                             Client default payment terms
-                          nullable: true
                         default_vat:
                           type: object
                           title: VatType
@@ -3213,7 +3077,6 @@ paths:
                           description: |-
                             [Only for client]
                             Client default vat.
-                          nullable: true
                           required:
                             - value
                         default_payment_terms_type:
@@ -3226,7 +3089,6 @@ paths:
                           description: |-
                             [Only for client]
                             Client default payment terms type
-                          nullable: true
                         default_payment_method:
                           type: object
                           title: PaymentMethod
@@ -3234,7 +3096,6 @@ paths:
                             id:
                               type: integer
                               description: Payment method id
-                              nullable: true
                             name:
                               type: string
                               description: Payment method name
@@ -3271,18 +3132,15 @@ paths:
                                 iban:
                                   type: string
                                   description: Payment account iban
-                                  nullable: true
                                 sia:
                                   type: string
                                   description: Payment account sia
-                                  nullable: true
                                 cuc:
                                   type: string
                                   description: Payment account cuc
                                 virtual:
                                   type: boolean
                                   description: Payment method is virtual
-                              nullable: true
                               required:
                                 - name
                             details:
@@ -3301,19 +3159,15 @@ paths:
                                     type: string
                                     description: Payment method details description
                                     nullable: true
-                              nullable: true
                             bank_iban:
                               type: string
                               description: Payment method bank iban
-                              nullable: true
                             bank_name:
                               type: string
                               description: Payment method bank name
-                              nullable: true
                             bank_beneficiary:
                               type: string
                               description: Payment method bank beneficiary
-                              nullable: true
                             ei_payment_method:
                               type: string
                               description: E-invoice payment method
@@ -3322,44 +3176,37 @@ paths:
                             Client default payment method
                           required:
                             - name
-                          nullable: true
                         bank_name:
                           type: string
                           description: |-
                             [Only for client]
                             Client bank name
-                          nullable: true
                         bank_iban:
                           type: string
                           description: |-
                             [Only for client]
                             Client bank iban
-                          nullable: true
                         bank_swift_code:
                           type: string
                           description: |-
                             [Only for client]
                             Client bank swift code
-                          nullable: true
                         shipping_address:
                           type: string
                           description: |-
                             [Only for client]
                             Client Shipping address
-                          nullable: true
                         e_invoice:
                           type: boolean
                           description: |-
                             [Only for client]
                             Use e-invoices.
-                          nullable: true
                           default: false
                         ei_code:
                           type: string
                           description: |-
                             [Only for client]
                             E-invoices code.
-                          nullable: true
                         has_intent_declaration:
                           type: boolean
                           description: |-
@@ -3379,11 +3226,9 @@ paths:
                         created_at:
                           type: string
                           description: Entity creation date
-                          nullable: true
                         updated_at:
                           type: string
                           description: Entity last update date
-                          nullable: true
                       required:
                         - name
                     type:
@@ -3439,7 +3284,6 @@ paths:
                           type: string
                           description: Currency exchange rate (EUR to this)
                           example: '1'
-                          nullable: true
                         html_symbol:
                           type: string
                           example: EUR
@@ -3497,7 +3341,6 @@ paths:
                       description: |-
                         [Can be set only if cassa_taxable is NULL]
                         Issued document cassa taxable amount
-                      nullable: true
                     cassa2:
                       type: number
                       description: Issued document "Cassa previdenziale 2" percentual value
@@ -3509,7 +3352,6 @@ paths:
                         [Read Only]
                         Issued document cassa2 amount
                       readOnly: true
-                      nullable: true
                     cassa2_taxable:
                       type: number
                       description: Issued document cassa2 taxable percentage
@@ -3520,7 +3362,6 @@ paths:
                       description: |-
                         [Can be set only if cassa2_taxable is NULL]
                         Issued document cassa2 taxable amount
-                      nullable: true
                     global_cassa_taxable:
                       type: number
                       description: Issued document global cassa taxable percentage
@@ -3531,7 +3372,6 @@ paths:
                       description: |-
                         [Can be set only if global_cassa_taxable is NULL]
                         Issued document global cassa taxable amount
-                      nullable: true
                     withholding_tax:
                       type: number
                       description: >-
@@ -3565,7 +3405,6 @@ paths:
                         id:
                           type: integer
                           description: Payment method id
-                          nullable: true
                         name:
                           type: string
                           description: Payment method name
@@ -3602,18 +3441,15 @@ paths:
                             iban:
                               type: string
                               description: Payment account iban
-                              nullable: true
                             sia:
                               type: string
                               description: Payment account sia
-                              nullable: true
                             cuc:
                               type: string
                               description: Payment account cuc
                             virtual:
                               type: boolean
                               description: Payment method is virtual
-                          nullable: true
                           required:
                             - name
                         details:
@@ -3632,19 +3468,15 @@ paths:
                                 type: string
                                 description: Payment method details description
                                 nullable: true
-                          nullable: true
                         bank_iban:
                           type: string
                           description: Payment method bank iban
-                          nullable: true
                         bank_name:
                           type: string
                           description: Payment method bank name
-                          nullable: true
                         bank_beneficiary:
                           type: string
                           description: Payment method bank beneficiary
-                          nullable: true
                         ei_payment_method:
                           type: string
                           description: E-invoice payment method
@@ -3678,7 +3510,6 @@ paths:
                             - I
                             - D
                             - S
-                          nullable: true
                         original_document_type:
                           title: OriginalDocumentType
                           type: string
@@ -3688,24 +3519,19 @@ paths:
                             - ordine
                             - contratto
                             - convenzione
-                          nullable: true
                         od_number:
                           type: string
                           description: E-invoice original document number
-                          nullable: true
                         od_date:
                           type: string
                           description: E-invoice original document date
                           format: date
-                          nullable: true
                         cig:
                           type: string
                           description: E-invoice CIG
-                          nullable: true
                         cup:
                           type: string
                           description: E-invoice CUP
-                          nullable: true
                         payment_method:
                           type: string
                           description: >-
@@ -3713,49 +3539,37 @@ paths:
                             (see
                             [here](https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf)
                             for the accepted values of ModalitaPagamento)
-                          nullable: true
                         bank_name:
                           type: string
                           description: E-invoice bank name
-                          nullable: true
                         bank_iban:
                           type: string
                           description: E-invoice bank IBAN
-                          nullable: true
                         bank_beneficiary:
                           type: string
                           description: E-invoice bank beneficiary
-                          nullable: true
                         invoice_number:
                           type: string
                           description: E-invoice invoice number
-                          nullable: true
                         invoice_date:
                           type: string
                           format: date
                           description: E-invoice invoice date
-                          nullable: true
-                      nullable: true
                     ei_cassa_type:
                       type: string
                       description: E-invoice cassa type
-                      nullable: true
                     ei_cassa2_type:
                       type: string
                       description: E-invoice cassa2 type
-                      nullable: true
                     ei_withholding_tax_causal:
                       type: string
                       description: E-invoice withholding tax causal
-                      nullable: true
                     ei_other_withholding_tax_type:
                       type: string
                       description: E-invoice other withholding tax type
-                      nullable: true
                     ei_other_withholding_tax_causal:
                       type: string
                       description: E-invoice other withholding tax causal
-                      nullable: true
                     items_list:
                       type: array
                       items:
@@ -3889,7 +3703,6 @@ paths:
                               Issued document advanced raw attributes for
                               e-invoices
                             nullable: true
-                      nullable: true
                     payments_list:
                       type: array
                       items:
@@ -3989,7 +3802,6 @@ paths:
                                   - standard
                                   - end_of_month
                                 description: Payment terms type
-                      nullable: true
                     template:
                       type: object
                       title: DocumentTemplate
@@ -4069,7 +3881,6 @@ paths:
                     show_tspay_button:
                       type: boolean
                       description: Show ts pay button in the PDF
-                      nullable: true
                     delivery_note:
                       type: boolean
                       description: Issued document has delivery note
@@ -4089,27 +3900,21 @@ paths:
                       description: >-
                         Issued document attached delivery note number of
                         packages
-                      nullable: true
                     dn_ai_weight:
                       type: string
                       description: Issued document attached delivery note package weight
-                      nullable: true
                     dn_ai_causal:
                       type: string
                       description: Issued document attached delivery note causal
-                      nullable: true
                     dn_ai_destination:
                       type: string
                       description: Issued document attached delivery note destination
-                      nullable: true
                     dn_ai_transporter:
                       type: string
                       description: Issued document attached delivery note transporter
-                      nullable: true
                     dn_ai_notes:
                       type: string
                       description: Issued document attached delivery note notes
-                      nullable: true
                     is_marked:
                       type: boolean
                       description: Issued document is marked
@@ -4143,7 +3948,6 @@ paths:
                     amount_rivalsa_taxable:
                       type: number
                       description: Issued document taxable rivalsa amount
-                      nullable: true
                     amount_withholding_tax:
                       type: number
                       description: >-
@@ -4155,7 +3959,6 @@ paths:
                     amount_withholding_tax_taxable:
                       type: number
                       description: Issued document taxable withholding tax amount
-                      nullable: true
                     amount_other_withholding_tax:
                       type: number
                       description: >-
@@ -4167,11 +3970,9 @@ paths:
                     amount_other_withholding_tax_taxable:
                       type: number
                       description: Issued document taxable other withholding tax amount
-                      nullable: true
                     amount_enasarco_taxable:
                       type: number
                       description: Issued document taxable enasarco amount
-                      nullable: true
                     extra_data:
                       type: object
                       description: >-
@@ -4181,67 +3982,52 @@ paths:
                       properties:
                         show_sofort_button:
                           type: boolean
-                          nullable: true
                         multifatture_sent:
                           type: integer
-                          nullable: true
                         ts_communication:
                           type: boolean
                           description: Send issued document to "Sistema Tessera Sanitaria"
-                          nullable: true
                         ts_flag_tipo_spesa:
                           type: number
                           description: >-
                             Issued document ts "tipo spesa" [TK, FC, FV, SV,SP,
                             AD, AS, ECG, SR]
-                          nullable: true
                         ts_pagamento_tracciato:
                           type: boolean
                           description: Issued document ts traced payment
-                          nullable: true
                         ts_tipo_spesa:
                           type: string
                           description: >-
                             Can be [ 'TK', 'FC', 'FV', 'SV', 'SP', 'AD', 'AS',
                             'SR', 'CT', 'PI', 'IC', 'AA' ]. Refer to the
                             technical specifications to learn more.
-                          nullable: true
                         ts_opposizione:
                           type: boolean
                           description: Issued document ts "opposizione"
-                          nullable: true
                         ts_status:
                           type: integer
                           description: Issued document ts status
-                          nullable: true
                         ts_file_id:
                           type: string
                           description: Issued document ts file id
-                          nullable: true
                         ts_sent_date:
                           type: string
                           format: date
                           description: Issued document ts sent date
-                          nullable: true
                         ts_full_amount:
                           type: boolean
                           description: Issued document ts total amount
-                          nullable: true
                         imported_by:
                           type: string
                           description: Issued document imported by software
-                          nullable: true
-                      nullable: true
                     seen_date:
                       type: string
                       description: Issued document seen date
                       format: date
-                      nullable: true
                     next_due_date:
                       type: string
                       description: Issued document date of the next not paid payment
                       format: date
-                      nullable: true
                     url:
                       type: string
                       description: |-
@@ -4273,11 +4059,9 @@ paths:
                         Issued document attachment token returned by POST
                         /issued_documents/attachment
                       writeOnly: true
-                      nullable: true
                     ei_raw:
                       type: object
                       description: Issued document advanced raw attributes for e-invoices
-                      nullable: true
                     ei_status:
                       type: string
                       description: |
@@ -4484,7 +4268,6 @@ paths:
                             - pa
                             - condo
                           description: Entity type
-                          nullable: true
                         first_name:
                           type: string
                           description: Entity first name
@@ -4553,7 +4336,6 @@ paths:
                           description: |-
                             [Only for client]
                             Client default payment terms
-                          nullable: true
                         default_vat:
                           type: object
                           title: VatType
@@ -4600,7 +4382,6 @@ paths:
                           description: |-
                             [Only for client]
                             Client default vat.
-                          nullable: true
                           required:
                             - value
                         default_payment_terms_type:
@@ -4613,7 +4394,6 @@ paths:
                           description: |-
                             [Only for client]
                             Client default payment terms type
-                          nullable: true
                         default_payment_method:
                           type: object
                           title: PaymentMethod
@@ -4621,7 +4401,6 @@ paths:
                             id:
                               type: integer
                               description: Payment method id
-                              nullable: true
                             name:
                               type: string
                               description: Payment method name
@@ -4658,18 +4437,15 @@ paths:
                                 iban:
                                   type: string
                                   description: Payment account iban
-                                  nullable: true
                                 sia:
                                   type: string
                                   description: Payment account sia
-                                  nullable: true
                                 cuc:
                                   type: string
                                   description: Payment account cuc
                                 virtual:
                                   type: boolean
                                   description: Payment method is virtual
-                              nullable: true
                               required:
                                 - name
                             details:
@@ -4688,19 +4464,15 @@ paths:
                                     type: string
                                     description: Payment method details description
                                     nullable: true
-                              nullable: true
                             bank_iban:
                               type: string
                               description: Payment method bank iban
-                              nullable: true
                             bank_name:
                               type: string
                               description: Payment method bank name
-                              nullable: true
                             bank_beneficiary:
                               type: string
                               description: Payment method bank beneficiary
-                              nullable: true
                             ei_payment_method:
                               type: string
                               description: E-invoice payment method
@@ -4709,44 +4481,37 @@ paths:
                             Client default payment method
                           required:
                             - name
-                          nullable: true
                         bank_name:
                           type: string
                           description: |-
                             [Only for client]
                             Client bank name
-                          nullable: true
                         bank_iban:
                           type: string
                           description: |-
                             [Only for client]
                             Client bank iban
-                          nullable: true
                         bank_swift_code:
                           type: string
                           description: |-
                             [Only for client]
                             Client bank swift code
-                          nullable: true
                         shipping_address:
                           type: string
                           description: |-
                             [Only for client]
                             Client Shipping address
-                          nullable: true
                         e_invoice:
                           type: boolean
                           description: |-
                             [Only for client]
                             Use e-invoices.
-                          nullable: true
                           default: false
                         ei_code:
                           type: string
                           description: |-
                             [Only for client]
                             E-invoices code.
-                          nullable: true
                         has_intent_declaration:
                           type: boolean
                           description: |-
@@ -4766,11 +4531,9 @@ paths:
                         created_at:
                           type: string
                           description: Entity creation date
-                          nullable: true
                         updated_at:
                           type: string
                           description: Entity last update date
-                          nullable: true
                       required:
                         - name
                     type:
@@ -4826,7 +4589,6 @@ paths:
                           type: string
                           description: Currency exchange rate (EUR to this)
                           example: '1'
-                          nullable: true
                         html_symbol:
                           type: string
                           example: EUR
@@ -4884,7 +4646,6 @@ paths:
                       description: |-
                         [Can be set only if cassa_taxable is NULL]
                         Issued document cassa taxable amount
-                      nullable: true
                     cassa2:
                       type: number
                       description: Issued document "Cassa previdenziale 2" percentual value
@@ -4896,7 +4657,6 @@ paths:
                         [Read Only]
                         Issued document cassa2 amount
                       readOnly: true
-                      nullable: true
                     cassa2_taxable:
                       type: number
                       description: Issued document cassa2 taxable percentage
@@ -4907,7 +4667,6 @@ paths:
                       description: |-
                         [Can be set only if cassa2_taxable is NULL]
                         Issued document cassa2 taxable amount
-                      nullable: true
                     global_cassa_taxable:
                       type: number
                       description: Issued document global cassa taxable percentage
@@ -4918,7 +4677,6 @@ paths:
                       description: |-
                         [Can be set only if global_cassa_taxable is NULL]
                         Issued document global cassa taxable amount
-                      nullable: true
                     withholding_tax:
                       type: number
                       description: >-
@@ -4952,7 +4710,6 @@ paths:
                         id:
                           type: integer
                           description: Payment method id
-                          nullable: true
                         name:
                           type: string
                           description: Payment method name
@@ -4989,18 +4746,15 @@ paths:
                             iban:
                               type: string
                               description: Payment account iban
-                              nullable: true
                             sia:
                               type: string
                               description: Payment account sia
-                              nullable: true
                             cuc:
                               type: string
                               description: Payment account cuc
                             virtual:
                               type: boolean
                               description: Payment method is virtual
-                          nullable: true
                           required:
                             - name
                         details:
@@ -5019,19 +4773,15 @@ paths:
                                 type: string
                                 description: Payment method details description
                                 nullable: true
-                          nullable: true
                         bank_iban:
                           type: string
                           description: Payment method bank iban
-                          nullable: true
                         bank_name:
                           type: string
                           description: Payment method bank name
-                          nullable: true
                         bank_beneficiary:
                           type: string
                           description: Payment method bank beneficiary
-                          nullable: true
                         ei_payment_method:
                           type: string
                           description: E-invoice payment method
@@ -5065,7 +4815,6 @@ paths:
                             - I
                             - D
                             - S
-                          nullable: true
                         original_document_type:
                           title: OriginalDocumentType
                           type: string
@@ -5075,24 +4824,19 @@ paths:
                             - ordine
                             - contratto
                             - convenzione
-                          nullable: true
                         od_number:
                           type: string
                           description: E-invoice original document number
-                          nullable: true
                         od_date:
                           type: string
                           description: E-invoice original document date
                           format: date
-                          nullable: true
                         cig:
                           type: string
                           description: E-invoice CIG
-                          nullable: true
                         cup:
                           type: string
                           description: E-invoice CUP
-                          nullable: true
                         payment_method:
                           type: string
                           description: >-
@@ -5100,49 +4844,37 @@ paths:
                             (see
                             [here](https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf)
                             for the accepted values of ModalitaPagamento)
-                          nullable: true
                         bank_name:
                           type: string
                           description: E-invoice bank name
-                          nullable: true
                         bank_iban:
                           type: string
                           description: E-invoice bank IBAN
-                          nullable: true
                         bank_beneficiary:
                           type: string
                           description: E-invoice bank beneficiary
-                          nullable: true
                         invoice_number:
                           type: string
                           description: E-invoice invoice number
-                          nullable: true
                         invoice_date:
                           type: string
                           format: date
                           description: E-invoice invoice date
-                          nullable: true
-                      nullable: true
                     ei_cassa_type:
                       type: string
                       description: E-invoice cassa type
-                      nullable: true
                     ei_cassa2_type:
                       type: string
                       description: E-invoice cassa2 type
-                      nullable: true
                     ei_withholding_tax_causal:
                       type: string
                       description: E-invoice withholding tax causal
-                      nullable: true
                     ei_other_withholding_tax_type:
                       type: string
                       description: E-invoice other withholding tax type
-                      nullable: true
                     ei_other_withholding_tax_causal:
                       type: string
                       description: E-invoice other withholding tax causal
-                      nullable: true
                     items_list:
                       type: array
                       items:
@@ -5276,7 +5008,6 @@ paths:
                               Issued document advanced raw attributes for
                               e-invoices
                             nullable: true
-                      nullable: true
                     payments_list:
                       type: array
                       items:
@@ -5376,7 +5107,6 @@ paths:
                                   - standard
                                   - end_of_month
                                 description: Payment terms type
-                      nullable: true
                     template:
                       type: object
                       title: DocumentTemplate
@@ -5456,7 +5186,6 @@ paths:
                     show_tspay_button:
                       type: boolean
                       description: Show ts pay button in the PDF
-                      nullable: true
                     delivery_note:
                       type: boolean
                       description: Issued document has delivery note
@@ -5476,27 +5205,21 @@ paths:
                       description: >-
                         Issued document attached delivery note number of
                         packages
-                      nullable: true
                     dn_ai_weight:
                       type: string
                       description: Issued document attached delivery note package weight
-                      nullable: true
                     dn_ai_causal:
                       type: string
                       description: Issued document attached delivery note causal
-                      nullable: true
                     dn_ai_destination:
                       type: string
                       description: Issued document attached delivery note destination
-                      nullable: true
                     dn_ai_transporter:
                       type: string
                       description: Issued document attached delivery note transporter
-                      nullable: true
                     dn_ai_notes:
                       type: string
                       description: Issued document attached delivery note notes
-                      nullable: true
                     is_marked:
                       type: boolean
                       description: Issued document is marked
@@ -5530,7 +5253,6 @@ paths:
                     amount_rivalsa_taxable:
                       type: number
                       description: Issued document taxable rivalsa amount
-                      nullable: true
                     amount_withholding_tax:
                       type: number
                       description: >-
@@ -5542,7 +5264,6 @@ paths:
                     amount_withholding_tax_taxable:
                       type: number
                       description: Issued document taxable withholding tax amount
-                      nullable: true
                     amount_other_withholding_tax:
                       type: number
                       description: >-
@@ -5554,11 +5275,9 @@ paths:
                     amount_other_withholding_tax_taxable:
                       type: number
                       description: Issued document taxable other withholding tax amount
-                      nullable: true
                     amount_enasarco_taxable:
                       type: number
                       description: Issued document taxable enasarco amount
-                      nullable: true
                     extra_data:
                       type: object
                       description: >-
@@ -5568,67 +5287,52 @@ paths:
                       properties:
                         show_sofort_button:
                           type: boolean
-                          nullable: true
                         multifatture_sent:
                           type: integer
-                          nullable: true
                         ts_communication:
                           type: boolean
                           description: Send issued document to "Sistema Tessera Sanitaria"
-                          nullable: true
                         ts_flag_tipo_spesa:
                           type: number
                           description: >-
                             Issued document ts "tipo spesa" [TK, FC, FV, SV,SP,
                             AD, AS, ECG, SR]
-                          nullable: true
                         ts_pagamento_tracciato:
                           type: boolean
                           description: Issued document ts traced payment
-                          nullable: true
                         ts_tipo_spesa:
                           type: string
                           description: >-
                             Can be [ 'TK', 'FC', 'FV', 'SV', 'SP', 'AD', 'AS',
                             'SR', 'CT', 'PI', 'IC', 'AA' ]. Refer to the
                             technical specifications to learn more.
-                          nullable: true
                         ts_opposizione:
                           type: boolean
                           description: Issued document ts "opposizione"
-                          nullable: true
                         ts_status:
                           type: integer
                           description: Issued document ts status
-                          nullable: true
                         ts_file_id:
                           type: string
                           description: Issued document ts file id
-                          nullable: true
                         ts_sent_date:
                           type: string
                           format: date
                           description: Issued document ts sent date
-                          nullable: true
                         ts_full_amount:
                           type: boolean
                           description: Issued document ts total amount
-                          nullable: true
                         imported_by:
                           type: string
                           description: Issued document imported by software
-                          nullable: true
-                      nullable: true
                     seen_date:
                       type: string
                       description: Issued document seen date
                       format: date
-                      nullable: true
                     next_due_date:
                       type: string
                       description: Issued document date of the next not paid payment
                       format: date
-                      nullable: true
                     url:
                       type: string
                       description: |-
@@ -5660,11 +5364,9 @@ paths:
                         Issued document attachment token returned by POST
                         /issued_documents/attachment
                       writeOnly: true
-                      nullable: true
                     ei_raw:
                       type: object
                       description: Issued document advanced raw attributes for e-invoices
-                      nullable: true
                     ei_status:
                       type: string
                       description: |
@@ -5865,7 +5567,6 @@ paths:
                             - pa
                             - condo
                           description: Entity type
-                          nullable: true
                         first_name:
                           type: string
                           description: Entity first name
@@ -5934,7 +5635,6 @@ paths:
                           description: |-
                             [Only for client]
                             Client default payment terms
-                          nullable: true
                         default_vat:
                           type: object
                           title: VatType
@@ -5981,7 +5681,6 @@ paths:
                           description: |-
                             [Only for client]
                             Client default vat.
-                          nullable: true
                           required:
                             - value
                         default_payment_terms_type:
@@ -5994,7 +5693,6 @@ paths:
                           description: |-
                             [Only for client]
                             Client default payment terms type
-                          nullable: true
                         default_payment_method:
                           type: object
                           title: PaymentMethod
@@ -6002,7 +5700,6 @@ paths:
                             id:
                               type: integer
                               description: Payment method id
-                              nullable: true
                             name:
                               type: string
                               description: Payment method name
@@ -6039,18 +5736,15 @@ paths:
                                 iban:
                                   type: string
                                   description: Payment account iban
-                                  nullable: true
                                 sia:
                                   type: string
                                   description: Payment account sia
-                                  nullable: true
                                 cuc:
                                   type: string
                                   description: Payment account cuc
                                 virtual:
                                   type: boolean
                                   description: Payment method is virtual
-                              nullable: true
                               required:
                                 - name
                             details:
@@ -6069,19 +5763,15 @@ paths:
                                     type: string
                                     description: Payment method details description
                                     nullable: true
-                              nullable: true
                             bank_iban:
                               type: string
                               description: Payment method bank iban
-                              nullable: true
                             bank_name:
                               type: string
                               description: Payment method bank name
-                              nullable: true
                             bank_beneficiary:
                               type: string
                               description: Payment method bank beneficiary
-                              nullable: true
                             ei_payment_method:
                               type: string
                               description: E-invoice payment method
@@ -6090,44 +5780,37 @@ paths:
                             Client default payment method
                           required:
                             - name
-                          nullable: true
                         bank_name:
                           type: string
                           description: |-
                             [Only for client]
                             Client bank name
-                          nullable: true
                         bank_iban:
                           type: string
                           description: |-
                             [Only for client]
                             Client bank iban
-                          nullable: true
                         bank_swift_code:
                           type: string
                           description: |-
                             [Only for client]
                             Client bank swift code
-                          nullable: true
                         shipping_address:
                           type: string
                           description: |-
                             [Only for client]
                             Client Shipping address
-                          nullable: true
                         e_invoice:
                           type: boolean
                           description: |-
                             [Only for client]
                             Use e-invoices.
-                          nullable: true
                           default: false
                         ei_code:
                           type: string
                           description: |-
                             [Only for client]
                             E-invoices code.
-                          nullable: true
                         has_intent_declaration:
                           type: boolean
                           description: |-
@@ -6147,11 +5830,9 @@ paths:
                         created_at:
                           type: string
                           description: Entity creation date
-                          nullable: true
                         updated_at:
                           type: string
                           description: Entity last update date
-                          nullable: true
                       required:
                         - name
                     type:
@@ -6207,7 +5888,6 @@ paths:
                           type: string
                           description: Currency exchange rate (EUR to this)
                           example: '1'
-                          nullable: true
                         html_symbol:
                           type: string
                           example: EUR
@@ -6265,7 +5945,6 @@ paths:
                       description: |-
                         [Can be set only if cassa_taxable is NULL]
                         Issued document cassa taxable amount
-                      nullable: true
                     cassa2:
                       type: number
                       description: Issued document "Cassa previdenziale 2" percentual value
@@ -6277,7 +5956,6 @@ paths:
                         [Read Only]
                         Issued document cassa2 amount
                       readOnly: true
-                      nullable: true
                     cassa2_taxable:
                       type: number
                       description: Issued document cassa2 taxable percentage
@@ -6288,7 +5966,6 @@ paths:
                       description: |-
                         [Can be set only if cassa2_taxable is NULL]
                         Issued document cassa2 taxable amount
-                      nullable: true
                     global_cassa_taxable:
                       type: number
                       description: Issued document global cassa taxable percentage
@@ -6299,7 +5976,6 @@ paths:
                       description: |-
                         [Can be set only if global_cassa_taxable is NULL]
                         Issued document global cassa taxable amount
-                      nullable: true
                     withholding_tax:
                       type: number
                       description: >-
@@ -6333,7 +6009,6 @@ paths:
                         id:
                           type: integer
                           description: Payment method id
-                          nullable: true
                         name:
                           type: string
                           description: Payment method name
@@ -6370,18 +6045,15 @@ paths:
                             iban:
                               type: string
                               description: Payment account iban
-                              nullable: true
                             sia:
                               type: string
                               description: Payment account sia
-                              nullable: true
                             cuc:
                               type: string
                               description: Payment account cuc
                             virtual:
                               type: boolean
                               description: Payment method is virtual
-                          nullable: true
                           required:
                             - name
                         details:
@@ -6400,19 +6072,15 @@ paths:
                                 type: string
                                 description: Payment method details description
                                 nullable: true
-                          nullable: true
                         bank_iban:
                           type: string
                           description: Payment method bank iban
-                          nullable: true
                         bank_name:
                           type: string
                           description: Payment method bank name
-                          nullable: true
                         bank_beneficiary:
                           type: string
                           description: Payment method bank beneficiary
-                          nullable: true
                         ei_payment_method:
                           type: string
                           description: E-invoice payment method
@@ -6446,7 +6114,6 @@ paths:
                             - I
                             - D
                             - S
-                          nullable: true
                         original_document_type:
                           title: OriginalDocumentType
                           type: string
@@ -6456,24 +6123,19 @@ paths:
                             - ordine
                             - contratto
                             - convenzione
-                          nullable: true
                         od_number:
                           type: string
                           description: E-invoice original document number
-                          nullable: true
                         od_date:
                           type: string
                           description: E-invoice original document date
                           format: date
-                          nullable: true
                         cig:
                           type: string
                           description: E-invoice CIG
-                          nullable: true
                         cup:
                           type: string
                           description: E-invoice CUP
-                          nullable: true
                         payment_method:
                           type: string
                           description: >-
@@ -6481,49 +6143,37 @@ paths:
                             (see
                             [here](https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2.2/Rappresentazione_Tabellare_FattOrdinaria_V1.2.2.pdf)
                             for the accepted values of ModalitaPagamento)
-                          nullable: true
                         bank_name:
                           type: string
                           description: E-invoice bank name
-                          nullable: true
                         bank_iban:
                           type: string
                           description: E-invoice bank IBAN
-                          nullable: true
                         bank_beneficiary:
                           type: string
                           description: E-invoice bank beneficiary
-                          nullable: true
                         invoice_number:
                           type: string
                           description: E-invoice invoice number
-                          nullable: true
                         invoice_date:
                           type: string
                           format: date
                           description: E-invoice invoice date
-                          nullable: true
-                      nullable: true
                     ei_cassa_type:
                       type: string
                       description: E-invoice cassa type
-                      nullable: true
                     ei_cassa2_type:
                       type: string
                       description: E-invoice cassa2 type
-                      nullable: true
                     ei_withholding_tax_causal:
                       type: string
                       description: E-invoice withholding tax causal
-                      nullable: true
                     ei_other_withholding_tax_type:
                       type: string
                       description: E-invoice other withholding tax type
-                      nullable: true
                     ei_other_withholding_tax_causal:
                       type: string
                       description: E-invoice other withholding tax causal
-                      nullable: true
                     items_list:
                       type: array
                       items:
@@ -6657,7 +6307,6 @@ paths:
                               Issued document advanced raw attributes for
                               e-invoices
                             nullable: true
-                      nullable: true
                     payments_list:
                       type: array
                       items:
@@ -6757,7 +6406,6 @@ paths:
                                   - standard
                                   - end_of_month
                                 description: Payment terms type
-                      nullable: true
                     template:
                       type: object
                       title: DocumentTemplate
@@ -6837,7 +6485,6 @@ paths:
                     show_tspay_button:
                       type: boolean
                       description: Show ts pay button in the PDF
-                      nullable: true
                     delivery_note:
                       type: boolean
                       description: Issued document has delivery note
@@ -6857,27 +6504,21 @@ paths:
                       description: >-
                         Issued document attached delivery note number of
                         packages
-                      nullable: true
                     dn_ai_weight:
                       type: string
                       description: Issued document attached delivery note package weight
-                      nullable: true
                     dn_ai_causal:
                       type: string
                       description: Issued document attached delivery note causal
-                      nullable: true
                     dn_ai_destination:
                       type: string
                       description: Issued document attached delivery note destination
-                      nullable: true
                     dn_ai_transporter:
                       type: string
                       description: Issued document attached delivery note transporter
-                      nullable: true
                     dn_ai_notes:
                       type: string
                       description: Issued document attached delivery note notes
-                      nullable: true
                     is_marked:
                       type: boolean
                       description: Issued document is marked
@@ -6911,7 +6552,6 @@ paths:
                     amount_rivalsa_taxable:
                       type: number
                       description: Issued document taxable rivalsa amount
-                      nullable: true
                     amount_withholding_tax:
                       type: number
                       description: >-
@@ -6923,7 +6563,6 @@ paths:
                     amount_withholding_tax_taxable:
                       type: number
                       description: Issued document taxable withholding tax amount
-                      nullable: true
                     amount_other_withholding_tax:
                       type: number
                       description: >-
@@ -6935,11 +6574,9 @@ paths:
                     amount_other_withholding_tax_taxable:
                       type: number
                       description: Issued document taxable other withholding tax amount
-                      nullable: true
                     amount_enasarco_taxable:
                       type: number
                       description: Issued document taxable enasarco amount
-                      nullable: true
                     extra_data:
                       type: object
                       description: >-
@@ -6949,67 +6586,52 @@ paths:
                       properties:
                         show_sofort_button:
                           type: boolean
-                          nullable: true
                         multifatture_sent:
                           type: integer
-                          nullable: true
                         ts_communication:
                           type: boolean
                           description: Send issued document to "Sistema Tessera Sanitaria"
-                          nullable: true
                         ts_flag_tipo_spesa:
                           type: number
                           description: >-
                             Issued document ts "tipo spesa" [TK, FC, FV, SV,SP,
                             AD, AS, ECG, SR]
-                          nullable: true
                         ts_pagamento_tracciato:
                           type: boolean
                           description: Issued document ts traced payment
-                          nullable: true
                         ts_tipo_spesa:
                           type: string
                           description: >-
                             Can be [ 'TK', 'FC', 'FV', 'SV', 'SP', 'AD', 'AS',
                             'SR', 'CT', 'PI', 'IC', 'AA' ]. Refer to the
                             technical specifications to learn more.
-                          nullable: true
                         ts_opposizione:
                           type: boolean
                           description: Issued document ts "opposizione"
-                          nullable: true
                         ts_status:
                           type: integer
                           description: Issued document ts status
-                          nullable: true
                         ts_file_id:
                           type: string
                           description: Issued document ts file id
-                          nullable: true
                         ts_sent_date:
                           type: string
                           format: date
                           description: Issued document ts sent date
-                          nullable: true
                         ts_full_amount:
                           type: boolean
                           description: Issued document ts total amount
-                          nullable: true
                         imported_by:
                           type: string
                           description: Issued document imported by software
-                          nullable: true
-                      nullable: true
                     seen_date:
                       type: string
                       description: Issued document seen date
                       format: date
-                      nullable: true
                     next_due_date:
                       type: string
                       description: Issued document date of the next not paid payment
                       format: date
-                      nullable: true
                     url:
                       type: string
                       description: |-
@@ -7041,11 +6663,9 @@ paths:
                         Issued document attachment token returned by POST
                         /issued_documents/attachment
                       writeOnly: true
-                      nullable: true
                     ei_raw:
                       type: object
                       description: Issued document advanced raw attributes for e-invoices
-                      nullable: true
                     ei_status:
                       type: string
                       description: |
@@ -7506,7 +7126,6 @@ paths:
                         id:
                           type: integer
                           description: Entity id
-                          nullable: true
                         code:
                           type: string
                           example: '123'
@@ -7787,7 +7406,6 @@ paths:
                     category:
                       type: string
                       description: Received document category
-                      nullable: true
                     description:
                       type: string
                       description: Received document description
@@ -7836,7 +7454,6 @@ paths:
                         Received document date of the next not paid payment
                       format: date
                       readOnly: true
-                      nullable: true
                     currency:
                       type: object
                       title: Currency
@@ -7853,7 +7470,6 @@ paths:
                           type: string
                           description: Currency exchange rate (EUR to this)
                           example: '1'
-                          nullable: true
                         html_symbol:
                           type: string
                           example: EUR
@@ -7962,7 +7578,6 @@ paths:
                               Received document item product number of items in
                               stock
                             nullable: true
-                      nullable: true
                     payments_list:
                       type: array
                       items:
@@ -8073,7 +7688,6 @@ paths:
 
                         Received document attachment token returned by POST
                         /received_documents/attachment
-                      nullable: true
                     locked:
                       type: boolean
                       description: Received Document can't be edited
@@ -8202,7 +7816,6 @@ paths:
                         id:
                           type: integer
                           description: Entity id
-                          nullable: true
                         code:
                           type: string
                           example: '123'
@@ -8483,7 +8096,6 @@ paths:
                     category:
                       type: string
                       description: Received document category
-                      nullable: true
                     description:
                       type: string
                       description: Received document description
@@ -8532,7 +8144,6 @@ paths:
                         Received document date of the next not paid payment
                       format: date
                       readOnly: true
-                      nullable: true
                     currency:
                       type: object
                       title: Currency
@@ -8549,7 +8160,6 @@ paths:
                           type: string
                           description: Currency exchange rate (EUR to this)
                           example: '1'
-                          nullable: true
                         html_symbol:
                           type: string
                           example: EUR
@@ -8658,7 +8268,6 @@ paths:
                               Received document item product number of items in
                               stock
                             nullable: true
-                      nullable: true
                     payments_list:
                       type: array
                       items:
@@ -8769,7 +8378,6 @@ paths:
 
                         Received document attachment token returned by POST
                         /received_documents/attachment
-                      nullable: true
                     locked:
                       type: boolean
                       description: Received Document can't be edited
@@ -8896,7 +8504,6 @@ paths:
                         id:
                           type: integer
                           description: Entity id
-                          nullable: true
                         code:
                           type: string
                           example: '123'
@@ -9177,7 +8784,6 @@ paths:
                     category:
                       type: string
                       description: Received document category
-                      nullable: true
                     description:
                       type: string
                       description: Received document description
@@ -9226,7 +8832,6 @@ paths:
                         Received document date of the next not paid payment
                       format: date
                       readOnly: true
-                      nullable: true
                     currency:
                       type: object
                       title: Currency
@@ -9243,7 +8848,6 @@ paths:
                           type: string
                           description: Currency exchange rate (EUR to this)
                           example: '1'
-                          nullable: true
                         html_symbol:
                           type: string
                           example: EUR
@@ -9352,7 +8956,6 @@ paths:
                               Received document item product number of items in
                               stock
                             nullable: true
-                      nullable: true
                     payments_list:
                       type: array
                       items:
@@ -9463,7 +9066,6 @@ paths:
 
                         Received document attachment token returned by POST
                         /received_documents/attachment
-                      nullable: true
                     locked:
                       type: boolean
                       description: Received Document can't be edited
@@ -9563,7 +9165,6 @@ paths:
                         id:
                           type: integer
                           description: Entity id
-                          nullable: true
                         code:
                           type: string
                           example: '123'
@@ -9844,7 +9445,6 @@ paths:
                     category:
                       type: string
                       description: Received document category
-                      nullable: true
                     description:
                       type: string
                       description: Received document description
@@ -9893,7 +9493,6 @@ paths:
                         Received document date of the next not paid payment
                       format: date
                       readOnly: true
-                      nullable: true
                     currency:
                       type: object
                       title: Currency
@@ -9910,7 +9509,6 @@ paths:
                           type: string
                           description: Currency exchange rate (EUR to this)
                           example: '1'
-                          nullable: true
                         html_symbol:
                           type: string
                           example: EUR
@@ -10019,7 +9617,6 @@ paths:
                               Received document item product number of items in
                               stock
                             nullable: true
-                      nullable: true
                     payments_list:
                       type: array
                       items:
@@ -10130,7 +9727,6 @@ paths:
 
                         Received document attachment token returned by POST
                         /received_documents/attachment
-                      nullable: true
                     locked:
                       type: boolean
                       description: Received Document can't be edited
@@ -10298,7 +9894,6 @@ paths:
                     number:
                       type: number
                       description: Receipt number
-                      nullable: true
                     numeration:
                       type: string
                       description: Receipt numeration
@@ -10356,18 +9951,15 @@ paths:
                         iban:
                           type: string
                           description: Payment account iban
-                          nullable: true
                         sia:
                           type: string
                           description: Payment account sia
-                          nullable: true
                         cuc:
                           type: string
                           description: Payment account cuc
                         virtual:
                           type: boolean
                           description: Payment method is virtual
-                      nullable: true
                       required:
                         - name
                     items_list:
@@ -10442,7 +10034,6 @@ paths:
                                 type: boolean
                                 description: Is the vat type disabled
                                 nullable: true
-                      nullable: true
                   required:
                     - date
                     - type
@@ -10541,7 +10132,6 @@ paths:
                     number:
                       type: number
                       description: Receipt number
-                      nullable: true
                     numeration:
                       type: string
                       description: Receipt numeration
@@ -10599,18 +10189,15 @@ paths:
                         iban:
                           type: string
                           description: Payment account iban
-                          nullable: true
                         sia:
                           type: string
                           description: Payment account sia
-                          nullable: true
                         cuc:
                           type: string
                           description: Payment account cuc
                         virtual:
                           type: boolean
                           description: Payment method is virtual
-                      nullable: true
                       required:
                         - name
                     items_list:
@@ -10685,7 +10272,6 @@ paths:
                                 type: boolean
                                 description: Is the vat type disabled
                                 nullable: true
-                      nullable: true
                   required:
                     - date
                     - type
@@ -10882,18 +10468,15 @@ paths:
                         iban:
                           type: string
                           description: Payment account iban
-                          nullable: true
                         sia:
                           type: string
                           description: Payment account sia
-                          nullable: true
                         cuc:
                           type: string
                           description: Payment account cuc
                         virtual:
                           type: boolean
                           description: Payment method is virtual
-                      nullable: true
                       required:
                         - name
                     amount:
@@ -10906,14 +10489,12 @@ paths:
                         [Temporary] [Read Only]
                         F24 url of the attached file
                       readOnly: true
-                      nullable: true
                     attachment_token:
                       type: string
                       description: |-
                         [Write Only] 
                         F24 attachment token returned by POST /taxes/attachment
                       writeOnly: true
-                      nullable: true
                     description:
                       type: string
                       description: F24 description
@@ -11025,18 +10606,15 @@ paths:
                         iban:
                           type: string
                           description: Payment account iban
-                          nullable: true
                         sia:
                           type: string
                           description: Payment account sia
-                          nullable: true
                         cuc:
                           type: string
                           description: Payment account cuc
                         virtual:
                           type: boolean
                           description: Payment method is virtual
-                      nullable: true
                       required:
                         - name
                     amount:
@@ -11049,14 +10627,12 @@ paths:
                         [Temporary] [Read Only]
                         F24 url of the attached file
                       readOnly: true
-                      nullable: true
                     attachment_token:
                       type: string
                       description: |-
                         [Write Only] 
                         F24 attachment token returned by POST /taxes/attachment
                       writeOnly: true
-                      nullable: true
                     description:
                       type: string
                       description: F24 description
@@ -11528,11 +11104,9 @@ paths:
                         - in
                         - out
                       description: Cashbook type
-                      nullable: true
                     entity_name:
                       type: string
                       description: Cashbook entity name
-                      nullable: true
                     document:
                       type: object
                       properties:
@@ -11550,7 +11124,6 @@ paths:
                       description: |-
                         [Only for cashbook entry in]
                         Cashbook total amount in
-                      nullable: true
                     payment_account_in:
                       type: object
                       title: PaymentAccount
@@ -11573,11 +11146,9 @@ paths:
                         iban:
                           type: string
                           description: Payment account iban
-                          nullable: true
                         sia:
                           type: string
                           description: Payment account sia
-                          nullable: true
                         cuc:
                           type: string
                           description: Payment account cuc
@@ -11587,7 +11158,6 @@ paths:
                       description: |-
                         [Only for cashbook entry in]
                         Cashbook payment account in
-                      nullable: true
                       required:
                         - name
                     amount_out:
@@ -11595,7 +11165,6 @@ paths:
                       description: |-
                         [Only for cashbook entry out]
                         Cashbook total amount out
-                      nullable: true
                     payment_account_out:
                       type: object
                       title: PaymentAccount
@@ -11618,11 +11187,9 @@ paths:
                         iban:
                           type: string
                           description: Payment account iban
-                          nullable: true
                         sia:
                           type: string
                           description: Payment account sia
-                          nullable: true
                         cuc:
                           type: string
                           description: Payment account cuc
@@ -11632,7 +11199,6 @@ paths:
                       description: |-
                         [Only for cashbook entry out]
                         Cashbook payment account out
-                      nullable: true
                       required:
                         - name
                   required:
@@ -11742,11 +11308,9 @@ paths:
                         - in
                         - out
                       description: Cashbook type
-                      nullable: true
                     entity_name:
                       type: string
                       description: Cashbook entity name
-                      nullable: true
                     document:
                       type: object
                       properties:
@@ -11764,7 +11328,6 @@ paths:
                       description: |-
                         [Only for cashbook entry in]
                         Cashbook total amount in
-                      nullable: true
                     payment_account_in:
                       type: object
                       title: PaymentAccount
@@ -11787,11 +11350,9 @@ paths:
                         iban:
                           type: string
                           description: Payment account iban
-                          nullable: true
                         sia:
                           type: string
                           description: Payment account sia
-                          nullable: true
                         cuc:
                           type: string
                           description: Payment account cuc
@@ -11801,7 +11362,6 @@ paths:
                       description: |-
                         [Only for cashbook entry in]
                         Cashbook payment account in
-                      nullable: true
                       required:
                         - name
                     amount_out:
@@ -11809,7 +11369,6 @@ paths:
                       description: |-
                         [Only for cashbook entry out]
                         Cashbook total amount out
-                      nullable: true
                     payment_account_out:
                       type: object
                       title: PaymentAccount
@@ -11832,11 +11391,9 @@ paths:
                         iban:
                           type: string
                           description: Payment account iban
-                          nullable: true
                         sia:
                           type: string
                           description: Payment account sia
-                          nullable: true
                         cuc:
                           type: string
                           description: Payment account cuc
@@ -11846,7 +11403,6 @@ paths:
                       description: |-
                         [Only for cashbook entry out]
                         Cashbook payment account out
-                      nullable: true
                       required:
                         - name
                   required:
@@ -12241,7 +11797,6 @@ paths:
                     id:
                       type: integer
                       description: Payment method id
-                      nullable: true
                     name:
                       type: string
                       description: Payment method name
@@ -12278,18 +11833,15 @@ paths:
                         iban:
                           type: string
                           description: Payment account iban
-                          nullable: true
                         sia:
                           type: string
                           description: Payment account sia
-                          nullable: true
                         cuc:
                           type: string
                           description: Payment account cuc
                         virtual:
                           type: boolean
                           description: Payment method is virtual
-                      nullable: true
                       required:
                         - name
                     details:
@@ -12308,19 +11860,15 @@ paths:
                             type: string
                             description: Payment method details description
                             nullable: true
-                      nullable: true
                     bank_iban:
                       type: string
                       description: Payment method bank iban
-                      nullable: true
                     bank_name:
                       type: string
                       description: Payment method bank name
-                      nullable: true
                     bank_beneficiary:
                       type: string
                       description: Payment method bank beneficiary
-                      nullable: true
                     ei_payment_method:
                       type: string
                       description: E-invoice payment method
@@ -12391,7 +11939,6 @@ paths:
                     id:
                       type: integer
                       description: Payment method id
-                      nullable: true
                     name:
                       type: string
                       description: Payment method name
@@ -12428,18 +11975,15 @@ paths:
                         iban:
                           type: string
                           description: Payment account iban
-                          nullable: true
                         sia:
                           type: string
                           description: Payment account sia
-                          nullable: true
                         cuc:
                           type: string
                           description: Payment account cuc
                         virtual:
                           type: boolean
                           description: Payment method is virtual
-                      nullable: true
                       required:
                         - name
                     details:
@@ -12458,19 +12002,15 @@ paths:
                             type: string
                             description: Payment method details description
                             nullable: true
-                      nullable: true
                     bank_iban:
                       type: string
                       description: Payment method bank iban
-                      nullable: true
                     bank_name:
                       type: string
                       description: Payment method bank name
-                      nullable: true
                     bank_beneficiary:
                       type: string
                       description: Payment method bank beneficiary
-                      nullable: true
                     ei_payment_method:
                       type: string
                       description: E-invoice payment method
@@ -12549,18 +12089,15 @@ paths:
                     iban:
                       type: string
                       description: Payment account iban
-                      nullable: true
                     sia:
                       type: string
                       description: Payment account sia
-                      nullable: true
                     cuc:
                       type: string
                       description: Payment account cuc
                     virtual:
                       type: boolean
                       description: Payment method is virtual
-                  nullable: true
                   required:
                     - name
             examples:
@@ -12639,18 +12176,15 @@ paths:
                     iban:
                       type: string
                       description: Payment account iban
-                      nullable: true
                     sia:
                       type: string
                       description: Payment account sia
-                      nullable: true
                     cuc:
                       type: string
                       description: Payment account cuc
                     virtual:
                       type: boolean
                       description: Payment method is virtual
-                  nullable: true
                   required:
                     - name
             examples:
@@ -12741,7 +12275,6 @@ paths:
                     is_disabled:
                       type: boolean
                       description: Is the vat type disabled
-                  nullable: true
                   required:
                     - value
             examples:
@@ -12839,7 +12372,6 @@ paths:
                     is_disabled:
                       type: boolean
                       description: Is the vat type disabled
-                  nullable: true
                   required:
                     - value
             examples:
@@ -13124,10 +12656,7 @@ paths:
                           enum:
                             - binary
                             - structured
-                          nullable: true
                           default: binary
-                      nullable: true
-                  nullable: true
             examples:
               example-1:
                 value:
@@ -13309,10 +12838,7 @@ paths:
                           enum:
                             - binary
                             - structured
-                          nullable: true
                           default: binary
-                      nullable: true
-                  nullable: true
       security:
         - OAuth2AuthenticationCodeFlow: []
         - ManualAuth: []
