@@ -10,8 +10,8 @@ var detailsPath = process.argv[2]
 // var filePath = './openapi-enriched.yaml'
 // var detailsPath = './details.yaml'
 
-cleanFile(filePath)
 enrichFile(filePath, detailsPath)
+cleanFile(filePath)
 
 // This functions removes the "nullable" from all the input schemas of the merged file
 function cleanFile(filePath) {
@@ -74,7 +74,7 @@ function cleanProperty(prop) {
     return prop
 }
 
-// This functions adds the details from the details.yaml file to the cleaned file
+// This functions adds the details from the details.yaml file
 function enrichFile(filePath, detailsPath) {
     console.log("Trying to enrich: " + filePath)
     console.log("With details from: " + detailsPath)
