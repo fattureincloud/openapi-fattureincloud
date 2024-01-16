@@ -30,6 +30,12 @@ properties:
         type: boolean
         nullable: true
         description: Company activated through accountant
+  fic_license_expire:
+    type: string
+    format: date
+    nullable: true
+  fic_plan_name:
+    $ref: ../enums/FattureInCloudPlanType.yaml
   plan_info:
     type: object
     nullable: true

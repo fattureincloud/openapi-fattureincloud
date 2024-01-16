@@ -29,6 +29,12 @@ properties:
     nullable: true
     items:
       $ref: ./ControlledCompany.yaml
+  fic_license_expire:
+    type: string
+    format: date
+    nullable: true
+  fic_plan:
+    $ref: ../enums/FattureInCloudPlanType.yaml
   connection_id:
     type: integer
     description: Company connection id
