@@ -64,19 +64,10 @@ jobs:
         run: |
           echo "openapi_version=$OPENAPI_VERSION"
 
-          BUMP_TYPE=$(node ./scripts/sdk-version-checker.js ./generated/zapier/version.yaml $OPENAPI_VERSION)
-
           cd ./generated/zapier
 
-          if [ "$BUMP_TYPE" == "patch" ];then
-            echo 'Bumping the patch version...'
-            standard-version --skip.tag --skip.changelog --skip.commit --release-as patch
-          elif [ "$BUMP_TYPE" == "openapi" ];then
-            echo 'Using the openapi version...'
-            standard-version --skip.tag --skip.changelog --skip.commit --release-as $OPENAPI_VERSION
-          else
-            echo "Something bad happened - impossible to bump the version. value=$BUMP_TYPE"
-          fi
+          echo 'Bumping the patch version...'
+          standard-version --skip.tag --skip.changelog --skip.commit --release-as patch
 
           INTEGRATION_VERSION=$(yq e '.info.version' ./version.yaml)
 
