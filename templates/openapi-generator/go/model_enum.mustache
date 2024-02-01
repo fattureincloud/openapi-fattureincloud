@@ -2,23 +2,15 @@
 type {{{classname}}} {{{format}}}{{^format}}{{dataType}}{{/format}}
 
 // List of {{{name}}}
-var {{{classname}}}s = struct {
+const (
 	{{#allowableValues}}
 	{{#enumVars}}
 	{{^-first}}
 	{{/-first}}
-	{{name}} {{{classname}}}
+	{{#enumClassPrefix}}{{{classname.toUpperCase}}}_{{/enumClassPrefix}}{{name}} {{{classname}}} = {{{value}}}
 	{{/enumVars}}
 	{{/allowableValues}}
-} {
-	{{#allowableValues}}
-	{{#enumVars}}
-	{{^-first}}
-	{{/-first}}
-	{{name}}: {{{value}}},
-	{{/enumVars}}
-	{{/allowableValues}}
-}
+)
 
 // All allowed values of {{{classname}}} enum
 var Allowed{{{classname}}}EnumValues = []{{{classname}}}{
