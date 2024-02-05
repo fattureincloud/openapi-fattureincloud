@@ -1,7 +1,7 @@
 const authentication = require('./authentication');
 const { searchActions, createActions } = require('./operations/actions');
 const { triggers } = require('./operations/triggers');
-const { overrideUserAgent } = require('./utils/utils');
+const { overrideUserAgent, handleClientErrors } = require('./utils/utils');
 
 module.exports = {
     version: require('./package.json').version,
@@ -12,5 +12,8 @@ module.exports = {
     creates: createActions(),
     beforeRequest: [
         overrideUserAgent,
-    ]
+    ],
+    afterResponse: [
+        handleClientErrors,
+    ],
 };

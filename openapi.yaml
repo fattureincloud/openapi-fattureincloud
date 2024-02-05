@@ -80,6 +80,34 @@ paths:
         - OAuth2AuthenticationCodeFlow: []
       tags:
         - Companies
+  /c/{company_id}/company/plan_usage:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+    get:
+      summary: Get Company Plan Usage
+      responses:
+        '200':
+          $ref: '#/components/responses/GetCompanyPlanUsageResponse'
+        '401':
+          description: Unauthorized.
+      operationId: getCompanyPlanUsage
+      description: Gets the company limits usage.
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - clients
+              - suppliers
+              - products
+              - documents
+          in: query
+          name: category
+          description: Category
+          required: true
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      tags:
+        - Companies
   /c/{company_id}/entities/clients:
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -4182,7 +4210,6 @@ components:
                   locked: false
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
-                  pay_with_tspay_url: null
     GetIssuedDocumentResponse:
       description: Document Details.
       content:
@@ -4305,7 +4332,6 @@ components:
                   locked: false
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
-                  pay_with_tspay_url: null
     ModifyIssuedDocumentResponse:
       description: Document edited
       content:
@@ -4429,7 +4455,6 @@ components:
                   locked: false
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
-                  pay_with_tspay_url: null
     GetNewIssuedDocumentTotalsResponse:
       description: Totals.
       content:
@@ -8662,7 +8687,6 @@ components:
                   locked: false
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
-                  pay_with_tspay_url: null
                 options:
                   create_from:
                     - '82112399'
@@ -8789,7 +8813,6 @@ components:
                   locked: false
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
-                  pay_with_tspay_url: null
                 options:
                   create_from:
                     - '82112399'
@@ -8922,5 +8945,17 @@ components:
                 warnings: >-
                   The 'it.fattureincloud.webhooks.entities.clients.delete' event
                   is already registered for this application
+    GetCompanyPlanUsageResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetCompanyPlanUsageResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  limit: 3000
+                  usage: 100
 security:
   - OAuth2AuthenticationCodeFlow: []

@@ -37,13 +37,31 @@ const searchMiddleware = (action) => {
     return action
 }
 const extractResourceAndOperation = (eventType) => ({
-  resource: eventType.substring('it.fattureincloud.webhooks.'.length, eventType.lastIndexOf('.')),
-  eventOperation: eventType.substring(eventType.lastIndexOf('.') + 1)
+    resource: eventType.substring('it.fattureincloud.webhooks.'.length, eventType.lastIndexOf('.')),
+    eventOperation: eventType.substring(eventType.lastIndexOf('.') + 1)
 })
 const retrieveResourceOperations = (resource) => EventType.fields('').choices.filter(eventType => extractResourceAndOperation(eventType).resource == resource).map(et => ({type: extractResourceAndOperation(et).eventOperation, id: extractResourceAndOperation(et).eventOperation}))
 const overrideUserAgent = (request, z, bundle) => {
     request.headers['user-agent'] = `FattureInCloud/${require('../package.json').version}/Zapier`
     return request
+}
+const handleClientErrors = (response, z) => {
+    if (response.status >= 400 && response.status < 500) {
+        let errorMessage = JSON.stringify(response.json)
+
+        if (!_.isEmpty(response.json?.error?.validation_result)) {
+            errorMessage = Object.keys(response.json?.error?.validation_result)
+                .map(key => `[${key}]: ${response.json.error.validation_result[key].join(' - ')}`)
+                .join('\n')
+        } else if (!_.isEmpty(response.json?.error?.message)) {
+            errorMessage = response.json.error.message
+        }
+
+        throw new z.errors.Error(
+            errorMessage
+        );
+      }
+      return response;
 }
 const jsonFieldToObject = (val, fieldname) => {
     if (_.isEmpty(val)) return undefined
@@ -65,5 +83,6 @@ module.exports = {
     extractResourceAndOperation: extractResourceAndOperation,
     retrieveResourceOperations: retrieveResourceOperations,
     overrideUserAgent: overrideUserAgent,
+    handleClientErrors: handleClientErrors,
     jsonFieldToObject: jsonFieldToObject,
 }
