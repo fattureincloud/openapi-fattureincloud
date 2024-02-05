@@ -1,0 +1,7 @@
+title: GetCompanyPlanUsageResponse
+description: ''
+type: object
+properties:
+  data:
+    $ref: ../schemas/CompanyPlanUsage.yaml
+    nullable: true
