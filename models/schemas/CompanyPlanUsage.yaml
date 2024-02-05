@@ -1,0 +1,11 @@
+title: CompanyPlanUsage
+type: object
+properties:
+  limit:
+    type: number
+    description: Plan limit
+    nullable: true
+  usage:
+    type: number
+    description: Plan usage
+    nullable: true
