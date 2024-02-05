@@ -4210,7 +4210,6 @@ components:
                   locked: false
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
-                  pay_with_tspay_url: null
     GetIssuedDocumentResponse:
       description: Document Details.
       content:
@@ -4333,7 +4332,6 @@ components:
                   locked: false
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
-                  pay_with_tspay_url: null
     ModifyIssuedDocumentResponse:
       description: Document edited
       content:
@@ -4457,7 +4455,6 @@ components:
                   locked: false
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
-                  pay_with_tspay_url: null
     GetNewIssuedDocumentTotalsResponse:
       description: Totals.
       content:
@@ -8690,7 +8687,6 @@ components:
                   locked: false
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
-                  pay_with_tspay_url: null
                 options:
                   create_from:
                     - '82112399'
@@ -8817,7 +8813,6 @@ components:
                   locked: false
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
-                  pay_with_tspay_url: null
                 options:
                   create_from:
                     - '82112399'
