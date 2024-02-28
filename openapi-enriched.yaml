@@ -16,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.0.31
+  version: 2.0.32
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -78,6 +78,35 @@ paths:
           description: Unauthorized.
       operationId: getCompanyInfo
       description: Gets the company detailed info.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
+      tags:
+        - Companies
+  /c/{company_id}/company/plan_usage:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+    get:
+      summary: Get Company Plan Usage
+      responses:
+        '200':
+          $ref: '#/components/responses/GetCompanyPlanUsageResponse'
+        '401':
+          description: Unauthorized.
+      operationId: getCompanyPlanUsage
+      description: Gets the company limits usage.
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - clients
+              - suppliers
+              - products
+              - documents
+          in: query
+          name: category
+          description: Category
+          required: true
       security:
         - OAuth2AuthenticationCodeFlow: []
         - ManualAuth: []
@@ -13208,6 +13237,20 @@ components:
                                 example: >-
                                   fd015011d2dbf8a9d38e810b325b11b56d02e51688e5261a245933b8e677b8b44ff5f0fe5ccaaf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4fd81273fc1f95bf460b869015cf99acba
                                 nullable: true
+                              fic_license_expire:
+                                type: string
+                                format: date
+                                nullable: true
+                              fic_plan:
+                                title: FattureInCloudPlanType
+                                type: string
+                                description: Fatture in Cloud account plan type.
+                                enum:
+                                  - trial
+                                  - standard
+                                  - premium
+                                  - premium_plus
+                                  - complete
                               connection_id:
                                 type: number
                                 description: Controlled company connection id
@@ -13216,6 +13259,20 @@ components:
                                 type: string
                                 description: Controlled company tax code
                                 nullable: true
+                        fic_license_expire:
+                          type: string
+                          format: date
+                          nullable: true
+                        fic_plan:
+                          title: FattureInCloudPlanType
+                          type: string
+                          description: Fatture in Cloud account plan type.
+                          enum:
+                            - trial
+                            - standard
+                            - premium
+                            - premium_plus
+                            - complete
                         connection_id:
                           type: integer
                           description: Company connection id
@@ -13699,6 +13756,20 @@ components:
                         type: boolean
                         nullable: true
                         description: Company activated through accountant
+                  fic_license_expire:
+                    type: string
+                    format: date
+                    nullable: true
+                  fic_plan_name:
+                    title: FattureInCloudPlanType
+                    type: string
+                    description: Fatture in Cloud account plan type.
+                    enum:
+                      - trial
+                      - standard
+                      - premium
+                      - premium_plus
+                      - complete
                   plan_info:
                     type: object
                     nullable: true
@@ -19804,7 +19875,6 @@ components:
                   locked: false
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
-                  pay_with_tspay_url: null
     GetIssuedDocumentResponse:
       description: Document Details.
       content:
@@ -21241,7 +21311,6 @@ components:
                   locked: false
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
-                  pay_with_tspay_url: null
     ModifyIssuedDocumentResponse:
       description: Document edited
       content:
@@ -22679,7 +22748,6 @@ components:
                   locked: false
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
-                  pay_with_tspay_url: null
     GetNewIssuedDocumentTotalsResponse:
       description: Totals.
       content:
@@ -35364,7 +35432,6 @@ components:
                   locked: false
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
-                  pay_with_tspay_url: null
                 options:
                   create_from:
                     - '82112399'
@@ -36834,7 +36901,6 @@ components:
                   locked: false
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
-                  pay_with_tspay_url: null
                 options:
                   create_from:
                     - '82112399'
@@ -37671,5 +37737,33 @@ components:
                 warnings: >-
                   The 'it.fattureincloud.webhooks.entities.clients.delete' event
                   is already registered for this application
+    GetCompanyPlanUsageResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            title: GetCompanyPlanUsageResponse
+            description: ''
+            type: object
+            properties:
+              data:
+                title: CompanyPlanUsage
+                type: object
+                properties:
+                  limit:
+                    type: number
+                    description: Plan limit
+                    nullable: true
+                  usage:
+                    type: number
+                    description: Plan usage
+                    nullable: true
+                nullable: true
+          examples:
+            example-1:
+              value:
+                data:
+                  limit: 3000
+                  usage: 100
 security:
   - OAuth2AuthenticationCodeFlow: []
