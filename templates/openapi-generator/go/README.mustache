@@ -43,9 +43,8 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Authorization
 
-{{^authMethods}} Endpoints do not require authorization.
-{{/authMethods}}{{#authMethods}}{{#last}} Authentication schemes defined for the API:{{/last}}{{/authMethods}}
-{{#authMethods}}
+{{^authMethods}}Endpoints do not require authorization.{{/authMethods}}
+{{#hasAuthMethods}}Authentication schemes defined for the API:{{/hasAuthMethods}}
 
 ### {{{name}}}
 
@@ -63,8 +62,8 @@ Note, each API key must be added to a map of `map[string]APIKey` where the key i
 
 Example
 
-```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARER_TOKEN_STRING")
+```go
+auth := context.WithValue(context.Background(), {{packageName}}.ContextAccessToken, "BEARER_TOKEN_STRING")
 r, err := client.Service.Operation(auth, args)
 ```
 
@@ -74,8 +73,8 @@ r, err := client.Service.Operation(auth, args)
 
 Example
 
-```golang
-auth := context.WithValue(context.Background(), sw.ContextBasicAuth, sw.BasicAuth{
+```go
+auth := context.WithValue(context.Background(), {{packageName}}.ContextBasicAuth, {{packageName}}.BasicAuth{
     UserName: "username",
     Password: "password",
 })
@@ -88,21 +87,21 @@ r, err := client.Service.Operation(auth, args)
 
 Example
 
-```golang
-	authConfig := client.HttpSignatureAuth{
+```go
+	authConfig := {{packageName}}.HttpSignatureAuth{
 		KeyId:                "my-key-id",
 		PrivateKeyPath:       "rsa.pem",
 		Passphrase:           "my-passphrase",
-		SigningScheme:        sw.HttpSigningSchemeHs2019,
+		SigningScheme:        {{packageName}}.HttpSigningSchemeHs2019,
 		SignedHeaders:        []string{
-			sw.HttpSignatureParameterRequestTarget, // The special (request-target) parameter expresses the HTTP request target.
-			sw.HttpSignatureParameterCreated,       // Time when request was signed, formatted as a Unix timestamp integer value.
+			{{packageName}}.HttpSignatureParameterRequestTarget, // The special (request-target) parameter expresses the HTTP request target.
+			{{packageName}}.HttpSignatureParameterCreated,       // Time when request was signed, formatted as a Unix timestamp integer value.
 			"Host",                                 // The Host request header specifies the domain name of the server, and optionally the TCP port number.
 			"Date",                                 // The date and time at which the message was originated.
 			"Content-Type",                         // The Media type of the body of the request.
 			"Digest",                               // A cryptographic digest of the request body.
 		},
-		SigningAlgorithm:     sw.HttpSigningAlgorithmRsaPSS,
+		SigningAlgorithm:     {{packageName}}.HttpSigningAlgorithmRsaPSS,
 		SignatureMaxValidity: 5 * time.Minute,
 	}
 	var authCtx context.Context
@@ -126,20 +125,20 @@ Example
 
 Example
 
-```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "ACCESSTOKENSTRING")
+```go
+auth := context.WithValue(context.Background(), {{packageName}}.ContextAccessToken, "ACCESSTOKENSTRING")
 r, err := client.Service.Operation(auth, args)
 ```
 
 Or via OAuth2 module to automatically refresh tokens and perform user authentication.
 
-```golang
+```go
 import "golang.org/x/oauth2"
 
 /* Perform OAuth2 round trip request and obtain a token */
 
 tokenSource := oauth2cfg.TokenSource(createContext(httpClient), &token)
-auth := context.WithValue(oauth2.NoContext, sw.ContextOAuth2, tokenSource)
+auth := context.WithValue(oauth2.NoContext, {{packageName}}.ContextOAuth2, tokenSource)
 r, err := client.Service.Operation(auth, args)
 ```
 
