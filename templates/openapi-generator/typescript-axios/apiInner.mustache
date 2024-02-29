@@ -261,7 +261,7 @@ export const {{classname}}Fp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.{{nickname}}({{#allParams}}{{paramName}}, {{/allParams}}options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['{{classname}}.{{nickname}}']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerIndex || basePath);
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     {{/operation}}
     }
