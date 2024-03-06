@@ -43,3 +43,7 @@ properties:
     type: string
     description: Company tax code
     nullable: true
+  vat_number:
+    type: string
+    description: Company vat number
+    nullable: true

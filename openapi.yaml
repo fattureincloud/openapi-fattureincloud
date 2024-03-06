@@ -3313,6 +3313,7 @@ components:
                     - id: 12345
                       name: Studio Commercialista
                       tax_code: ABCSFN94T17A794K
+                      vat_number: 03881520161
                       type: accountant
                       access_token: >-
                         4ff5f0fe5abcd1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4f7362a848fa32dbb8c3a3f94c34f3df95
@@ -3321,6 +3322,7 @@ components:
                         - id: 12246
                           name: Studio Commercialista
                           tax_code: ABCSFN94T17A794K
+                          vat_number: 03881520161
                           type: company
                           access_token: >-
                             4ff5f0fe5abcdf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4f7362a848fa32dbb8c3a3f94c34f3df95
