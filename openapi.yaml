@@ -899,7 +899,6 @@ paths:
                     show_payment_method: false
                     show_payments: true
                     show_totals: all
-                    show_paypal_button: true
                     show_notification_button: false
                     is_marked: false
                     created_at: '2021-08-13 09:30:20'
@@ -4132,7 +4131,6 @@ components:
                   show_payment_method: false
                   show_payments: true
                   show_totals: all
-                  show_paypal_button: true
                   show_notification_button: false
                   is_marked: false
                   created_at: '2021-08-13 09:30:20'
@@ -4254,7 +4252,6 @@ components:
                   show_payment_method: false
                   show_payments: true
                   show_totals: all
-                  show_paypal_button: true
                   show_notification_button: false
                   is_marked: false
                   created_at: '2021-08-13 09:30:20'
@@ -4376,7 +4373,6 @@ components:
                   show_payment_method: false
                   show_payments: true
                   show_totals: all
-                  show_paypal_button: true
                   show_notification_button: false
                   is_marked: false
                   created_at: '2021-08-13 09:30:20'
@@ -8609,7 +8605,6 @@ components:
                   show_payment_method: false
                   show_payments: true
                   show_totals: all
-                  show_paypal_button: true
                   show_notification_button: false
                   is_marked: false
                   created_at: '2022-08-13 09:30:20'
@@ -8735,7 +8730,6 @@ components:
                   show_payment_method: false
                   show_payments: true
                   show_totals: all
-                  show_paypal_button: true
                   show_notification_button: false
                   is_marked: false
                   created_at: '2022-08-13 09:30:20'

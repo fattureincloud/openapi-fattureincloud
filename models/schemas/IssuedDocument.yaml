@@ -252,10 +252,6 @@ properties:
     nullable: true
   show_totals:
     $ref: ../enums/ShowTotalsMode.yaml
-  show_paypal_button:
-    type: boolean
-    description: Show paypal button in the PDF
-    nullable: true
   show_notification_button:
     type: boolean
     description: Show notification button in the PDF

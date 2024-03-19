@@ -413,8 +413,6 @@
             nullable: true
           show_totals:
             default: all
-          show_paypal_button:
-            default: false
           show_notification_button:
             default: false
           show_tspay_button:
@@ -675,8 +673,6 @@
             nullable: true
           show_totals:
             default: all
-          show_paypal_button:
-            default: false
           show_notification_button:
             default: false
           show_tspay_button:
@@ -937,8 +933,6 @@
             nullable: true
           show_totals:
             default: all
-          show_paypal_button:
-            default: false
           show_notification_button:
             default: false
           show_tspay_button:
@@ -1199,8 +1193,6 @@
             nullable: true
           show_totals:
             default: all
-          show_paypal_button:
-            default: false
           show_notification_button:
             default: false
           show_tspay_button:
