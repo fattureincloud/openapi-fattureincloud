@@ -2582,10 +2582,6 @@ paths:
                         - none
                         - nets
                         - all
-                    show_paypal_button:
-                      type: boolean
-                      description: Show paypal button in the PDF
-                      default: false
                     show_notification_button:
                       type: boolean
                       description: Show notification button in the PDF
@@ -3899,10 +3895,6 @@ paths:
                         - none
                         - nets
                         - all
-                    show_paypal_button:
-                      type: boolean
-                      description: Show paypal button in the PDF
-                      default: false
                     show_notification_button:
                       type: boolean
                       description: Show notification button in the PDF
@@ -5204,10 +5196,6 @@ paths:
                         - none
                         - nets
                         - all
-                    show_paypal_button:
-                      type: boolean
-                      description: Show paypal button in the PDF
-                      default: false
                     show_notification_button:
                       type: boolean
                       description: Show notification button in the PDF
@@ -5465,7 +5453,6 @@ paths:
                     show_payment_method: false
                     show_payments: true
                     show_totals: all
-                    show_paypal_button: true
                     show_notification_button: false
                     is_marked: false
                     created_at: '2021-08-13 09:30:20'
@@ -6503,10 +6490,6 @@ paths:
                         - none
                         - nets
                         - all
-                    show_paypal_button:
-                      type: boolean
-                      description: Show paypal button in the PDF
-                      default: false
                     show_notification_button:
                       type: boolean
                       description: Show notification button in the PDF
@@ -13281,6 +13264,10 @@ components:
                           type: string
                           description: Company tax code
                           nullable: true
+                        vat_number:
+                          type: string
+                          description: Company vat number
+                          nullable: true
                     nullable: true
                 nullable: true
           examples:
@@ -13291,6 +13278,7 @@ components:
                     - id: 12345
                       name: Studio Commercialista
                       tax_code: ABCSFN94T17A794K
+                      vat_number: 3881520161
                       type: accountant
                       access_token: >-
                         4ff5f0fe5abcd1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4f7362a848fa32dbb8c3a3f94c34f3df95
@@ -13299,6 +13287,7 @@ components:
                         - id: 12246
                           name: Studio Commercialista
                           tax_code: ABCSFN94T17A794K
+                          vat_number: 3881520161
                           type: company
                           access_token: >-
                             4ff5f0fe5abcdf1d7157fa13ca72ab62b6183db0667a576a0e19164801c18c4f7362a848fa32dbb8c3a3f94c34f3df95
@@ -18078,10 +18067,6 @@ components:
                             - none
                             - nets
                             - all
-                        show_paypal_button:
-                          type: boolean
-                          description: Show paypal button in the PDF
-                          nullable: true
                         show_notification_button:
                           type: boolean
                           description: Show notification button in the PDF
@@ -19482,10 +19467,6 @@ components:
                       - none
                       - nets
                       - all
-                  show_paypal_button:
-                    type: boolean
-                    description: Show paypal button in the PDF
-                    nullable: true
                   show_notification_button:
                     type: boolean
                     description: Show notification button in the PDF
@@ -19795,7 +19776,6 @@ components:
                   show_payment_method: false
                   show_payments: true
                   show_totals: all
-                  show_paypal_button: true
                   show_notification_button: false
                   is_marked: false
                   created_at: '2021-08-13 09:30:20'
@@ -20918,10 +20898,6 @@ components:
                       - none
                       - nets
                       - all
-                  show_paypal_button:
-                    type: boolean
-                    description: Show paypal button in the PDF
-                    nullable: true
                   show_notification_button:
                     type: boolean
                     description: Show notification button in the PDF
@@ -21231,7 +21207,6 @@ components:
                   show_payment_method: false
                   show_payments: true
                   show_totals: all
-                  show_paypal_button: true
                   show_notification_button: false
                   is_marked: false
                   created_at: '2021-08-13 09:30:20'
@@ -22354,10 +22329,6 @@ components:
                       - none
                       - nets
                       - all
-                  show_paypal_button:
-                    type: boolean
-                    description: Show paypal button in the PDF
-                    nullable: true
                   show_notification_button:
                     type: boolean
                     description: Show notification button in the PDF
@@ -22667,7 +22638,6 @@ components:
                   show_payment_method: false
                   show_payments: true
                   show_totals: all
-                  show_paypal_button: true
                   show_notification_button: false
                   is_marked: false
                   created_at: '2021-08-13 09:30:20'
@@ -35011,10 +34981,6 @@ components:
                       - none
                       - nets
                       - all
-                  show_paypal_button:
-                    type: boolean
-                    description: Show paypal button in the PDF
-                    nullable: true
                   show_notification_button:
                     type: boolean
                     description: Show notification button in the PDF
@@ -35352,7 +35318,6 @@ components:
                   show_payment_method: false
                   show_payments: true
                   show_totals: all
-                  show_paypal_button: true
                   show_notification_button: false
                   is_marked: false
                   created_at: '2022-08-13 09:30:20'
@@ -36480,10 +36445,6 @@ components:
                       - none
                       - nets
                       - all
-                  show_paypal_button:
-                    type: boolean
-                    description: Show paypal button in the PDF
-                    nullable: true
                   show_notification_button:
                     type: boolean
                     description: Show notification button in the PDF
@@ -36821,7 +36782,6 @@ components:
                   show_payment_method: false
                   show_payments: true
                   show_totals: all
-                  show_paypal_button: true
                   show_notification_button: false
                   is_marked: false
                   created_at: '2022-08-13 09:30:20'
