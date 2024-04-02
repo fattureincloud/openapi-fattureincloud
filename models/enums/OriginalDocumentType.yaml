@@ -2,7 +2,7 @@ title: OriginalDocumentType
 type: string
 nullable: true
 description: Issued document original document type
-default: ordine
+default: null
 enum:
   - ordine
   - contratto
