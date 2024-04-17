@@ -119,8 +119,10 @@ jobs:
           PACKAGE_NAME: "\"FattureInCloud PHP SDK\""
           INVOKER_PACKAGE: FattureInCloud
           AUTHOR_NAME: "Fatture in Cloud API Team"
-          HOMEPAGE_URL: https://www.fattureincloud.it
+          URL: https://www.fattureincloud.it
           COMPOSER_PACKAGE_NAME: "\"fattureincloud/fattureincloud-php-sdk\""
+          LICENSE: "MIT"
+          DEVELOPER_ORGANIZATION: "Fatture in Cloud API Team"
         run: |
           SDK_VERSION=${{ env.sdk_version }}
           echo "${{ env.sdk_version }}"
@@ -128,7 +130,7 @@ jobs:
 
           USER_AGENT="$INVOKER_PACKAGE/${{ env.sdk_version }}/PHP-SDK"
 
-          openapi-generator-cli generate -i ./openapi.yaml -g php -o ./generated/php/ -t ./templates/openapi-generator/php --package-name=${PACKAGE_NAME} --invoker-package=${INVOKER_PACKAGE} --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=composerPackageName=${COMPOSER_PACKAGE_NAME}
+          openapi-generator-cli generate -i ./openapi.yaml -g php -o ./generated/php/ -t ./templates/openapi-generator/php --package-name=${PACKAGE_NAME} --invoker-package=${INVOKER_PACKAGE} --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=composerPackageName=${COMPOSER_PACKAGE_NAME},artifactUrl=${URL},licenseName=${LICENSE},developerOrganization=${DEVELOPER_ORGANIZATION},developerOrganizationUrl=${URL}
 
           node ./scripts/postprocess-php.js clean './generated/php/lib/' './generated/php/test/'
 
