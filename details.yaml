@@ -442,8 +442,6 @@
           extra_data:
             nullable: true
             properties:
-              show_sofort_button:
-                nullable: true
               multifatture_sent:
                 nullable: true
               ts_communication:
@@ -702,8 +700,6 @@
           extra_data:
             nullable: true
             properties:
-              show_sofort_button:
-                nullable: true
               multifatture_sent:
                 nullable: true
               ts_communication:
@@ -962,8 +958,6 @@
           extra_data:
             nullable: true
             properties:
-              show_sofort_button:
-                nullable: true
               multifatture_sent:
                 nullable: true
               ts_communication:
@@ -1222,8 +1216,6 @@
           extra_data:
             nullable: true
             properties:
-              show_sofort_button:
-                nullable: true
               multifatture_sent:
                 nullable: true
               ts_communication:

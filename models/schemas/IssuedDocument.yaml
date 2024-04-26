@@ -374,9 +374,6 @@ properties:
       Issued document extra data [TS fields follow the technical specifications
       provided by "Sistema Tessera Sanitaria"]
     properties:
-      show_sofort_button:
-        type: boolean
-        nullable: true
       multifatture_sent:
         type: integer
         nullable: true
