@@ -2,7 +2,6 @@
 
 {{>partial_header}}
 import warnings
-
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
@@ -102,7 +101,7 @@ class {{classname}}:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -140,7 +139,7 @@ class {{classname}}:
                 _query_params.append(('{{baseName}}', {{paramName}}))
             {{/isDate}}
             {{^isDateTime}}{{^isDate}}
-            _query_params.append(('{{baseName}}', {{paramName}}{{#isEnumRef}}{{/isEnumRef}}))
+            _query_params.append(('{{baseName}}', {{paramName}}{{#isEnumRef}}.value{{/isEnumRef}}))
             {{/isDate}}{{/isDateTime}}
 {{/queryParams}}
         # process the header parameters
