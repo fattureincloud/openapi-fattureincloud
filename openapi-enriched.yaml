@@ -16,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.0.32
+  version: 2.0.33
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -2688,8 +2688,6 @@ paths:
                         technical specifications provided by "Sistema Tessera
                         Sanitaria"]
                       properties:
-                        show_sofort_button:
-                          type: boolean
                         multifatture_sent:
                           type: integer
                         ts_communication:
@@ -4001,8 +3999,6 @@ paths:
                         technical specifications provided by "Sistema Tessera
                         Sanitaria"]
                       properties:
-                        show_sofort_button:
-                          type: boolean
                         multifatture_sent:
                           type: integer
                         ts_communication:
@@ -5302,8 +5298,6 @@ paths:
                         technical specifications provided by "Sistema Tessera
                         Sanitaria"]
                       properties:
-                        show_sofort_button:
-                          type: boolean
                         multifatture_sent:
                           type: integer
                         ts_communication:
@@ -6596,8 +6590,6 @@ paths:
                         technical specifications provided by "Sistema Tessera
                         Sanitaria"]
                       properties:
-                        show_sofort_button:
-                          type: boolean
                         multifatture_sent:
                           type: integer
                         ts_communication:
@@ -17681,7 +17673,7 @@ components:
                               type: string
                               nullable: true
                               description: Issued document original document type
-                              default: ordine
+                              default: null
                               enum:
                                 - ordine
                                 - contratto
@@ -18198,9 +18190,6 @@ components:
                             technical specifications provided by "Sistema
                             Tessera Sanitaria"]
                           properties:
-                            show_sofort_button:
-                              type: boolean
-                              nullable: true
                             multifatture_sent:
                               type: integer
                               nullable: true
@@ -19083,7 +19072,7 @@ components:
                         type: string
                         nullable: true
                         description: Issued document original document type
-                        default: ordine
+                        default: null
                         enum:
                           - ordine
                           - contratto
@@ -19593,9 +19582,6 @@ components:
                       Issued document extra data [TS fields follow the technical
                       specifications provided by "Sistema Tessera Sanitaria"]
                     properties:
-                      show_sofort_button:
-                        type: boolean
-                        nullable: true
                       multifatture_sent:
                         type: integer
                         nullable: true
@@ -20514,7 +20500,7 @@ components:
                         type: string
                         nullable: true
                         description: Issued document original document type
-                        default: ordine
+                        default: null
                         enum:
                           - ordine
                           - contratto
@@ -21024,9 +21010,6 @@ components:
                       Issued document extra data [TS fields follow the technical
                       specifications provided by "Sistema Tessera Sanitaria"]
                     properties:
-                      show_sofort_button:
-                        type: boolean
-                        nullable: true
                       multifatture_sent:
                         type: integer
                         nullable: true
@@ -21945,7 +21928,7 @@ components:
                         type: string
                         nullable: true
                         description: Issued document original document type
-                        default: ordine
+                        default: null
                         enum:
                           - ordine
                           - contratto
@@ -22455,9 +22438,6 @@ components:
                       Issued document extra data [TS fields follow the technical
                       specifications provided by "Sistema Tessera Sanitaria"]
                     properties:
-                      show_sofort_button:
-                        type: boolean
-                        nullable: true
                       multifatture_sent:
                         type: integer
                         nullable: true
@@ -34597,7 +34577,7 @@ components:
                         type: string
                         nullable: true
                         description: Issued document original document type
-                        default: ordine
+                        default: null
                         enum:
                           - ordine
                           - contratto
@@ -35107,9 +35087,6 @@ components:
                       Issued document extra data [TS fields follow the technical
                       specifications provided by "Sistema Tessera Sanitaria"]
                     properties:
-                      show_sofort_button:
-                        type: boolean
-                        nullable: true
                       multifatture_sent:
                         type: integer
                         nullable: true
@@ -36061,7 +36038,7 @@ components:
                         type: string
                         nullable: true
                         description: Issued document original document type
-                        default: ordine
+                        default: null
                         enum:
                           - ordine
                           - contratto
@@ -36571,9 +36548,6 @@ components:
                       Issued document extra data [TS fields follow the technical
                       specifications provided by "Sistema Tessera Sanitaria"]
                     properties:
-                      show_sofort_button:
-                        type: boolean
-                        nullable: true
                       multifatture_sent:
                         type: integer
                         nullable: true
