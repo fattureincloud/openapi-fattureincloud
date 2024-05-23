@@ -3,16 +3,14 @@ var _ MappedNullable = &{{classname}}{}
 
 // {{classname}} {{{description}}}{{^description}}struct for {{{classname}}}{{/description}}
 type {{classname}} struct {
-{{#parent}}
-{{^isMap}}
+{{#parentModel.name}}
 {{^isArray}}
-	{{{parent}}}
+	{{{parentModel.classname}}}
 {{/isArray}}
-{{/isMap}}
 {{#isArray}}
-	Items {{{parent}}}
+	Items {{{parentModel.classname}}}
 {{/isArray}}
-{{/parent}}
+{{/parentModel.name}}
 {{#vars}}
 {{^-first}}
 {{/-first}}
@@ -211,7 +209,7 @@ func (o *{{classname}}) Get{{name}}Ok() ({{^isArray}}{{^isFreeFormObject}}*{{/is
 
 // Has{{name}} returns a boolean if a field has been set.
 func (o *{{classname}}) Has{{name}}() bool {
-	if o != nil && {{^isNullable}}!IsNil(o.{{name}}){{/isNullable}}{{#isNullable}}{{#vendorExtensions.x-golang-is-container}}IsNil(o.{{name}}){{/vendorExtensions.x-golang-is-container}}{{^vendorExtensions.x-golang-is-container}}o.{{name}}.IsSet(){{/vendorExtensions.x-golang-is-container}}{{/isNullable}} {
+	if o != nil && {{^isNullable}}!IsNil(o.{{name}}){{/isNullable}}{{#isNullable}}{{#vendorExtensions.x-golang-is-container}}!IsNil(o.{{name}}){{/vendorExtensions.x-golang-is-container}}{{^vendorExtensions.x-golang-is-container}}o.{{name}}.IsSet(){{/vendorExtensions.x-golang-is-container}}{{/isNullable}} {
 		return true
 	}
 
@@ -326,6 +324,7 @@ func (o {{classname}}) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
+{{#vendorExtensions.x-go-generate-unmarshal-json}}
 {{#isAdditionalPropertiesTrue}}
 func (o *{{{classname}}}) UnmarshalJSON(data []byte) (err error) {
 {{/isAdditionalPropertiesTrue}}
@@ -499,8 +498,9 @@ func (o *{{{classname}}}) UnmarshalJSON(data []byte) (err error) {
 {{/isAdditionalPropertiesTrue}}
 {{#isArray}}
 func (o *{{{classname}}}) UnmarshalJSON(data []byte) (err error) {
-	return json.Unmarshal(bytes, &o.Items)
+	return json.Unmarshal(data, &o.Items)
 }
 
 {{/isArray}}
+{{/vendorExtensions.x-go-generate-unmarshal-json}}
 {{>nullable_model}}

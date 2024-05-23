@@ -470,6 +470,7 @@ namespace {{packageName}}.Client
                 {
                     response = client.Execute<T>(request);
                 }
+
                 // if the response type is oneOf/anyOf, call FromJSON to deserialize the data
                 if (typeof({{{packageName}}}.{{modelPackage}}.AbstractOpenAPISchema).IsAssignableFrom(typeof(T)))
                 {
@@ -543,7 +544,8 @@ namespace {{packageName}}.Client
                 ClientCertificates = configuration.ClientCertificates,
                 MaxTimeout = configuration.Timeout,
                 Proxy = configuration.Proxy,
-                UseDefaultCredentials = configuration.UseDefaultCredentials
+                UseDefaultCredentials = configuration.UseDefaultCredentials,
+                RemoteCertificateValidationCallback = configuration.RemoteCertificateValidationCallback
             };
 
             using (RestClient client = new RestClient(clientOptions,
