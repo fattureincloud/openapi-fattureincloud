@@ -119,10 +119,10 @@ jobs:
           PACKAGE_NAME: "\"FattureInCloud PHP SDK\""
           INVOKER_PACKAGE: FattureInCloud
           AUTHOR_NAME: "Fatture in Cloud API Team"
-          URL: https://www.fattureincloud.it
+          URL: "\"https://www.fattureincloud.it\""
           COMPOSER_PACKAGE_NAME: "\"fattureincloud/fattureincloud-php-sdk\""
           LICENSE: "MIT"
-          DEVELOPER_ORGANIZATION: "Fatture in Cloud API Team"
+          DEVELOPER_ORGANIZATION: "\"Fatture in Cloud API Team\""
         run: |
           SDK_VERSION=${{ env.sdk_version }}
           echo "${{ env.sdk_version }}"
