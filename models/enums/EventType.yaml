@@ -65,3 +65,14 @@ enum:
   - it.fattureincloud.webhooks.entities.all.delete
   - it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
   - it.fattureincloud.webhooks.received_documents.e_invoices.receive
+  - it.fattureincloud.webhooks.issued_documents.invoices.email_sent
+  - it.fattureincloud.webhooks.issued_documents.quotes.email_sent
+  - it.fattureincloud.webhooks.issued_documents.proformas.email_sent
+  - it.fattureincloud.webhooks.issued_documents.receipts.email_sent
+  - it.fattureincloud.webhooks.issued_documents.delivery_notes.email_sent
+  - it.fattureincloud.webhooks.issued_documents.credit_notes.email_sent
+  - it.fattureincloud.webhooks.issued_documents.orders.email_sent
+  - it.fattureincloud.webhooks.issued_documents.work_reports.email_sent
+  - it.fattureincloud.webhooks.issued_documents.supplier_orders.email_sent
+  - it.fattureincloud.webhooks.issued_documents.self_invoices.email_sent
+  - it.fattureincloud.webhooks.issued_documents.all.email_sent
