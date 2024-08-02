@@ -2763,10 +2763,7 @@ paths:
         - Settings
       responses:
         '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/responses/GetTaxProfileResponse'
+          $ref: '#/components/responses/GetTaxProfileResponse'
       description: Gets the Tax Profile
       security:
         - OAuth2AuthenticationCodeFlow:
