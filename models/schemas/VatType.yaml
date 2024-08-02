@@ -45,3 +45,5 @@ properties:
     type: boolean
     description: Is the vat type disabled
     nullable: true
+  default:
+    type: boolean

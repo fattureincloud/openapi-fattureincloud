@@ -1,0 +1,5 @@
+title: GetVatTypeResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/TaxProfile.yaml

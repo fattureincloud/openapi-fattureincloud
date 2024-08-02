@@ -2753,6 +2753,24 @@ paths:
                     iban: IT17Q0051343200000003497636
                     sia: T1234
                     virtual: false
+  /c/{company_id}/settings/tax_profile:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+    get:
+      summary: Get Tax Profile
+      operationId: getTaxProfile
+      tags:
+        - Settings
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/GetTaxProfileResponse'
+      description: Gets the Tax Profile
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - 'settings:r'
   /c/{company_id}/settings/payment_accounts/{payment_account_id}:
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -8953,5 +8971,45 @@ components:
                 data:
                   limit: 3000
                   usage: 100
+    GetTaxProfileResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetTaxProfileResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  company_type: independent_contractor
+                  company_subtype: string
+                  profession: string
+                  regime: ordinario
+                  rivalsa_name: string
+                  default_rivalsa: 0
+                  cassa_name: string
+                  default_cassa: 0
+                  default_cassa_taxable: 100
+                  cassa2_name: string
+                  default_cassa2: 0
+                  default_cassa2_taxable: 0
+                  default_withholding_tax: 0
+                  default_withholding_tax_taxable: 100
+                  default_other_withholding_tax: 0
+                  enasarco: false
+                  enasarco_type: string
+                  contributions_percentage: 0
+                  med: false
+                  default_vat:
+                    id: 0
+                    value: 22
+                    description: Non imponibile art. 123
+                    notes: 'IVA non imponibile ai sensi dell''articolo 123, comma 2'
+                    e_invoice: true
+                    ei_type: 2
+                    ei_description: string
+                    editable: true
+                    is_disabled: true
+                    default: true
 security:
   - OAuth2AuthenticationCodeFlow: []

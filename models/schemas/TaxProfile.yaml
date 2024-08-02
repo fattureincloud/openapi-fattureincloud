@@ -1,0 +1,43 @@
+title: TaxProfile
+type: object
+properties:
+  company_type:
+    type: string
+  company_subtype:
+    type: string
+  profession:
+    type: string
+  regime:
+    type: string
+  rivalsa_name:
+    type: string
+  default_rivalsa:
+    type: integer
+  cassa_name:
+    type: string
+  default_cassa:
+    type: integer
+  default_cassa_taxable:
+    type: integer
+  cassa2_name:
+    type: string
+  default_cassa2:
+    type: integer
+  default_cassa2_taxable:
+    type: integer
+  default_withholding_tax:
+    type: integer
+  default_withholding_tax_taxable:
+    type: integer
+  default_other_withholding_tax:
+    type: integer
+  enasarco:
+    type: boolean
+  enasarco_type:
+    type: string
+  contributions_percentage:
+    type: integer
+  med:
+    type: boolean
+  default_vat:
+    $ref: ./VatType.yaml
