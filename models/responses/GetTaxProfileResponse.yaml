@@ -1,4 +1,4 @@
-title: GetVatTypeResponse
+title: GetTaxProfileResponse
 type: object
 properties:
   data:

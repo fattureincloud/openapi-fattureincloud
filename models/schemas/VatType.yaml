@@ -46,4 +46,6 @@ properties:
     description: Is the vat type disabled
     nullable: true
   default:
+    description: If the vat type is default
     type: boolean
+    nullable: true
