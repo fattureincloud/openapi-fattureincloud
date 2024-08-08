@@ -16,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.0.33
+  version: 2.1.1
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -286,6 +286,9 @@ paths:
                         is_disabled:
                           type: boolean
                           description: Is the vat type disabled
+                        default:
+                          description: If the vat type is default
+                          type: boolean
                       required:
                         - value
                     default_payment_terms:
@@ -644,6 +647,9 @@ paths:
                         is_disabled:
                           type: boolean
                           description: Is the vat type disabled
+                        default:
+                          description: If the vat type is default
+                          type: boolean
                       required:
                         - value
                     default_payment_terms:
@@ -1316,6 +1322,9 @@ paths:
                         is_disabled:
                           type: boolean
                           description: Is the vat type disabled
+                        default:
+                          description: If the vat type is default
+                          type: boolean
                       required:
                         - value
                     net_cost:
@@ -1490,6 +1499,9 @@ paths:
                         is_disabled:
                           type: boolean
                           description: Is the vat type disabled
+                        default:
+                          description: If the vat type is default
+                          type: boolean
                       required:
                         - value
                     net_cost:
@@ -1786,6 +1798,9 @@ paths:
                             is_disabled:
                               type: boolean
                               description: Is the vat type disabled
+                            default:
+                              description: If the vat type is default
+                              type: boolean
                           description: |-
                             [Only for client]
                             Client default vat.
@@ -2382,6 +2397,10 @@ paths:
                               is_disabled:
                                 type: boolean
                                 description: Is the vat type disabled
+                                nullable: true
+                              default:
+                                description: If the vat type is default
+                                type: boolean
                                 nullable: true
                           not_taxable:
                             type: boolean
@@ -3097,6 +3116,9 @@ paths:
                             is_disabled:
                               type: boolean
                               description: Is the vat type disabled
+                            default:
+                              description: If the vat type is default
+                              type: boolean
                           description: |-
                             [Only for client]
                             Client default vat.
@@ -3693,6 +3715,10 @@ paths:
                               is_disabled:
                                 type: boolean
                                 description: Is the vat type disabled
+                                nullable: true
+                              default:
+                                description: If the vat type is default
+                                type: boolean
                                 nullable: true
                           not_taxable:
                             type: boolean
@@ -4396,6 +4422,9 @@ paths:
                             is_disabled:
                               type: boolean
                               description: Is the vat type disabled
+                            default:
+                              description: If the vat type is default
+                              type: boolean
                           description: |-
                             [Only for client]
                             Client default vat.
@@ -4992,6 +5021,10 @@ paths:
                               is_disabled:
                                 type: boolean
                                 description: Is the vat type disabled
+                                nullable: true
+                              default:
+                                description: If the vat type is default
+                                type: boolean
                                 nullable: true
                           not_taxable:
                             type: boolean
@@ -5688,6 +5721,9 @@ paths:
                             is_disabled:
                               type: boolean
                               description: Is the vat type disabled
+                            default:
+                              description: If the vat type is default
+                              type: boolean
                           description: |-
                             [Only for client]
                             Client default vat.
@@ -6284,6 +6320,10 @@ paths:
                               is_disabled:
                                 type: boolean
                                 description: Is the vat type disabled
+                                nullable: true
+                              default:
+                                description: If the vat type is default
+                                type: boolean
                                 nullable: true
                           not_taxable:
                             type: boolean
@@ -7255,6 +7295,9 @@ paths:
                             is_disabled:
                               type: boolean
                               description: Is the vat type disabled
+                            default:
+                              description: If the vat type is default
+                              type: boolean
                           description: |-
                             [Only for client]
                             Client default vat.
@@ -7575,6 +7618,10 @@ paths:
                               is_disabled:
                                 type: boolean
                                 description: Is the vat type disabled
+                                nullable: true
+                              default:
+                                description: If the vat type is default
+                                type: boolean
                                 nullable: true
                           stock:
                             type: number
@@ -7945,6 +7992,9 @@ paths:
                             is_disabled:
                               type: boolean
                               description: Is the vat type disabled
+                            default:
+                              description: If the vat type is default
+                              type: boolean
                           description: |-
                             [Only for client]
                             Client default vat.
@@ -8265,6 +8315,10 @@ paths:
                               is_disabled:
                                 type: boolean
                                 description: Is the vat type disabled
+                                nullable: true
+                              default:
+                                description: If the vat type is default
+                                type: boolean
                                 nullable: true
                           stock:
                             type: number
@@ -8633,6 +8687,9 @@ paths:
                             is_disabled:
                               type: boolean
                               description: Is the vat type disabled
+                            default:
+                              description: If the vat type is default
+                              type: boolean
                           description: |-
                             [Only for client]
                             Client default vat.
@@ -8953,6 +9010,10 @@ paths:
                               is_disabled:
                                 type: boolean
                                 description: Is the vat type disabled
+                                nullable: true
+                              default:
+                                description: If the vat type is default
+                                type: boolean
                                 nullable: true
                           stock:
                             type: number
@@ -9294,6 +9355,9 @@ paths:
                             is_disabled:
                               type: boolean
                               description: Is the vat type disabled
+                            default:
+                              description: If the vat type is default
+                              type: boolean
                           description: |-
                             [Only for client]
                             Client default vat.
@@ -9614,6 +9678,10 @@ paths:
                               is_disabled:
                                 type: boolean
                                 description: Is the vat type disabled
+                                nullable: true
+                              default:
+                                description: If the vat type is default
+                                type: boolean
                                 nullable: true
                           stock:
                             type: number
@@ -10038,6 +10106,10 @@ paths:
                                 type: boolean
                                 description: Is the vat type disabled
                                 nullable: true
+                              default:
+                                description: If the vat type is default
+                                type: boolean
+                                nullable: true
                   required:
                     - date
                     - type
@@ -10275,6 +10347,10 @@ paths:
                               is_disabled:
                                 type: boolean
                                 description: Is the vat type disabled
+                                nullable: true
+                              default:
+                                description: If the vat type is default
+                                type: boolean
                                 nullable: true
                   required:
                     - date
@@ -12114,6 +12190,22 @@ paths:
                     iban: IT17Q0051343200000003497636
                     sia: T1234
                     virtual: false
+  /c/{company_id}/settings/tax_profile:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+    get:
+      summary: Get Tax Profile
+      operationId: getTaxProfile
+      tags:
+        - Settings
+      responses:
+        '200':
+          $ref: '#/components/responses/GetTaxProfileResponse'
+      description: Gets the Tax Profile
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - settings:r
+        - ManualAuth: []
   /c/{company_id}/settings/payment_accounts/{payment_account_id}:
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -12279,6 +12371,9 @@ paths:
                     is_disabled:
                       type: boolean
                       description: Is the vat type disabled
+                    default:
+                      description: If the vat type is default
+                      type: boolean
                   required:
                     - value
             examples:
@@ -12376,6 +12471,9 @@ paths:
                     is_disabled:
                       type: boolean
                       description: Is the vat type disabled
+                    default:
+                      description: If the vat type is default
+                      type: boolean
                   required:
                     - value
             examples:
@@ -12649,6 +12747,28 @@ paths:
                             it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
                           - >-
                             it.fattureincloud.webhooks.received_documents.e_invoices.receive
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.invoices.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.quotes.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.proformas.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.receipts.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.delivery_notes.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.credit_notes.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.orders.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.work_reports.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.supplier_orders.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.self_invoices.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.all.email_sent
                     config:
                       title: WebhooksSubscriptionConfig
                       type: object
@@ -12831,6 +12951,28 @@ paths:
                             it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
                           - >-
                             it.fattureincloud.webhooks.received_documents.e_invoices.receive
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.invoices.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.quotes.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.proformas.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.receipts.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.delivery_notes.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.credit_notes.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.orders.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.work_reports.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.supplier_orders.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.self_invoices.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.all.email_sent
                     config:
                       title: WebhooksSubscriptionConfig
                       type: object
@@ -14123,6 +14265,10 @@ components:
                         type: boolean
                         description: Is the vat type disabled
                         nullable: true
+                      default:
+                        description: If the vat type is default
+                        type: boolean
+                        nullable: true
                   default_payment_terms:
                     type: integer
                     example: 30
@@ -14549,6 +14695,10 @@ components:
                             is_disabled:
                               type: boolean
                               description: Is the vat type disabled
+                              nullable: true
+                            default:
+                              description: If the vat type is default
+                              type: boolean
                               nullable: true
                         default_payment_terms:
                           type: integer
@@ -15361,6 +15511,10 @@ components:
                         type: boolean
                         description: Is the vat type disabled
                         nullable: true
+                      default:
+                        description: If the vat type is default
+                        type: boolean
+                        nullable: true
                   default_payment_terms:
                     type: integer
                     example: 30
@@ -15722,6 +15876,10 @@ components:
                       is_disabled:
                         type: boolean
                         description: Is the vat type disabled
+                        nullable: true
+                      default:
+                        description: If the vat type is default
+                        type: boolean
                         nullable: true
                   default_payment_terms:
                     type: integer
@@ -16373,6 +16531,10 @@ components:
                               type: boolean
                               description: Is the vat type disabled
                               nullable: true
+                            default:
+                              description: If the vat type is default
+                              type: boolean
+                              nullable: true
                         net_cost:
                           type: number
                           nullable: true
@@ -16558,6 +16720,10 @@ components:
                         type: boolean
                         description: Is the vat type disabled
                         nullable: true
+                      default:
+                        description: If the vat type is default
+                        type: boolean
+                        nullable: true
                   net_cost:
                     type: number
                     nullable: true
@@ -16714,6 +16880,10 @@ components:
                       is_disabled:
                         type: boolean
                         description: Is the vat type disabled
+                        nullable: true
+                      default:
+                        description: If the vat type is default
+                        type: boolean
                         nullable: true
                   net_cost:
                     type: number
@@ -16875,6 +17045,10 @@ components:
                       is_disabled:
                         type: boolean
                         description: Is the vat type disabled
+                        nullable: true
+                      default:
+                        description: If the vat type is default
+                        type: boolean
                         nullable: true
                   net_cost:
                     type: number
@@ -17189,6 +17363,10 @@ components:
                                 is_disabled:
                                   type: boolean
                                   description: Is the vat type disabled
+                                  nullable: true
+                                default:
+                                  description: If the vat type is default
+                                  type: boolean
                                   nullable: true
                               description: |-
                                 [Only for client]
@@ -17845,6 +18023,10 @@ components:
                                   is_disabled:
                                     type: boolean
                                     description: Is the vat type disabled
+                                    nullable: true
+                                  default:
+                                    description: If the vat type is default
+                                    type: boolean
                                     nullable: true
                               not_taxable:
                                 type: boolean
@@ -18593,6 +18775,10 @@ components:
                             type: boolean
                             description: Is the vat type disabled
                             nullable: true
+                          default:
+                            description: If the vat type is default
+                            type: boolean
+                            nullable: true
                         description: |-
                           [Only for client]
                           Client default vat.
@@ -19244,6 +19430,10 @@ components:
                             is_disabled:
                               type: boolean
                               description: Is the vat type disabled
+                              nullable: true
+                            default:
+                              description: If the vat type is default
+                              type: boolean
                               nullable: true
                         not_taxable:
                           type: boolean
@@ -20021,6 +20211,10 @@ components:
                             type: boolean
                             description: Is the vat type disabled
                             nullable: true
+                          default:
+                            description: If the vat type is default
+                            type: boolean
+                            nullable: true
                         description: |-
                           [Only for client]
                           Client default vat.
@@ -20672,6 +20866,10 @@ components:
                             is_disabled:
                               type: boolean
                               description: Is the vat type disabled
+                              nullable: true
+                            default:
+                              description: If the vat type is default
+                              type: boolean
                               nullable: true
                         not_taxable:
                           type: boolean
@@ -21449,6 +21647,10 @@ components:
                             type: boolean
                             description: Is the vat type disabled
                             nullable: true
+                          default:
+                            description: If the vat type is default
+                            type: boolean
+                            nullable: true
                         description: |-
                           [Only for client]
                           Client default vat.
@@ -22100,6 +22302,10 @@ components:
                             is_disabled:
                               type: boolean
                               description: Is the vat type disabled
+                              nullable: true
+                            default:
+                              description: If the vat type is default
+                              type: boolean
                               nullable: true
                         not_taxable:
                           type: boolean
@@ -23225,6 +23431,10 @@ components:
                             type: boolean
                             description: Is the vat type disabled
                             nullable: true
+                          default:
+                            description: If the vat type is default
+                            type: boolean
+                            nullable: true
                   countries_list:
                     type: array
                     description: Countries list
@@ -23519,6 +23729,10 @@ components:
                         is_disabled:
                           type: boolean
                           description: Is the vat type disabled
+                          nullable: true
+                        default:
+                          description: If the vat type is default
+                          type: boolean
                           nullable: true
                   languages_list:
                     type: array
@@ -25728,6 +25942,10 @@ components:
                                   type: boolean
                                   description: Is the vat type disabled
                                   nullable: true
+                                default:
+                                  description: If the vat type is default
+                                  type: boolean
+                                  nullable: true
                               description: |-
                                 [Only for client]
                                 Client default vat.
@@ -26092,6 +26310,10 @@ components:
                                   is_disabled:
                                     type: boolean
                                     description: Is the vat type disabled
+                                    nullable: true
+                                  default:
+                                    description: If the vat type is default
+                                    type: boolean
                                     nullable: true
                               stock:
                                 type: number
@@ -26521,6 +26743,10 @@ components:
                             type: boolean
                             description: Is the vat type disabled
                             nullable: true
+                          default:
+                            description: If the vat type is default
+                            type: boolean
+                            nullable: true
                         description: |-
                           [Only for client]
                           Client default vat.
@@ -26885,6 +27111,10 @@ components:
                             is_disabled:
                               type: boolean
                               description: Is the vat type disabled
+                              nullable: true
+                            default:
+                              description: If the vat type is default
+                              type: boolean
                               nullable: true
                         stock:
                           type: number
@@ -27258,6 +27488,10 @@ components:
                             type: boolean
                             description: Is the vat type disabled
                             nullable: true
+                          default:
+                            description: If the vat type is default
+                            type: boolean
+                            nullable: true
                         description: |-
                           [Only for client]
                           Client default vat.
@@ -27622,6 +27856,10 @@ components:
                             is_disabled:
                               type: boolean
                               description: Is the vat type disabled
+                              nullable: true
+                            default:
+                              description: If the vat type is default
+                              type: boolean
                               nullable: true
                         stock:
                           type: number
@@ -27995,6 +28233,10 @@ components:
                             type: boolean
                             description: Is the vat type disabled
                             nullable: true
+                          default:
+                            description: If the vat type is default
+                            type: boolean
+                            nullable: true
                         description: |-
                           [Only for client]
                           Client default vat.
@@ -28359,6 +28601,10 @@ components:
                             is_disabled:
                               type: boolean
                               description: Is the vat type disabled
+                              nullable: true
+                            default:
+                              description: If the vat type is default
+                              type: boolean
                               nullable: true
                         stock:
                           type: number
@@ -28837,6 +29083,10 @@ components:
                         is_disabled:
                           type: boolean
                           description: Is the vat type disabled
+                          nullable: true
+                        default:
+                          description: If the vat type is default
+                          type: boolean
                           nullable: true
                 nullable: true
           examples:
@@ -29847,6 +30097,10 @@ components:
                                     type: boolean
                                     description: Is the vat type disabled
                                     nullable: true
+                                  default:
+                                    description: If the vat type is default
+                                    type: boolean
+                                    nullable: true
                     nullable: true
             description: ''
           examples:
@@ -30104,6 +30358,10 @@ components:
                               type: boolean
                               description: Is the vat type disabled
                               nullable: true
+                            default:
+                              description: If the vat type is default
+                              type: boolean
+                              nullable: true
                 nullable: true
             description: ''
           examples:
@@ -30314,6 +30572,10 @@ components:
                             is_disabled:
                               type: boolean
                               description: Is the vat type disabled
+                              nullable: true
+                            default:
+                              description: If the vat type is default
+                              type: boolean
                               nullable: true
                 nullable: true
             description: ''
@@ -30526,6 +30788,10 @@ components:
                               type: boolean
                               description: Is the vat type disabled
                               nullable: true
+                            default:
+                              description: If the vat type is default
+                              type: boolean
+                              nullable: true
                 nullable: true
             description: ''
           examples:
@@ -30691,6 +30957,10 @@ components:
                         is_disabled:
                           type: boolean
                           description: Is the vat type disabled
+                          nullable: true
+                        default:
+                          description: If the vat type is default
+                          type: boolean
                           nullable: true
                 nullable: true
             description: ''
@@ -32745,6 +33015,10 @@ components:
                       type: boolean
                       description: Is the vat type disabled
                       nullable: true
+                    default:
+                      description: If the vat type is default
+                      type: boolean
+                      nullable: true
                 nullable: true
             description: ''
           examples:
@@ -33660,6 +33934,10 @@ components:
                     type: boolean
                     description: Is the vat type disabled
                     nullable: true
+                  default:
+                    description: If the vat type is default
+                    type: boolean
+                    nullable: true
           examples:
             example-1:
               value:
@@ -33729,6 +34007,10 @@ components:
                     type: boolean
                     description: Is the vat type disabled
                     nullable: true
+                  default:
+                    description: If the vat type is default
+                    type: boolean
+                    nullable: true
           examples:
             example-1:
               value:
@@ -33797,6 +34079,10 @@ components:
                   is_disabled:
                     type: boolean
                     description: Is the vat type disabled
+                    nullable: true
+                  default:
+                    description: If the vat type is default
+                    type: boolean
                     nullable: true
           examples:
             example-1:
@@ -34097,6 +34383,10 @@ components:
                           is_disabled:
                             type: boolean
                             description: Is the vat type disabled
+                            nullable: true
+                          default:
+                            description: If the vat type is default
+                            type: boolean
                             nullable: true
                         description: |-
                           [Only for client]
@@ -34749,6 +35039,10 @@ components:
                             is_disabled:
                               type: boolean
                               description: Is the vat type disabled
+                              nullable: true
+                            default:
+                              description: If the vat type is default
+                              type: boolean
                               nullable: true
                         not_taxable:
                           type: boolean
@@ -35559,6 +35853,10 @@ components:
                             type: boolean
                             description: Is the vat type disabled
                             nullable: true
+                          default:
+                            description: If the vat type is default
+                            type: boolean
+                            nullable: true
                         description: |-
                           [Only for client]
                           Client default vat.
@@ -36210,6 +36508,10 @@ components:
                             is_disabled:
                               type: boolean
                               description: Is the vat type disabled
+                              nullable: true
+                            default:
+                              description: If the vat type is default
+                              type: boolean
                               nullable: true
                         not_taxable:
                           type: boolean
@@ -37169,6 +37471,28 @@ components:
                           it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
                         - >-
                           it.fattureincloud.webhooks.received_documents.e_invoices.receive
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.invoices.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.quotes.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.proformas.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.receipts.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.delivery_notes.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.credit_notes.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.orders.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.work_reports.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.supplier_orders.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.self_invoices.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.all.email_sent
                   config:
                     title: WebhooksSubscriptionConfig
                     type: object
@@ -37334,6 +37658,28 @@ components:
                             it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
                           - >-
                             it.fattureincloud.webhooks.received_documents.e_invoices.receive
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.invoices.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.quotes.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.proformas.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.receipts.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.delivery_notes.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.credit_notes.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.orders.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.work_reports.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.supplier_orders.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.self_invoices.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.all.email_sent
                     config:
                       title: WebhooksSubscriptionConfig
                       type: object
@@ -37490,6 +37836,28 @@ components:
                           it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
                         - >-
                           it.fattureincloud.webhooks.received_documents.e_invoices.receive
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.invoices.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.quotes.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.proformas.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.receipts.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.delivery_notes.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.credit_notes.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.orders.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.work_reports.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.supplier_orders.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.self_invoices.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.all.email_sent
                   config:
                     title: WebhooksSubscriptionConfig
                     type: object
@@ -37641,6 +38009,28 @@ components:
                           it.fattureincloud.webhooks.issued_documents.e_invoices.status_update
                         - >-
                           it.fattureincloud.webhooks.received_documents.e_invoices.receive
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.invoices.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.quotes.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.proformas.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.receipts.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.delivery_notes.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.credit_notes.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.orders.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.work_reports.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.supplier_orders.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.self_invoices.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.all.email_sent
                   config:
                     title: WebhooksSubscriptionConfig
                     type: object
@@ -37699,5 +38089,187 @@ components:
                 data:
                   limit: 3000
                   usage: 100
+    GetTaxProfileResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            title: GetTaxProfileResponse
+            type: object
+            properties:
+              data:
+                title: TaxProfile
+                type: object
+                properties:
+                  company_type:
+                    type: string
+                    description: The company type
+                    nullable: true
+                  company_subtype:
+                    type: string
+                    description: The company subtype
+                    nullable: true
+                  profession:
+                    type: string
+                    description: The profession
+                    nullable: true
+                  regime:
+                    type: string
+                    description: The applied regime
+                    nullable: true
+                  rivalsa_name:
+                    type: string
+                    description: The name of the rivalsa
+                    nullable: true
+                  default_rivalsa:
+                    type: number
+                    description: The default rivalsa amount
+                    nullable: true
+                  cassa_name:
+                    type: string
+                    description: The name of the cassa
+                    nullable: true
+                  default_cassa:
+                    type: number
+                    description: The default cassa amount
+                    nullable: true
+                  default_cassa_taxable:
+                    type: number
+                    description: The default taxable amount for the cassa
+                    nullable: true
+                  cassa2_name:
+                    type: string
+                    description: The name of the second cassa
+                    nullable: true
+                  default_cassa2:
+                    type: number
+                    description: The default second cassa amount
+                    nullable: true
+                  default_cassa2_taxable:
+                    type: number
+                    description: The default taxable amount for the second cassa
+                    nullable: true
+                  default_withholding_tax:
+                    type: number
+                    description: The default withholding tax
+                    nullable: true
+                  default_withholding_tax_taxable:
+                    type: number
+                    description: The default taxable amount for the withholding tax
+                    nullable: true
+                  default_other_withholding_tax:
+                    type: number
+                    description: The default other withholding tax
+                    nullable: true
+                  enasarco:
+                    type: boolean
+                    description: If it has enasarco
+                    nullable: true
+                  enasarco_type:
+                    type: string
+                    description: The enasarco type
+                    nullable: true
+                  contributions_percentage:
+                    type: number
+                    description: The contributions percentage
+                    nullable: true
+                  profit_coefficient:
+                    type: number
+                    description: The profit coefficient
+                    nullable: true
+                  med:
+                    type: boolean
+                    description: If the health card system is active
+                    nullable: true
+                  default_vat:
+                    type: object
+                    nullable: true
+                    title: VatType
+                    properties:
+                      id:
+                        type: integer
+                        description: Vat type id
+                        nullable: true
+                      value:
+                        type: number
+                        description: '[Read Only] Vat type percentual value'
+                        example: 22
+                        nullable: true
+                      description:
+                        type: string
+                        description: Vat type short description
+                        example: Non imponibile art. 123
+                        nullable: true
+                      notes:
+                        type: string
+                        description: Vat type notes shown in documents
+                        example: IVA non imponibile ai sensi dell'articolo 123, comma 2
+                        nullable: true
+                      e_invoice:
+                        type: boolean
+                        description: Vat type is usable for e-invoices
+                        nullable: true
+                      ei_type:
+                        type: string
+                        description: Vat type e-invoice type (natura)
+                        example: 2
+                        nullable: true
+                      ei_description:
+                        type: string
+                        description: Vat type e-invoice description
+                        nullable: true
+                      editable:
+                        type: boolean
+                        description: |-
+                          [Read Only]
+                          Is the vat type is editable.
+                        nullable: true
+                        readOnly: true
+                      is_disabled:
+                        type: boolean
+                        description: Is the vat type disabled
+                        nullable: true
+                      default:
+                        description: If the vat type is default
+                        type: boolean
+                        nullable: true
+          examples:
+            example-1:
+              value:
+                data:
+                  company_type: individual
+                  company_subtype: artigiani
+                  profession: null
+                  regime: forfettario_5
+                  rivalsa_name: ''
+                  default_rivalsa: 0
+                  cassa_name: ''
+                  default_cassa: 0
+                  default_cassa_taxable: 100
+                  cassa2_name: ''
+                  default_cassa2: 0
+                  default_cassa2_taxable: 0
+                  default_withholding_tax: 0
+                  default_withholding_tax_taxable: 100
+                  default_other_withholding_tax: 0
+                  enasarco: false
+                  enasarco_type: null
+                  contributions_percentage: 0
+                  med: false
+                  default_vat:
+                    id: 66
+                    value: 0
+                    description: Contribuenti forfettari
+                    notes: >-
+                      Operazione non soggetta a IVA ai sensi dell'art. 1, commi
+                      54-89, Legge n. 190\/2014 e succ. modifiche\/integrazioni
+                    e_invoice: true
+                    ei_type: 2.2
+                    ei_description: >-
+                      Non soggetta art. 1\/54-89 L. 190\/2014 e succ.
+                      modifiche\/integrazioni
+                    editable: false
+                    is_disabled: false
+                    default: true
 security:
   - OAuth2AuthenticationCodeFlow: []
