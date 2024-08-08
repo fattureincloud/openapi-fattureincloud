@@ -1,0 +1,85 @@
+title: TaxProfile
+type: object
+properties:
+  company_type:
+    type: string
+    description: The company type
+    nullable: true
+  company_subtype:
+    type: string
+    description: The company subtype
+    nullable: true
+  profession:
+    type: string
+    description: The profession
+    nullable: true
+  regime:
+    type: string
+    description: The applied regime
+    nullable: true
+  rivalsa_name:
+    type: string
+    description: The name of the rivalsa
+    nullable: true
+  default_rivalsa:
+    type: number
+    description: The default rivalsa amount
+    nullable: true
+  cassa_name:
+    type: string
+    description: The name of the cassa
+    nullable: true
+  default_cassa:
+    type: number
+    description: The default cassa amount
+    nullable: true
+  default_cassa_taxable:
+    type: number
+    description: The default taxable amount for the cassa
+    nullable: true
+  cassa2_name:
+    type: string
+    description: The name of the second cassa
+    nullable: true
+  default_cassa2:
+    type: number
+    description: The default second cassa amount
+    nullable: true
+  default_cassa2_taxable:
+    type: number
+    description: The default taxable amount for the second cassa
+    nullable: true
+  default_withholding_tax:
+    type: number
+    description: The default withholding tax
+    nullable: true
+  default_withholding_tax_taxable:
+    type: number
+    description: The default taxable amount for the withholding tax
+    nullable: true
+  default_other_withholding_tax:
+    type: number
+    description: The default other withholding tax
+    nullable: true
+  enasarco:
+    type: boolean
+    description: If it has enasarco
+    nullable: true
+  enasarco_type:
+    type: string
+    description: The enasarco type
+    nullable: true
+  contributions_percentage:
+    type: number
+    description: The contributions percentage
+    nullable: true
+  profit_coefficient:
+    type: number
+    description: The profit coefficient
+    nullable: true
+  med:
+    type: boolean
+    description: If the health card system is active
+    nullable: true
+  default_vat:
+    $ref: ./VatType.yaml
