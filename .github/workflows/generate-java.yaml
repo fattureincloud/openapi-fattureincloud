@@ -93,20 +93,10 @@ jobs:
           mv ./generated/java/src/main/java/it/fattureincloud/sdk/filter ./backup/java/src/main/java/it/fattureincloud/sdk/filter
 
           mkdir -p ./backup/java/src/main/java/it/fattureincloud/sdk/auth/
-          mkdir -p ./backup/java/src/main/java/it/fattureincloud/sdk/auth/authorization
-          mkdir -p ./backup/java/src/main/java/it/fattureincloud/sdk/auth/device
 
-          mv ./generated/java/src/main/java/it/fattureincloud/sdk/auth/Authentication.java ./backup/java/src/main/java/it/fattureincloud/sdk/auth/Authentication.java
-          mv ./generated/java/src/main/java/it/fattureincloud/sdk/auth/OAuth.java ./backup/java/src/main/java/it/fattureincloud/sdk/auth/OAuth.java
-          mv ./generated/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2Error.java ./backup/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2Error.java
-          mv ./generated/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2Manager.java ./backup/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2Manager.java
-          mv ./generated/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2TokenResponse.java ./backup/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2TokenResponse.java
-          mv ./generated/java/src/main/java/it/fattureincloud/sdk/auth/Scope.java ./backup/java/src/main/java/it/fattureincloud/sdk/auth/Scope.java
-          mv ./generated/java/src/main/java/it/fattureincloud/sdk/auth/authorization/OAuth2AuthorizationCodeManager.java ./backup/java/src/main/java/it/fattureincloud/sdk/auth/authorization/OAuth2AuthorizationCodeManager.java
-          mv ./generated/java/src/main/java/it/fattureincloud/sdk/auth/authorization/OAuth2AuthorizationCodeParams.java ./backup/java/src/main/java/it/fattureincloud/sdk/auth/authorization/OAuth2AuthorizationCodeParams.java
-          mv ./generated/java/src/main/java/it/fattureincloud/sdk/auth/device/OAuth2DeviceCodeManager.java ./backup/java/src/main/java/it/fattureincloud/sdk/auth/device/OAuth2DeviceCodeManager.java
-          mv ./generated/java/src/main/java/it/fattureincloud/sdk/auth/device/OAuth2DeviceCodeResponse.java ./backup/java/src/main/java/it/fattureincloud/sdk/auth/device/OAuth2DeviceCodeResponse.java
-          mv ./generated/java/src/main/java/it/fattureincloud/sdk/auth/device/OAuth2DeviceCodeResponseData.java ./backup/java/src/main/java/it/fattureincloud/sdk/auth/device/OAuth2DeviceCodeResponseData.java
+          mv ./generated/java/src/main/java/it/fattureincloud/sdk/auth ./backup/java/src/main/java/it/fattureincloud/sdk/auth/
+
+          ls ./backup/java/src/main/java/it/fattureincloud/sdk/auth/
 
       - id: delete-old-files
         name: Delete old files
