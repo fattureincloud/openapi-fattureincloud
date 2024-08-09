@@ -150,11 +150,7 @@ jobs:
         run: |
           mv ./backup/java/src/main/java/it/fattureincloud/sdk/filter ./generated/java/src/main/java/it/fattureincloud/sdk/filter
 
-          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeError.java ./generated/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeError.java
-          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeManager.java ./generated/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeManager.java
-          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeParams.java ./generated/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeParams.java
-          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeResponse.java ./generated/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2AuthorizationCodeResponse.java
-          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth/Scope.java ./generated/java/src/main/java/it/fattureincloud/sdk/auth/Scope.java
+          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth ./generated/java/src/main/java/it/fattureincloud/sdk/auth
 
       - id: generate-additional-files
         name: Generate Additional files
