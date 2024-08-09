@@ -94,7 +94,7 @@ jobs:
 
           mkdir -p ./backup/java/src/main/java/it/fattureincloud/sdk/auth/
 
-          mv ./generated/java/src/main/java/it/fattureincloud/sdk/auth ./backup/java/src/main/java/it/fattureincloud/sdk/auth/
+          mv -v ./generated/java/src/main/java/it/fattureincloud/sdk/auth/* ./backup/java/src/main/java/it/fattureincloud/sdk/auth
 
           ls ./backup/java/src/main/java/it/fattureincloud/sdk/auth/
 
@@ -153,7 +153,7 @@ jobs:
         run: |
           mv ./backup/java/src/main/java/it/fattureincloud/sdk/filter ./generated/java/src/main/java/it/fattureincloud/sdk/filter
 
-          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth ./generated/java/src/main/java/it/fattureincloud/sdk/auth/
+          mv -v ./backup/java/src/main/java/it/fattureincloud/sdk/auth/* ./generated/java/src/main/java/it/fattureincloud/sdk/auth
 
       - id: generate-additional-files
         name: Generate Additional files
