@@ -153,17 +153,7 @@ jobs:
         run: |
           mv ./backup/java/src/main/java/it/fattureincloud/sdk/filter ./generated/java/src/main/java/it/fattureincloud/sdk/filter
 
-          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth/Authentication.java ./generated/java/src/main/java/it/fattureincloud/sdk/auth/Authentication.java
-          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth/OAuth.java ./generated/java/src/main/java/it/fattureincloud/sdk/auth/OAuth.java
-          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2Error.java ./generated/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2Error.java
-          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2Manager.java ./generated/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2Manager.java
-          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2TokenResponse.java ./generated/java/src/main/java/it/fattureincloud/sdk/auth/OAuth2TokenResponse.java
-          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth/Scope.java ./generated/java/src/main/java/it/fattureincloud/sdk/auth/Scope.java
-          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth/authorization/OAuth2AuthorizationCodeManager.java ./generated/java/src/main/java/it/fattureincloud/sdk/auth/authorization/OAuth2AuthorizationCodeManager.java
-          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth/authorization/OAuth2AuthorizationCodeParams.java ./generated/java/src/main/java/it/fattureincloud/sdk/auth/authorization/OAuth2AuthorizationCodeParams.java
-          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth/device/OAuth2DeviceCodeManager.java ./generated/java/src/main/java/it/fattureincloud/sdk/auth/device/OAuth2DeviceCodeManager.java
-          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth/device/OAuth2DeviceCodeResponse.java ./generated/java/src/main/java/it/fattureincloud/sdk/auth/device/OAuth2DeviceCodeResponse.java
-          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth/device/OAuth2DeviceCodeResponseData.java ./generated/java/src/main/java/it/fattureincloud/sdk/auth/device/OAuth2DeviceCodeResponseData.java
+          mv ./backup/java/src/main/java/it/fattureincloud/sdk/auth ./generated/java/src/main/java/it/fattureincloud/sdk/auth/
 
       - id: generate-additional-files
         name: Generate Additional files
