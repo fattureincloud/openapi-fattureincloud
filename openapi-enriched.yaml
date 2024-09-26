@@ -12576,13 +12576,16 @@ paths:
           name: group
           description: Group items.
         - schema:
-            type: integer
+            type: string
             enum:
-              - 0
-              - 1
+              - delivery_notes
+              - orders
+              - quotes
+              - work_reports
           in: query
-          name: e_invoice
-          description: New document e_invoice.
+          name: parameter
+          description: Type of the parameters to be joined
+          example: delivery_notes, orders, quotes, work_reports
     parameters:
       - $ref: '#/components/parameters/company_id'
   /c/{company_id}/emails:

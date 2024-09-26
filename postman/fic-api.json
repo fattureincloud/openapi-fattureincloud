@@ -9483,11 +9483,11 @@
                                 {
                                     "disabled": false,
                                     "description": {
-                                        "content": "New document e_invoice.",
+                                        "content": "Type of the documents",
                                         "type": "text/plain"
                                     },
-                                    "key": "e_invoice",
-                                    "value": "1"
+                                    "key": "parameter",
+                                    "value": "<string>"
                                 }
                             ],
                             "variable": [
