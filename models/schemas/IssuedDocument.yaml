@@ -40,7 +40,7 @@ properties:
     $ref: ./Language.yaml
   subject:
     type: string
-    description: Issued document not visible subject
+    description: Issued document subject [not shown on the PDF]
     nullable: true
   visible_subject:
     type: string
