@@ -9297,6 +9297,15 @@
                                 {
                                     "disabled": false,
                                     "description": {
+                                        "content": "Old document type.",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "parameter",
+                                    "value": "<string>"
+                                },
+                                {
+                                    "disabled": false,
+                                    "description": {
                                         "content": "New document e_invoice.",
                                         "type": "text/plain"
                                     },

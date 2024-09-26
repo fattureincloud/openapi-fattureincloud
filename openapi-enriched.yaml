@@ -12529,6 +12529,11 @@ paths:
           description: New document type.
           required: true
         - schema:
+            type: string
+          in: query
+          name: parameter
+          description: Old document type.
+        - schema:
             type: integer
             enum:
               - 0
