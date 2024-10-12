@@ -1,0 +1,7 @@
+title: GetReceivedDocumentResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/PendingReceivedDocument.yaml
+    nullable: true
+description: ''
