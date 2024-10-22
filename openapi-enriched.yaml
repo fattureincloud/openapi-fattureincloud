@@ -16,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.1.1
+  version: 2.1.2
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -2030,7 +2030,7 @@ paths:
                         - name
                     subject:
                       type: string
-                      description: Issued document subject
+                      description: Issued document subject [not shown on the PDF]
                     visible_subject:
                       type: string
                       description: Issued document visible subject
@@ -3348,7 +3348,7 @@ paths:
                         - name
                     subject:
                       type: string
-                      description: Issued document subject
+                      description: Issued document subject [not shown on the PDF]
                     visible_subject:
                       type: string
                       description: Issued document visible subject
@@ -4654,7 +4654,7 @@ paths:
                         - name
                     subject:
                       type: string
-                      description: Issued document subject
+                      description: Issued document subject [not shown on the PDF]
                     visible_subject:
                       type: string
                       description: Issued document visible subject
@@ -5953,7 +5953,7 @@ paths:
                         - name
                     subject:
                       type: string
-                      description: Issued document subject
+                      description: Issued document subject [not shown on the PDF]
                     visible_subject:
                       type: string
                       description: Issued document visible subject
@@ -13174,6 +13174,7 @@ components:
           - expense
           - passive_credit_note
           - passive_delivery_note
+          - self_invoice
       description: The type of the received document.
     q:
       name: q
@@ -17629,7 +17630,7 @@ components:
                               nullable: true
                         subject:
                           type: string
-                          description: Issued document subject
+                          description: Issued document subject [not shown on the PDF]
                           nullable: true
                         visible_subject:
                           type: string
@@ -19040,7 +19041,7 @@ components:
                         nullable: true
                   subject:
                     type: string
-                    description: Issued document subject
+                    description: Issued document subject [not shown on the PDF]
                     nullable: true
                   visible_subject:
                     type: string
@@ -20476,7 +20477,7 @@ components:
                         nullable: true
                   subject:
                     type: string
-                    description: Issued document subject
+                    description: Issued document subject [not shown on the PDF]
                     nullable: true
                   visible_subject:
                     type: string
@@ -21912,7 +21913,7 @@ components:
                         nullable: true
                   subject:
                     type: string
-                    description: Issued document subject
+                    description: Issued document subject [not shown on the PDF]
                     nullable: true
                   visible_subject:
                     type: string
@@ -34649,7 +34650,7 @@ components:
                         nullable: true
                   subject:
                     type: string
-                    description: Issued document subject
+                    description: Issued document subject [not shown on the PDF]
                     nullable: true
                   visible_subject:
                     type: string
@@ -36118,7 +36119,7 @@ components:
                         nullable: true
                   subject:
                     type: string
-                    description: Issued document subject
+                    description: Issued document subject [not shown on the PDF]
                     nullable: true
                   visible_subject:
                     type: string
@@ -37232,7 +37233,6 @@ components:
                             - sent
                         sent_date:
                           type: string
-                          format: date-time
                           nullable: true
                           description: Email sent date
                         errors_count:
