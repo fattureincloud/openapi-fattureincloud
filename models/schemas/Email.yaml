@@ -9,7 +9,6 @@ properties:
     $ref: ../enums/EmailStatus.yaml
   sent_date:
     type: string
-    format: date-time
     nullable: true
     description: Email sent date
   errors_count:
