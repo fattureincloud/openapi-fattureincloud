@@ -40,9 +40,9 @@ paths:
         - User
       summary: Get User Info
       responses:
-        '200':
-          $ref: '#/components/responses/GetUserInfoResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/GetUserInfoResponse"
+        "401":
           description: Unauthorized.
       operationId: getUserInfo
       description: Gets the current user's info.
@@ -55,9 +55,9 @@ paths:
       tags:
         - User
       responses:
-        '200':
-          $ref: '#/components/responses/ListUserCompaniesResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListUserCompaniesResponse"
+        "401":
           description: Unauthorized
       operationId: listUserCompanies
       description: Lists the companies controlled by the current user.
@@ -66,13 +66,13 @@ paths:
       parameters: []
   /c/{company_id}/company/info:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: Get Company Info
       responses:
-        '200':
-          $ref: '#/components/responses/GetCompanyInfoResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/GetCompanyInfoResponse"
+        "401":
           description: Unauthorized.
       operationId: getCompanyInfo
       description: Gets the company detailed info.
@@ -82,13 +82,13 @@ paths:
         - Companies
   /c/{company_id}/company/plan_usage:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: Get Company Plan Usage
       responses:
-        '200':
-          $ref: '#/components/responses/GetCompanyPlanUsageResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/GetCompanyPlanUsageResponse"
+        "401":
           description: Unauthorized.
       operationId: getCompanyPlanUsage
       description: Gets the company limits usage.
@@ -110,15 +110,15 @@ paths:
         - Companies
   /c/{company_id}/entities/clients:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: List Clients
       tags:
         - Clients
       responses:
-        '200':
-          $ref: '#/components/responses/ListClientsResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListClientsResponse"
+        "401":
           description: Unauthorized
       operationId: listClients
       description: Lists the clients.
@@ -126,18 +126,18 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - entity.clients:r
       parameters:
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
-        - $ref: '#/components/parameters/sort'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/per_page'
-        - $ref: '#/components/parameters/q'
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/fieldset"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/per_page"
+        - $ref: "#/components/parameters/q"
     post:
       summary: Create Client
       operationId: createClient
       responses:
-        '200':
-          $ref: '#/components/responses/CreateClientResponse'
+        "200":
+          $ref: "#/components/responses/CreateClientResponse"
       description: Creates a new client.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -157,20 +157,20 @@ paths:
                     type: person
                     first_name: Maria
                     last_name: Rossi
-                    contact_person: ''
+                    contact_person: ""
                     vat_number: IT12345640962
                     tax_code: BLTGNI5ABCDA794E
                     address_street: Via Roma, 1
-                    address_postal_code: '20900'
+                    address_postal_code: "20900"
                     address_city: Milano
                     address_province: MI
-                    address_extra: ''
+                    address_extra: ""
                     country: Italia
                     email: maria.rossi@example.com
                     certified_email: maria.rossi@pec.example.com
-                    phone: '1234567890'
-                    fax: ''
-                    notes: ''
+                    phone: "1234567890"
+                    fax: ""
+                    notes: ""
                     default_payment_terms: 1
                     default_payment_terms_type: standard
                     bank_name: Indesa
@@ -178,29 +178,29 @@ paths:
                     bank_swift_code: AK86PCT
                     shipping_address: Corso Magellano 4
                     e_invoice: true
-                    ei_code: '111111'
+                    ei_code: "111111"
                     default_vat:
                       id: 54321
                       value: 45
-                      description: ''
+                      description: ""
                       is_disabled: false
         description: The client to create
       tags:
         - Clients
   /c/{company_id}/entities/clients/{client_id}:
     parameters:
-      - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/client_id'
+      - $ref: "#/components/parameters/company_id"
+      - $ref: "#/components/parameters/client_id"
     get:
       summary: Get Client
       tags:
         - Clients
       responses:
-        '200':
-          $ref: '#/components/responses/GetClientResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/GetClientResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: getClient
       security:
@@ -208,17 +208,17 @@ paths:
             - entity.clients:r
       description: Gets the specified client.
       parameters:
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/fieldset"
     put:
       summary: Modify Client
       operationId: modifyClient
       responses:
-        '200':
-          $ref: '#/components/responses/ModifyClientResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ModifyClientResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       description: Modifies the specified client.
       security:
@@ -239,20 +239,20 @@ paths:
                     type: person
                     first_name: Maria
                     last_name: Rossi
-                    contact_person: ''
+                    contact_person: ""
                     vat_number: IT12345640962
                     tax_code: BLTGNI5ABCDA794E
                     address_street: Via Roma, 1
-                    address_postal_code: '20900'
+                    address_postal_code: "20900"
                     address_city: Milano
                     address_province: MI
-                    address_extra: ''
+                    address_extra: ""
                     country: Italia
                     email: maria.rossi@example.com
                     certified_email: maria.rossi@pec.example.com
-                    phone: '1234567890'
-                    fax: ''
-                    notes: ''
+                    phone: "1234567890"
+                    fax: ""
+                    notes: ""
                     default_payment_terms: 1
                     default_payment_terms_type: standard
                     bank_name: Indesa
@@ -260,11 +260,11 @@ paths:
                     bank_swift_code: AK86PCT
                     shipping_address: Corso Magellano 4
                     e_invoice: true
-                    ei_code: '111111'
+                    ei_code: "111111"
                     default_vat:
                       id: 54321
                       value: 45
-                      description: ''
+                      description: ""
                       is_disabled: false
         description: The modified Client. First level parameters are managed in delta mode.
       tags:
@@ -273,11 +273,11 @@ paths:
       summary: Delete Client
       operationId: deleteClient
       responses:
-        '200':
+        "200":
           description: Entity Removed
-        '401':
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       description: Deletes the specified client.
       parameters: []
@@ -288,13 +288,13 @@ paths:
         - Clients
   /c/{company_id}/entities/suppliers:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: List Suppliers
       responses:
-        '200':
-          $ref: '#/components/responses/ListSuppliersResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListSuppliersResponse"
+        "401":
           description: Unauthorized
       operationId: listSuppliers
       description: Lists the suppliers.
@@ -302,20 +302,20 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - entity.suppliers:r
       parameters:
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
-        - $ref: '#/components/parameters/sort'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/per_page'
-        - $ref: '#/components/parameters/q'
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/fieldset"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/per_page"
+        - $ref: "#/components/parameters/q"
       tags:
         - Suppliers
     post:
       summary: Create Supplier
       operationId: createSupplier
       responses:
-        '200':
-          $ref: '#/components/responses/CreateSupplierResponse'
+        "200":
+          $ref: "#/components/responses/CreateSupplierResponse"
       description: Creates a new supplier.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -336,35 +336,35 @@ paths:
                     type: company
                     first_name: Mario
                     last_name: Rossi
-                    contact_person: ''
-                    vat_number: '111222333'
-                    tax_code: '111122233'
+                    contact_person: ""
+                    vat_number: "111222333"
+                    tax_code: "111122233"
                     address_street: Corso Magellano, 46
-                    address_postal_code: '20146'
+                    address_postal_code: "20146"
                     address_city: Milano
                     address_province: MI
-                    address_extra: ''
+                    address_extra: ""
                     country: Italia
                     email: mario.rossi@example.com
                     certified_email: mario.rossi@pec.example.com
-                    phone: '1234567890'
-                    fax: '123456789'
-                    notes: ''
+                    phone: "1234567890"
+                    fax: "123456789"
+                    notes: ""
         description: The supplier to create
       tags:
         - Suppliers
   /c/{company_id}/entities/suppliers/{supplier_id}:
     parameters:
-      - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/supplier_id'
+      - $ref: "#/components/parameters/company_id"
+      - $ref: "#/components/parameters/supplier_id"
     get:
       summary: Get Supplier
       responses:
-        '200':
-          $ref: '#/components/responses/GetSupplierResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/GetSupplierResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: getSupplier
       security:
@@ -372,19 +372,19 @@ paths:
             - entity.suppliers:r
       description: Gets the specified supplier.
       parameters:
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/fieldset"
       tags:
         - Suppliers
     put:
       summary: Modify Supplier
       operationId: modifySupplier
       responses:
-        '200':
-          $ref: '#/components/responses/ModifySupplierResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ModifySupplierResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       description: Modifies the specified supplier.
       security:
@@ -406,20 +406,20 @@ paths:
                     type: company
                     first_name: Mario
                     last_name: Rossi
-                    contact_person: ''
-                    vat_number: '111222333'
-                    tax_code: '111122233'
+                    contact_person: ""
+                    vat_number: "111222333"
+                    tax_code: "111122233"
                     address_street: Corso Magellano, 46
-                    address_postal_code: '20146'
+                    address_postal_code: "20146"
                     address_city: Milano
                     address_province: MI
-                    address_extra: ''
+                    address_extra: ""
                     country: Italia
                     email: mario.rossi@example.com
                     certified_email: mario.rossi@pec.example.com
-                    phone: '1234567890'
-                    fax: '123456789'
-                    notes: ''
+                    phone: "1234567890"
+                    fax: "123456789"
+                    notes: ""
         description: >-
           The modified Supplier. First level parameters are managed in delta
           mode.
@@ -429,11 +429,11 @@ paths:
       summary: Delete Supplier
       operationId: deleteSupplier
       responses:
-        '200':
+        "200":
           description: Entity Removed
-        '401':
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       description: Deletes the specified supplier.
       parameters: []
@@ -444,15 +444,15 @@ paths:
         - Suppliers
   /c/{company_id}/products:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: List Products
       tags:
         - Products
       responses:
-        '200':
-          $ref: '#/components/responses/ListProductsResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListProductsResponse"
+        "401":
           description: Unauthorized
       operationId: listProducts
       description: Lists the products.
@@ -460,18 +460,18 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - products:r
       parameters:
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
-        - $ref: '#/components/parameters/sort'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/per_page'
-        - $ref: '#/components/parameters/q'
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/fieldset"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/per_page"
+        - $ref: "#/components/parameters/q"
     post:
       summary: Create Product
       operationId: createProduct
       responses:
-        '200':
-          $ref: '#/components/responses/CreateProductResponse'
+        "200":
+          $ref: "#/components/responses/CreateProductResponse"
       tags:
         - Products
       description: Creates a new product.
@@ -492,7 +492,7 @@ paths:
                     code: TAVOLO003
                     net_price: 240
                     net_cost: 0
-                    measure: ''
+                    measure: ""
                     description: Tavolo in marmo pregiato
                     category: arredamento
                     in_stock: true
@@ -502,21 +502,21 @@ paths:
                       description: Non imponibile art. 123
                       notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
                       is_disabled: false
-        description: ''
+        description: ""
   /c/{company_id}/products/{product_id}:
     parameters:
-      - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/product_id'
+      - $ref: "#/components/parameters/company_id"
+      - $ref: "#/components/parameters/product_id"
     get:
       summary: Get Product
       tags:
         - Products
       responses:
-        '200':
-          $ref: '#/components/responses/GetProductResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/GetProductResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: getProduct
       description: Gets the specified product.
@@ -524,17 +524,17 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - products:r
       parameters:
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/fieldset"
     put:
       summary: Modify Product
       operationId: modifyProduct
       responses:
-        '200':
-          $ref: '#/components/responses/ModifyProductResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ModifyProductResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       description: Modifies the specified product.
       security:
@@ -554,7 +554,7 @@ paths:
                     code: TAVOLO003
                     net_price: 240
                     net_cost: 0
-                    measure: ''
+                    measure: ""
                     description: Tavolo in marmo pregiato
                     category: arredamento
                     in_stock: true
@@ -571,11 +571,11 @@ paths:
       summary: Delete Product
       operationId: deleteProduct
       responses:
-        '200':
+        "200":
           description: Product removed.
-        '401':
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       description: Deletes the specified product.
       security:
@@ -586,17 +586,17 @@ paths:
         - Products
   /c/{company_id}/issued_documents:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: List Issued Documents
       tags:
         - Issued Documents
       responses:
-        '200':
-          $ref: '#/components/responses/ListIssuedDocumentsResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListIssuedDocumentsResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: listIssuedDocuments
       description: Lists the issued documents.
@@ -610,13 +610,13 @@ paths:
             - issued_documents.proformas:r
             - issued_documents.delivery_notes:r
       parameters:
-        - $ref: '#/components/parameters/issued_document_type'
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
-        - $ref: '#/components/parameters/sort'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/per_page'
-        - $ref: '#/components/parameters/q'
+        - $ref: "#/components/parameters/issued_document_type"
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/fieldset"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/per_page"
+        - $ref: "#/components/parameters/q"
         - schema:
             type: integer
             enum:
@@ -629,9 +629,9 @@ paths:
       summary: Create Issued Document
       operationId: createIssuedDocument
       responses:
-        '200':
-          $ref: '#/components/responses/CreateIssuedDocumentResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/CreateIssuedDocumentResponse"
+        "401":
           description: Unauthorized
       tags:
         - Issued Documents
@@ -657,8 +657,8 @@ paths:
                   data:
                     type: receipt
                     numeration: rec123
-                    subject: ''
-                    visible_subject: ''
+                    subject: ""
+                    visible_subject: ""
                     amount_net: 68.18
                     amount_vat: 6.82
                     amount_due_discount: 0
@@ -668,24 +668,24 @@ paths:
                       vat_number: IT05432181211
                       tax_code: IT05432181211
                       address_street: Via Italia, 66
-                      address_postal_code: '20900'
+                      address_postal_code: "20900"
                       address_city: Milano
                       address_province: MI
-                      address_extra: ''
+                      address_extra: ""
                       country: Italia
                       certified_email: mary@pec.red.com
                       ei_code: ABCXCR1
-                    date: '2021-08-20'
+                    date: "2021-08-20"
                     number: 1
-                    next_due_date: '2021-12-31'
+                    next_due_date: "2021-12-31"
                     attachment_token: ypbqqe4u8w8bdabcd5fd5b1a
                     items_list:
                       - product_id: 333
                         code: SG3
                         name: Soggiorno
-                        measure: ''
+                        measure: ""
                         net_price: 68.18182
-                        category: ''
+                        category: ""
                         id: 277875565
                         gross_price: 75
                         apply_withholding_taxes: true
@@ -696,13 +696,13 @@ paths:
                         vat:
                           id: 3
                           value: 10
-                          description: ''
+                          description: ""
                         stock: true
-                        description: ''
+                        description: ""
                         not_taxable: false
                     payments_list:
                       - amount: 75
-                        due_date: '2020-08-23'
+                        due_date: "2020-08-23"
                         id: 444
                         payment_terms:
                           days: 0
@@ -713,18 +713,18 @@ paths:
         description: The Issued Document
   /c/{company_id}/issued_documents/{document_id}:
     parameters:
-      - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/document_id'
+      - $ref: "#/components/parameters/company_id"
+      - $ref: "#/components/parameters/document_id"
     get:
       summary: Get Issued Document
       tags:
         - Issued Documents
       responses:
-        '200':
-          $ref: '#/components/responses/GetIssuedDocumentResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/GetIssuedDocumentResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: getIssuedDocument
       description: |
@@ -739,17 +739,17 @@ paths:
             - issued_documents.proformas:r
             - issued_documents.delivery_notes:r
       parameters:
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/fieldset"
     put:
       summary: Modify Issued Document
       operationId: modifyIssuedDocument
       responses:
-        '200':
-          $ref: '#/components/responses/ModifyIssuedDocumentResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ModifyIssuedDocumentResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       description: Modifies the specified document.
       security:
@@ -773,8 +773,8 @@ paths:
                   data:
                     type: receipt
                     numeration: rec123
-                    subject: ''
-                    visible_subject: ''
+                    subject: ""
+                    visible_subject: ""
                     amount_net: 68.18
                     amount_vat: 6.82
                     amount_due_discount: 0
@@ -784,24 +784,24 @@ paths:
                       vat_number: IT05432181211
                       tax_code: IT05432181211
                       address_street: Via Italia, 66
-                      address_postal_code: '20900'
+                      address_postal_code: "20900"
                       address_city: Milano
                       address_province: MI
-                      address_extra: ''
+                      address_extra: ""
                       country: Italia
                       certified_email: mary@pec.red.com
                       ei_code: ABCXCR1
-                    date: '2021-08-20'
+                    date: "2021-08-20"
                     number: 1
-                    next_due_date: '2021-12-31'
+                    next_due_date: "2021-12-31"
                     attachment_token: ypbqqe4u8w8bdabcd5fd5b1a
                     items_list:
                       - product_id: 333
                         code: SG3
                         name: Soggiorno
-                        measure: ''
+                        measure: ""
                         net_price: 68.18182
-                        category: ''
+                        category: ""
                         id: 277875565
                         gross_price: 75
                         apply_withholding_taxes: true
@@ -812,13 +812,13 @@ paths:
                         vat:
                           id: 3
                           value: 10
-                          description: ''
+                          description: ""
                         stock: true
-                        description: ''
+                        description: ""
                         not_taxable: false
                     payments_list:
                       - amount: 75
-                        due_date: '2020-08-23'
+                        due_date: "2020-08-23"
                         id: 444
                         payment_terms:
                           days: 0
@@ -831,11 +831,11 @@ paths:
       summary: Delete Issued Document
       operationId: deleteIssuedDocument
       responses:
-        '200':
+        "200":
           description: Document removed
-        '401':
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       description: Deletes the specified document.
       security:
@@ -852,14 +852,14 @@ paths:
         - Issued Documents
   /c/{company_id}/issued_documents/totals:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     post:
       summary: Get New Issued Document Totals
       operationId: getNewIssuedDocumentTotals
       responses:
-        '200':
-          $ref: '#/components/responses/GetNewIssuedDocumentTotalsResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/GetNewIssuedDocumentTotalsResponse"
+        "401":
           description: Unauthorized
       description: Returns the totals for a new document.
       tags:
@@ -880,9 +880,9 @@ paths:
                     type: receipt
                     year: 2021
                     numeration: rec123
-                    subject: ''
-                    visible_subject: ''
-                    rc_center: ''
+                    subject: ""
+                    visible_subject: ""
+                    rc_center: ""
                     stamp_duty: 0
                     use_gross_prices: false
                     delivery_note: false
@@ -901,31 +901,31 @@ paths:
                     show_totals: all
                     show_notification_button: false
                     is_marked: false
-                    created_at: '2021-08-13 09:30:20'
-                    updated_at: '2021-08-23 05:34:20'
+                    created_at: "2021-08-13 09:30:20"
+                    updated_at: "2021-08-23 05:34:20"
                     entity:
                       id: 54321
                       name: Mary Red S.r.L.
                       vat_number: IT05432181211
                       tax_code: IT05432181211
                       address_street: Via Italia, 66
-                      address_postal_code: '20900'
+                      address_postal_code: "20900"
                       address_city: Milano
                       address_province: MI
-                      address_extra: ''
+                      address_extra: ""
                       country: Italia
                       certified_email: mary@pec.red.com
                       ei_code: ABCXCR1
-                    date: '2021-08-20'
+                    date: "2021-08-20"
                     number: 1
                     currency:
                       id: EUR
-                      exchange_rate: '1.00000'
+                      exchange_rate: "1.00000"
                       symbol: €
                     language:
                       code: it
                       name: Italiano
-                    notes: ''
+                    notes: ""
                     rivalsa: 0
                     cassa: 0
                     withholding_tax: 0
@@ -939,9 +939,9 @@ paths:
                       - product_id: 5432
                         code: SG3
                         name: Soggiorno
-                        measure: ''
+                        measure: ""
                         net_price: 68.18182
-                        category: ''
+                        category: ""
                         id: 277876033
                         apply_withholding_taxes: true
                         discount: 0
@@ -951,37 +951,37 @@ paths:
                         vat:
                           id: 3
                           value: 10
-                          description: ''
+                          description: ""
                         stock: false
-                        description: ''
+                        description: ""
                         not_taxable: false
                     payments_list:
                       - amount: 75
-                        due_date: '2020-08-23'
+                        due_date: "2020-08-23"
                         id: 69078013
                         payment_terms:
                           days: 0
                           type: standard
                         status: not_paid
                     attachment_url: kdijrnf893hnwkfk45f50f.pdf
-                    next_due_date: '2020-08-23'
+                    next_due_date: "2020-08-23"
                     template:
                       id: 2821
                       name: Light Smoke
                     url: y12h45rn9yf2mse0p43t7ec90vr.pdf
   /c/{company_id}/issued_documents/{document_id}/totals:
     parameters:
-      - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/document_id'
+      - $ref: "#/components/parameters/company_id"
+      - $ref: "#/components/parameters/document_id"
     post:
       summary: Get Existing Issued Document Totals
       operationId: getExistingIssuedDocumentTotals
       responses:
-        '200':
-          $ref: '#/components/responses/GetExistingIssuedDocumentTotalsResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/GetExistingIssuedDocumentTotalsResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       tags:
         - Issued Documents
@@ -1001,14 +1001,14 @@ paths:
                     rivalsa: 20
   /c/{company_id}/issued_documents/attachment:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     post:
       summary: Upload Issued Document Attachment
       operationId: uploadIssuedDocumentAttachment
       responses:
-        '200':
-          $ref: '#/components/responses/UploadIssuedDocumentAttachmentResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/UploadIssuedDocumentAttachmentResponse"
+        "401":
           description: Unauthorized
       tags:
         - Issued Documents
@@ -1032,17 +1032,17 @@ paths:
         description: Attachment.
   /c/{company_id}/issued_documents/{document_id}/attachment:
     parameters:
-      - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/document_id'
+      - $ref: "#/components/parameters/company_id"
+      - $ref: "#/components/parameters/document_id"
     delete:
       summary: Delete Issued Document Attachment
       operationId: deleteIssuedDocumentAttachment
       responses:
-        '200':
+        "200":
           description: File removed.
-        '401':
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       description: Removes the attachment of the specified document.
       security:
@@ -1052,31 +1052,31 @@ paths:
         - Issued Documents
   /c/{company_id}/issued_documents/info:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: Get Issued Document Pre-Create Info
       tags:
         - Issued Documents
       responses:
-        '200':
-          $ref: '#/components/responses/GetIssuedDocumentPreCreateInfoResponse'
+        "200":
+          $ref: "#/components/responses/GetIssuedDocumentPreCreateInfoResponse"
       operationId: getIssuedDocumentPreCreateInfo
       description: Retrieves the information useful while creating a new document.
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
-        - $ref: '#/components/parameters/issued_document_type'
+        - $ref: "#/components/parameters/issued_document_type"
   /c/{company_id}/issued_documents/{document_id}/email:
     parameters:
-      - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/document_id'
+      - $ref: "#/components/parameters/company_id"
+      - $ref: "#/components/parameters/document_id"
     get:
       summary: Get Email Data
       tags:
         - Issued Documents
       responses:
-        '200':
-          $ref: '#/components/responses/GetEmailDataResponse'
+        "200":
+          $ref: "#/components/responses/GetEmailDataResponse"
       operationId: getEmailData
       description: Gets the pre-compiled email details.
       security:
@@ -1093,11 +1093,11 @@ paths:
       summary: Schedule Email
       operationId: scheduleEmail
       responses:
-        '200':
+        "200":
           description: OK
-        '401':
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       description: Schedules the sending of a document by email.
       security:
@@ -1139,17 +1139,17 @@ paths:
         description: Email Schedule
   /c/{company_id}/issued_documents/{document_id}/e_invoice/send:
     parameters:
-      - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/document_id'
+      - $ref: "#/components/parameters/company_id"
+      - $ref: "#/components/parameters/document_id"
     post:
       summary: Send E-Invoice
       operationId: sendEInvoice
       responses:
-        '200':
-          $ref: '#/components/responses/SendEInvoiceResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/SendEInvoiceResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       description: Sends the e-invoice to SDI.
       security:
@@ -1165,26 +1165,26 @@ paths:
                 value:
                   data:
                     withholding_tax_causal: causale
-        description: ''
+        description: ""
       tags:
         - Issued e-invoices
   /c/{company_id}/issued_documents/{document_id}/e_invoice/xml_verify:
     parameters:
-      - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/document_id'
+      - $ref: "#/components/parameters/company_id"
+      - $ref: "#/components/parameters/document_id"
     get:
       summary: Verify E-Invoice XML
       tags:
         - Issued e-invoices
       responses:
-        '200':
-          $ref: '#/components/responses/VerifyEInvoiceXmlResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/VerifyEInvoiceXmlResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
-        '422':
-          $ref: '#/components/responses/VerifyEInvoiceXmlErrorResponse'
+        "422":
+          $ref: "#/components/responses/VerifyEInvoiceXmlErrorResponse"
       operationId: verifyEInvoiceXml
       description: >-
         Verifies the e-invoice XML format. Checks if all of the mandatory fields
@@ -1194,51 +1194,51 @@ paths:
       parameters: []
   /c/{company_id}/issued_documents/{document_id}/e_invoice/xml:
     parameters:
-      - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/document_id'
+      - $ref: "#/components/parameters/company_id"
+      - $ref: "#/components/parameters/document_id"
     get:
       summary: Get E-Invoice XML
       tags:
         - Issued e-invoices
       responses:
-        '200':
-          $ref: '#/components/responses/GetEInvoiceXmlResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/GetEInvoiceXmlResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: getEInvoiceXml
       description: Downloads the e-invoice in XML format.
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
-        - $ref: '#/components/parameters/include_attachment'
+        - $ref: "#/components/parameters/include_attachment"
   /c/{company_id}/issued_documents/{document_id}/e_invoice/error_reason:
     parameters:
-      - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/document_id'
+      - $ref: "#/components/parameters/company_id"
+      - $ref: "#/components/parameters/document_id"
     get:
       summary: Get E-Invoice Rejection Reason
       tags:
         - Issued e-invoices
       responses:
-        '200':
-          $ref: '#/components/responses/GetEInvoiceRejectionReasonResponse'
+        "200":
+          $ref: "#/components/responses/GetEInvoiceRejectionReasonResponse"
       operationId: getEInvoiceRejectionReason
       description: Get e-invoice rejection reason
       security:
         - OAuth2AuthenticationCodeFlow: []
   /c/{company_id}/received_documents:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: List Received Documents
       tags:
         - Received Documents
       responses:
-        '200':
-          $ref: '#/components/responses/ListReceivedDocumentsResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListReceivedDocumentsResponse"
+        "401":
           description: Unauthorized
       operationId: listReceivedDocuments
       description: Lists the received documents.
@@ -1247,19 +1247,19 @@ paths:
             - received_documents:r
             - stock:r
       parameters:
-        - $ref: '#/components/parameters/received_document_type'
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
-        - $ref: '#/components/parameters/sort'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/per_page'
-        - $ref: '#/components/parameters/q'
+        - $ref: "#/components/parameters/received_document_type"
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/fieldset"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/per_page"
+        - $ref: "#/components/parameters/q"
     post:
       summary: Create Received Document
       operationId: createReceivedDocument
       responses:
-        '200':
-          $ref: '#/components/responses/CreateReceivedDocumentResponse'
+        "200":
+          $ref: "#/components/responses/CreateReceivedDocumentResponse"
       description: Creates a new document.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -1280,19 +1280,19 @@ paths:
                     type: expense
                     description: Soggiorno di lavoro
                     amortization: 1
-                    rc_center: ''
-                    invoice_number: ''
+                    rc_center: ""
+                    invoice_number: ""
                     is_marked: false
                     is_detailed: false
                     e_invoice: false
                     entity:
                       id: 111
                       name: Hotel Rubino Palace
-                    date: '2021-08-15'
-                    next_due_date: '2021-08-15'
+                    date: "2021-08-15"
+                    next_due_date: "2021-08-15"
                     currency:
                       id: EUR
-                      exchange_rate: '1.00000'
+                      exchange_rate: "1.00000"
                       symbol: €
                     amount_net: 592
                     amount_vat: 0
@@ -1303,8 +1303,8 @@ paths:
                     vat_deductibility: 100
                     payments_list:
                       - amount: 592
-                        due_date: '2021-08-15'
-                        paid_date: '2021-08-15'
+                        due_date: "2021-08-15"
+                        paid_date: "2021-08-15"
                         id: 777
                         payment_terms:
                           days: 0
@@ -1318,18 +1318,18 @@ paths:
         description: Document to create
   /c/{company_id}/received_documents/{document_id}:
     parameters:
-      - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/document_id'
+      - $ref: "#/components/parameters/company_id"
+      - $ref: "#/components/parameters/document_id"
     get:
       summary: Get Received Document
       tags:
         - Received Documents
       responses:
-        '200':
-          $ref: '#/components/responses/GetReceivedDocumentResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/GetReceivedDocumentResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: getReceivedDocument
       description: Gets the specified document.
@@ -1338,17 +1338,17 @@ paths:
             - received_documents:r
             - stock:r
       parameters:
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/fieldset"
     put:
       summary: Modify Received Document
       operationId: modifyReceivedDocument
       responses:
-        '200':
-          $ref: '#/components/responses/ModifyReceivedDocumentResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ModifyReceivedDocumentResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       tags:
         - Received Documents
@@ -1370,19 +1370,19 @@ paths:
                     type: expense
                     description: Soggiorno di lavoro
                     amortization: 1
-                    rc_center: ''
-                    invoice_number: ''
+                    rc_center: ""
+                    invoice_number: ""
                     is_marked: false
                     is_detailed: false
                     e_invoice: false
                     entity:
                       id: 111
                       name: Hotel Rubino Palace
-                    date: '2021-08-15'
-                    next_due_date: '2021-08-15'
+                    date: "2021-08-15"
+                    next_due_date: "2021-08-15"
                     currency:
                       id: EUR
-                      exchange_rate: '1.00000'
+                      exchange_rate: "1.00000"
                       symbol: €
                     amount_net: 592
                     amount_vat: 0
@@ -1393,8 +1393,8 @@ paths:
                     vat_deductibility: 100
                     payments_list:
                       - amount: 592
-                        due_date: '2021-08-15'
-                        paid_date: '2021-08-15'
+                        due_date: "2021-08-15"
+                        paid_date: "2021-08-15"
                         id: 777
                         payment_terms:
                           days: 0
@@ -1409,11 +1409,11 @@ paths:
       summary: Delete Received Document
       operationId: deleteReceivedDocument
       responses:
-        '200':
+        "200":
           description: Document removed.
-        '401':
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       tags:
         - Received Documents
@@ -1425,16 +1425,16 @@ paths:
       parameters: []
   /c/{company_id}/received_documents/totals:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     post:
       summary: Get New Received Document Totals
       operationId: getNewReceivedDocumentTotals
       responses:
-        '200':
-          $ref: '#/components/responses/GetNewReceivedDocumentTotalsResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/GetNewReceivedDocumentTotalsResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       description: Returns the totals for a new document.
       security:
@@ -1456,21 +1456,21 @@ paths:
                     type: expense
                     description: Soggiorno di lavoro
                     amortization: 1
-                    rc_center: ''
-                    invoice_number: ''
+                    rc_center: ""
+                    invoice_number: ""
                     is_marked: false
                     is_detailed: false
                     e_invoice: false
-                    created_at: '2021-08-15 14:02:02'
-                    updated_at: '2021-08-15 14:02:02'
+                    created_at: "2021-08-15 14:02:02"
+                    updated_at: "2021-08-15 14:02:02"
                     entity:
                       id: 111
                       name: Hotel Rubino Palace
-                    date: '2021-08-15'
-                    next_due_date: '2021-08-15'
+                    date: "2021-08-15"
+                    next_due_date: "2021-08-15"
                     currency:
                       id: EUR
-                      exchange_rate: '1.00000'
+                      exchange_rate: "1.00000"
                       symbol: €
                     amount_net: 592
                     amount_vat: 10
@@ -1480,8 +1480,8 @@ paths:
                     vat_deductibility: 100
                     payments_list:
                       - amount: 592
-                        due_date: '2021-08-15'
-                        paid_date: '2021-08-15'
+                        due_date: "2021-08-15"
+                        paid_date: "2021-08-15"
                         id: 777
                         payment_terms:
                           days: 0
@@ -1490,14 +1490,14 @@ paths:
         description: Received document.
   /c/{company_id}/received_documents/{document_id}/totals:
     parameters:
-      - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/document_id'
+      - $ref: "#/components/parameters/company_id"
+      - $ref: "#/components/parameters/document_id"
     post:
       summary: Get Existing Received Document Totals
       operationId: getExistingReceivedDocumentTotals
       responses:
-        '200':
-          $ref: '#/components/responses/GetExistingReceivedDocumentTotalsResponse'
+        "200":
+          $ref: "#/components/responses/GetExistingReceivedDocumentTotalsResponse"
       tags:
         - Received Documents
       description: Returns the totals for the specified document.
@@ -1519,14 +1519,14 @@ paths:
         description: Received document.
   /c/{company_id}/received_documents/attachment:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     post:
       summary: Upload Received Document Attachment
       operationId: uploadReceivedDocumentAttachment
       responses:
-        '200':
-          $ref: '#/components/responses/UploadReceivedDocumentAttachmentResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/UploadReceivedDocumentAttachmentResponse"
+        "401":
           description: Unauthorized
       tags:
         - Received Documents
@@ -1552,17 +1552,17 @@ paths:
         description: Attachment.
   /c/{company_id}/received_documents/{document_id}/attachment:
     parameters:
-      - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/document_id'
+      - $ref: "#/components/parameters/company_id"
+      - $ref: "#/components/parameters/document_id"
     delete:
       summary: Delete Received Document Attachment
       operationId: deleteReceivedDocumentAttachment
       responses:
-        '200':
+        "200":
           description: File removed
-        '401':
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       tags:
         - Received Documents
@@ -1574,32 +1574,32 @@ paths:
       parameters: []
   /c/{company_id}/received_documents/info:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: Get Received Document Pre-Create Info
       tags:
         - Received Documents
       responses:
-        '200':
-          $ref: '#/components/responses/GetReceivedDocumentPreCreateInfoResponse'
+        "200":
+          $ref: "#/components/responses/GetReceivedDocumentPreCreateInfoResponse"
       operationId: getReceivedDocumentPreCreateInfo
       description: Retrieves the information useful while creating a new document.
       security:
         - OAuth2AuthenticationCodeFlow:
             - received_documents:r
       parameters:
-        - $ref: '#/components/parameters/received_document_type'
+        - $ref: "#/components/parameters/received_document_type"
   /c/{company_id}/receipts:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: List Receipts
       tags:
         - Receipts
       responses:
-        '200':
-          $ref: '#/components/responses/ListReceiptsResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListReceiptsResponse"
+        "401":
           description: Unauthorized
       operationId: listReceipts
       description: Lists the receipts.
@@ -1607,19 +1607,19 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - receipts:r
       parameters:
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/per_page'
-        - $ref: '#/components/parameters/sort'
-        - $ref: '#/components/parameters/q'
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/fieldset"
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/per_page"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/q"
     post:
       summary: Create Receipt
       operationId: createReceipt
       responses:
-        '200':
-          $ref: '#/components/responses/CreateReceiptResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/CreateReceiptResponse"
+        "401":
           description: Unauthorized
       description: Creates a new receipt.
       security:
@@ -1635,14 +1635,14 @@ paths:
               example-1:
                 value:
                   data:
-                    date: '2021-08-19'
+                    date: "2021-08-19"
                     number: 6
                     numeration: REC006
                     amount_net: 8.2
                     amount_vat: 1.8
                     type: sales_receipt
                     description: cassa 1
-                    rc_center: ''
+                    rc_center: ""
                     payment_account:
                       id: 555
                       name: contanti
@@ -1660,24 +1660,24 @@ paths:
         - Receipts
   /c/{company_id}/receipts/{document_id}:
     parameters:
-      - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/document_id'
+      - $ref: "#/components/parameters/company_id"
+      - $ref: "#/components/parameters/document_id"
     get:
       summary: Get Receipt
       tags:
         - Receipts
       responses:
-        '200':
-          $ref: '#/components/responses/GetReceiptResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/GetReceiptResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: getReceipt
       description: Gets the specified receipt.
       parameters:
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/fieldset"
       security:
         - OAuth2AuthenticationCodeFlow:
             - receipts:r
@@ -1685,11 +1685,11 @@ paths:
       summary: Modify Receipt
       operationId: modifyReceipt
       responses:
-        '200':
-          $ref: '#/components/responses/ModifyReceiptResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ModifyReceiptResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       tags:
         - Receipts
@@ -1707,14 +1707,14 @@ paths:
               example-1:
                 value:
                   data:
-                    date: '2021-08-19'
+                    date: "2021-08-19"
                     number: 6
                     numeration: REC006
                     amount_net: 8.2
                     amount_vat: 1.8
                     type: sales_receipt
                     description: cassa 1
-                    rc_center: ''
+                    rc_center: ""
                     payment_account:
                       id: 555
                       name: contanti
@@ -1732,11 +1732,11 @@ paths:
       summary: Delete Receipt
       operationId: deleteReceipt
       responses:
-        '200':
+        "200":
           description: Document removed.
-        '401':
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       description: Deletes the specified receipt.
       security:
@@ -1747,17 +1747,17 @@ paths:
         - Receipts
   /c/{company_id}/receipts/info:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: Get Receipt Pre-Create Info
       tags:
         - Receipts
       responses:
-        '200':
-          $ref: '#/components/responses/GetReceiptPreCreateInfoResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/GetReceiptPreCreateInfoResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: getReceiptPreCreateInfo
       description: Retrieves the information useful while creating a new receipt.
@@ -1767,17 +1767,17 @@ paths:
       parameters: []
   /c/{company_id}/receipts/monthly_totals:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: Get Receipts Monthly Totals
       tags:
         - Receipts
       responses:
-        '200':
-          $ref: '#/components/responses/GetReceiptsMonthlyTotalsResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/GetReceiptsMonthlyTotalsResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: getReceiptsMonthlyTotals
       description: Returns the monthly totals by year and receipt type.
@@ -1802,15 +1802,15 @@ paths:
           description: Year for which you want monthly totals
   /c/{company_id}/taxes:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: List F24
       tags:
         - Taxes
       responses:
-        '200':
-          $ref: '#/components/responses/ListF24Response'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListF24Response"
+        "401":
           description: Unauthorized
       operationId: listF24
       description: Lists the F24s.
@@ -1818,21 +1818,21 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - taxes:r
       parameters:
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
-        - $ref: '#/components/parameters/sort'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/per_page'
-        - $ref: '#/components/parameters/q'
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/fieldset"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/per_page"
+        - $ref: "#/components/parameters/q"
     post:
       summary: Create F24
       operationId: createF24
       responses:
-        '200':
-          $ref: '#/components/responses/CreateF24Response'
-        '401':
+        "200":
+          $ref: "#/components/responses/CreateF24Response"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       tags:
         - Taxes
@@ -1852,7 +1852,7 @@ paths:
                   data:
                     amount: 840.36
                     description: PAGAMENTO IVA 2021
-                    due_date: '2021-12-31'
+                    due_date: "2021-12-31"
                     status: paid
                     payment_account:
                       id: 111
@@ -1860,18 +1860,18 @@ paths:
         description: The F24 to create
   /c/{company_id}/taxes/{document_id}:
     parameters:
-      - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/document_id'
+      - $ref: "#/components/parameters/company_id"
+      - $ref: "#/components/parameters/document_id"
     get:
       summary: Get F24
       tags:
         - Taxes
       responses:
-        '200':
-          $ref: '#/components/responses/GetF24Response'
-        '401':
+        "200":
+          $ref: "#/components/responses/GetF24Response"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: getF24
       description: Gets the specified F24.
@@ -1879,17 +1879,17 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - taxes:r
       parameters:
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/fieldset"
     put:
       summary: Modify F24
       operationId: modifyF24
       responses:
-        '200':
-          $ref: '#/components/responses/ModifyF24Response'
-        '401':
+        "200":
+          $ref: "#/components/responses/ModifyF24Response"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       description: Modifies the specified F24.
       tags:
@@ -1909,7 +1909,7 @@ paths:
                   data:
                     amount: 840.36
                     description: PAGAMENTO IVA 2021
-                    due_date: '2021-12-31'
+                    due_date: "2021-12-31"
                     status: paid
                     payment_account:
                       id: 111
@@ -1918,11 +1918,11 @@ paths:
       summary: Delete F24
       operationId: deleteF24
       responses:
-        '200':
+        "200":
           description: Document removed.
-        '401':
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       tags:
         - Taxes
@@ -1933,14 +1933,14 @@ paths:
       parameters: []
   /c/{company_id}/taxes/attachment:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     post:
       summary: Upload F24 Attachment
       tags:
         - Taxes
       responses:
-        '200':
-          $ref: '#/components/responses/UploadF24AttachmentResponse'
+        "200":
+          $ref: "#/components/responses/UploadF24AttachmentResponse"
       operationId: uploadF24Attachment
       description: >-
         Uploads an attachment destined to a F24. The actual association between
@@ -1963,18 +1963,18 @@ paths:
         description: Attachment.
   /c/{company_id}/taxes/{document_id}/attachment:
     parameters:
-      - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/document_id'
+      - $ref: "#/components/parameters/company_id"
+      - $ref: "#/components/parameters/document_id"
     delete:
       summary: Delete F24 Attachment
       tags:
         - Taxes
       responses:
-        '200':
+        "200":
           description: File Removed.
-        '401':
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: deleteF24Attachment
       description: Removes the attachment of the specified F24.
@@ -1984,17 +1984,17 @@ paths:
       parameters: []
   /c/{company_id}/archive:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: List Archive Documents
       tags:
         - Archive
       responses:
-        '200':
-          $ref: '#/components/responses/ListArchiveDocumentsResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListArchiveDocumentsResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: listArchiveDocuments
       description: Lists the archive documents.
@@ -2002,21 +2002,21 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - archive:r
       parameters:
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
-        - $ref: '#/components/parameters/sort'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/per_page'
-        - $ref: '#/components/parameters/q'
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/fieldset"
+        - $ref: "#/components/parameters/sort"
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/per_page"
+        - $ref: "#/components/parameters/q"
     post:
       summary: Create Archive Document
       operationId: createArchiveDocument
       responses:
-        '200':
-          $ref: '#/components/responses/CreateArchiveDocumentResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/CreateArchiveDocumentResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       tags:
         - Archive
@@ -2034,25 +2034,25 @@ paths:
               example-1:
                 value:
                   data:
-                    date: '2021-08-20'
+                    date: "2021-08-20"
                     category: Altri documenti
                     description: spesa 1
                     attachment_token: ibfjdbf94ey9w94g3w894qbasrga
         description: The Archive Document.
   /c/{company_id}/archive/{document_id}:
     parameters:
-      - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/document_id'
+      - $ref: "#/components/parameters/company_id"
+      - $ref: "#/components/parameters/document_id"
     get:
       summary: Get Archive Document
       tags:
         - Archive
       responses:
-        '200':
-          $ref: '#/components/responses/GetArchiveDocumentResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/GetArchiveDocumentResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: getArchiveDocument
       description: Gets the specified archive document.
@@ -2060,17 +2060,17 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - archive:r
       parameters:
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/fieldset"
     put:
       summary: Modify Archive Document
       operationId: modifyArchiveDocument
       responses:
-        '200':
-          $ref: '#/components/responses/ModifyArchiveDocumentResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ModifyArchiveDocumentResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       tags:
         - Archive
@@ -2088,7 +2088,7 @@ paths:
               example-1:
                 value:
                   data:
-                    date: '2021-08-20'
+                    date: "2021-08-20"
                     category: Altri documenti
                     description: spesa 2
         description: Modified Archive Document
@@ -2096,11 +2096,11 @@ paths:
       summary: Delete Archive Document
       operationId: deleteArchiveDocument
       responses:
-        '200':
+        "200":
           description: Document removed.
-        '401':
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       tags:
         - Archive
@@ -2111,17 +2111,17 @@ paths:
       parameters: []
   /c/{company_id}/archive/attachment:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     post:
       summary: Upload Archive Document Attachment
       tags:
         - Archive
       responses:
-        '200':
-          $ref: '#/components/responses/UploadArchiveAttachmentResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/UploadArchiveAttachmentResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: uploadArchiveDocumentAttachment
       description: >-
@@ -2145,17 +2145,17 @@ paths:
       parameters: []
   /c/{company_id}/cashbook:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: List Cashbook Entries
       tags:
         - Cashbook
       responses:
-        '200':
-          $ref: '#/components/responses/ListCashbookEntriesResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListCashbookEntriesResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: listCashbookEntries
       description: Lists the cashbook entries.
@@ -2198,11 +2198,11 @@ paths:
       summary: Create Cashbook Entry
       operationId: createCashbookEntry
       responses:
-        '200':
-          $ref: '#/components/responses/CreateCashbookEntryResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/CreateCashbookEntryResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       tags:
         - Cashbook
@@ -2220,7 +2220,7 @@ paths:
               example-1:
                 value:
                   data:
-                    date: '2021-08-24'
+                    date: "2021-08-24"
                     amount_in: 122
                     payment_account_in:
                       id: 333
@@ -2234,7 +2234,7 @@ paths:
           Cashbook entry.
   /c/{company_id}/cashbook/{document_id}:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
       - schema:
           type: string
         name: document_id
@@ -2246,11 +2246,11 @@ paths:
       tags:
         - Cashbook
       responses:
-        '200':
-          $ref: '#/components/responses/GetCashbookEntryResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/GetCashbookEntryResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: getCashbookEntry
       description: Gets the specified cashbook entry.
@@ -2258,17 +2258,17 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - cashbook:r
       parameters:
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/fieldset"
     put:
       summary: Modify Cashbook Entry
       operationId: modifyCashbookEntry
       responses:
-        '200':
-          $ref: '#/components/responses/ModifyCashbookEntryResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ModifyCashbookEntryResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       tags:
         - Cashbook
@@ -2286,7 +2286,7 @@ paths:
               example-1:
                 value:
                   data:
-                    date: '2021-08-24'
+                    date: "2021-08-24"
                     amount_in: 122
                     payment_account_in:
                       id: 333
@@ -2297,11 +2297,11 @@ paths:
       summary: Delete Cashbook Entry
       operationId: deleteCashbookEntry
       responses:
-        '200':
+        "200":
           description: Document removed.
-        '401':
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       description: Deletes the specified cashbook entry.
       security:
@@ -2315,9 +2315,9 @@ paths:
       tags:
         - Info
       responses:
-        '200':
-          $ref: '#/components/responses/ListCountriesResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListCountriesResponse"
+        "401":
           description: Unauthorized
       operationId: listCountries
       description: Lists the supported countries.
@@ -2330,9 +2330,9 @@ paths:
       tags:
         - Info
       responses:
-        '200':
-          $ref: '#/components/responses/ListDetailedCountriesResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListDetailedCountriesResponse"
+        "401":
           description: Unauthorized
       operationId: listDetailedCountries
       description: Lists the supported countries.
@@ -2345,8 +2345,8 @@ paths:
       tags:
         - Info
       responses:
-        '200':
-          $ref: '#/components/responses/ListCitiesResponse'
+        "200":
+          $ref: "#/components/responses/ListCitiesResponse"
       operationId: listCities
       description: Lists the Italian cities.
       security:
@@ -2368,9 +2368,9 @@ paths:
       tags:
         - Info
       responses:
-        '200':
-          $ref: '#/components/responses/ListLanguagesResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListLanguagesResponse"
+        "401":
           description: Unauthorized
       operationId: listLanguages
       description: Lists the supported languages.
@@ -2383,9 +2383,9 @@ paths:
       tags:
         - Info
       responses:
-        '200':
-          $ref: '#/components/responses/ListTemplatesResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListTemplatesResponse"
+        "401":
           description: Unauthorized
       operationId: listTemplates
       description: Lists the available templates.
@@ -2405,7 +2405,7 @@ paths:
           description: Type of the templates.
         - schema:
             type: boolean
-            default: 'false'
+            default: "false"
           in: query
           name: by_type
           description: >-
@@ -2417,9 +2417,9 @@ paths:
       tags:
         - Info
       responses:
-        '200':
-          $ref: '#/components/responses/ListCurrenciesResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListCurrenciesResponse"
+        "401":
           description: Unauthorized
       operationId: listCurrencies
       description: Lists the supported currencies.
@@ -2432,9 +2432,9 @@ paths:
       tags:
         - Info
       responses:
-        '200':
-          $ref: '#/components/responses/ListUnitsOfMeasureResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListUnitsOfMeasureResponse"
+        "401":
           description: Unauthorized
       operationId: listUnitsOfMeasure
       description: Lists the units of measure.
@@ -2447,9 +2447,9 @@ paths:
       tags:
         - Info
       responses:
-        '200':
-          $ref: '#/components/responses/ListDeliveryNotesDefaultCausalsResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListDeliveryNotesDefaultCausalsResponse"
+        "401":
           description: Unauthorized
       operationId: listDeliveryNotesDefaultCausals
       description: Lists the delivery note default causals.
@@ -2458,82 +2458,82 @@ paths:
       parameters: []
   /c/{company_id}/info/vat_types:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: List Vat Types
       tags:
         - Info
       responses:
-        '200':
-          $ref: '#/components/responses/ListVatTypesResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListVatTypesResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: listVatTypes
       security:
         - OAuth2AuthenticationCodeFlow:
             - settings:r
       parameters:
-        - $ref: '#/components/parameters/fieldset'
+        - $ref: "#/components/parameters/fieldset"
       description: Lists the available vat types.
   /c/{company_id}/info/payment_methods:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: List Payment Methods
       tags:
         - Info
       responses:
-        '200':
-          $ref: '#/components/responses/ListPaymentMethodsResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListPaymentMethodsResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: listPaymentMethods
       description: Lists the available payment methods.
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
-        - $ref: '#/components/parameters/sort'
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/fieldset"
+        - $ref: "#/components/parameters/sort"
   /c/{company_id}/info/payment_accounts:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: List Payment Accounts
       tags:
         - Info
       responses:
-        '200':
-          $ref: '#/components/responses/ListPaymentAccountsResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListPaymentAccountsResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: listPaymentAccounts
       description: Lists the available payment accounts.
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
-        - $ref: '#/components/parameters/sort'
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/fieldset"
+        - $ref: "#/components/parameters/sort"
   /c/{company_id}/info/revenue_centers:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: List Revenue Centers
       tags:
         - Info
       responses:
-        '200':
-          $ref: '#/components/responses/ListRevenueCentersResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListRevenueCentersResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: listRevenueCenters
       description: Lists the revenue centers.
@@ -2542,17 +2542,17 @@ paths:
       parameters: []
   /c/{company_id}/info/cost_centers:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: List Cost Centers
       tags:
         - Info
       responses:
-        '200':
-          $ref: '#/components/responses/ListCostCentersResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListCostCentersResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: listCostCenters
       description: Lists the cost centers.
@@ -2561,17 +2561,17 @@ paths:
       parameters: []
   /c/{company_id}/info/product_categories:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: List Product Categories
       tags:
         - Info
       responses:
-        '200':
-          $ref: '#/components/responses/ListProductCategoriesResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListProductCategoriesResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: listProductCategories
       description: Lists the product categories.
@@ -2590,14 +2590,14 @@ paths:
           required: true
   /c/{company_id}/info/received_document_categories:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: List Received Document Categories
       tags:
         - Info
       responses:
-        '200':
-          $ref: '#/components/responses/ListReceivedDocumentCategoriesResponse'
+        "200":
+          $ref: "#/components/responses/ListReceivedDocumentCategoriesResponse"
       operationId: listReceivedDocumentCategories
       description: Lists the received document categories.
       security:
@@ -2605,17 +2605,17 @@ paths:
       parameters: []
   /c/{company_id}/info/archive_categories:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: List Archive Categories
       tags:
         - Info
       responses:
-        '200':
-          $ref: '#/components/responses/ListArchiveCategoriesResponse'
-        '401':
+        "200":
+          $ref: "#/components/responses/ListArchiveCategoriesResponse"
+        "401":
           description: Unauthorized
-        '404':
+        "404":
           description: Not Found
       operationId: listArchiveCategories
       description: Lists the archive categories.
@@ -2624,7 +2624,7 @@ paths:
       parameters: []
   /c/{company_id}/settings/payment_methods:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     post:
       summary: Create Payment Method
       tags:
@@ -2635,8 +2635,8 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - settings:a
       responses:
-        '200':
-          $ref: '#/components/responses/CreatePaymentMethodResponse'
+        "200":
+          $ref: "#/components/responses/CreatePaymentMethodResponse"
       requestBody:
         content:
           application/json:
@@ -2658,7 +2658,7 @@ paths:
                       name: conto banca SP
   /c/{company_id}/settings/payment_methods/{payment_method_id}:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
       - schema:
           type: integer
         name: payment_method_id
@@ -2670,22 +2670,22 @@ paths:
       tags:
         - Settings
       responses:
-        '200':
-          $ref: '#/components/responses/GetPaymentMethodResponse'
+        "200":
+          $ref: "#/components/responses/GetPaymentMethodResponse"
       operationId: getPaymentMethod
       description: Gets the specified payment method.
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/fieldset"
     put:
       summary: Modify Payment Method
       tags:
         - Settings
       responses:
-        '200':
-          $ref: '#/components/responses/ModifyPaymentMethodResponse'
+        "200":
+          $ref: "#/components/responses/ModifyPaymentMethodResponse"
       operationId: modifyPaymentMethod
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -2710,13 +2710,13 @@ paths:
                     default_payment_account:
                       id: 12345
                       name: conto banca SP
-        description: ''
+        description: ""
     delete:
       summary: Delete Payment Method
       tags:
         - Settings
       responses:
-        '200':
+        "200":
           description: OK
       operationId: deletePaymentMethod
       description: Deletes the specified payment method.
@@ -2725,14 +2725,14 @@ paths:
             - settings:a
   /c/{company_id}/settings/payment_accounts:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     post:
       summary: Create Payment Account
       tags:
         - Settings
       responses:
-        '200':
-          $ref: '#/components/responses/CreatePaymentAccountResponse'
+        "200":
+          $ref: "#/components/responses/CreatePaymentAccountResponse"
       operationId: createPaymentAccount
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -2755,22 +2755,22 @@ paths:
                     virtual: false
   /c/{company_id}/settings/tax_profile:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: Get Tax Profile
       operationId: getTaxProfile
       tags:
         - Settings
       responses:
-        '200':
-          $ref: '#/components/responses/GetTaxProfileResponse'
+        "200":
+          $ref: "#/components/responses/GetTaxProfileResponse"
       description: Gets the Tax Profile
       security:
         - OAuth2AuthenticationCodeFlow:
             - settings:r
   /c/{company_id}/settings/payment_accounts/{payment_account_id}:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
       - schema:
           type: integer
         name: payment_account_id
@@ -2782,13 +2782,13 @@ paths:
       tags:
         - Settings
       responses:
-        '200':
-          $ref: '#/components/responses/GetPaymentAccountResponse'
+        "200":
+          $ref: "#/components/responses/GetPaymentAccountResponse"
       operationId: getPaymentAccount
       description: Gets the specified payment account.
       parameters:
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/fieldset"
       security:
         - OAuth2AuthenticationCodeFlow: []
     put:
@@ -2796,8 +2796,8 @@ paths:
       tags:
         - Settings
       responses:
-        '200':
-          $ref: '#/components/responses/ModifyPaymentAccountResponse'
+        "200":
+          $ref: "#/components/responses/ModifyPaymentAccountResponse"
       operationId: modifyPaymentAccount
       description: Modifies the specified payment account.
       security:
@@ -2824,7 +2824,7 @@ paths:
       tags:
         - Settings
       responses:
-        '200':
+        "200":
           description: OK
       operationId: deletePaymentAccount
       description: Deletes the specified payment account.
@@ -2833,14 +2833,14 @@ paths:
             - settings:a
   /c/{company_id}/settings/vat_types:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     post:
       summary: Create Vat Type
       tags:
         - Settings
       responses:
-        '200':
-          $ref: '#/components/responses/CreateVatTypeResponse'
+        "200":
+          $ref: "#/components/responses/CreateVatTypeResponse"
       operationId: createVatType
       description: Creates a vat type.
       security:
@@ -2864,10 +2864,10 @@ paths:
                     ei_description: string
                     editable: true
                     is_disabled: true
-        description: ''
+        description: ""
   /c/{company_id}/settings/vat_types/{vat_type_id}:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
       - schema:
           type: integer
         name: vat_type_id
@@ -2879,8 +2879,8 @@ paths:
       tags:
         - Settings
       responses:
-        '200':
-          $ref: '#/components/responses/GetVatTypeResponse'
+        "200":
+          $ref: "#/components/responses/GetVatTypeResponse"
       operationId: getVatType
       description: Gets the specified vat type.
       security:
@@ -2890,8 +2890,8 @@ paths:
       tags:
         - Settings
       responses:
-        '200':
-          $ref: '#/components/responses/ModifyVatTypeResponse'
+        "200":
+          $ref: "#/components/responses/ModifyVatTypeResponse"
       operationId: modifyVatType
       description: Modifies the specified vat type.
       security:
@@ -2920,7 +2920,7 @@ paths:
       tags:
         - Settings
       responses:
-        '200':
+        "200":
           description: OK
       operationId: deleteVatType
       description: Deletes the specified vat type.
@@ -2933,8 +2933,8 @@ paths:
       tags:
         - Issued Documents
       responses:
-        '200':
-          $ref: '#/components/responses/TransformIssuedDocumentResponse'
+        "200":
+          $ref: "#/components/responses/TransformIssuedDocumentResponse"
       operationId: transformIssuedDocument
       description: Transforms the document.
       security:
@@ -2969,15 +2969,15 @@ paths:
           name: transform_keep_copy
           description: Keep the old document.
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
   /c/{company_id}/issued_documents/join:
     get:
       summary: Join Issued Documents
       tags:
         - Issued Documents
       responses:
-        '200':
-          $ref: '#/components/responses/JoinIssuedDocumentsResponse'
+        "200":
+          $ref: "#/components/responses/JoinIssuedDocumentsResponse"
       operationId: joinIssuedDocuments
       description: Joins issued documents.
       security:
@@ -3007,17 +3007,17 @@ paths:
           name: e_invoice
           description: New document e_invoice.
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
   /c/{company_id}/emails:
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
     get:
       summary: List Emails
       tags:
         - Emails
       responses:
-        '200':
-          $ref: '#/components/responses/ListEmailsResponse'
+        "200":
+          $ref: "#/components/responses/ListEmailsResponse"
       operationId: listEmails
       description: List Emails.
       security:
@@ -3028,8 +3028,8 @@ paths:
       tags:
         - Webhooks
       responses:
-        '200':
-          $ref: '#/components/responses/ListWebhooksSubscriptionsResponse'
+        "200":
+          $ref: "#/components/responses/ListWebhooksSubscriptionsResponse"
       operationId: listWebhooksSubscriptions
       description: List active webhooks subscriptions.
       security:
@@ -3037,8 +3037,8 @@ paths:
     post:
       summary: Create a Webhook Subscription
       responses:
-        '200':
-          $ref: '#/components/responses/CreateWebhooksSubscriptionResponse'
+        "200":
+          $ref: "#/components/responses/CreateWebhooksSubscriptionResponse"
       operationId: CreateWebhooksSubscription
       requestBody:
         content:
@@ -3053,25 +3053,25 @@ paths:
                     types:
                       - it.fattureincloud.webhooks.entities.create
                       - it.fattureincloud.webhooks.issued_documents.create
-        description: ''
+        description: ""
       description: Register some webhooks Subscriptions.
       security:
         - OAuth2AuthenticationCodeFlow: []
       tags:
         - Webhooks
     parameters:
-      - $ref: '#/components/parameters/company_id'
+      - $ref: "#/components/parameters/company_id"
   /c/{company_id}/subscriptions/{subscription_id}:
     parameters:
-      - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/subscription_id'
+      - $ref: "#/components/parameters/company_id"
+      - $ref: "#/components/parameters/subscription_id"
     get:
       summary: Get Webhooks Subscription
       tags:
         - Webhooks
       responses:
-        '200':
-          $ref: '#/components/responses/GetWebhooksSubscriptionResponse'
+        "200":
+          $ref: "#/components/responses/GetWebhooksSubscriptionResponse"
       operationId: getWebhooksSubscription
       description: Get a webhooks subscription.
       security:
@@ -3081,8 +3081,8 @@ paths:
       tags:
         - Webhooks
       responses:
-        '200':
-          $ref: '#/components/responses/ModifyWebhooksSubscriptionResponse'
+        "200":
+          $ref: "#/components/responses/ModifyWebhooksSubscriptionResponse"
       operationId: modifyWebhooksSubscription
       description: Edit a webhooks subscription.
       requestBody:
@@ -3097,7 +3097,7 @@ paths:
       tags:
         - Webhooks
       responses:
-        '200':
+        "200":
           description: OK
       operationId: deleteWebhooksSubscription
       description: Delete a webhooks subscription.
@@ -3163,7 +3163,7 @@ components:
       required: true
       schema:
         type: integer
-        example: '12345'
+        example: "12345"
       description: The ID of the company.
     fieldset:
       name: fieldset
@@ -3266,6 +3266,7 @@ components:
           - expense
           - passive_credit_note
           - passive_delivery_note
+          - self_invoice
       description: The type of the received document.
     q:
       name: q
@@ -3291,7 +3292,7 @@ components:
       description: The ID of the subscription.
   responses:
     GetUserInfoResponse:
-      description: ''
+      description: ""
       content:
         application/json:
           schema:
@@ -3345,7 +3346,7 @@ components:
                           fic: true
                           dic: true
                           fic_plan: premium_plus
-                          fic_license_expire: '2021-12-31'
+                          fic_license_expire: "2021-12-31"
                           permissions:
                             fic_situation: write
                             fic_clients: write
@@ -3366,7 +3367,7 @@ components:
                             dic_settings: write
                         - id: 12347
                           name: Mario Rossi SRL
-                          tax_code: '57398280214'
+                          tax_code: "57398280214"
                           type: company
                           access_token: >-
                             86690c98be13592e78b763c52fab2ba0c22faa118708ca5273da2b4dcdc7ad1234517107266d463fd9ae424a78c16cde
@@ -3375,7 +3376,7 @@ components:
                           fic: true
                           dic: false
                           fic_plan: trial
-                          fic_license_expire: '2021-12-31'
+                          fic_license_expire: "2021-12-31"
                           permissions:
                             fic_situation: write
                             fic_clients: write
@@ -3410,15 +3411,15 @@ components:
                   type: accountant
                   fic: true
                   fic_plan_name: premium_plus
-                  fic_signup_date: '2013-11-01'
-                  fic_license_expire: '2030-12-31'
+                  fic_signup_date: "2013-11-01"
+                  fic_license_expire: "2030-12-31"
                   use_fic: true
                   fic_need_setup: false
                   fic_license_type: coupon_b
                   dic: true
                   dic_plan_name: trial
-                  dic_signup_date: '2018-03-26'
-                  dic_license_expire: '2022-12-31'
+                  dic_signup_date: "2018-03-26"
+                  dic_license_expire: "2022-12-31"
                   use_dic: true
                   dic_license_type: null
                   registration_service: fic
@@ -3513,22 +3514,22 @@ components:
                   type: person
                   first_name: Maria
                   last_name: Rossi
-                  contact_person: ''
+                  contact_person: ""
                   vat_number: IT12345640962
                   tax_code: BLTGNI5ABCDA794E
                   address_street: Via Roma, 1
-                  address_postal_code: '20900'
+                  address_postal_code: "20900"
                   address_city: Milano
                   address_province: MI
-                  address_extra: ''
+                  address_extra: ""
                   country: Italia
                   email: maria.rossi@example.com
                   certified_email: maria.rossi@pec.example.com
-                  phone: '1234567890'
-                  fax: ''
-                  notes: ''
-                  created_at: '2021-04-29 08:53:07'
-                  updated_at: '2021-04-29 08:53:07'
+                  phone: "1234567890"
+                  fax: ""
+                  notes: ""
+                  created_at: "2021-04-29 08:53:07"
+                  updated_at: "2021-04-29 08:53:07"
                   default_payment_terms: 1
                   default_payment_terms_type: standard
                   bank_name: Indesa
@@ -3536,11 +3537,11 @@ components:
                   bank_swift_code: AK86PCT
                   shipping_address: Corso Magellano 4
                   e_invoice: true
-                  ei_code: '111111'
+                  ei_code: "111111"
                   default_vat:
                     id: 54321
                     value: 45
-                    description: ''
+                    description: ""
                     is_disabled: false
                   default_payment_method:
                     id: 386092
@@ -3562,22 +3563,22 @@ components:
                     type: person
                     first_name: Maria
                     last_name: Rossi
-                    contact_person: ''
+                    contact_person: ""
                     vat_number: IT12345640962
                     tax_code: BLTGNI5ABCDA794E
                     address_street: Via Roma, 1
-                    address_postal_code: '20900'
+                    address_postal_code: "20900"
                     address_city: Milano
                     address_province: MI
-                    address_extra: ''
+                    address_extra: ""
                     country: Italia
                     email: maria.rossi@example.com
                     certified_email: maria.rossi@pec.example.com
-                    phone: '1234567890'
-                    fax: ''
-                    notes: ''
-                    created_at: '2021-04-29 08:53:07'
-                    updated_at: '2021-04-29 08:53:07'
+                    phone: "1234567890"
+                    fax: ""
+                    notes: ""
+                    created_at: "2021-04-29 08:53:07"
+                    updated_at: "2021-04-29 08:53:07"
                     default_payment_terms: 1
                     default_payment_terms_type: standard
                     bank_name: Indesa
@@ -3585,11 +3586,11 @@ components:
                     bank_swift_code: AK86PCT
                     shipping_address: Corso Magellano 4
                     e_invoice: true
-                    ei_code: '111111'
+                    ei_code: "111111"
                     default_vat:
                       id: 54321
                       value: 45
-                      description: ''
+                      description: ""
                       is_disabled: false
                     default_payment_method:
                       id: 386092
@@ -3600,21 +3601,21 @@ components:
                     type: person
                     first_name: Mario
                     last_name: Rossi
-                    contact_person: ''
+                    contact_person: ""
                     vat_number: IT1234567890
                     tax_code: ABCDEF12G34H567I
                     address_street: Via largo augusto 123
-                    address_postal_code: '21012'
+                    address_postal_code: "21012"
                     address_city: Bergamo
                     address_province: BG
-                    address_extra: ''
+                    address_extra: ""
                     country: Italia
                     email: info@mariorossi.it
                     certified_email: info@pec.mariorossi.it
-                    phone: '012345678'
-                    fax: '012345678'
-                    notes: ''
-                    created_at: '2021-04-29 08:53:07'
+                    phone: "012345678"
+                    fax: "012345678"
+                    notes: ""
+                    created_at: "2021-04-29 08:53:07"
                     default_payment_terms: 0
                     default_payment_terms_type: standard
                     bank_name: Monte dei Pascoli
@@ -3622,11 +3623,11 @@ components:
                     bank_swift_code: APL86PCT
                     shipping_address: Via Miilano 4
                     e_invoice: false
-                    ei_code: '7654321'
+                    ei_code: "7654321"
                     default_vat:
                       id: 66
                       value: 22
-                      description: ''
+                      description: ""
                       is_disabled: false
                     default_payment_method: null
                 first_page_url: page=1
@@ -3665,44 +3666,44 @@ components:
                     type: company
                     first_name: Mario
                     last_name: Rossi
-                    contact_person: ''
-                    vat_number: '111222333'
-                    tax_code: '111122233'
+                    contact_person: ""
+                    vat_number: "111222333"
+                    tax_code: "111122233"
                     address_street: Corso Magellano, 46
-                    address_postal_code: '20146'
+                    address_postal_code: "20146"
                     address_city: Milano
                     address_province: MI
-                    address_extra: ''
+                    address_extra: ""
                     country: Italia
                     email: mario.rossi@example.com
                     certified_email: mario.rossi@pec.example.com
-                    phone: '1234567890'
-                    fax: '123456789'
-                    notes: ''
-                    created_at: '2021-15-08'
-                    updated_at: '2021-15-08'
+                    phone: "1234567890"
+                    fax: "123456789"
+                    notes: ""
+                    created_at: "2021-15-08"
+                    updated_at: "2021-15-08"
                   - id: 12346
                     code: GT86
                     name: Maria Grossi S.R.L.
                     type: company
-                    first_name: ''
-                    last_name: ''
-                    contact_person: ''
-                    vat_number: '200020102020'
-                    tax_code: '200020102020'
+                    first_name: ""
+                    last_name: ""
+                    contact_person: ""
+                    vat_number: "200020102020"
+                    tax_code: "200020102020"
                     address_street: Vicolo stretto, 32
-                    address_postal_code: '20146'
+                    address_postal_code: "20146"
                     address_city: Milano
                     address_province: MI
-                    address_extra: ''
+                    address_extra: ""
                     country: Italia
                     email: maria.grossi@example.com
                     certified_email: maria.grossi@pec.example.com
-                    phone: '0987654321'
-                    fax: '098765432'
-                    notes: ''
-                    created_at: '2021-15-09'
-                    updated_at: '2021-15-09'
+                    phone: "0987654321"
+                    fax: "098765432"
+                    notes: ""
+                    created_at: "2021-15-09"
+                    updated_at: "2021-15-09"
     CreateSupplierResponse:
       description: Example response
       content:
@@ -3719,22 +3720,22 @@ components:
                   type: company
                   first_name: Mario
                   last_name: Rossi
-                  contact_person: ''
-                  vat_number: '111222333'
-                  tax_code: '111122233'
+                  contact_person: ""
+                  vat_number: "111222333"
+                  tax_code: "111122233"
                   address_street: Corso Magellano, 46
-                  address_postal_code: '20146'
+                  address_postal_code: "20146"
                   address_city: Milano
                   address_province: MI
-                  address_extra: ''
+                  address_extra: ""
                   country: Italia
                   email: mario.rossi@example.com
                   certified_email: mario.rossi@pec.example.com
-                  phone: '1234567890'
-                  fax: '123456789'
-                  notes: ''
-                  created_at: '2021-15-08'
-                  updated_at: '2021-15-08'
+                  phone: "1234567890"
+                  fax: "123456789"
+                  notes: ""
+                  created_at: "2021-15-08"
+                  updated_at: "2021-15-08"
     GetClientResponse:
       description: Client Details.
       content:
@@ -3750,20 +3751,20 @@ components:
                   type: person
                   first_name: Maria
                   last_name: Rossi
-                  contact_person: ''
+                  contact_person: ""
                   vat_number: IT12345640962
                   tax_code: BLTGNI5ABCDA794E
                   address_street: Via Roma, 1
-                  address_postal_code: '20900'
+                  address_postal_code: "20900"
                   address_city: Milano
                   address_province: MI
-                  address_extra: ''
+                  address_extra: ""
                   country: Italia
                   email: maria.rossi@example.com
                   certified_email: maria.rossi@pec.example.com
-                  phone: '1234567890'
-                  fax: ''
-                  notes: ''
+                  phone: "1234567890"
+                  fax: ""
+                  notes: ""
                   default_payment_terms: 1
                   default_payment_terms_type: standard
                   bank_name: Indesa
@@ -3771,11 +3772,11 @@ components:
                   bank_swift_code: AK86PCT
                   shipping_address: Corso Magellano 4
                   e_invoice: true
-                  ei_code: '111111'
+                  ei_code: "111111"
                   default_vat:
                     id: 54321
                     value: 45
-                    description: ''
+                    description: ""
                     is_disabled: false
     ModifyClientResponse:
       description: Client modified.
@@ -3792,20 +3793,20 @@ components:
                   type: person
                   first_name: Maria
                   last_name: Rossi
-                  contact_person: ''
+                  contact_person: ""
                   vat_number: IT12345640962
                   tax_code: BLTGNI5ABCDA794E
                   address_street: Via Roma, 1
-                  address_postal_code: '20900'
+                  address_postal_code: "20900"
                   address_city: Milano
                   address_province: MI
-                  address_extra: ''
+                  address_extra: ""
                   country: Italia
                   email: maria.rossi@example.com
                   certified_email: maria.rossi@pec.example.com
-                  phone: '1234567890'
-                  fax: ''
-                  notes: ''
+                  phone: "1234567890"
+                  fax: ""
+                  notes: ""
                   default_payment_terms: 1
                   default_payment_terms_type: standard
                   bank_name: Indesa
@@ -3813,11 +3814,11 @@ components:
                   bank_swift_code: AK86PCT
                   shipping_address: Corso Magellano 4
                   e_invoice: true
-                  ei_code: '111111'
+                  ei_code: "111111"
                   default_vat:
                     id: 54321
                     value: 45
-                    description: ''
+                    description: ""
                     is_disabled: false
     GetSupplierResponse:
       description: Example response
@@ -3835,22 +3836,22 @@ components:
                   type: company
                   first_name: Mario
                   last_name: Rossi
-                  contact_person: ''
-                  vat_number: '111222333'
-                  tax_code: '111122233'
+                  contact_person: ""
+                  vat_number: "111222333"
+                  tax_code: "111122233"
                   address_street: Corso Magellano, 46
-                  address_postal_code: '20146'
+                  address_postal_code: "20146"
                   address_city: Milano
                   address_province: MI
-                  address_extra: ''
+                  address_extra: ""
                   country: Italia
                   email: mario.rossi@example.com
                   certified_email: mario.rossi@pec.example.com
-                  phone: '1234567890'
-                  fax: '123456789'
-                  notes: ''
-                  created_at: '2021-15-08'
-                  updated_at: '2021-15-08'
+                  phone: "1234567890"
+                  fax: "123456789"
+                  notes: ""
+                  created_at: "2021-15-08"
+                  updated_at: "2021-15-08"
     ModifySupplierResponse:
       description: Example response
       content:
@@ -3867,22 +3868,22 @@ components:
                   type: company
                   first_name: Mario
                   last_name: Rossi
-                  contact_person: ''
-                  vat_number: '111222333'
-                  tax_code: '111122233'
+                  contact_person: ""
+                  vat_number: "111222333"
+                  tax_code: "111122233"
                   address_street: Corso Magellano, 46
-                  address_postal_code: '20146'
+                  address_postal_code: "20146"
                   address_city: Milano
                   address_province: MI
-                  address_extra: ''
+                  address_extra: ""
                   country: Italia
                   email: mario.rossi@example.com
                   certified_email: mario.rossi@pec.example.com
-                  phone: '1234567890'
-                  fax: '123456789'
-                  notes: ''
-                  created_at: '2021-15-08'
-                  updated_at: '2021-15-08'
+                  phone: "1234567890"
+                  fax: "123456789"
+                  notes: ""
+                  created_at: "2021-15-08"
+                  updated_at: "2021-15-08"
     ListProductsResponse:
       description: Products List.
       content:
@@ -3901,7 +3902,7 @@ components:
                     gross_price: 280
                     use_gross_price: false
                     net_cost: 0
-                    measure: ''
+                    measure: ""
                     description: Tavolo in marmo pregiato
                     category: arredamento
                     in_stock: true
@@ -3918,7 +3919,7 @@ components:
                     gross_price: 160
                     use_gross_price: false
                     net_cost: 0
-                    measure: ''
+                    measure: ""
                     description: Tavolo in legno pregiato
                     category: arredamento
                     in_stock: true
@@ -3955,7 +3956,7 @@ components:
                   gross_price: 280
                   use_gross_price: false
                   net_cost: 0
-                  measure: ''
+                  measure: ""
                   description: Tavolo in marmo pregiato
                   category: arredamento
                   in_stock: true
@@ -3982,12 +3983,12 @@ components:
                   gross_price: 280
                   use_gross_price: false
                   net_cost: 0
-                  measure: ''
+                  measure: ""
                   description: Tavolo in marmo pregiato
                   category: arredamento
                   in_stock: true
-                  created_at: '2021-08-09 08:57:14'
-                  updated_at: '2021-08-09 08:57:14'
+                  created_at: "2021-08-09 08:57:14"
+                  updated_at: "2021-08-09 08:57:14"
                   default_vat:
                     id: 3
                     value: 22
@@ -4013,12 +4014,12 @@ components:
                   gross_price: 280
                   use_gross_price: false
                   net_cost: 0
-                  measure: ''
+                  measure: ""
                   description: Tavolo in marmo pregiato
                   category: arredamento
                   in_stock: true
-                  created_at: '2021-08-09 08:57:14'
-                  updated_at: '2021-08-15 08:57:14'
+                  created_at: "2021-08-09 08:57:14"
+                  updated_at: "2021-08-15 08:57:14"
                   default_vat:
                     id: 3
                     value: 22
@@ -4041,8 +4042,8 @@ components:
                   - id: 12345
                     type: receipt
                     numeration: rec123
-                    subject: ''
-                    visible_subject: ''
+                    subject: ""
+                    visible_subject: ""
                     amount_net: 68.18
                     amount_vat: 6.82
                     amount_gross: 75
@@ -4053,24 +4054,24 @@ components:
                       vat_number: IT05432181211
                       tax_code: IT05432181211
                       address_street: Via Italia, 66
-                      address_postal_code: '20900'
+                      address_postal_code: "20900"
                       address_city: Milano
                       address_province: MI
-                      address_extra: ''
+                      address_extra: ""
                       country: Italia
                       certified_email: mary@pec.red.com
                       ei_code: ABCXCR1
-                    date: '2021-08-20'
+                    date: "2021-08-20"
                     number: 1
-                    next_due_date: '2021-12-31'
+                    next_due_date: "2021-12-31"
                     url: ypbqqe4u8w8bdabcd5fd5b1a4gtqhlof.pdf
                     items_list: null
                     payments_list: null
                   - id: 12346
                     type: receipt
                     numeration: rec124
-                    subject: ''
-                    visible_subject: ''
+                    subject: ""
+                    visible_subject: ""
                     amount_net: 168.18
                     amount_vat: 16.82
                     amount_gross: 175
@@ -4081,16 +4082,16 @@ components:
                       vat_number: IT05432181211
                       tax_code: IT05432181211
                       address_street: Via Italia, 66
-                      address_postal_code: '20900'
+                      address_postal_code: "20900"
                       address_city: Milano
                       address_province: MI
-                      address_extra: ''
+                      address_extra: ""
                       country: Italia
                       certified_email: mary@pec.red.com
                       ei_code: ABCXCR1
-                    date: '2021-08-28'
+                    date: "2021-08-28"
                     number: 1
-                    next_due_date: '2021-12-31'
+                    next_due_date: "2021-12-31"
                     url: qwertye4u8w8bdaqrt5fd5b1a4gtqhlof.pdf
                     items_list: null
                     payments_list: null
@@ -4118,9 +4119,9 @@ components:
                   type: receipt
                   year: 2021
                   numeration: rec123
-                  subject: ''
-                  visible_subject: ''
-                  rc_center: ''
+                  subject: ""
+                  visible_subject: ""
+                  rc_center: ""
                   ei_cassa_type: null
                   ei_withholding_tax_causal: null
                   ei_other_withholding_tax_type: null
@@ -4148,31 +4149,31 @@ components:
                   show_totals: all
                   show_notification_button: false
                   is_marked: false
-                  created_at: '2021-08-13 09:30:20'
-                  updated_at: '2021-08-23 05:34:20'
+                  created_at: "2021-08-13 09:30:20"
+                  updated_at: "2021-08-23 05:34:20"
                   entity:
                     id: 54321
                     name: Mary Red S.r.L.
                     vat_number: IT05432181211
                     tax_code: IT05432181211
                     address_street: Via Italia, 66
-                    address_postal_code: '20900'
+                    address_postal_code: "20900"
                     address_city: Milano
                     address_province: MI
-                    address_extra: ''
+                    address_extra: ""
                     country: Italia
                     certified_email: mary@pec.red.com
                     ei_code: ABCXCR1
-                  date: '2021-08-20'
+                  date: "2021-08-20"
                   number: 1
                   currency:
                     id: EUR
-                    exchange_rate: '1.00000'
+                    exchange_rate: "1.00000"
                     symbol: €
                   language:
                     code: it
                     name: Italiano
-                  notes: ''
+                  notes: ""
                   rivalsa: 0
                   cassa: 0
                   withholding_tax: 0
@@ -4188,9 +4189,9 @@ components:
                     - product_id: 5432
                       code: SG3
                       name: Soggiorno
-                      measure: ''
+                      measure: ""
                       net_price: 68.18182
-                      category: ''
+                      category: ""
                       id: 277876033
                       gross_price: 75
                       apply_withholding_taxes: true
@@ -4201,13 +4202,13 @@ components:
                       vat:
                         id: 3
                         value: 10
-                        description: ''
+                        description: ""
                       stock: false
-                      description: ''
+                      description: ""
                       not_taxable: false
                   payments_list:
                     - amount: 75
-                      due_date: '2020-08-23'
+                      due_date: "2020-08-23"
                       paid_date: null
                       id: 69078013
                       payment_terms:
@@ -4216,7 +4217,7 @@ components:
                       status: not_paid
                   attachment_url: kdijrnf893hnwkfk45f50f.pdf
                   seen_date: null
-                  next_due_date: '2020-08-23'
+                  next_due_date: "2020-08-23"
                   template:
                     id: 2821
                     name: Light Smoke
@@ -4239,9 +4240,9 @@ components:
                   type: receipt
                   year: 2021
                   numeration: rec123
-                  subject: ''
-                  visible_subject: ''
-                  rc_center: ''
+                  subject: ""
+                  visible_subject: ""
+                  rc_center: ""
                   ei_cassa_type: null
                   ei_withholding_tax_causal: null
                   ei_other_withholding_tax_type: null
@@ -4269,31 +4270,31 @@ components:
                   show_totals: all
                   show_notification_button: false
                   is_marked: false
-                  created_at: '2021-08-13 09:30:20'
-                  updated_at: '2021-08-23 05:34:20'
+                  created_at: "2021-08-13 09:30:20"
+                  updated_at: "2021-08-23 05:34:20"
                   entity:
                     id: 54321
                     name: Mary Red S.r.L.
                     vat_number: IT05432181211
                     tax_code: IT05432181211
                     address_street: Via Italia, 66
-                    address_postal_code: '20900'
+                    address_postal_code: "20900"
                     address_city: Milano
                     address_province: MI
-                    address_extra: ''
+                    address_extra: ""
                     country: Italia
                     certified_email: mary@pec.red.com
                     ei_code: ABCXCR1
-                  date: '2021-08-20'
+                  date: "2021-08-20"
                   number: 1
                   currency:
                     id: EUR
-                    exchange_rate: '1.00000'
+                    exchange_rate: "1.00000"
                     symbol: €
                   language:
                     code: it
                     name: Italiano
-                  notes: ''
+                  notes: ""
                   rivalsa: 0
                   cassa: 0
                   withholding_tax: 0
@@ -4309,9 +4310,9 @@ components:
                     - product_id: 5432
                       code: SG3
                       name: Soggiorno
-                      measure: ''
+                      measure: ""
                       net_price: 68.18182
-                      category: ''
+                      category: ""
                       id: 277876033
                       gross_price: 75
                       apply_withholding_taxes: true
@@ -4322,13 +4323,13 @@ components:
                       vat:
                         id: 3
                         value: 10
-                        description: ''
+                        description: ""
                       stock: false
-                      description: ''
+                      description: ""
                       not_taxable: false
                   payments_list:
                     - amount: 75
-                      due_date: '2020-08-23'
+                      due_date: "2020-08-23"
                       paid_date: null
                       id: 69078013
                       payment_terms:
@@ -4337,7 +4338,7 @@ components:
                       status: not_paid
                   attachment_url: kdijrnf893hnwkfk45f50f.pdf
                   seen_date: null
-                  next_due_date: '2020-08-23'
+                  next_due_date: "2020-08-23"
                   template:
                     id: 2821
                     name: Light Smoke
@@ -4360,9 +4361,9 @@ components:
                   type: receipt
                   year: 2021
                   numeration: rec123
-                  subject: ''
-                  visible_subject: ''
-                  rc_center: ''
+                  subject: ""
+                  visible_subject: ""
+                  rc_center: ""
                   ei_cassa_type: null
                   ei_withholding_tax_causal: null
                   ei_other_withholding_tax_type: null
@@ -4390,31 +4391,31 @@ components:
                   show_totals: all
                   show_notification_button: false
                   is_marked: false
-                  created_at: '2021-08-13 09:30:20'
-                  updated_at: '2021-08-23 05:34:20'
+                  created_at: "2021-08-13 09:30:20"
+                  updated_at: "2021-08-23 05:34:20"
                   entity:
                     id: 54321
                     name: Mary Red S.r.L.
                     vat_number: IT05432181211
                     tax_code: IT05432181211
                     address_street: Via Italia, 66
-                    address_postal_code: '20900'
+                    address_postal_code: "20900"
                     address_city: Milano
                     address_province: MI
-                    address_extra: ''
+                    address_extra: ""
                     country: Italia
                     certified_email: mary@pec.red.com
                     ei_code: ABCXCR1
-                  date: '2021-08-20'
+                  date: "2021-08-20"
                   number: 1
                   currency:
                     id: EUR
-                    exchange_rate: '1.00000'
+                    exchange_rate: "1.00000"
                     symbol: €
                   language:
                     code: it
                     name: Italiano
-                  notes: ''
+                  notes: ""
                   rivalsa: 0
                   cassa: 0
                   withholding_tax: 0
@@ -4430,9 +4431,9 @@ components:
                     - product_id: 5432
                       code: SG3
                       name: Soggiorno
-                      measure: ''
+                      measure: ""
                       net_price: 68.18182
-                      category: ''
+                      category: ""
                       id: 277876033
                       gross_price: 75
                       apply_withholding_taxes: true
@@ -4443,13 +4444,13 @@ components:
                       vat:
                         id: 3
                         value: 10
-                        description: ''
+                        description: ""
                       stock: false
-                      description: ''
+                      description: ""
                       not_taxable: false
                   payments_list:
                     - amount: 75
-                      due_date: '2020-08-23'
+                      due_date: "2020-08-23"
                       paid_date: null
                       id: 69078013
                       payment_terms:
@@ -4459,7 +4460,7 @@ components:
                       payment_account: null
                   attachment_url: kdijrnf893hnwkfk45f50f.pdf
                   seen_date: null
-                  next_due_date: '2020-08-23'
+                  next_due_date: "2020-08-23"
                   template:
                     id: 2821
                     name: Light Smoke
@@ -4481,7 +4482,7 @@ components:
                   amount_net: 68.18
                   taxable_amount: 68.18
                   vat_list:
-                    '10':
+                    "10":
                       amount_net: 68.18
                       amount_vat: 6.82
                   amount_vat: 6.82
@@ -4504,7 +4505,7 @@ components:
                   amount_net_with_rivalsa: 81.82000000000001
                   taxable_amount: 81.82
                   vat_list:
-                    '10':
+                    "10":
                       amount_net: 81.82
                       amount_vat: 8.18
                   amount_vat: 8.18
@@ -4534,25 +4535,25 @@ components:
               value:
                 data:
                   numerations:
-                    '2018':
+                    "2018":
                       AB123: 2
-                    '2019':
-                      '123': null
-                    '2020':
+                    "2019":
+                      "123": null
+                    "2020":
                       ABC: 2
-                    '2021':
+                    "2021":
                       rec123: 2
                   dn_numerations:
-                    '2017':
-                      '': 1000
-                    '2018':
-                      '': 112
-                    '2019':
-                      '': 526
-                    '2020':
-                      '': 11
-                    '2021':
-                      '': 110
+                    "2017":
+                      "": 1000
+                    "2018":
+                      "": 112
+                    "2019":
+                      "": 526
+                    "2020":
+                      "": 11
+                    "2021":
+                      "": 110
                   default_values:
                     template:
                       id: 111
@@ -4566,7 +4567,7 @@ components:
                       id: 333
                       type: accompanying_invoice
                       name: FT Accompagnatoria 1
-                    notes: ''
+                    notes: ""
                     rivalsa: 0
                     cassa: 0
                     withholding_tax: 0
@@ -4603,11 +4604,11 @@ components:
                     vat:
                       id: 0
                       value: 22
-                      description: ''
-                      notes: ''
+                      description: ""
+                      notes: ""
                       e_invoice: true
-                      ei_type: '0'
-                      ei_description: ''
+                      ei_type: "0"
+                      ei_description: ""
                       is_disabled: false
                       editable: false
                       default: true
@@ -4865,219 +4866,219 @@ components:
                     - id: AED
                       symbol: AED
                       html_symbol: AED
-                      exchange_rate: '4.09500'
+                      exchange_rate: "4.09500"
                     - id: ALL
                       symbol: ALL
                       html_symbol: ALL
-                      exchange_rate: '121.50000'
+                      exchange_rate: "121.50000"
                     - id: AUD
                       symbol: AUD
                       html_symbol: AUD
-                      exchange_rate: '1.62094'
+                      exchange_rate: "1.62094"
                     - id: AZN
                       symbol: AZN
                       html_symbol: AZN
-                      exchange_rate: '2.00130'
+                      exchange_rate: "2.00130"
                     - id: BGN
                       symbol: лв
                       html_symbol: BGN
-                      exchange_rate: '1.95583'
+                      exchange_rate: "1.95583"
                     - id: BRL
                       symbol: R$
                       html_symbol: R&#36;
-                      exchange_rate: '4.50410'
+                      exchange_rate: "4.50410"
                     - id: BYN
                       symbol: BYN
                       html_symbol: BYN
-                      exchange_rate: '2.41000'
+                      exchange_rate: "2.41000"
                     - id: CAD
                       symbol: CAD
                       html_symbol: CAD
-                      exchange_rate: '1.49841'
+                      exchange_rate: "1.49841"
                     - id: CFA
                       symbol: CFA
                       html_symbol: CFA
-                      exchange_rate: '656.68000'
+                      exchange_rate: "656.68000"
                     - id: CHF
                       symbol: Fr.
                       html_symbol: Fr.
-                      exchange_rate: '1.12559'
+                      exchange_rate: "1.12559"
                     - id: CNY
                       symbol: CNY
                       html_symbol: CNY
-                      exchange_rate: '7.70160'
+                      exchange_rate: "7.70160"
                     - id: CRC
                       symbol: ₡
-                      html_symbol: '&#8353;'
-                      exchange_rate: '659.17000'
+                      html_symbol: "&#8353;"
+                      exchange_rate: "659.17000"
                     - id: CZK
                       symbol: Kč
                       html_symbol: CZK
-                      exchange_rate: '25.80600'
+                      exchange_rate: "25.80600"
                     - id: DKK
                       symbol: kr.
                       html_symbol: kr.
-                      exchange_rate: '7.46750'
+                      exchange_rate: "7.46750"
                     - id: DOP
                       symbol: DOP
                       html_symbol: DOP
-                      exchange_rate: '56.50000'
+                      exchange_rate: "56.50000"
                     - id: DZD
                       symbol: DZD
                       html_symbol: DZD
-                      exchange_rate: '134.28300'
+                      exchange_rate: "134.28300"
                     - id: EGP
                       symbol: EGP
                       html_symbol: EGP
-                      exchange_rate: '18.98030'
+                      exchange_rate: "18.98030"
                     - id: EUR
                       symbol: €
-                      html_symbol: '&euro;'
-                      exchange_rate: '1.00000'
+                      html_symbol: "&euro;"
+                      exchange_rate: "1.00000"
                     - id: GBP
                       symbol: £
-                      html_symbol: '&pound;'
-                      exchange_rate: '0.88096'
+                      html_symbol: "&pound;"
+                      exchange_rate: "0.88096"
                     - id: GHS
                       symbol: GHS
                       html_symbol: GHS
-                      exchange_rate: '5.45834'
+                      exchange_rate: "5.45834"
                     - id: HKD
                       symbol: HK$
                       html_symbol: HK$
-                      exchange_rate: '8.75450'
+                      exchange_rate: "8.75450"
                     - id: HRK
                       symbol: HRK
                       html_symbol: HRK
-                      exchange_rate: '7.42640'
+                      exchange_rate: "7.42640"
                     - id: HUF
                       symbol: HUF
                       html_symbol: HUF
-                      exchange_rate: '326.24000'
+                      exchange_rate: "326.24000"
                     - id: ILS
                       symbol: ₪
-                      html_symbol: '&#8362;'
-                      exchange_rate: '4.02680'
+                      html_symbol: "&#8362;"
+                      exchange_rate: "4.02680"
                     - id: INR
                       symbol: INR
                       html_symbol: INR
-                      exchange_rate: '77.76050'
+                      exchange_rate: "77.76050"
                     - id: ISK
                       symbol: ISK
                       html_symbol: ISK
-                      exchange_rate: '135.94600'
+                      exchange_rate: "135.94600"
                     - id: JPY
                       symbol: ¥
-                      html_symbol: '&yen;'
-                      exchange_rate: '123.05800'
+                      html_symbol: "&yen;"
+                      exchange_rate: "123.05800"
                     - id: KRW
                       symbol: KRW
                       html_symbol: KRW
-                      exchange_rate: '1329.20000'
+                      exchange_rate: "1329.20000"
                     - id: MAD
                       symbol: MAD
                       html_symbol: MAD
-                      exchange_rate: '10.78900'
+                      exchange_rate: "10.78900"
                     - id: MKD
                       symbol: MKD
                       html_symbol: MKD
-                      exchange_rate: '61.36700'
+                      exchange_rate: "61.36700"
                     - id: MXN
                       symbol: Mex$
                       html_symbol: Mex&#36;
-                      exchange_rate: '21.17900'
+                      exchange_rate: "21.17900"
                     - id: MYR
                       symbol: MYR
                       html_symbol: MYR
-                      exchange_rate: '4.67310'
+                      exchange_rate: "4.67310"
                     - id: NGN
                       symbol: NGN
                       html_symbol: NGN
-                      exchange_rate: '405.17000'
+                      exchange_rate: "405.17000"
                     - id: NIS
                       symbol: NIS
                       html_symbol: NIS
-                      exchange_rate: '4020.00000'
+                      exchange_rate: "4020.00000"
                     - id: NOK
                       symbol: kr
                       html_symbol: kr
-                      exchange_rate: '9.76270'
+                      exchange_rate: "9.76270"
                     - id: NZD
                       symbol: NZD
                       html_symbol: NZD
-                      exchange_rate: '1.71687'
+                      exchange_rate: "1.71687"
                     - id: OMR
                       symbol: OMR
                       html_symbol: OMR
-                      exchange_rate: '0.42950'
+                      exchange_rate: "0.42950"
                     - id: PEN
                       symbol: PEN
                       html_symbol: PEN
-                      exchange_rate: '3.73400'
+                      exchange_rate: "3.73400"
                     - id: PLN
                       symbol: zł
                       html_symbol: PLN
-                      exchange_rate: '4.30330'
+                      exchange_rate: "4.30330"
                     - id: QAR
                       symbol: QAR
                       html_symbol: QAR
-                      exchange_rate: '4.06270'
+                      exchange_rate: "4.06270"
                     - id: RON
                       symbol: RON
                       html_symbol: RON
-                      exchange_rate: '4.66891'
+                      exchange_rate: "4.66891"
                     - id: RSD
                       symbol: RSD
                       html_symbol: RSD
-                      exchange_rate: '117.39414'
+                      exchange_rate: "117.39414"
                     - id: RUB
                       symbol: ₽
-                      html_symbol: '&#8381;'
-                      exchange_rate: '71.70370'
+                      html_symbol: "&#8381;"
+                      exchange_rate: "71.70370"
                     - id: SAR
                       symbol: SAR
                       html_symbol: SAR
-                      exchange_rate: '4.18520'
+                      exchange_rate: "4.18520"
                     - id: SEK
                       symbol: SEK
                       html_symbol: SEK
-                      exchange_rate: '10.73374'
+                      exchange_rate: "10.73374"
                     - id: SGD
                       symbol: SGD
                       html_symbol: SGD
-                      exchange_rate: '1.53800'
+                      exchange_rate: "1.53800"
                     - id: THB
                       symbol: THB
                       html_symbol: THB
-                      exchange_rate: '35.56400'
+                      exchange_rate: "35.56400"
                     - id: TND
                       symbol: TND
                       html_symbol: TND
-                      exchange_rate: '3.34010'
+                      exchange_rate: "3.34010"
                     - id: TRY
                       symbol: TRY
                       html_symbol: TRY
-                      exchange_rate: '6.81590'
+                      exchange_rate: "6.81590"
                     - id: TWD
                       symbol: TWD
                       html_symbol: TWD
-                      exchange_rate: '35.14200'
+                      exchange_rate: "35.14200"
                     - id: UAH
                       symbol: UAH
                       html_symbol: UAH
-                      exchange_rate: '29.31490'
+                      exchange_rate: "29.31490"
                     - id: USD
                       symbol: $
-                      html_symbol: '&#36;'
-                      exchange_rate: '1.11570'
+                      html_symbol: "&#36;"
+                      exchange_rate: "1.11570"
                     - id: VND
                       symbol: ₫
-                      html_symbol: '&#8363;'
-                      exchange_rate: '26100.00000'
+                      html_symbol: "&#8363;"
+                      exchange_rate: "26100.00000"
                     - id: ZAR
                       symbol: R
                       html_symbol: R
-                      exchange_rate: '16.03080'
+                      exchange_rate: "16.03080"
                   templates_list:
                     - id: 10
                       name: New Standard S1
@@ -5154,13 +5155,13 @@ components:
                   vat_types_list:
                     - id: 1409
                       value: 15
-                      description: 'ALIQUOTA #1234#'
-                      ei_type: '0'
+                      description: "ALIQUOTA #1234#"
+                      ei_type: "0"
                       is_disabled: false
                     - id: 1332
                       value: 0
                       description: Non imp. art. 17 c. 6 lett. A TER DPR 633/72
-                      ei_type: '0'
+                      ei_type: "0"
                       is_disabled: false
                   measures_list:
                     - pezzi
@@ -5867,7 +5868,7 @@ components:
                                       type: text
                                       length: 2
                         DatiPagamento:
-                          idx: '4'
+                          idx: "4"
                           children:
                             CondizioniPagamento:
                               idx: 1
@@ -6110,7 +6111,7 @@ components:
                     RF18: Altro
                     RF19: Regime forfettario (art.1, c.54-89, L. 190/2014)
                   ei_cassa_type_info:
-                    '': Nessuna cassa previdenziale
+                    "": Nessuna cassa previdenziale
                     TC01: >-
                       Cassa nazionale previdenza e assistenza avvocati e
                       procuratori legali
@@ -6156,7 +6157,7 @@ components:
                     TC21: Ente nazionale previdenza e assistenza psicologi (ENPAP)
                     TC22: INPS
                   ei_causal_payment_info:
-                    '': Nessuna ritenuta
+                    "": Nessuna ritenuta
                     A: >-
                       Prestazioni di lavoro autonomo rientranti nell'esercizio
                       di arte o professione abituale
@@ -6211,7 +6212,7 @@ components:
                       Prestazioni di lavoro autonomo non esercitate abitualmente
                       per le quali sussiste l'obbligo di iscrizione alla
                       Gestione Separata ENPAPI
-                    'N': "Indennità di trasferta, rimborso forfettario di spese, premi e compensi erogati: \x96 nell'esercizio diretto di attività sportive dilettantistiche; in relazione a rapporti di collaborazione coordinata e continuativa di carattere amministrativo-gestionale di natura non professionale resi a favore di società e associazioni sportive dilettantistiche e di cori, bande e filodrammatiche da parte del direttore e dei collaboratori tecnici;"
+                    "N": "Indennità di trasferta, rimborso forfettario di spese, premi e compensi erogati: \x96 nell'esercizio diretto di attività sportive dilettantistiche; in relazione a rapporti di collaborazione coordinata e continuativa di carattere amministrativo-gestionale di natura non professionale resi a favore di società e associazioni sportive dilettantistiche e di cori, bande e filodrammatiche da parte del direttore e dei collaboratori tecnici;"
                     O: >-
                       Prestazioni di lavoro autonomo non esercitate
                       abitualmente, obblighi di fare, di non fare o permettere,
@@ -6268,7 +6269,7 @@ components:
                       quali è stato effettuato, nell'anno 2006, il rimborso
                       della ritenuta ai sensi dell'art. 4 del D.Lgs. 30 maggio
                       2005 n. 143
-                    'Y': >-
+                    "Y": >-
                       Canoni corrisposti dal 1° gennaio 2005 al 26 luglio 2005
                       da società o enti residenti ovvero da stabili
                       organizzazioni di società estere di cui all'art.
@@ -6282,7 +6283,7 @@ components:
                       143
                     ZO: Titolo diverso dai precedenti
                   ei_withholding_type_info:
-                    '': Nessuna ritenuta
+                    "": Nessuna ritenuta
                     RT01: Ritenuta di acconto persone fisiche
                     RT02: Ritenuta di acconto persone giuridiche
                     RT03: Contributo INPS
@@ -6331,7 +6332,7 @@ components:
               value:
                 data:
                   name: CARICATO
-                  date: '2021-08-23 10:38:03'
+                  date: "2021-08-23 10:38:03"
     VerifyEInvoiceXmlResponse:
       description: Example response
       content:
@@ -6364,21 +6365,21 @@ components:
                     type: expense
                     description: Soggiorno di lavoro
                     amortization: 1
-                    rc_center: ''
-                    invoice_number: ''
+                    rc_center: ""
+                    invoice_number: ""
                     is_marked: false
                     is_detailed: false
                     e_invoice: false
-                    created_at: '2021-08-15 14:02:02'
-                    updated_at: '2021-08-15 14:02:02'
+                    created_at: "2021-08-15 14:02:02"
+                    updated_at: "2021-08-15 14:02:02"
                     entity:
                       id: 111
                       name: Hotel Rubino Palace
-                    date: '2021-08-15'
-                    next_due_date: '2021-08-15'
+                    date: "2021-08-15"
+                    next_due_date: "2021-08-15"
                     currency:
                       id: EUR
-                      exchange_rate: '1.00000'
+                      exchange_rate: "1.00000"
                       symbol: €
                     amount_net: 592
                     amount_vat: 0
@@ -6390,8 +6391,8 @@ components:
                     items_list: null
                     payments_list:
                       - amount: 592
-                        due_date: '2021-08-15'
-                        paid_date: '2021-08-15'
+                        due_date: "2021-08-15"
+                        paid_date: "2021-08-15"
                         id: 777
                         payment_terms:
                           days: 0
@@ -6408,21 +6409,21 @@ components:
                     type: expense
                     description: Assicurazione RCA
                     iamortization: 1
-                    rc_center: ''
-                    invoice_number: ''
+                    rc_center: ""
+                    invoice_number: ""
                     is_marked: false
                     is_detailed: false
                     e_invoice: false
-                    created_at: '2021-08-09 14:02:02'
-                    updated_at: '2021-08-09 14:02:02'
+                    created_at: "2021-08-09 14:02:02"
+                    updated_at: "2021-08-09 14:02:02"
                     entity:
                       id: 89
                       name: Indesa Assicurazioni S.P.A.
-                    date: '2021-08-08'
-                    next_due_date: '2021-08-08'
+                    date: "2021-08-08"
+                    next_due_date: "2021-08-08"
                     currency:
                       id: EUR
-                      exchange_rate: '1.00000'
+                      exchange_rate: "1.00000"
                       symbol: €
                     amount_net: 645.69
                     amount_vat: 0
@@ -6434,8 +6435,8 @@ components:
                     items_list: null
                     payments_list:
                       - amount: 645.69
-                        due_date: '2021-08-08'
-                        paid_date: '2021-08-08'
+                        due_date: "2021-08-08"
+                        paid_date: "2021-08-08"
                         id: 999
                         payment_terms:
                           days: 0
@@ -6472,21 +6473,21 @@ components:
                   type: expense
                   description: Soggiorno di lavoro
                   amortization: 1
-                  rc_center: ''
-                  invoice_number: ''
+                  rc_center: ""
+                  invoice_number: ""
                   is_marked: false
                   is_detailed: false
                   e_invoice: false
-                  created_at: '2021-08-15 14:02:02'
-                  updated_at: '2021-08-15 14:02:02'
+                  created_at: "2021-08-15 14:02:02"
+                  updated_at: "2021-08-15 14:02:02"
                   entity:
                     id: 111
                     name: Hotel Rubino Palace
-                  date: '2021-08-15'
-                  next_due_date: '2021-08-15'
+                  date: "2021-08-15"
+                  next_due_date: "2021-08-15"
                   currency:
                     id: EUR
-                    exchange_rate: '1.00000'
+                    exchange_rate: "1.00000"
                     symbol: €
                   amount_net: 592
                   amount_vat: 0
@@ -6498,8 +6499,8 @@ components:
                   items_list: null
                   payments_list:
                     - amount: 592
-                      due_date: '2021-08-15'
-                      paid_date: '2021-08-15'
+                      due_date: "2021-08-15"
+                      paid_date: "2021-08-15"
                       id: 777
                       payment_terms:
                         days: 0
@@ -6526,21 +6527,21 @@ components:
                   type: expense
                   description: Soggiorno di lavoro
                   amortization: 1
-                  rc_center: ''
-                  invoice_number: ''
+                  rc_center: ""
+                  invoice_number: ""
                   is_marked: false
                   is_detailed: false
                   e_invoice: false
-                  created_at: '2021-08-15 14:02:02'
-                  updated_at: '2021-08-15 14:02:02'
+                  created_at: "2021-08-15 14:02:02"
+                  updated_at: "2021-08-15 14:02:02"
                   entity:
                     id: 111
                     name: Hotel Rubino Palace
-                  date: '2021-08-15'
-                  next_due_date: '2021-08-15'
+                  date: "2021-08-15"
+                  next_due_date: "2021-08-15"
                   currency:
                     id: EUR
-                    exchange_rate: '1.00000'
+                    exchange_rate: "1.00000"
                     symbol: €
                   amount_net: 592
                   amount_vat: 0
@@ -6552,8 +6553,8 @@ components:
                   items_list: null
                   payments_list:
                     - amount: 592
-                      due_date: '2021-08-15'
-                      paid_date: '2021-08-15'
+                      due_date: "2021-08-15"
+                      paid_date: "2021-08-15"
                       id: 777
                       payment_terms:
                         days: 0
@@ -6580,21 +6581,21 @@ components:
                   type: expense
                   description: Soggiorno di lavoro
                   amortization: 1
-                  rc_center: ''
-                  invoice_number: ''
+                  rc_center: ""
+                  invoice_number: ""
                   is_marked: false
                   is_detailed: false
                   e_invoice: false
-                  created_at: '2021-08-15 14:02:02'
-                  updated_at: '2021-08-15 14:02:02'
+                  created_at: "2021-08-15 14:02:02"
+                  updated_at: "2021-08-15 14:02:02"
                   entity:
                     id: 111
                     name: Hotel Rubino Palace
-                  date: '2021-08-15'
-                  next_due_date: '2021-08-15'
+                  date: "2021-08-15"
+                  next_due_date: "2021-08-15"
                   currency:
                     id: EUR
-                    exchange_rate: '1.00000'
+                    exchange_rate: "1.00000"
                     symbol: €
                   amount_net: 592
                   amount_vat: 0
@@ -6606,8 +6607,8 @@ components:
                   items_list: null
                   payments_list:
                     - amount: 592
-                      due_date: '2021-08-15'
-                      paid_date: '2021-08-15'
+                      due_date: "2021-08-15"
+                      paid_date: "2021-08-15"
                       id: 777
                       payment_terms:
                         days: 0
@@ -6933,219 +6934,219 @@ components:
                     - id: AED
                       symbol: AED
                       html_symbol: AED
-                      exchange_rate: '4.09500'
+                      exchange_rate: "4.09500"
                     - id: ALL
                       symbol: ALL
                       html_symbol: ALL
-                      exchange_rate: '121.50000'
+                      exchange_rate: "121.50000"
                     - id: AUD
                       symbol: AUD
                       html_symbol: AUD
-                      exchange_rate: '1.62094'
+                      exchange_rate: "1.62094"
                     - id: AZN
                       symbol: AZN
                       html_symbol: AZN
-                      exchange_rate: '2.00130'
+                      exchange_rate: "2.00130"
                     - id: BGN
                       symbol: лв
                       html_symbol: BGN
-                      exchange_rate: '1.95583'
+                      exchange_rate: "1.95583"
                     - id: BRL
                       symbol: R$
                       html_symbol: R&#36;
-                      exchange_rate: '4.50410'
+                      exchange_rate: "4.50410"
                     - id: BYN
                       symbol: BYN
                       html_symbol: BYN
-                      exchange_rate: '2.41000'
+                      exchange_rate: "2.41000"
                     - id: CAD
                       symbol: CAD
                       html_symbol: CAD
-                      exchange_rate: '1.49841'
+                      exchange_rate: "1.49841"
                     - id: CFA
                       symbol: CFA
                       html_symbol: CFA
-                      exchange_rate: '656.68000'
+                      exchange_rate: "656.68000"
                     - id: CHF
                       symbol: Fr.
                       html_symbol: Fr.
-                      exchange_rate: '1.12559'
+                      exchange_rate: "1.12559"
                     - id: CNY
                       symbol: CNY
                       html_symbol: CNY
-                      exchange_rate: '7.70160'
+                      exchange_rate: "7.70160"
                     - id: CRC
                       symbol: ₡
-                      html_symbol: '&#8353;'
-                      exchange_rate: '659.17000'
+                      html_symbol: "&#8353;"
+                      exchange_rate: "659.17000"
                     - id: CZK
                       symbol: Kč
                       html_symbol: CZK
-                      exchange_rate: '25.80600'
+                      exchange_rate: "25.80600"
                     - id: DKK
                       symbol: kr.
                       html_symbol: kr.
-                      exchange_rate: '7.46750'
+                      exchange_rate: "7.46750"
                     - id: DOP
                       symbol: DOP
                       html_symbol: DOP
-                      exchange_rate: '56.50000'
+                      exchange_rate: "56.50000"
                     - id: DZD
                       symbol: DZD
                       html_symbol: DZD
-                      exchange_rate: '134.28300'
+                      exchange_rate: "134.28300"
                     - id: EGP
                       symbol: EGP
                       html_symbol: EGP
-                      exchange_rate: '18.98030'
+                      exchange_rate: "18.98030"
                     - id: EUR
                       symbol: €
-                      html_symbol: '&euro;'
-                      exchange_rate: '1.00000'
+                      html_symbol: "&euro;"
+                      exchange_rate: "1.00000"
                     - id: GBP
                       symbol: £
-                      html_symbol: '&pound;'
-                      exchange_rate: '0.88096'
+                      html_symbol: "&pound;"
+                      exchange_rate: "0.88096"
                     - id: GHS
                       symbol: GHS
                       html_symbol: GHS
-                      exchange_rate: '5.45834'
+                      exchange_rate: "5.45834"
                     - id: HKD
                       symbol: HK$
                       html_symbol: HK$
-                      exchange_rate: '8.75450'
+                      exchange_rate: "8.75450"
                     - id: HRK
                       symbol: HRK
                       html_symbol: HRK
-                      exchange_rate: '7.42640'
+                      exchange_rate: "7.42640"
                     - id: HUF
                       symbol: HUF
                       html_symbol: HUF
-                      exchange_rate: '326.24000'
+                      exchange_rate: "326.24000"
                     - id: ILS
                       symbol: ₪
-                      html_symbol: '&#8362;'
-                      exchange_rate: '4.02680'
+                      html_symbol: "&#8362;"
+                      exchange_rate: "4.02680"
                     - id: INR
                       symbol: INR
                       html_symbol: INR
-                      exchange_rate: '77.76050'
+                      exchange_rate: "77.76050"
                     - id: ISK
                       symbol: ISK
                       html_symbol: ISK
-                      exchange_rate: '135.94600'
+                      exchange_rate: "135.94600"
                     - id: JPY
                       symbol: ¥
-                      html_symbol: '&yen;'
-                      exchange_rate: '123.05800'
+                      html_symbol: "&yen;"
+                      exchange_rate: "123.05800"
                     - id: KRW
                       symbol: KRW
                       html_symbol: KRW
-                      exchange_rate: '1329.20000'
+                      exchange_rate: "1329.20000"
                     - id: MAD
                       symbol: MAD
                       html_symbol: MAD
-                      exchange_rate: '10.78900'
+                      exchange_rate: "10.78900"
                     - id: MKD
                       symbol: MKD
                       html_symbol: MKD
-                      exchange_rate: '61.36700'
+                      exchange_rate: "61.36700"
                     - id: MXN
                       symbol: Mex$
                       html_symbol: Mex&#36;
-                      exchange_rate: '21.17900'
+                      exchange_rate: "21.17900"
                     - id: MYR
                       symbol: MYR
                       html_symbol: MYR
-                      exchange_rate: '4.67310'
+                      exchange_rate: "4.67310"
                     - id: NGN
                       symbol: NGN
                       html_symbol: NGN
-                      exchange_rate: '405.17000'
+                      exchange_rate: "405.17000"
                     - id: NIS
                       symbol: NIS
                       html_symbol: NIS
-                      exchange_rate: '4020.00000'
+                      exchange_rate: "4020.00000"
                     - id: NOK
                       symbol: kr
                       html_symbol: kr
-                      exchange_rate: '9.76270'
+                      exchange_rate: "9.76270"
                     - id: NZD
                       symbol: NZD
                       html_symbol: NZD
-                      exchange_rate: '1.71687'
+                      exchange_rate: "1.71687"
                     - id: OMR
                       symbol: OMR
                       html_symbol: OMR
-                      exchange_rate: '0.42950'
+                      exchange_rate: "0.42950"
                     - id: PEN
                       symbol: PEN
                       html_symbol: PEN
-                      exchange_rate: '3.73400'
+                      exchange_rate: "3.73400"
                     - id: PLN
                       symbol: zł
                       html_symbol: PLN
-                      exchange_rate: '4.30330'
+                      exchange_rate: "4.30330"
                     - id: QAR
                       symbol: QAR
                       html_symbol: QAR
-                      exchange_rate: '4.06270'
+                      exchange_rate: "4.06270"
                     - id: RON
                       symbol: RON
                       html_symbol: RON
-                      exchange_rate: '4.66891'
+                      exchange_rate: "4.66891"
                     - id: RSD
                       symbol: RSD
                       html_symbol: RSD
-                      exchange_rate: '117.39414'
+                      exchange_rate: "117.39414"
                     - id: RUB
                       symbol: ₽
-                      html_symbol: '&#8381;'
-                      exchange_rate: '71.70370'
+                      html_symbol: "&#8381;"
+                      exchange_rate: "71.70370"
                     - id: SAR
                       symbol: SAR
                       html_symbol: SAR
-                      exchange_rate: '4.18520'
+                      exchange_rate: "4.18520"
                     - id: SEK
                       symbol: SEK
                       html_symbol: SEK
-                      exchange_rate: '10.73374'
+                      exchange_rate: "10.73374"
                     - id: SGD
                       symbol: SGD
                       html_symbol: SGD
-                      exchange_rate: '1.53800'
+                      exchange_rate: "1.53800"
                     - id: THB
                       symbol: THB
                       html_symbol: THB
-                      exchange_rate: '35.56400'
+                      exchange_rate: "35.56400"
                     - id: TND
                       symbol: TND
                       html_symbol: TND
-                      exchange_rate: '3.34010'
+                      exchange_rate: "3.34010"
                     - id: TRY
                       symbol: TRY
                       html_symbol: TRY
-                      exchange_rate: '6.81590'
+                      exchange_rate: "6.81590"
                     - id: TWD
                       symbol: TWD
                       html_symbol: TWD
-                      exchange_rate: '35.14200'
+                      exchange_rate: "35.14200"
                     - id: UAH
                       symbol: UAH
                       html_symbol: UAH
-                      exchange_rate: '29.31490'
+                      exchange_rate: "29.31490"
                     - id: USD
                       symbol: $
-                      html_symbol: '&#36;'
-                      exchange_rate: '1.11570'
+                      html_symbol: "&#36;"
+                      exchange_rate: "1.11570"
                     - id: VND
                       symbol: ₫
-                      html_symbol: '&#8363;'
-                      exchange_rate: '26100.00000'
+                      html_symbol: "&#8363;"
+                      exchange_rate: "26100.00000"
                     - id: ZAR
                       symbol: R
                       html_symbol: R
-                      exchange_rate: '16.03080'
+                      exchange_rate: "16.03080"
                   categories_list:
                     - Auto
                     - Telefono e internet
@@ -7455,7 +7456,7 @@ components:
                 current_page: 1
                 data:
                   - id: 12345
-                    date: '2021-08-20'
+                    date: "2021-08-20"
                     number: 5
                     numeration: REC005
                     amount_net: 16.39
@@ -7464,9 +7465,9 @@ components:
                     use_gross_prices: true
                     type: sales_receipt
                     description: cassa 1
-                    rc_center: ''
-                    created_at: '2021-08-20 13:56:56'
-                    updated_at: '2021-08-20 13:56:56'
+                    rc_center: ""
+                    created_at: "2021-08-20 13:56:56"
+                    updated_at: "2021-08-20 13:56:56"
                     payment_account:
                       id: 222
                       name: carta di credito
@@ -7490,7 +7491,7 @@ components:
                           value: 22
                           description: iva
                   - id: 12346
-                    date: '2021-08-19'
+                    date: "2021-08-19"
                     number: 6
                     numeration: REC006
                     amount_net: 8.2
@@ -7499,9 +7500,9 @@ components:
                     use_gross_prices: true
                     type: sales_receipt
                     description: cassa 1
-                    rc_center: ''
-                    created_at: '2021-08-19 17:57:56'
-                    updated_at: '2021-08-19 17:57:56'
+                    rc_center: ""
+                    created_at: "2021-08-19 17:57:56"
+                    updated_at: "2021-08-19 17:57:56"
                     payment_account:
                       id: 555
                       name: contanti
@@ -7536,7 +7537,7 @@ components:
               value:
                 data:
                   id: 12346
-                  date: '2021-08-19'
+                  date: "2021-08-19"
                   number: 6
                   numeration: REC006
                   amount_net: 8.2
@@ -7545,9 +7546,9 @@ components:
                   use_gross_prices: true
                   type: sales_receipt
                   description: cassa 1
-                  rc_center: ''
-                  created_at: '2021-08-19 17:57:56'
-                  updated_at: '2021-08-19 17:57:56'
+                  rc_center: ""
+                  created_at: "2021-08-19 17:57:56"
+                  updated_at: "2021-08-19 17:57:56"
                   payment_account:
                     id: 555
                     name: contanti
@@ -7572,7 +7573,7 @@ components:
               value:
                 data:
                   id: 12346
-                  date: '2021-08-19'
+                  date: "2021-08-19"
                   number: 6
                   numeration: REC006
                   amount_net: 8.2
@@ -7581,9 +7582,9 @@ components:
                   use_gross_prices: true
                   type: sales_receipt
                   description: cassa 1
-                  rc_center: ''
-                  created_at: '2021-08-19 17:57:56'
-                  updated_at: '2021-08-19 17:57:56'
+                  rc_center: ""
+                  created_at: "2021-08-19 17:57:56"
+                  updated_at: "2021-08-19 17:57:56"
                   payment_account:
                     id: 555
                     name: contanti
@@ -7608,7 +7609,7 @@ components:
               value:
                 data:
                   id: 12346
-                  date: '2021-08-19'
+                  date: "2021-08-19"
                   number: 6
                   numeration: REC006
                   amount_net: 8.2
@@ -7617,9 +7618,9 @@ components:
                   use_gross_prices: true
                   type: sales_receipt
                   description: cassa 1
-                  rc_center: ''
-                  created_at: '2021-08-19 17:57:56'
-                  updated_at: '2021-08-19 17:57:56'
+                  rc_center: ""
+                  created_at: "2021-08-19 17:57:56"
+                  updated_at: "2021-08-19 17:57:56"
                   payment_account:
                     id: 555
                     name: contanti
@@ -7644,7 +7645,7 @@ components:
               value:
                 data:
                   numerations:
-                    '2016':
+                    "2016":
                       sales_receipt:
                         REC003: 12
                         REC002: 5
@@ -7652,7 +7653,7 @@ components:
                       till_receipt:
                         REC002: 6
                         REC001: 2
-                    '2017':
+                    "2017":
                       sales_receipt:
                         REC003: 14
                         REC002: 7
@@ -7660,10 +7661,10 @@ components:
                       till_receipt:
                         REC003: 1
                         REC001: 3
-                    '2018':
+                    "2018":
                       sales_receipt:
                         REC001: 3
-                    '2019':
+                    "2019":
                       sales_receipt:
                         REC002: 105
                         REC001: 22
@@ -7671,10 +7672,10 @@ components:
                         REC003: 21
                         REC002: 24
                         REC001: 25
-                    '2020':
+                    "2020":
                       sales_receipt:
                         REC001: 3
-                    '2021':
+                    "2021":
                       sales_receipt:
                         REC005: 3
                         REC004: 2
@@ -7837,7 +7838,7 @@ components:
                   - id: 12345
                     amount: 840.36
                     description: PAGAMENTO IVA 2021
-                    due_date: '2021-12-31'
+                    due_date: "2021-12-31"
                     status: paid
                     payment_account:
                       id: 111
@@ -7846,7 +7847,7 @@ components:
                   - id: 12346
                     amount: 810.62
                     description: PAGAMENTO IVA 2020
-                    due_date: '2020-12-31'
+                    due_date: "2020-12-31"
                     status: paid
                     payment_account:
                       id: 111
@@ -7863,7 +7864,7 @@ components:
                 to: 2
                 total: 2
                 aggregated_data:
-                  amount: '6438.96'
+                  amount: "6438.96"
     CreateF24Response:
       description: The created F24
       content:
@@ -7877,7 +7878,7 @@ components:
                   id: 12345
                   amount: 840.36
                   description: PAGAMENTO IVA 2021
-                  due_date: '2021-12-31'
+                  due_date: "2021-12-31"
                   status: paid
                   payment_account:
                     id: 111
@@ -7896,7 +7897,7 @@ components:
                   id: 12345
                   amount: 840.36
                   description: PAGAMENTO IVA 2021
-                  due_date: '2021-12-31'
+                  due_date: "2021-12-31"
                   status: paid
                   payment_account:
                     id: 111
@@ -7915,7 +7916,7 @@ components:
                   id: 12345
                   amount: 840.36
                   description: PAGAMENTO IVA 2021
-                  due_date: '2021-12-31'
+                  due_date: "2021-12-31"
                   status: paid
                   payment_account:
                     id: 111
@@ -7944,12 +7945,12 @@ components:
                 current_page: 1
                 data:
                   - id: 12345
-                    date: '2021-08-20'
+                    date: "2021-08-20"
                     category: Altri documenti
                     description: spesa 2
                     attachment_url: spesa2.pdf
                   - id: 12346
-                    date: '2021-08-19'
+                    date: "2021-08-19"
                     category: Altri documenti
                     description: spesa 1
                     attachment_url: spesa1.pdf
@@ -7974,7 +7975,7 @@ components:
               value:
                 data:
                   id: 12345
-                  date: '2021-08-20'
+                  date: "2021-08-20"
                   category: Altri documenti
                   description: spesa 1
                   attachment_url: spesa1.pdf
@@ -7989,7 +7990,7 @@ components:
               value:
                 data:
                   id: 12345
-                  date: '2021-08-20'
+                  date: "2021-08-20"
                   category: Altri documenti
                   description: spesa 2
                   attachment_url: spesa2.pdf
@@ -8004,7 +8005,7 @@ components:
               value:
                 data:
                   id: 12345
-                  date: '2021-08-20'
+                  date: "2021-08-20"
                   category: Altri documenti
                   description: spesa 2
                   attachment_url: spesa2.pdf
@@ -8018,7 +8019,7 @@ components:
             example-1:
               value:
                 data:
-                  - date: '2021-08-24'
+                  - date: "2021-08-24"
                     amount_in: 122
                     payment_account_in:
                       id: 333
@@ -8028,7 +8029,7 @@ components:
                     document:
                       id: 54321
                     type: in
-                  - date: '2021-08-29'
+                  - date: "2021-08-29"
                     amount_out: 211
                     payment_account_out:
                       id: 444
@@ -8049,7 +8050,7 @@ components:
               value:
                 data:
                   id: 54321
-                  date: '2021-08-24'
+                  date: "2021-08-24"
                   amount_in: 122
                   amount_out: 0
                   description: Fattura n. 201/2021
@@ -8068,7 +8069,7 @@ components:
             example-1:
               value:
                 data:
-                  date: '2021-08-24'
+                  date: "2021-08-24"
                   amount_in: 122
                   payment_account_in:
                     id: 333
@@ -8088,7 +8089,7 @@ components:
             example-1:
               value:
                 data:
-                  date: '2021-08-24'
+                  date: "2021-08-24"
                   amount_in: 122
                   payment_account_in:
                     id: 333
@@ -8126,13 +8127,13 @@ components:
             example-1:
               value:
                 data:
-                  - postal_code: '89867'
+                  - postal_code: "89867"
                     city: Zungri
                     province: VV
-                  - postal_code: '83020'
+                  - postal_code: "83020"
                     city: Aiello del Sabato
                     province: AV
-                  - postal_code: '83011'
+                  - postal_code: "83011"
                     city: Altavilla Irpina
                     province: AV
     ListLanguagesResponse:
@@ -8176,11 +8177,11 @@ components:
                   - id: AED
                     symbol: AED
                     html_symbol: AED
-                    exchange_rate: '4.09500'
+                    exchange_rate: "4.09500"
                   - id: EUR
                     symbol: €
-                    html_symbol: '&euro;'
-                    exchange_rate: '1.00000'
+                    html_symbol: "&euro;"
+                    exchange_rate: "1.00000"
     ListUnitsOfMeasureResponse:
       description: Units of measure.
       content:
@@ -8240,7 +8241,7 @@ components:
                   - id: 1010
                     value: 0
                     description: NON IMPONIBILE IVA EX ART. 8 COMMA 1 LETT.A
-                    notes: ''
+                    notes: ""
                     e_invoice: false
                     ei_type: 0
                     ei_description: null
@@ -8531,7 +8532,7 @@ components:
                   editable: true
                   is_disabled: true
     GetEInvoiceXmlResponse:
-      description: ''
+      description: ""
       content:
         text/xml:
           schema:
@@ -8553,7 +8554,7 @@ components:
                   solution: >-
                     Puoi correggere la tua Partita IVA in: Impostazioni >
                     Azienda > Informazioni di fatturazione.
-                  date: '2023-06-06'
+                  date: "2023-06-06"
     ListDetailedCountriesResponse:
       description: List of detailed countries
       content:
@@ -8568,17 +8569,17 @@ components:
                     settings_name: Italia
                     iso: IT
                     fiscal_iso: IT
-                    uic: '086'
+                    uic: "086"
                   - name: Afghanistan
                     settings_name: Afghanistan
                     iso: AF
                     fiscal_iso: AF
-                    uic: '002'
+                    uic: "002"
                   - name: Albania
                     settings_name: Albania
                     iso: AL
                     fiscal_iso: AL
-                    uic: '087'
+                    uic: "087"
     TransformIssuedDocumentResponse:
       description: Example response
       content:
@@ -8591,10 +8592,10 @@ components:
                 data:
                   type: invoice
                   year: 2022
-                  numeration: ''
-                  subject: ''
-                  visible_subject: ''
-                  rc_center: ''
+                  numeration: ""
+                  subject: ""
+                  visible_subject: ""
+                  rc_center: ""
                   ei_cassa_type: null
                   ei_withholding_tax_causal: null
                   ei_other_withholding_tax_type: null
@@ -8622,31 +8623,31 @@ components:
                   show_totals: all
                   show_notification_button: false
                   is_marked: false
-                  created_at: '2022-08-13 09:30:20'
-                  updated_at: '2022-08-23 05:34:20'
+                  created_at: "2022-08-13 09:30:20"
+                  updated_at: "2022-08-23 05:34:20"
                   entity:
                     id: 54321
                     name: Mary Red S.r.L.
                     vat_number: IT05432181211
                     tax_code: IT05432181211
                     address_street: Via Italia, 66
-                    address_postal_code: '20900'
+                    address_postal_code: "20900"
                     address_city: Milano
                     address_province: MI
-                    address_extra: ''
+                    address_extra: ""
                     country: Italia
                     certified_email: mary@pec.red.com
                     ei_code: ABCXCR1
-                  date: '2021-08-20'
+                  date: "2021-08-20"
                   number: 1
                   currency:
                     id: EUR
-                    exchange_rate: '1.00000'
+                    exchange_rate: "1.00000"
                     symbol: €
                   language:
                     code: it
                     name: Italiano
-                  notes: ''
+                  notes: ""
                   rivalsa: 0
                   cassa: 0
                   withholding_tax: 0
@@ -8662,9 +8663,9 @@ components:
                     - product_id: 5432
                       code: SG3
                       name: Soggiorno
-                      measure: ''
+                      measure: ""
                       net_price: 68.18182
-                      category: ''
+                      category: ""
                       id: 277876033
                       gross_price: 75
                       apply_withholding_taxes: true
@@ -8675,13 +8676,13 @@ components:
                       vat:
                         id: 3
                         value: 10
-                        description: ''
+                        description: ""
                       stock: false
-                      description: ''
+                      description: ""
                       not_taxable: false
                   payments_list:
                     - amount: 75
-                      due_date: '2020-08-23'
+                      due_date: "2020-08-23"
                       paid_date: null
                       id: 69078013
                       payment_terms:
@@ -8690,7 +8691,7 @@ components:
                       status: not_paid
                   attachment_url: kdijrnf893hnwkfk45f50f.pdf
                   seen_date: null
-                  next_due_date: '2020-08-23'
+                  next_due_date: "2020-08-23"
                   template:
                     id: 2821
                     name: Light Smoke
@@ -8701,7 +8702,7 @@ components:
                   show_tspay_button: false
                 options:
                   create_from:
-                    - '82112399'
+                    - "82112399"
                   transform: true
                   keep_copy: true
     JoinIssuedDocumentsResponse:
@@ -8716,10 +8717,10 @@ components:
                 data:
                   type: invoice
                   year: 2022
-                  numeration: ''
-                  subject: ''
-                  visible_subject: ''
-                  rc_center: ''
+                  numeration: ""
+                  subject: ""
+                  visible_subject: ""
+                  rc_center: ""
                   ei_cassa_type: null
                   ei_withholding_tax_causal: null
                   ei_other_withholding_tax_type: null
@@ -8747,31 +8748,31 @@ components:
                   show_totals: all
                   show_notification_button: false
                   is_marked: false
-                  created_at: '2022-08-13 09:30:20'
-                  updated_at: '2022-08-23 05:34:20'
+                  created_at: "2022-08-13 09:30:20"
+                  updated_at: "2022-08-23 05:34:20"
                   entity:
                     id: 54321
                     name: Mary Red S.r.L.
                     vat_number: IT05432181211
                     tax_code: IT05432181211
                     address_street: Via Italia, 66
-                    address_postal_code: '20900'
+                    address_postal_code: "20900"
                     address_city: Milano
                     address_province: MI
-                    address_extra: ''
+                    address_extra: ""
                     country: Italia
                     certified_email: mary@pec.red.com
                     ei_code: ABCXCR1
-                  date: '2021-08-20'
+                  date: "2021-08-20"
                   number: 1
                   currency:
                     id: EUR
-                    exchange_rate: '1.00000'
+                    exchange_rate: "1.00000"
                     symbol: €
                   language:
                     code: it
                     name: Italiano
-                  notes: ''
+                  notes: ""
                   rivalsa: 0
                   cassa: 0
                   withholding_tax: 0
@@ -8787,9 +8788,9 @@ components:
                     - product_id: 5432
                       code: SG3
                       name: Soggiorno
-                      measure: ''
+                      measure: ""
                       net_price: 68.18182
-                      category: ''
+                      category: ""
                       id: 277876033
                       gross_price: 75
                       apply_withholding_taxes: true
@@ -8800,13 +8801,13 @@ components:
                       vat:
                         id: 3
                         value: 10
-                        description: ''
+                        description: ""
                       stock: false
-                      description: ''
+                      description: ""
                       not_taxable: false
                   payments_list:
                     - amount: 75
-                      due_date: '2020-08-23'
+                      due_date: "2020-08-23"
                       paid_date: null
                       id: 69078013
                       payment_terms:
@@ -8815,7 +8816,7 @@ components:
                       status: not_paid
                   attachment_url: kdijrnf893hnwkfk45f50f.pdf
                   seen_date: null
-                  next_due_date: '2020-08-23'
+                  next_due_date: "2020-08-23"
                   template:
                     id: 2821
                     name: Light Smoke
@@ -8826,8 +8827,8 @@ components:
                   show_tspay_button: false
                 options:
                   create_from:
-                    - '82112399'
-                    - '82112400'
+                    - "82112399"
+                    - "82112400"
     ListEmailsResponse:
       description: Example response
       content:
@@ -8841,32 +8842,32 @@ components:
                 data:
                   - id: 1
                     status: sent
-                    sent_date: '2022-07-17 13:53:12'
+                    sent_date: "2022-07-17 13:53:12"
                     errors_count: 0
-                    error_log: ''
+                    error_log: ""
                     from_email: test@mail.it
                     from_name: Test mail
                     to_email: mail@test.it
                     to_name: Mario
                     subject: Test
                     content: Test send email
-                    copy_to: ''
+                    copy_to: ""
                     recipient_status: unknown
                     recipient_date: null
                     kind: Fatture
                     attachments: []
                   - id: 2
                     status: sent
-                    sent_date: '2022-07-18 13:53:12'
+                    sent_date: "2022-07-18 13:53:12"
                     errors_count: 0
-                    error_log: ''
+                    error_log: ""
                     from_email: test@mail.it
                     from_name: Test mail
                     to_email: mail@test.it
                     to_name: Maria
                     subject: Test
                     content: Test send email
-                    copy_to: ''
+                    copy_to: ""
                     recipient_status: unknown
                     recipient_date: null
                     kind: Fatture
@@ -8982,12 +8983,12 @@ components:
                   company_subtype: artigiani
                   profession: null
                   regime: forfettario_5
-                  rivalsa_name: ''
+                  rivalsa_name: ""
                   default_rivalsa: 0
-                  cassa_name: ''
+                  cassa_name: ""
                   default_cassa: 0
                   default_cassa_taxable: 100
-                  cassa2_name: ''
+                  cassa2_name: ""
                   default_cassa2: 0
                   default_cassa2_taxable: 0
                   default_withholding_tax: 0
