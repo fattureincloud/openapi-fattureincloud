@@ -10,7 +10,9 @@ import globalAxios from 'axios';
 // URLSearchParams not necessarily used
 // @ts-ignore
 import { URL, URLSearchParams } from 'url';
+{{#multipartFormData}}
 import FormData from 'form-data'
+{{/multipartFormData}}
 {{/withNodeImports}}
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -187,17 +189,17 @@ export const {{classname}}AxiosParamCreator = function (configuration?: Configur
             {{#isArray}}
             if ({{paramName}}) {
             {{#isCollectionFormatMulti}}
-                {{#contentType}}
+              {{#contentType}}
                 localVarFormParams.append('{{baseName}}', new Blob([JSON.stringify({{paramName}})], { type: "{{contentType}}", }));
-                {{/contentType}}
-                {{^contentType}}
+              {{/contentType}}
+              {{^contentType}}
                 {{paramName}}.forEach((element) => {
-                    localVarFormParams.{{#multipartFormData}}append{{/multipartFormData}}{{^multipartFormData}}set{{/multipartFormData}}('{{baseName}}', element as any);
+                    localVarFormParams.{{#multipartFormData}}append{{/multipartFormData}}{{^multipartFormData}}set{{/multipartFormData}}('{{baseName}}{{#useSquareBracketsInArrayNames}}[]{{/useSquareBracketsInArrayNames}}', element as any);
                 })
-                {{/contentType}}
+              {{/contentType}}
             {{/isCollectionFormatMulti}}
             {{^isCollectionFormatMulti}}
-                localVarFormParams.{{#multipartFormData}}append{{/multipartFormData}}{{^multipartFormData}}set{{/multipartFormData}}('{{baseName}}', {{paramName}}.join(COLLECTION_FORMATS.{{collectionFormat}}));
+                localVarFormParams.{{#multipartFormData}}append{{/multipartFormData}}{{^multipartFormData}}set{{/multipartFormData}}('{{baseName}}{{#useSquareBracketsInArrayNames}}[]{{/useSquareBracketsInArrayNames}}', {{paramName}}.join(COLLECTION_FORMATS.{{collectionFormat}}));
             {{/isCollectionFormatMulti}}
             }{{/isArray}}
             {{^isArray}}
@@ -220,7 +222,6 @@ export const {{classname}}AxiosParamCreator = function (configuration?: Configur
             {{#consumes.0}}
             localVarHeaderParameter['Content-Type'] = '{{{mediaType}}}';
             {{/consumes.0}}
-            localVarHeaderParameter['User-Agent'] = 'FattureInCloud/{{{npmVersion}}}/TypeScript-SDK';
 
     {{/bodyParam}}
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -307,7 +308,7 @@ export const {{classname}}Factory = function (configuration?: Configuration, bas
         },
         {{/useSingleRequestParameter}}
         {{^useSingleRequestParameter}}
-        {{nickname}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{#isEnum}}{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{#isNullable}} | null{{/isNullable}}{{/isEnum}}, {{/allParams}}options?: any): AxiosPromise<{{{returnType}}}{{^returnType}}void{{/returnType}}> {
+        {{nickname}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{#isEnum}}{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{#isNullable}} | null{{/isNullable}}{{/isEnum}}, {{/allParams}}options?: RawAxiosRequestConfig): AxiosPromise<{{{returnType}}}{{^returnType}}void{{/returnType}}> {
             return localVarFp.{{nickname}}({{#allParams}}{{paramName}}, {{/allParams}}options).then((request) => request(axios, basePath));
         },
         {{/useSingleRequestParameter}}
@@ -329,15 +330,27 @@ export interface {{classname}}Interface {
      {{#summary}}
      * @summary {{&summary}}
      {{/summary}}
+     {{#useSingleRequestParameter}}
+     {{#allParams.0}}
+     * @param {{=<% %>=}}{<%& classname %><%& operationIdCamelCase %>Request}<%={{ }}=%> requestParameters Request parameters.
+     {{/allParams.0}}
+     {{/useSingleRequestParameter}}
+     {{^useSingleRequestParameter}}
      {{#allParams}}
      * @param {{=<% %>=}}{<%#isEnum%><%&datatypeWithEnum%><%/isEnum%><%^isEnum%><%&dataType%><%#isNullable%> | null<%/isNullable%><%/isEnum%>}<%={{ }}=%> {{^required}}[{{/required}}{{paramName}}{{^required}}]{{/required}} {{description}}
      {{/allParams}}
+     {{/useSingleRequestParameter}}
      * @param {*} [options] Override http request option.{{#isDeprecated}}
      * @deprecated{{/isDeprecated}}
      * @throws {RequiredError}
      * @memberof {{classname}}Interface
      */
+    {{#useSingleRequestParameter}}
+    {{nickname}}({{#allParams.0}}requestParameters{{^hasRequiredParams}}?{{/hasRequiredParams}}: {{classname}}{{operationIdCamelCase}}Request, {{/allParams.0}}options?: RawAxiosRequestConfig): AxiosPromise<{{{returnType}}}{{^returnType}}void{{/returnType}}>;
+    {{/useSingleRequestParameter}}
+    {{^useSingleRequestParameter}}
     {{nickname}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{#isEnum}}{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{#isNullable}} | null{{/isNullable}}{{/isEnum}}, {{/allParams}}options?: RawAxiosRequestConfig): AxiosPromise<{{{returnType}}}{{^returnType}}void{{/returnType}}>;
+    {{/useSingleRequestParameter}}
 
 {{/operation}}
 }
