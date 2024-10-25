@@ -2,13 +2,17 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="./vendor/autoload.php" colors="true" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" stopOnFailure="false" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
   <coverage processUncoveredFiles="true">
     <include>
-      <directory suffix=".php">{{#lambda.forwardslash}}{{apiSrcPath}}{{/lambda.forwardslash}}</directory>
-      <directory suffix=".php">{{#lambda.forwardslash}}{{modelSrcPath}}{{/lambda.forwardslash}}</directory>
+        <directory suffix=".php">{{apiSrcPath}}</directory>
+        <directory suffix=".php">./lib/Filter</directory>
+        <directory suffix=".php">./lib/OAuth2</directory>
+        <directory suffix=".php">{{modelSrcPath}}</directory>
     </include>
   </coverage>
   <testsuites>
     <testsuite name="tests">
       <directory>{{apiTestPath}}</directory>
+      <directory>./test/Filter</directory>
+      <directory>./test/OAuth2</directory>
       <directory>{{modelTestPath}}</directory>
     </testsuite>
   </testsuites>
