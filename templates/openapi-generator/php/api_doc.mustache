@@ -47,8 +47,7 @@ $apiInstance = new {{invokerPackage}}\Api\{{classname}}(
     $config{{/hasAuthMethods}}
 );
 {{^vendorExtensions.x-group-parameters}}
-{{#allParams}}${{paramName}} = {{{example}}}; // {{{dataType}}}{{#description}} | {{{.}}}{{/description}}
-{{/allParams}}{{#servers}}{{#-first}}
+    {{#allParams}}${{paramName}} = {{#isPrimitiveType}}{{{example}}}{{/isPrimitiveType}}{{^isPrimitiveType}}new {{{dataType}}}{{/isPrimitiveType}}; // {{{dataType}}}{{#description}} | {{{.}}}{{/description}}{{/allParams}}{{#servers}}{{#-first}}
 $hostIndex = 0;
 $variables = [{{#variables}}
     '{{{name}}}' => '{{{default}}}{{^default}}YOUR_VALUE{{/default}}',{{/variables}}
