@@ -1,7 +1,6 @@
 # {{packageName}}
 
 [![Packagist](https://img.shields.io/packagist/v/fattureincloud/fattureincloud-php-sdk?color=g)](https://packagist.org/packages/fattureincloud/fattureincloud-php-sdk) ![unit tests](https://github.com/fattureincloud/fattureincloud-php-sdk/actions/workflows/validate.yaml/badge.svg)
-
 {{#appDescriptionWithNewLines}}
 {{{.}}}
 {{/appDescriptionWithNewLines}}
@@ -77,7 +76,7 @@ Class | Method | HTTP request | Description
 
 ## Authorization
 {{^authMethods}}
-All endpoints do not require authorization.
+    All endpoints do not require authorization.
 {{/authMethods}}
 {{#authMethods}}
 {{#last}} Authentication schemes defined for the API:{{/last}}
@@ -98,6 +97,7 @@ All endpoints do not require authorization.
 
 - **Type**: Bearer authentication{{#bearerFormat}} ({{{.}}}){{/bearerFormat}}
 {{/isBasicBearer}}
+
 {{/isBasic}}
 {{#isOAuth}}
 

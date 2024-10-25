@@ -22,11 +22,11 @@ All URIs are relative to {{basePath}}, except if the operation defines another b
 {{#-first}}
     - Variables:
 {{/-first}}
-    - {{{name}}}: {{{description}}}{{^description}} No description provided{{/description}}{{#enumValues}}
+      - {{{name}}}: {{{description}}}{{^description}} No description provided{{/description}}{{#enumValues}}
 {{#-first}}
         - Allowed values:
 {{/-first}}
-        - {{{.}}}{{/enumValues}}{{#defaultValue}}
+          - {{{.}}}{{/enumValues}}{{#defaultValue}}
         - Default value: {{{.}}}
 {{/defaultValue}}{{/variables}}{{/servers}}
 {{{summary}}}{{#notes}}
@@ -47,8 +47,7 @@ $apiInstance = new {{invokerPackage}}\Api\{{classname}}(
     $config{{/hasAuthMethods}}
 );
 {{^vendorExtensions.x-group-parameters}}
-{{#allParams}}${{paramName}} = {{#isPrimitiveType}}{{{example}}}{{/isPrimitiveType}}{{^isPrimitiveType}}new {{{dataType}}}{{/isPrimitiveType}}; // {{{dataType}}}{{#description}} | {{{.}}}{{/description}}
-{{/allParams}}{{#servers}}{{#-first}}
+    {{#allParams}}${{paramName}} = {{#isPrimitiveType}}{{{example}}}{{/isPrimitiveType}}{{^isPrimitiveType}}new {{{dataType}}}{{/isPrimitiveType}}; // {{{dataType}}}{{#description}} | {{{.}}}{{/description}}{{/allParams}}{{#servers}}{{#-first}}
 $hostIndex = 0;
 $variables = [{{#variables}}
     '{{{name}}}' => '{{{default}}}{{^default}}YOUR_VALUE{{/default}}',{{/variables}}
