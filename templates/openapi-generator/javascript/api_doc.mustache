@@ -69,19 +69,19 @@ let opts = {
 {{/-last}}
 {{/optionalParams}}
 {{#usePromises}}
-apiInstance.{{{operationId}}}({{#requiredParams}}{{{paramName}}}{{^-last}}, {{/-last}}{{/requiredParams}}{{#optionalParams}}{{#-last}}{{#hasRequiredParams}}, {{/hasRequiredParams}}opts{{/-last}}{{/optionalParams}}).then(({{#returnType}}data{{/returnType}}) => {
-  {{#returnType}}console.log('API called successfully. Returned data: ' + data);{{/returnType}}{{^returnType}}console.log('API called successfully.');{{/returnType}}
+apiInstance.{{{operationId}}}({{#requiredParams}}{{{paramName}}}{{^-last}}, {{/-last}}{{/requiredParams}}{{#optionalParams}}{{#-last}}{{#hasRequiredParams}}, {{/hasRequiredParams}}opts{{/-last}}{{/optionalParams}}).then(({{#returnType}}result{{/returnType}}) => {
+  {{#returnType}}console.log('API called successfully. Returned result: ' + JSON.stringify(result));{{/returnType}}{{^returnType}}console.log('API called successfully.');{{/returnType}}
 }, (error) => {
   console.error(error);
 });
 
 {{/usePromises}}
 {{^usePromises}}
-apiInstance.{{{operationId}}}({{#requiredParams}}{{{paramName}}}{{^-last}}, {{/-last}}{{/requiredParams}}{{#optionalParams}}{{#-last}}{{#hasRequiredParams}}, {{/hasRequiredParams}}opts{{/-last}}{{/optionalParams}}{{#hasParams}}, {{/hasParams}}(error, data, response) => {
+apiInstance.{{{operationId}}}({{#requiredParams}}{{{paramName}}}{{^-last}}, {{/-last}}{{/requiredParams}}{{#optionalParams}}{{#-last}}{{#hasRequiredParams}}, {{/hasRequiredParams}}opts{{/-last}}{{/optionalParams}}{{#hasParams}}, {{/hasParams}}(error, result, response) => {
   if (error) {
     console.error(error);
   } else {
-    {{#returnType}}console.log('API called successfully. Returned data: ' + data);{{/returnType}}{{^returnType}}console.log('API called successfully.');{{/returnType}}
+    {{#returnType}}console.log('API called successfully. Returned result: ' + JSON.stringify(result));{{/returnType}}{{^returnType}}console.log('API called successfully.');{{/returnType}}
   }
 });
 {{/usePromises}}
