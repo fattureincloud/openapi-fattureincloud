@@ -352,18 +352,8 @@ func (o *{{{classname}}}) UnmarshalJSON(data []byte) (err error) {
 	}
 
 	for _, requiredProperty := range(requiredProperties) {
-		{{#useDefaultValuesForRequiredVars}}
-		if value, exists := allProperties[requiredProperty]; !exists || value == "" {
-			if _, ok := defaultValueFuncMap[requiredProperty]; ok {
-				allProperties[requiredProperty] = defaultValueFuncMap[requiredProperty]()
-				defaultValueApplied = true
-			}
-		}
-		if value, exists := allProperties[requiredProperty]; !exists || value == ""{
-		{{/useDefaultValuesForRequiredVars}}
-		{{^useDefaultValuesForRequiredVars}}
+
 		if _, exists := allProperties[requiredProperty]; !exists {
-		{{/useDefaultValuesForRequiredVars}}
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
 	}
