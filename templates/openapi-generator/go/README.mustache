@@ -27,25 +27,6 @@ Install the following dependencies:
 go get github.com/fattureincloud/fattureincloud-go-sdk/v2
 ```
 
-Note, enum values are always validated and all unused variables are silently ignored.
-
-### URLs Configuration per Operation
-
-Each operation can use different server URL defined using `OperationServers` map in the `Configuration`.
-An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
-Similar rules for overriding default operation server index and variables applies by using `{{packageName}}.ContextOperationServerIndices` and `{{packageName}}.ContextOperationServerVariables` context maps.
-
-```go
-ctx := context.WithValue(context.Background(), {{packageName}}.ContextOperationServerIndices, map[string]int{
-	"{classname}Service.{nickname}": 2,
-})
-ctx = context.WithValue(context.Background(), {{packageName}}.ContextOperationServerVariables, map[string]map[string]string{
-	"{classname}Service.{nickname}": {
-		"port": "8443",
-	},
-})
-```
-
 ## Documentation for API Endpoints
 
 All URIs are relative to *{{basePath}}*
