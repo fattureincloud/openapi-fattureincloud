@@ -2955,7 +2955,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: parameter
+          name: type
           description: Old document type.
         - schema:
             type: integer
@@ -3011,8 +3011,8 @@ paths:
               - quotes
               - work_reports
           in: query
-          name: parameter
-          description: Type of the parameters to be joined
+          name: type
+          description: Type of the documents to be joined
           example: delivery_notes, orders, quotes, work_reports
     parameters:
       - $ref: '#/components/parameters/company_id'
