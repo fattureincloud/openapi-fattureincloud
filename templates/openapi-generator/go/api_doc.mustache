@@ -26,10 +26,10 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
+	"context"
     "encoding/json"
-    "fmt"
-    "os"
+	"fmt"
+	"os"
 {{#vendorExtensions.x-go-import}}
 {{{vendorExtensions.x-go-import}}}
 {{/vendorExtensions.x-go-import}}
@@ -39,7 +39,7 @@ import (
 
 func main() {
     {{#allParams}}
-    {{paramName}} := {{{vendorExtensions.x-go-example}}} // {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+        {{paramName}} := {{{vendorExtensions.x-go-example}}} // {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
     {{/allParams}}
 
     auth := context.WithValue(context.Background(), {{goImportAlias}}api.ContextAccessToken, "ACCESS_TOKEN")
@@ -47,12 +47,12 @@ func main() {
     apiClient := {{goImportAlias}}api.NewAPIClient(configuration)
     resp, r, err := apiClient.{{classname}}.{{operationId}}(auth{{#pathParams}}, {{paramName}}{{/pathParams}}){{#allParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/allParams}}.Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `{{classname}}.{{operationId}}``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    fmt.Fprintf(os.Stderr, "Error when calling `{{classname}}.{{operationId}}``: %v\n", err)
+    fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     {{#returnType}}
-    // response from `{{operationId}}`: {{{.}}}
-    json.NewEncoder(os.Stdout).Encode(resp)
+        // response from `{{operationId}}`: {{{.}}}
+        json.NewEncoder(os.Stdout).Encode(resp)
     {{/returnType}}
 }
 ```

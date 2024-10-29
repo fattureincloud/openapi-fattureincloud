@@ -16,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.1.1
+  version: 2.1.2
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
