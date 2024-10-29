@@ -2955,8 +2955,8 @@ paths:
         - schema:
             type: string
           in: query
-          name: parameter
-          description: Old document type.
+          name: type
+          description: Current document type.
         - schema:
             type: integer
             enum:
@@ -3011,8 +3011,8 @@ paths:
               - quotes
               - work_reports
           in: query
-          name: parameter
-          description: Type of the parameters to be joined
+          name: type
+          description: Type of the documents to be joined
           example: delivery_notes, orders, quotes, work_reports
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -3354,7 +3354,7 @@ components:
                           fic: true
                           dic: true
                           fic_plan: premium_plus
-                          fic_license_expire: '2021-12-31'
+                          fic_license_expire: "2021-12-31"
                           permissions:
                             fic_situation: write
                             fic_clients: write
