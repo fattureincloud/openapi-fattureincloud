@@ -2956,7 +2956,7 @@ paths:
             type: string
           in: query
           name: type
-          description: Old document type.
+          description: Current document type.
         - schema:
             type: integer
             enum:
