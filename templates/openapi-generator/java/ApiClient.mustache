@@ -23,10 +23,6 @@ import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormatter;
 {{/joda}}
-{{#hasOAuthMethods}}
-import org.apache.oltu.oauth2.client.request.OAuthClientRequest.TokenRequestBuilder;
-import org.apache.oltu.oauth2.common.message.types.GrantType;
-{{/hasOAuthMethods}}
 
 import javax.net.ssl.*;
 import java.io.File;
@@ -165,82 +161,7 @@ public class ApiClient {
         authentications = Collections.unmodifiableMap(authentications);
     }
 
-    {{#hasOAuthMethods}}
-    {{#oauthMethods}}
-    {{#-first}}
-    /**
-     * Constructor for ApiClient to support access token retry on 401/403 configured with client ID
-     *
-     * @param clientId client ID
-     */
-    public ApiClient(String clientId) {
-        this(clientId, null, null);
-    }
 
-    /**
-     * Constructor for ApiClient to support access token retry on 401/403 configured with client ID and additional parameters
-     *
-     * @param clientId client ID
-     * @param parameters a {@link java.util.Map} of parameters
-     */
-    public ApiClient(String clientId, Map<String, String> parameters) {
-        this(clientId, null, parameters);
-    }
-
-    /**
-     * Constructor for ApiClient to support access token retry on 401/403 configured with client ID, secret, and additional parameters
-     *
-     * @param clientId client ID
-     * @param clientSecret client secret
-     * @param parameters a {@link java.util.Map} of parameters
-     */
-    public ApiClient(String clientId, String clientSecret, Map<String, String> parameters) {
-        this(null, clientId, clientSecret, parameters);
-    }
-
-    /**
-     * Constructor for ApiClient to support access token retry on 401/403 configured with base path, client ID, secret, and additional parameters
-     *
-     * @param basePath base path
-     * @param clientId client ID
-     * @param clientSecret client secret
-     * @param parameters a {@link java.util.Map} of parameters
-     */
-    public ApiClient(String basePath, String clientId, String clientSecret, Map<String, String> parameters) {
-        init();
-        if (basePath != null) {
-            this.basePath = basePath;
-        }
-
-        String tokenUrl = "{{{tokenUrl}}}";
-        if (!"".equals(tokenUrl) && !URI.create(tokenUrl).isAbsolute()) {
-            URI uri = URI.create(getBasePath());
-            tokenUrl = uri.getScheme() + ":" +
-                (uri.getAuthority() != null ? "//" + uri.getAuthority() : "") +
-                tokenUrl;
-            if (!URI.create(tokenUrl).isAbsolute()) {
-                throw new IllegalArgumentException("OAuth2 token URL must be an absolute URL");
-            }
-        }
-        RetryingOAuth retryingOAuth = new RetryingOAuth(tokenUrl, clientId, OAuthFlow.{{#lambda.uppercase}}{{#lambda.snakecase}}{{flow}}{{/lambda.snakecase}}{{/lambda.uppercase}}, clientSecret, parameters);
-        authentications.put(
-                "{{name}}",
-                retryingOAuth
-        );
-        initHttpClient(Collections.<Interceptor>singletonList(retryingOAuth));
-        // Setup authentications (key: authentication name, value: authentication).{{#authMethods}}{{#isBasic}}{{#isBasicBasic}}
-        authentications.put("{{name}}", new HttpBasicAuth());{{/isBasicBasic}}{{#isBasicBearer}}
-        authentications.put("{{name}}", new HttpBearerAuth("{{scheme}}"));{{/isBasicBearer}}{{/isBasic}}{{#isApiKey}}
-        authentications.put("{{name}}", new ApiKeyAuth({{#isKeyInHeader}}"header"{{/isKeyInHeader}}{{#isKeyInQuery}}"query"{{/isKeyInQuery}}{{#isKeyInCookie}}"cookie"{{/isKeyInCookie}}, "{{keyParamName}}"));{{/isApiKey}}{{/authMethods}}{{#withAWSV4Signature}}
-        authentications.put("AWS4Auth", new AWS4Auth());{{/withAWSV4Signature}}
-
-        // Prevent the authentications from being modified.
-        authentications = Collections.unmodifiableMap(authentications);
-    }
-
-    {{/-first}}
-    {{/oauthMethods}}
-    {{/hasOAuthMethods}}
     private void initHttpClient() {
         initHttpClient(Collections.<Interceptor>emptyList());
     }
@@ -554,66 +475,6 @@ public class ApiClient {
     {{/hasHttpBearerMethods}}
 
     /**
-     * Helper method to set username for the first HTTP basic authentication.
-     *
-     * @param username Username
-     */
-    public void setUsername(String username) {
-        for (Authentication auth : authentications.values()) {
-            if (auth instanceof HttpBasicAuth) {
-                ((HttpBasicAuth) auth).setUsername(username);
-                return;
-            }
-        }
-        throw new RuntimeException("No HTTP basic authentication configured!");
-    }
-
-    /**
-     * Helper method to set password for the first HTTP basic authentication.
-     *
-     * @param password Password
-     */
-    public void setPassword(String password) {
-        for (Authentication auth : authentications.values()) {
-            if (auth instanceof HttpBasicAuth) {
-                ((HttpBasicAuth) auth).setPassword(password);
-                return;
-            }
-        }
-        throw new RuntimeException("No HTTP basic authentication configured!");
-    }
-
-    /**
-     * Helper method to set API key value for the first API key authentication.
-     *
-     * @param apiKey API key
-     */
-    public void setApiKey(String apiKey) {
-        for (Authentication auth : authentications.values()) {
-            if (auth instanceof ApiKeyAuth) {
-                ((ApiKeyAuth) auth).setApiKey(apiKey);
-                return;
-            }
-        }
-        throw new RuntimeException("No API key authentication configured!");
-    }
-
-    /**
-     * Helper method to set API key prefix for the first API key authentication.
-     *
-     * @param apiKeyPrefix API key prefix
-     */
-    public void setApiKeyPrefix(String apiKeyPrefix) {
-        for (Authentication auth : authentications.values()) {
-            if (auth instanceof ApiKeyAuth) {
-                ((ApiKeyAuth) auth).setApiKeyPrefix(apiKeyPrefix);
-                return;
-            }
-        }
-        throw new RuntimeException("No API key authentication configured!");
-    }
-
-    /**
      * Helper method to set access token for the first OAuth2 authentication.
      *
      * @param accessToken Access token
@@ -643,29 +504,6 @@ public class ApiClient {
         for (Authentication auth : authentications.values()) {
             if (auth instanceof AWS4Auth) {
                 ((AWS4Auth) auth).setCredentials(accessKey, secretKey);
-                ((AWS4Auth) auth).setRegion(region);
-                ((AWS4Auth) auth).setService(service);
-                return;
-            }
-        }
-        {{/withAWSV4Signature}}
-        throw new RuntimeException("No AWS4 authentication configured!");
-    }
-
-    /**
-     * Helper method to set credentials for AWSV4 Signature
-     *
-     * @param accessKey Access Key
-     * @param secretKey Secret Key
-     * @param sessionToken Session Token
-     * @param region Region
-     * @param service Service to access to
-     */
-    public void setAWS4Configuration(String accessKey, String secretKey, String sessionToken, String region, String service) {
-        {{#withAWSV4Signature}}
-        for (Authentication auth : authentications.values()) {
-            if (auth instanceof AWS4Auth) {
-                ((AWS4Auth) auth).setCredentials(accessKey, secretKey, sessionToken);
                 ((AWS4Auth) auth).setRegion(region);
                 ((AWS4Auth) auth).setService(service);
                 return;
@@ -830,23 +668,6 @@ public class ApiClient {
         httpClient = httpClient.newBuilder().writeTimeout(writeTimeout, TimeUnit.MILLISECONDS).build();
         return this;
     }
-
-    {{#hasOAuthMethods}}
-    /**
-     * Helper method to configure the token endpoint of the first oauth found in the apiAuthorizations (there should be only one)
-     *
-     * @return Token request builder
-     */
-    public TokenRequestBuilder getTokenEndPoint() {
-        for (Authentication apiAuth : authentications.values()) {
-            if (apiAuth instanceof RetryingOAuth) {
-                RetryingOAuth retryingOAuth = (RetryingOAuth) apiAuth;
-                return retryingOAuth.getTokenRequestBuilder();
-            }
-        }
-        return null;
-    }
-    {{/hasOAuthMethods}}
 
     /**
      * Format the given parameter object into string.
