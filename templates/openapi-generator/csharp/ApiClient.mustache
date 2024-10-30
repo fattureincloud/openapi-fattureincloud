@@ -14,14 +14,15 @@ using System.Text;
 using System.Threading;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-{{^netStandard}}
+{{^net60OrLater}}
 using System.Web;
-{{/netStandard}}
+{{/net60OrLater}}
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using RestSharp;
 using RestSharp.Serializers;
 using RestSharpMethod = RestSharp.Method;
+using FileIO = System.IO.File;
 {{#supportsRetry}}
 using Polly;
 {{/supportsRetry}}
@@ -113,7 +114,7 @@ namespace {{packageName}}.Client
                         if (match.Success)
                         {
                             string fileName = filePath + ClientUtils.SanitizeFilename(match.Groups[1].Value.Replace("\"", "").Replace("'", ""));
-                            File.WriteAllBytes(fileName, bytes);
+                            FileIO.WriteAllBytes(fileName, bytes);
                             return new FileStream(fileName, FileMode.Open);
                         }
                     }
@@ -146,13 +147,13 @@ namespace {{packageName}}.Client
         public ISerializer Serializer => this;
         public IDeserializer Deserializer => this;
 
-        public string[] AcceptedContentTypes => RestSharp.ContentType.JsonAccept;
+        public string[] AcceptedContentTypes => ContentType.JsonAccept;
 
         public SupportsContentType SupportsContentType => contentType =>
             contentType.Value.EndsWith("json", StringComparison.InvariantCultureIgnoreCase) ||
             contentType.Value.EndsWith("javascript", StringComparison.InvariantCultureIgnoreCase);
 
-        public ContentType ContentType { get; set; } = RestSharp.ContentType.Json;
+        public ContentType ContentType { get; set; } = ContentType.Json;
 
         public DataFormat DataFormat => DataFormat.Json;
     }
@@ -200,7 +201,7 @@ namespace {{packageName}}.Client
         /// </summary>
         public ApiClient()
         {
-            _baseUrl = {{packageName}}.Client.GlobalConfiguration.Instance.BasePath;
+            _baseUrl = GlobalConfiguration.Instance.BasePath;
         }
 
         /// <summary>
@@ -257,14 +258,14 @@ namespace {{packageName}}.Client
 
         /// <summary>
         /// Provides all logic for constructing a new RestSharp <see cref="RestRequest"/>.
-        /// At this point, all information for querying the service is known. Here, it is simply
-        /// mapped into the RestSharp request.
+        /// At this point, all information for querying the service is known.
+        /// Here, it is simply mapped into the RestSharp request.
         /// </summary>
         /// <param name="method">The http verb.</param>
         /// <param name="path">The target path (or resource).</param>
         /// <param name="options">The additional request options.</param>
-        /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
-        /// GlobalConfiguration has been done before calling this method.</param>
+        /// <param name="configuration">A per-request configuration object.
+        /// It is assumed that any merge with GlobalConfiguration has been done before calling this method.</param>
         /// <returns>[private] A new RestRequest instance.</returns>
         /// <exception cref="ArgumentNullException"></exception>
         private RestRequest NewRequest(
@@ -383,6 +384,13 @@ namespace {{packageName}}.Client
             return request;
         }
 
+        /// <summary>
+        /// Transforms a RestResponse instance into a new ApiResponse instance.
+        /// At this point, we have a concrete http response from the service.
+        /// Here, it is simply mapped into the [public] ApiResponse object.
+        /// </summary>
+        /// <param name="response">The RestSharp response object</param>
+        /// <returns>A new ApiResponse instance.</returns>
         private ApiResponse<T> ToApiResponse<T>(RestResponse<T> response)
         {
             T result = response.Data;
