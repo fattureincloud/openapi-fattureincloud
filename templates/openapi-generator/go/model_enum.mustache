@@ -7,17 +7,17 @@ var {{{classname}}}s = struct {
 	{{#enumVars}}
 	{{^-first}}
 	{{/-first}}
-    {{name}} {{{classname}}}
+	{{name}} {{{classname}}}
 	{{/enumVars}}
 	{{/allowableValues}}
 } {
-    {{#allowableValues}}
-        {{#enumVars}}
-            {{^-first}}
-            {{/-first}}
-            {{name}}: {{{value}}},
-        {{/enumVars}}
-    {{/allowableValues}}
+	{{#allowableValues}}
+		{{#enumVars}}
+			{{^-first}}
+			{{/-first}}
+			{{name}}: {{{value}}},
+		{{/enumVars}}
+	{{/allowableValues}}
 }
 
 // All allowed values of {{{classname}}} enum
