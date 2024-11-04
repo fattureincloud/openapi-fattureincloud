@@ -12,11 +12,11 @@ var {{{classname}}}s = struct {
 	{{/allowableValues}}
 } {
 	{{#allowableValues}}
-		{{#enumVars}}
-			{{^-first}}
-			{{/-first}}
-			{{name}}: {{{value}}},
-		{{/enumVars}}
+	{{#enumVars}}
+	{{^-first}}
+	{{/-first}}
+	{{name}}: {{{value}}},
+	{{/enumVars}}
 	{{/allowableValues}}
 }
 
