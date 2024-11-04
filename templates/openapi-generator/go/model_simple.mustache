@@ -232,7 +232,7 @@ func (o *{{classname}}) Set{{name}}(v {{vendorExtensions.x-go-base-type}}) *{{cl
 {{^isNullable}}
 	o.{{name}} = {{^isArray}}{{^isFreeFormObject}}&{{/isFreeFormObject}}{{/isArray}}v
 {{/isNullable}}
-		return o
+	return o
 }
 {{#isNullable}}
 {{^vendorExtensions.x-golang-is-container}}
