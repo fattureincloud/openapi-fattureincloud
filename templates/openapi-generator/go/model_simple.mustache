@@ -150,7 +150,7 @@ func (o *{{classname}}) Set{{name}}(v {{vendorExtensions.x-go-base-type}}) *{{cl
 {{^isNullable}}
 	o.{{name}} = v
 {{/isNullable}}
-        return o
+		return o
 }
 
 {{/required}}
@@ -232,14 +232,14 @@ func (o *{{classname}}) Set{{name}}(v {{vendorExtensions.x-go-base-type}}) *{{cl
 {{^isNullable}}
 	o.{{name}} = {{^isArray}}{{^isFreeFormObject}}&{{/isFreeFormObject}}{{/isArray}}v
 {{/isNullable}}
-        return o
+		return o
 }
 {{#isNullable}}
 {{^vendorExtensions.x-golang-is-container}}
 // Set{{name}}Nil sets the value for {{name}} to be an explicit nil
 func (o *{{classname}}) Set{{name}}Nil() *{{classname}} {
 	o.{{name}}.Set(nil)
-    return o
+	return o
 }
 
 // Unset{{name}} ensures that no value is present for {{name}}, not even an explicit nil
@@ -372,8 +372,8 @@ func (o *{{{classname}}}) UnmarshalJSON(data []byte) (err error) {
 	{{#deprecated}}
 		// Deprecated
 	{{/deprecated}}
-            {{name}} {{^required}}{{^isNullable}}{{^isArray}}{{^isFreeFormObject}}*{{/isFreeFormObject}}{{/isArray}}{{/isNullable}}{{/required}}{{{dataType}}} `json:"{{{baseName}}}{{^required}},omitempty{{/required}}"{{#withXml}} xml:"{{{baseName}}}{{#isXmlAttribute}},attr{{/isXmlAttribute}}"{{/withXml}}{{#vendorExtensions.x-go-custom-tag}} {{{.}}}{{/vendorExtensions.x-go-custom-tag}}`
-    {{/vars}}
+			{{name}} {{^required}}{{^isNullable}}{{^isArray}}{{^isFreeFormObject}}*{{/isFreeFormObject}}{{/isArray}}{{/isNullable}}{{/required}}{{{dataType}}} `json:"{{{baseName}}}{{^required}},omitempty{{/required}}"{{#withXml}} xml:"{{{baseName}}}{{#isXmlAttribute}},attr{{/isXmlAttribute}}"{{/withXml}}{{#vendorExtensions.x-go-custom-tag}} {{{.}}}{{/vendorExtensions.x-go-custom-tag}}`
+	{{/vars}}
 	}
 
 	var{{{classname}}}WithoutEmbeddedStruct := {{{classname}}}WithoutEmbeddedStruct{}
