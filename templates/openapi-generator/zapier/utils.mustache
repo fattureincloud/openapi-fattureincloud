@@ -15,7 +15,7 @@ const buildKeyAndLabel = (prefix, isInput = true, isArrayChild = false) => {
     const labelPrefix = !_.isEmpty(keyPrefix) ? keyPrefix.replaceAll('__', '.') : ''
     return {
         keyPrefix: keyPrefix,
-        labelPrefix:labelPrefix,
+        labelPrefix: labelPrefix,
     }
 }
 const isSearchAction = (key) => {
@@ -36,6 +36,37 @@ const searchMiddleware = (action) => {
     action.operation.perform = async(z, bundle) => oldFunc(z, bundle).then((response) => response.data)
     return action
 }
+
+const isCreateAction = (key) => {
+    // TODO: return true if the key is a "create" action for your API
+    return !isSearchAction(key);
+}
+
+const isTrigger = (key) => {
+    // TODO: custom logic
+    return false
+}
+
+const triggerMiddleware = (action) => {
+    return action
+}
+
+const requestOptionsMiddleware = (z, bundle, requestOptions) => {
+  requestOptions.headers['Authorization'] = `Bearer ${bundle.authData.access_token}`
+  return requestOptions
+}
+
+const responseOptionsMiddleware = (z, bundle, key, json) => {
+  // TODO: modify if your response needs to be transformed before returning the
+  //      data to Zapier. For example, you may need to map an id field to the
+  //      "id" field. For example, map "contactId": 1 to "id": 1. Or wrap your
+  //      response in a json object. For example, { data: response }.
+  //
+  //      Note that if the type being returned from the endpoint is a primitive
+  //      type, the response is automatically wrapped like this: { data: response }.
+  return json
+}
+
 const extractResourceAndOperation = (eventType) => ({
     resource: eventType.substring('it.fattureincloud.webhooks.'.length, eventType.lastIndexOf('.')),
     eventOperation: eventType.substring(eventType.lastIndexOf('.') + 1)
@@ -80,6 +111,11 @@ module.exports = {
     hasSearchRequisites: hasSearchRequisites,
     isSearchAction: isSearchAction,
     searchMiddleware: searchMiddleware,
+    requestOptionsMiddleware: requestOptionsMiddleware,
+    responseOptionsMiddleware: responseOptionsMiddleware,
+    isTrigger: isTrigger,
+    triggerMiddleware: triggerMiddleware,
+    isCreateAction: isCreateAction,
     extractResourceAndOperation: extractResourceAndOperation,
     retrieveResourceOperations: retrieveResourceOperations,
     overrideUserAgent: overrideUserAgent,
