@@ -3028,6 +3028,13 @@ paths:
           $ref: '#/components/responses/ListEmailsResponse'
       operationId: listEmails
       description: List Emails.
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/per_page'
+        - $ref: '#/components/parameters/q'
       security:
         - OAuth2AuthenticationCodeFlow: []
   /c/{company_id}/subscriptions:
