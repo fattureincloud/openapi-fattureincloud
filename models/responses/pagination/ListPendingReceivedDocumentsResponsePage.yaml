@@ -1,0 +1,8 @@
+title: ListPendingReceivedDocumentsResponsePage
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: ../../schemas/PendingReceivedDocument.yaml
+    nullable: true

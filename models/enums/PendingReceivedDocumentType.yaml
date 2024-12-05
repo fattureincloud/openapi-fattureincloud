@@ -1,0 +1,6 @@
+title: PendingReceivedDocumentType
+type: string
+default: agyo
+enum:
+  - agyo
+description: Pending received document type
