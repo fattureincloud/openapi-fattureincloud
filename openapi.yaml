@@ -710,6 +710,7 @@ paths:
                         status: not_paid
                     payment_method:
                       id: 4
+                    price_list_id: '10'
         description: The Issued Document
   /c/{company_id}/issued_documents/{document_id}:
     parameters:
@@ -3828,6 +3829,7 @@ components:
                     value: 45
                     description: ''
                     is_disabled: false
+                  price_list_id: '10'
     GetSupplierResponse:
       description: Example response
       content:
@@ -4355,6 +4357,7 @@ components:
                   locked: false
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
+                  price_list_id: '10'
     ModifyIssuedDocumentResponse:
       description: Document edited
       content:
@@ -6299,6 +6302,15 @@ components:
                     RT05: Contributo ENPAM
                     RT06: Altro contributo previdenziale
                   use_e_invoice: true
+                  price_lists:
+                    - id: '10'
+                      name: Listino 1
+                      prices_type: net
+                      is_default: true
+                      is_archived: false
+                      valid_from: '2021-08-01'
+                      valid_to: '2025-09-10'
+                      type: 'sell'
     GetEmailDataResponse:
       description: EmailData
       content:
