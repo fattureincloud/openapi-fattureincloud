@@ -21,3 +21,10 @@ properties:
       $ref: ../enums/EventType.yaml
   config:
     $ref: ./WebhooksSubscriptionConfig.yaml
+   verification_method:
+    type: string
+    nullable: true
+    description: Verification method for the webhooks subscription.
+    enum:
+      - header
+      - query
