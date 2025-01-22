@@ -19870,7 +19870,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"sink\": \"<string>\",\n    \"verified\": \"<boolean>\",\n    \"types\": [\n      \"it.fattureincloud.webhooks.issued_documents.quotes.create\",\n      \"it.fattureincloud.webhooks.issued_documents.invoices.delete\"\n    ],\n    \"config\": {\n      \"mapping\": \"binary\"\n    },\n    \"verification_method\": \"header\"\n  }\n}",
+                            "raw": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"sink\": \"<string>\",\n    \"verified\": \"<boolean>\",\n    \"types\": [\n      \"it.fattureincloud.webhooks.issued_documents.quotes.create\",\n      \"it.fattureincloud.webhooks.issued_documents.invoices.delete\"\n    ],\n    \"config\": {\n      \"mapping\": \"binary\"\n    }\n  }\n}",
                             "options": {
                                 "raw": {
                                     "headerFamily": "json",

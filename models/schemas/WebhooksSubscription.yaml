@@ -22,9 +22,5 @@ properties:
   config:
     $ref: ./WebhooksSubscriptionConfig.yaml
   verification_method:
-    type: string
-    nullable: true
-    description: Verification method for the webhooks subscription.
-    enum:
-      - header
-      - query
+    $ref: ../enums/WebhooksSubscriptionVerificationMethod.yaml
+   

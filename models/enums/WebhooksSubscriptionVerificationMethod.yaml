@@ -1,0 +1,6 @@
+title: WebhooksSubscriptionVerificationMethod
+type: string
+description: Webhooks Subscription verification method
+enum:
+  - header
+  - query
