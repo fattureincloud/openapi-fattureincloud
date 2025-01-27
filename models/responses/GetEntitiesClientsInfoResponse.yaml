@@ -1,0 +1,5 @@
+title: GetIssuedDocumentPreCreateInfoResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/EntitiesClientsInfo.yaml

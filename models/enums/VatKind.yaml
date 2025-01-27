@@ -1,10 +1,11 @@
 title: VatKind
 type: string
 nullable: true
-description: Vat kind [esigibilità IVA]
+description: 'Vat kind [esigibilità IVA]'
 default: null
 enum:
   - null
   - I
   - D
   - S
+x-internal: false
