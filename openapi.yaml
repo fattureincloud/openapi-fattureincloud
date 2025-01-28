@@ -138,7 +138,7 @@ paths:
       operationId: createClient
       responses:
         '200':
-          $ref: '#/components/responses/GetUserInfoResponse'
+          $ref: '#/components/responses/CreateClientResponse'
       description: Creates a new client.
       security:
         - OAuth2AuthenticationCodeFlow:
