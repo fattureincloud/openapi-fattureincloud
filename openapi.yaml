@@ -3129,7 +3129,7 @@ paths:
           description: Unauthorized
         '404':
           description: Not Found
-      operationId: getClientInfo
+      operationId: getPriceLists
       security:
         - OAuth2AuthenticationCodeFlow: []
       description: Retrieves all price lists of the company
@@ -3159,7 +3159,7 @@ paths:
           description: Unauthorized
         '404':
           description: Not Found
-      operationId: getClientInfo
+      operationId: getPriceListItems
       security:
         - OAuth2AuthenticationCodeFlow: []
       description: Retrieves all the Items of a PriceList
