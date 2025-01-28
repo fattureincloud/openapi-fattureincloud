@@ -4841,7 +4841,7 @@ components:
                     - Macedonia del Nord
                     - Madagascar
                     - Malawi
-                    - Malayprsia
+                    - Malaysia
                     - Maldive
                     - Mali
                     - Malta
@@ -9202,4 +9202,3 @@ components:
                     price: 5
 security:
   - OAuth2AuthenticationCodeFlow: []
-x-internal: false

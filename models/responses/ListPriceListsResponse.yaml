@@ -1,13 +1,7 @@
 title: ListPriceListsResponse
-x-stoplight:
-  id: g3kx1zutlyruc
 type: object
 properties:
   data:
     type: array
-    x-stoplight:
-      id: j36y7n30stkpb
     items:
       $ref: ../schemas/PriceList.yaml
-      x-stoplight:
-        id: wnforzbhkwki9

@@ -1,4 +1,4 @@
-title: NumerationItem
+title: PriceListItem
 type: object
 properties:
   price:
