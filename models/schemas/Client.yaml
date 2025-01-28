@@ -41,7 +41,7 @@ properties:
     nullable: true
   address_street:
     type: string
-    example: 'Via dei tigli, 12'
+    example: Via dei tigli, 12
     description: Client address street
     nullable: true
   address_postal_code:

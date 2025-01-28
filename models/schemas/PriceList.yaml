@@ -18,7 +18,7 @@ properties:
     nullable: true
   valid_from:
     type: string
-    description: Price list start validity date 
+    description: Price list start validity date
     nullable: true
   valid_to:
     type: string
