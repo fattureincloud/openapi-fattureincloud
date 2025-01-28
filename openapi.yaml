@@ -294,7 +294,7 @@ paths:
         - Clients
       responses:
         '200':
-          $ref: '#/components/responses/GetEntitiesClientsInfoResponse'
+          $ref: '#/components/responses/GetEntityClientsInfoResponse'
         '401':
           description: Unauthorized
         '404':
