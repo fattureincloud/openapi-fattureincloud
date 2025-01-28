@@ -1,4 +1,4 @@
-title: GetIssuedDocumentPreCreateInfoResponse
+title: GetEntitiesClientsInfoResponse
 type: object
 properties:
   data:
