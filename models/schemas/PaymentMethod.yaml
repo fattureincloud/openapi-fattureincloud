@@ -40,3 +40,4 @@ properties:
     type: string
     description: E-invoice payment method
     nullable: true
+description: ''

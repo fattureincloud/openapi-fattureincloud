@@ -502,6 +502,10 @@ properties:
       - manual_accepted
       - manual_rejected
     nullable: true
+  price_list_id:
+    type: string
+    description: Price list id
+    nullable: true
   locked:
     type: boolean
     nullable: true

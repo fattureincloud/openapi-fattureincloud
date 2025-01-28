@@ -1,0 +1,6 @@
+title: PriceListType
+type: string
+enum:
+  - sell
+  - purchase
+description: Price list types

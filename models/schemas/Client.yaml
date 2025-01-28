@@ -126,14 +126,14 @@ properties:
     type: boolean
     description: Use e-invoices for this entity
     nullable: true
+  discount_highlight:
+    type: boolean
+    description: Highlight Discount
+    nullable: true
   ei_code:
     type: string
     description: |
       Client e-invoice code
-    nullable: true
-  discount_highlight:
-    type: boolean
-    description: Highlight Discount
     nullable: true
   default_discount:
     type: number
@@ -151,6 +151,10 @@ properties:
     type: string
     format: date
     description: Client intent declaration protocol date
+    nullable: true
+  price_list_id:
+    type: string
+    description: Price list id
     nullable: true
   created_at:
     type: string

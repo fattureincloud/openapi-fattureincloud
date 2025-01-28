@@ -1,0 +1,5 @@
+title: GetPriceListItemsResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/PriceListItemsList.yaml
