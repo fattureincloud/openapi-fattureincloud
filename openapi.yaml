@@ -3118,6 +3118,26 @@ paths:
       description: Delete a webhooks subscription.
       security:
         - OAuth2AuthenticationCodeFlow: []
+  /c/{company_id}/subscriptions/{subscription_id}/verify:
+    parameters:
+      - $ref: "#/components/parameters/company_id"
+      - $ref: "#/components/parameters/subscription_id"
+    post:
+      summary: Verify Webhooks Subscription
+      tags:
+        - Webhooks
+      responses:
+        "200":
+          description: OK
+      operationId: verifyWebhooksSubscription
+      description: Verify a webhook subscription.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/requests/VerifyWebhooksSubscriptionRequest.yaml
 components:
   schemas: {}
   securitySchemes:
