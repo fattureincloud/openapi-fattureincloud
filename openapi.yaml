@@ -3068,6 +3068,7 @@ paths:
                     types:
                       - it.fattureincloud.webhooks.entities.create
                       - it.fattureincloud.webhooks.issued_documents.create
+                    verification_method: header
         description: ''
       description: Register some webhooks Subscriptions.
       security:
@@ -3181,10 +3182,13 @@ components:
             stock:a: Write permission to the Stock movements
             receipts:r: Read permission to the Receipts
             receipts:a: Write permission to the Receipts
+            calendar:r: Read permission to the Calendar
+            calendar:a: Write permission to the Calendar
             taxes:r: Read permission to the Taxes
             taxes:a: Write permission to the Taxes
             archive:r: Read permission to the Archive Documents
             archive:a: Read permission to the Archive Documents
+            emails:r: Read permission to the Emails
             cashbook:r: Read permission to the Cashbook
             cashbook:a: Write permission to the Cashbook
             settings:r: Read permission to the Settings
