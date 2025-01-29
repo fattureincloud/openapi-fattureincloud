@@ -3061,6 +3061,7 @@ paths:
                     types:
                       - it.fattureincloud.webhooks.entities.create
                       - it.fattureincloud.webhooks.issued_documents.create
+                    verification_method: header
         description: ''
       description: Register some webhooks Subscriptions.
       security:
