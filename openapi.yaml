@@ -28,7 +28,7 @@ tags:
   - name: Issued Documents
   - name: Issued e-invoices
   - name: Products
-  - name: Price Lists
+  - name: PriceLists
   - name: Receipts
   - name: Received Documents
   - name: Suppliers
@@ -3147,7 +3147,7 @@ paths:
     get:
       summary: Get PriceLists
       tags:
-        - Clients
+        - PriceLists
       responses:
         '200':
           $ref: '#/components/responses/ListPriceList'
@@ -3177,7 +3177,7 @@ paths:
     get:
       summary: Get PriceList Items List
       tags:
-        - Clients
+        - PriceLists
       responses:
         '200':
           $ref: '#/components/responses/GetPriceListItems'
