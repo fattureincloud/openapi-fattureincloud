@@ -1,0 +1,13 @@
+title: ListBinIssuedDocuments
+x-stoplight:
+  id: 2r8umuov41nao
+type: object
+properties:
+  data:
+    type: array
+    x-stoplight:
+      id: np7bbr8yv0l13
+    items:
+      $ref: ../schemas/IssuedDocument.yaml
+      x-stoplight:
+        id: e37p35isxgdcv
