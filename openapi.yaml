@@ -17,6 +17,7 @@ servers:
   - url: 'https://api-v2.fattureincloud.it'
 tags:
   - name: Archive
+  - name: Bin
   - name: Cashbook
   - name: Clients
   - name: Companies
@@ -3172,6 +3173,15 @@ paths:
         name: document_id
         in: path
         required: true
+    delete:
+      summary: ''
+      operationId: DeleteBinIssuedDocument
+      responses:
+        '200':
+          description: OK
+      description: Delete Bin Issued Document
+      tags:
+        - Bin
 components:
   schemas: {}
   securitySchemes:
