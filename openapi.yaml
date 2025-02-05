@@ -3182,6 +3182,29 @@ paths:
       description: Delete Bin Issued Document
       tags:
         - Bin
+  '/c/{company_id}/bin/issued_documents/{document_id}/recover':
+    parameters:
+      - name: company_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          example: '12345'
+        description: The ID of the company.
+      - schema:
+          type: string
+        name: document_id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: RecoverBinIssuedDocument
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Bin
+      description: Recover Issued Document From The Bin
 components:
   schemas: {}
   securitySchemes:
