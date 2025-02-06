@@ -3232,7 +3232,7 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetBinIssuedDocumentResponse'
-      operationId: GetBinIssuedDocument
+      operationId: GetBinReceivedDocument
       description: Get bin issued documents detail
       security:
         - OAuth2AuthenticationCodeFlow: []
@@ -3254,7 +3254,7 @@ paths:
         required: true
     delete:
       summary: ''
-      operationId: DeleteBinIssuedDocument
+      operationId: DeleteBinReceivedDocument
       responses:
         '200':
           description: OK
