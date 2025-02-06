@@ -1,4 +1,4 @@
-title: GetBinIssuedDocumentResponse
+title: GetBinReceivedDocumentResponse
 type: object
 properties:
   data:
