@@ -3226,6 +3226,41 @@ paths:
           type: integer
           example: '12345'
         description: The ID of the company.
+  '/c/{company_id}/bin/received_documents/{document_id}':
+    get:
+      summary: Get Bin Received Documents List
+      responses:
+        '200':
+          $ref: '#/components/responses/GetBinIssuedDocumentResponse'
+      operationId: GetBinIssuedDocument
+      description: Get bin issued documents detail
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      parameters: []
+      tags:
+        - Bin
+    parameters:
+      - name: company_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          example: '12345'
+        description: The ID of the company.
+      - schema:
+          type: string
+        name: document_id
+        in: path
+        required: true
+    delete:
+      summary: ''
+      operationId: DeleteBinIssuedDocument
+      responses:
+        '200':
+          description: OK
+      description: Delete Bin Issued Document
+      tags:
+        - Bin
 components:
   schemas: {}
   securitySchemes:
