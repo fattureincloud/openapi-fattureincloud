@@ -14,15 +14,21 @@ switch (command) {
 
   case 'all':
     var options = {}
-    glob("**/*.yaml", options, function (er, files) {
-      // files is an array of filenames.
-      // If the `nonull` option is set, and nothing
-      // was found, then files is ["**/*.yaml"]
-      // er is an error object or null.
-      files.forEach(function(filePath){
-        formatFile(filePath)
-      })
-    })
+    console.log('files')
+
+    const files = glob("**/*.yaml").then(
+        files =>
+            // files is an array of filenames.
+            // If the `nonull` option is set, and nothing
+            // was found, then files is ["**/*.yaml"]
+            // er is an error object or null.
+            files.forEach(function(filePath){
+              formatFile(filePath)
+            })
+    )
+
+
+
     break
   default:
     console.err("Unrecognised command: " + command)
