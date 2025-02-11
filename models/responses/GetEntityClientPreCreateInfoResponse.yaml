@@ -1,0 +1,5 @@
+title: GetEntityClientPreCreateInfoResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/EntityClientPreCreateInfo.yaml

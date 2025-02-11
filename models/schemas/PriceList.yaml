@@ -18,11 +18,11 @@ properties:
     nullable: true
   valid_from:
     type: string
-    description: Price list start validity date
+    description: Price list validity start date
     nullable: true
   valid_to:
     type: string
     nullable: true
-    description: Price list end validity date
+    description: Price list validity end date
   type:
     $ref: ../enums/PriceListType.yaml

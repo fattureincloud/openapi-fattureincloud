@@ -1,5 +1,0 @@
-title: GetEntitiesClientsInfoResponse
-type: object
-properties:
-  data:
-    $ref: ../schemas/EntitiesClientsInfo.yaml

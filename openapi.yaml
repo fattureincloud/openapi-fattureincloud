@@ -3137,13 +3137,7 @@ paths:
         - OAuth2AuthenticationCodeFlow: []
   /c/{company_id}/price_lists:
     parameters:
-      - name: company_id
-        in: path
-        required: true
-        schema:
-          type: integer
-          example: '12345'
-        description: The ID of the company.
+      - $ref: '#/components/parameters/company_id'
     get:
       summary: Get PriceLists
       tags:
@@ -3162,13 +3156,7 @@ paths:
       parameters: []
   /c/{company_id}/price_lists/{price_list_id}/items:
     parameters:
-      - name: company_id
-        in: path
-        required: true
-        schema:
-          type: integer
-          example: '12345'
-        description: The ID of the company.
+      - $ref: '#/components/parameters/company_id'
       - schema:
           type: string
         name: price_list_id
@@ -9117,9 +9105,9 @@ components:
       content:
         application/json:
           schema:
-            $ref: ./models/responses/GetEntitiesClientsInfoResponse.yaml
+            $ref: ./models/responses/GetEntityClientPreCreateInfoResponse.yaml
           examples:
-            Example 1:
+            example-1:
               value:
                 data:
                   countries_list:
@@ -9169,7 +9157,7 @@ components:
           schema:
             $ref: ./models/responses/ListPriceListsResponse.yaml
           examples:
-            Example 1:
+            example-1:
               value:
                 data:
                   - id: '10'
@@ -9193,7 +9181,7 @@ components:
           schema:
             $ref: ./models/responses/GetPriceListItemsResponse.yaml
           examples:
-            Example 1:
+            example-1:
               value:
                 data:
                   '1':

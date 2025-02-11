@@ -1,5 +1,5 @@
 type: object
-title: EntitiesClientInfo
+title: EntityClientPreCreateInfo
 properties:
   countries_list:
     type: array
@@ -9,13 +9,13 @@ properties:
       type: string
   payment_methods_list:
     type: array
-    description: Payment methods list
+    description: Entity payment methods list
     nullable: true
     items:
       $ref: ./PaymentMethod.yaml
   payment_accounts_list:
     type: array
-    description: Payment accounts list
+    description: Entity payment accounts list
     nullable: true
     items:
       $ref: ./PaymentAccount.yaml
@@ -27,15 +27,15 @@ properties:
       $ref: ./VatType.yaml
   price_lists:
     type: array
-    description: Price lists
+    description: Entity price lists
     nullable: true
     items:
       $ref: ./PriceList.yaml
   limit:
     type: number
-    description: Limit
+    description: Entity limit
     nullable: true
   usage:
     type: number
-    description: usage
+    description: Entity usage
     nullable: true
