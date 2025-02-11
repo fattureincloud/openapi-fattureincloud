@@ -14,7 +14,6 @@ switch (command) {
 
   case 'all':
     var options = {}
-    console.log('files')
 
     const files = glob("**/*.yaml").then(
         files =>
