@@ -3160,18 +3160,8 @@ paths:
       tags:
         - Issued Documents
     parameters:
-      - name: '#/components/parameters/company_id'
-        in: path
-        required: true
-        schema:
-          type: integer
-          example: '12345'
-        description: The ID of the company.
-      - schema:
-          type: string
-        name: '#/components/parameters/document_id'
-        in: path
-        required: true
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
     delete:
       summary: ''
       operationId: DeleteBinIssuedDocument
@@ -3183,18 +3173,8 @@ paths:
         - Bin
   '/c/{company_id}/bin/issued_documents/{document_id}/recover':
     parameters:
-      - name: '#/components/parameters/company_id'
-        in: path
-        required: true
-        schema:
-          type: integer
-          example: '12345'
-        description: The ID of the company.
-      - schema:
-          type: string
-        name: '#/components/parameters/document_id'
-        in: path
-        required: true
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
     post:
       summary: ''
       operationId: RecoverBinIssuedDocument
@@ -3239,18 +3219,8 @@ paths:
       tags:
         - Received Documents
     parameters:
-      - name: '#/components/parameters/company_id'
-        in: path
-        required: true
-        schema:
-          type: integer
-          example: '12345'
-        description: The ID of the company.
-      - schema:
-          type: string
-        name: '#/components/parameters/document_id'
-        in: path
-        required: true
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
     delete:
       summary: ''
       operationId: DeleteBinReceivedDocument
@@ -3262,18 +3232,8 @@ paths:
         - Bin
   '/c/{company_id}/bin/received_documents/{document_id}/recover':
     parameters:
-      - name: '#/components/parameters/company_id'
-        in: path
-        required: true
-        schema:
-          type: integer
-          example: '12345'
-        description: The ID of the company.
-      - schema:
-          type: string
-        name: '#/components/parameters/document_id'
-        in: path
-        required: true
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
     post:
       summary: ''
       operationId: RecoverBinReceivedDocument
