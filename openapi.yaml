@@ -3160,7 +3160,7 @@ paths:
       tags:
         - Issued Documents
     parameters:
-      - name: company_id
+      - name: '#/components/parameters/company_id'
         in: path
         required: true
         schema:
@@ -3169,7 +3169,7 @@ paths:
         description: The ID of the company.
       - schema:
           type: string
-        name: document_id
+        name: '#/components/parameters/document_id'
         in: path
         required: true
     delete:
@@ -3183,7 +3183,7 @@ paths:
         - Bin
   '/c/{company_id}/bin/issued_documents/{document_id}/recover':
     parameters:
-      - name: company_id
+      - name: '#/components/parameters/company_id'
         in: path
         required: true
         schema:
@@ -3192,7 +3192,7 @@ paths:
         description: The ID of the company.
       - schema:
           type: string
-        name: document_id
+        name: '#/components/parameters/document_id'
         in: path
         required: true
     post:
@@ -3239,7 +3239,7 @@ paths:
       tags:
         - Received Documents
     parameters:
-      - name: company_id
+      - name: '#/components/parameters/company_id'
         in: path
         required: true
         schema:
@@ -3248,7 +3248,7 @@ paths:
         description: The ID of the company.
       - schema:
           type: string
-        name: document_id
+        name: '#/components/parameters/document_id'
         in: path
         required: true
     delete:
@@ -3262,7 +3262,7 @@ paths:
         - Bin
   '/c/{company_id}/bin/received_documents/{document_id}/recover':
     parameters:
-      - name: company_id
+      - name: '#/components/parameters/company_id'
         in: path
         required: true
         schema:
@@ -3271,7 +3271,7 @@ paths:
         description: The ID of the company.
       - schema:
           type: string
-        name: document_id
+        name: '#/components/parameters/document_id'
         in: path
         required: true
     post:
