@@ -28,6 +28,7 @@ tags:
   - name: Issued Documents
   - name: Issued e-invoices
   - name: Products
+  - name: PriceLists
   - name: Receipts
   - name: Received Documents
   - name: Suppliers
@@ -184,6 +185,7 @@ paths:
                       value: 45
                       description: ''
                       is_disabled: false
+                    price_list_id: '10'
         description: The client to create
       tags:
         - Clients
@@ -266,6 +268,7 @@ paths:
                       value: 45
                       description: ''
                       is_disabled: false
+                    price_list_id: '10'
         description: The modified Client. First level parameters are managed in delta mode.
       tags:
         - Clients
@@ -286,6 +289,26 @@ paths:
             - entity.clients:a
       tags:
         - Clients
+  /c/{company_id}/entities/clients/info:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+    get:
+      summary: Get Client info
+      tags:
+        - Clients
+      responses:
+        '200':
+          $ref: '#/components/responses/GetEntityClientsInfoResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: getClientInfo
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - entity.clients:r
+      description: Retrieves the information useful while creating a new Client.
+      parameters: []
   /c/{company_id}/entities/suppliers:
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -710,6 +733,7 @@ paths:
                         status: not_paid
                     payment_method:
                       id: 4
+                    price_list_id: '10'
         description: The Issued Document
   /c/{company_id}/issued_documents/{document_id}:
     parameters:
@@ -3263,6 +3287,49 @@ paths:
       description: Recover Received Document From The Bin
       tags:
         - Received Documents
+  /c/{company_id}/price_lists:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+    get:
+      summary: Get PriceLists
+      tags:
+        - PriceLists
+      responses:
+        '200':
+          $ref: '#/components/responses/ListPriceList'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: getPriceLists
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      description: Retrieves all price lists of the company
+      parameters: []
+  /c/{company_id}/price_lists/{price_list_id}/items:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+      - schema:
+          type: string
+        name: price_list_id
+        in: path
+        required: true
+    get:
+      summary: Get PriceList Items List
+      tags:
+        - PriceLists
+      responses:
+        '200':
+          $ref: '#/components/responses/GetPriceListItems'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: getPriceListItems
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      description: Retrieves all the Items of a PriceList
+      parameters: []
 components:
   schemas: {}
   securitySchemes:
@@ -3941,6 +4008,7 @@ components:
                     value: 45
                     description: ''
                     is_disabled: false
+                  price_list_id: '10'
     ModifyClientResponse:
       description: Client modified.
       content:
@@ -3983,6 +4051,7 @@ components:
                     value: 45
                     description: ''
                     is_disabled: false
+                  price_list_id: '10'
     GetSupplierResponse:
       description: Example response
       content:
@@ -4510,6 +4579,7 @@ components:
                   locked: false
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
+                  price_list_id: '10'
     ModifyIssuedDocumentResponse:
       description: Document edited
       content:
@@ -6454,6 +6524,15 @@ components:
                     RT05: Contributo ENPAM
                     RT06: Altro contributo previdenziale
                   use_e_invoice: true
+                  price_lists:
+                    - id: '10'
+                      name: Listino 1
+                      prices_type: net
+                      is_default: true
+                      is_archived: false
+                      valid_from: '2021-08-01'
+                      valid_to: '2025-09-10'
+                      type: sell
     GetEmailDataResponse:
       description: EmailData
       content:
@@ -9515,5 +9594,93 @@ components:
                   attachment_url: spesa_ger5i783t45hu6ti.pdf
                   attachment_preview_url: null
                   extra_data: null
+    GetEntityClientsInfoResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetEntityClientPreCreateInfoResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  countries_list:
+                    - Italy
+                  payment_methods_list:
+                    - id: 555
+                      name: Rimessa diretta
+                      is_default: false
+                      details: []
+                      bank_iban: null
+                      bank_name: null
+                      bank_beneficiary: null
+                      ei_payment_method: null
+                  payment_accounts_list:
+                    - id: 0
+                      name: Conto Banca Intesa
+                      type: standard
+                      iban: string
+                      sia: string
+                      cuc: string
+                      virtual: true
+                  vat_types_list:
+                    - id: 0
+                      value: 22
+                      description: Non imponibile art. 123
+                      notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
+                      e_invoice: true
+                      ei_type: 2
+                      ei_description: string
+                      editable: true
+                      is_disabled: true
+                      default: true
+                  price_lists:
+                    - id: string
+                      name: '123'
+                      prices_type: net
+                      is_default: true
+                      valid_from: string
+                      valid_to: string
+                      type: sell
+                  limit: 0
+                  usage: 0
+    ListPriceList:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ListPriceListsResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  - id: '10'
+                    name: listino
+                    prices_type: net
+                    is_default: true
+                    valid_from: '2025-01-01'
+                    valid_to: '2025-12-01'
+                    type: sell
+                  - id: '11'
+                    name: listino-test
+                    prices_type: gross
+                    is_default: true
+                    valid_from: '2025-01-01'
+                    valid_to: '2025-01-01'
+                    type: purchase
+    GetPriceListItems:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetPriceListItemsResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  '1':
+                    price: 3.5
+                  '2':
+                    price: 5
 security:
   - OAuth2AuthenticationCodeFlow: []

@@ -1,0 +1,28 @@
+type: object
+title: PriceList
+properties:
+  id:
+    type: string
+    description: Price list id
+    nullable: true
+  name:
+    type: string
+    example: '123'
+    description: Price list name
+    nullable: true
+  prices_type:
+    $ref: ../enums/PriceListPricesType.yaml
+  is_default:
+    type: boolean
+    description: This entity is default
+    nullable: true
+  valid_from:
+    type: string
+    description: Price list validity start date
+    nullable: true
+  valid_to:
+    type: string
+    nullable: true
+    description: Price list validity end date
+  type:
+    $ref: ../enums/PriceListType.yaml

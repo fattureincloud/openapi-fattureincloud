@@ -126,3 +126,8 @@ properties:
     nullable: true
     items:
       $ref: ./Language.yaml
+  price_lists:
+    type: array
+    description: Price lists
+    items:
+      $ref: ./PriceList.yaml
