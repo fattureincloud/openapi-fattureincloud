@@ -3170,7 +3170,7 @@ paths:
           description: OK
       description: Delete Bin Issued Document
       tags:
-        - Bin
+        - Issued Documents
   '/c/{company_id}/bin/issued_documents/{document_id}/recover':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -3198,13 +3198,7 @@ paths:
       tags:
         - Received Documents
     parameters:
-      - name: company_id
-        in: path
-        required: true
-        schema:
-          type: integer
-          example: '12345'
-        description: The ID of the company.
+      - $ref: '#/components/parameters/company_id'
   '/c/{company_id}/bin/received_documents/{document_id}':
     get:
       summary: Get Bin Received Documents List
@@ -3227,9 +3221,9 @@ paths:
       responses:
         '200':
           description: OK
-      description: Delete Bin Issued Document
+      description: Delete Bin Received Document
       tags:
-        - Bin
+        - Received Documents
   '/c/{company_id}/bin/received_documents/{document_id}/recover':
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -8968,7 +8962,7 @@ components:
           schema:
             $ref: ./models/responses/ListBinIssuedDocuments.yaml
           examples:
-            Example 1:
+            example-1:
               value:
                 data:
                   - id: 12345
@@ -9034,7 +9028,7 @@ components:
           schema:
             $ref: ./models/responses/GetBinIssuedDocumentResponse.yaml
           examples:
-            Example 1:
+            example-1:
               value:
                 data:
                   id: 12345
@@ -9155,7 +9149,7 @@ components:
           schema:
             $ref: ./models/responses/ListBinReceivedDocuments.yaml
           examples:
-            Example 1:
+            example-1:
               value:
                 data:
                   - id: 12345
@@ -9253,7 +9247,7 @@ components:
           schema:
             $ref: ./models/responses/GetBinReceivedDocumentResponse.yaml
           examples:
-            Example 1:
+            example-1:
               value:
                 data:
                   id: 12345
