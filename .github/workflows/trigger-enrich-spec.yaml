@@ -14,8 +14,8 @@ jobs:
       - id: setup-libraries
         name: Install libraries
         run: |
-          sudo apt upgrade
           sudo apt update
+          sudo apt upgrade
           sudo wget -qO /usr/local/bin/yq "https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64"
           sudo chmod +x /usr/local/bin/yq
 
