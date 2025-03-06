@@ -1,0 +1,5 @@
+title: PriceListItem
+type: object
+properties:
+  price:
+    type: number

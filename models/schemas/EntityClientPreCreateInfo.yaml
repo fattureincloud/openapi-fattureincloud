@@ -1,0 +1,41 @@
+type: object
+title: EntityClientPreCreateInfo
+properties:
+  countries_list:
+    type: array
+    description: Countries list
+    nullable: true
+    items:
+      type: string
+  payment_methods_list:
+    type: array
+    description: Entity payment methods list
+    nullable: true
+    items:
+      $ref: ./PaymentMethod.yaml
+  payment_accounts_list:
+    type: array
+    description: Entity payment accounts list
+    nullable: true
+    items:
+      $ref: ./PaymentAccount.yaml
+  vat_types_list:
+    type: array
+    description: Vat types list
+    nullable: true
+    items:
+      $ref: ./VatType.yaml
+  price_lists:
+    type: array
+    description: Entity price lists
+    nullable: true
+    items:
+      $ref: ./PriceList.yaml
+  limit:
+    type: number
+    description: Entity limit
+    nullable: true
+  usage:
+    type: number
+    description: Entity usage
+    nullable: true
