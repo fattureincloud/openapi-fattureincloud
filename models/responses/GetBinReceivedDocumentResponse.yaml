@@ -1,0 +1,5 @@
+title: GetBinReceivedDocumentResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/ReceivedDocument.yaml

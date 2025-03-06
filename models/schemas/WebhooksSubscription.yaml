@@ -23,4 +23,3 @@ properties:
     $ref: ./WebhooksSubscriptionConfig.yaml
   verification_method:
     $ref: ../enums/WebhooksSubscriptionVerificationMethod.yaml
-   
