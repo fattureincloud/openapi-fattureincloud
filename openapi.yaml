@@ -3183,13 +3183,7 @@ paths:
       tags:
         - Issued Documents
     parameters:
-      - name: company_id
-        in: path
-        required: true
-        schema:
-          type: integer
-          example: '12345'
-        description: The ID of the company.
+      - $ref: '#/components/parameters/company_id'
   /c/{company_id}/bin/issued_documents/{document_id}:
     get:
       summary: Get Bin Issued Documents List
