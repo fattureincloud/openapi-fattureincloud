@@ -2,11 +2,11 @@ name: Generate Postman Collection
 on:
   repository_dispatch:
     types: [generate-postman]
-    
+
 jobs:
   generate-postman-collection:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
 
       - id: checkout
         name: Checkout repo
@@ -30,6 +30,7 @@ jobs:
         run: |
           npm install -g yarn
           yarn global add swagger-merger openapi-to-postmanv2
+          sudo apt upgrade
           sudo apt update
           sudo wget -qO /usr/local/bin/yq "https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64"
           sudo chmod +x /usr/local/bin/yq

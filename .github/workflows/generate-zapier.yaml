@@ -2,14 +2,14 @@ name: Generate Zapier integration
 on:
   repository_dispatch:
     types: [generate-zapier]
-    
+
 jobs:
   generate-zapier:
     runs-on: ubuntu-latest
     env:
       GIT_REPO_ID: fattureincloud-zapier
       GIT_USER_ID: fattureincloud
-    steps: 
+    steps:
       - id: init-git
         name: Init GIT
         run: |
@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
-      
+
       - id: checkout-zapier
         name: Checkout zapier repo
         env:
@@ -49,6 +49,7 @@ jobs:
         run: |
           npm install -g yarn
           yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli standard-version
+          sudo apt upgrade
           sudo apt update
           sudo wget -qO /usr/local/bin/yq "https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64"
           sudo chmod +x /usr/local/bin/yq

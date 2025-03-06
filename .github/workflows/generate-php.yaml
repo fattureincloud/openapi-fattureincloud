@@ -63,6 +63,7 @@ jobs:
         run: |
           npm install -g yarn
           yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli standard-version
+          sudo apt upgrade
           sudo apt update
           sudo wget -qO /usr/local/bin/yq "https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64"
           sudo chmod +x /usr/local/bin/yq
