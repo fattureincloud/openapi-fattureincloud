@@ -21,13 +21,13 @@ jobs:
           echo "The name of the pusher: ${{ github.event.pusher.name }}"
           echo "The email of the pusher: ${{ github.event.pusher.email }}"
           echo "pusher_name=${{ github.event.pusher.name }}" >> $GITHUB_ENV
-        
+
       - id: retrieve-name-mock
         if: ${{ env.ACT }}
         name: Retrieve name Mock
         run: |
           echo "pusher_name=fake_pusher" >> $GITHUB_ENV
-            
+
       # The filter is executed only on Github Action, otherwise always returns execute
       - id: pusher-check
         name: Check pusher
@@ -86,9 +86,10 @@ jobs:
         run: |
           npm install -g yarn
           yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli standard-version swagger-merger 
-          sudo add-apt-repository ppa:rmescandon/yq -y
           sudo apt update
-          sudo apt install yq -y
+          sudo apt upgrade
+          sudo wget -qO /usr/local/bin/yq "https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64"
+          sudo chmod +x /usr/local/bin/yq
           cd ./scripts/
           yarn
 
@@ -130,7 +131,7 @@ jobs:
       matrix:
         event: ['enrich-spec', 'generate-php', 'generate-javascript', 'generate-csharp', 'generate-java', 'generate-ruby', 'generate-postman', 'generate-python', 'generate-typescript-axios', 'generate-go', 'generate-zapier']
     needs: bump-openapi-version
-    steps: 
+    steps:
       - id: trigger-event
         name: Trigger Event
         uses: peter-evans/repository-dispatch@v3
