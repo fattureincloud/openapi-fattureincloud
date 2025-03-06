@@ -30,9 +30,9 @@ jobs:
         run: |
           npm install -g yarn
           yarn global add swagger-merger openapi-to-postmanv2
-          sudo add-apt-repository ppa:rmescandon/yq -y
           sudo apt update
-          sudo apt install yq -y
+          sudo wget -qO /usr/local/bin/yq "https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64"
+          sudo chmod +x /usr/local/bin/yq
 
       - id: read-version
         name: Read OpenAPI spec version

@@ -67,9 +67,9 @@ jobs:
         run: |
           npm install -g yarn
           yarn global add @apidevtools/swagger-cli @openapitools/openapi-generator-cli standard-version
-          sudo add-apt-repository ppa:rmescandon/yq -y
           sudo apt update
-          sudo apt install yq -y
+          sudo wget -qO /usr/local/bin/yq "https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64"
+          sudo chmod +x /usr/local/bin/yq
           cd ./scripts/
           yarn
           cd ../generated/csharp/scripts
