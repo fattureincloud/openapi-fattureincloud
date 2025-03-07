@@ -52,16 +52,6 @@ jobs:
         with:
           dotnet-version: '3.1.x'
 
-      - id: setup-dotnet-manually
-        if: ${{ env.ACT }}
-        name: Setup dotnet manually
-        run: |
-          wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
-          sudo dpkg -i packages-microsoft-prod.deb 
-          sudo apt update 
-          sudo apt --assume-yes install apt-transport-https 
-          sudo apt --assume-yes install dotnet-sdk-3.1
-
       - id: setup-libraries
         name: Install libraries
         run: |
