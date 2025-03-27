@@ -143,7 +143,6 @@ jobs:
         name: Lint Code Base
         run: |
           cd ./generated/csharp
-          dotnet tool install -g dotnet-format
           dotnet format
 
       - id: create-pr
