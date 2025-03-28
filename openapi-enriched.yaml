@@ -49,6 +49,7 @@ paths:
       description: Gets the current user's info.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters: []
   /user/companies:
     get:
@@ -79,6 +80,7 @@ paths:
       description: Gets the company detailed info.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       tags:
         - Companies
   /c/{company_id}/company/plan_usage:
@@ -107,6 +109,7 @@ paths:
           required: true
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       tags:
         - Companies
   /c/{company_id}/entities/clients:
@@ -126,6 +129,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - entity.clients:r
+        - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -143,6 +147,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - entity.clients:a
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -539,6 +544,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - entity.clients:r
+        - ManualAuth: []
       description: Gets the specified client.
       parameters:
         - $ref: '#/components/parameters/fields'
@@ -557,6 +563,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - entity.clients:a
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -950,6 +957,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - entity.clients:a
+        - ManualAuth: []
       tags:
         - Clients
   /c/{company_id}/entities/clients/info:
@@ -970,6 +978,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - entity.clients:r
+        - ManualAuth: []
       description: Retrieves the information useful while creating a new Client.
       parameters: []
   /c/{company_id}/entities/suppliers:
@@ -987,6 +996,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - entity.suppliers:r
+        - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -1006,6 +1016,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - entity.suppliers:a
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -1178,6 +1189,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - entity.suppliers:r
+        - ManualAuth: []
       description: Gets the specified supplier.
       parameters:
         - $ref: '#/components/parameters/fields'
@@ -1198,6 +1210,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - entity.suppliers:a
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -1370,6 +1383,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - entity.suppliers:a
+        - ManualAuth: []
       tags:
         - Suppliers
   /c/{company_id}/products:
@@ -1389,6 +1403,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - products:r
+        - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -1408,6 +1423,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - products:a
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -1589,6 +1605,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - products:r
+        - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -1606,6 +1623,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - products:a
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -1783,6 +1801,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - products:a
+        - ManualAuth: []
       parameters: []
       tags:
         - Products
@@ -1811,6 +1830,7 @@ paths:
             - issued_documents.quotes:r
             - issued_documents.proformas:r
             - issued_documents.delivery_notes:r
+        - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/issued_document_type'
         - $ref: '#/components/parameters/fields'
@@ -1847,6 +1867,7 @@ paths:
             - issued_documents.quotes:a
             - issued_documents.proformas:a
             - issued_documents.delivery_notes:a
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -3297,6 +3318,7 @@ paths:
             - issued_documents.quotes:r
             - issued_documents.proformas:r
             - issued_documents.delivery_notes:r
+        - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -3320,6 +3342,7 @@ paths:
             - issued_documents.quotes:a
             - issued_documents.proformas:a
             - issued_documents.delivery_notes:a
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -4763,6 +4786,7 @@ paths:
             - issued_documents.quotes:a
             - issued_documents.proformas:a
             - issued_documents.delivery_notes:a
+        - ManualAuth: []
       parameters: []
       tags:
         - Issued Documents
@@ -4782,6 +4806,7 @@ paths:
         - Issued Documents
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -6231,6 +6256,7 @@ paths:
       description: Returns the totals for a specified document.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -7588,6 +7614,7 @@ paths:
         separately, using the returned token.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -7631,6 +7658,7 @@ paths:
       description: Removes the attachment of the specified document.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters: []
       tags:
         - Issued Documents
@@ -7648,6 +7676,7 @@ paths:
       description: Retrieves the information useful while creating a new document.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/issued_document_type'
   /c/{company_id}/issued_documents/{document_id}/email:
@@ -7672,6 +7701,7 @@ paths:
             - issued_documents.quotes:r
             - issued_documents.proformas:r
             - issued_documents.delivery_notes:r
+        - ManualAuth: []
       parameters: []
     post:
       summary: Schedule Email
@@ -7693,6 +7723,7 @@ paths:
             - issued_documents.quotes:r
             - issued_documents.proformas:r
             - issued_documents.delivery_notes:r
+        - ManualAuth: []
       tags:
         - Issued Documents
       parameters: []
@@ -7800,6 +7831,7 @@ paths:
       description: Sends the e-invoice to SDI.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -7865,6 +7897,7 @@ paths:
         are filled and compliant to the right format.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters: []
   /c/{company_id}/issued_documents/{document_id}/e_invoice/xml:
     parameters:
@@ -7885,6 +7918,7 @@ paths:
       description: Downloads the e-invoice in XML format.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/include_attachment'
   /c/{company_id}/issued_documents/{document_id}/e_invoice/error_reason:
@@ -7902,6 +7936,7 @@ paths:
       description: Get e-invoice rejection reason
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
   /c/{company_id}/received_documents:
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -7920,6 +7955,7 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - received_documents:r
             - stock:r
+        - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/received_document_type'
         - $ref: '#/components/parameters/fields'
@@ -7939,6 +7975,7 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - received_documents:a
             - stock:a
+        - ManualAuth: []
       tags:
         - Received Documents
       parameters: []
@@ -8709,6 +8746,7 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - received_documents:r
             - stock:r
+        - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -8729,6 +8767,7 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - received_documents:a
             - stock:a
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -9486,6 +9525,7 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - received_documents:a
             - stock:a
+        - ManualAuth: []
       parameters: []
   /c/{company_id}/received_documents/totals:
     parameters:
@@ -9505,6 +9545,7 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - received_documents:a
             - stock:a
+        - ManualAuth: []
       tags:
         - Received Documents
       parameters: []
@@ -10261,6 +10302,7 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - received_documents:a
             - stock:a
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -10986,6 +11028,7 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - received_documents:a
             - stock:a
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -11033,6 +11076,7 @@ paths:
         - OAuth2AuthenticationCodeFlow:
             - received_documents:a
             - stock:a
+        - ManualAuth: []
       parameters: []
   /c/{company_id}/received_documents/info:
     parameters:
@@ -11049,6 +11093,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - received_documents:r
+        - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/received_document_type'
   /c/{company_id}/receipts:
@@ -11068,6 +11113,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - receipts:r
+        - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -11087,6 +11133,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - receipts:a
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -11326,6 +11373,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - receipts:r
+        - ManualAuth: []
     put:
       summary: Modify Receipt
       operationId: modifyReceipt
@@ -11342,6 +11390,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - receipts:a
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -11566,6 +11615,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - receipts:a
+        - ManualAuth: []
       parameters: []
       tags:
         - Receipts
@@ -11588,6 +11638,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - receipts:r
+        - ManualAuth: []
       parameters: []
   /c/{company_id}/receipts/monthly_totals:
     parameters:
@@ -11608,6 +11659,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - receipts:r
+        - ManualAuth: []
       parameters:
         - in: query
           name: type
@@ -11641,6 +11693,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - taxes:r
+        - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -11664,6 +11717,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - taxes:a
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -11789,6 +11843,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - taxes:r
+        - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -11808,6 +11863,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - taxes:a
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -11928,6 +11984,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - taxes:a
+        - ManualAuth: []
       parameters: []
   /c/{company_id}/taxes/attachment:
     parameters:
@@ -11947,6 +12004,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - taxes:a
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -11993,6 +12051,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - taxes:a
+        - ManualAuth: []
       parameters: []
   /c/{company_id}/archive:
     parameters:
@@ -12013,6 +12072,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - archive:r
+        - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -12036,6 +12096,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - archive:a
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -12114,6 +12175,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - archive:r
+        - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -12133,6 +12195,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - archive:a
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -12206,6 +12269,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - archive:a
+        - ManualAuth: []
       parameters: []
   /c/{company_id}/archive/attachment:
     parameters:
@@ -12229,6 +12293,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - archive:a
+        - ManualAuth: []
       requestBody:
         content:
           multipart/form-data:
@@ -12273,6 +12338,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - cashbook:r
+        - ManualAuth: []
       parameters:
         - schema:
             type: string
@@ -12321,6 +12387,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - cashbook:a
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -12521,6 +12588,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - cashbook:r
+        - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -12540,6 +12608,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - cashbook:a
+        - ManualAuth: []
       parameters: []
       requestBody:
         content:
@@ -12724,6 +12793,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - cashbook:a
+        - ManualAuth: []
       tags:
         - Cashbook
   /info/countries:
@@ -12740,6 +12810,7 @@ paths:
       description: Lists the supported countries.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters: []
   /info/detailed_countries:
     get:
@@ -12755,6 +12826,7 @@ paths:
       description: Lists the supported countries.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters: []
   /info/cities:
     get:
@@ -12768,6 +12840,7 @@ paths:
       description: Lists the Italian cities.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters:
         - schema:
             type: string
@@ -12793,6 +12866,7 @@ paths:
       description: Lists the supported languages.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters: []
   /info/templates:
     get:
@@ -12808,6 +12882,7 @@ paths:
       description: Lists the available templates.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters:
         - schema:
             type: string
@@ -12842,6 +12917,7 @@ paths:
       description: Lists the supported currencies.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters: []
   /info/measures:
     get:
@@ -12857,6 +12933,7 @@ paths:
       description: Lists the units of measure.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters: []
   /info/dn_causals:
     get:
@@ -12872,6 +12949,7 @@ paths:
       description: Lists the delivery note default causals.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters: []
   /c/{company_id}/info/vat_types:
     parameters:
@@ -12891,6 +12969,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - settings:r
+        - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/fieldset'
       description: Lists the available vat types.
@@ -12912,6 +12991,7 @@ paths:
       description: Lists the available payment methods.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -12934,6 +13014,7 @@ paths:
       description: Lists the available payment accounts.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -12956,6 +13037,7 @@ paths:
       description: Lists the revenue centers.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters: []
   /c/{company_id}/info/cost_centers:
     parameters:
@@ -12975,6 +13057,7 @@ paths:
       description: Lists the cost centers.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters: []
   /c/{company_id}/info/product_categories:
     parameters:
@@ -12994,6 +13077,7 @@ paths:
       description: Lists the product categories.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters:
         - schema:
             type: string
@@ -13019,6 +13103,7 @@ paths:
       description: Lists the received document categories.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters: []
   /c/{company_id}/info/archive_categories:
     parameters:
@@ -13038,6 +13123,7 @@ paths:
       description: Lists the archive categories.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters: []
   /c/{company_id}/settings/payment_methods:
     parameters:
@@ -13051,6 +13137,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - settings:a
+        - ManualAuth: []
       responses:
         '200':
           $ref: '#/components/responses/CreatePaymentMethodResponse'
@@ -13192,6 +13279,7 @@ paths:
       description: Gets the specified payment method.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -13206,6 +13294,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - settings:a
+        - ManualAuth: []
       description: Modifies the specified payment method.
       requestBody:
         content:
@@ -13338,6 +13427,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - settings:a
+        - ManualAuth: []
   /c/{company_id}/settings/payment_accounts:
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -13352,6 +13442,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - settings:a
+        - ManualAuth: []
       description: Creates a new payment account.
       requestBody:
         content:
@@ -13423,6 +13514,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - settings:r
+        - ManualAuth: []
   /c/{company_id}/settings/payment_accounts/{payment_account_id}:
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -13446,6 +13538,7 @@ paths:
         - $ref: '#/components/parameters/fieldset'
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
     put:
       summary: Modify Payment Account
       tags:
@@ -13458,6 +13551,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - settings:a
+        - ManualAuth: []
       requestBody:
         content:
           application/json:
@@ -13526,6 +13620,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - settings:a
+        - ManualAuth: []
   /c/{company_id}/settings/vat_types:
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -13541,6 +13636,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - settings:a
+        - ManualAuth: []
       requestBody:
         content:
           application/json:
@@ -13634,6 +13730,7 @@ paths:
       description: Gets the specified vat type.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
     put:
       summary: Modify Vat Type
       tags:
@@ -13646,6 +13743,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - settings:a
+        - ManualAuth: []
       requestBody:
         content:
           application/json:
@@ -13729,6 +13827,7 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - settings:a
+        - ManualAuth: []
   /c/{company_id}/issued_documents/transform:
     get:
       summary: Transform Issued Document
@@ -13741,6 +13840,7 @@ paths:
       description: Transforms the document.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters:
         - schema:
             type: integer
@@ -13789,6 +13889,7 @@ paths:
       description: Joins issued documents.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters:
         - schema:
             type: string
@@ -13839,6 +13940,7 @@ paths:
         - $ref: '#/components/parameters/q'
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
   /c/{company_id}/subscriptions:
     get:
       summary: List Webhooks Subscriptions
@@ -13851,6 +13953,7 @@ paths:
       description: List active webhooks subscriptions.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
     post:
       summary: Create a Webhook Subscription
       responses:
@@ -14042,6 +14145,7 @@ paths:
       description: Register some webhooks Subscriptions.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       tags:
         - Webhooks
     parameters:
@@ -14061,6 +14165,7 @@ paths:
       description: Get a webhooks subscription.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
     put:
       summary: Modify Webhooks Subscription
       tags:
@@ -14244,6 +14349,7 @@ paths:
                         - query
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
     delete:
       summary: Delete Webhooks Subscription
       tags:
@@ -14255,6 +14361,7 @@ paths:
       description: Delete a webhooks subscription.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
   /c/{company_id}/subscriptions/{subscription_id}/verify:
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -14270,6 +14377,7 @@ paths:
       description: Verify a webhook subscription.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       requestBody:
         content:
           application/json:
@@ -14308,6 +14416,7 @@ paths:
             - issued_documents.orders:r
             - issued_documents.quotes:r
             - issued_documents.proformas:r
+        - ManualAuth: []
       parameters: []
       tags:
         - Issued Documents
@@ -14329,6 +14438,7 @@ paths:
             - issued_documents.orders:r
             - issued_documents.quotes:r
             - issued_documents.proformas:r
+        - ManualAuth: []
       parameters: []
       tags:
         - Issued Documents
@@ -14367,6 +14477,7 @@ paths:
       description: Get bin Received documents list
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters: []
       tags:
         - Received Documents
@@ -14382,6 +14493,7 @@ paths:
       description: Get bin issued documents detail
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters: []
       tags:
         - Received Documents
@@ -14427,6 +14539,7 @@ paths:
       operationId: getPriceLists
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       description: Retrieves all price lists of the company
       parameters: []
   /c/{company_id}/price_lists/{price_list_id}/items:
@@ -14451,6 +14564,7 @@ paths:
       operationId: getPriceListItems
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       description: Retrieves all the Items of a PriceList
       parameters: []
 components:
@@ -14509,6 +14623,9 @@ components:
             settings:a: Write permission to the Settings
             situation:r: Read permission to the company Situation
           authorizationUrl: https://api-v2.fattureincloud.it/oauth/authorize
+    ManualAuth:
+      type: http
+      scheme: bearer
   parameters:
     company_id:
       name: company_id
@@ -44641,3 +44758,4 @@ components:
                     price: 5
 security:
   - OAuth2AuthenticationCodeFlow: []
+  - ManualAuth: []
