@@ -66,7 +66,7 @@ jobs:
           yarn
           cd ../generated/csharp/scripts
           yarn
-          sudo apt install openssl
+          sudo apt-get install libssl-dev
 
       - name: Check libssl
         run: |
