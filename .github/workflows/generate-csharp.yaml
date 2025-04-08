@@ -50,7 +50,11 @@ jobs:
         name: Setup dotnet
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '3.1.x'
+          dotnet-version: '4.0.x'
+
+      - name: Check libssl
+        run: |
+          ldd $(which dotnet) | grep ssl || echo "libssl not found"
 
       - id: setup-libraries
         name: Install libraries
