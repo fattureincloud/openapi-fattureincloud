@@ -50,11 +50,8 @@ jobs:
         name: Setup dotnet
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '5.0.x'
+          dotnet-version: '3.1.x'
 
-      - name: Check libssl
-        run: |
-          ldd $(which dotnet) | grep ssl || echo "libssl not found"
 
       - id: setup-libraries
         name: Install libraries
@@ -69,6 +66,11 @@ jobs:
           yarn
           cd ../generated/csharp/scripts
           yarn
+          sudo apt install openssl
+
+      - name: Check libssl
+        run: |
+          ldd $(which dotnet) | grep ssl || echo "libssl not found"
 
       - id: bump-csharp-sdk-version
         name: Bump C# SDK
