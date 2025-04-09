@@ -2,3 +2,8 @@ title: NumerationItem
 type: object
 additionalProperties:
   type: integer
+properties:
+  '':
+    type: string
+    x-stoplight:
+      id: mpy5wwv0enaxz

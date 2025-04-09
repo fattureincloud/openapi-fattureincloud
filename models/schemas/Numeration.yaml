@@ -3,3 +3,8 @@ type: object
 additionalProperties:
   type: object
   $ref: ./NumerationItem.yaml
+properties:
+  '':
+    type: string
+    x-stoplight:
+      id: qu65nbtzlt4u8
