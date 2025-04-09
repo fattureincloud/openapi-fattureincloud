@@ -1,5 +1,4 @@
 title: Numeration
 type: object
 additionalProperties:
-  type: object
   $ref: ./NumerationItem.yaml

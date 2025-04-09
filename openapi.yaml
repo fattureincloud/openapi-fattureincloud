@@ -3207,7 +3207,7 @@ paths:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
     delete:
-      summary: ''
+      summary: Delete Bin Issued Document
       operationId: DeleteBinIssuedDocument
       responses:
         '200':
@@ -3220,7 +3220,7 @@ paths:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
     post:
-      summary: ''
+      summary: Recover Issued Document From The Bin
       operationId: RecoverBinIssuedDocument
       responses:
         '200':
@@ -3260,7 +3260,7 @@ paths:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
     delete:
-      summary: ''
+      summary: Delete Bin Received Document
       operationId: DeleteBinReceivedDocument
       responses:
         '200':
@@ -3273,7 +3273,7 @@ paths:
       - $ref: '#/components/parameters/company_id'
       - $ref: '#/components/parameters/document_id'
     post:
-      summary: ''
+      summary: Recover Received Document From The Bin
       operationId: RecoverBinReceivedDocument
       responses:
         '200':
@@ -3308,6 +3308,7 @@ paths:
         name: price_list_id
         in: path
         required: true
+        description: The ID of the price
     get:
       summary: Get PriceList Items List
       tags:
