@@ -65,6 +65,7 @@ paths:
       description: Lists the companies controlled by the current user.
       security:
         - OAuth2AuthenticationCodeFlow: []
+        - ManualAuth: []
       parameters: []
   /c/{company_id}/company/info:
     parameters:
