@@ -68,10 +68,6 @@ jobs:
           yarn
           sudo apt-get install libssl-dev
 
-      - name: Check libssl
-        run: |
-          ldd $(which dotnet) | grep ssl || echo "libssl not found"
-
       - id: bump-csharp-sdk-version
         name: Bump C# SDK
         env:
