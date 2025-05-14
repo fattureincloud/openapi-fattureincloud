@@ -100,9 +100,6 @@ properties:
           smtp:
             type: boolean
             nullable: true
-          sofort:
-            type: boolean
-            nullable: true
           stock:
             type: boolean
             nullable: true
