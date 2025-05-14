@@ -3185,6 +3185,9 @@ paths:
     parameters:
       - $ref: '#/components/parameters/company_id'
   /c/{company_id}/bin/issued_documents/{document_id}:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
     get:
       summary: Get Bin Issued Documents List
       responses:
@@ -3200,12 +3203,8 @@ paths:
             - issued_documents.orders:r
             - issued_documents.quotes:r
             - issued_documents.proformas:r
-      parameters: []
       tags:
         - Issued Documents
-    parameters:
-      - $ref: '#/components/parameters/company_id'
-      - $ref: '#/components/parameters/document_id'
     delete:
       summary: Delete Bin Issued Document
       operationId: DeleteBinIssuedDocument
@@ -3213,6 +3212,8 @@ paths:
         '200':
           description: OK
       description: Delete Bin Issued Document
+      security:
+        - OAuth2AuthenticationCodeFlow: []
       tags:
         - Issued Documents
   /c/{company_id}/bin/issued_documents/{document_id}/recover:
@@ -3226,6 +3227,8 @@ paths:
         '200':
           description: OK
       description: Recover Issued Document From The Bin
+      security:
+        - OAuth2AuthenticationCodeFlow: []
       tags:
         - Issued Documents
   /c/{company_id}/bin/received_documents:
