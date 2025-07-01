@@ -5,22 +5,6 @@ import ApiClient from './ApiClient';
 {{/models}}{{#apiInfo}}{{#apis}}import {{importPath}} from './{{#apiPackage}}{{.}}/{{/apiPackage}}{{importPath}}';
 {{/apis}}{{/apiInfo}}
 
-import Condition from './filter/Condition';
-import Filter from './filter/Filter';
-import Expression from './filter/Expression';
-import Conjunction from './filter/Conjunction';
-import Disjunction from './filter/Disjunction';
-import Operator from './filter/Operator';
-
-import OAuth2Manager from './oauth2/OAuth2';
-import OAuth2AuthorizationCodeManager from './oauth2/OAuth2AuthorizationCode';
-import OAuth2TokenResponse from './oauth2/OAuth2TokenResponse';
-import OAuth2AuthorizationCodeParams from './oauth2/OAuth2AuthorizationCodeParams';
-import OAuth2DeviceCodeManager from './oauth2/OAuth2DeviceCode';
-import OAuth2DeviceCodeResponse from './oauth2/OAuth2DeviceCodeResponse';
-import Scope from './oauth2/Scope';
-
-
 {{#emitJSDoc}}/**{{#projectDescription}}
 * {{.}}.<br>{{/projectDescription}}
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
@@ -53,85 +37,6 @@ import Scope from './oauth2/Scope';
 * @version {{projectVersion}}
 */{{/emitJSDoc}}
 export {
-
-    /**
-     * The Condition service constructor.
-     * @property {module:filter/Condition}
-     */
-    Condition,
-
-    /**
-     * The Conjunction service constructor.
-     * @property {module:filter/Conjunction}
-     */
-    Conjunction,
-
-    /**
-     * The Disjunction service constructor.
-     * @property {module:filter/Disjunction}
-     */
-    Disjunction,
-
-    /**
-     * The Expression service constructor.
-     * @property {module:filter/Expression}
-     */
-    Expression,
-
-    /**
-     * The Filter service constructor.
-     * @property {module:filter/Filter}
-     */
-    Filter,
-
-    /**
-     * The Operator service constructor.
-     * @property {module:api/Operator}
-     */
-    Operator,
-
-    /**
-     * The OAuth2Manager service constructor.
-     * @property {module:api/OAuth2Manager}
-     */
-    OAuth2Manager,
-
-    /**
-     * The OAuth2AuthorizationCodeManager service constructor.
-     * @property {module:api/OAuth2AuthorizationCodeManager}
-     */
-    OAuth2AuthorizationCodeManager,
-
-    /**
-     * The Scope service constructor.
-     * @property {module:api/Scope}
-     */
-    Scope,
-
-    /**
-     * The OAuth2TokenResponse service constructor.
-     * @property {module:api/OAuth2TokenResponse}
-     */
-    OAuth2TokenResponse,
-
-    /**
-     * The OAuth2AuthorizationCodeParams service constructor.
-     * @property {module:api/OAuth2AuthorizationCodeParams}
-     */
-    OAuth2AuthorizationCodeParams,
-
-    /**
-     * The OAuth2DeviceCodeManager service constructor.
-     * @property {module:api/OAuth2DeviceCodeManager}
-     */
-    OAuth2DeviceCodeManager,
-
-    /**
-     * The OAuth2DeviceCodeResponse service constructor.
-     * @property {module:api/OAuth2DeviceCodeResponse}
-     */
-    OAuth2DeviceCodeResponse,
-
     {{=< >=}}
     <#emitJSDoc>/**
      * The ApiClient constructor.
@@ -146,8 +51,8 @@ export {
     <importPath></models><#apiInfo><#apis>,
 
     <#emitJSDoc>/**
-     * The <importPath> service constructor.
-     * @property {module:<#invokerPackage><invokerPackage>/</invokerPackage><#apiPackage><apiPackage>/</apiPackage><importPath>}
-     */</emitJSDoc>
+    * The <importPath> service constructor.
+    * @property {module:<#invokerPackage><invokerPackage>/</invokerPackage><#apiPackage><apiPackage>/</apiPackage><importPath>}
+    */</emitJSDoc>
     <importPath></apis></apiInfo>
 };<={{ }}=>
