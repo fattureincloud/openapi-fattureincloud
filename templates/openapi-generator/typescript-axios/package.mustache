@@ -19,7 +19,7 @@
 {{/supportsES6}}
   "scripts": {
     "build": "tsc{{#supportsES6}} && tsc -p tsconfig.esm.json{{/supportsES6}}",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
     "test": "mocha -r ts-node/register 'test/**/*.ts'"
   },
   "dependencies": {
