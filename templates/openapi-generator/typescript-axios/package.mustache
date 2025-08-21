@@ -1,12 +1,8 @@
 {
   "name": "{{npmName}}",
   "version": "{{npmVersion}}",
-  "description": "OpenAPI client for {{npmName}}",
-  "author": "OpenAPI-Generator Contributors",
-  "repository": {
-    "type": "git",
-    "url": "https://{{gitHost}}/{{gitUserId}}/{{gitRepoId}}.git"
-  },
+  "description": "TypeScript SDK for the Fatture in Cloud API",
+  "author": "Fatture in Cloud API Team",
   "keywords": [
     "axios",
     "typescript",
@@ -14,7 +10,7 @@
     "openapi-generator",
     "{{npmName}}"
   ],
-  "license": "{{licenseName}}",
+  "license": "MIT",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
 {{#supportsES6}}
@@ -25,12 +21,29 @@
     "build": "tsc{{#supportsES6}} && tsc -p tsconfig.esm.json{{/supportsES6}}",
     "prepare": "npm run build"
   },
+  "test": "mocha -r ts-node/register 'test/**/*.ts'"
   "dependencies": {
-    "axios": "{{axiosVersion}}"
+    "axios": "^1.6.1"
+    "form-data": "^4.0.0"
   },
   "devDependencies": {
     "@types/node": "12.11.5 - 12.20.42",
-    "typescript": "^4.0 || ^5.0"
+    "typescript": "^4.0 || ^5.0",
+    "ts-node": "^10.7.0",
+    "chai": "^4.3.6",
+    "@types/chai": "^4.3.0",
+    "mocha": "^8.0.1",
+    "@types/mocha": "^9.1.0",
+    "sinon": "^7.2.0",
+    "@types/sinon": "^10.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.22.0",
+    "@typescript-eslint/parser": "^5.22.0",
+    "eslint": "^8.14.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.0",
+    "eslint-plugin-promise": "^6.0.0"
   }{{#npmRepository}},{{/npmRepository}}
 {{#npmRepository}}
   "publishConfig": {
