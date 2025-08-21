@@ -47,7 +47,7 @@ import { Configuration, ArchiveApi , CreateArchiveDocumentRequest } from '@fattu
 
 // Configure OAuth2 access token for authorization:
 const apiConfig = new Configuration({
-accessToken: "YOUR ACCESS TOKEN"
+  accessToken: "YOUR ACCESS TOKEN"
 });
 
 let apiInstance = new ArchiveApi(apiConfig);
@@ -56,9 +56,9 @@ let companyId = 12345; // Number | The ID of the company.
 let createArchiveDocumentRequest: CreateArchiveDocumentRequest = {"data":{"date":"2021-08-20","category":"Altri documenti","description":"spesa 1","attachment_token":"ibfjdbf94ey9w94g3w894qbasrga"}} // CreateArchiveDocumentRequest | The Archive Document.
 
 apiInstance.createArchiveDocument(companyId, createArchiveDocumentRequest).then((data) => {
-console.log('API called successfully. Returned data: ' + data);
+  console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
-console.error(error);
+  console.error(error);
 });
 ```
 
