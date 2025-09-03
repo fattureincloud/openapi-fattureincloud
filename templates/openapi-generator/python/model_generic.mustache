@@ -73,22 +73,15 @@ class {{classname}}({{#parent}}{{{.}}}{{/parent}}{{^parent}}BaseModel{{/parent}}
 
         {{/isNullable}}
         {{/required}}
-        {{#isContainer}}
         {{#isArray}}
         for i in value:
             if i not in set([{{#allowableValues}}{{#enumVars}}{{{value}}}{{^-last}}, {{/-last}}{{/enumVars}}{{/allowableValues}}]):
                 raise ValueError("each list item must be one of ({{#allowableValues}}{{#enumVars}}{{{value}}}{{^-last}}, {{/-last}}{{/enumVars}}{{/allowableValues}})")
         {{/isArray}}
-        {{#isMap}}
-        for i in value.values():
-            if i not in set([{{#allowableValues}}{{#enumVars}}{{{value}}}{{^-last}}, {{/-last}}{{/enumVars}}{{/allowableValues}}]):
-                raise ValueError("dict values must be one of enum values ({{#allowableValues}}{{#enumVars}}{{{value}}}{{^-last}}, {{/-last}}{{/enumVars}}{{/allowableValues}})")
-        {{/isMap}}
-        {{/isContainer}}
-        {{^isContainer}}
+        {{^isArray}}
         if value not in set([{{#allowableValues}}{{#enumVars}}{{{value}}}{{^-last}}, {{/-last}}{{/enumVars}}{{/allowableValues}}]):
             raise ValueError("must be one of enum values ({{#allowableValues}}{{#enumVars}}{{{value}}}{{^-last}}, {{/-last}}{{/enumVars}}{{/allowableValues}})")
-        {{/isContainer}}
+        {{/isArray}}
         return value
     {{/isEnum}}
 {{/vars}}
@@ -241,15 +234,6 @@ class {{classname}}({{#parent}}{{{.}}}{{/parent}}{{^parent}}BaseModel{{/parent}}
                 _dict[_key] = _value
 
         {{/isAdditionalPropertiesTrue}}
-        {{#allVars}}
-        {{#isNullable}}
-        # set to None if {{{name}}} (nullable) is None
-        # and model_fields_set contains the field
-        if self.{{name}} is None and "{{{name}}}" in self.model_fields_set:
-            _dict['{{{baseName}}}'] = None
-
-        {{/isNullable}}
-        {{/allVars}}
         return _dict
 
     {{#hasChildren}}
@@ -356,7 +340,7 @@ class {{classname}}({{#parent}}{{{.}}}{{/parent}}{{^parent}}BaseModel{{/parent}}
             {{/items.isContainer}}
             {{/items.isEnumOrRef}}
             {{#items.isEnumOrRef}}
-            "{{{baseName}}}": dict((_k, _v) for _k, _v in obj.get("{{{baseName}}}").items()) if obj.get("{{{baseName}}}") is not None else None{{^-last}},{{/-last}}
+            "{{{baseName}}}": dict((_k, _v) for _k, _v in obj.get("{{{baseName}}}").items()){{^-last}},{{/-last}}
             {{/items.isEnumOrRef}}
             {{/items.isPrimitiveType}}
             {{#items.isPrimitiveType}}
