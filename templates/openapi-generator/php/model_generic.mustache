@@ -36,7 +36,7 @@ class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^par
       *
       * @var boolean[]
       */
-    protected static $openAPINullables = [
+    protected static array $openAPINullables = [
         {{#vars}}'{{name}}' => {{#isNullable}}true{{/isNullable}}{{^isNullable}}false{{/isNullable}}{{^-last}},
         {{/-last}}{{/vars}}
     ];
@@ -46,7 +46,7 @@ class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^par
       *
       * @var boolean[]
       */
-    protected $openAPINullablesSetToNull = [];
+    protected array $openAPINullablesSetToNull = [];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -93,7 +93,7 @@ class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^par
      *
      * @param boolean[] $openAPINullablesSetToNull
      */
-    private function setOpenAPINullablesSetToNull($openAPINullablesSetToNull): void
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
     {
         $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
     }
@@ -231,10 +231,10 @@ class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^par
     /**
      * Constructor
      *
-     * @param mixed[] $data Associated array of property values
+     * @param mixed[]|null $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct($data = null)
+    public function __construct(?array $data = null)
     {
         {{#parentSchema}}
         parent::__construct($data);
@@ -259,7 +259,7 @@ class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^par
     * @param array  $fields
     * @param mixed  $defaultValue
     */
-    private function setIfExists(string $variableName, $fields, $defaultValue): void
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
             $this->openAPINullablesSetToNull[] = $variableName;
@@ -408,6 +408,10 @@ class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^par
         $allowedValues = $this->{{getter}}AllowableValues();
         {{^isContainer}}
         if ({{#isNullable}}!is_null(${{name}}) && {{/isNullable}}!in_array(${{{name}}}, $allowedValues, true)) {
+        {{#enumUnknownDefaultCase}}
+            ${{name}} = {{#allowableValues}}{{#enumVars}}{{#-last}}self::{{enumName}}_{{{name}}};{{/-last}}{{/enumVars}}{{/allowableValues}}
+        {{/enumUnknownDefaultCase}}
+        {{^enumUnknownDefaultCase}}
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for '{{name}}', must be one of '%s'",
@@ -415,6 +419,7 @@ class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^par
                     implode("', '", $allowedValues)
                 )
             );
+        {{/enumUnknownDefaultCase}}
         }
         {{/isContainer}}
         {{#isContainer}}

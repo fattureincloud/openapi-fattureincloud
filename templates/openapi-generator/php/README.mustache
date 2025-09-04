@@ -2,11 +2,11 @@
 
 [![Packagist](https://img.shields.io/packagist/v/fattureincloud/fattureincloud-php-sdk?color=g)](https://packagist.org/packages/fattureincloud/fattureincloud-php-sdk) ![unit tests](https://github.com/fattureincloud/fattureincloud-php-sdk/actions/workflows/validate.yaml/badge.svg)
 {{#appDescriptionWithNewLines}}
-{{{.}}}
+    {{{.}}}
 {{/appDescriptionWithNewLines}}
 
 {{#infoUrl}}
-For more information, please visit [{{{infoUrl}}}]({{{infoUrl}}}).
+    For more information, please visit [{{{infoUrl}}}]({{{infoUrl}}}).
 {{/infoUrl}}
 
 ## Installation & Usage
@@ -38,11 +38,11 @@ require_once('./fattureincloud-php-sdk.phar');
 Please follow the [installation procedure](#installation--usage) and then run the following:
 
 ```php
-<?php
+        <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
 {{#apiInfo}}{{#apis}}{{#-first}}{{#operations}}{{#operation}}{{#-first}}
-{{> php_doc_auth_partial}}
+    {{> php_doc_auth_partial}}
 $apiInstance = new {{invokerPackage}}\Api\{{classname}}(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -50,14 +50,14 @@ $apiInstance = new {{invokerPackage}}\Api\{{classname}}(
     $config{{/hasAuthMethods}}
 );
 {{#allParams}}${{paramName}} = {{#isPrimitiveType}}{{{example}}}{{/isPrimitiveType}}{{^isPrimitiveType}}new {{{dataType}}}{{/isPrimitiveType}}; // {{{dataType}}}{{#description}} | {{{.}}}{{/description}}
-{{/allParams}}
+    {{/allParams}}
 
 try {
     {{#returnType}}$result = {{/returnType}}$apiInstance->{{{operationId}}}({{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}});{{#returnType}}
-    print_r($result);{{/returnType}}
-} catch (Exception $e) {
+        print_r($result);{{/returnType}}
+    } catch (Exception $e) {
     echo 'Exception when calling {{classname}}->{{operationId}}: ', $e->getMessage(), PHP_EOL;
-}
+    }
 {{/-first}}{{/operation}}{{/operations}}{{/-first}}{{/apis}}{{/apiInfo}}
 ```
 
@@ -79,36 +79,36 @@ Class | Method | HTTP request | Description
     All endpoints do not require authorization.
 {{/authMethods}}
 {{#authMethods}}
-{{#last}} Authentication schemes defined for the API:{{/last}}
-### {{{name}}}
-{{#isApiKey}}
+    {{#last}} Authentication schemes defined for the API:{{/last}}
+    ### {{{name}}}
+    {{#isApiKey}}
 
-- **Type**: API key
-- **API key parameter name**: {{{keyParamName}}}
-- **Location**: {{#isKeyInQuery}}URL query string{{/isKeyInQuery}}{{#isKeyInHeader}}HTTP header{{/isKeyInHeader}}
+        - **Type**: API key
+        - **API key parameter name**: {{{keyParamName}}}
+        - **Location**: {{#isKeyInQuery}}URL query string{{/isKeyInQuery}}{{#isKeyInHeader}}HTTP header{{/isKeyInHeader}}
 
-{{/isApiKey}}
-{{#isBasic}}
-{{#isBasicBasic}}
+    {{/isApiKey}}
+    {{#isBasic}}
+        {{#isBasicBasic}}
 
-- **Type**: HTTP basic authentication
-{{/isBasicBasic}}
-{{#isBasicBearer}}
+            - **Type**: HTTP basic authentication
+        {{/isBasicBasic}}
+        {{#isBasicBearer}}
 
-- **Type**: Bearer authentication{{#bearerFormat}} ({{{.}}}){{/bearerFormat}}
-{{/isBasicBearer}}
+            - **Type**: Bearer authentication{{#bearerFormat}} ({{{.}}}){{/bearerFormat}}
+        {{/isBasicBearer}}
 
-{{/isBasic}}
-{{#isOAuth}}
+    {{/isBasic}}
+    {{#isOAuth}}
 
-- **Type**: `OAuth`
-- **Flow**: `{{{flow}}}`
-- **Authorization URL**: `{{{authorizationUrl}}}`
-- **Scopes**: {{^scopes}}N/A{{/scopes}}
-{{#scopes}}
-    - **{{{scope}}}**: {{{description}}}
-{{/scopes}}
-{{/isOAuth}}
+        - **Type**: `OAuth`
+        - **Flow**: `{{{flow}}}`
+        - **Authorization URL**: `{{{authorizationUrl}}}`
+        - **Scopes**: {{^scopes}}N/A{{/scopes}}
+        {{#scopes}}
+            - **{{{scope}}}**: {{{description}}}
+        {{/scopes}}
+    {{/isOAuth}}
 
 {{/authMethods}}
 ## Tests
