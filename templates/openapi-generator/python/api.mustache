@@ -109,7 +109,7 @@ class {{classname}}:
         # process the path parameters
 {{#pathParams}}
         if {{paramName}} is not None:
-            _path_params['{{baseName}}'] = {{paramName}}{{#isEnumRef}}.value{{/isEnumRef}}
+            _path_params['{{baseName}}'] = {{paramName}}{{#isEnumRef}}{{/isEnumRef}}
 {{/pathParams}}
         # process the query parameters
 {{#queryParams}}
@@ -141,7 +141,7 @@ class {{classname}}:
                 _query_params.append(('{{baseName}}', {{paramName}}))
             {{/isDate}}
             {{^isDateTime}}{{^isDate}}
-            _query_params.append(('{{baseName}}', {{paramName}}{{#isEnumRef}}{{/isEnumRef}}))
+            _query_params.append(('{{baseName}}', {{paramName}}{{#isEnumRef}}.value{{/isEnumRef}}))
             {{/isDate}}{{/isDateTime}}
 {{/queryParams}}
         # process the header parameters
