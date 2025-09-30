@@ -115,7 +115,7 @@ jobs:
           PACKAGE_TITLE: "\"Fatture in Cloud C# SDK\""
           PACKAGE_AUTHORS: "\"Fatture in Cloud API Team\""
           PACKAGE_COMPANY: "\"Fatture in Cloud\""
-          TARGET_FRAMEWORK: "\"net6.0\""
+          TARGET_FRAMEWORK: "\"netstandard2.0\""
           TEST_TARGET_FRAMEWORK: "\"net6.0\""
           APP_NAME: "FattureInCloud"
         run: |
