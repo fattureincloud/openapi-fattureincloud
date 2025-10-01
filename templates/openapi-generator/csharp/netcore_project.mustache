@@ -10,7 +10,8 @@
     <Authors>{{packageAuthors}}</Authors>
     <Company>{{packageCompany}}</Company>
     <AssemblyTitle>{{packageTitle}}</AssemblyTitle>
-    <Description>{{packageDescription}}</Description>
+    <Description>A library that allows developers to connect with the Fatture in Cloud V2 REST API.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <Copyright>{{packageCopyright}}</Copyright>
     <RootNamespace>{{packageName}}</RootNamespace>
     <Version>{{packageVersion}}</Version>
@@ -61,24 +62,7 @@
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     {{/net60OrLater}}
     {{/validatable}}
+    <None Include="../../README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
-{{^useGenericHost}}
-  <ItemGroup>
-    {{^net60OrLater}}
-    <None Remove="System.Web" />
-    {{/net60OrLater}}
-    {{#net48}}
-    <None Remove="System.Net.Http" />
-    {{/net48}}
-  </ItemGroup>
-  <ItemGroup>
-    {{^net60OrLater}}
-    <Reference Include="System.Web" />
-    {{/net60OrLater}}
-    {{#net48}}
-    <Reference Include="System.Net.Http" />
-    {{/net48}}
-  </ItemGroup>
-{{/useGenericHost}}
 {{>netcore_project.additions}}</Project>
