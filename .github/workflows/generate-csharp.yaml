@@ -10,7 +10,6 @@ jobs:
       GIT_REPO_ID: fattureincloud-csharp-sdk
       GIT_USER_ID: fattureincloud
     steps:
-
       - id: checkout
         name: Checkout repo
         uses: actions/checkout@v4
@@ -20,7 +19,7 @@ jobs:
       - id: checkout-csharp
         name: Checkout C# repo
         env:
-          GIT_REPO_PATH: '${{ env.GIT_USER_ID }}/${{ env.GIT_REPO_ID }}'
+          GIT_REPO_PATH: "${{ env.GIT_USER_ID }}/${{ env.GIT_REPO_ID }}"
         uses: actions/checkout@v4
         with:
           path: ./generated/csharp
@@ -42,16 +41,15 @@ jobs:
         name: Setup Java
         uses: actions/setup-java@v4
         with:
-          distribution: 'adopt'
-          java-version: '11'
+          distribution: "adopt"
+          java-version: "11"
 
       - id: setup-dotnet
         if: ${{ !env.ACT }}
         name: Setup dotnet
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '6.0.x'
-
+          dotnet-version: "6.0.x"
 
       - id: setup-libraries
         name: Install libraries
@@ -118,17 +116,17 @@ jobs:
           PACKAGE_AUTHORS: "\"Fatture in Cloud API Team\""
           PACKAGE_COMPANY: "\"Fatture in Cloud\""
           TARGET_FRAMEWORK: "\"netstandard2.0\""
-          TEST_TARGET_FRAMEWORK: "\"netcoreapp3.1;net5.0\""
+          TEST_TARGET_FRAMEWORK: "\"net6.0\""
           APP_NAME: "FattureInCloud"
         run: |
           SDK_VERSION=${{ env.sdk_version }}
           echo "${{ env.sdk_version }}"
-          
+
           RELEASE_NOTE="\"bumping version to $SDK_VERSION\""
 
           USER_AGENT="$APP_NAME/${{ env.sdk_version }}/csharp-SDK"
-          
-          openapi-generator-cli generate -i ./openapi.yaml -g csharp -o generated/csharp/ -t ./templates/openapi-generator/csharp --additional-properties=useDateTimeOffset=true,conditionalSerialization=true,packageName=${PACKAGE_NAME},packageAuthors=${PACKAGE_AUTHORS},packageCompany=${PACKAGE_COMPANY},packageTitle=${PACKAGE_TITLE},packageVersion=${SDK_VERSION},targetFramework=${TARGET_FRAMEWORK},testTargetFramework=${TEST_TARGET_FRAMEWORK},multiTarget=true,equatable=true,licenseId=MIT,useGenericHost=false,useRestSharp=true,supportsRetry=true --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT}
+
+          openapi-generator-cli generate -i ./openapi.yaml -g csharp -o generated/csharp/ -t ./templates/openapi-generator/csharp --additional-properties=useDateTimeOffset=true,conditionalSerialization=true,packageName=${PACKAGE_NAME},packageAuthors=${PACKAGE_AUTHORS},packageCompany=${PACKAGE_COMPANY},packageTitle=${PACKAGE_TITLE},packageVersion=${SDK_VERSION},targetFramework=${TARGET_FRAMEWORK},testTargetFramework=${TEST_TARGET_FRAMEWORK},multiTarget=true,equatable=true,licenseId=MIT --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT}
 
       - id: move-custom-files-to-repo
         name: Move custom files to repo
