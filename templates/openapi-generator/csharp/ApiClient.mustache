@@ -361,7 +361,6 @@ namespace {{packageName}}.Client
                     }
 
                     request.AddParameter("application/json", JsonConvert.SerializeObject(options.Data), ParameterType.RequestBody);
-                    request.AddHeader("User-Agent", configuration.UserAgent);
                 }
             }
 
