@@ -45,6 +45,10 @@ paths:
           $ref: '#/components/responses/GetUserInfoResponse'
         '401':
           description: Unauthorized.
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getUserInfo
       description: Gets the current user's info.
       security:
@@ -60,6 +64,10 @@ paths:
           $ref: '#/components/responses/ListUserCompaniesResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listUserCompanies
       description: Lists the companies controlled by the current user.
       security:
@@ -75,6 +83,10 @@ paths:
           $ref: '#/components/responses/GetCompanyInfoResponse'
         '401':
           description: Unauthorized.
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getCompanyInfo
       description: Gets the company detailed info.
       security:
@@ -91,6 +103,10 @@ paths:
           $ref: '#/components/responses/GetCompanyPlanUsageResponse'
         '401':
           description: Unauthorized.
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getCompanyPlanUsage
       description: Gets the company limits usage.
       parameters:
@@ -121,6 +137,10 @@ paths:
           $ref: '#/components/responses/ListClientsResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listClients
       description: Lists the clients.
       security:
@@ -139,6 +159,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/CreateClientResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Creates a new client.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -202,8 +226,12 @@ paths:
           $ref: '#/components/responses/GetClientResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getClient
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -220,8 +248,12 @@ paths:
           $ref: '#/components/responses/ModifyClientResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Modifies the specified client.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -278,10 +310,23 @@ paths:
       responses:
         '200':
           description: Entity Removed
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Deletes the specified client.
       parameters: []
       security:
@@ -301,8 +346,12 @@ paths:
           $ref: '#/components/responses/GetEntityClientsInfoResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getClientInfo
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -319,6 +368,10 @@ paths:
           $ref: '#/components/responses/ListSuppliersResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listSuppliers
       description: Lists the suppliers.
       security:
@@ -339,6 +392,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/CreateSupplierResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Creates a new supplier.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -387,8 +444,12 @@ paths:
           $ref: '#/components/responses/GetSupplierResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getSupplier
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -407,8 +468,12 @@ paths:
           $ref: '#/components/responses/ModifySupplierResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Modifies the specified supplier.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -454,10 +519,23 @@ paths:
       responses:
         '200':
           description: Entity Removed
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Deletes the specified supplier.
       parameters: []
       security:
@@ -477,6 +555,10 @@ paths:
           $ref: '#/components/responses/ListProductsResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listProducts
       description: Lists the products.
       security:
@@ -495,6 +577,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/CreateProductResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       tags:
         - Products
       description: Creates a new product.
@@ -539,8 +625,12 @@ paths:
           $ref: '#/components/responses/GetProductResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getProduct
       description: Gets the specified product.
       security:
@@ -557,8 +647,12 @@ paths:
           $ref: '#/components/responses/ModifyProductResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Modifies the specified product.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -596,10 +690,23 @@ paths:
       responses:
         '200':
           description: Product removed.
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Deletes the specified product.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -619,8 +726,12 @@ paths:
           $ref: '#/components/responses/ListIssuedDocumentsResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listIssuedDocuments
       description: Lists the issued documents.
       security:
@@ -656,6 +767,10 @@ paths:
           $ref: '#/components/responses/CreateIssuedDocumentResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       tags:
         - Issued Documents
       description: Creates a new document.
@@ -748,8 +863,12 @@ paths:
           $ref: '#/components/responses/GetIssuedDocumentResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getIssuedDocument
       description: |
         Gets the specified document.
@@ -773,8 +892,12 @@ paths:
           $ref: '#/components/responses/ModifyIssuedDocumentResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Modifies the specified document.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -857,10 +980,23 @@ paths:
       responses:
         '200':
           description: Document removed
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Deletes the specified document.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -885,6 +1021,10 @@ paths:
           $ref: '#/components/responses/GetNewIssuedDocumentTotalsResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Returns the totals for a new document.
       tags:
         - Issued Documents
@@ -1005,8 +1145,12 @@ paths:
           $ref: '#/components/responses/GetExistingIssuedDocumentTotalsResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       tags:
         - Issued Documents
       description: Returns the totals for a specified document.
@@ -1034,6 +1178,10 @@ paths:
           $ref: '#/components/responses/UploadIssuedDocumentAttachmentResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       tags:
         - Issued Documents
       description: >-
@@ -1064,10 +1212,23 @@ paths:
       responses:
         '200':
           description: File removed.
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Removes the attachment of the specified document.
       security:
         - OAuth2AuthenticationCodeFlow: []
@@ -1084,6 +1245,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetIssuedDocumentPreCreateInfoResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getIssuedDocumentPreCreateInfo
       description: Retrieves the information useful while creating a new document.
       security:
@@ -1101,6 +1266,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetEmailDataResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getEmailData
       description: Gets the pre-compiled email details.
       security:
@@ -1119,10 +1288,23 @@ paths:
       responses:
         '200':
           description: OK
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Schedules the sending of a document by email.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -1173,8 +1355,12 @@ paths:
           $ref: '#/components/responses/SendEInvoiceResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Sends the e-invoice to SDI.
       security:
         - OAuth2AuthenticationCodeFlow: []
@@ -1205,10 +1391,14 @@ paths:
           $ref: '#/components/responses/VerifyEInvoiceXmlResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
         '422':
           $ref: '#/components/responses/VerifyEInvoiceXmlErrorResponse'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: verifyEInvoiceXml
       description: >-
         Verifies the e-invoice XML format. Checks if all of the mandatory fields
@@ -1229,8 +1419,12 @@ paths:
           $ref: '#/components/responses/GetEInvoiceXmlResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getEInvoiceXml
       description: Downloads the e-invoice in XML format.
       security:
@@ -1248,6 +1442,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetEInvoiceRejectionReasonResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getEInvoiceRejectionReason
       description: Get e-invoice rejection reason
       security:
@@ -1264,6 +1462,10 @@ paths:
           $ref: '#/components/responses/ListReceivedDocumentsResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listReceivedDocuments
       description: Lists the received documents.
       security:
@@ -1284,6 +1486,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/CreateReceivedDocumentResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Creates a new document.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -1353,8 +1559,12 @@ paths:
           $ref: '#/components/responses/GetReceivedDocumentResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getReceivedDocument
       description: Gets the specified document.
       security:
@@ -1372,8 +1582,12 @@ paths:
           $ref: '#/components/responses/ModifyReceivedDocumentResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       tags:
         - Received Documents
       description: Modifies the specified document.
@@ -1435,10 +1649,23 @@ paths:
       responses:
         '200':
           description: Document removed.
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       tags:
         - Received Documents
       description: Deletes the specified document.
@@ -1458,8 +1685,12 @@ paths:
           $ref: '#/components/responses/GetNewReceivedDocumentTotalsResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Returns the totals for a new document.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -1522,6 +1753,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetExistingReceivedDocumentTotalsResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       tags:
         - Received Documents
       description: Returns the totals for the specified document.
@@ -1552,6 +1787,10 @@ paths:
           $ref: '#/components/responses/UploadReceivedDocumentAttachmentResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       tags:
         - Received Documents
       description: >-
@@ -1584,10 +1823,23 @@ paths:
       responses:
         '200':
           description: File removed
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       tags:
         - Received Documents
       description: Removes the attachment of the specified document.
@@ -1606,6 +1858,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetReceivedDocumentPreCreateInfoResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getReceivedDocumentPreCreateInfo
       description: Retrieves the information useful while creating a new document.
       security:
@@ -1625,6 +1881,10 @@ paths:
           $ref: '#/components/responses/ListReceiptsResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listReceipts
       description: Lists the receipts.
       security:
@@ -1645,6 +1905,10 @@ paths:
           $ref: '#/components/responses/CreateReceiptResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Creates a new receipt.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -1695,8 +1959,12 @@ paths:
           $ref: '#/components/responses/GetReceiptResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getReceipt
       description: Gets the specified receipt.
       parameters:
@@ -1713,8 +1981,12 @@ paths:
           $ref: '#/components/responses/ModifyReceiptResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       tags:
         - Receipts
       description: Modifies the specified receipt.
@@ -1758,10 +2030,23 @@ paths:
       responses:
         '200':
           description: Document removed.
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Deletes the specified receipt.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -1781,8 +2066,12 @@ paths:
           $ref: '#/components/responses/GetReceiptPreCreateInfoResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getReceiptPreCreateInfo
       description: Retrieves the information useful while creating a new receipt.
       security:
@@ -1801,8 +2090,12 @@ paths:
           $ref: '#/components/responses/GetReceiptsMonthlyTotalsResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getReceiptsMonthlyTotals
       description: Returns the monthly totals by year and receipt type.
       security:
@@ -1836,6 +2129,10 @@ paths:
           $ref: '#/components/responses/ListF24Response'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listF24
       description: Lists the F24s.
       security:
@@ -1856,8 +2153,12 @@ paths:
           $ref: '#/components/responses/CreateF24Response'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       tags:
         - Taxes
       description: Creates a new F24.
@@ -1895,8 +2196,12 @@ paths:
           $ref: '#/components/responses/GetF24Response'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getF24
       description: Gets the specified F24.
       security:
@@ -1913,8 +2218,12 @@ paths:
           $ref: '#/components/responses/ModifyF24Response'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Modifies the specified F24.
       tags:
         - Taxes
@@ -1944,10 +2253,23 @@ paths:
       responses:
         '200':
           description: Document removed.
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       tags:
         - Taxes
       description: Removes the specified F24.
@@ -1965,6 +2287,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/UploadF24AttachmentResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: uploadF24Attachment
       description: >-
         Uploads an attachment destined to a F24. The actual association between
@@ -1996,10 +2322,23 @@ paths:
       responses:
         '200':
           description: File Removed.
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: deleteF24Attachment
       description: Removes the attachment of the specified F24.
       security:
@@ -2018,8 +2357,12 @@ paths:
           $ref: '#/components/responses/ListArchiveDocumentsResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listArchiveDocuments
       description: Lists the archive documents.
       security:
@@ -2040,8 +2383,12 @@ paths:
           $ref: '#/components/responses/CreateArchiveDocumentResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       tags:
         - Archive
       description: Creates a new archive document.
@@ -2076,8 +2423,12 @@ paths:
           $ref: '#/components/responses/GetArchiveDocumentResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getArchiveDocument
       description: Gets the specified archive document.
       security:
@@ -2094,8 +2445,12 @@ paths:
           $ref: '#/components/responses/ModifyArchiveDocumentResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       tags:
         - Archive
       description: Modifies the specified archive document.
@@ -2122,10 +2477,23 @@ paths:
       responses:
         '200':
           description: Document removed.
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       tags:
         - Archive
       description: Deletes the specified archive document.
@@ -2145,8 +2513,12 @@ paths:
           $ref: '#/components/responses/UploadArchiveAttachmentResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: uploadArchiveDocumentAttachment
       description: >-
         Uploads an attachment destined to an archive document. The actual
@@ -2179,8 +2551,12 @@ paths:
           $ref: '#/components/responses/ListCashbookEntriesResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listCashbookEntries
       description: Lists the cashbook entries.
       security:
@@ -2226,8 +2602,12 @@ paths:
           $ref: '#/components/responses/CreateCashbookEntryResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       tags:
         - Cashbook
       description: Creates a new cashbook entry.
@@ -2274,8 +2654,12 @@ paths:
           $ref: '#/components/responses/GetCashbookEntryResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getCashbookEntry
       description: Gets the specified cashbook entry.
       security:
@@ -2292,8 +2676,12 @@ paths:
           $ref: '#/components/responses/ModifyCashbookEntryResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       tags:
         - Cashbook
       description: Modifies the specified cashbook entry.
@@ -2323,10 +2711,23 @@ paths:
       responses:
         '200':
           description: Document removed.
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Deletes the specified cashbook entry.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -2343,6 +2744,10 @@ paths:
           $ref: '#/components/responses/ListCountriesResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listCountries
       description: Lists the supported countries.
       security:
@@ -2358,6 +2763,10 @@ paths:
           $ref: '#/components/responses/ListDetailedCountriesResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listDetailedCountries
       description: Lists the supported countries.
       security:
@@ -2371,6 +2780,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListCitiesResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listCities
       description: Lists the Italian cities.
       security:
@@ -2396,6 +2809,10 @@ paths:
           $ref: '#/components/responses/ListLanguagesResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listLanguages
       description: Lists the supported languages.
       security:
@@ -2411,6 +2828,10 @@ paths:
           $ref: '#/components/responses/ListTemplatesResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listTemplates
       description: Lists the available templates.
       security:
@@ -2445,6 +2866,10 @@ paths:
           $ref: '#/components/responses/ListCurrenciesResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listCurrencies
       description: Lists the supported currencies.
       security:
@@ -2460,6 +2885,10 @@ paths:
           $ref: '#/components/responses/ListUnitsOfMeasureResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listUnitsOfMeasure
       description: Lists the units of measure.
       security:
@@ -2475,6 +2904,10 @@ paths:
           $ref: '#/components/responses/ListDeliveryNotesDefaultCausalsResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listDeliveryNotesDefaultCausals
       description: Lists the delivery note default causals.
       security:
@@ -2492,8 +2925,12 @@ paths:
           $ref: '#/components/responses/ListVatTypesResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listVatTypes
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -2513,8 +2950,12 @@ paths:
           $ref: '#/components/responses/ListPaymentMethodsResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listPaymentMethods
       description: Lists the available payment methods.
       security:
@@ -2535,8 +2976,12 @@ paths:
           $ref: '#/components/responses/ListPaymentAccountsResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listPaymentAccounts
       description: Lists the available payment accounts.
       security:
@@ -2557,8 +3002,12 @@ paths:
           $ref: '#/components/responses/ListRevenueCentersResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listRevenueCenters
       description: Lists the revenue centers.
       security:
@@ -2576,8 +3025,12 @@ paths:
           $ref: '#/components/responses/ListCostCentersResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listCostCenters
       description: Lists the cost centers.
       security:
@@ -2595,8 +3048,12 @@ paths:
           $ref: '#/components/responses/ListProductCategoriesResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listProductCategories
       description: Lists the product categories.
       security:
@@ -2622,6 +3079,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListReceivedDocumentCategoriesResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listReceivedDocumentCategories
       description: Lists the received document categories.
       security:
@@ -2639,8 +3100,12 @@ paths:
           $ref: '#/components/responses/ListArchiveCategoriesResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listArchiveCategories
       description: Lists the archive categories.
       security:
@@ -2661,6 +3126,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/CreatePaymentMethodResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       requestBody:
         content:
           application/json:
@@ -2696,6 +3165,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetPaymentMethodResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getPaymentMethod
       description: Gets the specified payment method.
       security:
@@ -2710,6 +3183,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ModifyPaymentMethodResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: modifyPaymentMethod
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -2742,6 +3219,19 @@ paths:
       responses:
         '200':
           description: OK
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: deletePaymentMethod
       description: Deletes the specified payment method.
       security:
@@ -2757,6 +3247,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/CreatePaymentAccountResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: createPaymentAccount
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -2788,6 +3282,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetTaxProfileResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Gets the Tax Profile
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -2808,6 +3306,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetPaymentAccountResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getPaymentAccount
       description: Gets the specified payment account.
       parameters:
@@ -2822,6 +3324,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ModifyPaymentAccountResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: modifyPaymentAccount
       description: Modifies the specified payment account.
       security:
@@ -2850,6 +3356,19 @@ paths:
       responses:
         '200':
           description: OK
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: deletePaymentAccount
       description: Deletes the specified payment account.
       security:
@@ -2865,6 +3384,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/CreateVatTypeResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: createVatType
       description: Creates a vat type.
       security:
@@ -2905,6 +3428,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetVatTypeResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getVatType
       description: Gets the specified vat type.
       security:
@@ -2916,6 +3443,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ModifyVatTypeResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: modifyVatType
       description: Modifies the specified vat type.
       security:
@@ -2946,6 +3477,19 @@ paths:
       responses:
         '200':
           description: OK
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: deleteVatType
       description: Deletes the specified vat type.
       security:
@@ -2959,6 +3503,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/TransformIssuedDocumentResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: transformIssuedDocument
       description: Transforms the document.
       security:
@@ -3007,6 +3555,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/JoinIssuedDocumentsResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: joinIssuedDocuments
       description: Joins issued documents.
       security:
@@ -3050,6 +3602,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListEmailsResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listEmails
       description: List Emails.
       parameters:
@@ -3069,6 +3625,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListWebhooksSubscriptionsResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listWebhooksSubscriptions
       description: List active webhooks subscriptions.
       security:
@@ -3078,6 +3638,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/CreateWebhooksSubscriptionResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: CreateWebhooksSubscription
       requestBody:
         content:
@@ -3112,6 +3676,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetWebhooksSubscriptionResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getWebhooksSubscription
       description: Get a webhooks subscription.
       security:
@@ -3123,6 +3691,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ModifyWebhooksSubscriptionResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: modifyWebhooksSubscription
       description: Edit a webhooks subscription.
       requestBody:
@@ -3139,6 +3711,19 @@ paths:
       responses:
         '200':
           description: OK
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: deleteWebhooksSubscription
       description: Delete a webhooks subscription.
       security:
@@ -3154,6 +3739,19 @@ paths:
       responses:
         '200':
           description: OK
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: verifyWebhooksSubscription
       description: Verify a webhook subscription.
       security:
@@ -3169,6 +3767,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListBinIssuedDocumentsResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: ListBinIssuedDocuments
       description: Get bin issued documents list
       security:
@@ -3193,6 +3795,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetBinIssuedDocumentResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: GetBinIssuedDocument
       description: Get bin issued documents detail
       security:
@@ -3211,6 +3817,19 @@ paths:
       responses:
         '200':
           description: OK
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Delete Bin Issued Document
       security:
         - OAuth2AuthenticationCodeFlow: []
@@ -3226,6 +3845,19 @@ paths:
       responses:
         '200':
           description: OK
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Recover Issued Document From The Bin
       security:
         - OAuth2AuthenticationCodeFlow: []
@@ -3237,6 +3869,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListBinReceivedDocumentsResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: ListBinReceivedDocuments
       description: Get bin Received documents list
       security:
@@ -3252,6 +3888,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetBinIssuedDocumentResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: GetBinReceivedDocument
       description: Get bin issued documents detail
       security:
@@ -3268,6 +3908,19 @@ paths:
       responses:
         '200':
           description: OK
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Delete Bin Received Document
       tags:
         - Received Documents
@@ -3281,6 +3934,19 @@ paths:
       responses:
         '200':
           description: OK
+          headers:
+            RateLimit-HourlyRemaining:
+              $ref: '#/components/headers/RateLimitHourlyRemaining'
+            RateLimit-HourlyLimit:
+              $ref: '#/components/headers/RateLimitHourlyLimit'
+            RateLimit-MonthlyRemaining:
+              $ref: '#/components/headers/RateLimitMonthlyRemaining'
+            RateLimit-MonthlyLimit:
+              $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       description: Recover Received Document From The Bin
       tags:
         - Received Documents
@@ -3296,8 +3962,12 @@ paths:
           $ref: '#/components/responses/ListPriceList'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getPriceLists
       security:
         - OAuth2AuthenticationCodeFlow: []
@@ -3321,8 +3991,12 @@ paths:
           $ref: '#/components/responses/GetPriceListItems'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getPriceListItems
       security:
         - OAuth2AuthenticationCodeFlow: []
@@ -3330,6 +4004,32 @@ paths:
       parameters: []
 components:
   schemas: {}
+  headers:
+    RateLimitHourlyRemaining:
+      description: The number of requests remaining for the current hour
+      schema:
+        type: integer
+        example: 840
+    RateLimitHourlyLimit:
+      description: The maximum number of requests you are permitted to make per hour
+      schema:
+        type: integer
+        example: 1000
+    RateLimitMonthlyRemaining:
+      description: The number of requests remaining for the current month
+      schema:
+        type: integer
+        example: 1430
+    RateLimitMonthlyLimit:
+      description: The maximum number of requests you are permitted to make per month
+      schema:
+        type: integer
+        example: 40000
+    RetryAfter:
+      description: Number of seconds to wait before retrying the request
+      schema:
+        type: integer
+        example: 60
   securitySchemes:
     OAuth2AuthenticationCodeFlow:
       type: oauth2
@@ -3519,6 +4219,16 @@ components:
         example: SUB123
       description: The ID of the subscription.
   responses:
+    Forbidden403:
+      description: Forbidden - Rate limit exceeded
+      headers:
+        Retry-After:
+          $ref: '#/components/headers/RetryAfter'
+    TooManyRequests429:
+      description: Too Many Requests
+      headers:
+        Retry-After:
+          $ref: '#/components/headers/RetryAfter'
     GetUserInfoResponse:
       description: ''
       content:
@@ -3542,6 +4252,10 @@ components:
                   need_terms_of_service_confirmation: false
                 email_confirmation_state:
                   need_confirmation: false
+      headers:
+        header-0:
+          schema:
+            type: string
     ListUserCompaniesResponse:
       description: User Companies.
       content:
