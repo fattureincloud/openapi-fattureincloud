@@ -26,6 +26,7 @@ using FileIO = System.IO.File;
 {{#supportsRetry}}
 using Polly;
 {{/supportsRetry}}
+using {{packageName}}.{{modelPackage}};
 
 namespace {{packageName}}.Client
 {
@@ -258,7 +259,7 @@ namespace {{packageName}}.Client
 
         /// <summary>
         /// Provides all logic for constructing a new RestSharp <see cref="RestRequest"/>.
-        /// At this point, all information for querying the service is known.
+        /// At this point, all information for querying the service is known. 
         /// Here, it is simply mapped into the RestSharp request.
         /// </summary>
         /// <param name="method">The http verb.</param>
@@ -447,7 +448,7 @@ namespace {{packageName}}.Client
         /// Based on functions received it can be async or sync.
         /// </summary>
         /// <param name="getResponse">Local function that executes http request and returns http response.</param>
-        /// <param name="setOptions">Local function to specify options for the service.</param>
+        /// <param name="setOptions">Local function to specify options for the service.</param>        
         /// <param name="request">The RestSharp request object</param>
         /// <param name="options">The RestSharp options object</param>
         /// <param name="configuration">A per-request configuration object.
@@ -538,7 +539,7 @@ namespace {{packageName}}.Client
 
         private async Task<RestResponse<T>> DeserializeRestResponseFromPolicyAsync<T>(RestClient client, RestRequest request, PolicyResult<RestResponse> policyResult, CancellationToken cancellationToken = default)
         {
-            if (policyResult.Outcome == OutcomeType.Successful)
+            if (policyResult.Outcome == OutcomeType.Successful) 
             {
                 return await client.Deserialize<T>(policyResult.Result, cancellationToken).ConfigureAwait(false);
             }
@@ -550,7 +551,7 @@ namespace {{packageName}}.Client
                 };
             }
         }
-
+                
         private ApiResponse<T> Exec<T>(RestRequest request, RequestOptions options, IReadableConfiguration configuration)
         {
             Action<RestClientOptions> setOptions = (clientOptions) =>
