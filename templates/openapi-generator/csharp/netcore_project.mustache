@@ -29,7 +29,7 @@
     {{#useCompareNetObjects}}
     <PackageReference Include="CompareNETObjects" Version="4.83.0" />
     {{/useCompareNetObjects}}
-    {{#useGenericHost}}
+    {{^useGenericHost}}
     <PackageReference Include="JsonSubTypes" Version="2.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     {{/useGenericHost}}
@@ -52,7 +52,7 @@
     {{/net47OrLater}}
     {{/net60OrLater}}
     {{/useGenericHost}}
-    {{#useGenericHost}}
+    {{^useGenericHost}}
     {{#supportsRetry}}
     <PackageReference Include="Polly" Version="{{^netStandard}}8.1.0{{/netStandard}}{{#netStandard}}8.1.0{{/netStandard}}" />
     {{/supportsRetry}}
