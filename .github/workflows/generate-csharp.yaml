@@ -126,7 +126,7 @@ jobs:
 
           USER_AGENT="$APP_NAME/${{ env.sdk_version }}/csharp-SDK"
 
-          openapi-generator-cli generate -i ./openapi.yaml -g csharp -o generated/csharp/ -t ./templates/openapi-generator/csharp --additional-properties=useDateTimeOffset=true,conditionalSerialization=true,packageName=${PACKAGE_NAME},packageAuthors=${PACKAGE_AUTHORS},packageCompany=${PACKAGE_COMPANY},packageTitle=${PACKAGE_TITLE},packageVersion=${SDK_VERSION},targetFramework=${TARGET_FRAMEWORK},testTargetFramework=${TEST_TARGET_FRAMEWORK},multiTarget=true,equatable=true,licenseId=MIT --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT}
+          openapi-generator generate -i ./openapi.yaml -g csharp -o generated/csharp/ -t ./templates/openapi-generator/csharp --additional-properties=useRestSharp=true,useDateTimeOffset=true,conditionalSerialization=true,packageName=It.FattureInCloud.Sdk,packageAuthors="Fatture in Cloud API Team",packageCompany="Fatture in Cloud",packageTitle="Fatture in Cloud C# SDK",packageVersion=${SDK_VERSION},targetFramework="netstandard2.0",testTargetFramework="net6.0",multiTarget=true,equatable=true,licenseId=MIT --git-repo-id=fattureincloud-csharp-sdk --git-user-id=fattureincloud --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT}
 
       - id: move-custom-files-to-repo
         name: Move custom files to repo
