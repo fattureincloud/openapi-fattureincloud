@@ -39,8 +39,8 @@ jobs:
         name: Setup Java
         uses: actions/setup-java@v4
         with:
-          distribution: 'adopt'
-          java-version: '11'
+          distribution: "adopt"
+          java-version: "11"
 
       - id: setup-libraries
         if: ${{ env.status == 'execute' }}
@@ -56,3 +56,10 @@ jobs:
           swagger-cli validate openapi.yaml
           openapi-generator-cli validate -i ./openapi.yaml
 
+      - id: validate-rate-limit-headers
+        if: ${{ env.status == 'execute' }}
+        name: Validate rate limiting headers
+        run: |
+          cd scripts
+          yarn install
+          node rate-limit-headers.js validate
