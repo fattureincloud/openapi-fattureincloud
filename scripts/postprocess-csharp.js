@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const filePath = path.resolve(__dirname, '../src/It.FattureInCloud.Sdk/Model/EventType.cs');
-const receiptFilePath = path.resolve(__dirname, '../src/It.FattureInCloud.Sdk/Model/ReceiptPreCreateInfo.cs');
+const filePath = path.resolve(__dirname, '../generated/csharp/src/It.FattureInCloud.Sdk/Model/EventType.cs');
+const receiptFilePath = path.resolve(__dirname, '../generated/csharp/src/It.FattureInCloud.Sdk/Model/ReceiptPreCreateInfo.cs');
 
 fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
