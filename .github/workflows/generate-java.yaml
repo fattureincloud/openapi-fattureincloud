@@ -149,6 +149,7 @@ jobs:
 
           openapi-generator-cli generate -i ./openapi.yaml -g java -o ./generated/java/ -t ./templates/openapi-generator/java --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=$ADDITIONAL_PROPERTIES
 
+          node ./scripts/postprocess-java.js
       - id: move-custom-files-to-repo
         name: Move custom files to repo
         run: |

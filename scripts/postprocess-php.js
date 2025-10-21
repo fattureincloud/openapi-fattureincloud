@@ -1,5 +1,7 @@
 var fs = require("fs")
-var transformJson = require("./transform-json")
+var path = require('path');
+
+const filePath = path.resolve(__dirname, '../generated/csharp/lib/Model/EventType.php');
 
 process.argv.slice(3).forEach((val, _) => cleanPHPComments(val))
 
@@ -34,3 +36,21 @@ function cleanPHPComments(dir) {
     }
   })
 }
+
+fs.readFile(filePath, 'utf8', (err, data) => {
+  if (err) {
+      console.error('Errore durante la lettura del file:', err);
+      process.exit(1);
+  }
+
+  const updatedData = data.replace(/IT_FATTUREINCLOUD_WEBHOOKS_/g, '');
+
+  fs.writeFile(filePath, updatedData, 'utf8', (err) => {
+      if (err) {
+          console.error('Errore durante la scrittura del file:', err);
+          process.exit(1);
+      }
+
+      console.log('Sostituzione completata con successo!');
+  });
+});
