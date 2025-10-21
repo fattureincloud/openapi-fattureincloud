@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo> <!-- setting GenerateAssemblyInfo to false causes this bug https://github.com/dotnet/project-system/issues/3934 -->
+    <TargetFrameworks>net8.0</TargetFrameworks>
+    <AssemblyName>It.FattureInCloud.Sdk</AssemblyName>
+    <PackageId>It.FattureInCloud.Sdk</PackageId>
+    <OutputType>Library</OutputType>
+    <Authors>Fatture in Cloud API Team</Authors>
+    <Company>Fatture in Cloud</Company>
+    <AssemblyTitle>Fatture in Cloud C# SDK</AssemblyTitle>
+    <Description>A library that allows developers to connect with the Fatture in Cloud V2 REST API.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Copyright>No Copyright</Copyright>
+    <RootNamespace>It.FattureInCloud.Sdk</RootNamespace>
+    <Version></Version>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\It.FattureInCloud.Sdk.xml</DocumentationFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/fattureincloud/fattureincloud-csharp-sdk.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>Minor update</PackageReleaseNotes>
+    <Nullable>enable</Nullable>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="8.0.8" />
+    <PackageReference Include="Microsoft.Net.Http.Headers" Version="8.0.8" />
+    <None Include="../../README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+
+</Project>
