@@ -122,7 +122,9 @@ jobs:
 
       - id: move-docs
         name: Moving Docs To The Right Folder
-        run: mv ./generated/typescript-axios-docs/docs ./generated/typescript-axios
+        run: |
+          rm -rf ./generated/typescript-axios/docs
+          mv ./generated/typescript-axios-docs/docs ./generated/typescript-axios
 
       - id: move-custom-files-to-repo
         name: Move custom files to repo
