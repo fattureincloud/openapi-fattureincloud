@@ -325,5 +325,3 @@ yarn.lock
 # .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/node,yarn,visualstudiocode,intellij,macos
-# Snyk Security Extension - AI Rules (auto-generated)
-.github/instructions/snyk_rules.instructions.md
