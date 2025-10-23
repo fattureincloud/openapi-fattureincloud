@@ -2,17 +2,6 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### 2.1.8 (2025-10-23)
-
-### 2.1.7 (2025-10-23)
-
-### 2.1.6 (2025-10-22)
-
-
-### Bug Fixes
-
-* fixed docs generation moving ([a189821](https://github.com/fattureincloud/openapi-fattureincloud/commit/a189821cf11240fc763a31dc8fb84330fcd8366f))
-
 ### 2.1.5 (2025-03-06)
 
 ### 2.1.4 (2025-03-06)
