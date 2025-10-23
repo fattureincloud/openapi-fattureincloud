@@ -3,7 +3,7 @@ const path = require('path');
 
 const files = [
     path.resolve(__dirname, '../generated/go/docs/EventType.md'),
-    path.resolve(__dirname, '../generated/go/model/model_event_type.go')
+    path.resolve(__dirname, '../generated/go/model_event_type.go')
 ];
 
 files.forEach((filePath) => {
