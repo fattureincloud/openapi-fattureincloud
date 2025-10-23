@@ -2,8 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 const files = [
-    path.resolve(__dirname, '../generated/java/docs/EventType.md'),
-    path.resolve(__dirname, '../generated/java/fattureincloud_python_sdk/models/event_type.py')
+    path.resolve(__dirname, '../generated/python/docs/EventType.md'),
+    path.resolve(__dirname, '../generated/python/fattureincloud_python_sdk/models/event_type.py')
 ];
 
 files.forEach((filePath) => {

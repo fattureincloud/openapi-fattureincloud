@@ -1,7 +1,7 @@
 var fs = require("fs")
 var path = require('path');
 
-const filePath = path.resolve(__dirname, '../generated/csharp/lib/Model/EventType.php');
+const filePath = path.resolve(__dirname, '../generated/php/lib/Model/EventType.php');
 
 process.argv.slice(3).forEach((val, _) => cleanPHPComments(val))
 
