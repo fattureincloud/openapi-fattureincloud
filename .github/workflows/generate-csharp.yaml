@@ -128,6 +128,8 @@ jobs:
 
           openapi-generator-cli generate -i ./openapi.yaml -g csharp -o generated/csharp/ -t ./templates/openapi-generator/csharp --additional-properties=library=restsharp,useDateTimeOffset=true,conditionalSerialization=true,packageName=${PACKAGE_NAME},packageAuthors=${PACKAGE_AUTHORS},packageCompany=${PACKAGE_COMPANY},packageTitle=${PACKAGE_TITLE},packageVersion=${SDK_VERSION},targetFramework=${TARGET_FRAMEWORK},testTargetFramework=${TEST_TARGET_FRAMEWORK},multiTarget=true,equatable=true,licenseId=MIT --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT}
 
+          node ./scripts/postprocess-csharp.js
+
       - id: move-custom-files-to-repo
         name: Move custom files to repo
         run: |
