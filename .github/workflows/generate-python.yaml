@@ -141,7 +141,7 @@ jobs:
         name: Format files
         run: |
           pip install black
-          black ./generated/python/
+          # black ./generated/python/
 
       - id: create-pr
         name: Create Pull Request
