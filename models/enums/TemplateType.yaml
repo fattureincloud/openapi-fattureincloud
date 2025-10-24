@@ -1,0 +1,7 @@
+title: TemplateType
+type: string
+enum:
+  - standard
+  - delivery_note
+  - accompanying_invoice
+description: Template type
