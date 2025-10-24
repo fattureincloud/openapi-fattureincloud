@@ -8772,6 +8772,21 @@ components:
                   ei_description: string
                   editable: true
                   is_disabled: true
+    GetTemplatesResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetTemplatesResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 10
+                  privacy: "gallery_all"
+                  name: New Standard S1
+                  type: "standard"
+                  can_disable_watermark: false
     GetVatTypeResponse:
       description: Example response
       content:
