@@ -1,0 +1,24 @@
+type: object
+title: Templates
+properties:
+  id:
+    type: integer
+    description: Template id
+  privacy:
+    type: string
+    description: Template privacy
+  type:
+    type: string
+    $ref: ../enums/TemplateType.yaml
+  name:
+    type: string
+    description: Template name
+  can_disable_watermark:
+    type: boolean
+    description: Can disable watermark
+  author:
+    type: string
+    description: Template author
+  content:
+    type: string
+    description: Template definition content

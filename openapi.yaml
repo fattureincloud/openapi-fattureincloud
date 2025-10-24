@@ -2412,7 +2412,7 @@ paths:
         '401':
           description: Unauthorized
       operationId: listTemplates
-      description: Lists the available templates.
+      description: Lists the default available templates.
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
@@ -2889,6 +2889,46 @@ paths:
                     editable: true
                     is_disabled: true
         description: ''
+  /c/{company_id}/settings/templates:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+    get:
+      summary: Get All Templates
+      tags:
+        - Settings
+      responses:
+        '200':
+          $ref: '#/components/responses/GetTemplatesResponse'
+      operationId: getTemplates
+      description: Gets all the standard and private templates.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
+  /c/{company_id}/settings/templates/{id}:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+      - schema:
+          type: integer
+        name: template_id
+        in: path
+        required: true
+        description: The Referred Template Id.
+    get:
+      summary: Get Template
+      tags:
+        - Settings
+      responses:
+        '200':
+          $ref: '#/components/responses/GetTemplatesResponse'
+      operationId: getTemplate
+      description: Gets a specified template.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
   /c/{company_id}/settings/vat_types/{vat_type_id}:
     parameters:
       - $ref: '#/components/parameters/company_id'
