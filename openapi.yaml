@@ -2403,7 +2403,7 @@ paths:
       parameters: []
   /info/templates:
     get:
-      summary: List Templates
+      summary: List Default Templates
       tags:
         - Info
       responses:
@@ -2411,7 +2411,7 @@ paths:
           $ref: '#/components/responses/ListTemplatesResponse'
         '401':
           description: Unauthorized
-      operationId: listTemplates
+      operationId: listDefaultTemplates
       description: Lists the default available templates.
       security:
         - OAuth2AuthenticationCodeFlow: []
@@ -2893,13 +2893,15 @@ paths:
     parameters:
       - $ref: '#/components/parameters/company_id'
     get:
-      summary: Get All Templates
+      summary: List Templates
       tags:
         - Settings
       responses:
         '200':
-          $ref: '#/components/responses/GetTemplatesResponse'
-      operationId: getTemplates
+          $ref: '#/components/responses/ListTemplatesResponse'
+        '401':
+          description: Unauthorized
+      operationId: listTemplates
       description: Gets all the standard and private templates.
       security:
         - OAuth2AuthenticationCodeFlow: []
