@@ -6,4 +6,5 @@ enum:
   - received_document
   - tax
   - receipt
+  - ts_pay
 description: Cashbook kind
