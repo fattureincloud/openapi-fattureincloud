@@ -2,4 +2,4 @@ title: GetTemplatesResponse
 type: object
 properties:
   data:
-    $ref: ../schemas/Template.yaml
+    $ref: ../schemas/DocumentTemplate.yaml

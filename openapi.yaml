@@ -2908,7 +2908,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
-  /c/{company_id}/settings/templates/{id}:
+  /c/{company_id}/settings/templates/{template_id}:
     parameters:
       - $ref: '#/components/parameters/company_id'
       - schema:

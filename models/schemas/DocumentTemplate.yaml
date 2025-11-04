@@ -4,14 +4,21 @@ properties:
   id:
     type: integer
     description: Template id
-    example: 123
-    nullable: true
-  name:
+  privacy:
     type: string
-    example: Light Smoke
-    nullable: true
-    description: Template name
+    description: Template privacy
   type:
     type: string
-    description: Template type
-    nullable: true
+    $ref: ../enums/TemplateType.yaml
+  name:
+    type: string
+    description: Template name
+  can_disable_watermark:
+    type: boolean
+    description: Can disable watermark
+  author:
+    type: string
+    description: Template author
+  content:
+    type: string
+    description: Template definition content
