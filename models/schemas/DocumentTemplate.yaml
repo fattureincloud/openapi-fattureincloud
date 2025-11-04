@@ -22,3 +22,6 @@ properties:
   content:
     type: string
     description: Template definition content
+  supports_custom_taxable:
+    type: boolean
+    description: Supports custom taxable
