@@ -1,0 +1,5 @@
+title: GetTemplatesResponse
+type: object
+properties:
+  data:
+    $ref: ../schemas/DocumentTemplate.yaml
