@@ -3424,6 +3424,10 @@ paths:
           $ref: '#/components/responses/ListTemplatesResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listTemplates
       description: Gets all the standard and private templates.
       security:
@@ -3447,6 +3451,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetTemplatesResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getTemplate
       description: Gets a specified template.
       security:
@@ -9499,9 +9507,9 @@ components:
               value:
                 data:
                   id: 10
-                  privacy: "gallery_all"
+                  privacy: gallery_all
                   name: New Standard S1
-                  type: "standard"
+                  type: standard
                   can_disable_watermark: false
     GetVatTypeResponse:
       description: Example response
