@@ -118,6 +118,7 @@ jobs:
 
           openapi-generator-cli generate -i ./openapi.yaml -g go -o ./generated/go/ -t ./templates/openapi-generator/go --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=packageVersion=${SDK_VERSION},packageName=${PACKAGE_NAME},goImportAlias=${PACKAGE_NAME},hasHttpBearerMethods=true
 
+          node ./scripts/postprocess-go.js
       - id: fix-sdk
         name: Fix SDK
         run: |

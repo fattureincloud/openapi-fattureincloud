@@ -124,7 +124,6 @@ namespace {{packageName}}.Client
         public Configuration()
         {
             Proxy = null;
-            UserAgent = "{{httpUserAgent}}{{^httpUserAgent}}OpenAPI-Generator/{{packageVersion}}/csharp{{/httpUserAgent}}";
             BasePath = "{{{basePath}}}";
             DefaultHeaders = new {{^net35}}Concurrent{{/net35}}Dictionary<string, string>();
             ApiKey = new {{^net35}}Concurrent{{/net35}}Dictionary<string, string>();

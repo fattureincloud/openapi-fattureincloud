@@ -2820,7 +2820,7 @@ paths:
       parameters: []
   /info/templates:
     get:
-      summary: List Templates
+      summary: List Default Templates
       tags:
         - Info
       responses:
@@ -2832,8 +2832,8 @@ paths:
           $ref: '#/components/responses/Forbidden403'
         '429':
           $ref: '#/components/responses/TooManyRequests429'
-      operationId: listTemplates
-      description: Lists the available templates.
+      operationId: listDefaultTemplates
+      description: Lists the default available templates.
       security:
         - OAuth2AuthenticationCodeFlow: []
       parameters:
@@ -3412,6 +3412,48 @@ paths:
                     editable: true
                     is_disabled: true
         description: ''
+  /c/{company_id}/settings/templates:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+    get:
+      summary: List Templates
+      tags:
+        - Settings
+      responses:
+        '200':
+          $ref: '#/components/responses/ListTemplatesResponse'
+        '401':
+          description: Unauthorized
+      operationId: listTemplates
+      description: Gets all the standard and private templates.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
+  /c/{company_id}/settings/templates/{template_id}:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+      - schema:
+          type: integer
+        name: template_id
+        in: path
+        required: true
+        description: The Referred Template Id.
+    get:
+      summary: Get Template
+      tags:
+        - Settings
+      responses:
+        '200':
+          $ref: '#/components/responses/GetTemplatesResponse'
+      operationId: getTemplate
+      description: Gets a specified template.
+      security:
+        - OAuth2AuthenticationCodeFlow: []
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
   /c/{company_id}/settings/vat_types/{vat_type_id}:
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -9446,6 +9488,21 @@ components:
                   ei_description: string
                   editable: true
                   is_disabled: true
+    GetTemplatesResponse:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetTemplatesResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  id: 10
+                  privacy: "gallery_all"
+                  name: New Standard S1
+                  type: "standard"
+                  can_disable_watermark: false
     GetVatTypeResponse:
       description: Example response
       content:
