@@ -4303,9 +4303,14 @@ components:
                 email_confirmation_state:
                   need_confirmation: false
       headers:
-        header-0:
-          schema:
-            type: string
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListUserCompaniesResponse:
       description: User Companies.
       content:
@@ -4387,6 +4392,15 @@ components:
                             dic_employees: none
                             dic_timesheet: none
                             dic_settings: none
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetCompanyInfoResponse:
       description: Company info.
       content:
@@ -4489,6 +4503,15 @@ components:
                   accountant_id: 12345
                   fic_payment_subject: client
                   dic_payment_subject: client
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     CreateClientResponse:
       description: Example response
       content:
@@ -4537,6 +4560,15 @@ components:
                   default_payment_method:
                     id: 386092
                     name: Credit card
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListClientsResponse:
       description: Example response
       content:
@@ -4631,6 +4663,15 @@ components:
                 prev_page_url: null
                 to: 50
                 total: 8
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListSuppliersResponse:
       description: Example response
       content:
@@ -4695,6 +4736,15 @@ components:
                     notes: ''
                     created_at: '2021-15-09'
                     updated_at: '2021-15-09'
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     CreateSupplierResponse:
       description: Example response
       content:
@@ -4727,6 +4777,15 @@ components:
                   notes: ''
                   created_at: '2021-15-08'
                   updated_at: '2021-15-08'
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetClientResponse:
       description: Client Details.
       content:
@@ -4770,6 +4829,15 @@ components:
                     description: ''
                     is_disabled: false
                   price_list_id: '10'
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ModifyClientResponse:
       description: Client modified.
       content:
@@ -4813,6 +4881,15 @@ components:
                     description: ''
                     is_disabled: false
                   price_list_id: '10'
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetSupplierResponse:
       description: Example response
       content:
@@ -4845,6 +4922,15 @@ components:
                   notes: ''
                   created_at: '2021-15-08'
                   updated_at: '2021-15-08'
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ModifySupplierResponse:
       description: Example response
       content:
@@ -4877,6 +4963,15 @@ components:
                   notes: ''
                   created_at: '2021-15-08'
                   updated_at: '2021-15-08'
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListProductsResponse:
       description: Products List.
       content:
@@ -4932,6 +5027,15 @@ components:
                 prev_page_url: null
                 to: 55
                 total: 55
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     CreateProductResponse:
       description: Example response
       content:
@@ -4959,6 +5063,15 @@ components:
                     description: Non imponibile art. 123
                     notes: IVA non imponibile ai sensi dell'articolo 123, comma 2
                     is_disabled: false
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetProductResponse:
       description: Example response
       content:
@@ -4990,6 +5103,15 @@ components:
                     is_disabled: false
                   stock_initial: 123
                   stock_current: 123
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ModifyProductResponse:
       description: Example response
       content:
@@ -5021,6 +5143,15 @@ components:
                     is_disabled: false
                   stock_initial: 123
                   stock_current: 123
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListIssuedDocumentsResponse:
       description: Results list.
       content:
@@ -5098,6 +5229,15 @@ components:
                 prev_page_url: null
                 to: 2
                 total: 2
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     CreateIssuedDocumentResponse:
       description: Document created.
       content:
@@ -5219,6 +5359,15 @@ components:
                   locked: false
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetIssuedDocumentResponse:
       description: Document Details.
       content:
@@ -5341,6 +5490,15 @@ components:
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
                   price_list_id: '10'
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ModifyIssuedDocumentResponse:
       description: Document edited
       content:
@@ -5463,6 +5621,15 @@ components:
                   locked: false
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetNewIssuedDocumentTotalsResponse:
       description: Totals.
       content:
@@ -5484,6 +5651,15 @@ components:
                   amount_due: 75
                   amount_due_discount: 0
                   payments_sum: 75
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetExistingIssuedDocumentTotalsResponse:
       description: Totals.
       content:
@@ -5507,6 +5683,15 @@ components:
                   amount_due: 90
                   amount_due_discount: 0
                   payments_sum: 75
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     UploadIssuedDocumentAttachmentResponse:
       description: Attachment Token.
       content:
@@ -5518,6 +5703,15 @@ components:
               value:
                 data:
                   attachment_token: YmMyNWYxYzIwMTU3N2Y4ZGE3ZjZiMzg5OWY0ODNkZDQveXl5LmRvYw
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetIssuedDocumentPreCreateInfoResponse:
       description: Pre-create info.
       content:
@@ -7294,6 +7488,15 @@ components:
                       valid_from: '2021-08-01'
                       valid_to: '2025-09-10'
                       type: sell
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetEmailDataResponse:
       description: EmailData
       content:
@@ -7324,6 +7527,15 @@ components:
                   delivery_note_exists: false
                   attachment_exists: false
                   accompanying_invoice_exists: false
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     SendEInvoiceResponse:
       description: Example response
       content:
@@ -7336,6 +7548,15 @@ components:
                 data:
                   name: CARICATO
                   date: '2021-08-23 10:38:03'
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     VerifyEInvoiceXmlResponse:
       description: Example response
       content:
@@ -7347,12 +7568,30 @@ components:
               value:
                 data:
                   success: true
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     VerifyEInvoiceXmlErrorResponse:
       description: Example response
       content:
         application/json:
           schema:
             $ref: ./models/responses/VerifyEInvoiceXmlErrorResponse.yaml
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListReceivedDocumentsResponse:
       description: Results list.
       content:
@@ -7462,6 +7701,15 @@ components:
                 prev_page_url: null
                 to: 50
                 total: 123
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     CreateReceivedDocumentResponse:
       description: Document created.
       content:
@@ -7516,6 +7764,15 @@ components:
                   attachment_url: spesa_ger5i783t45hu6ti.pdf
                   attachment_preview_url: null
                   extra_data: null
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetReceivedDocumentResponse:
       description: Document details.
       content:
@@ -7570,6 +7827,15 @@ components:
                   attachment_url: spesa_ger5i783t45hu6ti.pdf
                   attachment_preview_url: null
                   extra_data: null
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ModifyReceivedDocumentResponse:
       description: Modified document.
       content:
@@ -7624,6 +7890,15 @@ components:
                   attachment_url: spesa_ger5i783t45hu6ti.pdf
                   attachment_preview_url: null
                   extra_data: null
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetNewReceivedDocumentTotalsResponse:
       description: Document Totals.
       content:
@@ -7641,6 +7916,15 @@ components:
                   amount_other_withholding_tax: 0
                   amount_due: 602
                   payments_sum: 592
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetExistingReceivedDocumentTotalsResponse:
       description: Document Totals.
       content:
@@ -7658,6 +7942,15 @@ components:
                   amount_other_withholding_tax: 0
                   amount_due: 612
                   payments_sum: 592
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     UploadReceivedDocumentAttachmentResponse:
       description: Attachment Token.
       content:
@@ -7669,6 +7962,15 @@ components:
               value:
                 data:
                   attachment_token: YmMyNWYxYzIwMTU3N212ABCDZjZiMzg5OWY0ODNkZDQveXl5LmRvYw
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetReceivedDocumentPreCreateInfoResponse:
       description: Pre-create info
       content:
@@ -8447,6 +8749,15 @@ components:
                       value: 0
                       description: Contribuenti forfettari
                       is_disabled: false
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListReceiptsResponse:
       description: Receipts list.
       content:
@@ -8529,6 +8840,15 @@ components:
                 prev_page_url: null
                 to: 50
                 total: 65
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     CreateReceiptResponse:
       description: Created Receipt.
       content:
@@ -8565,6 +8885,15 @@ components:
                         id: 0
                         value: 22
                         description: iva
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetReceiptResponse:
       description: Receipt Details.
       content:
@@ -8601,6 +8930,15 @@ components:
                         id: 0
                         value: 22
                         description: iva
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ModifyReceiptResponse:
       description: Modified receipt.
       content:
@@ -8637,6 +8975,15 @@ components:
                         id: 0
                         value: 22
                         description: iva
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetReceiptPreCreateInfoResponse:
       description: Pre-create info.
       content:
@@ -8781,6 +9128,15 @@ components:
                       value: 0
                       description: art.26 COMMA' 3 DPR 633/72
                       is_disabled: false
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetReceiptsMonthlyTotalsResponse:
       description: Monthly Totals.
       content:
@@ -8827,6 +9183,15 @@ components:
                   - net: 0
                     gross: 0
                     count: 21
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListF24Response:
       description: Results list.
       content:
@@ -8868,6 +9233,15 @@ components:
                 total: 2
                 aggregated_data:
                   amount: '6438.96'
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     CreateF24Response:
       description: The created F24
       content:
@@ -8887,6 +9261,15 @@ components:
                     id: 111
                     name: Indesa - carta conto
                   attachment_url: b19c01da9b1688fb73d0d9e8adae89a8.pdf
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetF24Response:
       description: The F24
       content:
@@ -8906,6 +9289,15 @@ components:
                     id: 111
                     name: Indesa - carta conto
                   attachment_url: b19c01da9b1688fb73d0d9e8adae89a8.pdf
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ModifyF24Response:
       description: The modified F24
       content:
@@ -8925,6 +9317,15 @@ components:
                     id: 111
                     name: Indesa - carta conto
                   attachment_url: b19c01da9b1688fb73d0d9e8adae89a8.pdf
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     UploadF24AttachmentResponse:
       description: Attachment Token.
       content:
@@ -8936,6 +9337,15 @@ components:
               value:
                 data:
                   attachment_token: YmMyNWYxYzIwMTU3N2Y4ZGE3ZjZiMzg5OWY0ODNkZDQveXl5LmRvYw
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListArchiveDocumentsResponse:
       description: Results list.
       content:
@@ -8967,6 +9377,15 @@ components:
                 prev_page_url: null
                 to: 2
                 total: 2
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     CreateArchiveDocumentResponse:
       description: The Archive Document.
       content:
@@ -8982,6 +9401,15 @@ components:
                   category: Altri documenti
                   description: spesa 1
                   attachment_url: spesa1.pdf
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetArchiveDocumentResponse:
       description: Archive Document Details
       content:
@@ -8997,6 +9425,15 @@ components:
                   category: Altri documenti
                   description: spesa 2
                   attachment_url: spesa2.pdf
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ModifyArchiveDocumentResponse:
       description: The modified Archived Document
       content:
@@ -9012,6 +9449,15 @@ components:
                   category: Altri documenti
                   description: spesa 2
                   attachment_url: spesa2.pdf
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListCashbookEntriesResponse:
       description: Results list.
       content:
@@ -9042,6 +9488,15 @@ components:
                     document:
                       id: 12345
                     type: out
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     CreateCashbookEntryResponse:
       description: The created Cashbook Entry.
       content:
@@ -9062,6 +9517,15 @@ components:
                     name: Indesa - Carta conto
                   payment_account_out: null
                   kind: cashbook
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetCashbookEntryResponse:
       description: Cashbook Entry.
       content:
@@ -9082,6 +9546,15 @@ components:
                   document:
                     id: 54321
                   type: in
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ModifyCashbookEntryResponse:
       description: The modified Cashbook Entry
       content:
@@ -9102,6 +9575,15 @@ components:
                   document:
                     id: 54321
                   type: in
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListCountriesResponse:
       description: List of countries
       content:
@@ -9120,6 +9602,15 @@ components:
                   - Angola
                   - Anguilla
                   - ...
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListCitiesResponse:
       description: Cities List.
       content:
@@ -9139,6 +9630,15 @@ components:
                   - postal_code: '83011'
                     city: Altavilla Irpina
                     province: AV
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListLanguagesResponse:
       description: LanguagesList
       content:
@@ -9153,6 +9653,15 @@ components:
                     name: Italiano
                   - code: en
                     name: Inglese
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListTemplatesResponse:
       description: Templates list.
       content:
@@ -9167,6 +9676,15 @@ components:
                     name: New Standard S1
                   - id: 106
                     name: Minimalist
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListCurrenciesResponse:
       description: Currencies List.
       content:
@@ -9185,6 +9703,15 @@ components:
                     symbol: €
                     html_symbol: '&euro;'
                     exchange_rate: '1.00000'
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListUnitsOfMeasureResponse:
       description: Units of measure.
       content:
@@ -9202,6 +9729,15 @@ components:
                   - giorni
                   - km
                   - mesi
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListDeliveryNotesDefaultCausalsResponse:
       description: List of Delivery Notes Default Causals
       content:
@@ -9223,6 +9759,15 @@ components:
                   - Riparazione
                   - Reso per accredito
                   - Reso per sostituzione
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListVatTypesResponse:
       description: List of Vat Types.
       content:
@@ -9250,6 +9795,15 @@ components:
                     ei_description: null
                     is_disabled: false
                     editable: true
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListPaymentMethodsResponse:
       description: Payment methods list.
       content:
@@ -9268,6 +9822,15 @@ components:
                     name: Bonifico bancario
                     is_default: true
                     default_payment_account: null
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListPaymentAccountsResponse:
       description: Payment accounts list.
       content:
@@ -9290,6 +9853,15 @@ components:
                     iban: IT17A1234563200000003498936
                     sia: IN234
                     virtual: false
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListRevenueCentersResponse:
       description: List of Revenue Centers
       content:
@@ -9302,6 +9874,15 @@ components:
                 data:
                   - Negozio Bergamo
                   - Negozio Milano
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListCostCentersResponse:
       description: List of Cost Centers
       content:
@@ -9314,6 +9895,15 @@ components:
                 data:
                   - Negozio Bergamo
                   - Negozio Milano
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListProductCategoriesResponse:
       description: Product Categories List
       content:
@@ -9326,6 +9916,15 @@ components:
                 data:
                   - Alimentari
                   - Arredamento
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListReceivedDocumentCategoriesResponse:
       description: Received Document Categories List
       content:
@@ -9341,6 +9940,15 @@ components:
                   - Auto ed altri veicoli
                   - Computer e accessori
                   - Server e hosting
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListArchiveCategoriesResponse:
       description: Archive Categories list.
       content:
@@ -9358,6 +9966,15 @@ components:
                   - Documenti per detrazioni
                   - Estratti conto bancari
                   - Estratti conto carte di credito
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     UploadArchiveAttachmentResponse:
       description: Example response
       content:
@@ -9369,6 +9986,15 @@ components:
               value:
                 data:
                   attachment_token: YmMyNWYxYzIwMTU3N212ABCDZjZiMzg5OWY0ODNkZDQveXl5LmRvYw
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     CreatePaymentMethodResponse:
       description: Example response
       content:
@@ -9389,6 +10015,15 @@ components:
                   default_payment_account:
                     id: 12345
                     name: conto banca SP
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetPaymentMethodResponse:
       description: Example response
       content:
@@ -9409,6 +10044,15 @@ components:
                   default_payment_account:
                     id: 12345
                     name: conto banca SP
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ModifyPaymentMethodResponse:
       description: Example response
       content:
@@ -9429,6 +10073,15 @@ components:
                   default_payment_account:
                     id: 12345
                     name: conto banca SP
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     CreatePaymentAccountResponse:
       description: Example response
       content:
@@ -9445,6 +10098,15 @@ components:
                   iban: IT17Q0051343200000003497636
                   sia: T1234
                   virtual: false
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetPaymentAccountResponse:
       description: Example response
       content:
@@ -9461,6 +10123,15 @@ components:
                   iban: IT17Q0051343200000003497636
                   sia: T1234
                   virtual: false
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ModifyPaymentAccountResponse:
       description: Example response
       content:
@@ -9477,6 +10148,15 @@ components:
                   iban: IT17Q0051343200000003497636
                   sia: T1234
                   virtual: false
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     CreateVatTypeResponse:
       description: Example response
       content:
@@ -9496,6 +10176,15 @@ components:
                   ei_description: string
                   editable: true
                   is_disabled: true
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetTemplatesResponse:
       description: Example response
       content:
@@ -9511,6 +10200,15 @@ components:
                   name: New Standard S1
                   type: standard
                   can_disable_watermark: false
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetVatTypeResponse:
       description: Example response
       content:
@@ -9530,6 +10228,15 @@ components:
                   ei_description: string
                   editable: true
                   is_disabled: true
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ModifyVatTypeResponse:
       description: Example response
       content:
@@ -9549,12 +10256,30 @@ components:
                   ei_description: string
                   editable: true
                   is_disabled: true
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetEInvoiceXmlResponse:
       description: ''
       content:
         text/xml:
           schema:
             $ref: ./models/responses/GetEInvoiceXmlResponse.yaml
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetEInvoiceRejectionReasonResponse:
       description: Example response
       content:
@@ -9573,6 +10298,15 @@ components:
                     Puoi correggere la tua Partita IVA in: Impostazioni >
                     Azienda > Informazioni di fatturazione.
                   date: '2023-06-06'
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListDetailedCountriesResponse:
       description: List of detailed countries
       content:
@@ -9598,6 +10332,15 @@ components:
                     iso: AL
                     fiscal_iso: AL
                     uic: '087'
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     TransformIssuedDocumentResponse:
       description: Example response
       content:
@@ -9723,6 +10466,15 @@ components:
                     - '82112399'
                   transform: true
                   keep_copy: true
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     JoinIssuedDocumentsResponse:
       description: Example response
       content:
@@ -9847,6 +10599,15 @@ components:
                   create_from:
                     - '82112399'
                     - '82112400'
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListEmailsResponse:
       description: Example response
       content:
@@ -9900,6 +10661,15 @@ components:
                 prev_page_url: null
                 to: 2
                 total: 2
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     CreateWebhooksSubscriptionResponse:
       description: Example response
       content:
@@ -9919,6 +10689,15 @@ components:
                 warnings: >-
                   The 'it.fattureincloud.webhooks.entities.clients.delete' event
                   is already registered for this application
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListWebhooksSubscriptionsResponse:
       description: Example response
       content:
@@ -9940,6 +10719,15 @@ components:
                     verified: true
                     types:
                       - it.fattureincloud.webhooks.issued_documents.delete
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetWebhooksSubscriptionResponse:
       description: Example response
       content:
@@ -9956,6 +10744,15 @@ components:
                   types:
                     - >-
                       it.fattureincloud.webhooks.issued_documents.invoices.create
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ModifyWebhooksSubscriptionResponse:
       description: Example response
       content:
@@ -9975,6 +10772,15 @@ components:
                 warnings: >-
                   The 'it.fattureincloud.webhooks.entities.clients.delete' event
                   is already registered for this application
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetCompanyPlanUsageResponse:
       description: Example response
       content:
@@ -9987,6 +10793,15 @@ components:
                 data:
                   limit: 3000
                   usage: 100
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetTaxProfileResponse:
       description: Example response
       content:
@@ -10031,6 +10846,15 @@ components:
                     editable: false
                     is_disabled: false
                     default: true
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListBinIssuedDocumentsResponse:
       description: Bin Issued Documents List
       content:
@@ -10097,6 +10921,15 @@ components:
                     url: qwertye4u8w8bdaqrt5fd5b1a4gtqhlof.pdf
                     items_list: null
                     payments_list: null
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetBinIssuedDocumentResponse:
       description: Bin issued document details
       content:
@@ -10218,6 +11051,15 @@ components:
                   locked: false
                   has_ts_pay_pending_payment: false
                   show_tspay_button: false
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListBinReceivedDocumentsResponse:
       description: Example response
       content:
@@ -10316,6 +11158,15 @@ components:
                     attachment_url: spesa_gjsd567e5hu6ti.pdf
                     attachment_preview_url: null
                     extra_data: null
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetBinReceivedDocumentResponse:
       description: Bin received document details
       content:
@@ -10370,6 +11221,15 @@ components:
                   attachment_url: spesa_ger5i783t45hu6ti.pdf
                   attachment_preview_url: null
                   extra_data: null
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetEntityClientsInfoResponse:
       description: Example response
       content:
@@ -10420,6 +11280,15 @@ components:
                       type: sell
                   limit: 0
                   usage: 0
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     ListPriceList:
       description: Example response
       content:
@@ -10444,6 +11313,15 @@ components:
                     valid_from: '2025-01-01'
                     valid_to: '2025-01-01'
                     type: purchase
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
     GetPriceListItems:
       description: Example response
       content:
@@ -10458,5 +11336,14 @@ components:
                     price: 3.5
                   '2':
                     price: 5
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
 security:
   - OAuth2AuthenticationCodeFlow: []
