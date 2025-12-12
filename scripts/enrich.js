@@ -194,10 +194,18 @@ function addManualAuthMethodToEndpoints(doc) {
       if (arr == null) {
         arr = [];
       }
-      var value = {};
-      value["ManualAuth"] = [];
 
-      arr.push(value);
+      // Check if ManualAuth is already present
+      var manualAuthExists = arr.some((item) =>
+        item.hasOwnProperty("ManualAuth")
+      );
+
+      if (!manualAuthExists) {
+        var value = {};
+        value["ManualAuth"] = [];
+        arr.push(value);
+      }
+
       doc["paths"][endpointKey][verbKey]["security"] = arr;
     });
   });
