@@ -3,4 +3,6 @@ type: string
 default: agyo
 enum:
   - agyo
+  - mail
+  - browser
 description: Pending received document type

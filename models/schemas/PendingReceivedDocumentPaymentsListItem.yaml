@@ -1,10 +1,6 @@
 title: PendingReceivedDocumentPaymentsListItem
 type: object
 properties:
-  id:
-    type: integer
-    description: Pending received document payment id
-    nullable: true
   amount:
     type: number
     description: Pending received document payment total amount
@@ -26,14 +22,18 @@ properties:
       days:
         type: integer
         description: >-
-          Pending received document payment number of days by which the payment must be
-          made
+          Pending received document payment number of days by which the payment
+          must be made
         nullable: true
       type:
         $ref: ../enums/PaymentTermsType.yaml
   status:
     type: string
     description: Pending received document payment status
+    nullable: true
+  paid_with_ts_pay:
+    type: boolean
+    description: True if paid with TS Pay
     nullable: true
   payment_account:
     $ref: ./PaymentAccount.yaml

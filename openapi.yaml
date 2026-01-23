@@ -1340,33 +1340,6 @@ paths:
                           virtual: false
                     attachment_token: bnopjao8gvydtgnewgiovs74yrfqwefEF
         description: Document to create
-  /c/{company_id}/received_documents/pending:
-    parameters:
-      - $ref: '#/components/parameters/company_id'
-    get:
-      summary: List Pending Received Documents
-      tags:
-        - Pending Received Documents
-        - Received Documents
-      responses:
-        '200':
-          $ref: '#/components/responses/ListPendingReceivedDocumentsResponse'
-        '401':
-          description: Unauthorized
-      operationId: listPendingReceivedDocuments
-      description: Lists the pending received documents.
-      security:
-        - OAuth2AuthenticationCodeFlow:
-            - received_documents:r
-            - stock:r
-      parameters:
-        - $ref: '#/components/parameters/pending_received_document_type'
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/fieldset'
-        - $ref: '#/components/parameters/sort'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/per_page'
-        - $ref: '#/components/parameters/q'
   /c/{company_id}/received_documents/{document_id}:
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -1474,6 +1447,31 @@ paths:
             - received_documents:a
             - stock:a
       parameters: []
+  /c/{company_id}/received_documents/pending:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+    get:
+      summary: List Pending Received Documents
+      tags:
+        - Received Documents
+      responses:
+        '200':
+          $ref: '#/components/responses/ListPendingReceivedDocumentsResponse'
+        '401':
+          description: Unauthorized
+      operationId: listPendingReceivedDocuments
+      description: Lists the pending received documents.
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - received_documents:r
+      parameters:
+        - $ref: '#/components/parameters/pending_received_document_type'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/per_page'
+        - $ref: '#/components/parameters/q'
   /c/{company_id}/received_documents/pending/{document_id}:
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -1481,7 +1479,6 @@ paths:
     get:
       summary: Get Pending Received Document
       tags:
-        - Pending Received Documents
         - Received Documents
       responses:
         '200':
@@ -1495,7 +1492,6 @@ paths:
       security:
         - OAuth2AuthenticationCodeFlow:
             - received_documents:r
-            - stock:r
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/fieldset'
@@ -3598,6 +3594,8 @@ components:
         type: string
         enum:
           - agyo
+          - mail
+          - browser
       description: The type of the pending received document.
     q:
       name: q
@@ -6801,116 +6799,6 @@ components:
                 prev_page_url: null
                 to: 50
                 total: 123
-    ListPendingReceivedDocumentsResponse:
-      description: Results list.
-      content:
-        application/json:
-          schema:
-            $ref: ./models/responses/ListPendingReceivedDocumentsResponse.yaml
-          examples:
-            example-1:
-              value:
-                current_page: 1
-                data:
-                  - id: 12345
-                    type: agyo
-                    document_type: expense
-                    description: Soggiorno di lavoro
-                    amortization: 1
-                    rc_center: ''
-                    invoice_number: ''
-                    is_marked: false
-                    is_detailed: false
-                    e_invoice: false
-                    created_at: '2021-08-15 14:02:02'
-                    updated_at: '2021-08-15 14:02:02'
-                    entity:
-                      id: 111
-                      name: Hotel Rubino Palace
-                    date: '2021-08-15'
-                    next_due_date: '2021-08-15'
-                    currency:
-                      id: EUR
-                      exchange_rate: '1.00000'
-                      symbol: €
-                    amount_net: 592
-                    amount_vat: 0
-                    amount_gross: 592
-                    amount_withholding_tax: 0
-                    amount_other_withholding_tax: 0
-                    tax_deductibility: 50
-                    vat_deductibility: 100
-                    items_list: null
-                    payments_list:
-                      - amount: 592
-                        due_date: '2021-08-15'
-                        paid_date: '2021-08-15'
-                        id: 777
-                        payment_terms:
-                          days: 0
-                          type: standard
-                        status: paid
-                        payment_account:
-                          id: 222
-                          name: Contanti
-                          virtual: false
-                    attachment_url: spesa_ger5i783t45hu6ti.pdf
-                    attachment_preview_url: null
-                    extra_data: null
-                  - id: 12346
-                    type: expense
-                    description: Assicurazione RCA
-                    iamortization: 1
-                    rc_center: ''
-                    invoice_number: ''
-                    is_marked: false
-                    is_detailed: false
-                    e_invoice: false
-                    created_at: '2021-08-09 14:02:02'
-                    updated_at: '2021-08-09 14:02:02'
-                    entity:
-                      id: 89
-                      name: Indesa Assicurazioni S.P.A.
-                    date: '2021-08-08'
-                    next_due_date: '2021-08-08'
-                    currency:
-                      id: EUR
-                      exchange_rate: '1.00000'
-                      symbol: €
-                    amount_net: 645.69
-                    amount_vat: 0
-                    amount_gross: 645.69
-                    amount_withholding_tax: 0
-                    amount_other_withholding_tax: 0
-                    tax_deductibility: 50
-                    vat_deductibility: 100
-                    items_list: null
-                    payments_list:
-                      - amount: 645.69
-                        due_date: '2021-08-08'
-                        paid_date: '2021-08-08'
-                        id: 999
-                        payment_terms:
-                          days: 0
-                          type: standard
-                        status: paid
-                        payment_account:
-                          id: 333
-                          name: Carta conto
-                          virtual: false
-                    attachment_url: spesa_gjsd567e5hu6ti.pdf
-                    attachment_preview_url: null
-                    extra_data: null
-                first_page_url: page=1
-                from: 1
-                last_page: 2
-                last_page_url: page=2
-                next_page_url: page=2
-                path: received_documents
-                per_page: 50
-                prev_page_url: null
-                to: 50
-                total: 123
     CreateReceivedDocumentResponse:
       description: Document created.
       content:
@@ -7019,6 +6907,114 @@ components:
                   attachment_url: spesa_ger5i783t45hu6ti.pdf
                   attachment_preview_url: null
                   extra_data: null
+    ListPendingReceivedDocumentsResponse:
+      description: Results list.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ListPendingReceivedDocumentsResponse.yaml
+          examples:
+            example-1:
+              value:
+                current_page: 1
+                data:
+                  - type: agyo
+                    document_type: expense
+                    description: Soggiorno di lavoro
+                    amortization: 1
+                    rc_center: ''
+                    invoice_number: ''
+                    is_marked: false
+                    is_detailed: false
+                    e_invoice: false
+                    created_at: '2021-08-15 14:02:02'
+                    updated_at: '2021-08-15 14:02:02'
+                    entity:
+                      id: 111
+                      name: Hotel Rubino Palace
+                    date: '2021-08-15'
+                    next_due_date: '2021-08-15'
+                    currency:
+                      id: EUR
+                      exchange_rate: '1.00000'
+                      symbol: €
+                    amount_net: 592
+                    amount_vat: 0
+                    amount_gross: 592
+                    amount_withholding_tax: 0
+                    amount_other_withholding_tax: 0
+                    tax_deductibility: 50
+                    vat_deductibility: 100
+                    items_list: null
+                    payments_list:
+                      - amount: 592
+                        due_date: '2021-08-15'
+                        paid_date: '2021-08-15'
+                        id: 777
+                        payment_terms:
+                          days: 0
+                          type: standard
+                        status: paid
+                        payment_account:
+                          id: 222
+                          name: Contanti
+                          virtual: false
+                    attachment_url: spesa_ger5i783t45hu6ti.pdf
+                    attachment_preview_url: null
+                    extra_data: null
+                  - type: expense
+                    description: Assicurazione RCA
+                    iamortization: 1
+                    rc_center: ''
+                    invoice_number: ''
+                    is_marked: false
+                    is_detailed: false
+                    e_invoice: false
+                    created_at: '2021-08-09 14:02:02'
+                    updated_at: '2021-08-09 14:02:02'
+                    entity:
+                      id: 89
+                      name: Indesa Assicurazioni S.P.A.
+                    date: '2021-08-08'
+                    next_due_date: '2021-08-08'
+                    currency:
+                      id: EUR
+                      exchange_rate: '1.00000'
+                      symbol: €
+                    amount_net: 645.69
+                    amount_vat: 0
+                    amount_gross: 645.69
+                    amount_withholding_tax: 0
+                    amount_other_withholding_tax: 0
+                    tax_deductibility: 50
+                    vat_deductibility: 100
+                    items_list: null
+                    payments_list:
+                      - amount: 645.69
+                        due_date: '2021-08-08'
+                        paid_date: '2021-08-08'
+                        id: 999
+                        payment_terms:
+                          days: 0
+                          type: standard
+                        status: paid
+                        payment_account:
+                          id: 333
+                          name: Carta conto
+                          virtual: false
+                    attachment_url: spesa_gjsd567e5hu6ti.pdf
+                    attachment_preview_url: null
+                    extra_data: null
+                first_page_url: page=1
+                from: 1
+                last_page: 2
+                last_page_url: page=2
+                next_page_url: page=2
+                path: received_documents
+                per_page: 50
+                prev_page_url: null
+                to: 50
+                total: 123
     GetPendingReceivedDocumentResponse:
       description: Document details.
       content:
@@ -7029,7 +7025,6 @@ components:
             example-1:
               value:
                 data:
-                  id: 12345
                   date: '2021-08-15'
                   type: agyo
                   subject: Soggiorno di lavoro
@@ -9012,9 +9007,9 @@ components:
               value:
                 data:
                   id: 10
-                  privacy: "gallery_all"
+                  privacy: gallery_all
                   name: New Standard S1
-                  type: "standard"
+                  type: standard
                   can_disable_watermark: false
     GetVatTypeResponse:
       description: Example response

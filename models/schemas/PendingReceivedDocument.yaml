@@ -7,7 +7,7 @@ properties:
     description: Pending received document id
   date:
     type: string
-    description: Pending received document date [defaults to today's date]
+    description: Pending received document date
     format: date
     nullable: true
   subject:
