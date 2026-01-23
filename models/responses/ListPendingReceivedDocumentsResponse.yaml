@@ -1,0 +1,5 @@
+title: ListPendingReceivedDocumentsResponse
+allOf:
+  - $ref: ./pagination/Pagination.yaml
+  - $ref: ./pagination/ListPendingReceivedDocumentsResponsePage.yaml
+description: ''

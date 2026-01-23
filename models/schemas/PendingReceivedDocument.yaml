@@ -1,0 +1,88 @@
+type: object
+title: PendingReceivedDocument
+properties:
+  id:
+    type: integer
+    nullable: true
+    description: Pending received document id
+  date:
+    type: string
+    description: Pending received document date [defaults to today's date]
+    format: date
+    nullable: true
+  subject:
+    type: string
+    description: Pending received document subject
+    nullable: true
+  filename:
+    type: string
+    description: Pending received document filename
+    nullable: true
+  type:
+    $ref: ../enums/PendingReceivedDocumentType.yaml
+  attachment_url:
+    type: string
+    description: |-
+      [Temporary]
+      [Read Only]
+      Pending received document url of the attached file
+    nullable: true
+    readOnly: true
+  amount_gross:
+    type: number
+    description: |-
+      [Read Only]
+      Pending received document total gross amount
+  currency:
+    $ref: ./Currency.yaml
+  document_type:
+    $ref: ../enums/ReceivedDocumentType.yaml
+  supplier_name:
+    type: string
+    description: Pending received document supplier name
+    nullable: true
+  cost_center:
+    type: string
+    description: Pending received document cost center
+    nullable: true
+  category:
+    type: string
+    nullable: true
+    description: Pending received document category
+  other_attachments:
+    type: array
+    nullable: true
+    description: Pending received document other attachments
+    items:
+      $ref: ./Attachment.yaml
+  emssion_date:
+    type: string
+    description: Pending received document emission date
+    format: date
+    nullable: true
+  payments_list:
+    type: array
+    nullable: true
+    items:
+      $ref: ./PendingReceivedDocumentPaymentsListItem.yaml
+  amount_net:
+    type: number
+    description: Pending received document total net amount
+    nullable: true
+  amount_vat:
+    type: number
+    description: Pending received document total vat amount
+    nullable: true
+  import_error:
+    type: string
+    description: Pending received document import error
+    nullable: true
+  extracted_data:
+    type: object
+    nullable: true
+    properties:
+      mining:
+        type: object
+        properties:
+          save_entity:
+            type: boolean
