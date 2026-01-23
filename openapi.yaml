@@ -1686,6 +1686,10 @@ paths:
           $ref: '#/components/responses/ListPendingReceivedDocumentsResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: listPendingReceivedDocuments
       description: Lists the pending received documents.
       security:
@@ -1712,8 +1716,12 @@ paths:
           $ref: '#/components/responses/GetPendingReceivedDocumentResponse'
         '401':
           description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
         '404':
           description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
       operationId: getPendingReceivedDocument
       description: Gets the specified pending received document.
       security:
