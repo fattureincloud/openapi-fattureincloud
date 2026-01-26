@@ -1674,6 +1674,62 @@ paths:
             - received_documents:a
             - stock:a
       parameters: []
+  /c/{company_id}/received_documents/pending:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+    get:
+      summary: List Pending Received Documents
+      tags:
+        - Received Documents
+      responses:
+        '200':
+          $ref: '#/components/responses/ListPendingReceivedDocumentsResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+      operationId: listPendingReceivedDocuments
+      description: Lists the pending received documents.
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - received_documents:r
+      parameters:
+        - $ref: '#/components/parameters/pending_received_document_type'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/per_page'
+        - $ref: '#/components/parameters/q'
+  /c/{company_id}/received_documents/pending/{document_id}:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
+    get:
+      summary: Get Pending Received Document
+      tags:
+        - Received Documents
+      responses:
+        '200':
+          $ref: '#/components/responses/GetPendingReceivedDocumentResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          $ref: '#/components/responses/Forbidden403'
+        '404':
+          description: Not Found
+        '429':
+          $ref: '#/components/responses/TooManyRequests429'
+      operationId: getPendingReceivedDocument
+      description: Gets the specified pending received document.
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - received_documents:r
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
   /c/{company_id}/received_documents/totals:
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -4246,6 +4302,17 @@ components:
           - passive_delivery_note
           - self_invoice
       description: The type of the received document.
+    pending_received_document_type:
+      name: type
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - agyo
+          - mail
+          - browser
+      description: The type of the pending received document.
     q:
       name: q
       in: query
@@ -7798,6 +7865,187 @@ components:
                     id: 111
                     name: Hotel Rubino Palace
                   date: '2021-08-15'
+                  next_due_date: '2021-08-15'
+                  currency:
+                    id: EUR
+                    exchange_rate: '1.00000'
+                    symbol: €
+                  amount_net: 592
+                  amount_vat: 0
+                  amount_gross: 592
+                  amount_withholding_tax: 0
+                  amount_other_withholding_tax: 0
+                  tax_deductibility: 50
+                  vat_deductibility: 100
+                  items_list: null
+                  payments_list:
+                    - amount: 592
+                      due_date: '2021-08-15'
+                      paid_date: '2021-08-15'
+                      id: 777
+                      payment_terms:
+                        days: 0
+                        type: standard
+                      status: paid
+                      payment_account:
+                        id: 222
+                        name: Contanti
+                        virtual: false
+                  attachment_url: spesa_ger5i783t45hu6ti.pdf
+                  attachment_preview_url: null
+                  extra_data: null
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
+    ListPendingReceivedDocumentsResponse:
+      description: Results list.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/ListPendingReceivedDocumentsResponse.yaml
+          examples:
+            example-1:
+              value:
+                current_page: 1
+                data:
+                  - type: agyo
+                    document_type: expense
+                    description: Soggiorno di lavoro
+                    amortization: 1
+                    rc_center: ''
+                    invoice_number: ''
+                    is_marked: false
+                    is_detailed: false
+                    e_invoice: false
+                    created_at: '2021-08-15 14:02:02'
+                    updated_at: '2021-08-15 14:02:02'
+                    entity:
+                      id: 111
+                      name: Hotel Rubino Palace
+                    date: '2021-08-15'
+                    next_due_date: '2021-08-15'
+                    currency:
+                      id: EUR
+                      exchange_rate: '1.00000'
+                      symbol: €
+                    amount_net: 592
+                    amount_vat: 0
+                    amount_gross: 592
+                    amount_withholding_tax: 0
+                    amount_other_withholding_tax: 0
+                    tax_deductibility: 50
+                    vat_deductibility: 100
+                    items_list: null
+                    payments_list:
+                      - amount: 592
+                        due_date: '2021-08-15'
+                        paid_date: '2021-08-15'
+                        id: 777
+                        payment_terms:
+                          days: 0
+                          type: standard
+                        status: paid
+                        payment_account:
+                          id: 222
+                          name: Contanti
+                          virtual: false
+                    attachment_url: spesa_ger5i783t45hu6ti.pdf
+                    attachment_preview_url: null
+                    extra_data: null
+                  - type: expense
+                    description: Assicurazione RCA
+                    iamortization: 1
+                    rc_center: ''
+                    invoice_number: ''
+                    is_marked: false
+                    is_detailed: false
+                    e_invoice: false
+                    created_at: '2021-08-09 14:02:02'
+                    updated_at: '2021-08-09 14:02:02'
+                    entity:
+                      id: 89
+                      name: Indesa Assicurazioni S.P.A.
+                    date: '2021-08-08'
+                    next_due_date: '2021-08-08'
+                    currency:
+                      id: EUR
+                      exchange_rate: '1.00000'
+                      symbol: €
+                    amount_net: 645.69
+                    amount_vat: 0
+                    amount_gross: 645.69
+                    amount_withholding_tax: 0
+                    amount_other_withholding_tax: 0
+                    tax_deductibility: 50
+                    vat_deductibility: 100
+                    items_list: null
+                    payments_list:
+                      - amount: 645.69
+                        due_date: '2021-08-08'
+                        paid_date: '2021-08-08'
+                        id: 999
+                        payment_terms:
+                          days: 0
+                          type: standard
+                        status: paid
+                        payment_account:
+                          id: 333
+                          name: Carta conto
+                          virtual: false
+                    attachment_url: spesa_gjsd567e5hu6ti.pdf
+                    attachment_preview_url: null
+                    extra_data: null
+                first_page_url: page=1
+                from: 1
+                last_page: 2
+                last_page_url: page=2
+                next_page_url: page=2
+                path: received_documents
+                per_page: 50
+                prev_page_url: null
+                to: 50
+                total: 123
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
+    GetPendingReceivedDocumentResponse:
+      description: Document details.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/responses/GetPendingReceivedDocumentResponse.yaml
+          examples:
+            example-1:
+              value:
+                data:
+                  date: '2021-08-15'
+                  type: agyo
+                  subject: Soggiorno di lavoro
+                  filename: fatturaHotel.xml
+                  amortization: 1
+                  rc_center: ''
+                  invoice_number: ''
+                  is_marked: false
+                  is_detailed: false
+                  e_invoice: false
+                  document_type: expense
+                  created_at: '2021-08-15 14:02:02'
+                  updated_at: '2021-08-15 14:02:02'
+                  entity:
+                    id: 111
+                    name: Hotel Rubino Palace
                   next_due_date: '2021-08-15'
                   currency:
                     id: EUR
