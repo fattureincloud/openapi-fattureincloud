@@ -33,10 +33,14 @@ properties:
     description: |-
       [Read Only]
       Pending received document total gross amount
+    nullable: true
+    readOnly: true
   currency:
     $ref: ./Currency.yaml
+    nullable: true
   document_type:
     $ref: ../enums/ReceivedDocumentType.yaml
+    nullable: true
   supplier_name:
     type: string
     description: Pending received document supplier name
