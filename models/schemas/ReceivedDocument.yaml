@@ -141,3 +141,19 @@ properties:
     type: string
     nullable: true
     description: Received document last update date
+  ei_reception_date:
+    type: string
+    nullable: true
+    description: |-
+      [Read Only]
+      Received document e-invoice reception date, needs fic_view 
+      fieldset
+    readOnly: true
+  is_from_pending_expenses:
+    type: boolean
+    nullable: true
+    description: |-
+      [Read Only]
+      True if eceived document is generated from pending expenses, 
+      needs fic_view fieldset
+    readOnly: true
