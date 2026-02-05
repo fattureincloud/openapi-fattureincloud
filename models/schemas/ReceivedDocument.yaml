@@ -154,6 +154,6 @@ properties:
     nullable: true
     description: |-
       [Read Only]
-      True if eceived document is generated from pending expenses, 
+      True if received document is generated from pending expenses, 
       needs fic_view fieldset
     readOnly: true
