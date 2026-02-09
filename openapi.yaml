@@ -4208,6 +4208,7 @@ components:
         enum:
           - basic
           - detailed
+          - fic_view
       description: Name of the fieldset.
     sort:
       name: sort
