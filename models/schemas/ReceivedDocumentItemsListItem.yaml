@@ -39,3 +39,7 @@ properties:
     type: number
     description: Received document item product number of items in stock
     nullable: true
+  deductibility_vat_percentage:
+    type: number
+    description: Received document item deductibility vat percentage
+    nullable: true
