@@ -420,6 +420,14 @@ properties:
         type: string
         nullable: true
         description: Issued document imported by software
+      debt_vat_detect:
+        type: boolean
+        nullable: true
+        description: Issued document debt VAT detect
+      revenue_detect:
+        type: boolean
+        nullable: true
+        description: Issued document revenue detect
   seen_date:
     type: string
     nullable: true
