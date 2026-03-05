@@ -16,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.1.5
+  version: 2.1.6
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -43,12 +43,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetUserInfoResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized.
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getUserInfo
       description: Gets the current user's info.
       security:
@@ -63,12 +75,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListUserCompaniesResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listUserCompanies
       description: Lists the companies controlled by the current user.
       security:
@@ -83,12 +107,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetCompanyInfoResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized.
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getCompanyInfo
       description: Gets the company detailed info.
       security:
@@ -104,12 +140,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetCompanyPlanUsageResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized.
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getCompanyPlanUsage
       description: Gets the company limits usage.
       parameters:
@@ -139,12 +187,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListClientsResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listClients
       description: Lists the clients.
       security:
@@ -164,10 +224,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/CreateClientResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Creates a new client.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -511,14 +585,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetClientResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getClient
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -534,14 +618,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ModifyClientResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Modifies the specified client.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -890,14 +984,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Deletes the specified client.
       parameters: []
       security:
@@ -916,14 +1020,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetEntityClientsInfoResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getClientInfo
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -939,12 +1053,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListSuppliersResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listSuppliers
       description: Lists the suppliers.
       security:
@@ -966,10 +1092,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/CreateSupplierResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Creates a new supplier.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -1117,14 +1257,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetSupplierResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getSupplier
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -1142,14 +1292,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ModifySupplierResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Modifies the specified supplier.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -1305,14 +1465,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Deletes the specified supplier.
       parameters: []
       security:
@@ -1331,12 +1501,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListProductsResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listProducts
       description: Lists the products.
       security:
@@ -1356,10 +1538,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/CreateProductResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       tags:
         - Products
       description: Creates a new product.
@@ -1516,14 +1712,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetProductResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getProduct
       description: Gets the specified product.
       security:
@@ -1539,14 +1745,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ModifyProductResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Modifies the specified product.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -1707,14 +1923,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Deletes the specified product.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -1733,14 +1959,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListIssuedDocumentsResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listIssuedDocuments
       description: Lists the issued documents.
       security:
@@ -1775,12 +2011,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/CreateIssuedDocumentResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       tags:
         - Issued Documents
       description: Creates a new document.
@@ -2947,6 +3195,12 @@ paths:
                         imported_by:
                           type: string
                           description: Issued document imported by software
+                        debt_vat_detect:
+                          type: boolean
+                          description: Issued document debt VAT detect
+                        revenue_detect:
+                          type: boolean
+                          description: Issued document revenue detect
                     seen_date:
                       type: string
                       description: Issued document seen date
@@ -3129,14 +3383,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetIssuedDocumentResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getIssuedDocument
       description: |
         Gets the specified document.
@@ -3159,14 +3423,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ModifyIssuedDocumentResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Modifies the specified document.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -4332,6 +4606,12 @@ paths:
                         imported_by:
                           type: string
                           description: Issued document imported by software
+                        debt_vat_detect:
+                          type: boolean
+                          description: Issued document debt VAT detect
+                        revenue_detect:
+                          type: boolean
+                          description: Issued document revenue detect
                     seen_date:
                       type: string
                       description: Issued document seen date
@@ -4517,14 +4797,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Deletes the specified document.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -4548,12 +4838,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetNewIssuedDocumentTotalsResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Returns the totals for a new document.
       tags:
         - Issued Documents
@@ -5713,6 +6015,12 @@ paths:
                         imported_by:
                           type: string
                           description: Issued document imported by software
+                        debt_vat_detect:
+                          type: boolean
+                          description: Issued document debt VAT detect
+                        revenue_detect:
+                          type: boolean
+                          description: Issued document revenue detect
                     seen_date:
                       type: string
                       description: Issued document seen date
@@ -5907,14 +6215,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetExistingIssuedDocumentTotalsResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       tags:
         - Issued Documents
       description: Returns the totals for a specified document.
@@ -7074,6 +7392,12 @@ paths:
                         imported_by:
                           type: string
                           description: Issued document imported by software
+                        debt_vat_detect:
+                          type: boolean
+                          description: Issued document debt VAT detect
+                        revenue_detect:
+                          type: boolean
+                          description: Issued document revenue detect
                     seen_date:
                       type: string
                       description: Issued document seen date
@@ -7175,12 +7499,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/UploadIssuedDocumentAttachmentResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       tags:
         - Issued Documents
       description: >-
@@ -7234,14 +7570,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Removes the attachment of the specified document.
       security:
         - OAuth2AuthenticationCodeFlow: []
@@ -7259,10 +7605,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetIssuedDocumentPreCreateInfoResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getIssuedDocumentPreCreateInfo
       description: Retrieves the information useful while creating a new document.
       security:
@@ -7281,10 +7641,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetEmailDataResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getEmailData
       description: Gets the pre-compiled email details.
       security:
@@ -7313,14 +7687,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Schedules the sending of a document by email.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -7431,14 +7815,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/SendEInvoiceResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Sends the e-invoice to SDI.
       security:
         - OAuth2AuthenticationCodeFlow: []
@@ -7491,16 +7885,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/VerifyEInvoiceXmlResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
         '422':
           $ref: '#/components/responses/VerifyEInvoiceXmlErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: verifyEInvoiceXml
       description: >-
         Verifies the e-invoice XML format. Checks if all of the mandatory fields
@@ -7520,14 +7922,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetEInvoiceXmlResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getEInvoiceXml
       description: Downloads the e-invoice in XML format.
       security:
@@ -7546,10 +7958,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetEInvoiceRejectionReasonResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getEInvoiceRejectionReason
       description: Get e-invoice rejection reason
       security:
@@ -7565,12 +7991,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListReceivedDocumentsResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listReceivedDocuments
       description: Lists the received documents.
       security:
@@ -7592,10 +8030,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/CreateReceivedDocumentResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Creates a new document.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -8101,6 +8553,12 @@ paths:
                               Received document item product number of items in
                               stock
                             nullable: true
+                          deductibility_vat_percentage:
+                            type: number
+                            description: >-
+                              Received document item deductibility vat
+                              percentage
+                            nullable: true
                     payments_list:
                       type: array
                       items:
@@ -8220,6 +8678,26 @@ paths:
                     updated_at:
                       type: string
                       description: Received document last update date
+                    ei_reception_date:
+                      type: string
+                      description: >-
+                        [Read Only]
+
+                        Received document e-invoice reception date, needs
+                        fic_view 
+
+                        fieldset
+                      readOnly: true
+                    is_from_pending_expenses:
+                      type: boolean
+                      description: >-
+                        [Read Only]
+
+                        True if received document is generated from pending
+                        expenses, 
+
+                        needs fic_view fieldset
+                      readOnly: true
                   required:
                     - entity
             examples:
@@ -8276,14 +8754,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetReceivedDocumentResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getReceivedDocument
       description: Gets the specified document.
       security:
@@ -8300,14 +8788,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ModifyReceivedDocumentResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       tags:
         - Received Documents
       description: Modifies the specified document.
@@ -8807,6 +9305,12 @@ paths:
                               Received document item product number of items in
                               stock
                             nullable: true
+                          deductibility_vat_percentage:
+                            type: number
+                            description: >-
+                              Received document item deductibility vat
+                              percentage
+                            nullable: true
                     payments_list:
                       type: array
                       items:
@@ -8926,6 +9430,26 @@ paths:
                     updated_at:
                       type: string
                       description: Received document last update date
+                    ei_reception_date:
+                      type: string
+                      description: >-
+                        [Read Only]
+
+                        Received document e-invoice reception date, needs
+                        fic_view 
+
+                        fieldset
+                      readOnly: true
+                    is_from_pending_expenses:
+                      type: boolean
+                      description: >-
+                        [Read Only]
+
+                        True if received document is generated from pending
+                        expenses, 
+
+                        needs fic_view fieldset
+                      readOnly: true
                   required:
                     - entity
               description: ''
@@ -8986,14 +9510,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       tags:
         - Received Documents
       description: Deletes the specified document.
@@ -9003,6 +9537,86 @@ paths:
             - stock:a
         - ManualAuth: []
       parameters: []
+  /c/{company_id}/received_documents/pending:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+    get:
+      summary: List Pending Received Documents
+      tags:
+        - Received Documents
+      responses:
+        '200':
+          $ref: '#/components/responses/ListPendingReceivedDocumentsResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '403':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '429':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
+      operationId: listPendingReceivedDocuments
+      description: Lists the pending received documents.
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - received_documents:r
+        - ManualAuth: []
+      parameters:
+        - $ref: '#/components/parameters/pending_received_document_type'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/per_page'
+        - $ref: '#/components/parameters/q'
+  /c/{company_id}/received_documents/pending/{document_id}:
+    parameters:
+      - $ref: '#/components/parameters/company_id'
+      - $ref: '#/components/parameters/document_id'
+    get:
+      summary: Get Pending Received Document
+      tags:
+        - Received Documents
+      responses:
+        '200':
+          $ref: '#/components/responses/GetPendingReceivedDocumentResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '403':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '429':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
+      operationId: getPendingReceivedDocument
+      description: Gets the specified pending received document.
+      security:
+        - OAuth2AuthenticationCodeFlow:
+            - received_documents:r
+        - ManualAuth: []
+      parameters:
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/fieldset'
   /c/{company_id}/received_documents/totals:
     parameters:
       - $ref: '#/components/parameters/company_id'
@@ -9012,14 +9626,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetNewReceivedDocumentTotalsResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Returns the totals for a new document.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -9520,6 +10144,12 @@ paths:
                               Received document item product number of items in
                               stock
                             nullable: true
+                          deductibility_vat_percentage:
+                            type: number
+                            description: >-
+                              Received document item deductibility vat
+                              percentage
+                            nullable: true
                     payments_list:
                       type: array
                       items:
@@ -9639,6 +10269,26 @@ paths:
                     updated_at:
                       type: string
                       description: Received document last update date
+                    ei_reception_date:
+                      type: string
+                      description: >-
+                        [Read Only]
+
+                        Received document e-invoice reception date, needs
+                        fic_view 
+
+                        fieldset
+                      readOnly: true
+                    is_from_pending_expenses:
+                      type: boolean
+                      description: >-
+                        [Read Only]
+
+                        True if received document is generated from pending
+                        expenses, 
+
+                        needs fic_view fieldset
+                      readOnly: true
                   required:
                     - entity
             examples:
@@ -9690,10 +10340,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetExistingReceivedDocumentTotalsResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       tags:
         - Received Documents
       description: Returns the totals for the specified document.
@@ -10193,6 +10857,12 @@ paths:
                               Received document item product number of items in
                               stock
                             nullable: true
+                          deductibility_vat_percentage:
+                            type: number
+                            description: >-
+                              Received document item deductibility vat
+                              percentage
+                            nullable: true
                     payments_list:
                       type: array
                       items:
@@ -10312,6 +10982,26 @@ paths:
                     updated_at:
                       type: string
                       description: Received document last update date
+                    ei_reception_date:
+                      type: string
+                      description: >-
+                        [Read Only]
+
+                        Received document e-invoice reception date, needs
+                        fic_view 
+
+                        fieldset
+                      readOnly: true
+                    is_from_pending_expenses:
+                      type: boolean
+                      description: >-
+                        [Read Only]
+
+                        True if received document is generated from pending
+                        expenses, 
+
+                        needs fic_view fieldset
+                      readOnly: true
                   required:
                     - entity
               description: ''
@@ -10330,12 +11020,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/UploadReceivedDocumentAttachmentResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       tags:
         - Received Documents
       description: >-
@@ -10391,14 +11093,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       tags:
         - Received Documents
       description: Removes the attachment of the specified document.
@@ -10418,10 +11130,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetReceivedDocumentPreCreateInfoResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getReceivedDocumentPreCreateInfo
       description: Retrieves the information useful while creating a new document.
       security:
@@ -10440,12 +11166,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListReceiptsResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listReceipts
       description: Lists the receipts.
       security:
@@ -10465,12 +11203,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/CreateReceiptResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Creates a new receipt.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -10688,14 +11438,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetReceiptResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getReceipt
       description: Gets the specified receipt.
       parameters:
@@ -10711,14 +11471,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ModifyReceiptResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       tags:
         - Receipts
       description: Modifies the specified receipt.
@@ -10937,14 +11707,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Deletes the specified receipt.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -10963,14 +11743,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetReceiptPreCreateInfoResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getReceiptPreCreateInfo
       description: Retrieves the information useful while creating a new receipt.
       security:
@@ -10988,14 +11778,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetReceiptsMonthlyTotalsResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getReceiptsMonthlyTotals
       description: Returns the monthly totals by year and receipt type.
       security:
@@ -11028,12 +11828,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListF24Response'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listF24
       description: Lists the F24s.
       security:
@@ -11053,14 +11865,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/CreateF24Response'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       tags:
         - Taxes
       description: Creates a new F24.
@@ -11176,14 +11998,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetF24Response'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getF24
       description: Gets the specified F24.
       security:
@@ -11199,14 +12031,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ModifyF24Response'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Modifies the specified F24.
       tags:
         - Taxes
@@ -11325,14 +12167,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       tags:
         - Taxes
       description: Removes the specified F24.
@@ -11351,10 +12203,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/UploadF24AttachmentResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: uploadF24Attachment
       description: >-
         Uploads an attachment destined to a F24. The actual association between
@@ -11409,14 +12275,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: deleteF24Attachment
       description: Removes the attachment of the specified F24.
       security:
@@ -11434,14 +12310,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListArchiveDocumentsResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listArchiveDocuments
       description: Lists the archive documents.
       security:
@@ -11461,14 +12347,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/CreateArchiveDocumentResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       tags:
         - Archive
       description: Creates a new archive document.
@@ -11542,14 +12438,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetArchiveDocumentResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getArchiveDocument
       description: Gets the specified archive document.
       security:
@@ -11565,14 +12471,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ModifyArchiveDocumentResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       tags:
         - Archive
       description: Modifies the specified archive document.
@@ -11649,14 +12565,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       tags:
         - Archive
       description: Deletes the specified archive document.
@@ -11675,14 +12601,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/UploadArchiveAttachmentResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: uploadArchiveDocumentAttachment
       description: >-
         Uploads an attachment destined to an archive document. The actual
@@ -11726,14 +12662,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListCashbookEntriesResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listCashbookEntries
       description: Lists the cashbook entries.
       security:
@@ -11778,14 +12724,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/CreateCashbookEntryResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       tags:
         - Cashbook
       description: Creates a new cashbook entry.
@@ -11968,14 +12924,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetCashbookEntryResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getCashbookEntry
       description: Gets the specified cashbook entry.
       security:
@@ -11991,14 +12957,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ModifyCashbookEntryResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       tags:
         - Cashbook
       description: Modifies the specified cashbook entry.
@@ -12175,14 +13151,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Deletes the specified cashbook entry.
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -12198,12 +13184,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListCountriesResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listCountries
       description: Lists the supported countries.
       security:
@@ -12218,12 +13216,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListDetailedCountriesResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listDetailedCountries
       description: Lists the supported countries.
       security:
@@ -12238,10 +13248,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListCitiesResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listCities
       description: Lists the Italian cities.
       security:
@@ -12266,12 +13290,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListLanguagesResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listLanguages
       description: Lists the supported languages.
       security:
@@ -12286,12 +13322,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListTemplatesResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listDefaultTemplates
       description: Lists the default available templates.
       security:
@@ -12325,12 +13373,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListCurrenciesResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listCurrencies
       description: Lists the supported currencies.
       security:
@@ -12345,12 +13405,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListUnitsOfMeasureResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listUnitsOfMeasure
       description: Lists the units of measure.
       security:
@@ -12365,12 +13437,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListDeliveryNotesDefaultCausalsResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listDeliveryNotesDefaultCausals
       description: Lists the delivery note default causals.
       security:
@@ -12387,14 +13471,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListVatTypesResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listVatTypes
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -12413,14 +13507,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListPaymentMethodsResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listPaymentMethods
       description: Lists the available payment methods.
       security:
@@ -12440,14 +13544,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListPaymentAccountsResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listPaymentAccounts
       description: Lists the available payment accounts.
       security:
@@ -12467,14 +13581,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListRevenueCentersResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listRevenueCenters
       description: Lists the revenue centers.
       security:
@@ -12491,14 +13615,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListCostCentersResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listCostCenters
       description: Lists the cost centers.
       security:
@@ -12515,14 +13649,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListProductCategoriesResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listProductCategories
       description: Lists the product categories.
       security:
@@ -12549,10 +13693,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListReceivedDocumentCategoriesResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listReceivedDocumentCategories
       description: Lists the received document categories.
       security:
@@ -12569,14 +13727,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListArchiveCategoriesResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listArchiveCategories
       description: Lists the archive categories.
       security:
@@ -12599,10 +13767,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/CreatePaymentMethodResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       requestBody:
         content:
           application/json:
@@ -12725,10 +13907,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetPaymentMethodResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getPaymentMethod
       description: Gets the specified payment method.
       security:
@@ -12744,10 +13940,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ModifyPaymentMethodResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: modifyPaymentMethod
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -12877,10 +14087,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: deletePaymentMethod
       description: Deletes the specified payment method.
       security:
@@ -12897,10 +14121,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/CreatePaymentAccountResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: createPaymentAccount
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -12968,10 +14206,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetTaxProfileResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Gets the Tax Profile
       security:
         - OAuth2AuthenticationCodeFlow:
@@ -12993,10 +14245,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetPaymentAccountResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getPaymentAccount
       description: Gets the specified payment account.
       parameters:
@@ -13012,10 +14278,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ModifyPaymentAccountResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: modifyPaymentAccount
       description: Modifies the specified payment account.
       security:
@@ -13089,10 +14369,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: deletePaymentAccount
       description: Deletes the specified payment account.
       security:
@@ -13109,10 +14403,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/CreateVatTypeResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: createVatType
       description: Creates a vat type.
       security:
@@ -13196,12 +14504,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListTemplatesResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listTemplates
       description: Gets all the standard and private templates.
       security:
@@ -13226,10 +14546,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetTemplatesResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getTemplate
       description: Gets a specified template.
       security:
@@ -13254,10 +14588,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetVatTypeResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getVatType
       description: Gets the specified vat type.
       security:
@@ -13270,10 +14618,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ModifyVatTypeResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: modifyVatType
       description: Modifies the specified vat type.
       security:
@@ -13361,10 +14723,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: deleteVatType
       description: Deletes the specified vat type.
       security:
@@ -13379,10 +14755,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/TransformIssuedDocumentResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: transformIssuedDocument
       description: Transforms the document.
       security:
@@ -13432,10 +14822,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/JoinIssuedDocumentsResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: joinIssuedDocuments
       description: Joins issued documents.
       security:
@@ -13480,10 +14884,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListEmailsResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listEmails
       description: List Emails.
       parameters:
@@ -13504,10 +14922,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListWebhooksSubscriptionsResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: listWebhooksSubscriptions
       description: List active webhooks subscriptions.
       security:
@@ -13518,10 +14950,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/CreateWebhooksSubscriptionResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: CreateWebhooksSubscription
       requestBody:
         content:
@@ -13721,10 +15167,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetWebhooksSubscriptionResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getWebhooksSubscription
       description: Get a webhooks subscription.
       security:
@@ -13737,10 +15197,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ModifyWebhooksSubscriptionResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: modifyWebhooksSubscription
       description: Edit a webhooks subscription.
       requestBody:
@@ -13931,10 +15405,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: deleteWebhooksSubscription
       description: Delete a webhooks subscription.
       security:
@@ -13960,10 +15448,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: verifyWebhooksSubscription
       description: Verify a webhook subscription.
       security:
@@ -13996,10 +15498,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListBinIssuedDocumentsResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: ListBinIssuedDocuments
       description: Get bin issued documents list
       security:
@@ -14025,10 +15541,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetBinIssuedDocumentResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: GetBinIssuedDocument
       description: Get bin issued documents detail
       security:
@@ -14057,10 +15587,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Delete Bin Issued Document
       security:
         - OAuth2AuthenticationCodeFlow: []
@@ -14086,10 +15630,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Recover Issued Document From The Bin
       security:
         - OAuth2AuthenticationCodeFlow: []
@@ -14102,10 +15660,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListBinReceivedDocumentsResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: ListBinReceivedDocuments
       description: Get bin Received documents list
       security:
@@ -14121,11 +15693,25 @@ paths:
       summary: Get Bin Received Documents List
       responses:
         '200':
-          $ref: '#/components/responses/GetBinIssuedDocumentResponse'
+          $ref: '#/components/responses/GetBinReceivedDocumentResponse'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: GetBinReceivedDocument
       description: Get bin issued documents detail
       security:
@@ -14152,10 +15738,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Delete Bin Received Document
       tags:
         - Received Documents
@@ -14180,10 +15780,24 @@ paths:
               $ref: '#/components/headers/RateLimitMonthlyRemaining'
             RateLimit-MonthlyLimit:
               $ref: '#/components/headers/RateLimitMonthlyLimit'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '401':
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '404':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       description: Recover Received Document From The Bin
       tags:
         - Received Documents
@@ -14199,14 +15813,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListPriceList'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getPriceLists
       security:
         - OAuth2AuthenticationCodeFlow: []
@@ -14229,14 +15853,24 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/GetPriceListItems'
+        '400':
+          $ref: '#/components/responses/ApiErrorResponse'
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/ApiErrorResponse'
         '403':
-          $ref: '#/components/responses/Forbidden403'
+          $ref: '#/components/responses/ApiErrorResponse'
         '404':
-          description: Not Found
+          $ref: '#/components/responses/ApiErrorResponse'
+        '405':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '409':
+          $ref: '#/components/responses/ApiErrorResponse'
+        '422':
+          $ref: '#/components/responses/ApiErrorResponse'
         '429':
-          $ref: '#/components/responses/TooManyRequests429'
+          $ref: '#/components/responses/ApiErrorResponse'
+        '500':
+          $ref: '#/components/responses/ApiErrorResponse'
       operationId: getPriceListItems
       security:
         - OAuth2AuthenticationCodeFlow: []
@@ -14346,6 +15980,7 @@ components:
         enum:
           - basic
           - detailed
+          - fic_view
       description: Name of the fieldset.
     sort:
       name: sort
@@ -14440,6 +16075,17 @@ components:
           - passive_delivery_note
           - self_invoice
       description: The type of the received document.
+    pending_received_document_type:
+      name: type
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - agyo
+          - mail
+          - browser
+      description: The type of the pending received document.
     q:
       name: q
       in: query
@@ -14463,13 +16109,124 @@ components:
         example: SUB123
       description: The ID of the subscription.
   responses:
-    Forbidden403:
-      description: Forbidden - Rate limit exceeded
-      headers:
-        Retry-After:
-          $ref: '#/components/headers/RetryAfter'
-    TooManyRequests429:
-      description: Too Many Requests
+    ApiErrorResponse:
+      description: ErrorResponse
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - title: ApiError
+                type: object
+                description: Error details container
+                properties:
+                  error:
+                    type: object
+                    description: Error details object
+                    properties:
+                      message:
+                        type: string
+                        description: Error message
+                        example: License expired.
+                      code:
+                        type: string
+                        description: Error code
+                        example: LICENSE_EXPIRED
+                      validation_result:
+                        type: object
+                        description: >-
+                          Validation errors container with dynamic keys based on
+                          validation type
+                        additionalProperties:
+                          type: array
+                          items:
+                            type: string
+                          description: Array of validation error messages
+                        example:
+                          xml_errors:
+                            - >-
+                              Il Codice Fiscale e la Partita IVA del cliente
+                              risultano vuoti.
+                  extra:
+                    type: object
+                    description: Additional data container
+                    additionalProperties: true
+                    properties:
+                      totals:
+                        type: object
+                        description: Totals calculation results
+                        properties:
+                          amount_net:
+                            type: number
+                            description: Net amount
+                            example: 1132.5
+                          amount_global_cassa_taxable:
+                            type: number
+                            description: Global cassa taxable amount
+                            example: 1132.5
+                          taxable_amount:
+                            type: number
+                            description: Taxable amount
+                            example: 1132.5
+                          vat_list:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                amount_net:
+                                  type: number
+                                  description: Net amount for VAT calculation
+                                  example: 1132.5
+                                amount_vat:
+                                  type: number
+                                  description: VAT amount
+                                  example: 0
+                            description: List of VAT calculations
+                          amount_vat:
+                            type: number
+                            description: Total VAT amount
+                            example: 0
+                          amount_gross:
+                            type: number
+                            description: Gross amount
+                            example: 1002.26
+                          amount_withholding_tax_taxable:
+                            type: number
+                            description: Withholding tax taxable amount
+                            example: 566.25
+                          amount_withholding_tax:
+                            type: number
+                            description: Withholding tax amount
+                            example: 130.24
+                          amount_enasarco_taxable:
+                            type: number
+                            description: Enasarco taxable amount
+                            example: 0
+                          amount_due:
+                            type: number
+                            description: Amount due
+                            example: 1002.26
+                          amount_due_discount:
+                            type: number
+                            nullable: true
+                            description: Amount due discount
+                            example: null
+                          payments_sum:
+                            type: number
+                            description: Sum of payments
+                            example: 1132.5
+              - title: ApiOAuthError
+                type: object
+                description: OAuth 2.0 error response format
+                properties:
+                  error:
+                    type: string
+                    description: Error code string
+                  error_description:
+                    type: string
+                    description: Error details for OAuth 2.0 errors
+                example:
+                  error: invalid_request
+                  error_description: The request is missing required parameters
       headers:
         Retry-After:
           $ref: '#/components/headers/RetryAfter'
@@ -19905,6 +21662,14 @@ components:
                               type: string
                               nullable: true
                               description: Issued document imported by software
+                            debt_vat_detect:
+                              type: boolean
+                              nullable: true
+                              description: Issued document debt VAT detect
+                            revenue_detect:
+                              type: boolean
+                              nullable: true
+                              description: Issued document revenue detect
                         seen_date:
                           type: string
                           nullable: true
@@ -21362,6 +23127,14 @@ components:
                         type: string
                         nullable: true
                         description: Issued document imported by software
+                      debt_vat_detect:
+                        type: boolean
+                        nullable: true
+                        description: Issued document debt VAT detect
+                      revenue_detect:
+                        type: boolean
+                        nullable: true
+                        description: Issued document revenue detect
                   seen_date:
                     type: string
                     nullable: true
@@ -22857,6 +24630,14 @@ components:
                         type: string
                         nullable: true
                         description: Issued document imported by software
+                      debt_vat_detect:
+                        type: boolean
+                        nullable: true
+                        description: Issued document debt VAT detect
+                      revenue_detect:
+                        type: boolean
+                        nullable: true
+                        description: Issued document revenue detect
                   seen_date:
                     type: string
                     nullable: true
@@ -24352,6 +26133,14 @@ components:
                         type: string
                         nullable: true
                         description: Issued document imported by software
+                      debt_vat_detect:
+                        type: boolean
+                        nullable: true
+                        description: Issued document debt VAT detect
+                      revenue_detect:
+                        type: boolean
+                        nullable: true
+                        description: Issued document revenue detect
                   seen_date:
                     type: string
                     nullable: true
@@ -28209,6 +29998,12 @@ components:
                                   Received document item product number of items
                                   in stock
                                 nullable: true
+                              deductibility_vat_percentage:
+                                type: number
+                                description: >-
+                                  Received document item deductibility vat
+                                  percentage
+                                nullable: true
                         payments_list:
                           type: array
                           nullable: true
@@ -28337,6 +30132,28 @@ components:
                           type: string
                           nullable: true
                           description: Received document last update date
+                        ei_reception_date:
+                          type: string
+                          nullable: true
+                          description: >-
+                            [Read Only]
+
+                            Received document e-invoice reception date, needs
+                            fic_view 
+
+                            fieldset
+                          readOnly: true
+                        is_from_pending_expenses:
+                          type: boolean
+                          nullable: true
+                          description: >-
+                            [Read Only]
+
+                            True if received document is generated from pending
+                            expenses, 
+
+                            needs fic_view fieldset
+                          readOnly: true
                     nullable: true
             description: ''
           examples:
@@ -29020,6 +30837,10 @@ components:
                             Received document item product number of items in
                             stock
                           nullable: true
+                        deductibility_vat_percentage:
+                          type: number
+                          description: Received document item deductibility vat percentage
+                          nullable: true
                   payments_list:
                     type: array
                     nullable: true
@@ -29147,6 +30968,28 @@ components:
                     type: string
                     nullable: true
                     description: Received document last update date
+                  ei_reception_date:
+                    type: string
+                    nullable: true
+                    description: >-
+                      [Read Only]
+
+                      Received document e-invoice reception date, needs
+                      fic_view 
+
+                      fieldset
+                    readOnly: true
+                  is_from_pending_expenses:
+                    type: boolean
+                    nullable: true
+                    description: >-
+                      [Read Only]
+
+                      True if received document is generated from pending
+                      expenses, 
+
+                      needs fic_view fieldset
+                    readOnly: true
                 nullable: true
             description: ''
           examples:
@@ -29775,6 +31618,10 @@ components:
                             Received document item product number of items in
                             stock
                           nullable: true
+                        deductibility_vat_percentage:
+                          type: number
+                          description: Received document item deductibility vat percentage
+                          nullable: true
                   payments_list:
                     type: array
                     nullable: true
@@ -29902,6 +31749,28 @@ components:
                     type: string
                     nullable: true
                     description: Received document last update date
+                  ei_reception_date:
+                    type: string
+                    nullable: true
+                    description: >-
+                      [Read Only]
+
+                      Received document e-invoice reception date, needs
+                      fic_view 
+
+                      fieldset
+                    readOnly: true
+                  is_from_pending_expenses:
+                    type: boolean
+                    nullable: true
+                    description: >-
+                      [Read Only]
+
+                      True if received document is generated from pending
+                      expenses, 
+
+                      needs fic_view fieldset
+                    readOnly: true
                 nullable: true
             description: ''
           examples:
@@ -29923,6 +31792,698 @@ components:
                     id: 111
                     name: Hotel Rubino Palace
                   date: '2021-08-15'
+                  next_due_date: '2021-08-15'
+                  currency:
+                    id: EUR
+                    exchange_rate: '1.00000'
+                    symbol: €
+                  amount_net: 592
+                  amount_vat: 0
+                  amount_gross: 592
+                  amount_withholding_tax: 0
+                  amount_other_withholding_tax: 0
+                  tax_deductibility: 50
+                  vat_deductibility: 100
+                  items_list: null
+                  payments_list:
+                    - amount: 592
+                      due_date: '2021-08-15'
+                      paid_date: '2021-08-15'
+                      id: 777
+                      payment_terms:
+                        days: 0
+                        type: standard
+                      status: paid
+                      payment_account:
+                        id: 222
+                        name: Contanti
+                        virtual: false
+                  attachment_url: spesa_ger5i783t45hu6ti.pdf
+                  attachment_preview_url: null
+                  extra_data: null
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
+    ListPendingReceivedDocumentsResponse:
+      description: Results list.
+      content:
+        application/json:
+          schema:
+            title: ListPendingReceivedDocumentsResponse
+            allOf:
+              - title: Pagination
+                type: object
+                description: ''
+                properties:
+                  current_page:
+                    type: integer
+                    description: Current page number.
+                    nullable: true
+                  first_page_url:
+                    type: string
+                    format: uri
+                    description: First page url.
+                    nullable: true
+                  from:
+                    type: integer
+                    nullable: true
+                    description: First result of the page.
+                  last_page:
+                    type: integer
+                    description: Last page number.
+                    nullable: true
+                  last_page_url:
+                    type: string
+                    format: uri
+                    description: Last page url.
+                    nullable: true
+                  next_page_url:
+                    type: string
+                    format: uri
+                    nullable: true
+                    description: Next page url
+                  path:
+                    type: string
+                    format: uri
+                    description: Request path.
+                    nullable: true
+                  per_page:
+                    type: integer
+                    description: Number of result per page.
+                    nullable: true
+                  prev_page_url:
+                    type: string
+                    format: uri
+                    nullable: true
+                    description: Previous page url.
+                  to:
+                    type: integer
+                    nullable: true
+                    description: Last result of the page.
+                  total:
+                    type: integer
+                    description: Total number of results
+                    nullable: true
+              - title: ListPendingReceivedDocumentsResponsePage
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      title: PendingReceivedDocument
+                      properties:
+                        id:
+                          type: integer
+                          nullable: true
+                          description: Pending received document id
+                        date:
+                          type: string
+                          description: Pending received document date
+                          format: date
+                          nullable: true
+                        subject:
+                          type: string
+                          description: Pending received document subject
+                          nullable: true
+                        filename:
+                          type: string
+                          description: Pending received document filename
+                          nullable: true
+                        type:
+                          title: PendingReceivedDocumentType
+                          type: string
+                          default: agyo
+                          enum:
+                            - agyo
+                            - mail
+                            - browser
+                          description: Pending received document type
+                        attachment_url:
+                          type: string
+                          description: |-
+                            [Temporary]
+                            [Read Only]
+                            Pending received document url of the attached file
+                          nullable: true
+                          readOnly: true
+                        amount_gross:
+                          type: number
+                          description: |-
+                            [Read Only]
+                            Pending received document total gross amount
+                          nullable: true
+                          readOnly: true
+                        currency:
+                          type: object
+                          title: Currency
+                          properties:
+                            id:
+                              type: string
+                              description: Currency code
+                              example: EUR
+                              nullable: true
+                            symbol:
+                              type: string
+                              description: Currency symbol
+                              example: €
+                              nullable: true
+                            exchange_rate:
+                              type: string
+                              nullable: true
+                              description: Currency exchange rate (EUR to this)
+                              example: '1'
+                            html_symbol:
+                              type: string
+                              example: EUR
+                              description: Currency html code
+                              nullable: true
+                          nullable: true
+                        document_type:
+                          title: ReceivedDocumentType
+                          type: string
+                          default: expense
+                          enum:
+                            - expense
+                            - passive_credit_note
+                            - passive_delivery_note
+                            - self_invoice
+                          description: Received document type
+                          nullable: true
+                        supplier_name:
+                          type: string
+                          description: Pending received document supplier name
+                          nullable: true
+                        cost_center:
+                          type: string
+                          description: Pending received document cost center
+                          nullable: true
+                        category:
+                          type: string
+                          nullable: true
+                          description: Pending received document category
+                        other_attachments:
+                          type: array
+                          nullable: true
+                          description: Pending received document other attachments
+                          items:
+                            title: Attachment
+                            type: object
+                            properties:
+                              filename:
+                                type: string
+                                description: Attachment file name
+                                example: attachment.pdf
+                                nullable: true
+                              attachment:
+                                type: string
+                                description: >-
+                                  Attachment file [.png, .jpg, .gif, .pdf, .zip,
+                                  .xls, .xlsx, .doc, .docx]
+                                format: binary
+                        emssion_date:
+                          type: string
+                          description: Pending received document emission date
+                          format: date
+                          nullable: true
+                        payments_list:
+                          type: array
+                          nullable: true
+                          items:
+                            title: PendingReceivedDocumentPaymentsListItem
+                            type: object
+                            properties:
+                              amount:
+                                type: number
+                                description: Pending received document payment total amount
+                                nullable: true
+                              due_date:
+                                type: string
+                                description: Due date
+                                format: date
+                                nullable: true
+                              paid_date:
+                                type: string
+                                description: Pending received document payment paid date
+                                format: date
+                                nullable: true
+                              payment_terms:
+                                type: object
+                                nullable: true
+                                properties:
+                                  days:
+                                    type: integer
+                                    description: >-
+                                      Pending received document payment number
+                                      of days by which the payment must be made
+                                    nullable: true
+                                  type:
+                                    title: PaymentTermsType
+                                    type: string
+                                    default: standard
+                                    enum:
+                                      - standard
+                                      - end_of_month
+                                    description: Payment terms type
+                              status:
+                                type: string
+                                description: Pending received document payment status
+                                nullable: true
+                              paid_with_ts_pay:
+                                type: boolean
+                                description: True if paid with TS Pay
+                                nullable: true
+                              payment_account:
+                                type: object
+                                nullable: true
+                                title: PaymentAccount
+                                properties:
+                                  id:
+                                    type: integer
+                                    description: Payment account id
+                                    nullable: true
+                                  name:
+                                    type: string
+                                    description: Payment account name
+                                    example: Conto Banca Intesa
+                                    nullable: true
+                                  type:
+                                    title: PaymentAccountType
+                                    type: string
+                                    default: standard
+                                    enum:
+                                      - standard
+                                      - bank
+                                    description: Payment account type
+                                  iban:
+                                    type: string
+                                    nullable: true
+                                    description: Payment account iban
+                                  sia:
+                                    type: string
+                                    nullable: true
+                                    description: Payment account sia
+                                  cuc:
+                                    type: string
+                                    description: Payment account cuc
+                                    nullable: true
+                                  virtual:
+                                    type: boolean
+                                    description: Payment method is virtual
+                                    nullable: true
+                        amount_net:
+                          type: number
+                          description: Pending received document total net amount
+                          nullable: true
+                        amount_vat:
+                          type: number
+                          description: Pending received document total vat amount
+                          nullable: true
+                        import_error:
+                          type: string
+                          description: Pending received document import error
+                          nullable: true
+                        extracted_data:
+                          type: object
+                          nullable: true
+                          properties:
+                            mining:
+                              type: object
+                              properties:
+                                save_entity:
+                                  type: boolean
+                    nullable: true
+            description: ''
+          examples:
+            example-1:
+              value:
+                current_page: 1
+                data:
+                  - type: agyo
+                    document_type: expense
+                    description: Soggiorno di lavoro
+                    amortization: 1
+                    rc_center: ''
+                    invoice_number: ''
+                    is_marked: false
+                    is_detailed: false
+                    e_invoice: false
+                    created_at: '2021-08-15 14:02:02'
+                    updated_at: '2021-08-15 14:02:02'
+                    entity:
+                      id: 111
+                      name: Hotel Rubino Palace
+                    date: '2021-08-15'
+                    next_due_date: '2021-08-15'
+                    currency:
+                      id: EUR
+                      exchange_rate: '1.00000'
+                      symbol: €
+                    amount_net: 592
+                    amount_vat: 0
+                    amount_gross: 592
+                    amount_withholding_tax: 0
+                    amount_other_withholding_tax: 0
+                    tax_deductibility: 50
+                    vat_deductibility: 100
+                    items_list: null
+                    payments_list:
+                      - amount: 592
+                        due_date: '2021-08-15'
+                        paid_date: '2021-08-15'
+                        id: 777
+                        payment_terms:
+                          days: 0
+                          type: standard
+                        status: paid
+                        payment_account:
+                          id: 222
+                          name: Contanti
+                          virtual: false
+                    attachment_url: spesa_ger5i783t45hu6ti.pdf
+                    attachment_preview_url: null
+                    extra_data: null
+                  - type: expense
+                    description: Assicurazione RCA
+                    iamortization: 1
+                    rc_center: ''
+                    invoice_number: ''
+                    is_marked: false
+                    is_detailed: false
+                    e_invoice: false
+                    created_at: '2021-08-09 14:02:02'
+                    updated_at: '2021-08-09 14:02:02'
+                    entity:
+                      id: 89
+                      name: Indesa Assicurazioni S.P.A.
+                    date: '2021-08-08'
+                    next_due_date: '2021-08-08'
+                    currency:
+                      id: EUR
+                      exchange_rate: '1.00000'
+                      symbol: €
+                    amount_net: 645.69
+                    amount_vat: 0
+                    amount_gross: 645.69
+                    amount_withholding_tax: 0
+                    amount_other_withholding_tax: 0
+                    tax_deductibility: 50
+                    vat_deductibility: 100
+                    items_list: null
+                    payments_list:
+                      - amount: 645.69
+                        due_date: '2021-08-08'
+                        paid_date: '2021-08-08'
+                        id: 999
+                        payment_terms:
+                          days: 0
+                          type: standard
+                        status: paid
+                        payment_account:
+                          id: 333
+                          name: Carta conto
+                          virtual: false
+                    attachment_url: spesa_gjsd567e5hu6ti.pdf
+                    attachment_preview_url: null
+                    extra_data: null
+                first_page_url: page=1
+                from: 1
+                last_page: 2
+                last_page_url: page=2
+                next_page_url: page=2
+                path: received_documents
+                per_page: 50
+                prev_page_url: null
+                to: 50
+                total: 123
+      headers:
+        RateLimit-HourlyRemaining:
+          $ref: '#/components/headers/RateLimitHourlyRemaining'
+        RateLimit-HourlyLimit:
+          $ref: '#/components/headers/RateLimitHourlyLimit'
+        RateLimit-MonthlyRemaining:
+          $ref: '#/components/headers/RateLimitMonthlyRemaining'
+        RateLimit-MonthlyLimit:
+          $ref: '#/components/headers/RateLimitMonthlyLimit'
+    GetPendingReceivedDocumentResponse:
+      description: Document details.
+      content:
+        application/json:
+          schema:
+            title: GetReceivedDocumentResponse
+            type: object
+            properties:
+              data:
+                type: object
+                title: PendingReceivedDocument
+                properties:
+                  id:
+                    type: integer
+                    nullable: true
+                    description: Pending received document id
+                  date:
+                    type: string
+                    description: Pending received document date
+                    format: date
+                    nullable: true
+                  subject:
+                    type: string
+                    description: Pending received document subject
+                    nullable: true
+                  filename:
+                    type: string
+                    description: Pending received document filename
+                    nullable: true
+                  type:
+                    title: PendingReceivedDocumentType
+                    type: string
+                    default: agyo
+                    enum:
+                      - agyo
+                      - mail
+                      - browser
+                    description: Pending received document type
+                  attachment_url:
+                    type: string
+                    description: |-
+                      [Temporary]
+                      [Read Only]
+                      Pending received document url of the attached file
+                    nullable: true
+                    readOnly: true
+                  amount_gross:
+                    type: number
+                    description: |-
+                      [Read Only]
+                      Pending received document total gross amount
+                    nullable: true
+                    readOnly: true
+                  currency:
+                    type: object
+                    title: Currency
+                    properties:
+                      id:
+                        type: string
+                        description: Currency code
+                        example: EUR
+                        nullable: true
+                      symbol:
+                        type: string
+                        description: Currency symbol
+                        example: €
+                        nullable: true
+                      exchange_rate:
+                        type: string
+                        nullable: true
+                        description: Currency exchange rate (EUR to this)
+                        example: '1'
+                      html_symbol:
+                        type: string
+                        example: EUR
+                        description: Currency html code
+                        nullable: true
+                    nullable: true
+                  document_type:
+                    title: ReceivedDocumentType
+                    type: string
+                    default: expense
+                    enum:
+                      - expense
+                      - passive_credit_note
+                      - passive_delivery_note
+                      - self_invoice
+                    description: Received document type
+                    nullable: true
+                  supplier_name:
+                    type: string
+                    description: Pending received document supplier name
+                    nullable: true
+                  cost_center:
+                    type: string
+                    description: Pending received document cost center
+                    nullable: true
+                  category:
+                    type: string
+                    nullable: true
+                    description: Pending received document category
+                  other_attachments:
+                    type: array
+                    nullable: true
+                    description: Pending received document other attachments
+                    items:
+                      title: Attachment
+                      type: object
+                      properties:
+                        filename:
+                          type: string
+                          description: Attachment file name
+                          example: attachment.pdf
+                          nullable: true
+                        attachment:
+                          type: string
+                          description: >-
+                            Attachment file [.png, .jpg, .gif, .pdf, .zip, .xls,
+                            .xlsx, .doc, .docx]
+                          format: binary
+                  emssion_date:
+                    type: string
+                    description: Pending received document emission date
+                    format: date
+                    nullable: true
+                  payments_list:
+                    type: array
+                    nullable: true
+                    items:
+                      title: PendingReceivedDocumentPaymentsListItem
+                      type: object
+                      properties:
+                        amount:
+                          type: number
+                          description: Pending received document payment total amount
+                          nullable: true
+                        due_date:
+                          type: string
+                          description: Due date
+                          format: date
+                          nullable: true
+                        paid_date:
+                          type: string
+                          description: Pending received document payment paid date
+                          format: date
+                          nullable: true
+                        payment_terms:
+                          type: object
+                          nullable: true
+                          properties:
+                            days:
+                              type: integer
+                              description: >-
+                                Pending received document payment number of days
+                                by which the payment must be made
+                              nullable: true
+                            type:
+                              title: PaymentTermsType
+                              type: string
+                              default: standard
+                              enum:
+                                - standard
+                                - end_of_month
+                              description: Payment terms type
+                        status:
+                          type: string
+                          description: Pending received document payment status
+                          nullable: true
+                        paid_with_ts_pay:
+                          type: boolean
+                          description: True if paid with TS Pay
+                          nullable: true
+                        payment_account:
+                          type: object
+                          nullable: true
+                          title: PaymentAccount
+                          properties:
+                            id:
+                              type: integer
+                              description: Payment account id
+                              nullable: true
+                            name:
+                              type: string
+                              description: Payment account name
+                              example: Conto Banca Intesa
+                              nullable: true
+                            type:
+                              title: PaymentAccountType
+                              type: string
+                              default: standard
+                              enum:
+                                - standard
+                                - bank
+                              description: Payment account type
+                            iban:
+                              type: string
+                              nullable: true
+                              description: Payment account iban
+                            sia:
+                              type: string
+                              nullable: true
+                              description: Payment account sia
+                            cuc:
+                              type: string
+                              description: Payment account cuc
+                              nullable: true
+                            virtual:
+                              type: boolean
+                              description: Payment method is virtual
+                              nullable: true
+                  amount_net:
+                    type: number
+                    description: Pending received document total net amount
+                    nullable: true
+                  amount_vat:
+                    type: number
+                    description: Pending received document total vat amount
+                    nullable: true
+                  import_error:
+                    type: string
+                    description: Pending received document import error
+                    nullable: true
+                  extracted_data:
+                    type: object
+                    nullable: true
+                    properties:
+                      mining:
+                        type: object
+                        properties:
+                          save_entity:
+                            type: boolean
+                nullable: true
+            description: ''
+          examples:
+            example-1:
+              value:
+                data:
+                  date: '2021-08-15'
+                  type: agyo
+                  subject: Soggiorno di lavoro
+                  filename: fatturaHotel.xml
+                  amortization: 1
+                  rc_center: ''
+                  invoice_number: ''
+                  is_marked: false
+                  is_detailed: false
+                  e_invoice: false
+                  document_type: expense
+                  created_at: '2021-08-15 14:02:02'
+                  updated_at: '2021-08-15 14:02:02'
+                  entity:
+                    id: 111
+                    name: Hotel Rubino Palace
                   next_due_date: '2021-08-15'
                   currency:
                     id: EUR
@@ -30530,6 +33091,10 @@ components:
                             Received document item product number of items in
                             stock
                           nullable: true
+                        deductibility_vat_percentage:
+                          type: number
+                          description: Received document item deductibility vat percentage
+                          nullable: true
                   payments_list:
                     type: array
                     nullable: true
@@ -30657,6 +33222,28 @@ components:
                     type: string
                     nullable: true
                     description: Received document last update date
+                  ei_reception_date:
+                    type: string
+                    nullable: true
+                    description: >-
+                      [Read Only]
+
+                      Received document e-invoice reception date, needs
+                      fic_view 
+
+                      fieldset
+                    readOnly: true
+                  is_from_pending_expenses:
+                    type: boolean
+                    nullable: true
+                    description: >-
+                      [Read Only]
+
+                      True if received document is generated from pending
+                      expenses, 
+
+                      needs fic_view fieldset
+                    readOnly: true
                 nullable: true
             description: ''
           examples:
@@ -37944,6 +40531,14 @@ components:
                         type: string
                         nullable: true
                         description: Issued document imported by software
+                      debt_vat_detect:
+                        type: boolean
+                        nullable: true
+                        description: Issued document debt VAT detect
+                      revenue_detect:
+                        type: boolean
+                        nullable: true
+                        description: Issued document revenue detect
                   seen_date:
                     type: string
                     nullable: true
@@ -39472,6 +42067,14 @@ components:
                         type: string
                         nullable: true
                         description: Issued document imported by software
+                      debt_vat_detect:
+                        type: boolean
+                        nullable: true
+                        description: Issued document debt VAT detect
+                      revenue_detect:
+                        type: boolean
+                        nullable: true
+                        description: Issued document revenue detect
                   seen_date:
                     type: string
                     nullable: true
@@ -42226,6 +44829,14 @@ components:
                           type: string
                           nullable: true
                           description: Issued document imported by software
+                        debt_vat_detect:
+                          type: boolean
+                          nullable: true
+                          description: Issued document debt VAT detect
+                        revenue_detect:
+                          type: boolean
+                          nullable: true
+                          description: Issued document revenue detect
                     seen_date:
                       type: string
                       nullable: true
@@ -43667,6 +46278,14 @@ components:
                         type: string
                         nullable: true
                         description: Issued document imported by software
+                      debt_vat_detect:
+                        type: boolean
+                        nullable: true
+                        description: Issued document debt VAT detect
+                      revenue_detect:
+                        type: boolean
+                        nullable: true
+                        description: Issued document revenue detect
                   seen_date:
                     type: string
                     nullable: true
@@ -44461,6 +47080,12 @@ components:
                               Received document item product number of items in
                               stock
                             nullable: true
+                          deductibility_vat_percentage:
+                            type: number
+                            description: >-
+                              Received document item deductibility vat
+                              percentage
+                            nullable: true
                     payments_list:
                       type: array
                       nullable: true
@@ -44588,6 +47213,28 @@ components:
                       type: string
                       nullable: true
                       description: Received document last update date
+                    ei_reception_date:
+                      type: string
+                      nullable: true
+                      description: >-
+                        [Read Only]
+
+                        Received document e-invoice reception date, needs
+                        fic_view 
+
+                        fieldset
+                      readOnly: true
+                    is_from_pending_expenses:
+                      type: boolean
+                      nullable: true
+                      description: >-
+                        [Read Only]
+
+                        True if received document is generated from pending
+                        expenses, 
+
+                        needs fic_view fieldset
+                      readOnly: true
           examples:
             example-1:
               value:
@@ -45258,6 +47905,10 @@ components:
                             Received document item product number of items in
                             stock
                           nullable: true
+                        deductibility_vat_percentage:
+                          type: number
+                          description: Received document item deductibility vat percentage
+                          nullable: true
                   payments_list:
                     type: array
                     nullable: true
@@ -45385,6 +48036,28 @@ components:
                     type: string
                     nullable: true
                     description: Received document last update date
+                  ei_reception_date:
+                    type: string
+                    nullable: true
+                    description: >-
+                      [Read Only]
+
+                      Received document e-invoice reception date, needs
+                      fic_view 
+
+                      fieldset
+                    readOnly: true
+                  is_from_pending_expenses:
+                    type: boolean
+                    nullable: true
+                    description: >-
+                      [Read Only]
+
+                      True if received document is generated from pending
+                      expenses, 
+
+                      needs fic_view fieldset
+                    readOnly: true
           examples:
             example-1:
               value:

@@ -1,0 +1,13 @@
+title: ApiOAuthError
+type: object
+description: OAuth 2.0 error response format
+properties:
+  error:
+    type: string
+    description: Error code string
+  error_description:
+    type: string
+    description: Error details for OAuth 2.0 errors
+example:
+  error: invalid_request
+  error_description: The request is missing required parameters

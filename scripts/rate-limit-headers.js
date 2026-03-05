@@ -42,12 +42,8 @@ const rateLimitHeaders = {
 };
 
 // Response references
-const forbidden403Response = {
-  $ref: "#/components/responses/Forbidden403",
-};
-
-const tooManyRequests429Response = {
-  $ref: "#/components/responses/TooManyRequests429",
+const apiErrorResponse = {
+  $ref: "#/components/responses/ApiErrorResponse",
 };
 
 // Required headers for validation
@@ -59,7 +55,17 @@ const REQUIRED_HEADERS = [
 ];
 
 // Required response codes for validation
-const REQUIRED_RESPONSES = ["403", "429"];
+const REQUIRED_RESPONSES = [
+  "400",
+  "401",
+  "403",
+  "404",
+  "405",
+  "409",
+  "422",
+  "429",
+  "500",
+];
 
 /**
  * Add headers to a response object
@@ -108,23 +114,15 @@ function processEndpointForAdd(endpoint) {
     }
   }
 
-  // Add 403 response if not present
-  if (!endpoint.responses["403"]) {
-    endpoint.responses["403"] = forbidden403Response;
-    console.log("    ✓ Added 403 Forbidden response");
-    modified = true;
-  } else {
-    console.log("    → 403 response already present");
-  }
-
-  // Add 429 response if not present
-  if (!endpoint.responses["429"]) {
-    endpoint.responses["429"] = tooManyRequests429Response;
-    console.log("    ✓ Added 429 Too Many Requests response");
-    modified = true;
-  } else {
-    console.log("    → 429 response already present");
-  }
+  REQUIRED_RESPONSES.forEach((code) => {
+    if (!endpoint.responses[code]) {
+      endpoint.responses[code] = apiErrorResponse;
+      console.log(`    ✓ Added ${code} response`);
+      modified = true;
+    } else {
+      console.log(`    → ${code} response already present`);
+    }
+  });
 
   return modified;
 }
@@ -243,7 +241,7 @@ function addCommand() {
       console.log("✅ Done! File has been updated.");
     } else {
       console.log(
-        "✅ No changes needed - all endpoints already have rate limit headers!"
+        "✅ No changes needed - all endpoints already have rate limit headers!",
       );
     }
   }
@@ -311,7 +309,7 @@ function validateCommand() {
   if (invalidEndpoints > 0) {
     console.error("❌ VALIDATION FAILED!\n");
     console.error(
-      "The following endpoints are missing rate limiting headers or responses:\n"
+      "The following endpoints are missing rate limiting headers or responses:\n",
     );
 
     errors.forEach(({ path, method, operationId, issues }) => {
@@ -324,14 +322,14 @@ function validateCommand() {
     });
 
     console.error(
-      "💡 To fix this, run: node scripts/rate-limit-headers.js add\n"
+      "💡 To fix this, run: node scripts/rate-limit-headers.js add\n",
     );
     process.exit(1);
   }
 
   console.log("✅ VALIDATION PASSED!\n");
   console.log(
-    "All endpoints have the required rate limiting headers and responses.\n"
+    "All endpoints have the required rate limiting headers and responses.\n",
   );
   process.exit(0);
 }

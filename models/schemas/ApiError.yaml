@@ -1,0 +1,95 @@
+title: ApiError
+type: object
+description: Error details container
+properties:
+  error:
+    type: object
+    description: Error details object
+    properties:
+      message:
+        type: string
+        description: Error message
+        example: License expired.
+      code:
+        type: string
+        description: Error code
+        example: LICENSE_EXPIRED
+      validation_result:
+        type: object
+        description: Validation errors container with dynamic keys based on validation type
+        additionalProperties:
+          type: array
+          items:
+            type: string
+          description: Array of validation error messages
+        example:
+          xml_errors:
+            - Il Codice Fiscale e la Partita IVA del cliente risultano vuoti.
+  extra:
+    type: object
+    description: Additional data container
+    additionalProperties: true
+    properties:
+      totals:
+        type: object
+        description: Totals calculation results
+        properties:
+          amount_net:
+            type: number
+            description: Net amount
+            example: 1132.5
+          amount_global_cassa_taxable:
+            type: number
+            description: Global cassa taxable amount
+            example: 1132.5
+          taxable_amount:
+            type: number
+            description: Taxable amount
+            example: 1132.5
+          vat_list:
+            type: array
+            items:
+              type: object
+              properties:
+                amount_net:
+                  type: number
+                  description: Net amount for VAT calculation
+                  example: 1132.5
+                amount_vat:
+                  type: number
+                  description: VAT amount
+                  example: 0
+            description: List of VAT calculations
+          amount_vat:
+            type: number
+            description: Total VAT amount
+            example: 0
+          amount_gross:
+            type: number
+            description: Gross amount
+            example: 1002.26
+          amount_withholding_tax_taxable:
+            type: number
+            description: Withholding tax taxable amount
+            example: 566.25
+          amount_withholding_tax:
+            type: number
+            description: Withholding tax amount
+            example: 130.24
+          amount_enasarco_taxable:
+            type: number
+            description: Enasarco taxable amount
+            example: 0
+          amount_due:
+            type: number
+            description: Amount due
+            example: 1002.26
+          amount_due_discount:
+            type: number
+            nullable: true
+            description: Amount due discount
+            example: null
+          payments_sum:
+            type: number
+            description: Sum of payments
+            example: 1132.5
