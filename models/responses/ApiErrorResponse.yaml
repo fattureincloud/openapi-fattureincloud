@@ -4,28 +4,3 @@ description: >-
   Error details container, check
   https://developers.fattureincloud.it/docs/basics/errors/ for more details.
 additionalProperties: true
-examples:
-  validation_error:
-    value:
-      error:
-        message: Il totale dei pagamenti non corrisponde al totale da pagare.
-        validation_result: null
-      extra:
-        totals:
-          amount_net: 500
-          amount_global_cassa_taxable: 500
-          taxable_amount: 500
-          vat_list:
-            '22':
-              amount_net: 500
-              amount_vat: 110
-          amount_vat: 110
-          amount_gross: 610
-          amount_enasarco_taxable: 0
-          amount_due: 610
-          amount_due_discount: null
-          payments_sum: 579.5
-  oauth_error:
-    value:
-      error: invalid_request
-      error_description: The code field is required when grant type is authorization_code.
