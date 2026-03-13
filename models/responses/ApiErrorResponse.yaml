@@ -1,0 +1,6 @@
+title: ApiErrorResponse
+type: object
+description: >-
+  Error details container, check
+  https://developers.fattureincloud.it/docs/basics/errors/ for more details.
+additionalProperties: true
