@@ -16,7 +16,7 @@ info:
     name: MIT
     url: >-
       https://github.com/fattureincloud/openapi-fattureincloud/blob/master/LICENSE
-  version: 2.1.6
+  version: 2.1.8
 servers:
   - url: https://api-v2.fattureincloud.it
 tags:
@@ -15054,11 +15054,17 @@ paths:
                           - >-
                             it.fattureincloud.webhooks.issued_documents.supplier_orders.delete
                           - >-
-                            it.fattureincloud.webhooks.issued_documents.self_invoices.create
+                            it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.create
                           - >-
-                            it.fattureincloud.webhooks.issued_documents.self_invoices.update
+                            it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.update
                           - >-
-                            it.fattureincloud.webhooks.issued_documents.self_invoices.delete
+                            it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.delete
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.self_own_invoices.create
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.self_own_invoices.update
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.self_own_invoices.delete
                           - >-
                             it.fattureincloud.webhooks.issued_documents.all.create
                           - >-
@@ -15116,7 +15122,9 @@ paths:
                           - >-
                             it.fattureincloud.webhooks.issued_documents.supplier_orders.email_sent
                           - >-
-                            it.fattureincloud.webhooks.issued_documents.self_invoices.email_sent
+                            it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.self_own_invoices.email_sent
                           - >-
                             it.fattureincloud.webhooks.issued_documents.all.email_sent
                     config:
@@ -15302,11 +15310,17 @@ paths:
                           - >-
                             it.fattureincloud.webhooks.issued_documents.supplier_orders.delete
                           - >-
-                            it.fattureincloud.webhooks.issued_documents.self_invoices.create
+                            it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.create
                           - >-
-                            it.fattureincloud.webhooks.issued_documents.self_invoices.update
+                            it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.update
                           - >-
-                            it.fattureincloud.webhooks.issued_documents.self_invoices.delete
+                            it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.delete
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.self_own_invoices.create
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.self_own_invoices.update
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.self_own_invoices.delete
                           - >-
                             it.fattureincloud.webhooks.issued_documents.all.create
                           - >-
@@ -15364,7 +15378,9 @@ paths:
                           - >-
                             it.fattureincloud.webhooks.issued_documents.supplier_orders.email_sent
                           - >-
-                            it.fattureincloud.webhooks.issued_documents.self_invoices.email_sent
+                            it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.self_own_invoices.email_sent
                           - >-
                             it.fattureincloud.webhooks.issued_documents.all.email_sent
                     config:
@@ -42549,11 +42565,17 @@ components:
                         - >-
                           it.fattureincloud.webhooks.issued_documents.supplier_orders.delete
                         - >-
-                          it.fattureincloud.webhooks.issued_documents.self_invoices.create
+                          it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.create
                         - >-
-                          it.fattureincloud.webhooks.issued_documents.self_invoices.update
+                          it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.update
                         - >-
-                          it.fattureincloud.webhooks.issued_documents.self_invoices.delete
+                          it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.delete
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.self_own_invoices.create
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.self_own_invoices.update
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.self_own_invoices.delete
                         - it.fattureincloud.webhooks.issued_documents.all.create
                         - it.fattureincloud.webhooks.issued_documents.all.update
                         - it.fattureincloud.webhooks.issued_documents.all.delete
@@ -42608,7 +42630,9 @@ components:
                         - >-
                           it.fattureincloud.webhooks.issued_documents.supplier_orders.email_sent
                         - >-
-                          it.fattureincloud.webhooks.issued_documents.self_invoices.email_sent
+                          it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.self_own_invoices.email_sent
                         - >-
                           it.fattureincloud.webhooks.issued_documents.all.email_sent
                   config:
@@ -42749,11 +42773,17 @@ components:
                           - >-
                             it.fattureincloud.webhooks.issued_documents.supplier_orders.delete
                           - >-
-                            it.fattureincloud.webhooks.issued_documents.self_invoices.create
+                            it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.create
                           - >-
-                            it.fattureincloud.webhooks.issued_documents.self_invoices.update
+                            it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.update
                           - >-
-                            it.fattureincloud.webhooks.issued_documents.self_invoices.delete
+                            it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.delete
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.self_own_invoices.create
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.self_own_invoices.update
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.self_own_invoices.delete
                           - >-
                             it.fattureincloud.webhooks.issued_documents.all.create
                           - >-
@@ -42811,7 +42841,9 @@ components:
                           - >-
                             it.fattureincloud.webhooks.issued_documents.supplier_orders.email_sent
                           - >-
-                            it.fattureincloud.webhooks.issued_documents.self_invoices.email_sent
+                            it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.email_sent
+                          - >-
+                            it.fattureincloud.webhooks.issued_documents.self_own_invoices.email_sent
                           - >-
                             it.fattureincloud.webhooks.issued_documents.all.email_sent
                     config:
@@ -42946,11 +42978,17 @@ components:
                         - >-
                           it.fattureincloud.webhooks.issued_documents.supplier_orders.delete
                         - >-
-                          it.fattureincloud.webhooks.issued_documents.self_invoices.create
+                          it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.create
                         - >-
-                          it.fattureincloud.webhooks.issued_documents.self_invoices.update
+                          it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.update
                         - >-
-                          it.fattureincloud.webhooks.issued_documents.self_invoices.delete
+                          it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.delete
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.self_own_invoices.create
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.self_own_invoices.update
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.self_own_invoices.delete
                         - it.fattureincloud.webhooks.issued_documents.all.create
                         - it.fattureincloud.webhooks.issued_documents.all.update
                         - it.fattureincloud.webhooks.issued_documents.all.delete
@@ -43005,7 +43043,9 @@ components:
                         - >-
                           it.fattureincloud.webhooks.issued_documents.supplier_orders.email_sent
                         - >-
-                          it.fattureincloud.webhooks.issued_documents.self_invoices.email_sent
+                          it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.self_own_invoices.email_sent
                         - >-
                           it.fattureincloud.webhooks.issued_documents.all.email_sent
                   config:
@@ -43135,11 +43175,17 @@ components:
                         - >-
                           it.fattureincloud.webhooks.issued_documents.supplier_orders.delete
                         - >-
-                          it.fattureincloud.webhooks.issued_documents.self_invoices.create
+                          it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.create
                         - >-
-                          it.fattureincloud.webhooks.issued_documents.self_invoices.update
+                          it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.update
                         - >-
-                          it.fattureincloud.webhooks.issued_documents.self_invoices.delete
+                          it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.delete
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.self_own_invoices.create
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.self_own_invoices.update
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.self_own_invoices.delete
                         - it.fattureincloud.webhooks.issued_documents.all.create
                         - it.fattureincloud.webhooks.issued_documents.all.update
                         - it.fattureincloud.webhooks.issued_documents.all.delete
@@ -43194,7 +43240,9 @@ components:
                         - >-
                           it.fattureincloud.webhooks.issued_documents.supplier_orders.email_sent
                         - >-
-                          it.fattureincloud.webhooks.issued_documents.self_invoices.email_sent
+                          it.fattureincloud.webhooks.issued_documents.self_supplier_invoices.email_sent
+                        - >-
+                          it.fattureincloud.webhooks.issued_documents.self_own_invoices.email_sent
                         - >-
                           it.fattureincloud.webhooks.issued_documents.all.email_sent
                   config:
