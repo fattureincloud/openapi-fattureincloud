@@ -26,6 +26,9 @@ using FileIO = System.IO.File;
 {{#supportsRetry}}
 using Polly;
 {{/supportsRetry}}
+{{#hasOAuthMethods}}
+using {{packageName}}.Client.Auth;
+{{/hasOAuthMethods}}
 using {{packageName}}.{{modelPackage}};
 
 namespace {{packageName}}.Client
@@ -361,7 +364,7 @@ namespace {{packageName}}.Client
                         request.RequestFormat = DataFormat.Json;
                     }
 
-                    request.AddParameter("application/json", JsonConvert.SerializeObject(options.Data), ParameterType.RequestBody);
+                    request.AddJsonBody(options.Data);
                 }
             }
 
@@ -462,11 +465,29 @@ namespace {{packageName}}.Client
                 ClientCertificates = configuration.ClientCertificates,
                 Timeout = configuration.Timeout,
                 Proxy = configuration.Proxy,
+                UserAgent = configuration.UserAgent,
                 UseDefaultCredentials = configuration.UseDefaultCredentials,
                 RemoteCertificateValidationCallback = configuration.RemoteCertificateValidationCallback
             };
             setOptions(clientOptions);
+            
+            {{#hasOAuthMethods}}
+            if (!string.IsNullOrEmpty(configuration.OAuthTokenUrl) &&
+                !string.IsNullOrEmpty(configuration.OAuthClientId) &&
+                !string.IsNullOrEmpty(configuration.OAuthClientSecret) &&
+                configuration.OAuthFlow != null)
+            {
+                clientOptions.Authenticator = new OAuthAuthenticator(
+                    configuration.OAuthTokenUrl,
+                    configuration.OAuthClientId,
+                    configuration.OAuthClientSecret,
+                    configuration.OAuthScope,
+                    configuration.OAuthFlow,
+                    SerializerSettings,
+                    configuration);
+            }
 
+            {{/hasOAuthMethods}}
             using (RestClient client = new RestClient(clientOptions,
                 configureSerialization: serializerConfig => serializerConfig.UseSerializer(() => new CustomJsonCodec(SerializerSettings, configuration))))
             {
