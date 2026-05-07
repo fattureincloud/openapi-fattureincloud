@@ -5525,7 +5525,7 @@ paths:
         name: price_list_id
         in: path
         required: true
-        description: The ID of the price
+        description: The price list ID
     get:
       summary: Get PriceList Items List
       tags:
