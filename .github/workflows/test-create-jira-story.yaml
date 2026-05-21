@@ -1,0 +1,82 @@
+name: Test - Create Jira Story
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'OpenAPI version (e.g. 2.1.0)'
+        required: true
+        default: '2.1.0'
+      pr_url:
+        description: 'Pull Request URL to link in the Jira story'
+        required: true
+
+jobs:
+  create-jira-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - id: create-jira-issue
+        name: Create Jira Issue
+        env:
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          PR_URL: ${{ github.event.inputs.pr_url }}
+          OPENAPI_VERSION: ${{ github.event.inputs.version }}
+          SDK_NAME: "PHP SDK"
+        run: |
+          PAYLOAD=$(jq -n \
+            --arg summary "${SDK_NAME} for API spec v${OPENAPI_VERSION}" \
+            --arg pr_url "${PR_URL}" \
+            --arg openapi_version "${OPENAPI_VERSION}" \
+            --arg sdk_name "${SDK_NAME}" \
+            '{
+              fields: {
+                project: { key: "BOE" },
+                summary: $summary,
+                issuetype: { name: "Story" },
+                parent: { key: "BOE-841" },
+                priority: { name: "Medium" },
+                customfield_10016: 5,
+                description: {
+                  type: "doc",
+                  version: 1,
+                  content: [
+                    {
+                      type: "paragraph",
+                      content: [{
+                        type: "text",
+                        text: ("This task tracks the release of the " + $sdk_name + " generated from OpenAPI Spec v" + $openapi_version + ". It has been automatically generated and a pull request has been opened for review.")
+                      }]
+                    },
+                    {
+                      type: "paragraph",
+                      content: [
+                        { type: "text", text: "Generated PR: " },
+                        { type: "text", text: $pr_url, marks: [{ type: "link", attrs: { href: $pr_url } }] }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }')
+
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X POST \
+            "${JIRA_BASE_URL}/rest/api/3/issue" \
+            -H "Authorization: Basic $(echo -n "${JIRA_USER_EMAIL}:${JIRA_API_TOKEN}" | base64)" \
+            -H "Content-Type: application/json" \
+            -d "${PAYLOAD}")
+
+          HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | head -n-1)
+
+          echo "Response: $BODY"
+          echo "HTTP Status: $HTTP_CODE"
+
+          if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 300 ]; then
+            echo "Jira story created successfully!"
+            ISSUE_KEY=$(echo "$BODY" | jq -r '.key')
+            echo "Issue key: $ISSUE_KEY"
+          else
+            echo "Failed to create Jira story"
+            exit 1
+          fi
