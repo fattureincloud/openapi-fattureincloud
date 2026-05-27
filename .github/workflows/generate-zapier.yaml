@@ -18,7 +18,7 @@ jobs:
 
       - id: checkout
         name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           token: ${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}
 
@@ -26,7 +26,7 @@ jobs:
         name: Checkout zapier repo
         env:
           GIT_REPO_PATH: "${{ env.GIT_USER_ID }}/${{ env.GIT_REPO_ID }}"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           path: ./generated/zapier
           ref: master
@@ -35,11 +35,11 @@ jobs:
 
       - id: setup-node
         name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
 
       - id: setup-java
         name: Setup Java
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: "adopt"
           java-version: "11"
@@ -102,13 +102,14 @@ jobs:
 
           RELEASE_NOTE="\"bumping version to $INTEGRATION_VERSION\""
 
-          openapi-generator-cli generate -i ./openapi-zapier.yaml -g zapier -o ./generated/zapier/ -t ./templates/openapi-generator/zapier --additional-properties=npmName=${PACKAGE_NAME},npmVersion=${INTEGRATION_VERSION},modelPackage=models,apiPackage=apis --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --release-note=${RELEASE_NOTE}
+          # openapi-generator-cli generate -i ./openapi-zapier.yaml -g zapier -o ./generated/zapier/ -t ./templates/openapi-generator/zapier --additional-properties=npmName=${PACKAGE_NAME},npmVersion=${INTEGRATION_VERSION},modelPackage=models,apiPackage=apis --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --release-note=${RELEASE_NOTE}
+          openapi-generator-cli generate -i ./openapi.yaml -g zapier -o ./generated/zapier/ -t ./templates/openapi-generator/zapier --additional-properties=npmName=${PACKAGE_NAME},npmVersion=${INTEGRATION_VERSION},modelPackage=models,apiPackage=apis --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --release-note=${RELEASE_NOTE}
 
           node ./scripts/postprocess-zapier.js './generated/zapier/apis/'
 
       - id: create-pr
         name: Create Pull Request
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           path: ./generated/zapier
           branch: "devel-${{ env.integration_version }}"
