@@ -84,6 +84,14 @@ jobs:
           rm -rf ./generated/zapier/samples
           rm -f ./generated/zapier/operations/actions.js
 
+      - id: create-zapier-openapi
+        name: Create Zapier OpenAPI spec
+        run: |
+          cp ./openapi.yaml ./openapi-zapier.yaml
+          yq e 'del(.paths."/c/{company_id}/subscriptions")' -i ./openapi-zapier.yaml
+          yq e 'del(.paths."/c/{company_id}/subscriptions/{subscription_id}")' -i ./openapi-zapier.yaml
+          yq e 'del(.paths."/c/{company_id}/subscriptions/{subscription_id}/verify")' -i ./openapi-zapier.yaml
+
       - id: generate-zapier-integration
         name: Generate zapier integration
         env:
@@ -94,7 +102,7 @@ jobs:
 
           RELEASE_NOTE="\"bumping version to $INTEGRATION_VERSION\""
 
-          openapi-generator-cli generate -i ./openapi.yaml -g zapier -o ./generated/zapier/ -t ./templates/openapi-generator/zapier --additional-properties=npmName=${PACKAGE_NAME},npmVersion=${INTEGRATION_VERSION},modelPackage=models,apiPackage=apis --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --release-note=${RELEASE_NOTE}
+          openapi-generator-cli generate -i ./openapi-zapier.yaml -g zapier -o ./generated/zapier/ -t ./templates/openapi-generator/zapier --additional-properties=npmName=${PACKAGE_NAME},npmVersion=${INTEGRATION_VERSION},modelPackage=models,apiPackage=apis --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --release-note=${RELEASE_NOTE}
 
           node ./scripts/postprocess-zapier.js './generated/zapier/apis/'
 
