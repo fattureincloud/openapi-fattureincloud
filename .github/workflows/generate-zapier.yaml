@@ -107,6 +107,15 @@ jobs:
 
           node ./scripts/postprocess-zapier.js './generated/zapier/apis/'
 
+      - id: lint-code
+        name: Lint Code Base
+        continue-on-error: true
+        run: |
+          cd ./generated/javascript
+          npm install
+          npx eslint --fix ./
+          npm run format
+
       - id: create-pr
         name: Create Pull Request
         uses: peter-evans/create-pull-request@v8
