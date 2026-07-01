@@ -1,10 +1,12 @@
 =begin
 {{> api_info}}
+
 =end
 
 # Common files
 require '{{gemName}}/api_client'
 require '{{gemName}}/api_error'
+require '{{gemName}}/api_model_base'
 require '{{gemName}}/version'
 require '{{gemName}}/configuration'
 
@@ -44,18 +46,6 @@ require '{{importPath}}'
 {{/useAutoload}}
 {{/apis}}
 {{/apiInfo}}
-
-# Filter
-require 'fattureincloud_ruby_sdk/filter/operator'
-require 'fattureincloud_ruby_sdk/filter/condition'
-require 'fattureincloud_ruby_sdk/filter/conjunction'
-require 'fattureincloud_ruby_sdk/filter/disjunction'
-require 'fattureincloud_ruby_sdk/filter/filter'
-require 'fattureincloud_ruby_sdk/filter/expression'
-
-# OAuth
-require 'fattureincloud_ruby_sdk/oauth2/oauth2'
-require 'fattureincloud_ruby_sdk/oauth2/scope'
 
 module {{moduleName}}
   class << self
