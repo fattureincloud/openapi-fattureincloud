@@ -1,19 +1,25 @@
 name: Check Custom Templates
 on:
   workflow_dispatch:
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    - cron:  '0 0 1 1,4,7,10 *'
 
 jobs:
   check-custom-templates:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        sdk: ['php', 'javascript', 'csharp', 'ruby', 'java', 'python', 'typescript-axios', 'go']
+        sdk:
+          [
+            "php",
+            "javascript",
+            "csharp",
+            "ruby",
+            "java",
+            "python",
+            "typescript-axios",
+            "go",
+          ]
 
-    steps: 
-
+    steps:
       - id: checkout
         name: Checkout repo
         uses: actions/checkout@v4
@@ -25,7 +31,7 @@ jobs:
         run: |
           git config --global user.email "info@fattureincloud.it"
           git config --global user.name "fattureincloud-bot"
-          
+
       - id: setup-node
         name: Setup Node.js
         uses: actions/setup-node@v4
@@ -34,15 +40,15 @@ jobs:
         name: Setup Java
         uses: actions/setup-java@v4
         with:
-          distribution: 'adopt'
-          java-version: '11'
+          distribution: "adopt"
+          java-version: "11"
 
       - id: setup-libraries
         name: Install libraries
         run: |
           npm install -g yarn
           yarn global add @openapitools/openapi-generator-cli
-          
+
       - id: retrieve-templates
         name: Retrieve templates
         run: |
@@ -64,20 +70,19 @@ jobs:
           rm -rf templates-temp/openapi-generator/${{ matrix.sdk }}
           cd templates/openapi-generator/${{ matrix.sdk }}
           git add .
-        
 
       - id: get-timestamp
         name: Get Current Timestamp
         run: |
           DATE=$(date '+%Y%m%d')
-          echo "date_ts=$DATE" >> $GITHUB_ENV
+          echo "date_ts=$DATE" >> $GITHUB_OUTPUT
 
       - id: create-pr
         name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
           path: "."
-          branch: "check-templates-${{ matrix.sdk }}-${{ env.date_ts }}"
+          branch: "check-templates-${{ matrix.sdk }}-${{ steps.get-timestamp.outputs.date_ts }}"
           token: "${{ secrets.FATTUREINCLOUD_BOT_TOKEN }}"
           delete-branch: true
           base: master
