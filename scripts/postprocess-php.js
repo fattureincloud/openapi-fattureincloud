@@ -27,6 +27,11 @@ function cleanPHPComments(dir) {
         "@author   Fatture In Cloud API team",
       );
 
+      result = result.replace(
+        /(@return\s+)array<string,\s*mixed>(?:\|array<string,\s*mixed>)+/g,
+        "$1array<string,mixed>",
+      );
+
       fs.writeFileSync(currentPath, result, "utf8");
     }
   });
