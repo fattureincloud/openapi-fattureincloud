@@ -1,56 +1,38 @@
-var fs = require("fs")
-var path = require('path');
+var fs = require("fs");
+var path = require("path");
 
-const filePath = path.resolve(__dirname, '../generated/php/lib/Model/EventType.php');
+const filePath = path.resolve(
+  __dirname,
+  "../generated/php/lib/Model/EventType.php",
+);
 
-process.argv.slice(3).forEach((val, _) => cleanPHPComments(val))
+process.argv.slice(3).forEach((val) => cleanPHPComments(val));
 
 function cleanPHPComments(dir) {
-  files = fs.readdirSync(dir)
+  const files = fs.readdirSync(dir);
 
   files.forEach(function (file) {
-    if (fs.statSync(dir + file).isDirectory()) {
-      cleanPHPComments(dir + file + "/")
+    const currentPath = path.join(dir, file);
+    if (fs.statSync(currentPath).isDirectory()) {
+      cleanPHPComments(currentPath);
     } else {
-      fs.readFile(dir + file, "utf8", function (err, data) {
-        if (err) {
-          return console.log(err)
-        }
+      const data = fs.readFileSync(currentPath, "utf8");
+      let result = data.replace(
+        /@link.*/g,
+        "@link     https://fattureincloud.it",
+      );
 
-        var result = data.replace(
-          /@link.*/g,
-          "@link     https://fattureincloud.it"
-        )
+      result = result.replace(
+        /@author.*/g,
+        "@author   Fatture In Cloud API team",
+      );
 
-        result = result.replace(
-          /@author.*/g,
-          "@author   Fatture In Cloud API team"
-        )
-
-        fs.writeFile(dir + file, result, "utf8", function (err) {
-          if (err) {
-            return console.log(err)
-          }
-        })
-      })
+      fs.writeFileSync(currentPath, result, "utf8");
     }
-  })
+  });
 }
 
-fs.readFile(filePath, 'utf8', (err, data) => {
-  if (err) {
-      console.error('Errore durante la lettura del file:', err);
-      process.exit(1);
-  }
-
-  const updatedData = data.replace(/IT_FATTUREINCLOUD_WEBHOOKS_/g, '');
-
-  fs.writeFile(filePath, updatedData, 'utf8', (err) => {
-      if (err) {
-          console.error('Errore durante la scrittura del file:', err);
-          process.exit(1);
-      }
-
-      console.log('Sostituzione completata con successo!');
-  });
-});
+const data = fs.readFileSync(filePath, "utf8");
+const updatedData = data.replace(/IT_FATTUREINCLOUD_WEBHOOKS_/g, "");
+fs.writeFileSync(filePath, updatedData, "utf8");
+console.log("Sostituzione completata con successo!");

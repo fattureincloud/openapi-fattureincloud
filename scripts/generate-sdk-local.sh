@@ -68,7 +68,7 @@ if [ "$LANGUAGE" = "php" ]; then
 
     cd ./generated/php/
     composer install
-    ./vendor/bin/php-cs-fixer fix ./  --allow-risky=yes
+    ./vendor/bin/php-cs-fixer fix --allow-risky=yes
 
     cd ../..
     rm -rf ./backup
