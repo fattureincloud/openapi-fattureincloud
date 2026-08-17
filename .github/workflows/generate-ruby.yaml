@@ -10,7 +10,6 @@ jobs:
       GIT_REPO_ID: fattureincloud-ruby-sdk
       GIT_USER_ID: fattureincloud
     steps:
-
       - id: checkout
         name: Checkout repo
         uses: actions/checkout@v7
@@ -20,7 +19,7 @@ jobs:
       - id: checkout-ruby
         name: Checkout Ruby repo
         env:
-          GIT_REPO_PATH: '${{ env.GIT_USER_ID }}/${{ env.GIT_REPO_ID }}'
+          GIT_REPO_PATH: "${{ env.GIT_USER_ID }}/${{ env.GIT_REPO_ID }}"
         uses: actions/checkout@v7
         with:
           path: ./generated/ruby
@@ -42,8 +41,8 @@ jobs:
         name: Setup Java
         uses: actions/setup-java@v5
         with:
-          distribution: 'temurin'
-          java-version: '11'
+          distribution: "temurin"
+          java-version: "11"
 
       - id: setup-ruby
         name: Setup Ruby
@@ -110,9 +109,9 @@ jobs:
       - id: generate-ruby-sdk
         name: Generate Ruby SDK
         env:
-          GEM_AUTHOR: "\"Fatture in Cloud API Team\""
+          GEM_AUTHOR: '"Fatture in Cloud API Team"'
           GEM_AUTHOR_EMAIL: "info@fattureincloud.it"
-          GEM_DESCRIPTION: "\"Ruby SDK for the Fatture in Cloud API\""
+          GEM_DESCRIPTION: '"Ruby SDK for the Fatture in Cloud API"'
           GEM_HOMEPAGE: "https://github.com/fattureincloud/fattureincloud-ruby-sdk"
           GEM_LICENSE: "MIT"
           GEM_NAME: "fattureincloud_ruby_sdk"
@@ -123,12 +122,12 @@ jobs:
         run: |
           SDK_VERSION=${{ env.sdk_version }}
           echo "${{ env.sdk_version }}"
-          
+
           RELEASE_NOTE="\"bumping version to $SDK_VERSION\""
 
           USER_AGENT="$APP_NAME/${{ env.sdk_version }}/Ruby-SDK"
 
-          openapi-generator-cli generate -i ./openapi.yaml -g ruby -o ./generated/ruby/ -t ./templates/openapi-generator/ruby --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=gemVersion=${SDK_VERSION},gemAuthor=${GEM_AUTHOR},gemAuthorEmail=${GEM_AUTHOR_EMAIL},gemDescription=${GEM_DESCRIPTION},gemSummary=${GEM_DESCRIPTION},gemHomepage=${GEM_HOMEPAGE},gemLicense=${GEM_LICENSE},gemName=${GEM_NAME},gemSummary=${GEM_SUMMARY},moduleName=${MODULE_NAME},gemRequiredRubyVersion=${MINIMUM_VERSION}
+          openapi-generator-cli generate -i ./openapi.yaml -g ruby -o ./generated/ruby/ -t ./templates/openapi-generator/ruby --git-repo-id=${GIT_REPO_ID} --git-user-id=${GIT_USER_ID} --release-note=${RELEASE_NOTE} --http-user-agent=${USER_AGENT} --additional-properties=gemVersion=${SDK_VERSION},gemAuthor=${GEM_AUTHOR},gemAuthorEmail=${GEM_AUTHOR_EMAIL},gemDescription=${GEM_DESCRIPTION},gemSummary=${GEM_DESCRIPTION},gemHomepage=${GEM_HOMEPAGE},gemLicense=${GEM_LICENSE},gemName=${GEM_NAME},gemSummary=${GEM_SUMMARY},moduleName=${MODULE_NAME},gemRequiredRubyVersion=${MINIMUM_VERSION},useAutoload=true
 
       - id: move-custom-files-to-repo
         name: Move custom files to repo
