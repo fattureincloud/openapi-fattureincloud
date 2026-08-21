@@ -5,23 +5,32 @@
   "author": "Fatture in Cloud API team",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive -t 10000"
+    "test": "mocha --recursive -t 10000",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check"
   },
   "engines": {
-    "node": ">=v16",
+    "node": ">=22",
     "npm": ">=5.6.0"
   },
   "dependencies": {
-    "lodash": "^4.17.21",
-    "zapier-platform-core": "15.18.1",
-    "form-data": "^4.0.0"
+    "lodash": "^4.18.1",
+    "zapier-platform-core": "19.1.0",
+    "form-data": "^4.0.6"
   },
   "devDependencies": {
-    "mocha": "^10.2.0",
+    "@eslint/js": "^9.30.1",
+    "eslint": "^9.30.1",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^16.3.0",
+    "mocha": "^11.8.0",
+    "prettier": "^3.6.2",
     "should": "^13.2.0"
   },
   "private": true,
   "zapier": {
-    "convertedByCLIVersion": "15.18.1"
+    "convertedByCLIVersion": "19.1.0"
   }
 }

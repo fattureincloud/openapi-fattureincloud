@@ -109,9 +109,8 @@ jobs:
 
       - id: lint-code
         name: Lint Code Base
-        continue-on-error: true
         run: |
-          cd ./generated/javascript
+          cd ./generated/zapier
           npm install
           npx eslint --fix ./
           npm run format

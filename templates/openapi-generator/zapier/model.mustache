@@ -6,16 +6,19 @@ const utils = require('../utils/utils');
 
 {{#isEnum}}
 module.exports = {
-        fields: (key) => (
+        fields: (key, isInput = true) => (
             {
                 label: `{{#description}}{{{.}}} - {{/description}}[${key.replaceAll('__', '.')}]`,
-                choices: [
-                    {{#allowableValues}}
-                    {{#values}}
-                    '{{.}}',
-                    {{/values}}
-                    {{/allowableValues}}
-                ],
+                type: 'string',
+                ...(isInput ? {
+                    choices: [
+                        {{#allowableValues}}
+                        {{#values}}
+                        '{{.}}',
+                        {{/values}}
+                        {{/allowableValues}}
+                    ],
+                } : {}),
             }
         )
     }
@@ -42,15 +45,22 @@ module.exports = {
                 type: 'string',
                 {{/isFreeFormObject}}
                 {{^isFreeFormObject}}
+                {{#isMap}}
+                type: isInput ? 'text' : 'string',
+                {{/isMap}}
+                {{^isMap}}
                 type: '{{baseType}}',
+                {{/isMap}}
                 {{/isFreeFormObject}}
                 {{/isArray}}
                 {{#isEnum}}
-                choices: [
-                    {{#_enum}}
-                    '{{.}}',
-                    {{/_enum}}
-                ],
+                ...(isInput ? {
+                    choices: [
+                        {{#_enum}}
+                        '{{.}}',
+                        {{/_enum}}
+                    ],
+                } : {}),
                 {{/isEnum}}
             },
             {{/isPrimitiveType}}
